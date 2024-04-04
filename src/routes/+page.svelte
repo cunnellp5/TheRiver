@@ -1,3 +1,7 @@
+<script lang="ts">
+	import BlogMentions from '$lib/components/BlogMentions.svelte';
+</script>
+
 <title>The River</title>
 
 <div id="video-background">
@@ -12,9 +16,11 @@
 	<img src="/Logo_White.png" alt="The River Logo" srcset="" />
 </div>
 
+<BlogMentions />
+
 <style>
 	#video-background {
-		position: fixed;
+		position: absolute;
 		right: 0;
 		bottom: 0;
 		min-width: 100%;
@@ -37,7 +43,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		height: 100vh; /* Full height of the viewport */
+		height: 100vh;
 	}
 
 	img {
