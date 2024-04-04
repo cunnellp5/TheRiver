@@ -9,16 +9,16 @@
 
 	<ul class="links">
 		<li>
-			<a href="/music">Music</a>
+			<a href="/music">MUSIC</a>
 		</li>
 		<li>
-			<a href="/producers">Producers</a>
+			<a href="/producers">PRODUCERS</a>
 		</li>
 		<li>
-			<a href="/shop">Shop</a>
+			<a href="/shop">SHOP</a>
 		</li>
 		<li>
-			<a href="/contact">Contact</a>
+			<a href="/contact">CONTACT</a>
 		</li>
 	</ul>
 </nav>
@@ -33,22 +33,28 @@
 	}
 
 	nav {
+		/* these top 3 lines are if i want a full screen thing, but then you need to mess with the layout */
+		/* position: absolute;
+		left: 50%;
+		transform: translateX(-50%); */
+
 		align-items: center;
 		width: 100%;
 		background-color: rgba(0, 0, 0, 0.5);
-		padding-block: var(--size-1);
+		/* padding: var(--size-1); */
+
+		padding: var(--size-2);
 	}
 
-	nav a {
-		color: white;
+	a {
+		color: var(--text-1);
 		text-decoration: none;
-		font-size: var(--size-4);
+		font-size: var(--size-3);
 		transition: color 0.3s ease;
-		text-transform: uppercase;
 	}
 
-	nav a:hover {
-		color: #ddd;
+	a:hover {
+		color: var(--brand);
 	}
 
 	img {
@@ -74,11 +80,6 @@
 		.links {
 			display: flex;
 			gap: var(--size-7);
-			margin-block: 0;
-		}
-
-		nav a {
-			margin: 10px 0;
 		}
 	}
 </style>
