@@ -1,10 +1,16 @@
 <script lang="ts">
 	import Circle from 'lucide-svelte/icons/circle';
+	import Socials from './Socials.svelte';
 </script>
 
 <footer>
-	<p>🌊 TheRiverSings &copy {new Date().getFullYear()}</p>
-	<p>socials</p>
+	<div>
+		<p>TheRiverSings</p>
+		<div class="line-spacer"></div>
+		<small> &copy {new Date().getFullYear()}</small>
+	</div>
+
+	<Socials />
 
 	<ul>
 		<li class="light">
@@ -26,10 +32,23 @@
 	}
 
 	p {
+		display: flex;
+		gap: var(--size-2);
 		color: var(--text-2);
+	}
+
+	div {
+		display: flex;
+		align-items: center;
 	}
 
 	.dark {
 		display: none;
+	}
+
+	.line-spacer {
+		margin-inline: var(--size-2);
+		border-left: 0.5px solid rgb(207, 207, 207);
+		height: var(--size-3);
 	}
 </style>
