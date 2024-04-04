@@ -1,17 +1,19 @@
 <script lang="ts">
-	import Facebook from 'lucide-svelte/icons/facebook';
-	import Instagram from 'lucide-svelte/icons/instagram';
-	// import Spotify from 'lucide-svelte/icons/spotify';
-	import Youtube from 'lucide-svelte/icons/youtube';
+	import Spotify from '$lib/components/svgs/Spotify.svelte';
+	import Etsy from '$lib/components/svgs/Etsy.svelte';
+	import LinkTree from '$lib/components/svgs/LinkTree.svelte';
+	import Facebook from '$lib/components/svgs/Facebook.svelte';
+	import Instagram from '$lib/components/svgs/Instagram.svelte';
+	import Youtube from '$lib/components/svgs/Youtube.svelte';
 </script>
 
 <ul>
-	<li>etsy</li>
 	<li><Facebook /></li>
-	<li><Instagram /></li>
-	<li>linktr.ee</li>
-	<li>spotify</li>
 	<li><Youtube /></li>
+	<li><Instagram /></li>
+	<li><LinkTree /></li>
+	<li><Spotify /></li>
+	<li><Etsy /></li>
 </ul>
 
 <style>
@@ -24,5 +26,9 @@
 
 	li {
 		margin-inline: var(--size-1);
+	}
+
+	li:hover {
+		cursor: pointer;
 	}
 </style>
