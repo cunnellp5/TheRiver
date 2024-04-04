@@ -40,6 +40,15 @@
 	}
 
 	.card > h5 {
-		line-height: var(--font-lineheight-1);
+		line-height: var(--font-lineheight-0);
+	}
+
+	a {
+		color: var(--link);
+		text-decoration: none;
+	}
+
+	p {
+		margin-block: var(--size-3);
 	}
 </style>
