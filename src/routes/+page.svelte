@@ -41,7 +41,7 @@
 	}
 
 	img {
-		width: 70%;
+		width: 80%;
 	}
 
 	video {
