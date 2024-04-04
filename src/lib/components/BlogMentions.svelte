@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { blogReferences } from '$lib/data/marketing';
 </script>
 
