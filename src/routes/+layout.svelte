@@ -1,21 +1,25 @@
 <script>
-	import 'open-props/style';
-	import 'open-props/normalize';
+	import Footer from '$lib/components/Footer.svelte';
+	import Header from '$lib/components/Header.svelte';
+	import PageTransition from '$lib/components/Transition.svelte';
 	import 'open-props/buttons';
-
+	import 'open-props/colors-hsl';
 	import 'open-props/masks/edges';
-
+	import 'open-props/normalize';
+	import 'open-props/style';
 	import '../app.css';
 
-	import Header from '$lib/components/Header.svelte';
-	import Footer from '$lib/components/Footer.svelte';
+	export let data;
 </script>
 
 <div class="layout">
-	<Header />
+	<Header url={data.url} />
 
+	<PageTransition url={data.url}>
+		<slot />
+	</PageTransition>
 	<!-- <section> -->
-	<slot />
+	<!-- <slot /> -->
 	<!-- </section> -->
 
 	<Footer />
