@@ -22,8 +22,8 @@
 		justify-content: center;
 	}
 
-	section {
-		left: 50%; /* Center the section horizontally */
+	/* section {
+		left: 50%;
 		top: 200px;
 		height: var(--size-15);
 		width: var(--size-15);
@@ -34,7 +34,7 @@
 		border-radius: var(--radius-blob-1);
 		transform: translateX(-50%);
 		opacity: 0.4;
-	}
+	} */
 
 	h1 {
 		text-transform: uppercase;

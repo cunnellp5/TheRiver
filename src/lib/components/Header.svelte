@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import Waves from 'lucide-svelte/icons/waves';
 </script>
 
@@ -9,16 +10,16 @@
 
 	<ul class="links">
 		<li>
-			<a href="/music">MUSIC</a>
+			<a href="/music"> MUSIC </a>
 		</li>
 		<li>
-			<a href="/producers">PRODUCERS</a>
+			<a href="/producers"> PRODUCERS </a>
 		</li>
 		<li>
-			<a href="/shop">SHOP</a>
+			<a href="/shop"> SHOP </a>
 		</li>
 		<li>
-			<a href="/contact">CONTACT</a>
+			<a href="/contact"> CONTACT </a>
 		</li>
 	</ul>
 </nav>
@@ -37,13 +38,11 @@
 		/* position: absolute;
 		left: 50%;
 		transform: translateX(-50%); */
-
 		align-items: center;
 		width: 100%;
-		background-color: rgba(0, 0, 0, 0.5);
-		/* padding: var(--size-1); */
-
-		padding: var(--size-2);
+		background-color: hsl(var(--gray-9-hsl) / 30%);
+		padding-block: var(--size-3);
+		padding-inline: var(--size-6);
 	}
 
 	a {
@@ -53,7 +52,8 @@
 		transition: color 0.3s ease;
 	}
 
-	a:hover {
+	a:hover,
+	a:active {
 		color: var(--brand);
 	}
 
