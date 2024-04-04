@@ -17,12 +17,13 @@
 		border-left: 1px solid var(--text-1);
 		height: var(--size-7);
 	}
-
+	/* --font-letterspacing-{0-7} */
 	p {
-		letter-spacing: var(--size-1);
+		/* letter-spacing: var(--size-1); */
 		font-weight: 800;
 		color: var(--text-2);
 		font-size: var(--size-3);
 		text-transform: uppercase;
+		font-family: var(--font-mono);
 	}
 </style>
