@@ -3,6 +3,8 @@
 	import 'open-props/normalize';
 	import 'open-props/buttons';
 
+	import 'open-props/masks/edges';
+
 	import '../app.css';
 
 	import Header from '$lib/components/Header.svelte';
@@ -12,9 +14,9 @@
 <div class="layout">
 	<Header />
 
-	<main>
-		<slot />
-	</main>
+	<!-- <section> -->
+	<slot />
+	<!-- </section> -->
 
 	<Footer />
 </div>
@@ -27,10 +29,6 @@
 		grid-template-rows: auto 1fr auto;
 		margin-inline: auto;
 		padding-inline: var(--size-7);
-	}
-
-	main {
-		padding-block: var(--size-9);
 	}
 
 	@media (min-width: 1440px) {
