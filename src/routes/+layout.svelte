@@ -1,54 +1,41 @@
-<nav>
-	<a href="/" class="logo-link"><img src="/Logo_White.png" alt="The River Logo White" /></a>
-	<a href="/music">Music</a>
-	<a href="/producers">Producers</a>
-	<a href="/shop">Shop</a>
-</nav>
+<script>
+	import 'open-props/style';
+	import 'open-props/normalize';
+	import 'open-props/buttons';
 
-<main>
-	<slot />
-</main>
+	import '../app.css';
+
+	import Header from '$lib/components/Header.svelte';
+	import Footer from '$lib/components/Footer.svelte';
+</script>
+
+<div class="layout">
+	<Header />
+
+	<main>
+		<slot />
+	</main>
+
+	<Footer />
+</div>
 
 <style>
-	nav {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		width: 100%;
-		background-color: rgba(0, 0, 0, 0.5);
-		padding: 12px 0;
+	.layout {
+		height: 100%;
+		max-inline-size: 1440px;
+		display: grid;
+		grid-template-rows: auto 1fr auto;
+		margin-inline: auto;
+		padding-inline: var(--size-7);
 	}
 
-	nav a {
-		color: white;
-		margin: 0 20px;
-		text-decoration: none;
-		font-size: 1.2em;
-		transition: color 0.3s ease;
-		text-transform: uppercase;
+	main {
+		padding-block: var(--size-9);
 	}
 
-	nav a:hover {
-		color: #ddd;
-	}
-
-	img {
-		width: 100px;
-	}
-
-	.logo-link {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-
-	@media (max-width: 600px) {
-		nav {
-			flex-direction: column;
-		}
-
-		nav a {
-			margin: 10px 0;
+	@media (min-width: 1440px) {
+		.layout {
+			padding-inline: 0;
 		}
 	}
 </style>
