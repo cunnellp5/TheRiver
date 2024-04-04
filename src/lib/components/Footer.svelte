@@ -1,25 +1,18 @@
 <script lang="ts">
-	import Circle from 'lucide-svelte/icons/circle';
 	import Socials from './Socials.svelte';
+	import ToggleTheme from './ToggleTheme.svelte';
 </script>
 
 <footer>
 	<div>
-		<p>TheRiverSings</p>
+		<p>The River Sings</p>
 		<div class="line-spacer"></div>
 		<small> &copy {new Date().getFullYear()}</small>
 	</div>
 
 	<Socials />
 
-	<ul>
-		<li class="light">
-			<Circle />
-		</li>
-		<li class="dark">
-			<Circle fill="#FFFFFF" />
-		</li>
-	</ul>
+	<ToggleTheme />
 </footer>
 
 <style>
@@ -35,15 +28,12 @@
 		display: flex;
 		gap: var(--size-2);
 		color: var(--text-2);
+		font-family: var(--font-serif);
 	}
 
 	div {
 		display: flex;
 		align-items: center;
-	}
-
-	.dark {
-		display: none;
 	}
 
 	.line-spacer {
