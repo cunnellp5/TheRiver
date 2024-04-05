@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { page } from '$app/stores';
 	import Waves from 'lucide-svelte/icons/waves';
+	import LogoWhite from '$lib/components/svgs/logos/LogoWhite.svelte';
 </script>
 
 <nav class="nav-desktop">
 	<a href="/" class="logo-link">
-		<img src="/Logo_White.png" alt="The River Logo White" />
+		<LogoWhite />
 	</a>
 
 	<ul class="links">
@@ -57,9 +57,8 @@
 		color: var(--brand);
 	}
 
-	img {
+	.logo-link {
 		width: var(--size-11);
-		border-radius: 0;
 	}
 
 	@media (min-width: 768px) {

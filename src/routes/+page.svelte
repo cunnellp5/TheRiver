@@ -1,5 +1,6 @@
 <script lang="ts">
 	import BlogMentions from '$lib/components/BlogMentions.svelte';
+	import LogoWhite from '$lib/components/svgs/logos/LogoWhite.svelte';
 </script>
 
 <title>The River</title>
@@ -13,7 +14,7 @@
 </div>
 
 <div id="image-container">
-	<img src="/Logo_White.png" alt="The River Logo" srcset="" />
+	<LogoWhite fill="#ffffff" />
 </div>
 
 <BlogMentions />

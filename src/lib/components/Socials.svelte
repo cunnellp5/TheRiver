@@ -1,10 +1,10 @@
 <script lang="ts">
-	import Spotify from '$lib/components/svgs/Spotify.svelte';
-	import Etsy from '$lib/components/svgs/Etsy.svelte';
-	import LinkTree from '$lib/components/svgs/LinkTree.svelte';
-	import Facebook from '$lib/components/svgs/Facebook.svelte';
-	import Instagram from '$lib/components/svgs/Instagram.svelte';
-	import Youtube from '$lib/components/svgs/Youtube.svelte';
+	import Spotify from '$lib/components/svgs/socials/Spotify.svelte';
+	import Etsy from '$lib/components/svgs/socials/Etsy.svelte';
+	import LinkTree from '$lib/components/svgs/socials/LinkTree.svelte';
+	import Facebook from '$lib/components/svgs/socials/Facebook.svelte';
+	import Instagram from '$lib/components/svgs/socials/Instagram.svelte';
+	import Youtube from '$lib/components/svgs/socials/Youtube.svelte';
 </script>
 
 <ul>

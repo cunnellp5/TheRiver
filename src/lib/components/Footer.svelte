@@ -1,20 +1,17 @@
 <script lang="ts">
 	import Socials from './Socials.svelte';
 	import ToggleTheme from './ToggleTheme.svelte';
+	import LogoWhite from '$lib/components/svgs/logos/LogoWhite.svelte';
 </script>
 
 <footer>
 	<div>
-		<!-- <a href="/">
-			<img src="/Logo_White.png" alt="The River Logo White" />
-		</a> -->
-		<!-- <div class="line-spacer"></div> -->
 		<small> &copy {new Date().getFullYear()}</small>
 	</div>
 
 	<div class="socials">
 		<a href="/">
-			<img src="/Logo_White.png" alt="The River Logo White" />
+			<LogoWhite />
 		</a>
 		<Socials />
 	</div>
