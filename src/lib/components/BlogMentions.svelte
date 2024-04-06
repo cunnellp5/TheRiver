@@ -5,10 +5,7 @@
 <section>
 	{#each blogReferences as blogReference}
 		<div class="card">
-			<img
-				src="https://doodleipsum.com/500x500/hand-drawn?i=b48528b59f8d071fde57e51d2d6c433d"
-				alt="cap1"
-			/>
+			<img src={blogReference.img.url} alt="cap1" />
 			<h5>{blogReference.link.title}</h5>
 			<p>{blogReference.content.message}</p>
 			<a href={blogReference.link.url}>{blogReference.link.title}</a>
@@ -46,9 +43,11 @@
 	a {
 		color: var(--link);
 		text-decoration: none;
+		font-size: var(--font-size-0);
 	}
 
 	p {
 		margin-block: var(--size-3);
+		font-size: var(--font-size-1);
 	}
 </style>

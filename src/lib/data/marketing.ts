@@ -19,6 +19,9 @@ export const introduction = {
 
 export const blogReferences = [
 	{
+		img: {
+			url: 'https://res.cloudinary.com/dswpu3qez/image/upload/v1707412331/sample.jpg'
+		},
 		content: {
 			message: 'Ever since releasing her first song in June 2021, she has had her foot on the gas.',
 			author: 'Victória Santiago'
@@ -29,6 +32,9 @@ export const blogReferences = [
 		}
 	},
 	{
+		img: {
+			url: 'https://res.cloudinary.com/dswpu3qez/image/upload/v1707412341/samples/people/jazz.jpg'
+		},
 		content: {
 			message:
 				"On Hours: The production here is sublime and crisp as each instrument stands out with clarity while The River's commanding vocals cut through the mix with ease.",
@@ -40,6 +46,9 @@ export const blogReferences = [
 		}
 	},
 	{
+		img: {
+			url: 'https://res.cloudinary.com/dswpu3qez/image/upload/v1707412345/samples/ecommerce/accessories-bag.jpg'
+		},
 		content: {
 			message:
 				"The vocals are confidently delivered, imbued with the effortless coolness that comes with being insanely naturally gifted. Plus, the arrangement and production create the most infectious groove you'll ever hear.",
@@ -51,6 +60,9 @@ export const blogReferences = [
 		}
 	},
 	{
+		img: {
+			url: 'https://res.cloudinary.com/dswpu3qez/image/upload/v1707412364/samples/man-portrait.jpg'
+		},
 		content: {
 			message:
 				"Somewhere in the lyrics there is peace and truth. The River's latest single “Hours” facing the reality of love, respect, and emotions. Over and acoustic melody the rain pours over the lyrical expressions of facing your feelings.",
