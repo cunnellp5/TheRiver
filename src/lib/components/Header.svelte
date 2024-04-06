@@ -1,13 +1,13 @@
 <script lang="ts">
 	import Waves from 'lucide-svelte/icons/waves';
-	import LogoWhite from '$lib/components/svgs/logos/LogoWhite.svelte';
+	import LogoR from '$lib/components/svgs/logos/Logo-R.svelte';
 
 	export let isHomePage: boolean;
 </script>
 
 <nav class="nav-desktop">
 	<a href="/" class="logo-link">
-		<LogoWhite {isHomePage} />
+		<LogoR {isHomePage} />
 	</a>
 
 	<ul class="links">
@@ -28,7 +28,7 @@
 
 <nav class="nav-mobile">
 	<a href="/" class="logo-link">
-		<LogoWhite {isHomePage} />
+		<LogoR {isHomePage} />
 	</a>
 
 	{#if isHomePage}
@@ -73,7 +73,7 @@
 	}
 
 	.logo-link {
-		width: var(--size-12);
+		width: var(--size-8);
 	}
 
 	/* Dynamic class because home page has a video thats darker than the theme */
@@ -91,10 +91,6 @@
 		.links {
 			display: flex;
 			gap: var(--size-7);
-		}
-
-		.logo-link {
-			width: var(--size-11);
 		}
 
 		.nav-desktop {
