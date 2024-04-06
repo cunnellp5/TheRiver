@@ -2,35 +2,38 @@
 	import BlogMentions from '$lib/components/BlogMentions.svelte';
 	import LogoWhite from '$lib/components/svgs/logos/LogoWhite.svelte';
 
-	// let videoElement: HTMLVideoElement;
+	export let data; // gets url from .server
+	let isPlaying = true;
 
-	// function handleMouseDown() {
-	// 	console.log('mousedown');
-	// }
+	let videoElement: HTMLVideoElement;
 
-	// function handleMouseOver() {
-	// 	console.log('mouseover');
-	// 	videoElement.play();
-	// }
-
-	// function handleMouseOut() {
-	// 	console.log('mouseover');
-	// 	videoElement.pause();
-	// }
-	export let data;
+	function playVideo() {
+		videoElement.play();
+		isPlaying = true;
+	}
+	function pauseVideo() {
+		videoElement.pause();
+		isPlaying = false;
+	}
 </script>
 
 <title>The River</title>
 
 <div id="video-background">
-	<video autoplay loop muted>
+	<video autoplay loop muted bind:this={videoElement}>
 		<source src={data.videoURL} type="video/mp4" />
 		<track kind="captions" srclang="en" label="English" />
 	</video>
 	<div id="video-tint"></div>
 </div>
 
-<div id="image-container">
+<div
+	role="img"
+	aria-label={isPlaying ? 'Play video' : 'Pause video'}
+	id="image-container"
+	on:mouseenter={playVideo}
+	on:mouseleave={pauseVideo}
+>
 	<LogoWhite isHomePage={true} />
 </div>
 

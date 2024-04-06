@@ -23,7 +23,7 @@
 <style>
 	footer {
 		display: flex;
-		flex-direction: column-reverse;
+		flex-direction: column;
 		justify-content: center;
 		padding-block: var(--size-7);
 		border-top: 1px solid var(--border);
@@ -63,8 +63,8 @@
 		.footer-first {
 			justify-content: start;
 		}
-		.logo-svg {
+		/* .logo-svg {
 			width: var(--size-11);
-		}
+		} */
 	}
 </style>
