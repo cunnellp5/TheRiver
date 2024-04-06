@@ -1,13 +1,30 @@
 <script lang="ts">
 	import BlogMentions from '$lib/components/BlogMentions.svelte';
 	import LogoWhite from '$lib/components/svgs/logos/LogoWhite.svelte';
+
+	// let videoElement: HTMLVideoElement;
+
+	// function handleMouseDown() {
+	// 	console.log('mousedown');
+	// }
+
+	// function handleMouseOver() {
+	// 	console.log('mouseover');
+	// 	videoElement.play();
+	// }
+
+	// function handleMouseOut() {
+	// 	console.log('mouseover');
+	// 	videoElement.pause();
+	// }
+	export let data;
 </script>
 
 <title>The River</title>
 
 <div id="video-background">
 	<video autoplay loop muted>
-		<source src="/jungle-river.mp4" type="video/mp4" />
+		<source src={data.videoURL} type="video/mp4" />
 		<track kind="captions" srclang="en" label="English" />
 	</video>
 	<div id="video-tint"></div>

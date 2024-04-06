@@ -6,7 +6,9 @@
 
 <footer>
 	<div class="footer-first">
-		<ToggleTheme />
+		<!-- <a class="logo-svg" href="/">
+			<LogoWhite />
+		</a> -->
 	</div>
 
 	<div class="footer-middle">
@@ -14,9 +16,7 @@
 	</div>
 
 	<div class="toggler">
-		<a class="logo-svg" href="/">
-			<LogoWhite />
-		</a>
+		<ToggleTheme />
 	</div>
 </footer>
 
@@ -33,9 +33,9 @@
 		display: flex;
 		align-items: center;
 	}
-	.logo-svg {
+	/* .logo-svg {
 		width: var(--size-12);
-	}
+	} */
 	.footer-first {
 		justify-content: center;
 	}
