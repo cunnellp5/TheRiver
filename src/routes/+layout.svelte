@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import Footer from '$lib/components/Footer.svelte';
 	import Header from '$lib/components/Header.svelte';
 	import PageTransition from '$lib/components/Transition.svelte';
@@ -7,20 +7,17 @@
 	import 'open-props/masks/edges';
 	import 'open-props/normalize';
 	import 'open-props/style';
-	import '../app.css';
+	import '../styles/app.css';
 
-	export let data;
+	export let data: { url: string };
 </script>
 
 <div class="layout">
-	<Header url={data.url} />
+	<Header isHomePage={data.url === '/'} />
 
 	<PageTransition url={data.url}>
 		<slot />
 	</PageTransition>
-	<!-- <section> -->
-	<!-- <slot /> -->
-	<!-- </section> -->
 
 	<Footer />
 </div>

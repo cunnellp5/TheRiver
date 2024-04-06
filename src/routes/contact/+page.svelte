@@ -17,24 +17,11 @@
 <style>
 	main {
 		display: flex;
-		flex-direction: row;
 		align-items: center;
+		flex-direction: row;
 		justify-content: center;
+		height: 100%;
 	}
-
-	/* section {
-		left: 50%;
-		top: 200px;
-		height: var(--size-15);
-		width: var(--size-15);
-		position: fixed;
-		z-index: -1;
-		background-image: var(--gradient-22), var(--noise-3);
-		background-size: 100%;
-		border-radius: var(--radius-blob-1);
-		transform: translateX(-50%);
-		opacity: 0.4;
-	} */
 
 	h1 {
 		text-transform: uppercase;

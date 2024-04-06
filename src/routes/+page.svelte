@@ -14,7 +14,7 @@
 </div>
 
 <div id="image-container">
-	<LogoWhite fill="#ffffff" />
+	<LogoWhite isHomePage={true} />
 </div>
 
 <BlogMentions />
@@ -45,11 +45,6 @@
 		justify-content: center;
 		align-items: center;
 		height: 100vh;
-	}
-
-	img {
-		width: 80%;
-		border-radius: 0;
 	}
 
 	video {
