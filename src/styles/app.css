@@ -31,6 +31,7 @@ html {
 	--surface-4-light: var(--gray-3);
 	--text-1-light: var(--gray-8);
 	--text-2-light: var(--gray-7);
+	--link-light: var(--blue-7);
 }
 
 :root {
@@ -64,6 +65,7 @@ html {
 		--surface-4: var(--surface-4-light);
 		--text-1: var(--text-1-light);
 		--text-2: var(--text-2-light);
+		--link: var(--blue-7);
 	}
 }
 
@@ -97,6 +99,7 @@ html {
 	--surface-4: var(--surface-4-light);
 	--text-1: var(--text-1-light);
 	--text-2: var(--text-2-light);
+	--link: var(--blue-7);
 }
 
 html,
@@ -145,6 +148,8 @@ li {
 	color: var(--text-1);
 }
 
+/* gradient headers */
+
 h1,
 h2,
 h3,
@@ -155,4 +160,14 @@ h6 {
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	background-clip: text;
+}
+
+/* social links */
+.socials-color {
+	fill: var(--socials-1);
+	transition: fill 0.3s ease;
+}
+
+.socials-color:hover {
+	fill: var(--link);
 }
