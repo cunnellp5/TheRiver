@@ -1,3 +1,5 @@
+// EXAMPLE
+
 import { writable } from 'svelte/store';
 
 function videoControl() {
