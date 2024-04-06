@@ -1,52 +1,58 @@
 <script lang="ts">
 	import Waves from 'lucide-svelte/icons/waves';
 	import LogoWhite from '$lib/components/svgs/logos/LogoWhite.svelte';
+
+	export let isHomePage: boolean;
 </script>
 
 <nav class="nav-desktop">
 	<a href="/" class="logo-link">
-		<LogoWhite />
+		<LogoWhite {isHomePage} />
 	</a>
 
 	<ul class="links">
 		<li>
-			<a href="/music"> MUSIC </a>
+			<a class:home-link={isHomePage} href="/music"> MUSIC </a>
 		</li>
 		<li>
-			<a href="/producers"> PRODUCERS </a>
+			<a class:home-link={isHomePage} href="/producers"> PRODUCERS </a>
 		</li>
 		<li>
-			<a href="/shop"> SHOP </a>
+			<a class:home-link={isHomePage} href="/shop"> SHOP </a>
 		</li>
 		<li>
-			<a href="/contact"> CONTACT </a>
+			<a class:home-link={isHomePage} href="/contact"> CONTACT </a>
 		</li>
 	</ul>
 </nav>
 
 <nav class="nav-mobile">
-	<Waves />
+	<a href="/" class="logo-link">
+		<LogoWhite {isHomePage} />
+	</a>
+
+	{#if isHomePage}
+		<Waves color="#ffffff" />
+	{:else}
+		<Waves />
+	{/if}
 </nav>
 
 <style>
-	.nav-desktop {
-		display: none;
-	}
-
 	nav {
 		/* these top 3 lines are if i want a full screen thing, but then you need to mess with the layout */
 		/* position: absolute;
-		left: 50%;
-		transform: translateX(-50%); */
+			left: 50%;
+			transform: translateX(-50%); */
 		align-items: center;
-		width: 100%;
 		background-color: hsl(var(--gray-9-hsl) / 30%);
-		padding-block: var(--size-3);
-		padding-inline: var(--size-6);
+		padding-block: var(--size-2);
+		padding-inline: var(--size-3);
+		width: 100%;
 	}
 
 	a {
-		color: var(--text-1);
+		color: var(--text-2);
 		text-decoration: none;
 		font-size: var(--size-3);
 		transition: color 0.3s ease;
@@ -54,31 +60,49 @@
 
 	a:hover,
 	a:active {
-		color: var(--brand);
+		color: var(--link);
+	}
+
+	.nav-desktop {
+		display: none;
+	}
+
+	.nav-mobile {
+		display: flex;
+		justify-content: space-between;
 	}
 
 	.logo-link {
-		width: var(--size-11);
+		width: var(--size-10);
+	}
+
+	/* Dynamic class because home page has a video thats darker than the theme */
+	.home-link {
+		color: var(--gray-4);
 	}
 
 	@media (min-width: 768px) {
+		nav {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+		}
+
+		.links {
+			display: flex;
+			gap: var(--size-7);
+		}
+
+		.logo-link {
+			width: var(--size-11);
+		}
+
 		.nav-desktop {
 			display: flex;
 		}
 
 		.nav-mobile {
 			display: none;
-		}
-
-		nav {
-			display: flex;
-			justify-content: space-between;
-			flex-direction: row;
-		}
-
-		.links {
-			display: flex;
-			gap: var(--size-7);
 		}
 	}
 </style>
