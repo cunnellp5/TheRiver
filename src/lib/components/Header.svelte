@@ -73,7 +73,7 @@
 	}
 
 	.logo-link {
-		width: var(--size-10);
+		width: var(--size-12);
 	}
 
 	/* Dynamic class because home page has a video thats darker than the theme */
