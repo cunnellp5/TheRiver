@@ -11,7 +11,7 @@
 
 ## Todo
 
-- [ ] use cloudinary
+- [x] use cloudinary
 - [x] bring in prisma
 - [ ] GSAP
 - [ ] more dynamic way to use title and routes for SEO
