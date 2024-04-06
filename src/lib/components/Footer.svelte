@@ -5,62 +5,66 @@
 </script>
 
 <footer>
-	<div>
-		<small> &copy {new Date().getFullYear()}</small>
+	<div class="footer-first">
+		<ToggleTheme />
 	</div>
 
-	<div class="socials">
-		<a href="/">
-			<LogoWhite />
-		</a>
+	<div class="footer-middle">
 		<Socials />
 	</div>
 
 	<div class="toggler">
-		<ToggleTheme />
+		<a class="logo-svg" href="/">
+			<LogoWhite />
+		</a>
 	</div>
 </footer>
 
 <style>
 	footer {
-		display: grid;
-		grid-template-columns: 1fr 1fr 1fr;
-		justify-content: space-between;
+		display: flex;
+		flex-direction: column-reverse;
+		justify-content: center;
 		padding-block: var(--size-7);
 		border-top: 1px solid var(--border);
-	}
-
-	.toggler {
-		justify-content: end;
-	}
-
-	.socials {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
 		gap: var(--size-7);
 	}
-
-	p {
-		display: flex;
-		font-family: var(--font-mono);
-		font-variant: small-caps;
-		letter-spacing: var(--size-2);
-	}
-
 	div {
 		display: flex;
 		align-items: center;
 	}
+	.logo-svg {
+		width: var(--size-12);
+	}
+	.footer-first {
+		justify-content: center;
+	}
+	.toggler {
+		justify-content: center;
+	}
+	.footer-middle {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
 
-	/* .line-spacer {
-		margin-inline: var(--size-2);
-		border-left: 0.5px solid rgb(207, 207, 207);
-		height: var(--size-3);
-	} */
-
-	img {
-		width: var(--size-10);
-		border-radius: 0;
+	@media (min-width: 768px) {
+		footer {
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+			flex-direction: row;
+			justify-content: space-between;
+			padding-block: var(--size-7);
+			border-top: 1px solid var(--border);
+		}
+		.toggler {
+			justify-content: end;
+		}
+		.footer-first {
+			justify-content: start;
+		}
+		.logo-svg {
+			width: var(--size-11);
+		}
 	}
 </style>
