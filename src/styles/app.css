@@ -88,6 +88,10 @@ html {
 [color-scheme='light'] {
 	color-scheme: light;
 
+	input {
+		background-color: var(--surface-4-light);
+	}
+
 	--background: var(--background-light);
 	--border: var(--border-light);
 	--brand: var(--brand-light);
