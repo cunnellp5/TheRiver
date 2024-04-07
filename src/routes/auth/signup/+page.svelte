@@ -1,5 +1,21 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
+	async function subscribe(event: Event) {
+		const form = event.target as HTMLFormElement;
+		const data = new FormData(form);
+		const response = await fetch('/api/newsletter', {
+			method: 'POST',
+			body: data
+		});
+		console.log(response);
+		// if (response.ok) {
+		// 	const { token } = await response.json();
+		// 	localStorage.setItem('token', token);
+		// 	location.href = '/dashboard';
+		// } else {
+		// 	const { error } = await response.json();
+		// 	alert(error);
+		// }
+	}
 </script>
 
 <main>
@@ -8,13 +24,15 @@
 			<div>Signup</div>
 		</h1>
 		<p class="under-hero">Create an account to book services with Alexis</p>
-		<form method="post" use:enhance>
+		<form on:submit|preventDefault={subscribe} method="post">
+			<label for="email">Email</label>
+			<input name="email" id="email" /><br />
 			<label for="username">Username</label>
 			<input name="username" id="username" /><br />
 			<label for="password">Password</label>
 			<input type="password" name="password" id="password" /><br />
 			<div class="button-list">
-				<button class="primary">Signup</button>
+				<button type="submit" class="primary">Signup</button>
 				<a href="/auth/login">
 					<button>Go to Login</button>
 				</a>

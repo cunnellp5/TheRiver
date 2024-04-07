@@ -42,8 +42,8 @@
 	}
 
 	.hero {
-		padding: var(--size-10);
 		display: grid;
+		padding: var(--size-10);
 		gap: var(--size-5);
 	}
 
