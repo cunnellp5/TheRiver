@@ -1,8 +1,27 @@
 <script lang="ts">
 	import Waves from 'lucide-svelte/icons/waves';
 	import LogoR from '$lib/components/svgs/logos/Logo-R.svelte';
+	import Droplets from 'lucide-svelte/icons/droplets';
+	import Droplet from 'lucide-svelte/icons/droplet';
+	import type { EventHandlers } from '../../app';
 
 	export let isHomePage: boolean;
+	let showAuthLinks = false;
+	let auth = false;
+
+	const toggleAuthMenu = (event: EventHandlers) => {
+		event.preventDefault();
+		event.stopPropagation();
+		showAuthLinks = !showAuthLinks;
+	};
+
+	if (typeof window !== 'undefined') {
+		window.addEventListener('click', (e) => {
+			if (showAuthLinks === true) {
+				showAuthLinks = false;
+			}
+		});
+	}
 </script>
 
 <nav class="nav-desktop">
@@ -12,17 +31,44 @@
 
 	<ul class="links">
 		<li>
-			<a class:home-link={isHomePage} href="/music"> MUSIC </a>
+			<a class:home-link={isHomePage} href="/music"> Music </a>
 		</li>
 		<li>
-			<a class:home-link={isHomePage} href="/producers"> PRODUCERS </a>
+			<a class:home-link={isHomePage} href="/producers"> Producers </a>
 		</li>
 		<li>
-			<a class:home-link={isHomePage} href="/shop"> SHOP </a>
+			<a class:home-link={isHomePage} href="/shop"> Shop </a>
 		</li>
 		<li>
-			<a class:home-link={isHomePage} href="/contact"> CONTACT </a>
+			<a class:home-link={isHomePage} href="/contact"> Contact </a>
 		</li>
+
+		<li class="border-left"></li>
+		<li>
+			<button on:click={toggleAuthMenu} type="button">
+				{#if showAuthLinks}
+					<Droplet />
+				{:else}
+					<Droplets />
+				{/if}
+			</button>
+		</li>
+	</ul>
+	<ul class="card">
+		{#if showAuthLinks}
+			{#if auth}
+				<li>
+					<a class:home-link={isHomePage} href="/auth/logout"> Logout </a>
+				</li>
+			{:else}
+				<li>
+					<a class:home-link={isHomePage} href="/auth/signup"> Signup </a>
+				</li>
+				<li>
+					<a class:home-link={isHomePage} href="/auth/login"> Login </a>
+				</li>
+			{/if}
+		{/if}
 	</ul>
 </nav>
 
@@ -47,8 +93,14 @@
 		align-items: center;
 		background-color: hsl(var(--gray-9-hsl) / 30%);
 		padding-block: var(--size-2);
+		/* margin-inline: var(--size-3); */
 		padding-inline: var(--size-3);
-		width: 100%;
+		/* width: 100%; */
+		position: relative;
+	}
+
+	button {
+		box-shadow: var(--shadow-1);
 	}
 
 	a {
@@ -81,6 +133,28 @@
 		color: var(--gray-4);
 	}
 
+	.border-left {
+		border-left: 1px solid var(--border);
+		height: var(--size-5);
+	}
+
+	.card {
+		text-align: left;
+		position: absolute;
+		right: 0;
+		top: 100%;
+		background-color: hsl(var(--gray-9-hsl) / 30%);
+		border-radius: var(--radius-2);
+	}
+
+	.card > li > a {
+		font-size: var(--size-3);
+	}
+	.card > li {
+		padding-block: var(--size-3);
+		padding-inline: var(--size-5);
+	}
+
 	@media (min-width: 768px) {
 		nav {
 			display: flex;
@@ -90,7 +164,8 @@
 
 		.links {
 			display: flex;
-			gap: var(--size-7);
+			gap: var(--size-5);
+			align-items: center;
 		}
 
 		.nav-desktop {
