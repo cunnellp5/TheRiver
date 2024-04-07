@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Waves from 'lucide-svelte/icons/waves';
-	import LogoR from '$lib/components/svgs/logos/Logo-R.svelte';
+	import LogoR from '$lib/components/svgs/logos/LogoR2.svelte';
 	import Droplets from 'lucide-svelte/icons/droplets';
 	import Droplet from 'lucide-svelte/icons/droplet';
 	import type { EventHandlers } from '../../app';
@@ -101,6 +101,7 @@
 
 	button {
 		box-shadow: var(--shadow-1);
+		background: var(--gray-6);
 	}
 
 	a {
