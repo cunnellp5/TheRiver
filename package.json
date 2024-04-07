@@ -32,7 +32,11 @@
 		"vitest": "^1.2.0"
 	},
 	"type": "module",
+	"prisma": {
+		"seed": "npx vite-node prisma/seed.ts"
+	},
 	"dependencies": {
+		"@prisma/client": "^5.12.1",
 		"lucide-svelte": "^0.364.0",
 		"open-props": "^1.7.0",
 		"prisma": "^5.12.1"
