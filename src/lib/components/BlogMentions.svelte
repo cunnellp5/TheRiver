@@ -18,17 +18,18 @@
 		display: flex;
 		flex-flow: row wrap;
 		align-items: flex-start;
-		justify-content: space-around;
+		justify-content: center;
 		/* max-inline-size: calc(var(--size-content-1) * ); */
-		gap: var(--size-5);
-		padding: var(--size-5);
+		/* gap: var(--size-5); */
+		/* padding: var(--size-5); */
+		gap: var(--size-6);
 	}
 
 	.card {
-		flex-basis: var(--size-content-2);
+		flex-basis: var(--size-14);
 		display: flex;
 		flex-direction: column;
-		gap: var(--size-2);
+		gap: var(--size-3);
 		background: var(--surface-4);
 		border: 1px solid var(--surface-1);
 		padding: var(--size-4);
@@ -49,5 +50,11 @@
 	p {
 		margin-block: var(--size-3);
 		font-size: var(--font-size-1);
+		color: var(--text-2);
+	}
+
+	img {
+		object-fit: cover;
+		aspect-ratio: var(--ratio-square);
 	}
 </style>

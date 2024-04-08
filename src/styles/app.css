@@ -1,5 +1,6 @@
 /* @import '@fontsource/manrope';
 @import '@fontsource/jetbrains-mono'; */
+@import './mainElements.css';
 
 html {
 	/* font */
@@ -9,7 +10,7 @@ html {
 	/* dark */
 	--background-dark: var(--gradient-8);
 	--border-dark: var(--gray-9);
-	--brand-dark: var(--orange-3);
+	--brand-dark: var(--cyan-3);
 	--socials-1-dark: var(--gray-7);
 	--socials-2-dark: var(--gray-5);
 	--surface-1-dark: var(--gray-12);
@@ -18,11 +19,12 @@ html {
 	--surface-4-dark: var(--gray-9);
 	--text-1-dark: var(--gray-3);
 	--text-2-dark: var(--gray-5);
+	--link-dark: var(--teal-2);
 
 	/* light */
 	--background-light: none;
 	--border-light: var(--gray-4);
-	--brand-light: var(--orange-10);
+	--brand-light: var(--cyan-10);
 	--socials-1-light: var(--gray-5);
 	--socials-2-light: var(--gray-7);
 	--surface-1-light: var(--gray-0);
@@ -31,7 +33,11 @@ html {
 	--surface-4-light: var(--gray-3);
 	--text-1-light: var(--gray-8);
 	--text-2-light: var(--gray-7);
-	--link-light: var(--blue-7);
+	--link-light: var(--teal-7);
+
+	transition:
+		background-color 0.3s ease,
+		color 0.3s ease;
 }
 
 :root {
@@ -48,6 +54,7 @@ html {
 	--surface-4: var(--surface-4-dark);
 	--text-1: var(--text-1-dark);
 	--text-2: var(--text-2-dark);
+	--link: var(--link-dark);
 }
 
 @media (prefers-color-scheme: light) {
@@ -65,7 +72,7 @@ html {
 		--surface-4: var(--surface-4-light);
 		--text-1: var(--text-1-light);
 		--text-2: var(--text-2-light);
-		--link: var(--blue-7);
+		--link: var(--link-light);
 	}
 }
 
@@ -83,14 +90,11 @@ html {
 	--surface-4: var(--surface-4-dark);
 	--text-1: var(--text-1-dark);
 	--text-2: var(--text-2-dark);
+	--link: var(--link-dark);
 }
 
 [color-scheme='light'] {
 	color-scheme: light;
-
-	input {
-		background-color: var(--surface-4-light);
-	}
 
 	--background: var(--background-light);
 	--border: var(--border-light);
@@ -103,7 +107,11 @@ html {
 	--surface-4: var(--surface-4-light);
 	--text-1: var(--text-1-light);
 	--text-2: var(--text-2-light);
-	--link: var(--blue-7);
+	--link: var(--link-light);
+
+	input {
+		background-color: var(--gray-3);
+	}
 }
 
 html,
@@ -116,20 +124,6 @@ html {
 	accent-color: var(--link);
 	background-image: var(--background);
 	background-attachment: fixed;
-}
-
-img {
-	border-radius: var(--radius-3);
-}
-
-ul,
-ol {
-	list-style: none;
-	padding: 0;
-}
-
-li {
-	padding-inline-start: 0;
 }
 
 .surface-1 {
@@ -150,20 +144,6 @@ li {
 .surface-4 {
 	background-color: var(--surface-4);
 	color: var(--text-1);
-}
-
-/* gradient headers */
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	background: var(--gradient-24) fixed;
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	background-clip: text;
 }
 
 /* social links */

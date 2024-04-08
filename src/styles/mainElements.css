@@ -1,0 +1,37 @@
+/* gradient headers */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	background: var(--gradient-1) fixed;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+}
+
+img {
+	border-radius: var(--radius-3);
+}
+
+ul,
+ol {
+	list-style: none;
+	padding: 0;
+}
+
+li {
+	padding-inline-start: 0;
+}
+
+/* begin primary theming */
+button.primary {
+	background: var(--cyan-8);
+	text-shadow: 0 1px 0 var(--cyan-9);
+	color: white;
+}
+
+button.primary:hover {
+	background: var(--cyan-7);
+}

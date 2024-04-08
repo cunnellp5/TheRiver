@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { browser } from '$app/environment';
 	import Waves from 'lucide-svelte/icons/waves';
 	import LogoR from '$lib/components/svgs/logos/LogoR2.svelte';
 	import Droplets from 'lucide-svelte/icons/droplets';
@@ -15,7 +16,7 @@
 		showAuthLinks = !showAuthLinks;
 	};
 
-	if (typeof window !== 'undefined') {
+	if (browser) {
 		window.addEventListener('click', (e) => {
 			if (showAuthLinks === true) {
 				showAuthLinks = false;
@@ -41,6 +42,9 @@
 		</li>
 		<li>
 			<a class:home-link={isHomePage} href="/contact"> Contact </a>
+		</li>
+		<li>
+			<a class:home-link={isHomePage} href="/posts"> Blog </a>
 		</li>
 
 		<li class="border-left"></li>
@@ -91,17 +95,13 @@
 			left: 50%;
 			transform: translateX(-50%); */
 		align-items: center;
+		/* background: hsl(var(--gradient-8) /); */
 		background-color: hsl(var(--gray-9-hsl) / 30%);
 		padding-block: var(--size-2);
 		/* margin-inline: var(--size-3); */
 		padding-inline: var(--size-3);
 		/* width: 100%; */
 		position: relative;
-	}
-
-	button {
-		box-shadow: var(--shadow-1);
-		background: var(--gray-6);
 	}
 
 	a {

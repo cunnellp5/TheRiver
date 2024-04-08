@@ -14,17 +14,17 @@
 			<label for="password">Password</label>
 			<input type="password" name="password" id="password" /><br />
 			<div class="button-list">
-				<button class="primary">Login</button>
+				<button class="primary" type="submit">Login</button>
 				<a href="/auth/signup">
-					<button>Go to Signup</button>
+					<button type="button">Go to Signup</button>
 				</a>
 			</div>
 		</form>
 	</section>
 	<picture class="promo-art">
 		<img
-			src="https://doodleipsum.com/700x700?&sat=-100"
-			height="800"
+			src="https://assets.codepen.io/1506195/unsplash-music-12.avif"
+			height="500"
 			width="800"
 			alt="a random doodle"
 		/>
@@ -38,7 +38,6 @@
 		align-items: center;
 		justify-content: center;
 		height: 100%;
-		background: var(--grape-0);
 	}
 
 	.hero {
@@ -69,26 +68,6 @@
 		gap: var(--size-3);
 	}
 
-	button {
-		background: white;
-		color: var(--indigo-8);
-		font-size: var(--font-size-3);
-		padding-inline: var(--size-8);
-		padding-block: var(--size-3);
-		border-radius: var(--radius-2);
-		box-shadow: var(--shadow-2);
-	}
-
-	button.primary {
-		background: var(--indigo-8);
-		text-shadow: 0 1px 0 var(--indigo-9);
-		color: white;
-	}
-
-	button.primary:hover {
-		background: var(--indigo-7);
-	}
-
 	form {
 		display: flex;
 		flex-direction: column;
@@ -102,6 +81,8 @@
 	.promo-art > img {
 		block-size: 100%;
 		object-fit: cover;
+		inline-size: var(--size-15);
+		border-radius: var(--radius-round);
 	}
 
 	@media (max-width: 768px) {

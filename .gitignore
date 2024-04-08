@@ -10,3 +10,11 @@
 node_modules
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# extras?
+prisma/dev.sqlite
+*.sqlite-journal
+migration_lock*
+migration.sql
+*.code-workspace
+package-lock.json
