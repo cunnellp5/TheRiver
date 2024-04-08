@@ -1,8 +1,6 @@
 <main>
-	<h1>Shop page</h1>
-	<p>buy shit</p>
 	<div class="hero">
-		<h1>Hello Svelte Inview</h1>
+		<h1>Shop page</h1>
 		<p>Scroll down to animate the elements</p>
 	</div>
 	<div class="full-height">
@@ -21,8 +19,6 @@
 	}
 
 	main {
-		/* text-align: center; */
-		/* padding: 0 1em; */
 		margin: 0 auto;
 	}
 
@@ -35,7 +31,7 @@
 	}
 
 	.hero {
-		height: calc(100vh - 16px);
+		height: calc(100vh - var(--size-8));
 		display: flex;
 		flex-direction: column;
 		align-items: center;
