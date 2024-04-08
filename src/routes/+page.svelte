@@ -1,5 +1,6 @@
 <script lang="ts">
 	import BlogMentions from '$lib/components/BlogMentions.svelte';
+	import TestVideo from '$lib/components/TestVideo.svelte';
 	import LogoWhite from '$lib/components/svgs/logos/LogoWhite.svelte';
 
 	export let data; // gets url from .server
@@ -36,6 +37,8 @@
 >
 	<LogoWhite isHomePage={true} />
 </div>
+
+<TestVideo />
 
 <BlogMentions />
 
