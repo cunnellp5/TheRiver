@@ -34,17 +34,17 @@
 			<div class="button-list">
 				<button type="submit" class="primary">Signup</button>
 				<a href="/auth/login">
-					<button>Go to Login</button>
+					<button type="button">Go to Login</button>
 				</a>
 			</div>
 		</form>
 	</section>
 	<picture class="promo-art">
 		<img
-			src="https://doodleipsum.com/700x700?&sat=-100"
+			src="https://assets.codepen.io/1506195/unsplash-music-12.avif"
 			height="800"
 			width="800"
-			alt="a random doodle"
+			alt="a random drummer"
 		/>
 	</picture>
 </main>
@@ -86,26 +86,6 @@
 		gap: var(--size-3);
 	}
 
-	button {
-		background: white;
-		color: var(--indigo-8);
-		font-size: var(--font-size-3);
-		padding-inline: var(--size-8);
-		padding-block: var(--size-3);
-		border-radius: var(--radius-2);
-		box-shadow: var(--shadow-2);
-	}
-
-	button.primary {
-		background: var(--indigo-8);
-		text-shadow: 0 1px 0 var(--indigo-9);
-		color: white;
-	}
-
-	button.primary:hover {
-		background: var(--indigo-7);
-	}
-
 	form {
 		display: flex;
 		flex-direction: column;
@@ -119,6 +99,8 @@
 	.promo-art > img {
 		block-size: 100%;
 		object-fit: cover;
+		inline-size: var(--size-15);
+		border-radius: var(--radius-round);
 	}
 
 	@media (max-width: 768px) {
