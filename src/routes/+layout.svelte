@@ -2,10 +2,10 @@
 	import Footer from '$lib/components/Footer.svelte';
 	import Header from '$lib/components/Header.svelte';
 	import PageTransition from '$lib/components/Transition.svelte';
-	import 'open-props/buttons';
+	import 'open-props/normalize';
 	import 'open-props/colors-hsl';
 	import 'open-props/masks/edges';
-	import 'open-props/normalize';
+	import 'open-props/buttons';
 	import 'open-props/style';
 	import '../styles/app.css';
 
