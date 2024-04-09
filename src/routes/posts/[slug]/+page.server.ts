@@ -1,7 +1,7 @@
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
-import db from '$lib/database';
+import db from '$lib/server/database';
 
 export const load: PageServerLoad = async ({ params }) => {
 	const post = await db.post.findUnique({
