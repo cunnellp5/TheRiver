@@ -1,9 +1,10 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
-	import Waves from 'lucide-svelte/icons/waves';
+	import { enhance } from '$app/forms';
 	import LogoR from '$lib/components/svgs/logos/LogoR2.svelte';
-	import Droplets from 'lucide-svelte/icons/droplets';
 	import Droplet from 'lucide-svelte/icons/droplet';
+	import Droplets from 'lucide-svelte/icons/droplets';
+	import Waves from 'lucide-svelte/icons/waves';
 	import type { EventHandlers } from '../../app';
 
 	export let isHomePage: boolean;
@@ -60,18 +61,15 @@
 	</ul>
 	<ul class="card">
 		{#if showAuthLinks}
-			{#if auth}
-				<li>
-					<a class:home-link={isHomePage} href="/auth/logout"> Logout </a>
-				</li>
-			{:else}
-				<li>
-					<a class:home-link={isHomePage} href="/auth/signup"> Signup </a>
-				</li>
-				<li>
-					<a class:home-link={isHomePage} href="/auth/login"> Login </a>
-				</li>
-			{/if}
+			<li>
+				<a class:home-link={isHomePage} href="/auth/signup"> Signup </a>
+			</li>
+			<li>
+				<a class:home-link={isHomePage} href="/auth/login"> Login </a>
+			</li>
+			<li>
+				<a class:home-link={isHomePage} href="/auth/logout"> Logout </a>
+			</li>
 		{/if}
 	</ul>
 </nav>
@@ -89,6 +87,7 @@
 </nav>
 
 <style>
+	@import './header.css';
 	nav {
 		/* these top 3 lines are if i want a full screen thing, but then you need to mess with the layout */
 		/* position: absolute;
