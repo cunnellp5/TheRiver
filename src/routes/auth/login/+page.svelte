@@ -11,8 +11,10 @@
 		<form method="post" use:enhance>
 			<label for="username">Username</label>
 			<input name="username" id="username" /><br />
+
 			<label for="password">Password</label>
 			<input type="password" name="password" id="password" /><br />
+
 			<div class="button-list">
 				<button class="primary" type="submit">Login</button>
 				<a href="/auth/signup">
@@ -89,6 +91,10 @@
 		main {
 			display: flex;
 			flex-direction: column;
+		}
+		.promo-art > img {
+			inline-size: unset;
+			border-radius: unset;
 		}
 	}
 </style>
