@@ -10,7 +10,8 @@
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"test": "vitest",
 		"lint": "prettier --check . && eslint .",
-		"format": "prettier --write ."
+		"format": "prettier --write .",
+		"db:reset": "npx prisma migrate reset"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^3.0.0",
@@ -22,6 +23,7 @@
 		"eslint": "^8.56.0",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.35.1",
+		"lucia": "^3.1.1",
 		"prettier": "^3.1.1",
 		"prettier-plugin-svelte": "^3.1.2",
 		"svelte": "^4.2.7",
@@ -36,9 +38,11 @@
 		"seed": "npx vite-node prisma/seed.ts"
 	},
 	"dependencies": {
+		"@lucia-auth/adapter-prisma": "^4.0.1",
 		"@prisma/client": "^5.12.1",
 		"lucide-svelte": "^0.364.0",
 		"open-props": "^1.7.0",
+		"oslo": "^1.2.0",
 		"prisma": "^5.12.1"
 	}
 }
