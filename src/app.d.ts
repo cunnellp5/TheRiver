@@ -7,7 +7,10 @@ declare global {
 			stopPropagation: () => void;
 		}
 		// interface Error {}
-		// interface Locals {}
+		interface Locals {
+			user: import('lucia').User;
+			session: import('lucia').Session;
+		}
 		// interface PageData {}
 		// interface PageState {}
 		// interface Platform {}

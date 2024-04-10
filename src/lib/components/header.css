@@ -1,0 +1,88 @@
+nav {
+	/* these top 3 lines are if i want a full screen thing, but then you need to mess with the layout */
+	/* position: absolute;
+    left: 50%;
+    transform: translateX(-50%); */
+	align-items: center;
+	/* background: hsl(var(--gradient-8) /); */
+	background-color: hsl(var(--gray-9-hsl) / 30%);
+	padding-block: var(--size-2);
+	/* margin-inline: var(--size-3); */
+	padding-inline: var(--size-3);
+	/* width: 100%; */
+	position: relative;
+}
+
+a {
+	color: var(--text-2);
+	text-decoration: none;
+	font-size: var(--size-3);
+	transition: color 0.3s ease;
+}
+
+a:hover,
+a:active {
+	color: var(--link);
+}
+
+.nav-desktop {
+	display: none;
+}
+
+.nav-mobile {
+	display: flex;
+	justify-content: space-between;
+}
+
+.logo-link {
+	width: var(--size-8);
+}
+
+/* Dynamic class because home page has a video thats darker than the theme */
+.home-link {
+	color: var(--gray-4);
+}
+
+.border-left {
+	border-left: 1px solid var(--border);
+	height: var(--size-5);
+}
+
+.card {
+	text-align: left;
+	position: absolute;
+	right: 0;
+	top: 100%;
+	background-color: hsl(var(--gray-9-hsl) / 30%);
+	border-radius: var(--radius-2);
+}
+
+.card > li > a {
+	font-size: var(--size-3);
+}
+.card > li {
+	padding-block: var(--size-3);
+	padding-inline: var(--size-5);
+}
+
+@media (min-width: 768px) {
+	nav {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+	.links {
+		display: flex;
+		gap: var(--size-5);
+		align-items: center;
+	}
+
+	.nav-desktop {
+		display: flex;
+	}
+
+	.nav-mobile {
+		display: none;
+	}
+}
