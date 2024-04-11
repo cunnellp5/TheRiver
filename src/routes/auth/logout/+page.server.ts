@@ -5,6 +5,7 @@ import type { PageServerLoad } from './$types';
 import type { Actions } from './$types';
 
 export const load: PageServerLoad = async ({ locals }) => {
+	console.log('madeit to logout server');
 	if (!locals.user) {
 		redirect(302, '/auth/login');
 	}

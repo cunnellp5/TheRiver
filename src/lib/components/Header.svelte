@@ -59,18 +59,19 @@
 			</button>
 		</li>
 	</ul>
-	<ul class="card">
-		{#if showAuthLinks}
-			<li>
-				<a class:home-link={isHomePage} href="/auth/signup"> Signup </a>
-			</li>
-			<li>
-				<a class:home-link={isHomePage} href="/auth/login"> Login </a>
-			</li>
-			<li>
-				<a class:home-link={isHomePage} href="/auth/logout"> Logout </a>
-			</li>
-		{/if}
+	<ul class="card" class:hidden={!showAuthLinks}>
+		<li>
+			<a class:home-link={isHomePage} href="/auth/signup"> Signup </a>
+		</li>
+		<li>
+			<a class:home-link={isHomePage} href="/auth/login"> Login </a>
+		</li>
+		<li>
+			<form method="POST" action="/auth/logout">
+				<button type="submit"> Logout </button>
+			</form>
+			<!-- <a class:home-link={isHomePage} href="/auth/logout"> Logout </a> -->
+		</li>
 	</ul>
 </nav>
 
@@ -87,7 +88,6 @@
 </nav>
 
 <style>
-	@import './header.css';
 	nav {
 		/* these top 3 lines are if i want a full screen thing, but then you need to mess with the layout */
 		/* position: absolute;
@@ -153,6 +153,10 @@
 	.card > li {
 		padding-block: var(--size-3);
 		padding-inline: var(--size-5);
+	}
+
+	.hidden {
+		display: none;
 	}
 
 	@media (min-width: 768px) {
