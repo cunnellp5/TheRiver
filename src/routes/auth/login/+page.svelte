@@ -1,5 +1,13 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import CircleAlert from 'lucide-svelte/icons/circle-alert';
+
+	export let form;
+
+	let email = '';
+	let password = '';
+
+	$: isFormValid = email.includes('@') && password.length >= 6;
 </script>
 
 <main>
@@ -7,19 +15,25 @@
 		<h1 class="hero-message">
 			<div>Login</div>
 		</h1>
-		<p class="under-hero">Login to book a new appointment</p>
+		<p class="under-hero">Login to book or view appointments</p>
+
+		{#if form?.message}
+			<p class="error-message"><CircleAlert />{form.message}</p>
+		{/if}
+
 		<form method="post" use:enhance>
-			<label for="username">Username</label>
-			<input name="username" id="username" /><br />
+			<label for="email">Email</label>
+			<input bind:value={email} type="email" name="email" id="email" required />
 
 			<label for="password">Password</label>
-			<input type="password" name="password" id="password" /><br />
+			<input bind:value={password} type="password" name="password" id="password" required />
 
 			<div class="button-list">
-				<button class="primary" type="submit">Login</button>
-				<a href="/auth/signup">
-					<button type="button">Go to Signup</button>
-				</a>
+				<button disabled={!isFormValid} class:disabled={!isFormValid} class="primary" type="submit"
+					>Login</button
+				>
+				<hr />
+				<a href="/auth/signup"> Don't have an account? Sign up here. </a>
 			</div>
 		</form>
 	</section>
@@ -34,57 +48,10 @@
 </main>
 
 <style>
+	@import '../auth.css';
+
 	main {
-		display: flex;
 		flex-direction: row-reverse;
-		align-items: center;
-		justify-content: center;
-		height: 100%;
-	}
-
-	.hero {
-		display: grid;
-		padding: var(--size-10);
-		gap: var(--size-5);
-	}
-
-	.hero-message {
-		display: grid;
-		grid-template-columns: max-content;
-		color: var(--gray-9);
-		line-height: var(--font-lineheight-0);
-	}
-
-	.hero-message > div:last-child {
-		color: var(--indigo-7);
-	}
-
-	.under-hero {
-		color: var(--gray-7);
-		font-size: var(--font-size-4);
-		margin-block-end: var(--size-3);
-	}
-
-	.button-list {
-		display: flex;
-		gap: var(--size-3);
-	}
-
-	form {
-		display: flex;
-		flex-direction: column;
-		gap: var(--size-1);
-	}
-
-	.promo-art {
-		align-self: stretch;
-	}
-
-	.promo-art > img {
-		block-size: 100%;
-		object-fit: cover;
-		inline-size: var(--size-15);
-		border-radius: var(--radius-round);
 	}
 
 	@media (max-width: 768px) {

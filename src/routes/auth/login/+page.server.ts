@@ -5,40 +5,37 @@ import type { Actions } from './$types';
 
 import db from '$lib/server/database';
 
+const ERROR_MESSAGE = 'Invalid credentials';
+
 export const actions: Actions = {
 	default: async (event) => {
 		const formData = await event.request.formData();
-		const username = formData.get('username');
+		const email = formData.get('email');
 		const password = formData.get('password');
 
 		// TODO use zod validation
-		// validate username
-		if (
-			typeof username !== 'string' ||
-			username.length < 3 ||
-			username.length > 31 ||
-			!/^[a-z0-9_-]+$/.test(username)
-		) {
+		if (typeof email !== 'string' || email.length < 3 || !/^[a-z0-9_-]+$/.test(email)) {
 			return fail(400, {
-				message: 'Invalid username'
+				message: ERROR_MESSAGE
 			});
 		}
 
 		// validate password
 		if (typeof password !== 'string' || password.length < 6 || password.length > 255) {
 			return fail(400, {
-				message: 'Invalid password'
+				message: ERROR_MESSAGE
 			});
 		}
 
 		// check for user
-		const existingUser = await db.user.findUnique({
-			where: { username: username.toLowerCase() }
+		const existingUser = await db.user.findFirst({
+			where: { profile: { email: email.toString() } },
+			include: { profile: true }
 		});
 
 		if (!existingUser) {
 			return fail(400, {
-				message: 'Incorrect username or password'
+				message: ERROR_MESSAGE
 			});
 		}
 
@@ -46,7 +43,7 @@ export const actions: Actions = {
 
 		if (!validPassword) {
 			return fail(400, {
-				message: 'Incorrect username or password'
+				message: ERROR_MESSAGE
 			});
 		}
 
