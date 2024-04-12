@@ -1,20 +1,22 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import CircleAlert from 'lucide-svelte/icons/circle-alert';
+	import Check from 'lucide-svelte/icons/check';
 
 	export let form;
 
-	let email = '';
-	let password = '';
 	let confirmPassword = '';
+	let email = '';
 	let firstName = '';
 	let lastName = '';
+	let password = '';
 
-	$: isEmailValid = email.includes('@');
-	$: isPasswordValid = password.length >= 8;
+	$: email;
 	$: isConfirmPasswordValid = password === confirmPassword;
+	$: isEmailValid = email.includes('@');
 	$: isFirstNameValid = firstName.length > 0;
 	$: isLastNameValid = lastName.length > 0;
+	$: isPasswordValid = password.length >= 6;
 
 	$: isFormValid =
 		isEmailValid &&
@@ -22,11 +24,6 @@
 		isConfirmPasswordValid &&
 		isFirstNameValid &&
 		isLastNameValid;
-
-	$: console.log(
-		{ isEmailValid, isPasswordValid, isConfirmPasswordValid, isFirstNameValid, isLastNameValid },
-		'isFormValid'
-	);
 </script>
 
 <main>
@@ -47,24 +44,55 @@
 			<label for="lastName">Last name</label>
 			<input bind:value={lastName} name="lastName" id="lastName" required />
 
-			<hr />
+			<hr class="middle-hr" />
 
 			<label for="email">Email</label>
 			<input bind:value={email} type="email" name="email" id="email" required />
 
-			<label for="password">Password</label>
-			<input bind:value={password} type="password" name="password" id="password" required />
+			<div
+				class="passwords"
+				class:invalidPasswords={(!isConfirmPasswordValid && confirmPassword.length > 0) ||
+					(!isPasswordValid && password.length > 0 && confirmPassword.length > 0)}
+				class:validPasswords={isConfirmPasswordValid &&
+					confirmPassword.length > 0 &&
+					isPasswordValid}
+			>
+				<label id="pw-label" for="password">Password</label>
+				<input
+					bind:value={password}
+					type="password"
+					name="password"
+					id="password"
+					min="6"
+					required
+				/>
 
-			<label for="confirm">Confirm Password</label>
-			<input
-				class:invalid={!isConfirmPasswordValid && confirmPassword.length > 0}
-				class:valid={isConfirmPasswordValid && confirmPassword.length > 0}
-				bind:value={confirmPassword}
-				type="password"
-				name="confirm"
-				id="confirm"
-				required
-			/>
+				<label for="confirm">Confirm Password</label>
+				<input
+					class:invalid={!isConfirmPasswordValid && confirmPassword.length > 0}
+					class:valid={isConfirmPasswordValid && confirmPassword.length > 0}
+					bind:value={confirmPassword}
+					type="password"
+					name="confirm"
+					id="confirm"
+					required
+				/>
+
+				<div class="help-text">
+					<div class="checker">
+						{#if isPasswordValid}
+							<Check size="16" />
+						{/if}
+						Passwords should be 6 characters long
+					</div>
+					<div class="checker">
+						{#if isConfirmPasswordValid && confirmPassword.length > 0}
+							<Check size="16" />
+						{/if}
+						Confirmed matching
+					</div>
+				</div>
+			</div>
 
 			<br />
 
@@ -72,16 +100,17 @@
 				<label for="isSubscribed">Subscibe for updates</label>
 				<input type="checkbox" name="isSubscribed" id="isSubscribed" checked />
 			</div>
+
 			<div class="button-list">
 				<button type="submit" class="primary" disabled={!isFormValid} class:disabled={!isFormValid}>
 					Signup
 				</button>
-				<a href="/auth/login">
-					<button type="button">Go to Login</button>
-				</a>
+				<hr />
+				<a href="/auth/login"> Already a member? Sign in here. </a>
 			</div>
 		</form>
 	</section>
+
 	<picture class="promo-art">
 		<img
 			src="https://assets.codepen.io/1506195/unsplash-music-12.avif"
@@ -93,33 +122,14 @@
 </main>
 
 <style>
+	@import url('../auth.css');
+
 	main {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		height: 100%;
+		flex-direction: row;
 	}
 
-	form {
-		display: flex;
-		flex-direction: column;
-		gap: var(--size-1);
-	}
-
-	input {
-		border: 1px solid var(--border);
-		/* margin-bottom: var(--size-3); */
-	}
-
-	label {
-		font-size: var(--font-size-0);
-		color: var(--link);
-		margin-block: var(--size-1);
-	}
-
-	hr {
-		margin-top: var(--size-7);
-		margin-bottom: var(--size-4);
+	.middle-hr {
+		margin-block: var(--size-3);
 	}
 
 	.checkbox-wrapper {
@@ -132,60 +142,40 @@
 		}
 	}
 
-	.hero {
-		padding: var(--size-10);
-		display: grid;
-		gap: var(--size-5);
-	}
-
-	.hero-message {
-		line-height: var(--font-lineheight-0);
-	}
-
-	.under-hero {
-		color: var(--gray-7);
-		font-size: var(--font-size-3);
-		word-wrap: break-word;
-		margin-block-end: var(--size-3);
-	}
-
-	.button-list {
+	.passwords {
+		padding-left: var(--size-4);
+		margin-block: var(--size-4);
+		border-left: 2px solid var(--link);
 		display: flex;
-		gap: var(--size-3);
-		margin-top: var(--size-8);
-	}
-
-	.disabled {
-		opacity: 0.5;
-		cursor: not-allowed;
-	}
-
-	.invalid {
-		border-color: var(--red-7);
-	}
-
-	.valid {
-		border-color: var(--green-7);
-	}
-
-	.promo-art {
-		align-self: stretch;
-		& > img {
-			block-size: 100%;
-			object-fit: cover;
-			inline-size: var(--size-15);
-			border-radius: var(--radius-round);
+		flex-direction: column;
+		& > label {
+			margin-block: var(--size-2);
 		}
 	}
 
-	.error-message {
+	.invalidPasswords {
+		border-left-color: var(--red-7);
+	}
+
+	.validPasswords {
+		border-left-color: var(--green-7);
+	}
+
+	.help-text {
 		display: flex;
-		flex-direction: row;
-		/* color: var(--red-7); */
-		background-color: hsl(var(--red-5-hsl) / 30%);
-		padding: var(--size-1);
-		border-radius: var(--radius-2);
-		gap: var(--size-2);
+		flex-direction: column;
+		margin-top: var(--size-2);
+		font-size: var(--font-size-0);
+		color: var(--gray-6);
+	}
+
+	.checker {
+		display: flex;
+		gap: var(--size-1);
+	}
+
+	#pw-label {
+		margin-top: 0;
 	}
 
 	@media (max-width: 768px) {

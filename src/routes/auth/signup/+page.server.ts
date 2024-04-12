@@ -21,10 +21,11 @@ export const actions: Actions = {
 		const firstName = formData.get('firstName');
 		const lastName = formData.get('lastName');
 		const isSubscribed = formData.get('isSubscribed');
+		const confirm = formData.get('confirm');
 
 		// TODO replace with zod validation
 
-		// validate username
+		// validate firstname
 		if (
 			typeof firstName !== 'string' ||
 			firstName.length < 3 ||
@@ -32,14 +33,33 @@ export const actions: Actions = {
 			!/^[a-z0-9_-]+$/.test(firstName)
 		) {
 			return fail(400, {
-				message: 'Invalid name'
+				message: 'Invalid credentials'
+			});
+		}
+
+		// validate lastname
+		if (
+			typeof lastName !== 'string' ||
+			lastName.length < 3 ||
+			lastName.length > 31 ||
+			!/^[a-z0-9_-]+$/.test(lastName)
+		) {
+			return fail(400, {
+				message: 'Invalid credentials'
 			});
 		}
 
 		// validate password
 		if (typeof password !== 'string' || password.length < 6 || password.length > 255) {
 			return fail(400, {
-				message: 'Invalid password'
+				message: 'Invalid credentials'
+			});
+		}
+
+		// validate confirmation
+		if (password !== confirm) {
+			return fail(400, {
+				message: 'Passwords do not match'
 			});
 		}
 
@@ -50,12 +70,13 @@ export const actions: Actions = {
 			});
 		}
 
-		// // checks for existing username
+		// checks db for existing username
 		const existingEmail = await db.profile.findUnique({
 			where: { email: email.toString() }
 		});
+
 		if (existingEmail) {
-			return fail(400, { message: 'email inuse' });
+			return fail(400, { message: 'That email is already used' });
 		}
 
 		const hashedPassword = await new Argon2id().hash(password);
