@@ -28,7 +28,6 @@ export const actions: Actions = {
 		// validate firstname
 		if (
 			typeof firstName !== 'string' ||
-			firstName.length < 3 ||
 			firstName.length > 31 ||
 			!/^[a-z0-9_-]+$/.test(firstName)
 		) {
@@ -38,12 +37,7 @@ export const actions: Actions = {
 		}
 
 		// validate lastname
-		if (
-			typeof lastName !== 'string' ||
-			lastName.length < 3 ||
-			lastName.length > 31 ||
-			!/^[a-z0-9_-]+$/.test(lastName)
-		) {
+		if (typeof lastName !== 'string' || lastName.length > 31 || !/^[a-z0-9_-]+$/.test(lastName)) {
 			return fail(400, {
 				message: 'Invalid credentials'
 			});

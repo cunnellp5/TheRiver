@@ -148,6 +148,7 @@
 		border-left: 2px solid var(--link);
 		display: flex;
 		flex-direction: column;
+		transition: border-left-color 0.3s ease;
 		& > label {
 			margin-block: var(--size-2);
 		}
