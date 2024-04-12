@@ -20,27 +20,29 @@
 
 <title>The River</title>
 
-<div id="video-background">
-	<video autoplay loop muted bind:this={videoElement}>
-		<source src={data.videoURL} type="video/mp4" />
-		<track kind="captions" srclang="en" label="English" />
-	</video>
-	<div id="video-tint"></div>
-</div>
+<main>
+	<div id="video-background">
+		<video autoplay loop muted bind:this={videoElement}>
+			<source src={data.videoURL} type="video/mp4" />
+			<track kind="captions" srclang="en" label="English" />
+		</video>
+		<div id="video-tint"></div>
+	</div>
 
-<div
-	role="img"
-	aria-label={isPlaying ? 'Play video' : 'Pause video'}
-	id="image-container"
-	on:mouseenter={playVideo}
-	on:mouseleave={pauseVideo}
->
-	<LogoWhite isHomePage={true} />
-</div>
+	<div
+		role="img"
+		aria-label={isPlaying ? 'Play video' : 'Pause video'}
+		id="image-container"
+		on:mouseenter={playVideo}
+		on:mouseleave={pauseVideo}
+	>
+		<LogoWhite isHomePage={true} />
+	</div>
 
-<TestVideo />
+	<TestVideo />
 
-<BlogMentions />
+	<BlogMentions />
+</main>
 
 <style>
 	#video-background {
