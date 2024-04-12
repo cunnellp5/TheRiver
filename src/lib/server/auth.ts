@@ -11,6 +11,7 @@ interface DtatbaseUserAttributes {
 	name: string;
 	email: string;
 	isSubscribed: boolean;
+	isAdmin: boolean;
 }
 
 export const lucia = new Lucia(adapter, {
@@ -24,7 +25,8 @@ export const lucia = new Lucia(adapter, {
 			username: attributes.username,
 			name: attributes.name,
 			email: attributes.email,
-			isSubscribed: attributes.isSubscribed
+			isSubscribed: attributes.isSubscribed,
+			isAdmin: attributes.isAdmin
 		};
 	}
 });
