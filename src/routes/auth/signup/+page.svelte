@@ -4,7 +4,29 @@
 
 	export let form;
 
-	$: console.log(form);
+	let email = '';
+	let password = '';
+	let confirmPassword = '';
+	let firstName = '';
+	let lastName = '';
+
+	$: isEmailValid = email.includes('@');
+	$: isPasswordValid = password.length >= 8;
+	$: isConfirmPasswordValid = password === confirmPassword;
+	$: isFirstNameValid = firstName.length > 0;
+	$: isLastNameValid = lastName.length > 0;
+
+	$: isFormValid =
+		isEmailValid &&
+		isPasswordValid &&
+		isConfirmPasswordValid &&
+		isFirstNameValid &&
+		isLastNameValid;
+
+	$: console.log(
+		{ isEmailValid, isPasswordValid, isConfirmPasswordValid, isFirstNameValid, isLastNameValid },
+		'isFormValid'
+	);
 </script>
 
 <main>
@@ -19,25 +41,41 @@
 		{/if}
 
 		<form method="post" use:enhance>
+			<label for="firstName">First name</label>
+			<input bind:value={firstName} name="firstName" id="firstName" required />
+
+			<label for="lastName">Last name</label>
+			<input bind:value={lastName} name="lastName" id="lastName" required />
+
+			<hr />
+
 			<label for="email">Email</label>
-			<input type="email" name="email" id="email" required /><br />
-
-			<label for="name">Name</label>
-			<input name="name" id="name" required /><br />
-
-			<label for="username">Username</label>
-			<input name="username" id="username" required /><br />
+			<input bind:value={email} type="email" name="email" id="email" required />
 
 			<label for="password">Password</label>
-			<input type="password" name="password" id="password" required /><br />
+			<input bind:value={password} type="password" name="password" id="password" required />
+
+			<label for="confirm">Confirm Password</label>
+			<input
+				class:invalid={!isConfirmPasswordValid && confirmPassword.length > 0}
+				class:valid={isConfirmPasswordValid && confirmPassword.length > 0}
+				bind:value={confirmPassword}
+				type="password"
+				name="confirm"
+				id="confirm"
+				required
+			/>
+
+			<br />
 
 			<div class="checkbox-wrapper">
 				<label for="isSubscribed">Subscibe for updates</label>
-				<input type="checkbox" name="isSubscribed" id="isSubscribed" /><br />
+				<input type="checkbox" name="isSubscribed" id="isSubscribed" checked />
 			</div>
-
 			<div class="button-list">
-				<button type="submit" class="primary">Signup</button>
+				<button type="submit" class="primary" disabled={!isFormValid} class:disabled={!isFormValid}>
+					Signup
+				</button>
 				<a href="/auth/login">
 					<button type="button">Go to Login</button>
 				</a>
@@ -60,6 +98,28 @@
 		align-items: center;
 		justify-content: center;
 		height: 100%;
+	}
+
+	form {
+		display: flex;
+		flex-direction: column;
+		gap: var(--size-1);
+	}
+
+	input {
+		border: 1px solid var(--border);
+		/* margin-bottom: var(--size-3); */
+	}
+
+	label {
+		font-size: var(--font-size-0);
+		color: var(--link);
+		margin-block: var(--size-1);
+	}
+
+	hr {
+		margin-top: var(--size-7);
+		margin-bottom: var(--size-4);
 	}
 
 	.checkbox-wrapper {
@@ -95,10 +155,17 @@
 		margin-top: var(--size-8);
 	}
 
-	form {
-		display: flex;
-		flex-direction: column;
-		gap: var(--size-1);
+	.disabled {
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
+
+	.invalid {
+		border-color: var(--red-7);
+	}
+
+	.valid {
+		border-color: var(--green-7);
 	}
 
 	.promo-art {
