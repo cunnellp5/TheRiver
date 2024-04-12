@@ -38,3 +38,15 @@ view the db:
 $ docker ps // grab the 'container_name_or_id'
 $ docker exec -it container_name_or_id psql -U ${DB_USER} -d ${DB_NAME}
 ```
+
+### Notes
+
+- cloudinary OGImage for SEO
+- admin portal
+- admin layout
+- begin CRUD basics
+  - CRUD homepage img
+  - CRUD producers page
+- get blog going
+
+- think about using provider auths
