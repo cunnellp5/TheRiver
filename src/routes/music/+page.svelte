@@ -1,5 +1,5 @@
 <main>
-	<h1>Music</h1>
+	<h1>The River Sings</h1>
 	<div class="gradient-point-down"></div>
 	<div>
 		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer laoreet dui at dictum pharetra.
