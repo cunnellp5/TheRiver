@@ -1,52 +1,34 @@
-# The River Sings
+# The River
 
-## Tech
+> A monorepo for an artist
 
-- sveltekit
-  - prettier
-  - eslint
-  - typescript
-- lucide icons
-- open-props css
+<br>
 
-## Todo
+🎤 `TheRiver` - Sings<br>
+💅 `TheRiver` - Beauty<br>
+👗 `TheRiver` - Creates<br>
+🗣️ `TheRiver` - Speaks
 
-- [x] use cloudinary
-- [x] bring in prisma
-- [ ] GSAP
-- [ ] more dynamic way to use title and routes for SEO
+## Features:
 
-### Feature parity
+### `Music`
 
-- understand the subscription model in place
-- get media to load [music]
-- get media to load [videos]
+- View recent video uploads to youtube
+- View new up and coming music
+  - View spotify tracks
+  - View Soundcloud
+  - View Apple music
 
-## Tricks
+### `Beauty booking service`
 
-Run the DB interface:
+- Users can sign up for an offered service
+- Users can view a scheduled appointment on a calendar
+- Users should get email notifications/reminders?
 
-- npx prisma studio
+### `Merch (ecommerce)`
 
-Start DB with docker:
+- Users can buy merchandise
 
-- docker-compose up
+### `Blog`
 
-view the db:
-
-```.bash
-$ docker ps // grab the 'container_name_or_id'
-$ docker exec -it container_name_or_id psql -U ${DB_USER} -d ${DB_NAME}
-```
-
-### Notes
-
-- cloudinary OGImage for SEO
-- admin portal
-- admin layout
-- begin CRUD basics
-  - CRUD homepage img
-  - CRUD producers page
-- get blog going
-
-- think about using provider auths
+- Users can view blog posts written by TheRiver
