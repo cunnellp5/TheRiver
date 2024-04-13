@@ -6,9 +6,34 @@
 
 <footer>
 	<div class="footer-first">
-		<!-- <a class="logo-svg" href="/">
-			<LogoWhite />
-		</a> -->
+		<ul>
+			<p>Socials</p>
+			<li>https://www.facebook.com/theriversings</li>
+			<li>https://www.instagram.com/the.river.sings/</li>
+			<li>https://www.tiktok.com/@theriversings</li>
+			<li>https://x.com/the_river_sings</li>
+			<br />
+			<p>Music</p>
+			<li>https://www.youtube.com/c/TheRiverSings</li>
+			<li>https://soundcloud.com/theriversings</li>
+			<li>https://open.spotify.com/artist/5zNnchh2RwfMl1iCs8JRPV</li>
+
+			<br />
+			<p>Extended Plays [EP]</p>
+			<li>https://distrokid.com/hyperfollow/theriver2/vaguely-relatable-ep</li>
+
+			<br />
+			<p>Merch</p>
+			<li>https://www.etsy.com/shop/MadeByTheRiverBed</li>
+
+			<br />
+			<p>Ca$h app</p>
+			<li>https://cash.app/$theriversings</li>
+
+			<br />
+			<p>LinkTree</p>
+			<li>https://linktr.ee/theriversings</li>
+		</ul>
 	</div>
 
 	<div class="footer-middle">
@@ -26,22 +51,28 @@
 		flex-direction: column;
 		justify-content: center;
 		padding-block: var(--size-7);
+		margin-block: var(--size-10);
 		border-top: 1px solid var(--border);
 		gap: var(--size-7);
 	}
+
 	div {
 		display: flex;
 		align-items: center;
 	}
-	/* .logo-svg {
-		width: var(--size-12);
-	} */
+
+	li {
+		font-size: var(--font-size-0);
+	}
+
 	.footer-first {
 		justify-content: center;
 	}
+
 	.toggler {
 		justify-content: center;
 	}
+
 	.footer-middle {
 		display: flex;
 		flex-direction: column;
