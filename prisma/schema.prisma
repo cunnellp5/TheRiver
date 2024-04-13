@@ -4,6 +4,17 @@
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
+enum EnumCategory {
+  BLOG
+  CASHAPP
+  EP
+  MERCH
+  MUSIC
+  OTHER
+  LINKTREE
+  SOCIALS
+}
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -23,7 +34,7 @@ model User {
   sessions  Session[]
   posts     Post[]
   profile   Profile   @relation(fields: [profileId], references: [id])
-  profileId Int       @unique
+  profileId String    @unique
 }
 
 model Session {
@@ -49,15 +60,24 @@ model Post {
 }
 
 model Profile {
-  id Int @id @default(autoincrement())
-
-  email        String  @unique
+  id           String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  email        String   @unique
   firstName    String
   lastName     String
-  isSubscribed Boolean @default(true)
+  isSubscribed Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  user         User?
+}
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  user User?
+model SocialLinks {
+  id        Int          @id @default(autoincrement())
+  order     Int          @default(autoincrement())
+  title     String
+  url       String
+  category  EnumCategory
+  svg       String?
+  icon      String?
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
 }
