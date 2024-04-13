@@ -32,3 +32,7 @@
 ### `Blog`
 
 - Users can view blog posts written by TheRiver
+
+### `CMS`
+
+- The entire site can be managed by a custom UI
