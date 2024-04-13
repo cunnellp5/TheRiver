@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
-	import { enhance } from '$app/forms';
 	import LogoR from '$lib/components/svgs/logos/LogoR2.svelte';
 	import Droplet from 'lucide-svelte/icons/droplet';
 	import Droplets from 'lucide-svelte/icons/droplets';
@@ -108,11 +107,13 @@
 		text-decoration: none;
 		font-size: var(--size-3);
 		transition: color 0.3s ease;
+		height: 100%;
 	}
 
 	a:hover,
 	a:active {
 		color: var(--link);
+		background-color: var(--gray-9);
 	}
 
 	.nav-desktop {
