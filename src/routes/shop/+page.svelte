@@ -4,11 +4,11 @@
 		<p>Scroll down to animate the elements</p>
 	</div>
 	<div class="full-height">
-		<div>poo1</div>
+		<div>test full height 1</div>
 		<!-- <AnimatedElement /> -->
 	</div>
 	<div class="full-height">
-		<div>poo2</div>
+		<div>test fulll height 2</div>
 		<!-- <AnimatedElement /> -->
 	</div>
 </main>

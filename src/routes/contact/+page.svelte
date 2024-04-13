@@ -20,7 +20,7 @@
 		align-items: center;
 		flex-direction: row;
 		justify-content: center;
-		height: 100%;
+		height: 100vh;
 	}
 
 	h1 {

@@ -1,3 +1,3 @@
 <h1>Guarded</h1>
 
-<p>This page is only accessible to authenticated users.</p>
+<p>The only reason to be here is to schedule an appointment with Alexis</p>
