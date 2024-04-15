@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import Footer from '$lib/components/Footer.svelte';
 	import Header from '$lib/components/Header.svelte';
 	import PageTransition from '$lib/components/Transition.svelte';
@@ -8,14 +9,12 @@
 	import 'open-props/buttons';
 	import 'open-props/style';
 	import '../styles/app.css';
-
-	export let data: { url: string };
 </script>
 
 <div class="layout">
-	<Header isHomePage={data.url === '/'} />
+	<Header />
 
-	<PageTransition url={data.url}>
+	<PageTransition>
 		<slot />
 	</PageTransition>
 
