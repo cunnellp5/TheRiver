@@ -37,6 +37,9 @@
 		"seed": "npx vite-node prisma/seed.ts"
 	},
 	"dependencies": {
+		"@fontsource/jetbrains-mono": "^5.0.19",
+		"@fontsource/manrope": "^5.0.19",
+		"@fontsource/raleway": "^5.0.17",
 		"@lucia-auth/adapter-prisma": "^4.0.1",
 		"@prisma/client": "^5.12.1",
 		"eslint": "^8.56.0",
