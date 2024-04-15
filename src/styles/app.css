@@ -1,11 +1,12 @@
-/* @import '@fontsource/manrope';
-@import '@fontsource/jetbrains-mono'; */
+@import '@fontsource/manrope';
+@import '@fontsource/jetbrains-mono';
+@import '@fontsource/raleway';
 @import './mainElements.css';
 
 html {
 	/* font */
-	--font-sans: 'Manrope', sans-serif;
-	--font-mono: 'JetBrains Mono', monospace;
+	--font-sans: 'Raleway', 'Manrope', sans-serif;
+	--font-mono: 'Raleway', 'JetBrain Mono', monospace;
 
 	/* dark */
 	--background-dark: var(--gradient-8);
@@ -36,8 +37,8 @@ html {
 	--link-light: var(--teal-7);
 
 	transition:
-		background-color 0.3s ease,
-		color 0.3s ease;
+		background-color 1.5s ease,
+		color 1.5s ease;
 }
 
 :root {
@@ -144,14 +145,4 @@ html {
 .surface-4 {
 	background-color: var(--surface-4);
 	color: var(--text-1);
-}
-
-/* social links */
-.socials-color {
-	fill: var(--socials-1);
-	transition: fill 0.3s ease;
-}
-
-.socials-color:hover {
-	fill: var(--link);
 }

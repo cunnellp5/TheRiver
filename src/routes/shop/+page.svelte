@@ -1,6 +1,6 @@
 <main>
 	<div class="hero">
-		<h1>Shop page</h1>
+		<h1>THE RIVER CREATES</h1>
 		<p>Scroll down to animate the elements</p>
 	</div>
 	<div class="full-height">
@@ -24,6 +24,7 @@
 
 	h1 {
 		margin-bottom: 0.5rem;
+		/* text-transform: uppercase; */
 	}
 
 	p {
