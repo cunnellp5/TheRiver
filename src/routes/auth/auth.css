@@ -52,16 +52,6 @@ hr {
 	}
 }
 
-.promo-art {
-	align-self: stretch;
-	& > img {
-		block-size: 100%;
-		object-fit: cover;
-		inline-size: var(--size-15);
-		border-radius: var(--radius-round);
-	}
-}
-
 /* VALIDATION CLASSES */
 .error-message {
 	display: flex;

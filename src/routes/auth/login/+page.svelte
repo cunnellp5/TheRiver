@@ -26,33 +26,30 @@
 			<input bind:value={email} type="email" name="email" id="email" required />
 
 			<label for="password">Password</label>
-			<input bind:value={password} type="password" name="password" id="password" required />
+			<input
+				bind:value={password}
+				type="password"
+				name="password"
+				id="password"
+				required
+			/>
 
 			<div class="button-list">
-				<button disabled={!isFormValid} class:disabled={!isFormValid} class="primary" type="submit"
-					>Login</button
+				<button
+					disabled={!isFormValid}
+					class:disabled={!isFormValid}
+					class="primary"
+					type="submit">Login</button
 				>
 				<hr />
 				<a href="/auth/signup"> Don't have an account? Sign up here. </a>
 			</div>
 		</form>
 	</section>
-	<picture class="promo-art">
-		<img
-			src="https://assets.codepen.io/1506195/unsplash-music-12.avif"
-			height="500"
-			width="800"
-			alt="a random doodle"
-		/>
-	</picture>
 </main>
 
 <style>
 	@import '../auth.css';
-
-	main {
-		flex-direction: row-reverse;
-	}
 
 	@media (max-width: 768px) {
 		main {

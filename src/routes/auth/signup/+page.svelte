@@ -51,8 +51,11 @@
 
 			<div
 				class="passwords"
-				class:invalidPasswords={(!isConfirmPasswordValid && confirmPassword.length > 0) ||
-					(!isPasswordValid && password.length > 0 && confirmPassword.length > 0)}
+				class:invalidPasswords={(!isConfirmPasswordValid &&
+					confirmPassword.length > 0) ||
+					(!isPasswordValid &&
+						password.length > 0 &&
+						confirmPassword.length > 0)}
 				class:validPasswords={isConfirmPasswordValid &&
 					confirmPassword.length > 0 &&
 					isPasswordValid}
@@ -102,7 +105,12 @@
 			</div>
 
 			<div class="button-list">
-				<button type="submit" class="primary" disabled={!isFormValid} class:disabled={!isFormValid}>
+				<button
+					type="submit"
+					class="primary"
+					disabled={!isFormValid}
+					class:disabled={!isFormValid}
+				>
 					Signup
 				</button>
 				<hr />
@@ -110,15 +118,6 @@
 			</div>
 		</form>
 	</section>
-
-	<picture class="promo-art">
-		<img
-			src="https://assets.codepen.io/1506195/unsplash-music-12.avif"
-			height="800"
-			width="800"
-			alt="a random drummer"
-		/>
-	</picture>
 </main>
 
 <style>
@@ -177,16 +176,5 @@
 
 	#pw-label {
 		margin-top: 0;
-	}
-
-	@media (max-width: 768px) {
-		main {
-			display: flex;
-			flex-direction: column;
-		}
-		.promo-art > img {
-			inline-size: unset;
-			border-radius: unset;
-		}
 	}
 </style>
