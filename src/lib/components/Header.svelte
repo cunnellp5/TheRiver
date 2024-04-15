@@ -1,14 +1,12 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
+	import { page } from '$app/stores';
 	import LogoR from '$lib/components/svgs/logos/LogoR2.svelte';
-	import Droplet from 'lucide-svelte/icons/droplet';
-	import Droplets from 'lucide-svelte/icons/droplets';
+	import Ellipsis from 'lucide-svelte/icons/ellipsis';
 	import Waves from 'lucide-svelte/icons/waves';
 	import type { EventHandlers } from '../../app';
 
-	export let isHomePage: boolean;
 	let showAuthLinks = false;
-	let auth = false;
 
 	const toggleAuthMenu = (event: EventHandlers) => {
 		event.preventDefault();
@@ -27,93 +25,123 @@
 
 <nav class="nav-desktop">
 	<a href="/" class="logo-link">
-		<LogoR {isHomePage} />
+		<LogoR />
 	</a>
 
 	<ul class="links">
-		<li>
-			<a class:home-link={isHomePage} href="/music"> Music </a>
+		<li class:current={$page.url.pathname == '/music'}>
+			<a href="/music"> Music </a>
 		</li>
-		<li>
-			<a class:home-link={isHomePage} href="/producers"> Producers </a>
+		<li class:current={$page.url.pathname == '/services'}>
+			<a href="/services"> services </a>
 		</li>
-		<li>
-			<a class:home-link={isHomePage} href="/shop"> Shop </a>
+		<li class:current={$page.url.pathname == '/shop'}>
+			<a href="/shop"> Merch </a>
 		</li>
-		<li>
-			<a class:home-link={isHomePage} href="/contact"> Contact </a>
+		<li class:current={$page.url.pathname == '/posts'}>
+			<a href="/posts"> Blog </a>
 		</li>
-		<li>
-			<a class:home-link={isHomePage} href="/posts"> Blog </a>
+		<li class:current={$page.url.pathname == '/contact'}>
+			<a href="/contact"> Contact </a>
 		</li>
 
 		<li class="border-left"></li>
-		<li>
-			<button on:click={toggleAuthMenu} type="button">
-				{#if showAuthLinks}
-					<Droplet />
-				{:else}
-					<Droplets />
-				{/if}
-			</button>
+
+		<!-- svelte-ignore a11y-click-events-have-key-events -->
+		<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+		<li on:click={toggleAuthMenu} class="ellipsis">
+			<Ellipsis size="28" />
 		</li>
 	</ul>
+
 	<ul class="card" class:hidden={!showAuthLinks}>
-		<li>
-			<a class:home-link={isHomePage} href="/auth/signup"> Signup </a>
-		</li>
-		<li>
-			<a class:home-link={isHomePage} href="/auth/login"> Login </a>
-		</li>
-		<li>
-			<form method="POST" action="/auth/logout">
-				<button type="submit"> Logout </button>
-			</form>
-			<!-- <a class:home-link={isHomePage} href="/auth/logout"> Logout </a> -->
-		</li>
+		<a href="/auth/signup">
+			<li>Signup</li>
+		</a>
+		<a href="/auth/login">
+			<li>Login</li>
+		</a>
+		<form id="logoutForm" method="POST" action="/auth/logout">
+			<!-- svelte-ignore a11y-click-events-have-key-events -->
+			<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+			<li>
+				<button class="logout-button" type="submit">Logout</button>
+			</li>
+		</form>
 	</ul>
 </nav>
 
 <nav class="nav-mobile">
 	<a href="/" class="logo-link">
-		<LogoR {isHomePage} />
+		<LogoR />
 	</a>
-
-	{#if isHomePage}
-		<Waves color="#ffffff" />
-	{:else}
-		<Waves />
-	{/if}
+	<Waves />
 </nav>
 
 <style>
 	nav {
-		/* these top 3 lines are if i want a full screen thing, but then you need to mess with the layout */
-		/* position: absolute;
-			left: 50%;
-			transform: translateX(-50%); */
 		align-items: center;
-		/* background: hsl(var(--gradient-8) /); */
-		background-color: hsl(var(--gray-9-hsl) / 30%);
+		background-color: hsl(var(--gray-9-hsl) / 75%);
 		padding-block: var(--size-2);
-		/* margin-inline: var(--size-3); */
 		padding-inline: var(--size-3);
-		/* width: 100%; */
 		position: relative;
 	}
 
 	a {
 		color: var(--text-2);
 		text-decoration: none;
+		text-transform: uppercase;
+		font-weight: var(--font-weight-5);
 		font-size: var(--size-3);
 		transition: color 0.3s ease;
 		height: 100%;
+		letter-spacing: var(--font-letterspacing-2);
 	}
 
 	a:hover,
 	a:active {
 		color: var(--link);
-		background-color: var(--gray-9);
+	}
+
+	.links {
+		& * {
+			-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+			-webkit-transition: all 0.35s ease;
+			transition: all 0.35s ease;
+		}
+		& a {
+			padding: 0.4em 0;
+			color: rgba(255, 255, 255, 0.5);
+			position: relative;
+			text-decoration: none;
+			display: inline-block;
+		}
+		& a:before {
+			position: absolute;
+			content: '';
+			-webkit-transition: all 0.35s ease;
+			transition: all 0.35s ease;
+			opacity: 0;
+			top: 25%;
+			bottom: 25%;
+			left: 0;
+			right: 0;
+			border-top: 3px solid #34495e;
+			border-bottom: 3px solid #34495e;
+		}
+	}
+
+	.links a:hover,
+	.links .current a {
+		color: #ffffff;
+	}
+
+	.links a:hover:before,
+	.links .current a:before {
+		opacity: 1;
+		top: 0;
+		bottom: 0;
 	}
 
 	.nav-desktop {
@@ -129,11 +157,6 @@
 		width: var(--size-8);
 	}
 
-	/* Dynamic class because home page has a video thats darker than the theme */
-	.home-link {
-		color: var(--gray-4);
-	}
-
 	.border-left {
 		border-left: 1px solid var(--border);
 		height: var(--size-5);
@@ -144,16 +167,44 @@
 		position: absolute;
 		right: 0;
 		top: 100%;
-		background-color: hsl(var(--gray-9-hsl) / 30%);
-		border-radius: var(--radius-2);
+		background-color: hsl(var(--gray-8-hsl) / 75%);
+		border-radius: var(--radius-0);
+
+		& li {
+			padding-block: var(--size-2);
+			padding-inline: var(--size-4);
+		}
+		& a,
+		li,
+		button {
+			font-size: var(--font-size-0);
+			letter-spacing: var(--font-letterspacing-3);
+			text-transform: uppercase;
+		}
+
+		& button {
+			border: none;
+			box-shadow: none;
+			padding: 0;
+		}
+
+		& li:hover {
+			background-color: hsl(var(--gray-4-hsl) / 40%);
+			cursor: pointer;
+			& button {
+				background: unset;
+			}
+		}
 	}
 
-	.card > li > a {
-		font-size: var(--size-3);
+	.ellipsis {
+		cursor: pointer;
+		padding: var(--size-1);
 	}
-	.card > li {
-		padding-block: var(--size-3);
-		padding-inline: var(--size-5);
+
+	.logout-button {
+		background: inherit;
+		padding: 0;
 	}
 
 	.hidden {
