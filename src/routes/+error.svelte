@@ -5,8 +5,12 @@
 </main>
 
 <style>
+	h1 {
+		text-transform: uppercase;
+	}
+
 	main {
-		height: 100%;
+		height: 50vh;
 		display: flex;
 		flex-direction: row;
 		align-items: center;
