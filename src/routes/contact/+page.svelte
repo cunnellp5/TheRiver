@@ -7,12 +7,11 @@
 </script>
 
 <main>
-	<h1>Contact</h1>
-	<div></div>
-	<p>theriverrunsfast@gmail.com</p>
+	<section>
+		<h1>Contact</h1>
+		<p>theriverrunsfast@gmail.com</p>
+	</section>
 </main>
-
-<section></section>
 
 <style>
 	main {
@@ -34,7 +33,8 @@
 	}
 
 	p {
-		font-weight: 800;
+		font-family: monospace;
 		font-size: var(--size-4);
+		letter-spacing: var(--font-letterspacing-3);
 	}
 </style>
