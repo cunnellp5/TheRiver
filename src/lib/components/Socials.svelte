@@ -9,17 +9,17 @@
 </script>
 
 <ul>
-	<li><Facebook /></li>
-	<li><Youtube /></li>
-	<li><Instagram /></li>
+	<li class="socials"><Facebook /></li>
+	<li class="socials"><Youtube /></li>
+	<li class="socials"><Instagram /></li>
 	<li class="logo-link">
 		<a href="/">
 			<LogoR />
 		</a>
 	</li>
-	<li><LinkTree /></li>
-	<li><Spotify /></li>
-	<li><Etsy /></li>
+	<li class="socials"><LinkTree /></li>
+	<li class="socials"><Spotify /></li>
+	<li class="socials"><Etsy /></li>
 </ul>
 
 <style>
@@ -32,11 +32,11 @@
 
 	li {
 		display: flex;
-		margin-inline: var(--size-1);
-		border: 1px solid var(--gray-9);
-		justify-content: center;
 		align-items: center;
 		border-radius: var(--radius-round);
+		border: 0px solid var(--gray-9);
+		justify-content: center;
+		margin-inline: var(--size-1);
 		width: var(--size-8);
 	}
 
@@ -50,5 +50,19 @@
 		& path {
 			fill: var(--indigo-4);
 		}
+	}
+
+	/* social links */
+	.socials {
+		/* background-color: var(--stone-10); */
+		fill: var(--socials-2);
+		transition:
+			fill 0.3s ease,
+			border 0.6s ease;
+	}
+
+	.socials:hover {
+		fill: var(--link);
+		border: 0.1px solid var(--link);
 	}
 </style>
