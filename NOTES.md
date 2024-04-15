@@ -42,3 +42,13 @@ view db:
 $ docker ps // grab the 'container_name_or_id'
 $ docker exec -it container_name_or_id psql -U ${DB_USER} -d ${DB_NAME}
 ```
+
+### Things to look at
+
+<!-- components -->
+
+https://svelte-headlessui.goss.io/docs/2.0
+
+<!-- css naviagiton -->
+
+https://littlesnippets.net/blog/some-css-menu-inspiration-using-animated-lines

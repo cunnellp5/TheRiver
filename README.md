@@ -11,7 +11,7 @@
 
 ## Features:
 
-### `Music`
+### Music
 
 - View recent video uploads to youtube
 - View new up and coming music
@@ -19,20 +19,20 @@
   - View Soundcloud
   - View Apple music
 
-### `Beauty booking service`
+### Beauty booking service
 
 - Users can sign up for an offered service
 - Users can view a scheduled appointment on a calendar
 - Users should get email notifications/reminders?
 
-### `Merch (ecommerce)`
+### Merch (ecommerce)
 
 - Users can buy merchandise
 
-### `Blog`
+### Blog
 
 - Users can view blog posts written by TheRiver
 
-### `CMS`
+### CMS
 
 - The entire site can be managed by a custom UI
