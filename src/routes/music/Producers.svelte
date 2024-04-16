@@ -16,6 +16,8 @@
 					if (entry.isIntersecting) {
 						visible = true;
 						console.log(visible, 'User has scrolled to the section');
+					} else {
+						visible = false;
 					}
 				});
 			},
