@@ -14,7 +14,10 @@
 	class:fill-color={!isHomePage}
 >
 	<g id="layer1" transform="translate(38.893751,-126.47083)">
-		<g id="g6" transform="matrix(0.26458333,0,0,0.26458333,-150.01875,50.270833)">
+		<g
+			id="g6"
+			transform="matrix(0.26458333,0,0,0.26458333,-150.01875,50.270833)"
+		>
 			<path
 				class="shadow"
 				class:home-page={isHomePage}
