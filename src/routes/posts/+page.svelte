@@ -7,14 +7,34 @@
 </script>
 
 <main>
-	<h1>Posts</h1>
+	<section>
+		<header>
+			<h1>Posts</h1>
 
-	<p>showing {posts.length} posts.</p>
-	{#each posts as { slug, title }}
-		<ul>
-			<li>
-				<a href="/posts/{slug}">{title}</a>
-			</li>
-		</ul>
-	{/each}
+			<p>showing {posts.length} posts.</p>
+		</header>
+
+		{#each posts as { slug, title }}
+			<ul>
+				<li>
+					<a href="/posts/{slug}">{title}</a>
+				</li>
+			</ul>
+		{/each}
+	</section>
 </main>
+
+<style>
+	header {
+		margin-block: var(--size-7);
+	}
+	main {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	ul {
+		padding-block: var(--size-1);
+	}
+</style>
