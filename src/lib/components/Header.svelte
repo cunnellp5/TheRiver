@@ -81,9 +81,9 @@
 <style>
 	nav {
 		align-items: center;
-		background-color: hsl(var(--gray-9-hsl) / 75%);
+		/* background-color: hsl(var(--gray-9-hsl) / 95%); */
 		padding-block: var(--size-2);
-		padding-inline: var(--size-3);
+		/* padding-inline: var(--size-3); */
 		position: relative;
 	}
 
@@ -116,6 +116,7 @@
 			position: relative;
 			text-decoration: none;
 			display: inline-block;
+			text-shadow: 4px 4px 8px rgba(0, 0, 0, 1);
 		}
 		& a:before {
 			position: absolute;
