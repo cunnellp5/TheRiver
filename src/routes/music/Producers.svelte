@@ -1,10 +1,31 @@
-<script>
+<script lang="ts">
 	import ChevronRight from 'lucide-svelte/icons/chevron-right';
 	import Ear from 'lucide-svelte/icons/ear';
 	import Download from 'lucide-svelte/icons/download';
+	import { onMount } from 'svelte';
+
+	// This is the beginnings of scroll animations
+	let section: Element;
+
+	onMount(() => {
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						console.log('User has scrolled to the section');
+					}
+				});
+			},
+			{
+				rootMargin: '-65% 0px -65% 0px'
+			}
+		);
+
+		observer.observe(section);
+	});
 </script>
 
-<main>
+<main bind:this={section}>
 	<div class="hero">
 		<h1>Download stems</h1>
 
