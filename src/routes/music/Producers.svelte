@@ -1,18 +1,21 @@
 <script lang="ts">
 	import ChevronRight from 'lucide-svelte/icons/chevron-right';
-	import Ear from 'lucide-svelte/icons/ear';
 	import Download from 'lucide-svelte/icons/download';
+	import Ear from 'lucide-svelte/icons/ear';
 	import { onMount } from 'svelte';
+	import { fade, fly } from 'svelte/transition';
 
 	// This is the beginnings of scroll animations
 	let section: Element;
+	let visible = false;
 
 	onMount(() => {
 		const observer = new IntersectionObserver(
 			(entries) => {
 				entries.forEach((entry) => {
 					if (entry.isIntersecting) {
-						console.log('User has scrolled to the section');
+						visible = true;
+						console.log(visible, 'User has scrolled to the section');
 					}
 				});
 			},
@@ -27,29 +30,34 @@
 
 <main bind:this={section}>
 	<div class="hero">
-		<h1>Download stems</h1>
+		{#if visible}
+			<h1 in:fly={{ x: 200, duration: 800 }}>Download stems</h1>
+		{/if}
 
-		<p>Send me your creations.</p>
+		{#if visible}
+			<p in:fly={{ x: -200, duration: 800 }}>Send me your creations.</p>
+		{/if}
 
-		<ul>
-			<li>
-				<a
-					href="https://drive.google.com/drive/folders/1zMLDz-1iEerzgr4eu_bZ30GzVUBgr3cr"
-					target="_blank"
-				>
-					<ChevronRight size="16" /> Tides
-				</a>
-			</li>
-			<li>
-				<a
-					href="https://drive.google.com/drive/folders/1WfE2Cz68NtzI2qMJoDcnNsmgepSRzbUZ"
-					target="_blank"
-				>
-					<ChevronRight size="16" /> Security & Passion
-				</a>
-			</li>
-		</ul>
-
+		{#if visible}
+			<ul in:fade={{ duration: 2000 }}>
+				<li>
+					<a
+						href="https://drive.google.com/drive/folders/1zMLDz-1iEerzgr4eu_bZ30GzVUBgr3cr"
+						target="_blank"
+					>
+						<ChevronRight size="16" /> Tides
+					</a>
+				</li>
+				<li>
+					<a
+						href="https://drive.google.com/drive/folders/1WfE2Cz68NtzI2qMJoDcnNsmgepSRzbUZ"
+						target="_blank"
+					>
+						<ChevronRight size="16" /> Security & Passion
+					</a>
+				</li>
+			</ul>
+		{/if}
 		<hr />
 		<div class="table">
 			<span class="table-title">Track</span>
