@@ -10,7 +10,7 @@
 	}
 
 	main {
-		height: 50vh;
+		height: 60vh;
 		display: flex;
 		flex-direction: row;
 		align-items: center;

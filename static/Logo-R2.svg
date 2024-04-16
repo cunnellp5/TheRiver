@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<svg
+   width="80.196014mm"
+   height="79.575706mm"
+   viewBox="0 0 80.196016 79.575707"
+   version="1.1"
+   id="svg1"
+   inkscape:export-filename="bitmap.svg"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="true">
+    <inkscape:grid
+       id="grid2"
+       units="mm"
+       originx="-9.8259115"
+       originy="169.81349"
+       spacingx="0.99999998"
+       spacingy="0.99999999"
+       empcolor="#0099e5"
+       empopacity="0.30196078"
+       color="#0099e5"
+       opacity="0.14901961"
+       empspacing="5"
+       dotted="false"
+       gridanglex="30"
+       gridanglez="30"
+       visible="true" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1">
+    <color-profile
+       name="ACES-CG-Linear-Academy-Color-Encoding-System-AP1"
+       xlink:href="file:///System/Library/ColorSync/Profiles/ACESCG%20Linear.icc"
+       id="color-profile2" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-233.92798,163.99266)">
+    <g
+       id="g6"
+       transform="matrix(0.23806806,0,0,0.22352726,-62.023547,-228.36851)">
+	
+	
+	
+	<path
+   fill="#ffffff"
+   d="m 1372.5,570 30.7,-103 h 32.8 v 103 h 20 V 361 h -47.8 c -18.6,0 -31.9,4.5 -39.9,13.5 -8,9 -12,22.1 -12,39.5 0,28.9 9.7,45.2 29.1,49.2 L 1353.1,570 Z M 1383,443.7 c -5,-6.2 -7.4,-16.1 -7.4,-29.7 0,-13.5 2.4,-23.1 7.1,-29.1 4.7,-6 13.4,-8.9 26.1,-8.9 h 27.3 v 77 h -26.7 c -12.7,0 -21.5,-3.1 -26.4,-9.3 z"
+   id="path3" />
+
+	
+	<path
+   fill="#ffffff"
+   d="M 1243.1383,288 V 644 H 1580 V 288 Z M 1560,624 H 1263.1383 V 308 H 1560 Z"
+   id="path4"
+   sodipodi:nodetypes="cccccccccc" />
+
+	
+	
+</g>
+  </g>
+</svg>
