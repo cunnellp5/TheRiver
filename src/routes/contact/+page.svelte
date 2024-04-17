@@ -19,7 +19,7 @@
 		align-items: center;
 		flex-direction: row;
 		justify-content: center;
-		height: 60vh;
+		height: 100vh;
 	}
 
 	section {
