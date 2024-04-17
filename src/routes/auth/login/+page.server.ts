@@ -3,7 +3,7 @@ import { fail, redirect } from '@sveltejs/kit';
 import { Argon2id } from 'oslo/password';
 import type { Actions } from './$types';
 
-import { db } from '$lib/server/database';
+import db from '$lib/server/database';
 
 const ERROR_MESSAGE = 'Invalid credentials';
 

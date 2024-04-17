@@ -1,4 +1,4 @@
-import { db } from '../database';
+import db from '../database';
 import type { User } from '@prisma/client';
 
 export const createUser = async (user: User) => {

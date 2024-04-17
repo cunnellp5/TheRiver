@@ -3,7 +3,7 @@ import { fail, redirect } from '@sveltejs/kit';
 import { Argon2id } from 'oslo/password';
 import type { Actions, PageServerLoad } from './$types';
 
-import { db } from '$lib/server/database';
+import db from '$lib/server/database';
 
 export const load: PageServerLoad = async (event) => {
 	console.log(event);

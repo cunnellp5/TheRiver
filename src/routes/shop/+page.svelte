@@ -1,7 +1,13 @@
+<script lang="ts">
+	import MoveDown from 'lucide-svelte/icons/move-down';
+</script>
+
 <main>
 	<div class="hero">
 		<h1>THE RIVER CREATES</h1>
-		<p>Scroll down to animate the elements</p>
+		<div class="arrow">
+			<MoveDown color="#666968" />
+		</div>
 	</div>
 	<div class="full-height">
 		<div>test full height 1</div>
@@ -45,5 +51,12 @@
 		justify-content: center;
 		align-items: center;
 		border: 4px solid white;
+	}
+
+	.arrow {
+		margin-block: var(--size-4);
+		animation: var(--animation-float);
+		animation-timing-function: var(--ease-elastic-in-out-3);
+		animation-duration: infinite;
 	}
 </style>
