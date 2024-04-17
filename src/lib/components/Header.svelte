@@ -4,9 +4,13 @@
 	import LogoR from '$lib/components/svgs/logos/LogoR2.svelte';
 	import Ellipsis from 'lucide-svelte/icons/ellipsis';
 	import Waves from 'lucide-svelte/icons/waves';
+	import { onMount } from 'svelte';
+	import { fly } from 'svelte/transition';
 	import type { EventHandlers } from '../../app';
 
 	let showAuthLinks = false;
+
+	let visible = false;
 
 	const toggleAuthMenu = (event: EventHandlers) => {
 		event.preventDefault();
@@ -21,62 +25,69 @@
 			}
 		});
 	}
+
+	// TODO only really want to animate this once, ever
+	onMount(() => {
+		visible = true;
+	});
 </script>
 
-<nav class="nav-desktop">
-	<a href="/" class="logo-link">
-		<LogoR />
-	</a>
-
-	<ul class="links">
-		<li class:current={$page.url.pathname == '/music'}>
-			<a href="/music"> Music </a>
-		</li>
-		<li class:current={$page.url.pathname == '/services'}>
-			<a href="/services"> services </a>
-		</li>
-		<li class:current={$page.url.pathname == '/shop'}>
-			<a href="/shop"> Merch </a>
-		</li>
-		<li class:current={$page.url.pathname == '/posts'}>
-			<a href="/posts"> Blog </a>
-		</li>
-		<li class:current={$page.url.pathname == '/contact'}>
-			<a href="/contact"> Contact </a>
-		</li>
-
-		<li class="border-left"></li>
-
-		<!-- svelte-ignore a11y-click-events-have-key-events -->
-		<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-		<li on:click={toggleAuthMenu} class="ellipsis">
-			<Ellipsis size="28" />
-		</li>
-	</ul>
-
-	<ul class="card" class:hidden={!showAuthLinks}>
-		<a href="/auth/signup">
-			<li>Signup</li>
+{#if visible}
+	<nav class="nav-desktop" in:fly={{ duration: 500, y: -400, delay: 500 }}>
+		<a href="/" class="logo-link">
+			<LogoR />
 		</a>
-		<a href="/auth/login">
-			<li>Login</li>
-		</a>
-		<form id="logoutForm" method="POST" action="/auth/logout">
+
+		<ul class="links">
+			<li class:current={$page.url.pathname == '/music'}>
+				<a href="/music"> Music </a>
+			</li>
+			<li class:current={$page.url.pathname == '/services'}>
+				<a href="/services"> services </a>
+			</li>
+			<li class:current={$page.url.pathname == '/shop'}>
+				<a href="/shop"> Merch </a>
+			</li>
+			<li class:current={$page.url.pathname == '/posts'}>
+				<a href="/posts"> Blog </a>
+			</li>
+			<li class:current={$page.url.pathname == '/contact'}>
+				<a href="/contact"> Contact </a>
+			</li>
+
+			<li class="border-left"></li>
+
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-			<li>
-				<button class="logout-button" type="submit">Logout</button>
+			<li on:click={toggleAuthMenu} class="ellipsis">
+				<Ellipsis size="28" />
 			</li>
-		</form>
-	</ul>
-</nav>
+		</ul>
 
-<nav class="nav-mobile">
-	<a href="/" class="logo-link">
-		<LogoR />
-	</a>
-	<Waves />
-</nav>
+		<ul class="card" class:hidden={!showAuthLinks}>
+			<a href="/auth/signup">
+				<li>Signup</li>
+			</a>
+			<a href="/auth/login">
+				<li>Login</li>
+			</a>
+			<form id="logoutForm" method="POST" action="/auth/logout">
+				<!-- svelte-ignore a11y-click-events-have-key-events -->
+				<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+				<li>
+					<button class="logout-button" type="submit">Logout</button>
+				</li>
+			</form>
+		</ul>
+	</nav>
+
+	<nav class="nav-mobile">
+		<a href="/" class="logo-link">
+			<LogoR />
+		</a>
+		<Waves />
+	</nav>
+{/if}
 
 <style>
 	nav {
