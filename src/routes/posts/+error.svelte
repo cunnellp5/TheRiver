@@ -5,7 +5,7 @@
 <main>
 	{#if $page.status >= 400 && $page.status < 500}
 		<h1>{$page.error?.message}</h1>
-		<a href="/">Go Home</a>
+		<a href="/posts">See the blogs.</a>
 	{:else if $page.status === 500}
 		<h1>Didnt expect that.</h1>
 		<p>We're investigating the issue.</p>
