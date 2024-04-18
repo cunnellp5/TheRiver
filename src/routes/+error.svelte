@@ -1,30 +1,27 @@
+<script lang="ts">
+	import { page } from '$app/stores';
+</script>
+
 <main>
-	<h1>500</h1>
-	<div></div>
-	<p>Page not found</p>
+	{#if $page.status === 404}
+		<h1>You must be lost.</h1>
+		<a href="/">Go Home</a>
+	{:else if $page.status === 500}
+		<h1>Uh oh. We weren't expecting that</h1>
+		<p>We're investigating the issue.</p>
+	{/if}
 </main>
 
 <style>
-	h1 {
-		text-transform: uppercase;
-	}
-
 	main {
-		height: 100vh;
+		height: 60vh;
 		display: flex;
-		flex-direction: row;
+		flex-direction: column;
 		align-items: center;
 		justify-content: center;
 	}
 
-	div {
-		margin-inline: 1rem;
-		border-left: 1px solid var(--text-1);
-		height: var(--size-7);
-	}
-	/* --font-letterspacing-{0-7} */
 	p {
-		/* letter-spacing: var(--size-1); */
 		font-weight: 800;
 		color: var(--text-2);
 		font-size: var(--size-3);
