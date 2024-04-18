@@ -14,11 +14,7 @@ export const actions: Actions = {
 		const password = formData.get('password');
 
 		// TODO use zod validation
-		if (
-			typeof email !== 'string' ||
-			email.length < 3 ||
-			!/^[a-z0-9_-]+$/.test(email)
-		) {
+		if (typeof email !== 'string' || email.length < 3) {
 			return fail(400, {
 				message: ERROR_MESSAGE
 			});
