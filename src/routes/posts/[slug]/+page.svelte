@@ -8,8 +8,8 @@
 <main>
 	<section>
 		<hgroup>
-			<h1>{data.post.title}</h1>
-			<p>{formatDate(data.post.createdAt)}</p>
+			<h2>{data.post.title}</h2>
+			<date>{formatDate(new Date(data.post.createdAt))}</date>
 		</hgroup>
 
 		<div class="content">
@@ -19,21 +19,21 @@
 </main>
 
 <style>
-	h1 {
-		font-size: var(--size-8);
-		line-height: var(--size-8);
-		letter-spacing: -0.2rem;
+	h2 {
+		line-height: var(--font-lineheight-0);
 	}
+
 	hgroup {
 		margin-block: var(--size-7);
 	}
 
-	p {
-		font-size: var(--size-3);
+	date {
+		font-size: var(--font-size-0);
 		color: var(--gray-7);
 	}
 
 	main {
+		margin-block-start: var(--size-9);
 		width: 100%;
 		display: flex;
 		flex-direction: column;
@@ -41,6 +41,11 @@
 	}
 
 	section {
+		height: 100vh;
 		width: var(--size-15);
+	}
+
+	div {
+		line-height: var(--font-lineheight-1);
 	}
 </style>

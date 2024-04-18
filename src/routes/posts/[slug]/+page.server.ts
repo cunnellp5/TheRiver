@@ -1,18 +1,16 @@
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
-import db from '$lib/server/database';
+export const load: PageServerLoad = async ({ fetch, params }) => {
+	const response = await fetch('/api/posts/' + params.slug);
 
-export const load: PageServerLoad = async ({ params }) => {
-	const post = await db.post.findUnique({
-		where: { slug: params.slug }
-	});
-
-	console.log(post);
+	const post = await response.json();
 
 	if (!post) {
-		throw error(404, 'Post not found');
+		// maybe redirect instead? but that might be confusing
+		error(404, 'Post not found');
 	}
 
+	// return json(post);
 	return { post };
 };
