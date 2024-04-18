@@ -6,19 +6,22 @@
 	import Plus from 'lucide-svelte/icons/plus';
 	import SquareArrowOurUpRight from 'lucide-svelte/icons/square-arrow-out-up-right';
 	import Trash from 'lucide-svelte/icons/trash';
-	import type { PageData, SubmitFunction } from './$types';
+	import type { PageData } from './$types';
+	import { fly, slide } from 'svelte/transition';
 
 	export let form;
 	export let data: PageData;
-	let deleteFrom: HTMLFormElement;
-	let hideSuccessMessage = false;
 
-	function rmNote() {
-		hideSuccessMessage = true;
+	let shouldDisplay = false;
+
+	function removeElement() {
+		shouldDisplay = false;
 	}
 
 	$: ({ posts, isAdmin } = data);
-	$: console.log(form);
+	$: if (form?.success) {
+		shouldDisplay = true;
+	}
 </script>
 
 <main>
@@ -36,19 +39,21 @@
 
 				<p>Showing {posts.length} posts.</p>
 
-				{#if form?.success}
-					<div class="card" class:hidden={hideSuccessMessage}>
+				{#if shouldDisplay}
+					<div in:fly={{ y: 20 }} out:slide class="card">
 						<div class="titleWrapper-sub">
-							<h5>{form.deletedTitle}</h5>
-							<button class="delete block" on:click={rmNote}><Trash /></button>
+							<h5>{form?.deletedTitle}</h5>
+							<button on:click={removeElement} class="delete block"
+								><Trash /></button
+							>
 						</div>
-						<p class="success-form-message"><Check />{form.message}</p>
+						<p class="success-form-message"><Check />{form?.message}</p>
 					</div>
 				{/if}
 			</header>
 			<ul>
 				{#each posts as { slug, title, tags, createdAt, content }}
-					<li class="cardWrapper">
+					<li in:fly={{ y: 20 }} out:slide class="cardWrapper">
 						<div class="card">
 							<div>
 								<h5>
@@ -59,9 +64,9 @@
 								<date>{formatDate(new Date(createdAt))}</date>
 							</div>
 							<p class="description">
-								{content?.substring(0, 100) + ' ...'}
+								{content?.substring(0, 100) + '...'}
 							</p>
-							<div class="tags">
+							<div>
 								{#each tags as tag}
 									<span class="badge"># {tag}</span>
 								{/each}
@@ -73,7 +78,11 @@
 						</div>
 						{#if isAdmin}
 							<div class="actionsGroup">
-								<button class="edit" type="button"><Pencil /></button>
+								<a href="/posts/{slug}">
+									<button class="edit" type="button">
+										<Pencil />
+									</button>
+								</a>
 								<form
 									method="POST"
 									action="?/deletePost"
@@ -100,7 +109,7 @@
 		{:else}
 			<div class="noPostsWrapper">
 				<h1>The River Blog</h1>
-				<p>No posts found.</p>
+				<p>No posts.</p>
 			</div>
 		{/if}
 	</section>
@@ -123,9 +132,6 @@
 	ul {
 		padding-block: var(--size-1);
 	}
-	h5 {
-		line-height: var(--font-lineheight-2);
-	}
 	p {
 		line-height: var(--font-lineheight-0);
 		font-family: var(--font-mono);
@@ -136,9 +142,6 @@
 	}
 	a:hover {
 		text-decoration: none;
-	}
-	.hidden {
-		display: none;
 	}
 	.success-form-message {
 		display: flex;
@@ -173,6 +176,9 @@
 	}
 	.description {
 		margin-block: var(--size-4);
+		font-size: var(--font-size-2);
+		font-family: var(--font-serif);
+		letter-spacing: var(--font-letterspacing-2);
 	}
 	.card {
 		margin-block: var(--size-7);
