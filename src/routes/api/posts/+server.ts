@@ -7,7 +7,16 @@ export const GET: RequestHandler = async (event): Promise<Response> => {
 	let posts;
 
 	try {
-		posts = await db.post.findMany();
+		posts = await db.post.findMany({
+			orderBy: [
+				{
+					updatedAt: 'desc'
+				},
+				{
+					createdAt: 'desc'
+				}
+			]
+		});
 	} catch (err: unknown | Error) {
 		error(500, (err as Error).message);
 	}

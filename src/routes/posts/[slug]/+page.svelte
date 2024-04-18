@@ -5,7 +5,7 @@
 
 	export let form;
 	export let data: PageData;
-	let isEditing = true;
+	let isEditing = false;
 
 	function update() {
 		isEditing = !isEditing;

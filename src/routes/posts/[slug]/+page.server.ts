@@ -62,3 +62,13 @@ export const actions: Actions = {
 		}
 	}
 };
+
+// TODO
+// trim white spaces in title
+// add links for duplicate tags to show all posts with that tag
+// somehow get rich text editor to work
+// images?
+// add create new post
+// add sorting and filtering capabilities?
+// add layout navigation here to show all posts | unpublished posts | drafts | etc
+// play with making posts look like a mobile friendly cool gallery
