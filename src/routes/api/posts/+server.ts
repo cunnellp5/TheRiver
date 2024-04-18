@@ -1,10 +1,20 @@
-import { json } from '@sveltejs/kit';
 import type { RequestHandler } from '@sveltejs/kit';
+import { error, json } from '@sveltejs/kit';
 
 import db from '$lib/server/database';
 
-export const GET: RequestHandler = async (event) => {
-	const posts = await db.post.findMany();
+export const GET: RequestHandler = async (event): Promise<Response> => {
+	let posts;
+
+	try {
+		posts = await db.post.findMany();
+	} catch (err: unknown | Error) {
+		error(500, (err as Error).message);
+	}
+
+	if (!posts) {
+		error(404, 'Posts not found.');
+	}
 
 	event.setHeaders({
 		'Cache-Control': 'public, max-age=60, s-maxage=60'
