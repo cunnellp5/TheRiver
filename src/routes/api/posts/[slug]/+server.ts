@@ -32,3 +32,29 @@ export const DELETE: RequestHandler = async ({ params }): Promise<Response> => {
 
 	return json({ status: 204 });
 };
+
+export const PATCH: RequestHandler = async ({
+	params,
+	request
+}): Promise<Response> => {
+	let post;
+	let postData;
+
+	try {
+		postData = await request.json();
+	} catch (err) {
+		console.error(err);
+		error(400, 'Invalid JSON');
+	}
+
+	try {
+		post = await db.post.update({
+			where: { slug: params.slug },
+			data: postData
+		});
+	} catch (err: unknown | Error) {
+		error(500, (err as Error).message);
+	}
+
+	return json(post);
+};
