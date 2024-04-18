@@ -5,7 +5,7 @@
 
 	export let data: PageData;
 
-	$: ({ posts } = data);
+	$: ({ posts, isAdmin } = data);
 </script>
 
 <main>
@@ -19,7 +19,7 @@
 		<ul>
 			{#each posts as { slug, title, tags, createdAt }}
 				<li class="card">
-					<div class="header">
+					<div>
 						<h5>{title}</h5>
 						<date>{formatDate(new Date(createdAt))}</date>
 					</div>
@@ -29,15 +29,21 @@
 						ex officia laboriosam et inventore tempora sapiente! Eum accusantium
 						deserunt iure quis sapiente?
 					</p>
+					<div class="tags">
+						{#each tags as tag}
+							<span class="badge"># {tag}</span>
+						{/each}
+					</div>
 					<a class="blogLink" href="/posts/{slug}">
 						read more
 						<SquareArrowOurUpRight size="10" />
 					</a>
-					<div class="tags">
-						{#each tags as tag}
-							<span class="badge">#{tag} test</span>
-						{/each}
-					</div>
+					{#if isAdmin}
+						<div class="actionsGroup">
+							<button type="button">Edit</button>
+							<button type="button">Delete</button>
+						</div>
+					{/if}
 				</li>
 			{/each}
 		</ul>
@@ -69,6 +75,17 @@
 		font-family: var(--font-mono);
 		color: var(--text-2);
 	}
+	button {
+		padding: var(--size-1) var(--size-4);
+		font-size: var(--font-size-0);
+	}
+	.actionsGroup {
+		display: flex;
+		flex-direction: row;
+		gap: var(--size-2);
+		justify-content: end;
+		margin-block-start: var(--size-4);
+	}
 	.description {
 		margin-block: var(--size-4);
 	}
@@ -79,6 +96,7 @@
 	}
 	.blogLink {
 		display: flex;
+		justify-content: end;
 		gap: var(--size-1);
 		color: var(--link);
 		text-decoration: none;
@@ -88,14 +106,10 @@
 	.badge {
 		padding-inline: var(--size-2);
 		padding-block: var(--size-1);
-
-		border-width: var(--border-size-1);
-		border-color: hsl(var(--pink-6-hsl) / 50%);
+		background: hsl(var(--gray-8-hsl) / 50%);
 		color: hsl(var(--pink-2-hsl) / 50%);
-		border-radius: var(--radius-round);
-
-		font-size: var(--font-size-00);
-		/* font-family: var(--font-serif); */
-		text-transform: uppercase;
+		border-radius: var(--radius-3);
+		font-size: var(--font-size-0);
+		margin-inline-end: var(--size-1);
 	}
 </style>
