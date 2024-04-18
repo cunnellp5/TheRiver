@@ -1,13 +1,12 @@
-import { fail, redirect } from '@sveltejs/kit';
-import type { PageServerLoad } from './$types';
-import type { Actions } from './$types';
+import { fail, redirect, error } from '@sveltejs/kit';
+import type { PageServerLoad, Actions } from './$types';
 import db from '$lib/server/database';
 
 export const load: PageServerLoad = async ({ fetch }) => {
 	const response = await fetch('/api/socialLinks');
 
 	if (response.status === 404) {
-		fail(404, { message: 'No links found' });
+		error(404, { message: 'No links found' });
 	}
 
 	const socialLinks = await response.json();
