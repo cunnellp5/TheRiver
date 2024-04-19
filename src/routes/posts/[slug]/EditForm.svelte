@@ -25,8 +25,7 @@
 	}
 
 	function handleRemoveTag(event: MouseEvent) {
-		const tag = (event.target as HTMLElement).previousElementSibling
-			?.textContent;
+		const tag = (event.target as HTMLElement).previousElementSibling?.textContent;
 		if (tag) {
 			tagInput = tagInput.filter((t: string) => t !== tag);
 		}
@@ -46,34 +45,21 @@
 					bind:value={title}
 					spellcheck
 					placeholder={title}
-					cols="30"
-				/>
+					cols="30" />
 			</h2>
 			<div class="tags">
 				<div class="inputWrapper">
 					<label for="tagInput">Tags</label>
 					<!-- I WANT TO COLLECT THE TAGS HERE -->
-					<input
-						type="hidden"
-						id="tagInput"
-						name="tagInput"
-						bind:value={tagInput}
-					/>
+					<input type="hidden" id="tagInput" name="tagInput" bind:value={tagInput} />
 					<!-- I WANT TO UPDATE THE TAGS HERE -->
-					<input
-						type="text"
-						placeholder="Add tags"
-						on:keydown={handleKeyDown}
-					/>
+					<input type="text" placeholder="Add tags" on:keydown={handleKeyDown} />
 				</div>
 				<div class="badgesWrapper">
 					{#each tagInput as tag}
 						<div class="badge">
 							<div>{tag}</div>
-							<button
-								class="deleteBadge"
-								on:click|preventDefault={handleRemoveTag}>X</button
-							>
+							<button class="deleteBadge" on:click|preventDefault={handleRemoveTag}>X</button>
 						</div>
 					{/each}
 				</div>
@@ -88,8 +74,7 @@
 				spellcheck
 				wrap="soft"
 				rows="15"
-				cols="60"
-			/>
+				cols="60" />
 		</p>
 		<button class="primary" type="submit">Update Post</button>
 	</form>
@@ -104,12 +89,15 @@
 		-webkit-text-fill-color: unset;
 		background-clip: unset;
 	}
+
 	hgroup {
 		max-width: 80%;
 	}
+
 	section {
 		width: 50%;
 	}
+
 	.deleteBadge {
 		color: var(--stone-1);
 		padding: unset;
@@ -117,16 +105,19 @@
 		background: unset;
 		border: unset;
 	}
+
 	.inputWrapper {
 		margin-block: var(--size-4);
 		& input {
 			margin-inline-start: var(--size-3);
 		}
 	}
+
 	.badgesWrapper {
 		display: flex;
 		flex-flow: row wrap;
 	}
+
 	.badge {
 		width: fit-content;
 		display: flex;
@@ -134,6 +125,7 @@
 		gap: var(--size-2);
 		margin-block: var(--size-1);
 	}
+
 	.formMessage {
 		background: var(--pink-6);
 		padding: var(--size-3);
