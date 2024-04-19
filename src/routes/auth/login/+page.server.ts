@@ -28,8 +28,7 @@ export const actions: Actions = {
 
 		// check for user
 		const existingUser = await db.user.findFirst({
-			where: { profile: { email: email.toString() } },
-			include: { profile: true }
+			where: { email: email.toString() }
 		});
 
 		if (!existingUser) {

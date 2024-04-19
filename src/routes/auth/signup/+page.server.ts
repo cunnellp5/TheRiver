@@ -63,8 +63,9 @@ export const actions: Actions = {
 			});
 		}
 
+		// TODO will need to do something different here for users that only signed up for the news letter
 		// checks db for existing username
-		const existingEmail = await db.profile.findUnique({
+		const existingEmail = await db.user.findUnique({
 			where: { email: email.toString() }
 		});
 
@@ -77,18 +78,11 @@ export const actions: Actions = {
 		// insert new user
 		const newUser = await db.user.create({
 			data: {
-				profile: {
-					create: {
-						email: email?.toString() || '',
-						firstName: firstName?.toString() || '',
-						lastName: lastName?.toString() || '',
-						isSubscribed: Boolean(isSubscribed) || false
-					}
-				},
+				email: email?.toString() || '',
+				firstName: firstName?.toString() || '',
+				lastName: lastName?.toString() || '',
+				isSubscribed: Boolean(isSubscribed) || false,
 				hashedPassword
-			},
-			include: {
-				profile: true
 			}
 		});
 
