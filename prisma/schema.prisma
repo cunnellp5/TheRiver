@@ -32,9 +32,7 @@ model User {
   isAdmin        Boolean  @default(false)
 
   sessions Session[]
-
-  profile   Profile? @relation(fields: [profileId], references: [id])
-  profileId String?  @unique @db.Uuid
+  profile  Profile?
 }
 
 model Session {
@@ -66,7 +64,8 @@ model Profile {
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 
-  user User?
+  user   User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String? @unique @db.Uuid
 }
 
 model SocialLinks {
