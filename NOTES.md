@@ -52,3 +52,7 @@ https://svelte-headlessui.goss.io/docs/2.0
 <!-- css naviagiton -->
 
 https://littlesnippets.net/blog/some-css-menu-inspiration-using-animated-lines
+
+<!-- delay navigation to load media -->
+
+https://www.youtube.com/watch?v=8OmsVZuuQMc
