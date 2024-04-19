@@ -6,8 +6,8 @@
 	import SquareArrowOurUpRight from 'lucide-svelte/icons/square-arrow-out-up-right';
 	import Trash from 'lucide-svelte/icons/trash';
 	import { fly, slide } from 'svelte/transition';
-	import type { PageData } from './$types';
 	import { enhance } from '$app/forms';
+	import type { PageData } from './$types';
 
 	export let form;
 	export let data: PageData;

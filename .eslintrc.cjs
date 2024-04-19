@@ -50,10 +50,7 @@ module.exports = {
 	},
 	rules: {
 		'arrow-body-style': ['error', 'as-needed'],
-		'prefer-arrow-callback': [
-			'error',
-			{ allowNamedFunctions: false, allowUnboundThis: true }
-		],
+		'prefer-arrow-callback': ['error', { allowNamedFunctions: false, allowUnboundThis: true }],
 		'import/prefer-default-export': 0,
 		'no-param-reassign': 0,
 		'import/extensions': 0,
