@@ -7,10 +7,6 @@ import db from './database';
 const adapter = new PrismaAdapter(db.session, db.user);
 
 interface DtatbaseUserAttributes {
-	username: string;
-	name: string;
-	email: string;
-	isSubscribed: boolean;
 	isAdmin: boolean;
 }
 
@@ -20,13 +16,9 @@ export const lucia = new Lucia(adapter, {
 			secure: !dev
 		}
 	},
-	getUserAttributes: (attributes) => {
+	getUserAttributes: (user) => {
 		return {
-			username: attributes.username,
-			name: attributes.name,
-			email: attributes.email,
-			isSubscribed: attributes.isSubscribed,
-			isAdmin: attributes.isAdmin
+			isAdmin: user.isAdmin
 		};
 	}
 });
