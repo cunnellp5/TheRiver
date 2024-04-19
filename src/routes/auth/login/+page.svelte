@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
 	import CircleAlert from 'lucide-svelte/icons/circle-alert';
+	import { enhance } from '$app/forms';
 
 	export let form;
 
@@ -26,21 +26,12 @@
 			<input bind:value={email} type="email" name="email" id="email" required />
 
 			<label for="password">Password</label>
-			<input
-				bind:value={password}
-				type="password"
-				name="password"
-				id="password"
-				required
-			/>
+			<input bind:value={password} type="password" name="password" id="password" required />
 
 			<div class="button-list">
-				<button
-					disabled={!isFormValid}
-					class:disabled={!isFormValid}
-					class="primary"
-					type="submit">Login</button
-				>
+				<button disabled={!isFormValid} class:disabled={!isFormValid} class="primary" type="submit">
+					Login
+				</button>
 				<hr />
 				<a href="/auth/signup"> Don't have an account? Sign up here. </a>
 			</div>

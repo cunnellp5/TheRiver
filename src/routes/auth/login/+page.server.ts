@@ -1,9 +1,8 @@
 import { lucia } from '$lib/server/auth';
 import { fail, redirect } from '@sveltejs/kit';
 import { Argon2id } from 'oslo/password';
-import type { Actions } from './$types';
-
 import db from '$lib/server/database';
+import type { Actions } from './$types';
 
 const ERROR_MESSAGE = 'Invalid credentials';
 
@@ -14,22 +13,14 @@ export const actions: Actions = {
 		const password = formData.get('password');
 
 		// TODO use zod validation
-		if (
-			typeof email !== 'string' ||
-			email.length < 3 ||
-			!/^[a-z0-9_-]+$/.test(email)
-		) {
+		if (typeof email !== 'string' || email.length < 3) {
 			return fail(400, {
 				message: ERROR_MESSAGE
 			});
 		}
 
 		// validate password
-		if (
-			typeof password !== 'string' ||
-			password.length < 6 ||
-			password.length > 255
-		) {
+		if (typeof password !== 'string' || password.length < 6 || password.length > 255) {
 			return fail(400, {
 				message: ERROR_MESSAGE
 			});
@@ -37,8 +28,7 @@ export const actions: Actions = {
 
 		// check for user
 		const existingUser = await db.user.findFirst({
-			where: { profile: { email: email.toString() } },
-			include: { profile: true }
+			where: { email: email.toString() }
 		});
 
 		if (!existingUser) {
@@ -47,10 +37,7 @@ export const actions: Actions = {
 			});
 		}
 
-		const validPassword = await new Argon2id().verify(
-			existingUser.hashedPassword,
-			password
-		);
+		const validPassword = await new Argon2id().verify(existingUser.hashedPassword, password);
 
 		if (!validPassword) {
 			return fail(400, {

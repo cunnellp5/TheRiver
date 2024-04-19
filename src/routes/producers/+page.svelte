@@ -14,16 +14,14 @@
 			<li>
 				<a
 					href="https://drive.google.com/drive/folders/1zMLDz-1iEerzgr4eu_bZ30GzVUBgr3cr"
-					target="_blank"
-				>
+					target="_blank">
 					<ChevronRight size="16" /> Tides
 				</a>
 			</li>
 			<li>
 				<a
 					href="https://drive.google.com/drive/folders/1WfE2Cz68NtzI2qMJoDcnNsmgepSRzbUZ"
-					target="_blank"
-				>
+					target="_blank">
 					<ChevronRight size="16" /> Security & Passion
 				</a>
 			</li>
@@ -41,13 +39,11 @@
 				<div class="table-actions">
 					<a
 						target="_blank"
-						href="https://drive.google.com/file/d/1FQGrZFLHxpGzd6u2FkKC7j5kDdla7RNr/view?usp=drive_link"
-					>
+						href="https://drive.google.com/file/d/1FQGrZFLHxpGzd6u2FkKC7j5kDdla7RNr/view?usp=drive_link">
 						<Ear />
 					</a>
 					<a
-						href="https://drive.usercontent.google.com/u/0/uc?id=1FQGrZFLHxpGzd6u2FkKC7j5kDdla7RNr&export=download"
-					>
+						href="https://drive.usercontent.google.com/u/0/uc?id=1FQGrZFLHxpGzd6u2FkKC7j5kDdla7RNr&export=download">
 						<Download />
 					</a>
 				</div>
@@ -59,13 +55,11 @@
 				<div class="table-actions">
 					<a
 						target="_blank"
-						href="https://drive.google.com/file/d/1YHrpavNzO3ANkS1Wylkrgcr8oFZIL5OD/view?usp=drive_link"
-					>
+						href="https://drive.google.com/file/d/1YHrpavNzO3ANkS1Wylkrgcr8oFZIL5OD/view?usp=drive_link">
 						<Ear />
 					</a>
 					<a
-						href="https://drive.usercontent.google.com/u/0/uc?id=1YHrpavNzO3ANkS1Wylkrgcr8oFZIL5OD&export=download"
-					>
+						href="https://drive.usercontent.google.com/u/0/uc?id=1YHrpavNzO3ANkS1Wylkrgcr8oFZIL5OD&export=download">
 						<Download />
 					</a>
 				</div>

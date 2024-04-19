@@ -1,9 +1,8 @@
 import { lucia } from '$lib/server/auth';
-import { fail, redirect } from '@sveltejs/kit';
+import { error, fail, redirect } from '@sveltejs/kit';
 import { Argon2id } from 'oslo/password';
-import type { Actions, PageServerLoad } from './$types';
-
 import db from '$lib/server/database';
+import type { Actions, PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async (event) => {
 	console.log(event);
@@ -37,22 +36,14 @@ export const actions: Actions = {
 		}
 
 		// validate lastname
-		if (
-			typeof lastName !== 'string' ||
-			lastName.length > 31 ||
-			!/^[a-z0-9_-]+$/.test(lastName)
-		) {
+		if (typeof lastName !== 'string' || lastName.length > 31 || !/^[a-z0-9_-]+$/.test(lastName)) {
 			return fail(400, {
 				message: 'Invalid credentials'
 			});
 		}
 
 		// validate password
-		if (
-			typeof password !== 'string' ||
-			password.length < 6 ||
-			password.length > 255
-		) {
+		if (typeof password !== 'string' || password.length < 6 || password.length > 255) {
 			return fail(400, {
 				message: 'Invalid credentials'
 			});
@@ -72,8 +63,9 @@ export const actions: Actions = {
 			});
 		}
 
+		// TODO will need to do something different here for users that only signed up for the news letter
 		// checks db for existing username
-		const existingEmail = await db.profile.findUnique({
+		const existingEmail = await db.user.findUnique({
 			where: { email: email.toString() }
 		});
 
@@ -86,23 +78,22 @@ export const actions: Actions = {
 		// insert new user
 		const newUser = await db.user.create({
 			data: {
-				profile: {
-					create: {
-						email: email?.toString() || '',
-						firstName: firstName?.toString() || '',
-						lastName: lastName?.toString() || '',
-						isSubscribed: Boolean(isSubscribed) || false
-					}
-				},
-				hashedPassword: hashedPassword
-			},
-			include: {
-				profile: true
+				email: email?.toString() || '',
+				firstName: firstName?.toString() || '',
+				lastName: lastName?.toString() || '',
+				isSubscribed: Boolean(isSubscribed) || false,
+				hashedPassword
 			}
 		});
 
+		if (!newUser) {
+			return error(500, { message: 'Failed to create user' });
+		}
+
 		const session = await lucia.createSession(newUser.id, {});
+
 		const sessionCookie = lucia.createSessionCookie(session.id);
+
 		cookies.set(sessionCookie.name, sessionCookie.value, {
 			path: '.',
 			...sessionCookie.attributes

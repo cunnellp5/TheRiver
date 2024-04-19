@@ -5,6 +5,8 @@ const db = new PrismaClient();
 type Post = {
 	title: string;
 	body: string;
+	tags: string[];
+	slug: string;
 };
 
 async function getPosts() {
@@ -29,7 +31,8 @@ async function main() {
 			data: {
 				title: post.title,
 				content: post.body,
-				slug: slugify(post.title)
+				slug: slugify(post.title),
+				tags: post.tags
 			}
 		});
 	}

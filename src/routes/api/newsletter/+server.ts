@@ -5,9 +5,10 @@ export const GET: RequestHandler = async (event) => {
 	const options: ResponseInit = {
 		status: 418,
 		headers: {
-			poopCity: 'sharting it up'
+			poopCity: 'sharting it up smooth ooorrr...'
 		}
 	};
+
 	return new Response('testing', options);
 };
 

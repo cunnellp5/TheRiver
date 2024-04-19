@@ -1,46 +1,54 @@
 <script lang="ts">
-	import type { PageData } from './$types';
 	import formatDate from '$lib/utils/formatDate';
+	import type { PageData } from './$types';
+	import EditForm from './EditForm.svelte';
 
+	export let form;
 	export let data: PageData;
+	let isEditing = false;
+
+	function update() {
+		isEditing = !isEditing;
+	}
 </script>
 
-<main>
+<input type="checkbox" on:change={update} />
+<main class:editing={isEditing} class:center={!isEditing}>
 	<section>
 		<hgroup>
-			<h1>{data.post.title}</h1>
-			<p>{formatDate(data.post.createdAt)}</p>
+			<h2>{data.post.title}</h2>
+			<date>{formatDate(new Date(data.post.createdAt))}</date>
+			<div class="tags">
+				{#each data.post.tags as tag}
+					<span class="badge"># {tag}</span>
+				{/each}
+			</div>
 		</hgroup>
 
-		<div class="content">
+		<p class="content">
 			{data.post.content}
-		</div>
+		</p>
 	</section>
+	{#if isEditing}
+		<EditForm {data} {form} />
+	{/if}
 </main>
 
 <style>
-	h1 {
-		font-size: var(--size-8);
-		line-height: var(--size-8);
-		letter-spacing: -0.2rem;
-	}
-	hgroup {
-		margin-block: var(--size-7);
-	}
+	@import './post.css';
 
-	p {
-		font-size: var(--size-3);
-		color: var(--gray-7);
+	.editing {
+		margin-block-start: var(--size-9);
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
 	}
-
-	main {
+	.center {
+		margin-block-start: var(--size-9);
 		width: 100%;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-	}
-
-	section {
-		width: var(--size-15);
 	}
 </style>
