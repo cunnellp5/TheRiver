@@ -33,10 +33,7 @@ export const DELETE: RequestHandler = async ({ params }): Promise<Response> => {
 	return json({ status: 204 });
 };
 
-export const PATCH: RequestHandler = async ({
-	params,
-	request
-}): Promise<Response> => {
+export const PATCH: RequestHandler = async ({ params, request }): Promise<Response> => {
 	let post;
 	let postData;
 

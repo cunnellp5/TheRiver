@@ -11,9 +11,9 @@
 
 	<main>
 		<h1>The River Sings</h1>
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum quisquam sed
-		modi nemo nisi ad sequi temporibus voluptas omnis, aliquam rerum. Aspernatur
-		magni aliquam libero dolor, quibusdam ad perferendis delectus.
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum quisquam sed modi nemo nisi ad
+		sequi temporibus voluptas omnis, aliquam rerum. Aspernatur magni aliquam libero dolor, quibusdam
+		ad perferendis delectus.
 		<div id="videos" class="videos">videos</div>
 		<div id="tracks" class="tracks">tracks</div>
 		<div id="producers"><Producers /></div>

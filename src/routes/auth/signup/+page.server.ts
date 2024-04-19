@@ -1,9 +1,8 @@
 import { lucia } from '$lib/server/auth';
 import { error, fail, redirect } from '@sveltejs/kit';
 import { Argon2id } from 'oslo/password';
-import type { Actions, PageServerLoad } from './$types';
-
 import db from '$lib/server/database';
+import type { Actions, PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async (event) => {
 	console.log(event);
@@ -37,22 +36,14 @@ export const actions: Actions = {
 		}
 
 		// validate lastname
-		if (
-			typeof lastName !== 'string' ||
-			lastName.length > 31 ||
-			!/^[a-z0-9_-]+$/.test(lastName)
-		) {
+		if (typeof lastName !== 'string' || lastName.length > 31 || !/^[a-z0-9_-]+$/.test(lastName)) {
 			return fail(400, {
 				message: 'Invalid credentials'
 			});
 		}
 
 		// validate password
-		if (
-			typeof password !== 'string' ||
-			password.length < 6 ||
-			password.length > 255
-		) {
+		if (typeof password !== 'string' || password.length < 6 || password.length > 255) {
 			return fail(400, {
 				message: 'Invalid credentials'
 			});
@@ -94,7 +85,7 @@ export const actions: Actions = {
 						isSubscribed: Boolean(isSubscribed) || false
 					}
 				},
-				hashedPassword: hashedPassword
+				hashedPassword
 			},
 			include: {
 				profile: true

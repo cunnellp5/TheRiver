@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { browser } from '$app/environment';
-	import { page } from '$app/stores';
 	import LogoR from '$lib/components/svgs/logos/LogoR2.svelte';
 	import Ellipsis from 'lucide-svelte/icons/ellipsis';
 	import Waves from 'lucide-svelte/icons/waves';
 	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
+	import { page } from '$app/stores';
+	import { browser } from '$app/environment';
 	import type { EventHandlers } from '../../app';
 
 	let showAuthLinks = false;
@@ -41,32 +41,27 @@
 		<ul class="links">
 			<li
 				class:current={$page.url.pathname == '/music'}
-				aria-current={$page.url.pathname == '/music'}
-			>
+				aria-current={$page.url.pathname == '/music'}>
 				<a href="/music"> Music </a>
 			</li>
 			<li
 				class:current={$page.url.pathname == '/services'}
-				aria-current={$page.url.pathname == '/services'}
-			>
+				aria-current={$page.url.pathname == '/services'}>
 				<a href="/services"> services </a>
 			</li>
 			<li
 				class:current={$page.url.pathname == '/shop'}
-				aria-current={$page.url.pathname == '/shop'}
-			>
+				aria-current={$page.url.pathname == '/shop'}>
 				<a href="/shop"> Merch </a>
 			</li>
 			<li
 				class:current={$page.url.pathname == '/posts'}
-				aria-current={$page.url.pathname == '/posts'}
-			>
+				aria-current={$page.url.pathname == '/posts'}>
 				<a href="/posts"> Blog </a>
 			</li>
 			<li
 				class:current={$page.url.pathname == '/contact'}
-				aria-current={$page.url.pathname == '/contact'}
-			>
+				aria-current={$page.url.pathname == '/contact'}>
 				<a href="/contact"> Contact </a>
 			</li>
 

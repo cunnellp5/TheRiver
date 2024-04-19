@@ -1,9 +1,8 @@
 import { lucia } from '$lib/server/auth';
 import { fail, redirect } from '@sveltejs/kit';
 import { Argon2id } from 'oslo/password';
-import type { Actions } from './$types';
-
 import db from '$lib/server/database';
+import type { Actions } from './$types';
 
 const ERROR_MESSAGE = 'Invalid credentials';
 
@@ -21,11 +20,7 @@ export const actions: Actions = {
 		}
 
 		// validate password
-		if (
-			typeof password !== 'string' ||
-			password.length < 6 ||
-			password.length > 255
-		) {
+		if (typeof password !== 'string' || password.length < 6 || password.length > 255) {
 			return fail(400, {
 				message: ERROR_MESSAGE
 			});
@@ -43,10 +38,7 @@ export const actions: Actions = {
 			});
 		}
 
-		const validPassword = await new Argon2id().verify(
-			existingUser.hashedPassword,
-			password
-		);
+		const validPassword = await new Argon2id().verify(existingUser.hashedPassword, password);
 
 		if (!validPassword) {
 			return fail(400, {

@@ -1,9 +1,9 @@
 import { error, fail, redirect } from '@sveltejs/kit';
-import type { PageServerLoad, Actions } from './$types';
 import slugify from '$lib/utils/slugify';
+import type { PageServerLoad, Actions } from './$types';
 
 export const load: PageServerLoad = async ({ fetch, params, locals }) => {
-	const response = await fetch('/api/posts/' + params.slug);
+	const response = await fetch(`/api/posts/${params.slug}`);
 
 	const post = await response.json();
 
@@ -19,7 +19,7 @@ export const load: PageServerLoad = async ({ fetch, params, locals }) => {
 
 export const actions: Actions = {
 	default: async ({ fetch, request, params }) => {
-		const slug = params.slug;
+		const { slug } = params;
 
 		const formData = await request.formData();
 		const title = formData.get('title')?.toString();
@@ -56,10 +56,9 @@ export const actions: Actions = {
 			const post = await response.json();
 
 			return redirect(302, `/posts/${post.slug}`);
-		} else {
-			const errorMessage = await response.json();
-			error(response.status, errorMessage);
 		}
+		const errorMessage = await response.json();
+		error(response.status, errorMessage);
 	}
 };
 

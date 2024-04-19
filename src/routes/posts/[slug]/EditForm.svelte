@@ -1,16 +1,16 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
 	import formatDate from '$lib/utils/formatDate';
 	import type { EventHandler } from 'svelte/elements';
+	import { enhance } from '$app/forms';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
 	export let form;
 
-	let isEditing = true;
+	const isEditing = true;
 
-	let title = data.post.title;
-	let content = data.post.content;
+	let { title } = data.post;
+	let { content } = data.post;
 	let tagInput = data.post.tags;
 
 	function handleKeyDown(event: KeyboardEvent) {

@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
 	import CircleAlert from 'lucide-svelte/icons/circle-alert';
 	import Check from 'lucide-svelte/icons/check';
+	import { enhance } from '$app/forms';
 
 	export let form;
 
@@ -51,15 +51,11 @@
 
 			<div
 				class="passwords"
-				class:invalidPasswords={(!isConfirmPasswordValid &&
-					confirmPassword.length > 0) ||
-					(!isPasswordValid &&
-						password.length > 0 &&
-						confirmPassword.length > 0)}
+				class:invalidPasswords={(!isConfirmPasswordValid && confirmPassword.length > 0) ||
+					(!isPasswordValid && password.length > 0 && confirmPassword.length > 0)}
 				class:validPasswords={isConfirmPasswordValid &&
 					confirmPassword.length > 0 &&
-					isPasswordValid}
-			>
+					isPasswordValid}>
 				<label id="pw-label" for="password">Password</label>
 				<input
 					bind:value={password}
@@ -67,8 +63,7 @@
 					name="password"
 					id="password"
 					min="6"
-					required
-				/>
+					required />
 
 				<label for="confirm">Confirm Password</label>
 				<input
@@ -78,8 +73,7 @@
 					type="password"
 					name="confirm"
 					id="confirm"
-					required
-				/>
+					required />
 
 				<div class="help-text">
 					<div class="checker">
@@ -105,12 +99,7 @@
 			</div>
 
 			<div class="button-list">
-				<button
-					type="submit"
-					class="primary"
-					disabled={!isFormValid}
-					class:disabled={!isFormValid}
-				>
+				<button type="submit" class="primary" disabled={!isFormValid} class:disabled={!isFormValid}>
 					Signup
 				</button>
 				<hr />

@@ -1,13 +1,13 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
 	import formatDate from '$lib/utils/formatDate';
 	import Pencil from 'lucide-svelte/icons/pencil';
 	import Check from 'lucide-svelte/icons/check';
 	import Plus from 'lucide-svelte/icons/plus';
 	import SquareArrowOurUpRight from 'lucide-svelte/icons/square-arrow-out-up-right';
 	import Trash from 'lucide-svelte/icons/trash';
-	import type { PageData } from './$types';
 	import { fly, slide } from 'svelte/transition';
+	import type { PageData } from './$types';
+	import { enhance } from '$app/forms';
 
 	export let form;
 	export let data: PageData;
@@ -43,9 +43,7 @@
 					<div in:fly={{ y: 20 }} out:slide class="card">
 						<div class="titleWrapper-sub">
 							<h5>{form?.deletedTitle}</h5>
-							<button on:click={removeElement} class="delete block"
-								><Trash /></button
-							>
+							<button on:click={removeElement} class="delete block"><Trash /></button>
 						</div>
 						<p class="success-form-message"><Check />{form?.message}</p>
 					</div>
@@ -64,7 +62,7 @@
 								<date>{formatDate(new Date(createdAt))}</date>
 							</div>
 							<p class="description">
-								{content?.substring(0, 100) + '...'}
+								{`${content?.substring(0, 100)}...`}
 							</p>
 							<div>
 								{#each tags as tag}
@@ -88,14 +86,10 @@
 									action="?/deletePost"
 									use:enhance={({ cancel }) => {
 										if (confirm('Are you sure you want to delete this post?')) {
-											return async ({ update }) => {
-												return update();
-											};
-										} else {
-											cancel();
+											return async ({ update }) => update();
 										}
-									}}
-								>
+										cancel();
+									}}>
 									<input type="hidden" name="slug" id="slug" value={slug} />
 									<button class="delete" type="submit">
 										<Trash />

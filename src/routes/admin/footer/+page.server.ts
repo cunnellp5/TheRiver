@@ -1,6 +1,6 @@
 import { fail, redirect, error } from '@sveltejs/kit';
-import type { PageServerLoad, Actions } from './$types';
 import db from '$lib/server/database';
+import type { PageServerLoad, Actions } from './$types';
 
 export const load: PageServerLoad = async ({ fetch }) => {
 	const response = await fetch('/api/socialLinks');

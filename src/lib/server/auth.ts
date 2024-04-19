@@ -1,6 +1,6 @@
-import { dev } from '$app/environment';
 import { PrismaAdapter } from '@lucia-auth/adapter-prisma';
 import { Lucia } from 'lucia';
+import { dev } from '$app/environment';
 
 import db from './database';
 
@@ -16,11 +16,9 @@ export const lucia = new Lucia(adapter, {
 			secure: !dev
 		}
 	},
-	getUserAttributes: (user) => {
-		return {
-			isAdmin: user.isAdmin
-		};
-	}
+	getUserAttributes: (user) => ({
+		isAdmin: user.isAdmin
+	})
 });
 
 declare module 'lucia' {
