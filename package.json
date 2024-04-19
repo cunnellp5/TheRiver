@@ -10,6 +10,8 @@
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"test": "vitest",
 		"lint": "prettier --check . && eslint .",
+		"lintall": "eslint --ext .js,.cjs,.ts,.svelte .",
+		"lintall:fix": "eslint --ext .js,.cjs,.ts,.svelte . --fix",
 		"format": "prettier --write .",
 		"db:reset": "npx prisma migrate reset"
 	},

@@ -1,5 +1,5 @@
 import { lucia } from '$lib/server/auth';
-import { fail, redirect } from '@sveltejs/kit';
+import { error, fail, redirect } from '@sveltejs/kit';
 import { Argon2id } from 'oslo/password';
 import type { Actions, PageServerLoad } from './$types';
 
@@ -101,8 +101,14 @@ export const actions: Actions = {
 			}
 		});
 
+		if (!newUser) {
+			return error(500, { message: 'Failed to create user' });
+		}
+
 		const session = await lucia.createSession(newUser.id, {});
+
 		const sessionCookie = lucia.createSessionCookie(session.id);
+
 		cookies.set(sessionCookie.name, sessionCookie.value, {
 			path: '.',
 			...sessionCookie.attributes
