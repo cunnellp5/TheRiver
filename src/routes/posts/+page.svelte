@@ -32,7 +32,7 @@
 					<h1>The River Blog</h1>
 					{#if isAdmin}
 						<button class="create">
-							<a href="/posts/new"><Plus /></a>
+							<a href="/posts/create"><Plus /></a>
 						</button>
 					{/if}
 				</div>
