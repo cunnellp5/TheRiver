@@ -1,8 +1,9 @@
-import { error, fail } from '@sveltejs/kit';
+import db from '$lib/server/database';
+import slugify from '$lib/utils/slugify';
 import type { Post } from '@prisma/client';
+import { error, fail } from '@sveltejs/kit';
 import type { PageServerLoad } from '../$types';
 import type { Actions } from './$types';
-import db from '$lib/server/database';
 
 export const load: PageServerLoad = async ({ fetch, locals }) => {
 	const response = await fetch('/api/posts');
@@ -21,9 +22,10 @@ export const load: PageServerLoad = async ({ fetch, locals }) => {
 };
 
 export const actions: Actions = {
-	default: async ({ request }) => {
+	createPost: async ({ request }) => {
 		const formData = await request.formData();
-		const title = formData.get('title').trim();
+
+		const title = formData?.get('title')?.trim();
 		const content = formData.get('content');
 		const tags = formData.get('tagInput');
 
@@ -41,7 +43,7 @@ export const actions: Actions = {
 			data: {
 				title,
 				content,
-				tags: tags?.split(',').map((tag: string) => tag.trim()),
+				tags: tags ? tags.split(',').map((tag: string) => tag.trim()) : [],
 				slug: slugified
 			}
 		});

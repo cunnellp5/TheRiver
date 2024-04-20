@@ -70,7 +70,7 @@
 		<h1 class="firstHeader">Create a post</h1>
 		{#if form?.message}<p class="formMessage">{form?.message}</p>{/if}
 
-		<form method="POST" action="/posts" use:enhance>
+		<form method="POST" action="/posts?/createPost" use:enhance>
 			<hgroup>
 				<h1>
 					<textarea
@@ -132,10 +132,6 @@
 	main {
 		display: flex;
 		justify-content: center;
-	}
-
-	section {
-		width: 60%;
 	}
 
 	.editor-wrapper {
