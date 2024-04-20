@@ -54,6 +54,9 @@
 				aria-current={$page.url.pathname === '/shop'}>
 				<a href="/shop"> Merch </a>
 			</li>
+
+			<li class="border-left"></li>
+
 			<li
 				class:current={$page.url.pathname === '/posts'}
 				aria-current={$page.url.pathname === '/posts'}>
