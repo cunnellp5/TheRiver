@@ -1,25 +1,7 @@
 import db from '$lib/server/database';
 import slugify from '$lib/utils/slugify';
-import type { Post } from '@prisma/client';
-import { error, fail } from '@sveltejs/kit';
-import type { PageServerLoad } from '../$types';
+import { fail } from '@sveltejs/kit';
 import type { Actions } from './$types';
-
-export const load: PageServerLoad = async ({ fetch, locals }) => {
-	const response = await fetch('/api/posts');
-
-	if (!response.ok) {
-		const errorMessage = await response.json();
-		error(response.status, errorMessage); // this is an expected error
-	}
-
-	const posts: Post[] = await response.json();
-
-	return {
-		posts,
-		isAdmin: locals?.user?.isAdmin
-	};
-};
 
 export const actions: Actions = {
 	createPost: async ({ request }) => {
@@ -71,7 +53,11 @@ export const actions: Actions = {
 			await db.post.delete({
 				where: { slug: slug.toString() }
 			});
-			return { success: true };
+			return {
+				success: true,
+				message: 'Post deleted',
+				deletedTitle: slug
+			};
 		} catch (err) {
 			const { message } = err as Error;
 			throw new Error(message); // unexpected
