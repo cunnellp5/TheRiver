@@ -3,7 +3,7 @@ import { error, json } from '@sveltejs/kit';
 
 import db from '$lib/server/database';
 
-// THIS API ROUTE STAYS SO WE CAN DO FILTERING / SORTING / PAGINATION
+// THIS API ROUTE STAYS SO WE CAN DO FILTERING / SORTING / PAGINATION ?????
 export const GET: RequestHandler = async (event): Promise<Response> => {
 	let posts;
 
