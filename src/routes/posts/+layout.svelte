@@ -2,7 +2,7 @@
 	import Plus from 'lucide-svelte/icons/plus';
 
 	export let data;
-	const { posts, isAdmin } = data;
+	$: ({ posts, isAdmin } = data);
 </script>
 
 <main>
@@ -10,8 +10,8 @@
 		<nav>
 			<ul class="mainNavs">
 				<li><a href="/posts">Blog posts</a></li>
-				<li><a href="/posts">Instagram</a></li>
-				<li><a href="/posts">Twitter</a></li>
+				<!-- <li><a href="/posts">Instagram</a></li> -->
+				<!-- <li><a href="/posts">Twitter</a></li> -->
 			</ul>
 			<!-- <div class="divider"></div> -->
 			<!-- TODO: maybe only show this when viewing a single item? -->
