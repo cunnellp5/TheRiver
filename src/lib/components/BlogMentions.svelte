@@ -5,41 +5,45 @@
 <section>
 	{#each blogReferences as blogReference}
 		<div class="card">
-			<img src={blogReference.img.url} alt="cap1" />
-			<h5>{blogReference.link.title}</h5>
-			<p>{blogReference.content.message}</p>
-			<a href={blogReference.link.url}>{blogReference.link.title}</a>
+			<figure>
+				<img src={blogReference.img.url} alt="cap1" />
+			</figure>
+			<div class="contentWrapper">
+				<h5>{blogReference.link.title}</h5>
+				<p>{blogReference.content.message}</p>
+				<a href={blogReference.link.url}>{blogReference.link.title}</a>
+			</div>
 		</div>
 	{/each}
 </section>
 
 <style>
 	section {
+		/* display: grid; */
 		display: flex;
 		flex-flow: row wrap;
-		align-items: flex-start;
-		justify-content: center;
-		/* max-inline-size: calc(var(--size-content-1) * ); */
-		/* gap: var(--size-5); */
-		/* padding: var(--size-5); */
-		gap: var(--size-6);
+		/* justify-content: space-evenly; */
+		/* background: var(--gradient-15) fixed; */
+		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+		/* gap: var(--size-6); */
 	}
 
 	.card {
-		flex-basis: var(--size-14);
+		flex: 1 1 var(--size-14);
 		display: flex;
 		flex-direction: column;
 		gap: var(--size-3);
-		background: var(--surface-4);
-		border: 1px solid var(--surface-1);
+
 		padding: var(--size-4);
-		border-radius: var(--radius-2);
-		box-shadow: var(--shadow-2);
+		box-shadow: var(--shadow-1);
+		transition:
+			flex-grow 0.5s ease,
+			flex-shrink 0.5s ease;
 	}
 
-	.card > h5 {
+	/* .card > h5 {
 		line-height: var(--font-lineheight-0);
-	}
+	} */
 
 	a {
 		color: var(--link);
@@ -56,5 +60,22 @@
 	img {
 		object-fit: cover;
 		aspect-ratio: var(--ratio-square);
+		border-radius: 0;
+
+		-webkit-transform: scale(1);
+		transform: scale(1);
+		-webkit-transition: 0.3s ease-in-out;
+		transition: 0.3s ease-in-out;
+	}
+
+	img:hover {
+		-webkit-transform: scale(1.3);
+		transform: scale(1.3);
+	}
+
+	figure {
+		margin: 0;
+		padding: 0;
+		overflow: hidden;
 	}
 </style>
