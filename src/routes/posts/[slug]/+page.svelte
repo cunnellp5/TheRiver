@@ -62,7 +62,7 @@
 </main>
 
 <style>
-	@import '../post.css';
+	@import '../styles/post.css';
 	date {
 		font-size: var(--font-size-0);
 		color: var(--gray-7);

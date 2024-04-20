@@ -114,7 +114,7 @@
 </main>
 
 <style>
-	@import '../post.css';
+	@import '../styles/post.css';
 
 	.firstHeader {
 		margin-block: var(--size-7);

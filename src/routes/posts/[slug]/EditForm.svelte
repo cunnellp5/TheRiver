@@ -120,7 +120,7 @@
 </section>
 
 <style>
-	@import '../post.css';
+	@import '../styles/post.css';
 
 	textarea {
 		background: var(--gradient-1) fixed;
