@@ -1,17 +1,15 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
 	import formatDate from '$lib/utils/formatDate';
-	import Pencil from 'lucide-svelte/icons/pencil';
 	import Check from 'lucide-svelte/icons/check';
-	import Plus from 'lucide-svelte/icons/plus';
+	import Pencil from 'lucide-svelte/icons/pencil';
 	import SquareArrowOurUpRight from 'lucide-svelte/icons/square-arrow-out-up-right';
 	import Trash from 'lucide-svelte/icons/trash';
 	import { fly, slide } from 'svelte/transition';
-	import { enhance } from '$app/forms';
-	import type { PageData } from './$types';
+	import type { ActionData, PageData } from './$types';
 
-	export let form;
+	export let form: ActionData;
 	export let data: PageData;
-
 	let shouldDisplay = false;
 
 	function removeElement() {
@@ -27,28 +25,15 @@
 <main>
 	<section>
 		{#if posts.length > 0}
-			<header>
-				<div class="titleWrapper">
-					<h1>The River Blog</h1>
-					{#if isAdmin}
-						<button class="create">
-							<a href="/posts/create"><Plus /></a>
-						</button>
-					{/if}
-				</div>
-
-				<p>Showing {posts.length} posts.</p>
-
-				{#if shouldDisplay}
-					<div in:fly={{ y: 20 }} out:slide class="card">
-						<div class="titleWrapper-sub">
-							<h5>{form?.deletedTitle}</h5>
-							<button on:click={removeElement} class="delete block"><Trash /></button>
-						</div>
-						<p class="success-form-message"><Check />{form?.message}</p>
+			{#if form && shouldDisplay}
+				<div in:fly={{ y: 20 }} out:slide class="card">
+					<div class="titleWrapper-sub">
+						<h5>{form.deletedTitle}</h5>
+						<button on:click={removeElement} class="delete block"><Trash /></button>
 					</div>
-				{/if}
-			</header>
+					<p class="success-form-message"><Check />{form?.message}</p>
+				</div>
+			{/if}
 			<ul>
 				{#each posts as { slug, title, tags, createdAt, content }}
 					<li in:fly={{ y: 20 }} out:slide class="cardWrapper">
@@ -102,7 +87,6 @@
 			</ul>
 		{:else}
 			<div class="noPostsWrapper">
-				<h1>The River Blog</h1>
 				<p>No posts.</p>
 			</div>
 		{/if}
@@ -110,9 +94,6 @@
 </main>
 
 <style>
-	header {
-		margin-block: var(--size-7);
-	}
 	main {
 		width: 100%;
 		display: flex;
@@ -122,9 +103,6 @@
 	date {
 		color: var(--stone-9);
 		font-size: var(--font-size-0);
-	}
-	ul {
-		padding-block: var(--size-1);
 	}
 	p {
 		line-height: var(--font-lineheight-0);
@@ -143,14 +121,7 @@
 		color: var(--green-4);
 	}
 	.noPostsWrapper {
-		/* height: 100vh; */
 		margin-block: var(--size-content-1);
-	}
-	.titleWrapper {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		gap: var(--size-4);
 	}
 	.titleWrapper-sub {
 		display: flex;
@@ -175,7 +146,7 @@
 		letter-spacing: var(--font-letterspacing-2);
 	}
 	.card {
-		margin-block: var(--size-7);
+		margin-block: var(--size-4);
 		box-shadow: var(--shadow-2);
 		padding: var(--size-4);
 	}
@@ -201,9 +172,6 @@
 		margin-inline-end: var(--size-1);
 	}
 
-	.create {
-		background-color: hsl(var(--purple-4-hsl) / 50%);
-	}
 	.edit {
 		background-color: hsl(var(--brown-3-hsl) / 50%);
 	}
