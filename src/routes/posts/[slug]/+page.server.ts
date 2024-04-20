@@ -5,6 +5,10 @@ import type { PageServerLoad, Actions } from './$types';
 export const load: PageServerLoad = async ({ fetch, params, locals }) => {
 	const response = await fetch(`/api/posts/${params.slug}`);
 
+	if (!response.ok) {
+		return error(response.status, 'Failed to fetch post');
+	}
+
 	const post = await response.json();
 
 	if (!post) {
@@ -31,13 +35,14 @@ export const actions: Actions = {
 		}
 
 		if (!title) {
-			console.log(title, 'nowooo');
 			return fail(400, { message: 'Invalid title' });
 		}
 
 		if (!content) {
 			return fail(400, { message: 'Add content' });
 		}
+
+		const slugified = slugify(title);
 
 		const response = await fetch(`/api/posts/${slug}`, {
 			method: 'PATCH',
@@ -48,14 +53,12 @@ export const actions: Actions = {
 				title,
 				content,
 				tags: tags?.split(',').map((tag: string) => tag.trim()),
-				slug: slugify(title)
+				slug: slugified
 			})
 		});
 
 		if (response.ok) {
-			const post = await response.json();
-
-			return redirect(302, `/posts/${post.slug}`);
+			return redirect(302, `/posts/${slugified}`);
 		}
 		const errorMessage = await response.json();
 		error(response.status, errorMessage);
@@ -65,8 +68,6 @@ export const actions: Actions = {
 // TODO
 // trim white spaces in title
 // add links for duplicate tags to show all posts with that tag
-// somehow get rich text editor to work
-// images?
 // add create new post
 // add sorting and filtering capabilities?
 // add layout navigation here to show all posts | unpublished posts | drafts | etc

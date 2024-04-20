@@ -2,11 +2,6 @@ hgroup {
 	margin-block-end: var(--size-6);
 }
 
-date {
-	font-size: var(--font-size-0);
-	color: var(--gray-7);
-}
-
 p {
 	/* line-height: var(--font-lineheight-2); */
 	font-size: var(--font-size-3);

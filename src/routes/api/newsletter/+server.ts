@@ -1,7 +1,7 @@
 import type { RequestHandler } from '@sveltejs/kit';
 
 // api/newsletter GET
-export const GET: RequestHandler = async (event) => {
+export const GET: RequestHandler = async () => {
 	const options: ResponseInit = {
 		status: 418,
 		headers: {

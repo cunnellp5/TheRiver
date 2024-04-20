@@ -3,57 +3,35 @@
 </script>
 
 <main>
-	<div class="hero">
-		<h1>THE RIVER CREATES</h1>
-		<div class="arrow">
-			<MoveDown color="#666968" />
-		</div>
-	</div>
-	<div class="full-height">
-		<div>test full height 1</div>
-		<!-- <AnimatedElement /> -->
-	</div>
-	<div class="full-height">
-		<div>test fulll height 2</div>
-		<!-- <AnimatedElement /> -->
-	</div>
+	<h1>
+		<!-- THE RIVE<span id="rotate">R</span> MARKET -->
+		THE RIVER MARKET
+	</h1>
+	<div class="animation">Coming spoon!</div>
 </main>
 
 <style>
-	h1 {
-		margin-block: var(--size-7);
-	}
-
 	main {
-		margin: 0 auto;
-	}
-
-	h1 {
-		margin-bottom: 0.5rem;
-		/* text-transform: uppercase; */
-	}
-
-	p {
-		margin-top: 0;
-	}
-
-	.hero {
-		height: calc(100vh - var(--size-8));
 		display: flex;
+		align-items: center;
 		flex-direction: column;
-		align-items: center;
 		justify-content: center;
-	}
-
-	.full-height {
 		height: 100vh;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		border: 4px solid white;
 	}
+	/* 
+	#rotate {
+		background: var(--gradient-1) fixed;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
 
-	.arrow {
+		display: inline-block;
+		transform: scaleX(-1) rotate(-4deg);
+		margin: 0;
+		padding: 0;
+	} */
+
+	.animation {
 		margin-block: var(--size-4);
 		animation: var(--animation-float);
 		animation-timing-function: var(--ease-elastic-in-out-3);

@@ -54,6 +54,9 @@
 				aria-current={$page.url.pathname === '/shop'}>
 				<a href="/shop"> Merch </a>
 			</li>
+
+			<li class="border-left"></li>
+
 			<li
 				class:current={$page.url.pathname === '/posts'}
 				aria-current={$page.url.pathname === '/posts'}>
@@ -119,10 +122,10 @@
 		letter-spacing: var(--font-letterspacing-2);
 	}
 
-	a:hover,
+	/* a:hover,
 	a:active {
 		color: var(--link);
-	}
+	} */
 
 	.links {
 		& * {
@@ -133,11 +136,10 @@
 		}
 		& a {
 			padding: 0.4em 0;
-			color: rgba(255, 255, 255, 0.5);
+			color: var(--gray-6);
 			position: relative;
 			text-decoration: none;
 			display: inline-block;
-			text-shadow: 4px 4px 8px rgba(0, 0, 0, 1);
 		}
 		& a:before {
 			position: absolute;
@@ -156,7 +158,8 @@
 
 	.links a:hover,
 	.links .current a {
-		color: #ffffff;
+		color: var(--stone-1);
+		/* text-shadow: 2px 2px 10px var(--sand-9); */
 	}
 
 	.links a:hover:before,
