@@ -6,15 +6,6 @@
 		<img src="https://assets.codepen.io/1506195/unsplash-music-1.avif" alt="duo singing" />
 		<img src="https://assets.codepen.io/1506195/unsplash-music-2.avif" alt="crowd cheering" />
 		<img src="https://assets.codepen.io/1506195/unsplash-music-3.avif" alt="singer performing" />
-		<img
-			src="https://assets.codepen.io/1506195/unsplash-music-4.avif"
-			alt="singer fistbumping crowd" />
-		<img
-			src="https://assets.codepen.io/1506195/unsplash-music-5.avif"
-			alt="man with a guitar singing" />
-		<img
-			src="https://assets.codepen.io/1506195/unsplash-music-6.avif"
-			alt="crowd looking at a lighted stage" />
 		<iframe
 			width="560"
 			height="315"
@@ -35,54 +26,42 @@
 		place-items: center;
 	}
 
+	img {
+		border-radius: 0;
+	}
+
 	.gallery {
-		--size: 100px;
+		--n: 1; /* number of rows*/
+		--m: 5; /* number of columns */
+		--g: 0px; /* control the gap */
+		--f: 0.8; /* control the scale factor */
+
 		display: grid;
-		grid-template-columns: repeat(6, var(--size));
-		grid-auto-rows: var(--size);
-		margin-bottom: var(--size);
-		place-items: center;
-		gap: var(--size-3);
+		gap: var(--g);
+		width: 100%;
+		height: 100vh;
+		grid-template-columns: repeat(var(--m), auto);
+	}
 
-		&:has(:hover) img:not(:hover),
-		&:has(:focus) img:not(:focus) {
-			filter: brightness(0.5) contrast(0.5);
-		}
+	.gallery > img,
+	.gallery > iframe {
+		width: 0;
+		height: 0;
+		min-height: 100%;
+		min-width: 100%;
+		object-fit: cover;
+		cursor: pointer;
+		filter: grayscale(80%);
+		transition: 0.7s linear;
+		transition-timing-function: cubic-bezier(0.14, 0.8, 0.3, 1);
+		transition-delay: 0.3s;
+	}
 
-		& img,
-		iframe {
-			object-fit: cover;
-			width: calc(var(--size) * 2);
-			height: calc(var(--size) * 2);
-			clip-path: path(
-				'M90,10 C100,0 100,0 110,10 190,90 190,90 190,90 200,100 200,100 190,110 190,110 110,190 110,190 100,200 100,200 90,190 90,190 10,110 10,110 0,100 0,100 10,90Z'
-			);
-			transition:
-				clip-path 0.25s,
-				filter 0.75s;
-			grid-column: auto / span 2;
-			border-radius: 5px;
-
-			&:nth-child(5n - 1) {
-				grid-column: 2 / span 2;
-			}
-
-			&:hover,
-			&:focus {
-				clip-path: path(
-					'M0,0 C0,0 200,0 200,0 200,0 200,100 200,100 200,100 200,200 200,200 200,200 100,200 100,200 100,200 100,200 0,200 0,200 0,100 0,100 0,100 0,100 0,100Z'
-				);
-				z-index: 1;
-				transition:
-					clip-path 0.25s,
-					filter 0.25s;
-			}
-
-			&:focus {
-				outline: 1px dashed black;
-				outline-offset: -5px;
-			}
-		}
+	.gallery img:hover,
+	.gallery iframe:hover {
+		filter: grayscale(0);
+		width: calc(100vh * var(--f) / var(--n));
+		height: calc(100vw * var(--f) / var(--m));
 	}
 
 	@media (max-width: 768px) {
