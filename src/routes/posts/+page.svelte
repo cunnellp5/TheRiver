@@ -47,6 +47,15 @@
 </main>
 
 <style>
+	ul {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+		/* grid-template-columns: repeat(auto-fill); */
+		/* gap: 20px; */
+	}
+	/* ul li:nth-child(odd) {
+		grid-row: span 2;
+	} */
 	/* CLASSES */
 	.success-form-message {
 		display: flex;
@@ -70,14 +79,4 @@
 		box-shadow: var(--shadow-2);
 		padding: var(--size-4);
 	}
-
-	ul {
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-		/* grid-template-columns: repeat(auto-fill); */
-		/* gap: 20px; */
-	}
-	/* ul li:nth-child(odd) {
-		grid-row: span 2;
-	} */
 </style>
