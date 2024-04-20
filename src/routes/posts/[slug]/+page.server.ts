@@ -22,7 +22,7 @@ export const load: PageServerLoad = async ({ fetch, params, locals }) => {
 };
 
 export const actions: Actions = {
-	default: async ({ fetch, request, params }) => {
+	update: async ({ fetch, request, params }) => {
 		const { slug } = params;
 
 		const formData = await request.formData();
@@ -31,7 +31,7 @@ export const actions: Actions = {
 		const tags = formData.get('tagInput')?.toString();
 
 		if (!slug) {
-			error(400, 'Invalid slug');
+			return error(400, 'Invalid slug');
 		}
 
 		if (!title) {
@@ -61,14 +61,11 @@ export const actions: Actions = {
 			return redirect(302, `/posts/${slugified}`);
 		}
 		const errorMessage = await response.json();
-		error(response.status, errorMessage);
+		return error(response.status, errorMessage);
 	}
 };
 
 // TODO
 // trim white spaces in title
 // add links for duplicate tags to show all posts with that tag
-// add create new post
 // add sorting and filtering capabilities?
-// add layout navigation here to show all posts | unpublished posts | drafts | etc
-// play with making posts look like a mobile friendly cool gallery
