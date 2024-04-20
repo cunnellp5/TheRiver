@@ -10,7 +10,7 @@ export const load: PageServerLoad = async ({ fetch, locals }) => {
 
 	if (!response.ok) {
 		const errorMessage = await response.json();
-		error(response.status, errorMessage);
+		error(response.status, errorMessage); // this is an expected error
 	}
 
 	const posts: Post[] = await response.json();
@@ -55,28 +55,26 @@ export const actions: Actions = {
 		};
 	},
 
-	deletePost: async ({ fetch, request }) => {
+	deletePost: async ({ request }) => {
 		const formData = await request.formData();
 		const slug = formData.get('slug');
 
 		// TODO add message to top of page
 		if (!slug) {
+			// fail throws action error
 			return fail(400, {
 				message: 'Invalid slug'
 			});
 		}
 
-		const response = await fetch(`/api/posts/${slug}`, { method: 'DELETE' });
-
-		if (!response.ok) {
-			const errorMessage = await response.json();
-			error(response.status, errorMessage);
+		try {
+			await db.post.delete({
+				where: { slug: slug.toString() }
+			});
+			return { success: true };
+		} catch (err) {
+			const { message } = err as Error;
+			throw new Error(message); // unexpected
 		}
-
-		return {
-			success: true,
-			message: 'Post deleted',
-			deletedTitle: slug
-		};
 	}
 };
