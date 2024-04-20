@@ -5,17 +5,7 @@
 <main>
 	<div class="hero">
 		<h1>THE RIVER CREATES</h1>
-		<div class="arrow">
-			<MoveDown color="#666968" />
-		</div>
-	</div>
-	<div class="full-height">
-		<div>test full height 1</div>
-		<!-- <AnimatedElement /> -->
-	</div>
-	<div class="full-height">
-		<div>test fulll height 2</div>
-		<!-- <AnimatedElement /> -->
+		<div class="arrow">Coming soon!</div>
 	</div>
 </main>
 
@@ -43,14 +33,6 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-	}
-
-	.full-height {
-		height: 100vh;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		border: 4px solid white;
 	}
 
 	.arrow {

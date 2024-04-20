@@ -1,7 +1,7 @@
 <main>
 	<section>
 		<h1>THE RIVER BEAUTY</h1>
-		<!-- <p>theriverrunsfast@gmail.com</p> -->
+		<p>🚧 Under construction</p>
 	</section>
 </main>
 
