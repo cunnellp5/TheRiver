@@ -5,15 +5,10 @@
 	import type { ActionData, PageData } from './$types';
 	import EditForm from './EditForm.svelte';
 
-	export let form: ActionData;
 	export let data: PageData;
 	let quill: Quill | null;
 	let isEditing = false;
 	let reader: string | HTMLElement;
-
-	function update() {
-		isEditing = !isEditing;
-	}
 
 	onMount(async () => {
 		const { default: Quill } = await import('quill');
@@ -35,7 +30,6 @@
 	});
 </script>
 
-<input type="checkbox" on:change={update} />
 <main class:editing={isEditing} class:center={!isEditing}>
 	<section>
 		<hgroup>
@@ -56,9 +50,6 @@
 			{data.post.content}
 		</p>
 	</section>
-	{#if isEditing}
-		<EditForm {data} {form} />
-	{/if}
 </main>
 
 <style>
