@@ -1,14 +1,23 @@
 <script lang="ts">
-	import formatDate from '$lib/utils/formatDate';
-	import type { EventHandler } from 'svelte/elements';
 	import { enhance } from '$app/forms';
-	import type { PageData } from './$types';
+	import type Quill from 'quill';
+	import 'quill/dist/quill.snow.css';
+	import { onMount } from 'svelte';
+	import type { ActionData, PageData } from './$types';
 
 	export let data: PageData;
-	export let form;
+	export let form: ActionData;
+	let toolbarOptions = [
+		[{ header: 1 }, { header: 2 }, 'blockquote', 'link', 'image', 'video'],
+		['bold', 'italic', 'underline', 'strike'],
+		[{ list: 'ordered' }, { list: 'bullet' }],
+		[{ align: [] }],
+		['clean']
+	];
 
+	let editor: string | HTMLElement;
+	let quill: Quill | null;
 	const isEditing = true;
-
 	let { title } = data.post;
 	let { content } = data.post;
 	let tagInput = data.post.tags;
@@ -30,6 +39,39 @@
 			tagInput = tagInput.filter((t: string) => t !== tag);
 		}
 	}
+
+	function resetForm() {
+		tagInput = data.post.tags;
+		title = data.post.title;
+		quill?.setText(data.post.content);
+	}
+
+	onMount(async () => {
+		const { default: Quill } = await import('quill');
+
+		// initialize the Quill editor
+		quill = new Quill(editor, {
+			modules: {
+				toolbar: toolbarOptions
+			},
+			theme: 'snow',
+			placeholder: 'Write your story...'
+		});
+
+		let quillData;
+		try {
+			quillData = JSON.parse(data.post.content);
+		} catch (e) {
+			quillData = [{ insert: data.post.content }];
+		}
+		// set the content of the reader with incoming data
+		quill.setContents(quillData);
+
+		// listen for changes in the editor
+		quill.on('text-change', () => {
+			content = JSON.stringify(quill?.getContents());
+		});
+	});
 </script>
 
 <section>
@@ -37,22 +79,18 @@
 
 	<form method="POST" action="/posts/{data.post.slug}" use:enhance>
 		<hgroup>
-			<h2>
-				<label for="title">Title</label>
+			<h1>
 				<textarea
 					name="title"
 					id="title"
 					bind:value={title}
 					spellcheck
 					placeholder={title}
-					cols="30" />
-			</h2>
+					rows="3" />
+			</h1>
 			<div class="tags">
 				<div class="inputWrapper">
-					<label for="tagInput">Tags</label>
-					<!-- I WANT TO COLLECT THE TAGS HERE -->
 					<input type="hidden" id="tagInput" name="tagInput" bind:value={tagInput} />
-					<!-- I WANT TO UPDATE THE TAGS HERE -->
 					<input type="text" placeholder="Add tags" on:keydown={handleKeyDown} />
 				</div>
 				<div class="badgesWrapper">
@@ -65,37 +103,65 @@
 				</div>
 			</div>
 		</hgroup>
-		<p class="content">
-			<label for="content">Content</label>
-			<textarea
-				name="content"
-				id="content"
-				bind:value={content}
-				spellcheck
-				wrap="soft"
-				rows="15"
-				cols="60" />
-		</p>
-		<button class="primary" type="submit">Update Post</button>
+		<div class="form-group">
+			<label for="content">📝 Create that blog!</label>
+			<div class="editor-wrapper">
+				<div id="editor" bind:this={editor} />
+				<input type="hidden" id="content" name="content" bind:value={content} />
+			</div>
+		</div>
+		<div class="buttonWrapper">
+			<button type="submit">Submit Form</button>
+			<button type="reset" id="resetForm" on:click|preventDefault={resetForm}>
+				Reset to Initial Data
+			</button>
+		</div>
 	</form>
 </section>
 
 <style>
 	@import './post.css';
 
-	h2 {
+	textarea {
+		background: var(--gradient-1) fixed;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		height: auto;
+		border: 1px solid var(--stone-9);
+	}
+
+	h1 {
 		background: unset;
 		-webkit-background-clip: unset;
 		-webkit-text-fill-color: unset;
 		background-clip: unset;
 	}
 
-	hgroup {
-		max-width: 80%;
+	section {
+		width: 60%;
 	}
 
-	section {
-		width: 50%;
+	.editor-wrapper {
+		width: 100%;
+		& *,
+		& *::before,
+		& *::placeholder {
+			color: var(--stone-2);
+		}
+		& button {
+			box-shadow: none;
+		}
+	}
+	#editor {
+		min-height: var(--size-content-1);
+	}
+
+	.buttonWrapper {
+		margin-block-start: var(--size-4);
+		& button {
+			margin-inline-end: var(--size-2);
+		}
 	}
 
 	.deleteBadge {
@@ -107,10 +173,7 @@
 	}
 
 	.inputWrapper {
-		margin-block: var(--size-4);
-		& input {
-			margin-inline-start: var(--size-3);
-		}
+		margin-block: var(--size-1);
 	}
 
 	.badgesWrapper {
