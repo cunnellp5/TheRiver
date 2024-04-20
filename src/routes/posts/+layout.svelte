@@ -10,8 +10,8 @@
 		<nav>
 			<ul class="mainNavs">
 				<li><a href="/posts">Blog posts</a></li>
-				<li><a href="/posts">Instagrams?</a></li>
-				<li><a href="/posts">Twitters?</a></li>
+				<li><a href="/posts">Instagram</a></li>
+				<li><a href="/posts">Twitter</a></li>
 			</ul>
 			<!-- <div class="divider"></div> -->
 			<!-- TODO: maybe only show this when viewing a single item? -->
