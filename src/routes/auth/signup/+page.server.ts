@@ -5,11 +5,7 @@ import db from '$lib/server/database';
 import type { Actions, PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async (event) => {
-	console.log(event);
-	// if (!event.locals.user) redirect(302, '/');
-	// return {
-	// 	username: event.locals.user.username
-	// };
+	if (event.locals.user) redirect(302, '/auth/login');
 };
 
 export const actions: Actions = {
@@ -63,8 +59,6 @@ export const actions: Actions = {
 			});
 		}
 
-		// TODO will need to do something different here for users that only signed up for the news letter
-		// checks db for existing username
 		const existingEmail = await db.user.findUnique({
 			where: { email: email.toString() }
 		});
@@ -99,6 +93,6 @@ export const actions: Actions = {
 			...sessionCookie.attributes
 		});
 
-		redirect(302, '/dashboard');
+		return redirect(302, '/dashboard');
 	}
 };

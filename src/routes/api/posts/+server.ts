@@ -3,13 +3,24 @@ import { error, json } from '@sveltejs/kit';
 
 import db from '$lib/server/database';
 
-// THIS API ROUTE STAYS SO WE CAN DO FILTERING / SORTING / PAGINATION
-export const GET: RequestHandler = async (event): Promise<Response> => {
-	let posts;
+function shouldFilter(published: string | null, admin: boolean | undefined) {
+	if (admin) {
+		return published !== null ? { published: published === 'true' } : {};
+	}
+	return { published: true };
+}
 
+// THIS API ROUTE STAYS SO WE CAN DO FILTERING / SORTING / PAGINATION ?????
+export const GET: RequestHandler = async ({ url, locals, setHeaders }): Promise<Response> => {
+	const sort: string | null = url.searchParams?.get('sort') || 'updatedAt';
+	const order: string | null = url.searchParams?.get('order') || 'desc';
+	const published: string | null = url.searchParams?.get('published');
+
+	let posts;
 	try {
 		posts = await db.post.findMany({
-			orderBy: [{ updatedAt: 'desc' }, { createdAt: 'desc' }]
+			where: shouldFilter(published, locals?.user?.isAdmin),
+			orderBy: [{ [sort as string]: order }]
 		});
 	} catch (err: unknown | Error) {
 		error(500, (err as Error).message);
@@ -19,7 +30,7 @@ export const GET: RequestHandler = async (event): Promise<Response> => {
 		error(404, 'Posts not found.');
 	}
 
-	event.setHeaders({
+	setHeaders({
 		'Cache-Control': 'public, max-age=60, s-maxage=60'
 	});
 

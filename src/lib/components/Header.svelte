@@ -1,3 +1,4 @@
+<!-- TODO fix light mode text color -->
 <script lang="ts">
 	import LogoR from '$lib/components/svgs/logos/LogoR2.svelte';
 	import Ellipsis from 'lucide-svelte/icons/ellipsis';
@@ -52,7 +53,7 @@
 			<li
 				class:current={$page.url.pathname === '/shop'}
 				aria-current={$page.url.pathname === '/shop'}>
-				<a href="/shop"> Merch </a>
+				<a href="/shop"> Market </a>
 			</li>
 
 			<li class="border-left"></li>
@@ -60,7 +61,7 @@
 			<li
 				class:current={$page.url.pathname === '/posts'}
 				aria-current={$page.url.pathname === '/posts'}>
-				<a href="/posts"> Blog </a>
+				<a href="/posts"> Posts </a>
 			</li>
 			<li
 				class:current={$page.url.pathname === '/contact'}
@@ -116,7 +117,7 @@
 		text-decoration: none;
 		text-transform: uppercase;
 		font-weight: var(--font-weight-5);
-		font-size: var(--size-3);
+		font-size: var(--font-size-0);
 		transition: color 0.3s ease;
 		height: 100%;
 		letter-spacing: var(--font-letterspacing-2);
@@ -151,8 +152,8 @@
 			bottom: 25%;
 			left: 0;
 			right: 0;
-			border-top: 3px solid #34495e;
-			border-bottom: 3px solid #34495e;
+			border-top: 1px solid var(--link);
+			border-bottom: 1px solid var(--link);
 		}
 	}
 

@@ -2,7 +2,7 @@ import { PrismaClient } from '@prisma/client';
 
 const db = new PrismaClient();
 
-type Post = {
+type DummyPost = {
 	title: string;
 	body: string;
 	tags: string[];
@@ -13,7 +13,7 @@ async function getPosts() {
 	const response = await fetch('https://dummyjson.com/posts/');
 	const { posts } = await response.json();
 
-	return posts as Post[];
+	return posts as DummyPost[];
 }
 
 function slugify(text: string) {
@@ -26,16 +26,15 @@ function slugify(text: string) {
 async function main() {
 	const posts = await getPosts();
 
-	for (const post of posts) {
-		await db.post.create({
-			data: {
-				title: post.title,
-				content: post.body,
-				slug: slugify(post.title),
-				tags: post.tags
-			}
-		});
-	}
+	const data = posts.map((post) => ({
+		title: post.title,
+		content: post.body,
+		slug: slugify(post.title),
+		tags: post.tags,
+		description: `${post.body.slice(0, 100)}...`
+	}));
+
+	await db.post.createMany({ data });
 }
 
 main();

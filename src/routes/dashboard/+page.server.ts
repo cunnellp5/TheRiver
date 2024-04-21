@@ -1,9 +1,10 @@
-import { redirect } from '@sveltejs/kit';
+import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async (event) => {
-	console.log(event.locals);
-	if (!event.locals.user) redirect(302, '/auth/login');
+	if (!event.locals.user) {
+		return error(401, 'Unauthorized');
+	}
 
 	return {
 		isAdmin: event.locals.user.isAdmin

@@ -1,14 +1,26 @@
 <script lang="ts">
 	import 'quill/dist/quill.snow.css';
-	import type { ActionData } from '../$types';
-	import PostsForm from '../components/PostsForm.svelte';
+	import type { ActionData, PageData } from '../$types';
+	import PostsForm from '../../components/PostsForm.svelte';
+	import { page } from '$app/stores';
 
 	export let form: ActionData;
+	export let data: PageData;
+
+	let post = data.posts.find((post) => post.slug === $page.params.slug);
+
+	let title: string = post?.title || '';
+	let content: string = post?.content || '';
+	let description: string = post?.description || '';
+	let tagInput: string[] = post?.tags || [];
+	let published: boolean = post?.published || false;
+
+	console.log(post);
 </script>
 
 <main>
 	<section>
-		<h1 class="firstHeader">Create a post</h1>
+		<h1 class="firstHeader">Edit a post</h1>
 
 		<blockquote>
 			<ul>
@@ -21,7 +33,7 @@
 
 		{#if form?.error}<p class="formMessage">{form?.message}</p>{/if}
 
-		<PostsForm {form} />
+		<PostsForm {form} {title} {content} {description} {tagInput} {published} />
 	</section>
 </main>
 

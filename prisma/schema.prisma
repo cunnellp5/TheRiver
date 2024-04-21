@@ -45,14 +45,15 @@ model Session {
 }
 
 model Post {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  title     String
-  content   String?
-  slug      String   @unique
-  published Boolean  @default(false)
-  tags      String[] @default([])
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  title       String
+  content     String
+  description String
+  slug        String   @unique
+  published   Boolean  @default(false)
+  tags        String[] @default([])
 }
 
 model SocialLinks {

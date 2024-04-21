@@ -1,90 +1,121 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
+	import { QuillConfigReadonly, quillContentInit } from '$lib/utils/QuillConfig';
 	import formatDate from '$lib/utils/formatDate';
+	import Pencil from 'lucide-svelte/icons/pencil';
+	import Trash from 'lucide-svelte/icons/trash';
 	import type Quill from 'quill';
 	import { onMount } from 'svelte';
-	import type { ActionData, PageData } from './$types';
-	import EditForm from './EditForm.svelte';
+	import type { PageData } from './$types';
+	import { page } from '$app/stores';
+	import { goto } from '$app/navigation';
 
-	export let form: ActionData;
 	export let data: PageData;
 	let quill: Quill | null;
-	let isEditing = false;
 	let reader: string | HTMLElement;
 
-	function update() {
-		isEditing = !isEditing;
-	}
+	let post = data.posts.find((post) => post.slug === $page.params.slug) || {
+		title: '',
+		content: '',
+		tags: [],
+		createdAt: new Date(),
+		slug: ''
+	};
 
 	onMount(async () => {
-		const { default: Quill } = await import('quill');
-
-		// initialize the Quill reader
-		quill = new Quill(reader, {
-			modules: { toolbar: null },
-			readOnly: true
-		});
-
-		let quillData;
 		try {
-			quillData = JSON.parse(data.post.content);
-		} catch (e) {
-			quillData = [{ insert: data.post.content }];
+			const { default: Quill } = await import('quill');
+
+			quill = new Quill(reader, QuillConfigReadonly);
+
+			let quillData = await quillContentInit(post.content);
+
+			quill.setContents(quillData);
+		} catch (error) {
+			// TODO: unable to load quill, provide some fall back
 		}
-		// set the content of the reader with incoming data
-		quill.setContents(quillData);
 	});
 </script>
 
-<input type="checkbox" on:change={update} />
-<main class:editing={isEditing} class:center={!isEditing}>
+<main>
 	<section>
 		<hgroup>
-			<h1>{data.post.title}</h1>
-			<date>{formatDate(new Date(data.post.createdAt))}</date>
+			<div class="headerAction">
+				<h1 id={post.slug}>{post.title}</h1>
+				{#if data.isAdmin}
+					<button class="edit" title="Edit this post">
+						<a href="/posts/{post.slug}/edit"><Pencil /></a>
+					</button>
+					<form
+						method="POST"
+						action="/posts?/deletePost"
+						use:enhance={({ cancel }) => {
+							if (confirm('Are you sure you want to delete this post?')) {
+								return async ({ update }) =>
+									update()
+										.then(() => goto('/posts'))
+										.then(() => {
+											setTimeout(() => {
+												confirm('Post deleted');
+											}, 500);
+										});
+							}
+							cancel();
+						}}>
+						<input type="hidden" name="slug" id="slug" value={post.slug} />
+						<button class="delete" type="submit">
+							<Trash />
+						</button>
+					</form>
+				{/if}
+			</div>
+			<date>{formatDate(new Date(post.createdAt))}</date>
 			<div class="tags">
-				{#each data.post.tags as tag}
+				{#each post.tags as tag}
 					<span class="badge"># {tag}</span>
 				{/each}
 			</div>
 		</hgroup>
 
-		<div class="reader-wrapper" class:hidden={!quill}>
+		<div class="reader-wrapper">
+			<div bind:this={reader} />
+		</div>
+		<!-- TODO figure out if both the following are needed? -->
+		<!-- <div class="reader-wrapper" class:hidden={!quill}>
 			<div bind:this={reader} />
 		</div>
 
 		<p class="content" class:hidden={quill}>
 			{data.post.content}
-		</p>
+		</p> -->
 	</section>
-	{#if isEditing}
-		<EditForm {data} {form} />
-	{/if}
 </main>
 
 <style>
-	@import '../post.css';
-	date {
-		font-size: var(--font-size-0);
-		color: var(--gray-7);
-	}
-	.hidden {
-		display: none;
-	}
-	.editing {
-		margin-block-start: var(--size-9);
-		width: 100%;
-		display: flex;
-		flex-direction: row;
-		justify-content: space-around;
-	}
-	.center {
-		margin-block-start: var(--size-9);
-		width: 100%;
+	@import '../styles/post.css';
+
+	main {
+		height: 100vh;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 	}
+	date {
+		font-size: var(--font-size-0);
+		color: var(--gray-7);
+	}
 
+	.headerAction {
+		display: flex;
+		/* justify-content: space-between; */
+		align-items: center;
+		& button {
+			margin-inline-start: var(--size-2);
+		}
+	}
+	/* .hidden {
+		display: none;
+	} */
 	.reader-wrapper {
 		width: 100%;
 		& *,
@@ -96,5 +127,8 @@
 		& blockquote {
 			padding-inline: var(--size-4);
 		}
+	}
+	.delete {
+		background-color: hsl(var(--red-5-hsl) / 80%);
 	}
 </style>
