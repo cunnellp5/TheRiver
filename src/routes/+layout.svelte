@@ -9,7 +9,6 @@
 	import 'open-props/buttons';
 	import 'open-props/style';
 	import '../styles/app.css';
-	$: console.log($page);
 </script>
 
 <div class="layout" class:home={$page.url.pathname === '/'}>
