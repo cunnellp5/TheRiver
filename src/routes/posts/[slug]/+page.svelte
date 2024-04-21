@@ -51,7 +51,14 @@
 						action="/posts?/deletePost"
 						use:enhance={({ cancel }) => {
 							if (confirm('Are you sure you want to delete this post?')) {
-								return async ({ update }) => update().then(() => goto('/posts'));
+								return async ({ update }) =>
+									update()
+										.then(() => goto('/posts'))
+										.then(() => {
+											setTimeout(() => {
+												confirm('Post deleted');
+											}, 500);
+										});
 							}
 							cancel();
 						}}>
