@@ -15,7 +15,14 @@
 	export let description: string = '';
 	export let tagInput: string[] = [];
 	export let published: boolean = false;
-	// export let action: string =
+
+	let initialData = {
+		title,
+		content,
+		description,
+		tagInput,
+		published
+	};
 
 	// CONFIG
 	let editor: string | HTMLElement;
@@ -64,10 +71,10 @@
 	}
 
 	function resetForm() {
-		tagInput = [];
-		title = '';
-		quill?.setText('');
-		published = false;
+		tagInput = initialData.tagInput;
+		title = initialData.title;
+		quill?.setText(initialData.content);
+		published = initialData.published;
 	}
 
 	function handleToggle(event: CustomEvent<boolean>) {
