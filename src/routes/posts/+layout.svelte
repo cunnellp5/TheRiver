@@ -40,6 +40,7 @@
 
 			<p>Showing {posts.length} posts.</p>
 		</header>
+		<hr />
 		<slot />
 	</section>
 </main>

@@ -33,9 +33,9 @@
 			{/if}
 			<ul>
 				{#each posts as { slug, title, tags, createdAt, content }}
-					<li in:fly={{ y: 20 }} out:slide class="cardWrapper">
+					<div in:fly={{ y: 20 }} out:slide>
 						<BlogCard {title} {tags} {content} {createdAt} {slug} {isAdmin} />
-					</li>
+					</div>
 				{/each}
 			</ul>
 		{:else}
@@ -47,15 +47,21 @@
 </main>
 
 <style>
+	main {
+		margin-inline: var(--size-content-1);
+	}
 	ul {
+		/* border: 1px solid white; */
 		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+		gap: var(--size-4);
+		grid-template-columns: repeat(auto-fill, minmax(2fr, 1fr));
 		/* grid-template-columns: repeat(auto-fill); */
 		/* gap: 20px; */
 	}
 	/* ul li:nth-child(odd) {
 		grid-row: span 2;
 	} */
+
 	/* CLASSES */
 	.success-form-message {
 		display: flex;
