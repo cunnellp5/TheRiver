@@ -6,27 +6,34 @@
 	import type { ActionData } from '../$types';
 	import SliderToggle from '$lib/components/ui/SliderToggle.svelte';
 	import type Quill from 'quill';
-	import { QuillConfig } from '$lib/utils/QuillConfig';
+	import { QuillConfig, quillContentInit } from '$lib/utils/QuillConfig';
 
-	// PROPS
+	// PROPS / form data
 	export let form: ActionData;
+	export let title: string = '';
+	export let content: string = '';
+	export let description: string = '';
+	export let tagInput: string[] = [];
+	export let published: boolean = false;
+	// export let action: string =
 
 	// CONFIG
 	let editor: string | HTMLElement;
 	let quill: Quill;
 
-	// Form data
-	let title: string = '';
-	let content: string = '';
-	let description: string = '';
-	let tagInput: string[] = [];
-	let published: boolean = false;
-
 	onMount(async () => {
 		try {
 			const { default: Quill } = await import('quill');
+
 			// initialize the Quill editor
 			quill = new Quill(editor, QuillConfig);
+
+			if (content) {
+				// get the content of the post
+				let quillData = quillContentInit(content);
+				// set the content of the reader with incoming data
+				quill.setContents(quillData);
+			}
 
 			// listen for changes in the editor
 			quill.on('text-change', () => {
@@ -74,7 +81,6 @@
 	<div class="banner" class:published class:not-published={!published}>
 		{published ? 'PUBLISH' : 'UNPUBLISH'}
 		<SliderToggle checked={published} on:toggle={handleToggle} id="published" name="published" />
-		<!-- <input type="hidden" id="published" name="published" bind:value={published} /> -->
 	</div>
 
 	<hgroup>
