@@ -6,7 +6,7 @@
 	import type { ActionData } from '../$types';
 	import SliderToggle from '$lib/components/ui/SliderToggle.svelte';
 	import type Quill from 'quill';
-	import QuillConfig from '$lib/utils/QuillConfig';
+	import { QuillConfig } from '$lib/utils/QuillConfig';
 
 	// PROPS
 	export let form: ActionData;
