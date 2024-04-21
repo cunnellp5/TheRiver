@@ -3,7 +3,7 @@
 	import type Quill from 'quill';
 	import { onMount } from 'svelte';
 	import type { ActionData, PageData } from './$types';
-	import EditForm from './EditForm.svelte';
+	// import EditForm from './EditForm.svelte';
 
 	export let data: PageData;
 	let quill: Quill | null;
