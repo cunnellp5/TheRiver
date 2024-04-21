@@ -40,6 +40,9 @@ html {
 	transition:
 		background-color 1.5s ease,
 		color 1.5s ease;
+
+	--transition-delay-1: 0.1s;
+	--transition-delay-2: 0.3s;
 }
 
 :root {
