@@ -3,9 +3,21 @@ import type { Post } from '@prisma/client';
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from '../$types';
 
+// export const load: PageServerLoad = async ({ fetch }) => {
+// 	const response = await fetch('/api/posts');
+// 	const posts = await response.json();
+
+// 	if (response.ok) {
+// 		return { posts };
+// 	}
+
+// 	return error(response.status, posts.message);
+// };
 export const load: PageServerLoad = async ({ locals }) => {
+	// TODO move this to an api endpoint to run filtering from the client
 	try {
 		const posts: Post[] = await db.post.findMany({
+			where: { published: true },
 			orderBy: [{ updatedAt: 'desc' }, { createdAt: 'desc' }]
 		});
 
