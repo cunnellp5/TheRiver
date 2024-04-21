@@ -6,6 +6,7 @@
 	import type { ActionData } from '../$types';
 
 	export let form: ActionData;
+
 	let toolbarOptions = [
 		[{ header: 1 }, { header: 2 }, 'blockquote', 'link', 'image', 'video'],
 		['bold', 'italic', 'underline', 'strike'],
@@ -13,11 +14,8 @@
 		[{ align: [] }],
 		['clean']
 	];
-
 	let editor: string | HTMLElement;
-	let quill: Quill | null;
-	const isEditing = true;
-
+	let quill: Quill;
 	let title: string = '';
 	let content: string = '';
 	let tagInput: string[] = [];
@@ -50,7 +48,7 @@
 		const { default: Quill } = await import('quill');
 
 		// initialize the Quill editor
-		quill = new Quill(editor, {
+		quill = new Quill('#editor', {
 			modules: {
 				toolbar: toolbarOptions
 			},
@@ -68,9 +66,9 @@
 <main>
 	<section>
 		<h1 class="firstHeader">Create a post</h1>
-		{#if form?.message}<p class="formMessage">{form?.message}</p>{/if}
+		{#if form?.error}<p class="formMessage">{form?.message}</p>{/if}
 
-		<form method="POST" action="/posts?/createPost" use:enhance>
+		<form method="POST" use:enhance>
 			<hgroup>
 				<h1>
 					<textarea
@@ -104,7 +102,7 @@
 				</div>
 			</div>
 			<div class="buttonWrapper">
-				<button type="submit">Submit Form</button>
+				<button>Submit Form</button>
 				<button type="reset" id="resetForm" on:click|preventDefault={resetForm}>
 					Reset to Initial Data
 				</button>
