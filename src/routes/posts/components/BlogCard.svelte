@@ -7,9 +7,9 @@
 
 	export let title: string;
 	export let tags: string[];
-	export let content: string | null;
 	export let createdAt: Date;
 	export let slug: string;
+	export let description: string;
 	export let isAdmin: boolean | undefined;
 </script>
 
@@ -24,7 +24,7 @@
 			<date>{formatDate(new Date(createdAt))}</date>
 		</div>
 		<p class="description">
-			{`${content?.substring(0, 100)}...`}
+			{description}
 		</p>
 		<div>
 			{#each tags as tag}
@@ -38,7 +38,7 @@
 	</div>
 	{#if isAdmin}
 		<div class="actionsGroup">
-			<a href="/posts/{slug}/edit">
+			<a href="/posts/{slug}/">
 				<button class="edit" type="button">
 					<Pencil />
 				</button>
@@ -77,7 +77,6 @@
 
 	/* CLASSES */
 	.card {
-		margin-block: var(--size-4);
 		box-shadow: var(--shadow-2);
 		padding: var(--size-4);
 	}
