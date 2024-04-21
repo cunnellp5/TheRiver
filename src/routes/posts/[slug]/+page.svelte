@@ -3,6 +3,7 @@
 	import type Quill from 'quill';
 	import { onMount } from 'svelte';
 	import type { ActionData, PageData } from './$types';
+	import { QuillConfigReadonly, quillContentInit } from '$lib/utils/QuillConfig';
 	// import EditForm from './EditForm.svelte';
 
 	export let data: PageData;
@@ -11,22 +12,17 @@
 	let reader: string | HTMLElement;
 
 	onMount(async () => {
-		const { default: Quill } = await import('quill');
-
-		// initialize the Quill reader
-		quill = new Quill(reader, {
-			modules: { toolbar: null },
-			readOnly: true
-		});
-
-		let quillData;
 		try {
-			quillData = JSON.parse(data.post.content);
-		} catch (e) {
-			quillData = [{ insert: data.post.content }];
+			const { default: Quill } = await import('quill');
+
+			quill = new Quill(reader, QuillConfigReadonly);
+
+			let quillData = quillContentInit(data.post.content);
+
+			quill.setContents(quillData);
+		} catch (error) {
+			// TODO: unable to load quill, have a fall back
 		}
-		// set the content of the reader with incoming data
-		quill.setContents(quillData);
 	});
 </script>
 
