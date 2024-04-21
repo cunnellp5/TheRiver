@@ -1,10 +1,12 @@
 import db from '$lib/server/database';
 import slugify from '$lib/utils/slugify';
-import { fail, redirect } from '@sveltejs/kit';
+import { error, fail, redirect } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async (event) => {
-	if (!event.locals.user) redirect(302, '/posts/error');
+	if (!event.locals.user) {
+		return error(401, 'Unauthorized');
+	}
 
 	return {
 		isAdmin: event.locals.user.isAdmin
