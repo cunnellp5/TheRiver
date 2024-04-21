@@ -38,7 +38,7 @@
 	</div>
 	{#if isAdmin}
 		<div class="actionsGroup">
-			<a href="/posts/{slug}/">
+			<a href="/posts/{slug}/edit">
 				<button class="edit" type="button">
 					<Pencil />
 				</button>
