@@ -32,9 +32,9 @@
 				</div>
 			{/if}
 			<ul>
-				{#each posts as { slug, title, tags, createdAt, content }}
+				{#each posts as { content, createdAt, description, slug, tags, title }}
 					<div in:fly={{ y: 20 }} out:slide>
-						<BlogCard {title} {tags} {content} {createdAt} {slug} {isAdmin} />
+						<BlogCard {title} {tags} {createdAt} {slug} {isAdmin} {description} />
 					</div>
 				{/each}
 			</ul>
@@ -54,7 +54,7 @@
 		/* border: 1px solid white; */
 		display: grid;
 		gap: var(--size-4);
-		grid-template-columns: repeat(auto-fill, minmax(2fr, 1fr));
+		/* grid-template-columns: repeat(auto-fill, minmax(2fr, 1fr)); */
 		/* grid-template-columns: repeat(auto-fill); */
 		/* gap: 20px; */
 	}
@@ -84,5 +84,11 @@
 		margin-block: var(--size-4);
 		box-shadow: var(--shadow-2);
 		padding: var(--size-4);
+	}
+
+	@media (max-width: 768px) {
+		main {
+			margin-inline: 0;
+		}
 	}
 </style>
