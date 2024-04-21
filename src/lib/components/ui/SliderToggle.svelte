@@ -1,17 +1,37 @@
-<script>
+<script lang="ts">
+	/*
+	 * SliderToggle.svelte
+	 *
+	 *  @desc: A simple switch toggle component
+	 *
+	 * 	@props:
+	 * 		checked - bound to the input element
+	 * 		id - used for form
+	 * 		name - used for form
+	 *
+	 * 	@events:
+	 * 		'toggle' event dispatched when the input is clicked
+	 *
+	 * 	@usage:
+	 * 			<SliderToggle checked={published} on:toggle={handleToggle} id="published" name="published" />
+	 */
+
 	import { createEventDispatcher } from 'svelte';
 
 	export let checked = false;
+	export let id: string;
+	export let name: string;
+
 	const dispatch = createEventDispatcher();
 
-	function toggle() {
-		checked = !checked;
-		dispatch('toggle', checked);
+	function toggle(event: Event) {
+		const target = event.target as HTMLInputElement;
+		dispatch('toggle', target.checked);
 	}
 </script>
 
 <label class="switch">
-	<input type="checkbox" bind:checked on:change={toggle} />
+	<input {id} {name} type="checkbox" bind:checked on:change={toggle} />
 	<span class="slider round"></span>
 </label>
 
