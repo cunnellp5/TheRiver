@@ -1,37 +1,19 @@
 <script lang="ts">
 	import Plus from 'lucide-svelte/icons/plus';
+	import { page } from '$app/stores';
 
 	export let data;
+	let isPostsHome = $page.url.pathname === '/posts';
 	$: ({ posts, isAdmin } = data);
-
-	/*
-this should go abo e the 'section' below
-<aside>
-	<nav>
-		<ul class="mainNavs">
-			<li><a href="/posts">Blog posts</a></li>
-		</ul>
-		<div class="divider"></div>
-		<!-- TODO: maybe only show this when viewing a single item? -->
-		<ul class="blogListSideNav">
-			{#each posts as { slug, title }}
-				<a href="/posts/{slug}">
-					<li class="blogPostSlugNav" {title}>
-						<ChevronRight size="12" />{title}
-					</li>
-				</a>
-			{/each}
-		</ul>
-	</nav>
-</aside>
-*/
 </script>
 
 <main>
 	<section>
 		<header>
 			<div class="titleWrapper">
-				<h1>The River Posts</h1>
+				<a href="/posts">
+					<h1>The River Posts</h1>
+				</a>
 				{#if isAdmin}
 					<button class="create">
 						<a href="/posts/create"><Plus /></a>
@@ -39,7 +21,9 @@ this should go abo e the 'section' below
 				{/if}
 			</div>
 
-			<p>Showing {posts.length} posts.</p>
+			{#if isPostsHome}
+				<p>Showing {posts.length} posts.</p>
+			{/if}
 		</header>
 		<hr />
 		<slot />
@@ -52,13 +36,9 @@ this should go abo e the 'section' below
 		/* grid-template-columns: max-content auto; */
 		margin-block-start: var(--size-7);
 	}
-	/* aside {
-		border-inline-end: 1px solid var(--border);
-		margin-inline-end: var(--size-4);
+	a:hover {
+		text-decoration: none;
 	}
-	nav {
-		margin-inline-end: var(--size-4);
-	} */
 	section {
 		display: flex;
 		flex-direction: column;
@@ -66,10 +46,7 @@ this should go abo e the 'section' below
 		margin: 0 auto;
 		width: 100%;
 	}
-	/* .divider {
-		border-bottom: 1px solid var(--border);
-		margin-block: var(--size-7);
-	} */
+
 	.titleWrapper {
 		display: flex;
 		flex-direction: row;
@@ -84,20 +61,4 @@ this should go abo e the 'section' below
 	.create {
 		background-color: hsl(var(--purple-4-hsl) / 50%);
 	}
-	/* .blogListSideNav {
-		width: var(--size-content-1);
-		font-size: var(--font-size-0);
-		overflow: hidden;
-		text-overflow: ellipsis;
-		white-space: nowrap;
-		& :hover {
-			text-decoration: none;
-		}
-	}
-	.blogPostSlugNav {
-		display: flex;
-		flex-direction: row;
-		padding-block: var(--size-2);
-		border-bottom: 1px solid var(--border);
-	} */
 </style>
