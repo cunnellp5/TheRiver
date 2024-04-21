@@ -4,6 +4,7 @@
 	import 'quill/dist/quill.snow.css';
 	import { onMount } from 'svelte';
 	import type { ActionData, PageData } from './$types';
+	import { QuillConfig, quillContentInit } from '$lib/utils/QuillConfig';
 
 	export let data: PageData;
 	export let form: ActionData;
@@ -47,30 +48,25 @@
 	}
 
 	onMount(async () => {
-		const { default: Quill } = await import('quill');
-
-		// initialize the Quill editor
-		quill = new Quill(editor, {
-			modules: {
-				toolbar: toolbarOptions
-			},
-			theme: 'snow',
-			placeholder: 'Write your story...'
-		});
-
-		let quillData;
 		try {
-			quillData = JSON.parse(data.post.content);
-		} catch (e) {
-			quillData = [{ insert: data.post.content }];
-		}
-		// set the content of the reader with incoming data
-		quill.setContents(quillData);
+			const { default: Quill } = await import('quill');
 
-		// listen for changes in the editor
-		quill.on('text-change', () => {
-			content = JSON.stringify(quill?.getContents());
-		});
+			// initialize the Quill editor
+			quill = new Quill(editor, QuillConfig);
+
+			// get the content of the post
+			let quillData = quillContentInit(data.post.content);
+
+			// set the content of the reader with incoming data
+			quill.setContents(quillData);
+
+			// listen for changes in the editor
+			quill.on('text-change', () => {
+				content = JSON.stringify(quill?.getContents());
+			});
+		} catch (error) {
+			// TODO add fallback
+		}
 	});
 </script>
 
