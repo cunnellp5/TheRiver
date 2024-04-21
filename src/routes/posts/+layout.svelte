@@ -3,30 +3,31 @@
 
 	export let data;
 	$: ({ posts, isAdmin } = data);
+
+	/*
+this should go abo e the 'section' below
+<aside>
+	<nav>
+		<ul class="mainNavs">
+			<li><a href="/posts">Blog posts</a></li>
+		</ul>
+		<div class="divider"></div>
+		<!-- TODO: maybe only show this when viewing a single item? -->
+		<ul class="blogListSideNav">
+			{#each posts as { slug, title }}
+				<a href="/posts/{slug}">
+					<li class="blogPostSlugNav" {title}>
+						<ChevronRight size="12" />{title}
+					</li>
+				</a>
+			{/each}
+		</ul>
+	</nav>
+</aside>
+*/
 </script>
 
 <main>
-	<aside>
-		<nav>
-			<ul class="mainNavs">
-				<li><a href="/posts">Blog posts</a></li>
-				<!-- <li><a href="/posts">Instagram</a></li> -->
-				<!-- <li><a href="/posts">Twitter</a></li> -->
-			</ul>
-			<!-- <div class="divider"></div> -->
-			<!-- TODO: maybe only show this when viewing a single item? -->
-			<!-- <ul class="blogListSideNav">
-				{#each posts as { slug, title }}
-					<a href="/posts/{slug}">
-						<li class="blogPostSlugNav" {title}>
-							<ChevronRight size="12" />{title}
-						</li>
-					</a>
-				{/each}
-			</ul> -->
-		</nav>
-	</aside>
-
 	<section>
 		<header>
 			<div class="titleWrapper">
@@ -47,17 +48,17 @@
 
 <style>
 	main {
-		display: grid;
-		grid-template-columns: max-content auto;
-		margin-block-start: var(--size-4);
+		/* display: grid; */
+		/* grid-template-columns: max-content auto; */
+		margin-block-start: var(--size-7);
 	}
-	aside {
+	/* aside {
 		border-inline-end: 1px solid var(--border);
 		margin-inline-end: var(--size-4);
 	}
 	nav {
 		margin-inline-end: var(--size-4);
-	}
+	} */
 	section {
 		display: flex;
 		flex-direction: column;
