@@ -7,10 +7,20 @@
 	import type Quill from 'quill';
 	import { onMount } from 'svelte';
 	import type { PageData } from './$types';
+	import { page } from '$app/stores';
+	import { goto } from '$app/navigation';
 
 	export let data: PageData;
 	let quill: Quill | null;
 	let reader: string | HTMLElement;
+
+	let post = data.posts.find((post) => post.slug === $page.params.slug) || {
+		title: '',
+		content: '',
+		tags: [],
+		createdAt: new Date(),
+		slug: ''
+	};
 
 	onMount(async () => {
 		try {
@@ -18,7 +28,7 @@
 
 			quill = new Quill(reader, QuillConfigReadonly);
 
-			let quillData = await quillContentInit(data.post.content);
+			let quillData = await quillContentInit(post.content);
 
 			quill.setContents(quillData);
 		} catch (error) {
@@ -31,30 +41,30 @@
 	<section>
 		<hgroup>
 			<div class="headerAction">
-				<h1 id={data.post.slug}>{data.post.title}</h1>
+				<h1 id={post.slug}>{post.title}</h1>
 				{#if data.isAdmin}
 					<button class="edit" title="Edit this post">
-						<a href="/posts/{data.post.slug}/edit"><Pencil /></a>
+						<a href="/posts/{post.slug}/edit"><Pencil /></a>
 					</button>
 					<form
 						method="POST"
 						action="/posts?/deletePost"
 						use:enhance={({ cancel }) => {
 							if (confirm('Are you sure you want to delete this post?')) {
-								return async ({ update }) => update();
+								return async ({ update }) => update().then(() => goto('/posts'));
 							}
 							cancel();
 						}}>
-						<input type="hidden" name="slug" id="slug" value={data.post.slug} />
+						<input type="hidden" name="slug" id="slug" value={post.slug} />
 						<button class="delete" type="submit">
 							<Trash />
 						</button>
 					</form>
 				{/if}
 			</div>
-			<date>{formatDate(new Date(data.post.createdAt))}</date>
+			<date>{formatDate(new Date(post.createdAt))}</date>
 			<div class="tags">
-				{#each data.post.tags as tag}
+				{#each post.tags as tag}
 					<span class="badge"># {tag}</span>
 				{/each}
 			</div>
