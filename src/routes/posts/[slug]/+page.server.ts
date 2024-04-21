@@ -1,66 +1,23 @@
-import { error, fail, redirect } from '@sveltejs/kit';
-import slugify from '$lib/utils/slugify';
-import type { PageServerLoad, Actions } from './$types';
+import db from '$lib/server/database';
+import { error } from '@sveltejs/kit';
+import type { PageServerLoad } from './$types';
 
-export const load: PageServerLoad = async ({ fetch, params, locals }) => {
-	const response = await fetch(`/api/posts/${params.slug}`);
-	const post = await response.json();
-
-	if (!response.ok) {
-		return error(response.status, post.message);
-	}
-
-	return {
-		post,
-		isAdmin: locals?.user?.isAdmin
-	};
-};
-
-export const actions: Actions = {
-	update: async ({ fetch, request, params }) => {
-		const { slug } = params;
-
-		const formData = await request.formData();
-		const title = formData.get('title')?.toString();
-		const content = formData.get('content');
-		const tags = formData.get('tagInput')?.toString();
-
-		if (!slug) {
-			return error(400, 'Invalid slug');
-		}
-
-		if (!title) {
-			return fail(400, { message: 'Invalid title' });
-		}
-
-		if (!content) {
-			return fail(400, { message: 'Add content' });
-		}
-
-		const slugified = slugify(title);
-
-		const response = await fetch(`/api/posts/${slug}`, {
-			method: 'PATCH',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({
-				title,
-				content,
-				tags: tags?.split(',').map((tag: string) => tag.trim()),
-				slug: slugified
-			})
+export const load: PageServerLoad = async ({ params, locals }) => {
+	try {
+		const post = await db.post.findUnique({
+			where: { slug: params.slug }
 		});
 
-		if (response.ok) {
-			return redirect(302, `/posts/${slugified}`);
+		if (!post) {
+			return error(404, 'Post not found');
 		}
-		const errorMessage = await response.json();
-		return error(response.status, errorMessage);
+
+		return {
+			post,
+			isAdmin: locals?.user?.isAdmin
+		};
+	} catch (err) {
+		const { message } = err as Error;
+		return error(500, message);
 	}
 };
-
-// TODO
-// trim white spaces in title
-// add links for duplicate tags to show all posts with that tag
-// add sorting and filtering capabilities?
