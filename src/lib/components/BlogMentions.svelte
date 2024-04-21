@@ -66,6 +66,7 @@
 		transform: scale(1);
 		-webkit-transition: 0.3s ease-in-out;
 		transition: 0.3s ease-in-out;
+		transition-delay: var(--transition-delay-1);
 	}
 
 	img:hover {

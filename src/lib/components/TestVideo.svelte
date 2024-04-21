@@ -54,7 +54,7 @@
 		filter: grayscale(80%);
 		transition: 0.7s linear;
 		transition-timing-function: cubic-bezier(0.14, 0.8, 0.3, 1);
-		transition-delay: 0.3s;
+		transition-delay: var(--transition-delay-2);
 	}
 
 	.gallery img:hover,
