@@ -3,11 +3,7 @@ import { json, error } from '@sveltejs/kit';
 
 import type { RequestHandler } from './$types';
 
-export const GET: RequestHandler = async ({ params, locals }) => {
-	if (!locals.user) {
-		return error(401, 'Unauthorized');
-	}
-
+export const GET: RequestHandler = async ({ params }) => {
 	let post;
 
 	try {
@@ -26,7 +22,12 @@ export const GET: RequestHandler = async ({ params, locals }) => {
 	}
 };
 
-export const PATCH: RequestHandler = async ({ params, request }): Promise<Response> => {
+export const PATCH: RequestHandler = async ({ params, request, locals }): Promise<Response> => {
+	// user must be logged in to update a post
+	if (!locals.user && !locals.user?.isAdmin) {
+		return error(401, { message: 'Unauthorized' });
+	}
+
 	let post;
 	let postData;
 
