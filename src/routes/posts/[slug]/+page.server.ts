@@ -4,15 +4,10 @@ import type { PageServerLoad, Actions } from './$types';
 
 export const load: PageServerLoad = async ({ fetch, params, locals }) => {
 	const response = await fetch(`/api/posts/${params.slug}`);
-
-	if (!response.ok) {
-		return error(response.status, 'Failed to fetch post');
-	}
-
 	const post = await response.json();
 
-	if (!post) {
-		error(404, 'Post not found');
+	if (!response.ok) {
+		return error(response.status, post.message);
 	}
 
 	return {
