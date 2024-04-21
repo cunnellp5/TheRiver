@@ -143,8 +143,9 @@
 			box-shadow: none;
 		}
 	}
+
 	#editor {
-		min-height: var(--size-content-1);
+		height: var(--size-content-1);
 	}
 
 	.buttonWrapper {
