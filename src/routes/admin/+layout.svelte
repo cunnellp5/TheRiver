@@ -12,7 +12,9 @@
 			<a class:current={$page.url.pathname === '/admin/apphomepage'} href="/admin/apphomepage">
 				(App) home page
 			</a>
-			<a class:current={$page.url.pathname === '/admin/posts'} href="/admin/posts">(App) Posts</a>
+			<a class:current={$page.url.pathname.includes('/admin/posts')} href="/admin/posts">
+				(App) Posts
+			</a>
 			<a class:current={$page.url.pathname === '/admin/users'} href="/admin/users">Users</a>
 			<a class:current={$page.url.pathname === '/admin/footer'} href="/admin/footer">Footer</a>
 			<a class:current={$page.url.pathname === '/admin/settings'} href="/admin/settings"
