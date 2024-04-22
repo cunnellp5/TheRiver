@@ -1,5 +1,6 @@
 <script lang="ts">
 	import PostsCard from '$lib/components/ui/posts/PostsCard.svelte';
+	import Plus from 'lucide-svelte/icons/plus';
 	import type { PageData } from './$types';
 	import EditDeleteActions from './EditDeleteActions.svelte';
 
@@ -29,13 +30,23 @@
 <button class:current={currentFilter === false} on:click={() => updatePosts(false)}>
 	show unpublished Posts ({unpublishedPosts.length})
 </button>
+<button class="create">
+	<a href="/admin/posts/create"><Plus /></a>
+</button>
 
 {#if postData.length === 0}
 	<p>No posts.</p>
 {:else}
 	{#each postData as { title, tags, createdAt, slug, description, published }}
 		<section>
-			<PostsCard {title} {tags} {createdAt} {slug} {description} allowSlot={true}>
+			<PostsCard
+				{title}
+				{tags}
+				{createdAt}
+				{slug}
+				{description}
+				allowSlot={true}
+				link={`/admin/posts/${slug}`}>
 				<div class="actionsGroup">
 					<p>published {published}</p>
 					<EditDeleteActions {slug} />
@@ -55,5 +66,8 @@
 	.current {
 		background-color: var(--gray-9);
 		color: var(--gray-1);
+	}
+	.create {
+		background-color: hsl(var(--purple-4-hsl) / 50%);
 	}
 </style>
