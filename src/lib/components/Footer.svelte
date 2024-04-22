@@ -5,36 +5,7 @@
 </script>
 
 <footer>
-	<div class="footer-first">
-		<ul>
-			<p>Socials</p>
-			<li>https://www.facebook.com/theriversings</li>
-			<li>https://www.instagram.com/the.river.sings/</li>
-			<li>https://www.tiktok.com/@theriversings</li>
-			<li>https://x.com/the_river_sings</li>
-			<br />
-			<p>Music</p>
-			<li>https://www.youtube.com/c/TheRiverSings</li>
-			<li>https://soundcloud.com/theriversings</li>
-			<li>https://open.spotify.com/artist/5zNnchh2RwfMl1iCs8JRPV</li>
-
-			<br />
-			<p>Extended Plays [EP]</p>
-			<li>https://distrokid.com/hyperfollow/theriver2/vaguely-relatable-ep</li>
-
-			<br />
-			<p>Merch</p>
-			<li>https://www.etsy.com/shop/MadeByTheRiverBed</li>
-
-			<br />
-			<p>Ca$h app</p>
-			<li>https://cash.app/$theriversings</li>
-
-			<br />
-			<p>LinkTree</p>
-			<li>https://linktr.ee/theriversings</li>
-		</ul>
-	</div>
+	<div class="footer-first"></div>
 
 	<div class="footer-middle">
 		<Socials />
@@ -43,6 +14,39 @@
 	<div class="toggler">
 		<ToggleTheme />
 	</div>
+	<div class="footer-first"></div>
+
+	<div class="footer-middle">
+		<hr />
+		<p>Socials</p>
+		<li>facebook.com/theriversings</li>
+		<li>instagram.com/the.river.sings/</li>
+		<li>tiktok.com/@theriversings</li>
+		<li>x.com/the_river_sings</li>
+		<br />
+		<p>Stream</p>
+		<li>youtube.com/c/TheRiverSings</li>
+		<li>soundcloud.com/theriversings</li>
+		<li>open.spotify.com/artist/5zNnchh2RwfMl1iCs8JRPV</li>
+
+		<br />
+		<p>Extended Plays [EP]</p>
+		<li>distrokid.com/hyperfollow/theriver2/vaguely-relatable-ep</li>
+
+		<br />
+		<p>Merch</p>
+		<li>etsy.com/shop/MadeByTheRiverBed</li>
+
+		<br />
+		<p>Ca$h app</p>
+		<li>cash.app/$theriversings</li>
+
+		<br />
+		<p>LinkTree</p>
+		<li>linktr.ee/theriversings</li>
+	</div>
+
+	<div class="toggler"></div>
 </footer>
 
 <style>
@@ -60,9 +64,30 @@
 		display: flex;
 		align-items: center;
 	}
-
+	p {
+		color: var(--gray-5);
+		font-size: var(--font-size-1);
+	}
 	li {
+		color: var(--gray-7);
 		font-size: var(--font-size-0);
+		list-style: none;
+		transition: transform 0.3s ease;
+		transition: text-shadow 0.3s ease;
+	}
+	li:hover {
+		display: inline-block;
+		color: var(--gray-9);
+		cursor: pointer;
+		transform: scale(1.2);
+		text-shadow:
+			0 0 10px #fff,
+			0 0 20px #fff,
+			0 0 30px #fff,
+			0 0 40px #ff00de;
+	}
+	hr {
+		margin-block: var(--size-7);
 	}
 
 	.footer-first {
