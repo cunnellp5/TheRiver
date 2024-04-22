@@ -92,8 +92,6 @@
 </main>
 
 <style>
-	@import '../styles/post.css';
-
 	main {
 		height: 100vh;
 		display: flex;
@@ -103,6 +101,25 @@
 	date {
 		font-size: var(--font-size-0);
 		color: var(--gray-7);
+	}
+	hgroup {
+		margin-block-end: var(--size-6);
+	}
+
+	/* CLASSES */
+	.badge {
+		padding-inline: var(--size-2);
+		padding-block: var(--size-1);
+
+		background: hsl(var(--gray-8-hsl) / 50%);
+		color: hsl(var(--pink-2-hsl) / 50%);
+		border-radius: var(--radius-3);
+		font-size: var(--font-size-0);
+		margin-inline-end: var(--size-1);
+	}
+
+	.tags {
+		margin-block-start: var(--size-4);
 	}
 
 	.headerAction {
