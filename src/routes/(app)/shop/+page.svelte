@@ -4,7 +4,9 @@
 
 <main>
 	<h1>THE RIVER MARKET</h1>
-	<a href="https://www.etsy.com/shop/MadeByTheRiverBed">etsy.com @MadeByTheRiverBed</a>
+	<a target="_blank" href="https://www.etsy.com/shop/MadeByTheRiverBed">
+		etsy.com @MadeByTheRiverBed
+	</a>
 	<div class="animation">Coming soon!</div>
 </main>
 
