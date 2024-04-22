@@ -17,7 +17,7 @@ export const load: PageServerLoad = async ({ fetch }) => {
 export const actions: Actions = {
 	addLink: async (event) => {
 		if (!event.locals.session) {
-			redirect(302, '/auth/login');
+			redirect(302, '/login');
 		}
 		const formData = await event.request.formData();
 		const title = formData.get('title');
