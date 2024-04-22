@@ -3,8 +3,8 @@
 </script>
 
 <main>
-	<h2>🫶 Logged out</h2>
-	<p>See you later!</p>
+	<h2>Logged out.</h2>
+	<p>🫶 See you later!</p>
 </main>
 
 <style>
