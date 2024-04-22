@@ -42,7 +42,7 @@
 			<ul class="links">
 				<li class="border-left"></li>
 				<li
-					class:current={$page.url.pathname === '/admin'}
+					class:current={$page.url.pathname.includes('/admin')}
 					aria-current={$page.url.pathname === '/admin'}>
 					<a href="/admin"> Admin </a>
 				</li>
