@@ -32,7 +32,6 @@
 	}
 	header {
 		display: flex;
-		justify-content: center;
 		padding-block: var(--size-5);
 		margin-block: var(--size-5);
 		/* background-image: var(--gradient-16); */
@@ -42,6 +41,9 @@
 	}
 	h1 {
 		padding-block: var(--size-0);
+	}
+	a {
+		color: var(--gray-7);
 	}
 
 	.sidenav {
@@ -55,7 +57,6 @@
 	.sidenav a {
 		padding: var(--size-3);
 		text-decoration: none;
-		/* color: #818181; */
 		display: block;
 		border-bottom: 1px solid var(--gray-9);
 	}
@@ -65,5 +66,6 @@
 	}
 	.current {
 		background-color: var(--gray-9);
+		color: var(--gray-1);
 	}
 </style>
