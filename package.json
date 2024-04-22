@@ -48,7 +48,6 @@
 	"dependencies": {
 		"@fontsource/jetbrains-mono": "^5.0.19",
 		"@fontsource/manrope": "^5.0.19",
-		"@fontsource/raleway": "^5.0.17",
 		"@lucia-auth/adapter-prisma": "^4.0.1",
 		"@prisma/client": "^5.12.1",
 		"lucide-svelte": "^0.368.0",
