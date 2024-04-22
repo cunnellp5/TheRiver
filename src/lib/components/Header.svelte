@@ -35,9 +35,24 @@
 
 {#if visible}
 	<nav class="nav-desktop" in:fly={{ duration: 500, y: -400, delay: 500 }}>
-		<a href="/" class="logo-link">
-			<LogoR />
-		</a>
+		<div>
+			<a class="logo-link" href="/">
+				<LogoR />
+			</a>
+			<ul class="links">
+				<li class="border-left"></li>
+				<li
+					class:current={$page.url.pathname === '/admin'}
+					aria-current={$page.url.pathname === '/admin'}>
+					<a href="/admin"> Admin </a>
+				</li>
+				<li
+					class:current={$page.url.pathname === '/dashboard'}
+					aria-current={$page.url.pathname === '/dashboard'}>
+					<a href="/dashboard"> Dashboard </a>
+				</li>
+			</ul>
+		</div>
 
 		<ul class="links">
 			<li
@@ -79,13 +94,13 @@
 		</ul>
 
 		<ul class="card" class:hidden={!showAuthLinks}>
-			<a href="/auth/signup">
+			<a href="/signup">
 				<li>Signup</li>
 			</a>
-			<a href="/auth/login">
+			<a href="/login">
 				<li>Login</li>
 			</a>
-			<form id="logoutForm" method="POST" action="/auth/logout">
+			<form id="logoutForm" method="POST" action="/logout">
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
 				<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 				<li>
@@ -179,8 +194,14 @@
 		justify-content: space-between;
 	}
 
-	.logo-link {
+	a.logo-link {
+		display: flex;
 		width: var(--size-8);
+	}
+
+	div {
+		display: flex;
+		align-items: center;
 	}
 
 	.border-left {
