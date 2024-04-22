@@ -1,7 +1,3 @@
-<script lang="ts">
-	import MoveDown from 'lucide-svelte/icons/move-down';
-</script>
-
 <main>
 	<h1>THE RIVER MARKET</h1>
 	<a target="_blank" href="https://www.etsy.com/shop/MadeByTheRiverBed">
