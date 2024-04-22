@@ -8,12 +8,13 @@
 	export let slug: string;
 	export let description: string;
 	export let allowSlot: boolean = false;
+	export let link: string = `/posts/${slug}`;
 </script>
 
 <div class="card">
 	<div>
 		<h5>
-			<a href="/posts/{slug}">
+			<a href={link}>
 				{title}
 			</a>
 		</h5>
@@ -27,7 +28,7 @@
 			<span class="badge"># {tag}</span>
 		{/each}
 	</div>
-	<a class="blogLink" href="/posts/{slug}">
+	<a class="blogLink" href={link}>
 		read more
 		<SquareArrowOurUpRight size="10" />
 	</a>
