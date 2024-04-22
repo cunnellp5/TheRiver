@@ -1,7 +1,7 @@
 <script lang="ts">
 	import 'quill/dist/quill.snow.css';
 	import type { ActionData } from '../$types';
-	import PostsForm from '../components/PostsForm.svelte';
+	import PostsForm from '$lib/components/ui/posts/PostsForm.svelte';
 
 	export let form: ActionData;
 </script>

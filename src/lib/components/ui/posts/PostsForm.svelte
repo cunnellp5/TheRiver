@@ -139,8 +139,9 @@
 </form>
 
 <style>
-	@import '../styles/post.css';
-
+	hgroup {
+		margin-block-end: var(--size-6);
+	}
 	textarea {
 		background: var(--gradient-1) fixed;
 		-webkit-background-clip: text;
@@ -150,6 +151,20 @@
 		border: 1px solid var(--stone-9);
 	}
 
+	/* CLASSES */
+	.badge {
+		padding-inline: var(--size-2);
+		padding-block: var(--size-1);
+
+		background: hsl(var(--gray-8-hsl) / 50%);
+		color: hsl(var(--pink-2-hsl) / 50%);
+		border-radius: var(--radius-3);
+		font-size: var(--font-size-0);
+		margin-inline-end: var(--size-1);
+	}
+	.tags {
+		margin-block-start: var(--size-4);
+	}
 	.banner {
 		display: flex;
 		justify-content: space-between;
@@ -164,7 +179,6 @@
 			background: hsl(var(--yellow-5-hsl) / 30%);
 		}
 	}
-
 	.editor-wrapper {
 		width: 100%;
 		& *,
@@ -176,14 +190,12 @@
 			box-shadow: none;
 		}
 	}
-
 	.buttonWrapper {
 		margin-block-start: var(--size-4);
 		& button {
 			margin-inline-end: var(--size-2);
 		}
 	}
-
 	.deleteBadge {
 		color: var(--stone-1);
 		padding: unset;
@@ -191,16 +203,13 @@
 		background: unset;
 		border: unset;
 	}
-
 	.inputWrapper {
 		margin-block: var(--size-1);
 	}
-
 	.badgesWrapper {
 		display: flex;
 		flex-flow: row wrap;
 	}
-
 	.badge {
 		width: fit-content;
 		display: flex;

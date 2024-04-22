@@ -5,7 +5,7 @@
 	export let slug: string;
 </script>
 
-<a href="/posts/{slug}/edit">
+<a href="/admin/posts/{slug}/edit">
 	<button class="edit" type="button">
 		<Pencil />
 	</button>
