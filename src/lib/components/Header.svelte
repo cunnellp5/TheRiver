@@ -43,7 +43,7 @@
 				<li class="border-left"></li>
 				<li
 					class:current={$page.url.pathname.includes('/admin')}
-					aria-current={$page.url.pathname === '/admin'}>
+					aria-current={$page.url.pathname.includes('/admin')}>
 					<a href="/admin"> Admin </a>
 				</li>
 				<li
@@ -74,8 +74,8 @@
 			<li class="border-left"></li>
 
 			<li
-				class:current={$page.url.pathname === '/posts'}
-				aria-current={$page.url.pathname === '/posts'}>
+				class:current={$page.url.pathname.includes('/posts')}
+				aria-current={$page.url.pathname.includes('/posts')}>
 				<a href="/posts"> Posts </a>
 			</li>
 			<li

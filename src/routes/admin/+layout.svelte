@@ -39,9 +39,6 @@
 	article {
 		margin-inline: var(--size-4);
 	}
-	h1 {
-		padding-block: var(--size-0);
-	}
 	a {
 		color: var(--gray-7);
 	}
