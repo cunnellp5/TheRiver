@@ -14,8 +14,6 @@
 	let description: string = post?.description || '';
 	let tagInput: string[] = post?.tags || [];
 	let published: boolean = post?.published || false;
-
-	console.log(post);
 </script>
 
 <main>
