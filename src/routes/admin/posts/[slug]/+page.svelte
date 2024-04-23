@@ -43,7 +43,7 @@
 		<hgroup>
 			<div class="headerAction">
 				<h1 id={post.slug}>{post.title}</h1>
-				<EditDeleteActions slug={post.slug} />
+				<EditDeleteActions slug={post.slug} actionLocation={'/posts?/deletePost'} redirect={true} />
 			</div>
 			<date>{formatDate(new Date(post.createdAt))}</date>
 			<div class="tags">
