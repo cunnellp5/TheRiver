@@ -1,10 +1,9 @@
 <script lang="ts">
-	import Plus from 'lucide-svelte/icons/plus';
 	import { page } from '$app/stores';
 
 	export let data;
 	let isPostsHome = $page.url.pathname === '/posts';
-	$: ({ posts, isAdmin } = data);
+	$: ({ posts } = data);
 </script>
 
 <main>
@@ -14,11 +13,6 @@
 				<a href="/posts">
 					<h1>The River Posts</h1>
 				</a>
-				{#if isAdmin}
-					<button class="create">
-						<a href="/posts/create"><Plus /></a>
-					</button>
-				{/if}
 			</div>
 
 			{#if isPostsHome}
@@ -57,8 +51,5 @@
 			flex-grow: 0;
 			flex-shrink: 0;
 		}
-	}
-	.create {
-		background-color: hsl(var(--purple-4-hsl) / 50%);
 	}
 </style>
