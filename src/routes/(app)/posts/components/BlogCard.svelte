@@ -1,16 +1,12 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
 	import formatDate from '$lib/utils/formatDate';
-	import Pencil from 'lucide-svelte/icons/pencil';
 	import SquareArrowOurUpRight from 'lucide-svelte/icons/square-arrow-out-up-right';
-	import Trash from 'lucide-svelte/icons/trash';
 
 	export let title: string;
 	export let tags: string[];
 	export let createdAt: Date;
 	export let slug: string;
 	export let description: string;
-	export let isAdmin: boolean | undefined;
 </script>
 
 <div class="card">
@@ -32,33 +28,10 @@
 			{/each}
 		</div>
 		<a class="blogLink" href="/posts/{slug}">
-			read more
+			Read more
 			<SquareArrowOurUpRight size="10" />
 		</a>
 	</div>
-	{#if isAdmin}
-		<div class="actionsGroup">
-			<a href="/posts/{slug}/edit">
-				<button class="edit" type="button">
-					<Pencil />
-				</button>
-			</a>
-			<form
-				method="POST"
-				action="?/deletePost"
-				use:enhance={({ cancel }) => {
-					if (confirm('Are you sure you want to delete this post?')) {
-						return async ({ update }) => update();
-					}
-					cancel();
-				}}>
-				<input type="hidden" name="slug" id="slug" value={slug} />
-				<button class="delete" type="submit">
-					<Trash />
-				</button>
-			</form>
-		</div>
-	{/if}
 </div>
 
 <style>
@@ -102,15 +75,5 @@
 		color: var(--link);
 		font-size: var(--font-size-0);
 		margin-block: var(--size-2);
-	}
-	.actionsGroup {
-		display: flex;
-		flex-direction: row;
-		gap: var(--size-2);
-		justify-content: end;
-		align-self: end;
-	}
-	.delete {
-		background-color: hsl(var(--red-5-hsl) / 80%);
 	}
 </style>
