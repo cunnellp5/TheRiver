@@ -3,41 +3,48 @@
 	import Plus from 'lucide-svelte/icons/plus';
 	import type { PageData } from './$types';
 	import EditDeleteActions from './EditDeleteActions.svelte';
+	import type { Post } from '@prisma/client';
 
 	export let data: PageData;
-	const { posts } = data;
-	const publishedPosts = posts.filter((post) => post.published);
-	const unpublishedPosts = posts.filter((post) => !post.published);
-
-	let postData = posts;
+	let posts: Post[];
+	let publishedPosts: Post[];
+	let unpublishedPosts: Post[];
+	let postDataToShow: Post[];
 	let currentFilter: boolean | null = null;
+
+	$: {
+		posts = data.posts;
+		publishedPosts = posts.filter((post) => post.published);
+		unpublishedPosts = posts.filter((post) => !post.published);
+		postDataToShow = posts;
+	}
 
 	function updatePosts(published: boolean | null) {
 		currentFilter = published;
 		if (published === null) {
-			postData = posts;
+			postDataToShow = posts;
 		}
-		postData = published ? publishedPosts : unpublishedPosts;
+		postDataToShow = published ? publishedPosts : unpublishedPosts;
 	}
 </script>
 
 <button class:current={currentFilter === null} on:click={() => updatePosts(null)}>
-	show all posts ({posts.length})
+	All posts ({posts.length})
 </button>
 <button class:current={currentFilter === true} on:click={() => updatePosts(true)}>
-	show published Posts ({publishedPosts.length})
+	Published ({publishedPosts.length})
 </button>
 <button class:current={currentFilter === false} on:click={() => updatePosts(false)}>
-	show unpublished Posts ({unpublishedPosts.length})
+	Unpublished ({unpublishedPosts.length})
 </button>
 <button class="create">
 	<a href="/admin/posts/create"><Plus /></a>
 </button>
 
-{#if postData.length === 0}
+{#if postDataToShow && postDataToShow.length === 0}
 	<p>No posts.</p>
 {:else}
-	{#each postData as { title, tags, createdAt, slug, description, published }}
+	{#each postDataToShow as { title, tags, createdAt, slug, description, published }}
 		<section>
 			<PostsCard
 				{title}
@@ -57,6 +64,9 @@
 {/if}
 
 <style>
+	button {
+		font-weight: var(--font-weight-1);
+	}
 	.actionsGroup {
 		display: flex;
 		justify-content: end;

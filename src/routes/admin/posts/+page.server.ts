@@ -8,7 +8,6 @@ export const actions: Actions = {
 		const slug = formData.get('slug');
 
 		if (!slug) {
-			// fail throws action error
 			return fail(400, {
 				message: 'Invalid slug'
 			});
@@ -18,6 +17,7 @@ export const actions: Actions = {
 			await db.post.delete({
 				where: { slug: slug.toString() }
 			});
+
 			return {
 				success: true,
 				message: 'Post deleted',
