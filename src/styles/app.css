@@ -1,13 +1,10 @@
-@import '@fontsource/manrope';
-@import '@fontsource/jetbrains-mono';
-@import '@fontsource/raleway';
 @import './mainElements.css';
 /* <link href="https://fonts.googleapis.com/css?family=Overpass:100,400" rel="stylesheet" /> cool font alternative?*/
 
 html {
 	/* font */
-	--font-sans: 'Raleway', 'Manrope', sans-serif;
-	--font-mono: 'Raleway', 'JetBrain Mono', monospace;
+	--font-sans: 'Roboto', sans-serif;
+	--font-mono: 'Roboto', monospace;
 
 	/* dark */
 	--background-dark: var(--gradient-8);

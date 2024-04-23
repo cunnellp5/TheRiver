@@ -7,8 +7,12 @@
 		<h1>You must be lost.</h1>
 		<a href="/">Go Home</a>
 	{:else if $page.status === 500}
-		<h1>Uh oh. We weren't expecting that</h1>
+		<h1>We weren't expecting that</h1>
 		<p>We're investigating the issue.</p>
+	{:else}
+		<h1>{$page.status}</h1>
+		<p>{$page.error?.message}</p>
+		<a href="/">Go home</a>
 	{/if}
 </main>
 

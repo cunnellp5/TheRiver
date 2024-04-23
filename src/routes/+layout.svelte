@@ -11,9 +11,10 @@
 	import '../styles/app.css';
 </script>
 
-<div class="layout" class:home={$page.url.pathname === '/'}>
+<div class="layout">
 	<Header />
 
+	<!-- TODO move transitions to a new layout so admin portal looks better when navigating -->
 	<PageTransition>
 		<slot />
 	</PageTransition>
