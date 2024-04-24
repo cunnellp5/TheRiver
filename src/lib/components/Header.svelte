@@ -7,13 +7,12 @@
 	import { fly } from 'svelte/transition';
 	import { page } from '$app/stores';
 	import { browser } from '$app/environment';
-	import type { EventHandlers } from '../../app';
 
 	let showAuthLinks = false;
 
 	let visible = false;
 
-	const toggleAuthMenu = (event: EventHandlers) => {
+	const toggleAuthMenu = (event: App.EventHandlers) => {
 		event.preventDefault();
 		event.stopPropagation();
 		showAuthLinks = !showAuthLinks;

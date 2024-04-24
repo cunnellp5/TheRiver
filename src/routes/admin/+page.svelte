@@ -1,4 +1,4 @@
-<h2>Admin home page</h2>
+<h2>Description</h2>
 
 <p>This is how you can change the contents of your website.</p>
 
