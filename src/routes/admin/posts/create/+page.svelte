@@ -1,5 +1,5 @@
 <script lang="ts">
-	import PostsForm from '$lib/components/ui/posts/PostsForm.svelte';
+	import PostsForm from '../components/PostsForm.svelte';
 </script>
 
 <section>

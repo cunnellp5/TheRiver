@@ -6,7 +6,7 @@
 	import type { PageData } from './$types';
 	// eslint-disable-next-line import/no-unresolved
 	import { page } from '$app/stores';
-	import EditDeleteActions from '../EditDeleteActions.svelte';
+	import EditDeleteActions from '../components/EditDeleteActions.svelte';
 
 	export let data: PageData;
 	let quill: Quill | null;
