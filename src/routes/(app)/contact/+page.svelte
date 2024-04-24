@@ -1,7 +1,8 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import Check from 'lucide-svelte/icons/check';
 	import Copy from 'lucide-svelte/icons/copy';
 	import Send from 'lucide-svelte/icons/send';
+	import { onMount } from 'svelte';
 
 	const email = 'theriverrunsfast@gmail.com';
 	let copied = false;
@@ -12,7 +13,7 @@
 		setTimeout(() => {
 			copied = false;
 			return copied;
-		}, 2000); // Reset after 2 seconds
+		}, 800); // Reset after 2 seconds
 	}
 
 	onMount(() => {
@@ -27,7 +28,7 @@
 		<section class="buttons">
 			<button on:click={copyEmail}>
 				{#if copied}
-					Copied!
+					<Check />
 				{:else}
 					<Copy />
 				{/if}
@@ -59,14 +60,7 @@
 		text-transform: uppercase;
 	}
 
-	/* div {
-		margin-inline: 1rem;
-		border-left: 1.8px solid rgb(207, 207, 207);
-		height: var(--size-7);
-	} */
-
 	p {
-		/* font-family: monospace; */
 		letter-spacing: var(--font-letterspacing-3);
 	}
 
