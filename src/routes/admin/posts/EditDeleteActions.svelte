@@ -1,8 +1,9 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
-	import { goto } from '$app/navigation';
 	import Pencil from 'lucide-svelte/icons/pencil';
 	import Trash from 'lucide-svelte/icons/trash';
+	import { enhance } from '$app/forms';
+	import { goto } from '$app/navigation';
+
 	export let slug: string;
 	export let redirect: boolean = false;
 	export let actionLocation: string = '?/deletePost';

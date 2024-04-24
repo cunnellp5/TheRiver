@@ -2,7 +2,7 @@
 	import { page } from '$app/stores';
 
 	export let data;
-	let isPostsHome = $page.url.pathname === '/posts';
+	const isPostsHome = $page.url.pathname === '/posts';
 	$: ({ posts } = data);
 </script>
 

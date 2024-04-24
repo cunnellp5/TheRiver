@@ -1,21 +1,17 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
 	import { QuillConfigReadonly, quillContentInit } from '$lib/utils/QuillConfig';
 	import formatDate from '$lib/utils/formatDate';
-	import Pencil from 'lucide-svelte/icons/pencil';
-	import Trash from 'lucide-svelte/icons/trash';
 	import type Quill from 'quill';
 	import { onMount } from 'svelte';
 	import type { PageData } from './$types';
 	import { page } from '$app/stores';
-	import { goto } from '$app/navigation';
 	import EditDeleteActions from '../EditDeleteActions.svelte';
 
 	export let data: PageData;
 	let quill: Quill | null;
 	let reader: string | HTMLElement;
 
-	let post = data.posts.find((post) => post.slug === $page.params.slug) || {
+	const post = data.posts.find((post) => post.slug === $page.params.slug) || {
 		title: '',
 		content: '',
 		tags: [],
@@ -29,7 +25,7 @@
 
 			quill = new Quill(reader, QuillConfigReadonly);
 
-			let quillData = await quillContentInit(post.content);
+			const quillData = await quillContentInit(post.content);
 
 			quill.setContents(quillData);
 		} catch (error) {
@@ -120,8 +116,5 @@
 		& blockquote {
 			padding-inline: var(--size-4);
 		}
-	}
-	.delete {
-		background-color: hsl(var(--red-5-hsl) / 80%);
 	}
 </style>

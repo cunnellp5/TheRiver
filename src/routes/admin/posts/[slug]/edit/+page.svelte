@@ -1,19 +1,19 @@
 <script lang="ts">
-	import 'quill/dist/quill.snow.css';
-	import type { ActionData, PageData } from './$types';
 	import PostsForm from '$lib/components/ui/posts/PostsForm.svelte';
 	import { page } from '$app/stores';
+	import 'quill/dist/quill.snow.css';
+	import type { ActionData, PageData } from './$types';
 
 	export let form: ActionData;
 	export let data: PageData;
 
-	let post = data.posts.find((post) => post.slug === $page.params.slug);
+	const post = data.posts.find((p) => p.slug === $page.params.slug);
 
-	let title: string = post?.title || '';
-	let content: string = post?.content || '';
-	let description: string = post?.description || '';
-	let tagInput: string[] = post?.tags || [];
-	let published: boolean = post?.published || false;
+	const title: string = post?.title || '';
+	const content: string = post?.content || '';
+	const description: string = post?.description || '';
+	const tagInput: string[] = post?.tags || [];
+	const published: boolean = post?.published || false;
 </script>
 
 <main>

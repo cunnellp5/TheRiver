@@ -3,7 +3,7 @@
 	import Copy from 'lucide-svelte/icons/copy';
 	import Send from 'lucide-svelte/icons/send';
 
-	let email = 'theriverrunsfast@gmail.com';
+	const email = 'theriverrunsfast@gmail.com';
 	let copied = false;
 
 	function copyEmail() {

@@ -1,20 +1,16 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
 	import { QuillConfigReadonly, quillContentInit } from '$lib/utils/QuillConfig';
 	import formatDate from '$lib/utils/formatDate';
-	import Pencil from 'lucide-svelte/icons/pencil';
-	import Trash from 'lucide-svelte/icons/trash';
 	import type Quill from 'quill';
 	import { onMount } from 'svelte';
 	import type { PageData } from './$types';
 	import { page } from '$app/stores';
-	import { goto } from '$app/navigation';
 
 	export let data: PageData;
 	let quill: Quill | null;
 	let reader: string | HTMLElement;
 
-	let post = data.posts.find((post) => post.slug === $page.params.slug) || {
+	const post = data.posts.find((post) => post.slug === $page.params.slug) || {
 		title: '',
 		content: '',
 		tags: [],
@@ -28,7 +24,7 @@
 
 			quill = new Quill(reader, QuillConfigReadonly);
 
-			let quillData = await quillContentInit(post.content);
+			const quillData = await quillContentInit(post.content);
 
 			quill.setContents(quillData);
 		} catch (error) {
@@ -42,32 +38,6 @@
 		<hgroup>
 			<div class="headerAction">
 				<h1 id={post.slug}>{post.title}</h1>
-				{#if data.isAdmin}
-					<button class="edit" title="Edit this post">
-						<a href="/posts/{post.slug}/edit"><Pencil /></a>
-					</button>
-					<form
-						method="POST"
-						action="/posts?/deletePost"
-						use:enhance={({ cancel }) => {
-							if (confirm('Are you sure you want to delete this post?')) {
-								return async ({ update }) =>
-									update()
-										.then(() => goto('/posts'))
-										.then(() => {
-											setTimeout(() => {
-												confirm('Post deleted');
-											}, 500);
-										});
-							}
-							cancel();
-						}}>
-						<input type="hidden" name="slug" id="slug" value={post.slug} />
-						<button class="delete" type="submit">
-							<Trash />
-						</button>
-					</form>
-				{/if}
 			</div>
 			<date>{formatDate(new Date(post.createdAt))}</date>
 			<div class="tags">

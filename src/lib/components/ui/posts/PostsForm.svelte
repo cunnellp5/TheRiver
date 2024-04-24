@@ -14,7 +14,7 @@
 	export let tagInput: string[] = [];
 	export let published: boolean = false;
 
-	let initialData = {
+	const initialData = {
 		title,
 		content,
 		description,
@@ -35,7 +35,7 @@
 
 			if (content) {
 				// get the content of the post
-				let quillData = quillContentInit(content);
+				const quillData = quillContentInit(content);
 				// set the content of the reader with incoming data
 				quill.setContents(quillData);
 			}

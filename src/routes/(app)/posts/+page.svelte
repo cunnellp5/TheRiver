@@ -5,7 +5,7 @@
 
 	export let data: PageData;
 	const { posts } = data;
-	let shouldDisplay = false;
+	const shouldDisplay = false;
 </script>
 
 <main>
