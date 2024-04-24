@@ -2,7 +2,6 @@
 	import Footer from '$lib/components/Footer.svelte';
 	import Header from '$lib/components/Header.svelte';
 	import PageTransition from '$lib/components/Transition.svelte';
-	import { page } from '$app/stores';
 	import 'open-props/normalize';
 	import 'open-props/colors-hsl';
 	import 'open-props/masks/edges';
@@ -33,12 +32,12 @@
 	} */
 
 	.layout {
-		height: 100%;
 		display: grid;
-		padding-inline: var(--size-7);
-		max-inline-size: 1440px;
 		grid-template-rows: auto 1fr auto;
 		margin-inline: auto;
+		padding-inline: var(--size-7);
+		height: 100%;
+		max-inline-size: 1440px;
 	}
 
 	@media (min-width: 1440px) {

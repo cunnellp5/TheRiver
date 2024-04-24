@@ -1,5 +1,4 @@
 <script lang="ts">
-	import LogoWhite from '$lib/components/svgs/logos/LogoWhite.svelte';
 	import Socials from './Socials.svelte';
 	import ToggleTheme from './ToggleTheme.svelte';
 </script>
@@ -54,12 +53,11 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		padding-block: var(--size-7);
+		gap: var(--size-7);
 		margin-block: var(--size-10);
 		border-top: 1px solid var(--border);
-		gap: var(--size-7);
+		padding-block: var(--size-7);
 	}
-
 	div {
 		display: flex;
 		align-items: center;
@@ -69,17 +67,17 @@
 		font-size: var(--font-size-1);
 	}
 	li {
+		transition: transform 0.3s ease;
+		transition: text-shadow 0.3s ease;
 		color: var(--gray-7);
 		font-size: var(--font-size-0);
 		list-style: none;
-		transition: transform 0.3s ease;
-		transition: text-shadow 0.3s ease;
 	}
 	li:hover {
 		display: inline-block;
-		color: var(--gray-9);
-		cursor: pointer;
 		transform: scale(1.2);
+		cursor: pointer;
+		color: var(--gray-9);
 		text-shadow:
 			0 0 10px #fff,
 			0 0 20px #fff,
@@ -110,8 +108,8 @@
 			grid-template-columns: 1fr 1fr 1fr;
 			flex-direction: row;
 			justify-content: space-between;
-			padding-block: var(--size-7);
 			border-top: 1px solid var(--border);
+			padding-block: var(--size-7);
 		}
 		.toggler {
 			justify-content: end;

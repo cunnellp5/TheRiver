@@ -1,4 +1,5 @@
 <script lang="ts">
+	// eslint-disable-next-line import/no-unresolved
 	import { page } from '$app/stores';
 </script>
 
@@ -18,18 +19,18 @@
 
 <style>
 	main {
-		height: 100vh;
 		display: flex;
 		flex-direction: column;
-		align-items: center;
 		justify-content: center;
+		align-items: center;
+		height: 100vh;
 	}
 
 	p {
-		font-weight: 800;
 		color: var(--text-2);
+		font-weight: 800;
 		font-size: var(--size-3);
-		text-transform: uppercase;
 		font-family: var(--font-mono);
+		text-transform: uppercase;
 	}
 </style>

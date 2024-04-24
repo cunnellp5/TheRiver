@@ -1,25 +1,26 @@
-<!-- TODO fix light mode text color -->
 <script lang="ts">
 	import LogoR from '$lib/components/svgs/logos/LogoR2.svelte';
 	import Ellipsis from 'lucide-svelte/icons/ellipsis';
 	import Waves from 'lucide-svelte/icons/waves';
 	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
+	// eslint-disable-next-line import/no-unresolved
 	import { page } from '$app/stores';
+	// eslint-disable-next-line import/no-unresolved
 	import { browser } from '$app/environment';
 
 	let showAuthLinks = false;
 
 	let visible = false;
 
-	const toggleAuthMenu = (event: App.EventHandlers) => {
+	const toggleAuthMenu = (event: MouseEvent) => {
 		event.preventDefault();
 		event.stopPropagation();
 		showAuthLinks = !showAuthLinks;
 	};
 
 	if (browser) {
-		window.addEventListener('click', (e) => {
+		window.addEventListener('click', () => {
 			if (showAuthLinks === true) {
 				showAuthLinks = false;
 			}
@@ -100,8 +101,6 @@
 				<li>Login</li>
 			</a>
 			<form id="logoutForm" method="POST" action="/logout">
-				<!-- svelte-ignore a11y-click-events-have-key-events -->
-				<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 				<li>
 					<button class="logout-button" type="submit">Logout</button>
 				</li>
@@ -119,22 +118,22 @@
 
 <style>
 	nav {
+		/* padding-inline: var(--size-3); */
+		position: relative;
 		align-items: center;
 		/* background-color: hsl(var(--gray-9-hsl) / 95%); */
 		padding-block: var(--size-2);
-		/* padding-inline: var(--size-3); */
-		position: relative;
 	}
 
 	a {
-		color: var(--text-2);
-		text-decoration: none;
-		text-transform: uppercase;
-		font-weight: var(--font-weight-5);
-		font-size: var(--font-size-0);
 		transition: color 0.3s ease;
 		height: 100%;
+		color: var(--text-2);
+		font-weight: var(--font-weight-5);
+		font-size: var(--font-size-0);
 		letter-spacing: var(--font-letterspacing-2);
+		text-decoration: none;
+		text-transform: uppercase;
 	}
 
 	/* a:hover,
@@ -144,30 +143,30 @@
 
 	.links {
 		& * {
-			-webkit-box-sizing: border-box;
-			box-sizing: border-box;
 			-webkit-transition: all 0.35s ease;
 			transition: all 0.35s ease;
+			-webkit-box-sizing: border-box;
+			box-sizing: border-box;
 		}
 		& a {
+			display: inline-block;
+			position: relative;
 			padding: 0.4em 0;
 			color: var(--gray-6);
-			position: relative;
 			text-decoration: none;
-			display: inline-block;
 		}
 		& a:before {
 			position: absolute;
-			content: '';
-			-webkit-transition: all 0.35s ease;
-			transition: all 0.35s ease;
-			opacity: 0;
 			top: 25%;
+			right: 0;
 			bottom: 25%;
 			left: 0;
-			right: 0;
+			opacity: 0;
+			-webkit-transition: all 0.35s ease;
+			transition: all 0.35s ease;
 			border-top: 1px solid var(--link);
 			border-bottom: 1px solid var(--link);
+			content: '';
 		}
 	}
 
@@ -179,9 +178,9 @@
 
 	.links a:hover:before,
 	.links .current a:before {
-		opacity: 1;
 		top: 0;
 		bottom: 0;
+		opacity: 1;
 	}
 
 	.nav-desktop {
@@ -209,16 +208,16 @@
 	}
 
 	.card {
-		text-align: left;
 		position: absolute;
-		right: 0;
 		top: 100%;
-		background-color: hsl(var(--gray-8-hsl) / 75%);
+		right: 0;
 		border-radius: var(--radius-0);
+		background-color: hsl(var(--gray-8-hsl) / 75%);
+		text-align: left;
 
 		& li {
-			padding-block: var(--size-2);
 			padding-inline: var(--size-4);
+			padding-block: var(--size-2);
 		}
 		& a,
 		li,
@@ -229,14 +228,14 @@
 		}
 
 		& button {
-			border: none;
 			box-shadow: none;
+			border: none;
 			padding: 0;
 		}
 
 		& li:hover {
-			background-color: hsl(var(--gray-4-hsl) / 40%);
 			cursor: pointer;
+			background-color: hsl(var(--gray-4-hsl) / 40%);
 			& button {
 				background: unset;
 			}
@@ -266,8 +265,8 @@
 
 		.links {
 			display: flex;
-			gap: var(--size-5);
 			align-items: center;
+			gap: var(--size-5);
 		}
 
 		.nav-desktop {

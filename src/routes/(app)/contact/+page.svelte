@@ -3,13 +3,16 @@
 	import Copy from 'lucide-svelte/icons/copy';
 	import Send from 'lucide-svelte/icons/send';
 
-	let email = 'theriverrunsfast@gmail.com';
+	const email = 'theriverrunsfast@gmail.com';
 	let copied = false;
 
 	function copyEmail() {
 		navigator.clipboard.writeText(email);
 		copied = true;
-		setTimeout(() => (copied = false), 2000); // Reset after 2 seconds
+		setTimeout(() => {
+			copied = false;
+			return copied;
+		}, 2000); // Reset after 2 seconds
 	}
 
 	onMount(() => {
@@ -39,17 +42,17 @@
 <style>
 	main {
 		display: flex;
-		align-items: center;
 		flex-direction: row;
 		justify-content: center;
+		align-items: center;
 		height: 100vh;
 	}
 
 	section {
 		display: flex;
 		flex-direction: column;
-		align-items: center;
 		justify-content: center;
+		align-items: center;
 	}
 
 	h1 {

@@ -1,19 +1,20 @@
 <script lang="ts">
+	import PostsForm from '$lib/components/ui/posts/PostsForm.svelte';
+	// eslint-disable-next-line import/no-unresolved
+	import { page } from '$app/stores';
 	import 'quill/dist/quill.snow.css';
 	import type { ActionData, PageData } from './$types';
-	import PostsForm from '$lib/components/ui/posts/PostsForm.svelte';
-	import { page } from '$app/stores';
 
 	export let form: ActionData;
 	export let data: PageData;
 
-	let post = data.posts.find((post) => post.slug === $page.params.slug);
+	const post = data.posts.find((p) => p.slug === $page.params.slug);
 
-	let title: string = post?.title || '';
-	let content: string = post?.content || '';
-	let description: string = post?.description || '';
-	let tagInput: string[] = post?.tags || [];
-	let published: boolean = post?.published || false;
+	const title: string = post?.title || '';
+	const content: string = post?.content || '';
+	const description: string = post?.description || '';
+	const tagInput: string[] = post?.tags || [];
+	const published: boolean = post?.published || false;
 </script>
 
 <main>
@@ -31,7 +32,7 @@
 
 		{#if form?.error}<p class="formMessage">{form?.message}</p>{/if}
 
-		<PostsForm {form} {title} {content} {description} {tagInput} {published} />
+		<PostsForm {title} {content} {description} {tagInput} {published} />
 	</section>
 </main>
 
@@ -41,18 +42,18 @@
 		justify-content: center;
 	}
 	blockquote {
-		color: var(--stone-7);
 		margin-block: var(--size-7);
+		color: var(--stone-7);
 		font-size: var(--size-8);
 	}
 	.firstHeader {
 		margin-block: var(--size-7);
 	}
 	.formMessage {
+		margin-block-end: var(--size-4);
+		border-radius: var(--size-1);
 		background: var(--pink-6);
 		padding: var(--size-3);
-		border-radius: var(--size-1);
-		margin-block-end: var(--size-4);
 		font-size: var(--font-size-5);
 	}
 </style>

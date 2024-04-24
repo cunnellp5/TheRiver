@@ -18,12 +18,12 @@
 
 <style>
 	button {
-		padding: 0;
-		font-weight: inherit;
-		background: none;
-		border: none;
 		box-shadow: none;
+		border: none;
+		background: none;
+		padding: 0;
 		overflow: hidden;
+		font-weight: inherit;
 	}
 
 	button > * {

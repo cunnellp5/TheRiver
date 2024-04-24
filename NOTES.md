@@ -56,3 +56,13 @@ https://littlesnippets.net/blog/some-css-menu-inspiration-using-animated-lines
 <!-- delay navigation to load media -->
 
 https://www.youtube.com/watch?v=8OmsVZuuQMc
+
+## CSS:
+
+Order properties applying outside the box model, moving inward to intrinsic changes.
+
+Positioning
+Visibility
+Box model
+Dimensions
+Text

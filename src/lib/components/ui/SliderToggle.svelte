@@ -26,7 +26,7 @@
 
 	function toggle(event: Event) {
 		const target = event.target as HTMLInputElement;
-		dispatch('toggle', target.checked);
+		dispatch('change', target.checked);
 	}
 </script>
 
@@ -37,8 +37,8 @@
 
 <style>
 	.switch {
-		position: relative;
 		display: inline-block;
+		position: relative;
 		width: 60px;
 		height: 34px;
 	}
@@ -51,24 +51,24 @@
 
 	.slider {
 		position: absolute;
-		cursor: pointer;
 		top: 0;
-		left: 0;
 		right: 0;
 		bottom: 0;
-		background-color: #ccc;
+		left: 0;
 		transition: 0.4s;
+		cursor: pointer;
+		background-color: #ccc;
 	}
 
 	.slider:before {
 		position: absolute;
-		content: '';
-		height: 26px;
-		width: 26px;
-		left: 4px;
 		bottom: 4px;
-		background-color: white;
+		left: 4px;
 		transition: 0.4s;
+		background-color: white;
+		width: 26px;
+		height: 26px;
+		content: '';
 	}
 
 	input:checked + .slider {

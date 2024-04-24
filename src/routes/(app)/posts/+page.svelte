@@ -5,14 +5,13 @@
 
 	export let data: PageData;
 	const { posts } = data;
-	let shouldDisplay = false;
 </script>
 
 <main>
 	<section>
 		{#if posts.length > 0}
 			<ul>
-				{#each posts as { content, createdAt, description, slug, tags, title }}
+				{#each posts as { createdAt, description, slug, tags, title }}
 					<div in:fly={{ y: 20 }} out:slide>
 						<BlogCard {title} {tags} {createdAt} {slug} {description} />
 					</div>

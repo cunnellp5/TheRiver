@@ -1,21 +1,18 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
 	import { QuillConfigReadonly, quillContentInit } from '$lib/utils/QuillConfig';
 	import formatDate from '$lib/utils/formatDate';
-	import Pencil from 'lucide-svelte/icons/pencil';
-	import Trash from 'lucide-svelte/icons/trash';
 	import type Quill from 'quill';
 	import { onMount } from 'svelte';
 	import type { PageData } from './$types';
+	// eslint-disable-next-line import/no-unresolved
 	import { page } from '$app/stores';
-	import { goto } from '$app/navigation';
 	import EditDeleteActions from '../EditDeleteActions.svelte';
 
 	export let data: PageData;
 	let quill: Quill | null;
 	let reader: string | HTMLElement;
 
-	let post = data.posts.find((post) => post.slug === $page.params.slug) || {
+	const post = data.posts.find((p) => p.slug === $page.params.slug) || {
 		title: '',
 		content: '',
 		tags: [],
@@ -29,7 +26,7 @@
 
 			quill = new Quill(reader, QuillConfigReadonly);
 
-			let quillData = await quillContentInit(post.content);
+			const quillData = await quillContentInit(post.content);
 
 			quill.setContents(quillData);
 		} catch (error) {
@@ -69,14 +66,14 @@
 
 <style>
 	main {
-		height: 100vh;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		height: 100vh;
 	}
 	date {
-		font-size: var(--font-size-0);
 		color: var(--gray-7);
+		font-size: var(--font-size-0);
 	}
 	hgroup {
 		margin-block-end: var(--size-6);
@@ -84,14 +81,14 @@
 
 	/* CLASSES */
 	.badge {
-		padding-inline: var(--size-2);
-		padding-block: var(--size-1);
+		margin-inline-end: var(--size-1);
+		border-radius: var(--radius-3);
 
 		background: hsl(var(--gray-8-hsl) / 50%);
+		padding-inline: var(--size-2);
+		padding-block: var(--size-1);
 		color: hsl(var(--pink-2-hsl) / 50%);
-		border-radius: var(--radius-3);
 		font-size: var(--font-size-0);
-		margin-inline-end: var(--size-1);
 	}
 
 	.tags {
@@ -120,8 +117,5 @@
 		& blockquote {
 			padding-inline: var(--size-4);
 		}
-	}
-	.delete {
-		background-color: hsl(var(--red-5-hsl) / 80%);
 	}
 </style>

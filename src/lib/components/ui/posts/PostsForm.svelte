@@ -1,22 +1,21 @@
 <script lang="ts">
+	import SliderToggle from '$lib/components/ui/SliderToggle.svelte';
+	import { onMount } from 'svelte';
+	import { QuillConfig, quillContentInit } from '$lib/utils/QuillConfig';
+	import { error } from '@sveltejs/kit';
+	import type Quill from 'quill';
+	// eslint-disable-next-line import/no-unresolved
 	import { enhance } from '$app/forms';
 	import 'quill/dist/quill.snow.css';
-	import { onMount } from 'svelte';
-	import { error } from '@sveltejs/kit';
-	import type { ActionData } from '../$types';
-	import SliderToggle from '$lib/components/ui/SliderToggle.svelte';
-	import type Quill from 'quill';
-	import { QuillConfig, quillContentInit } from '$lib/utils/QuillConfig';
 
 	// PROPS / form data
-	export let form: ActionData;
 	export let title: string = '';
 	export let content: string = '';
 	export let description: string = '';
 	export let tagInput: string[] = [];
 	export let published: boolean = false;
 
-	let initialData = {
+	const initialData = {
 		title,
 		content,
 		description,
@@ -37,7 +36,7 @@
 
 			if (content) {
 				// get the content of the post
-				let quillData = quillContentInit(content);
+				const quillData = quillContentInit(content);
 				// set the content of the reader with incoming data
 				quill.setContents(quillData);
 			}
@@ -78,7 +77,6 @@
 	}
 
 	function handleToggle(event: CustomEvent<boolean>) {
-		console.log(event, 'uhhhh');
 		published = event.detail;
 		// published = !event.detail;
 	}
@@ -87,7 +85,7 @@
 <form method="POST" use:enhance>
 	<div class="banner" class:published class:not-published={!published}>
 		{published ? 'PUBLISH' : 'UNPUBLISH'}
-		<SliderToggle checked={published} on:toggle={handleToggle} id="published" name="published" />
+		<SliderToggle checked={published} on:change={handleToggle} id="published" name="published" />
 	</div>
 
 	<hgroup>
@@ -146,21 +144,21 @@
 		background: var(--gradient-1) fixed;
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
+		border: 1px solid var(--stone-9);
 		background-clip: text;
 		height: auto;
-		border: 1px solid var(--stone-9);
 	}
 
 	/* CLASSES */
 	.badge {
-		padding-inline: var(--size-2);
-		padding-block: var(--size-1);
+		margin-inline-end: var(--size-1);
+		border-radius: var(--radius-3);
 
 		background: hsl(var(--gray-8-hsl) / 50%);
+		padding-inline: var(--size-2);
+		padding-block: var(--size-1);
 		color: hsl(var(--pink-2-hsl) / 50%);
-		border-radius: var(--radius-3);
 		font-size: var(--font-size-0);
-		margin-inline-end: var(--size-1);
 	}
 	.tags {
 		margin-block-start: var(--size-4);
@@ -169,9 +167,9 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		padding: var(--size-3);
-		border-radius: var(--size-1);
 		margin-block: var(--size-4);
+		border-radius: var(--size-1);
+		padding: var(--size-3);
 		&.published {
 			background: hsl(var(--green-5-hsl) / 30%);
 		}
@@ -197,11 +195,11 @@
 		}
 	}
 	.deleteBadge {
-		color: var(--stone-1);
-		padding: unset;
 		margin: 0;
-		background: unset;
 		border: unset;
+		background: unset;
+		padding: unset;
+		color: var(--stone-1);
 	}
 	.inputWrapper {
 		margin-block: var(--size-1);
@@ -211,10 +209,10 @@
 		flex-flow: row wrap;
 	}
 	.badge {
-		width: fit-content;
 		display: flex;
 		flex-direction: row;
 		gap: var(--size-2);
 		margin-block: var(--size-1);
+		width: fit-content;
 	}
 </style>

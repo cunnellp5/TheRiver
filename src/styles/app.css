@@ -122,10 +122,10 @@ body {
 }
 
 html {
-	color: var(--text-1);
-	accent-color: var(--link);
 	background-image: var(--background);
 	background-attachment: fixed;
+	color: var(--text-1);
+	accent-color: var(--link);
 }
 
 .surface-1 {

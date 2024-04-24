@@ -11,15 +11,15 @@
 <style>
 	main {
 		display: flex;
-		align-items: center;
 		flex-direction: column;
 		justify-content: center;
-		height: 100vh;
+		align-items: center;
 		margin-block: var(--size-7);
+		height: 100vh;
 	}
 	h1 {
-		margin-block: var(--size-7);
 		transform: rotate(4deg);
+		margin-block: var(--size-7);
 	}
 
 	a:hover {
@@ -28,10 +28,10 @@
 
 	.animation {
 		display: flex;
-		margin-block: var(--size-4);
-		animation: var(--animation-float);
-		animation-timing-function: var(--ease-elastic-in-out-3);
-		animation-duration: infinite;
 		justify-content: center;
+		animation: var(--animation-float);
+		animation-duration: infinite;
+		animation-timing-function: var(--ease-elastic-in-out-3);
+		margin-block: var(--size-4);
 	}
 </style>

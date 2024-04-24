@@ -1,7 +1,7 @@
 main {
 	display: flex;
-	align-items: center;
 	justify-content: center;
+	align-items: center;
 	height: 100%;
 }
 
@@ -16,9 +16,9 @@ input {
 }
 
 label {
-	font-size: var(--font-size-0);
-	color: var(--link);
 	margin-block: var(--size-1);
+	color: var(--link);
+	font-size: var(--font-size-0);
 }
 
 hr {
@@ -28,8 +28,8 @@ hr {
 /* MAIN CLASSES */
 .hero {
 	display: grid;
-	padding: var(--size-10);
 	gap: var(--size-1);
+	padding: var(--size-10);
 }
 
 .hero-message {
@@ -37,9 +37,9 @@ hr {
 }
 
 .under-hero {
+	margin-block-end: var(--size-3);
 	color: var(--gray-7);
 	font-size: var(--font-size-3);
-	margin-block-end: var(--size-3);
 }
 
 .button-list {
@@ -56,12 +56,12 @@ hr {
 .error-message {
 	display: flex;
 	flex-direction: row;
-	background-color: hsl(var(--red-5-hsl) / 30%);
-	font-size: var(--font-size-1);
-	border-radius: var(--radius-2);
 	gap: var(--size-2);
-	padding: var(--size-2);
 	margin-block: var(--size-4);
+	border-radius: var(--radius-2);
+	background-color: hsl(var(--red-5-hsl) / 30%);
+	padding: var(--size-2);
+	font-size: var(--font-size-1);
 }
 
 .invalid {

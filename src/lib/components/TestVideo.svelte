@@ -20,10 +20,10 @@
 
 <style>
 	main {
-		margin: 0;
-		min-height: 100vh;
 		display: grid;
 		place-items: center;
+		margin: 0;
+		min-height: 100vh;
 	}
 
 	img {
@@ -37,24 +37,24 @@
 		--f: 0.8; /* control the scale factor */
 
 		display: grid;
+		grid-template-columns: repeat(var(--m), auto);
 		gap: var(--g);
 		width: 100%;
 		height: 100vh;
-		grid-template-columns: repeat(var(--m), auto);
 	}
 
 	.gallery > img,
 	.gallery > iframe {
-		width: 0;
-		height: 0;
-		min-height: 100%;
-		min-width: 100%;
-		object-fit: cover;
-		cursor: pointer;
 		filter: grayscale(80%);
 		transition: 0.7s linear;
-		transition-timing-function: cubic-bezier(0.14, 0.8, 0.3, 1);
 		transition-delay: var(--transition-delay-2);
+		transition-timing-function: cubic-bezier(0.14, 0.8, 0.3, 1);
+		cursor: pointer;
+		width: 0;
+		min-width: 100%;
+		height: 0;
+		min-height: 100%;
+		object-fit: cover;
 	}
 
 	.gallery img:hover,

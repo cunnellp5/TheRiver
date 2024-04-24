@@ -1,8 +1,11 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
-	import { goto } from '$app/navigation';
 	import Pencil from 'lucide-svelte/icons/pencil';
 	import Trash from 'lucide-svelte/icons/trash';
+	// eslint-disable-next-line import/no-unresolved
+	import { enhance } from '$app/forms';
+	// eslint-disable-next-line import/no-unresolved
+	import { goto } from '$app/navigation';
+
 	export let slug: string;
 	export let redirect: boolean = false;
 	export let actionLocation: string = '?/deletePost';
@@ -19,10 +22,7 @@
 	use:enhance={({ cancel }) => {
 		if (confirm('Are you sure you want to delete this post?')) {
 			if (redirect) {
-				return async ({ update }) =>
-					update().then(() => {
-						goto('/admin/posts');
-					});
+				return async ({ update }) => update().then(() => goto('/admin/posts'));
 			}
 			return async ({ update }) => update();
 		}

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import CircleAlert from 'lucide-svelte/icons/circle-alert';
 	import Check from 'lucide-svelte/icons/check';
+	// eslint-disable-next-line import/no-unresolved
 	import { enhance } from '$app/forms';
 
 	export let form;
@@ -11,7 +12,6 @@
 	let lastName = '';
 	let password = '';
 
-	$: email;
 	$: isConfirmPasswordValid = password === confirmPassword;
 	$: isEmailValid = email.includes('@');
 	$: isFirstNameValid = firstName.length > 0;
@@ -131,12 +131,12 @@
 	}
 
 	.passwords {
-		padding-left: var(--size-4);
-		margin-block: var(--size-4);
-		border-left: 2px solid var(--link);
 		display: flex;
 		flex-direction: column;
 		transition: border-left-color 0.3s ease;
+		margin-block: var(--size-4);
+		border-left: 2px solid var(--link);
+		padding-left: var(--size-4);
 		& > label {
 			margin-block: var(--size-2);
 		}
@@ -154,8 +154,8 @@
 		display: flex;
 		flex-direction: column;
 		margin-top: var(--size-2);
-		font-size: var(--font-size-0);
 		color: var(--gray-6);
+		font-size: var(--font-size-0);
 	}
 
 	.checker {

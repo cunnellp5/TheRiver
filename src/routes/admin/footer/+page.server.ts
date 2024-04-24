@@ -46,8 +46,6 @@ export const actions: Actions = {
 		const formData = await event.request.formData();
 		const linkId = Number(formData.get('linkId'));
 
-		console.log('HEREREREE');
-
 		if (!linkId) {
 			return fail(400, {
 				message: 'Invalid link id'

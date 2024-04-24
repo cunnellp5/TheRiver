@@ -1,4 +1,5 @@
 <script lang="ts">
+	// eslint-disable-next-line import/no-unresolved
 	import { page } from '$app/stores';
 </script>
 
@@ -34,8 +35,8 @@
 	}
 	header {
 		display: flex;
-		padding-block: var(--size-5);
 		margin-block: var(--size-5);
+		padding-block: var(--size-5);
 		/* background-image: var(--gradient-16); */
 	}
 	article {
@@ -46,21 +47,21 @@
 	}
 
 	.sidenav {
-		width: var(--size-12);
 		position: relative;
 		z-index: 1;
 		background-color: hsl(var(--gray-9-hsl) / 30%);
+		width: var(--size-12);
 		overflow-x: hidden;
 	}
 	.sidenav a {
-		padding: var(--size-3);
-		text-decoration: none;
 		display: block;
 		border-bottom: 1px solid var(--gray-9);
+		padding: var(--size-3);
+		text-decoration: none;
 	}
 	.sidenav a:hover {
-		color: #f1f1f1;
 		background-color: var(--gray-9);
+		color: #f1f1f1;
 	}
 	.current {
 		background-color: var(--gray-9);
