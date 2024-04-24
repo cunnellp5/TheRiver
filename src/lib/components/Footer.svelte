@@ -1,5 +1,4 @@
 <script lang="ts">
-	import LogoWhite from '$lib/components/svgs/logos/LogoWhite.svelte';
 	import Socials from './Socials.svelte';
 	import ToggleTheme from './ToggleTheme.svelte';
 </script>
