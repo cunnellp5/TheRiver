@@ -88,9 +88,9 @@
 
 		& span {
 			display: flex;
+			align-items: center;
 			border-bottom: 1px solid var(--border);
 			padding: var(--size-3);
-			align-items: center;
 		}
 
 		& .table-actions {

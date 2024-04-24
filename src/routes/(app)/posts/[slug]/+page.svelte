@@ -64,14 +64,14 @@
 
 <style>
 	main {
-		height: 100vh;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		height: 100vh;
 	}
 	date {
-		font-size: var(--font-size-0);
 		color: var(--gray-7);
+		font-size: var(--font-size-0);
 	}
 	hgroup {
 		margin-block-end: var(--size-6);
@@ -79,14 +79,14 @@
 
 	/* CLASSES */
 	.badge {
-		padding-inline: var(--size-2);
-		padding-block: var(--size-1);
+		margin-inline-end: var(--size-1);
+		border-radius: var(--radius-3);
 
 		background: hsl(var(--gray-8-hsl) / 50%);
+		padding-inline: var(--size-2);
+		padding-block: var(--size-1);
 		color: hsl(var(--pink-2-hsl) / 50%);
-		border-radius: var(--radius-3);
 		font-size: var(--font-size-0);
-		margin-inline-end: var(--size-1);
 	}
 
 	.tags {

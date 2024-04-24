@@ -23,8 +23,8 @@
 
 <style>
 	main {
-		margin: 0 auto;
 		grid-column: 2;
+		margin: 0 auto;
 	}
 
 	h1 {
@@ -41,33 +41,33 @@
 	}
 
 	.sidenav {
+		display: grid;
 		position: sticky;
 		top: 0;
 		grid-column: 1;
-		display: grid;
 		padding: var(--size-3);
-		color: #818181;
 		height: 10%;
+		color: #818181;
 	}
 
 	.sidenav a {
-		transform: rotate(-90deg);
-		text-decoration: none;
-		font-size: var(--font-size-1);
-		color: inherit;
 		display: flex;
-		align-items: center;
 		justify-content: center;
-
-		color: var(--text-2);
-		text-decoration: none;
-		text-transform: uppercase;
-		font-weight: var(--font-weight-5);
-		font-size: var(--size-3);
+		align-items: center;
+		transform: rotate(-90deg);
 		transition: color 0.3s ease;
 		height: 100%;
+		color: inherit;
+
+		color: var(--text-2);
+		font-weight: var(--font-weight-5);
+		font-size: var(--font-size-1);
+		font-size: var(--size-3);
 		/* letter-spacing: 1px; */
 		letter-spacing: var(--font-letterspacing-2);
+		text-decoration: none;
+		text-decoration: none;
+		text-transform: uppercase;
 	}
 
 	.sidenav a:hover {
@@ -76,15 +76,15 @@
 
 	.videos,
 	.tracks {
-		height: 100vh;
-		width: 100%;
 		background-image: var(--gradient-1), var(--noise-3);
+		width: 100%;
+		height: 100vh;
 	}
 
 	.gradient-point-up {
-		height: var(--size-9);
-		background-image: var(--gradient-2), var(--noise-3);
 		-webkit-mask: var(--mask-edge-drip-bottom);
 		mask: var(--mask-edge-drip-bottom);
+		background-image: var(--gradient-2), var(--noise-3);
+		height: var(--size-9);
 	}
 </style>

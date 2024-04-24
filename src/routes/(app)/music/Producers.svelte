@@ -109,8 +109,8 @@
 	.hero {
 		display: flex;
 		flex-direction: column;
-		align-items: center;
 		justify-content: center;
+		align-items: center;
 		height: calc(100vh - var(--size-8));
 	}
 
@@ -125,8 +125,8 @@
 
 	a {
 		display: flex;
-		text-decoration: none;
 		transition: color 0.4s;
+		text-decoration: none;
 		&:hover {
 			color: var(--link);
 		}
@@ -134,9 +134,9 @@
 
 	.table {
 		display: grid;
-		grid-template-columns: 2fr 3fr 1fr;
 		/* grid-template-columns: repeat(3, 1fr); */
 		grid-template-rows: repeat(3, 1fr);
+		grid-template-columns: 2fr 3fr 1fr;
 		padding-bottom: var(--size-11);
 
 		& .table-title {

@@ -42,17 +42,17 @@
 <style>
 	main {
 		display: flex;
-		align-items: center;
 		flex-direction: row;
 		justify-content: center;
+		align-items: center;
 		height: 100vh;
 	}
 
 	section {
 		display: flex;
 		flex-direction: column;
-		align-items: center;
 		justify-content: center;
+		align-items: center;
 	}
 
 	h1 {

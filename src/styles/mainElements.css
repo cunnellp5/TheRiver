@@ -32,8 +32,8 @@ img {
 
 ul,
 ol {
-	list-style: none;
 	padding: 0;
+	list-style: none;
 }
 
 li {
@@ -43,8 +43,8 @@ li {
 /* begin primary theming */
 button.primary {
 	background: var(--cyan-8);
-	text-shadow: 0 1px 0 var(--cyan-9);
 	color: white;
+	text-shadow: 0 1px 0 var(--cyan-9);
 }
 
 button.primary:hover {

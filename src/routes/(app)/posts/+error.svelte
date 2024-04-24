@@ -15,18 +15,18 @@
 
 <style>
 	main {
-		height: 60vh;
 		display: flex;
 		flex-direction: column;
-		align-items: center;
 		justify-content: center;
+		align-items: center;
+		height: 60vh;
 	}
 
 	p {
-		font-weight: 800;
 		color: var(--text-2);
+		font-weight: 800;
 		font-size: var(--size-3);
-		text-transform: uppercase;
 		font-family: var(--font-mono);
+		text-transform: uppercase;
 	}
 </style>

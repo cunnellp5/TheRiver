@@ -26,16 +26,16 @@
 	ul {
 		display: flex;
 		justify-content: center;
-		list-style: none;
 		padding-inline: 0;
+		list-style: none;
 	}
 
 	li {
 		display: flex;
-		align-items: center;
-		border: 0px solid var(--gray-9);
 		justify-content: center;
+		align-items: center;
 		margin-inline: var(--size-1);
+		border: 0px solid var(--gray-9);
 		width: var(--size-8);
 	}
 

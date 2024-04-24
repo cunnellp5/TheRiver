@@ -42,18 +42,18 @@
 		justify-content: center;
 	}
 	blockquote {
-		color: var(--stone-7);
 		margin-block: var(--size-7);
+		color: var(--stone-7);
 		font-size: var(--size-8);
 	}
 	.firstHeader {
 		margin-block: var(--size-7);
 	}
 	.formMessage {
+		margin-block-end: var(--size-4);
+		border-radius: var(--size-1);
 		background: var(--pink-6);
 		padding: var(--size-3);
-		border-radius: var(--size-1);
-		margin-block-end: var(--size-4);
 		font-size: var(--font-size-5);
 	}
 </style>

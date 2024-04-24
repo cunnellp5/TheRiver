@@ -40,9 +40,9 @@
 		font-size: var(--font-size-0);
 	}
 	p {
+		color: var(--text-2);
 		line-height: var(--font-lineheight-0);
 		font-family: var(--font-mono);
-		color: var(--text-2);
 	}
 	a:hover {
 		text-decoration: none;
@@ -60,20 +60,20 @@
 		letter-spacing: var(--font-letterspacing-2);
 	}
 	.badge {
+		margin-inline-end: var(--size-1);
+		border-radius: var(--radius-3);
+		background: hsl(var(--gray-8-hsl) / 50%);
 		padding-inline: var(--size-2);
 		padding-block: var(--size-1);
-		background: hsl(var(--gray-8-hsl) / 50%);
 		color: hsl(var(--pink-2-hsl) / 50%);
-		border-radius: var(--radius-3);
 		font-size: var(--font-size-0);
-		margin-inline-end: var(--size-1);
 	}
 	.blogLink {
 		display: flex;
 		justify-content: end;
 		gap: var(--size-1);
+		margin-block: var(--size-2);
 		color: var(--link);
 		font-size: var(--font-size-0);
-		margin-block: var(--size-2);
 	}
 </style>
