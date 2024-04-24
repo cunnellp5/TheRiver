@@ -50,3 +50,7 @@ button.primary {
 button.primary:hover {
 	background: var(--cyan-7);
 }
+
+button {
+	background-color: var(--gray-10);
+}
