@@ -1,12 +1,13 @@
 <script lang="ts">
-	import BlogMentions from '$lib/components/BlogMentions.svelte';
-	import TestVideo from '$lib/components/TestVideo.svelte';
 	import { draw, fade, fly } from 'svelte/transition';
 	// import LogoWhite from '$lib/components/svgs/logos/LogoWhite.svelte';
 	import { onMount } from 'svelte';
 	import { backOut } from 'svelte/easing';
+	import BlogMentions from './components/BlogMentions.svelte';
+	import TestVideo from './components/TestVideo.svelte';
 
-	export let data; // gets url from .server
+	export let data;
+	const { videoURL } = data;
 
 	let isPlaying = true;
 
@@ -18,6 +19,7 @@
 		videoElement.play();
 		isPlaying = true;
 	}
+
 	function pauseVideo() {
 		videoElement.pause();
 		isPlaying = false;
@@ -34,7 +36,7 @@
 	<div id="video-background">
 		{#if visible}
 			<video in:fade={{ duration: 800, delay: 600 }} autoplay loop muted bind:this={videoElement}>
-				<source src={data.videoURL} type="video/mp4" />
+				<source src={videoURL} type="video/mp4" />
 				<track kind="captions" srclang="en" label="English" />
 			</video>
 		{/if}

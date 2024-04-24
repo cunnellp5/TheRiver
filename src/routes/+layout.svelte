@@ -1,13 +1,13 @@
 <script lang="ts">
-	import Footer from '$lib/components/Footer.svelte';
-	import Header from '$lib/components/Header.svelte';
-	import PageTransition from '$lib/components/Transition.svelte';
-	import 'open-props/normalize';
+	import PageTransition from './components/Transition.svelte';
+	import 'open-props/buttons';
 	import 'open-props/colors-hsl';
 	import 'open-props/masks/edges';
-	import 'open-props/buttons';
+	import 'open-props/normalize';
 	import 'open-props/style';
 	import '../styles/app.css';
+	import Footer from './components/footer/Footer.svelte';
+	import Header from './components/Header.svelte';
 </script>
 
 <div class="layout">

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Socials from './Socials.svelte';
 	import ToggleTheme from './ToggleTheme.svelte';
+	import Socials from './Socials.svelte';
 </script>
 
 <footer>
