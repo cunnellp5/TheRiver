@@ -1,5 +1,6 @@
+// import { sequence } from '@sveltejs/kit/hooks';
+import { redirect } from '@sveltejs/kit';
 import { lucia } from '$lib/server/auth';
-
 import type { Handle } from '@sveltejs/kit';
 
 export const handle: Handle = async ({ event, resolve }) => {
@@ -32,8 +33,17 @@ export const handle: Handle = async ({ event, resolve }) => {
 	}
 
 	event.locals.user = user;
-
 	event.locals.session = session;
+
+	// guards the admin portal
+	if (
+		(!event.locals.session && event.route.id?.includes('/admin')) ||
+		(event.locals.session && !event.locals.user.isAdmin && event.route.id?.includes('/admin'))
+	) {
+		throw redirect(302, '/');
+	}
 
 	return resolve(event);
 };
+
+// export const handle = sequence(authHandle);
