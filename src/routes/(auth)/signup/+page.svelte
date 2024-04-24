@@ -150,6 +150,14 @@
 		border-left-color: var(--green-7);
 	}
 
+	.invalid {
+		border-color: var(--red-7);
+	}
+
+	.valid {
+		border-color: var(--green-7);
+	}
+
 	.help-text {
 		display: flex;
 		flex-direction: column;
