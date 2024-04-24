@@ -3,13 +3,11 @@
 	import 'quill/dist/quill.snow.css';
 	import { onMount } from 'svelte';
 	import { error } from '@sveltejs/kit';
-	import type { ActionData } from '../$types';
 	import SliderToggle from '$lib/components/ui/SliderToggle.svelte';
 	import type Quill from 'quill';
 	import { QuillConfig, quillContentInit } from '$lib/utils/QuillConfig';
 
 	// PROPS / form data
-	export let form: ActionData;
 	export let title: string = '';
 	export let content: string = '';
 	export let description: string = '';
@@ -87,7 +85,7 @@
 <form method="POST" use:enhance>
 	<div class="banner" class:published class:not-published={!published}>
 		{published ? 'PUBLISH' : 'UNPUBLISH'}
-		<SliderToggle checked={published} on:toggle={handleToggle} id="published" name="published" />
+		<SliderToggle checked={published} on:change={handleToggle} id="published" name="published" />
 	</div>
 
 	<hgroup>

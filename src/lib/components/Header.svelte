@@ -1,4 +1,3 @@
-<!-- TODO fix light mode text color -->
 <script lang="ts">
 	import LogoR from '$lib/components/svgs/logos/LogoR2.svelte';
 	import Ellipsis from 'lucide-svelte/icons/ellipsis';
@@ -12,14 +11,14 @@
 
 	let visible = false;
 
-	const toggleAuthMenu = (event: App.EventHandlers) => {
+	const toggleAuthMenu = (event: MouseEvent) => {
 		event.preventDefault();
 		event.stopPropagation();
 		showAuthLinks = !showAuthLinks;
 	};
 
 	if (browser) {
-		window.addEventListener('click', (e) => {
+		window.addEventListener('click', () => {
 			if (showAuthLinks === true) {
 				showAuthLinks = false;
 			}

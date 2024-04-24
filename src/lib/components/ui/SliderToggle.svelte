@@ -26,7 +26,7 @@
 
 	function toggle(event: Event) {
 		const target = event.target as HTMLInputElement;
-		dispatch('toggle', target.checked);
+		dispatch('change', target.checked);
 	}
 </script>
 

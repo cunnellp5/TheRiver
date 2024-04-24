@@ -2,10 +2,6 @@
 // for information about these interfaces
 declare global {
 	namespace App {
-		interface EventHandlers {
-			preventDefault: () => void;
-			stopPropagation: () => void;
-		}
 		// interface Error {}
 		interface Locals {
 			user: import('lucia').User | null;
@@ -16,5 +12,3 @@ declare global {
 		// interface Platform {}
 	}
 }
-
-export {};

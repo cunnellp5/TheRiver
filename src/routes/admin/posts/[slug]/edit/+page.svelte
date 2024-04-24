@@ -31,7 +31,7 @@
 
 		{#if form?.error}<p class="formMessage">{form?.message}</p>{/if}
 
-		<PostsForm {form} {title} {content} {description} {tagInput} {published} />
+		<PostsForm {title} {content} {description} {tagInput} {published} />
 	</section>
 </main>
 
