@@ -8,10 +8,13 @@
 	import '../styles/app.css';
 	import Footer from './components/footer/Footer.svelte';
 	import Header from './components/Header.svelte';
+	import type { PageData } from './$types';
+
+	export let data: PageData;
 </script>
 
 <div class="layout">
-	<Header />
+	<Header isSignedIn={data.isSignedIn} />
 
 	<!-- TODO move transitions to a new layout so admin portal looks better when navigating -->
 	<PageTransition>
