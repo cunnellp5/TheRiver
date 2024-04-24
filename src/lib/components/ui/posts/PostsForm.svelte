@@ -1,11 +1,12 @@
 <script lang="ts">
+	import SliderToggle from '$lib/components/ui/SliderToggle.svelte';
+	import { onMount } from 'svelte';
+	import { QuillConfig, quillContentInit } from '$lib/utils/QuillConfig';
+	import { error } from '@sveltejs/kit';
+	import type Quill from 'quill';
+	// eslint-disable-next-line import/no-unresolved
 	import { enhance } from '$app/forms';
 	import 'quill/dist/quill.snow.css';
-	import { onMount } from 'svelte';
-	import { error } from '@sveltejs/kit';
-	import SliderToggle from '$lib/components/ui/SliderToggle.svelte';
-	import type Quill from 'quill';
-	import { QuillConfig, quillContentInit } from '$lib/utils/QuillConfig';
 
 	// PROPS / form data
 	export let title: string = '';
@@ -76,7 +77,6 @@
 	}
 
 	function handleToggle(event: CustomEvent<boolean>) {
-		console.log(event, 'uhhhh');
 		published = event.detail;
 		// published = !event.detail;
 	}

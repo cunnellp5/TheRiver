@@ -4,6 +4,7 @@
 	import type Quill from 'quill';
 	import { onMount } from 'svelte';
 	import type { PageData } from './$types';
+	// eslint-disable-next-line import/no-unresolved
 	import { page } from '$app/stores';
 	import EditDeleteActions from '../EditDeleteActions.svelte';
 
@@ -11,7 +12,7 @@
 	let quill: Quill | null;
 	let reader: string | HTMLElement;
 
-	const post = data.posts.find((post) => post.slug === $page.params.slug) || {
+	const post = data.posts.find((p) => p.slug === $page.params.slug) || {
 		title: '',
 		content: '',
 		tags: [],

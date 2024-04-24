@@ -1,7 +1,9 @@
 <script lang="ts">
 	import Pencil from 'lucide-svelte/icons/pencil';
 	import Trash from 'lucide-svelte/icons/trash';
+	// eslint-disable-next-line import/no-unresolved
 	import { enhance } from '$app/forms';
+	// eslint-disable-next-line import/no-unresolved
 	import { goto } from '$app/navigation';
 
 	export let slug: string;
@@ -20,10 +22,7 @@
 	use:enhance={({ cancel }) => {
 		if (confirm('Are you sure you want to delete this post?')) {
 			if (redirect) {
-				return async ({ update }) =>
-					update().then(() => {
-						goto('/admin/posts');
-					});
+				return async ({ update }) => update().then(() => goto('/admin/posts'));
 			}
 			return async ({ update }) => update();
 		}

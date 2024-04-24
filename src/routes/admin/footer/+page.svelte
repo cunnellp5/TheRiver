@@ -1,4 +1,5 @@
 <script lang="ts">
+	// eslint-disable-next-line import/no-unresolved
 	import { enhance } from '$app/forms';
 	import type { PageData } from './$types';
 
@@ -10,7 +11,6 @@
 	let isCreatingSocialLink = false;
 </script>
 
-<!-- <main> -->
 <h2>Footer links</h2>
 <p>This shows all your links in the footer</p>
 
@@ -19,7 +19,13 @@
 		<span class="table-title">Title</span>
 		<span class="table-title">File</span>
 		<span>
-			<button on:click={() => (isCreatingSocialLink = !isCreatingSocialLink)}>+ Add</button>
+			<button
+				on:click={() => {
+					isCreatingSocialLink = !isCreatingSocialLink;
+					return isCreatingSocialLink;
+				}}>
+				+ Add
+			</button>
 		</span>
 	</div>
 
@@ -54,16 +60,7 @@
 	</div>
 </div>
 
-<!-- </main> -->
-
 <style>
-	main {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-	}
-
 	form {
 		& input {
 			margin-inline: var(--size-3);

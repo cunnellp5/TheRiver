@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
+	// eslint-disable-next-line import/no-unresolved
 	import { page } from '$app/stores';
 </script>
 

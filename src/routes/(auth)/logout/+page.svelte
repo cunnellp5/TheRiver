@@ -1,7 +1,3 @@
-<script lang="ts">
-	import { enhance } from '$app/forms';
-</script>
-
 <main>
 	<h2>Logged out.</h2>
 	<p>🫶 See you later!</p>

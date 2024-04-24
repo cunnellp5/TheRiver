@@ -1,5 +1,6 @@
 <script lang="ts">
 	import CircleAlert from 'lucide-svelte/icons/circle-alert';
+	// eslint-disable-next-line import/no-unresolved
 	import { enhance } from '$app/forms';
 
 	export let form;
@@ -46,10 +47,6 @@
 		main {
 			display: flex;
 			flex-direction: column;
-		}
-		.promo-art > img {
-			inline-size: unset;
-			border-radius: unset;
 		}
 	}
 </style>

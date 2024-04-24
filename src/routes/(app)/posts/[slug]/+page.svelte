@@ -4,13 +4,14 @@
 	import type Quill from 'quill';
 	import { onMount } from 'svelte';
 	import type { PageData } from './$types';
+	// eslint-disable-next-line import/no-unresolved
 	import { page } from '$app/stores';
 
 	export let data: PageData;
 	let quill: Quill | null;
 	let reader: string | HTMLElement;
 
-	const post = data.posts.find((post) => post.slug === $page.params.slug) || {
+	const post = data.posts.find((p) => p.slug === $page.params.slug) || {
 		title: '',
 		content: '',
 		tags: [],
@@ -114,8 +115,5 @@
 		& blockquote {
 			padding-inline: var(--size-4);
 		}
-	}
-	.delete {
-		background-color: hsl(var(--red-5-hsl) / 80%);
 	}
 </style>

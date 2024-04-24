@@ -75,18 +75,10 @@
 	}
 
 	.videos,
-	.tracks,
-	.producers {
+	.tracks {
 		height: 100vh;
 		width: 100%;
 		background-image: var(--gradient-1), var(--noise-3);
-	}
-
-	.gradient-point-down {
-		height: var(--size-9);
-		background-image: var(--gradient-1), var(--noise-3);
-		-webkit-mask: var(--mask-edge-zig-zag-top);
-		mask: var(--mask-edge-zig-zag-top);
 	}
 
 	.gradient-point-up {

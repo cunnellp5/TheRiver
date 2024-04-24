@@ -1,6 +1,7 @@
 <script lang="ts">
 	import CircleAlert from 'lucide-svelte/icons/circle-alert';
 	import Check from 'lucide-svelte/icons/check';
+	// eslint-disable-next-line import/no-unresolved
 	import { enhance } from '$app/forms';
 
 	export let form;
@@ -11,7 +12,6 @@
 	let lastName = '';
 	let password = '';
 
-	$: email;
 	$: isConfirmPasswordValid = password === confirmPassword;
 	$: isEmailValid = email.includes('@');
 	$: isFirstNameValid = firstName.length > 0;

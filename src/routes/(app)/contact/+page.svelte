@@ -9,7 +9,10 @@
 	function copyEmail() {
 		navigator.clipboard.writeText(email);
 		copied = true;
-		setTimeout(() => (copied = false), 2000); // Reset after 2 seconds
+		setTimeout(() => {
+			copied = false;
+			return copied;
+		}, 2000); // Reset after 2 seconds
 	}
 
 	onMount(() => {

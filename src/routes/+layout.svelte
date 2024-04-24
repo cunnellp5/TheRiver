@@ -2,7 +2,6 @@
 	import Footer from '$lib/components/Footer.svelte';
 	import Header from '$lib/components/Header.svelte';
 	import PageTransition from '$lib/components/Transition.svelte';
-	import { page } from '$app/stores';
 	import 'open-props/normalize';
 	import 'open-props/colors-hsl';
 	import 'open-props/masks/edges';

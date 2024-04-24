@@ -49,6 +49,7 @@ module.exports = {
 		}
 	},
 	rules: {
+		'no-inner-declarations': 'off',
 		'arrow-body-style': ['error', 'as-needed'],
 		'prefer-arrow-callback': ['error', { allowNamedFunctions: false, allowUnboundThis: true }],
 		'import/prefer-default-export': 0,

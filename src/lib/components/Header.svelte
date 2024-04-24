@@ -4,7 +4,9 @@
 	import Waves from 'lucide-svelte/icons/waves';
 	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
+	// eslint-disable-next-line import/no-unresolved
 	import { page } from '$app/stores';
+	// eslint-disable-next-line import/no-unresolved
 	import { browser } from '$app/environment';
 
 	let showAuthLinks = false;
@@ -99,8 +101,6 @@
 				<li>Login</li>
 			</a>
 			<form id="logoutForm" method="POST" action="/logout">
-				<!-- svelte-ignore a11y-click-events-have-key-events -->
-				<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 				<li>
 					<button class="logout-button" type="submit">Logout</button>
 				</li>

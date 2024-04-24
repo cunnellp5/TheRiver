@@ -58,7 +58,6 @@
 		border-top: 1px solid var(--border);
 		gap: var(--size-7);
 	}
-
 	div {
 		display: flex;
 		align-items: center;
