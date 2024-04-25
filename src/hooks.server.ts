@@ -47,3 +47,6 @@ export const handle: Handle = async ({ event, resolve }) => {
 };
 
 // export const handle = sequence(authHandle);
+
+// TODO add rate limiting to any CREATE/UPDATE pages
+// TODO cache all 'readonly' pages
