@@ -7,33 +7,59 @@ import FormDataMock from '$lib/test/mocks/FormDataMock';
 import { actions } from './+page.server';
 
 describe('Signup', () => {
-	describe('actions', () => {
-		afterEach(() => {
-			vi.restoreAllMocks();
-		});
+	afterEach(() => {
+		vi.restoreAllMocks();
+	});
 
+	describe('actions [default]', () => {
 		const expected = { message: 'Please fill out all fields' };
 
-		test.each(SignUpFormData)('if any are null -> Please fill out all fields', async (data) => {
-			// mock formData
-			const formData = new FormDataMock(data);
+		describe('auth pt1 missing form data', () => {
+			test.each(SignUpFormData)('if any are null -> Please fill out all fields', async (data) => {
+				// mock formData
+				const formData = new FormDataMock(data);
 
-			// Mock the request object
-			const request = new RequestMock(formData);
+				// Mock the request object
+				const request = new RequestMock(formData);
 
-			// Mock the cookies object
-			const cookies = new CookiesMock();
+				// Mock the cookies object
+				const cookies = new CookiesMock();
 
-			// Mock the event object
-			const event = new MockedEvent(request, cookies);
+				// Mock the event object
+				const event = new MockedEvent(request, cookies);
 
-			// Call the default action
-			const response = (await actions.default(event)) as Record<'status', number> &
-				Record<'data', { message: string }> &
-				Record<string, unknown>;
+				// Call the default action
+				const response = (await actions.default(event)) as Record<'status', number> &
+					Record<'data', { message: string }> &
+					Record<string, unknown>;
 
-			expect(response.status).toEqual(400);
-			expect(response.data.message).toEqual(expected.message);
+				expect(response.status).toEqual(400);
+				expect(response.data.message).toEqual(expected.message);
+			});
 		});
+
+		// describe('auth pt2 validate with valibot', () => {
+		// 	test.each(SignUpFormData)('if any are null -> Please fill out all fields', async (data) => {
+		// 		// mock formData
+		// 		const formData = new FormDataMock(data);
+
+		// 		// Mock the request object
+		// 		const request = new RequestMock(formData);
+
+		// 		// Mock the cookies object
+		// 		const cookies = new CookiesMock();
+
+		// 		// Mock the event object
+		// 		const event = new MockedEvent(request, cookies);
+
+		// 		// Call the default action
+		// 		const response = (await actions.default(event)) as Record<'status', number> &
+		// 			Record<'data', { message: string }> &
+		// 			Record<string, unknown>;
+
+		// 		expect(response.status).toEqual(400);
+		// 		expect(response.data.message).toEqual(expected.message);
+		// 	});
+		// });
 	});
 });
