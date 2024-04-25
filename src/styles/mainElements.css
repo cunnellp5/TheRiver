@@ -42,13 +42,13 @@ li {
 
 /* begin primary theming */
 button.primary {
-	background: var(--cyan-8);
+	background: var(--teal-3);
 	color: white;
 	text-shadow: 0 1px 0 var(--cyan-9);
 }
 
 button.primary:hover {
-	background: var(--cyan-7);
+	background: var(--teal-8);
 }
 
 button {

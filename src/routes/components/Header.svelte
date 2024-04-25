@@ -156,7 +156,7 @@
 		& a {
 			display: inline-block;
 			position: relative;
-			padding: 0.4em 0;
+			padding: var(--size-1) 0;
 			color: var(--gray-6);
 			text-decoration: none;
 		}
