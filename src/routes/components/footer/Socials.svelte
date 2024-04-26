@@ -25,8 +25,10 @@
 <style>
 	ul {
 		display: flex;
-		justify-content: center;
+		flex-wrap: wrap;
+		justify-content: space-between;
 		padding-inline: 0;
+		width: 100%;
 		list-style: none;
 	}
 
@@ -78,5 +80,11 @@
 	.socials:hover {
 		fill: var(--link);
 		border: 3px solid var(--link);
+	}
+
+	@media (max-width: 600px) {
+		.logo-link {
+			font-size: 20%;
+		}
 	}
 </style>
