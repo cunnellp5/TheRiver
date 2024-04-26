@@ -8,7 +8,6 @@
 
 	export let slug: string;
 	export let redirect: boolean = false;
-	export let actionLocation: string = '?/deletePost';
 </script>
 
 <a href="/admin/posts/{slug}/edit">
@@ -18,7 +17,7 @@
 </a>
 <form
 	method="POST"
-	action={actionLocation}
+	action="?/deletePost"
 	use:enhance={({ cancel }) => {
 		// eslint-disable-next-line no-alert, no-restricted-globals
 		if (confirm('Are you sure you want to delete this post?')) {
