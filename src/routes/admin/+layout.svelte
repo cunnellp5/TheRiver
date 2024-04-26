@@ -18,9 +18,9 @@
 			</a>
 			<a class:current={$page.url.pathname === '/admin/users'} href="/admin/users">Users</a>
 			<a class:current={$page.url.pathname === '/admin/footer'} href="/admin/footer">Footer</a>
-			<a class:current={$page.url.pathname === '/admin/settings'} href="/admin/settings"
-				>Settings</a>
-			<!-- Add more links as needed -->
+			<a class:current={$page.url.pathname === '/admin/settings'} href="/admin/settings">
+				Settings
+			</a>
 		</nav>
 	</aside>
 	<article>
