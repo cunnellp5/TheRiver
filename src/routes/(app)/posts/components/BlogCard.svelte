@@ -29,8 +29,8 @@
 			{/each}
 		</div>
 		<a class="blogLink" href="/posts/{slug}">
-			Read more
 			<SquareArrowOurUpRight size="10" />
+			Read more
 		</a>
 	</div>
 </div>
@@ -65,7 +65,7 @@
 		justify-content: end;
 		gap: var(--size-1);
 		margin-block: var(--size-2);
-		color: var(--link);
+		font-weight: var(--font-weight-7);
 		font-size: var(--font-size-0);
 	}
 </style>
