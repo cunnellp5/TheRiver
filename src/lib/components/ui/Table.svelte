@@ -19,7 +19,7 @@
 					<td>{cell}</td>
 				{/each}
 				<td>
-					<button class="primary">Book now</button>
+					<button>Book now</button>
 				</td>
 			</tr>
 		{/each}
