@@ -128,7 +128,7 @@
 		</div>
 	</div>
 	<div class="buttonWrapper">
-		<button class="create">Create post!</button>
+		<button class="primary">Create post!</button>
 		<button
 			type="reset"
 			id="resetForm"
@@ -177,7 +177,8 @@
 		& *,
 		& *::before,
 		& *::placeholder {
-			color: var(--stone-2);
+			color: var(--text-1);
+			font-weight: 100;
 		}
 		& button {
 			box-shadow: none;
@@ -209,10 +210,6 @@
 		margin-block: var(--size-3);
 	}
 	button {
-		background-color: hsl(var(--jungle-2-hsl) / 20%);
 		text-shadow: none;
-	}
-	.create {
-		background-color: hsl(var(--jungle-2-hsl) / 40%);
 	}
 </style>
