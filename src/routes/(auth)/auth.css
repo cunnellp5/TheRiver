@@ -64,14 +64,6 @@ hr {
 	font-size: var(--font-size-1);
 }
 
-.invalid {
-	border-color: var(--red-7);
-}
-
-.valid {
-	border-color: var(--green-7);
-}
-
 .disabled {
 	opacity: 0.5;
 	cursor: not-allowed;

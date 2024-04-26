@@ -9,6 +9,8 @@
 	// eslint-disable-next-line import/no-unresolved
 	import { browser } from '$app/environment';
 
+	export let isSignedIn = false;
+
 	let showAuthLinks = false;
 
 	let visible = false;
@@ -94,17 +96,20 @@
 		</ul>
 
 		<ul class="card" class:hidden={!showAuthLinks}>
-			<a href="/signup">
-				<li>Signup</li>
-			</a>
-			<a href="/login">
-				<li>Login</li>
-			</a>
-			<form id="logoutForm" method="POST" action="/logout">
-				<li>
-					<button class="logout-button" type="submit">Logout</button>
-				</li>
-			</form>
+			{#if isSignedIn}
+				<form id="logoutForm" method="POST" action="/logout">
+					<li>
+						<button class="logout-button" type="submit">Logout</button>
+					</li>
+				</form>
+			{:else}
+				<a href="/signup">
+					<li>Signup</li>
+				</a>
+				<a href="/login">
+					<li>Login</li>
+				</a>
+			{/if}
 		</ul>
 	</nav>
 
@@ -151,7 +156,7 @@
 		& a {
 			display: inline-block;
 			position: relative;
-			padding: 0.4em 0;
+			padding: var(--size-1) 0;
 			color: var(--gray-6);
 			text-decoration: none;
 		}
@@ -222,8 +227,12 @@
 		& a,
 		li,
 		button {
+			box-shadow: none;
+			color: var(--text-2);
+			font-weight: 100;
 			font-size: var(--font-size-0);
 			letter-spacing: var(--font-letterspacing-3);
+			text-shadow: none;
 			text-transform: uppercase;
 		}
 

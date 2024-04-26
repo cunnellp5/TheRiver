@@ -7,6 +7,8 @@ export const load: PageServerLoad = async ({ locals }) => {
 	if (!locals.session || !locals?.user?.isAdmin) {
 		return error(401, 'Unauthorized');
 	}
+
+	return { user: locals.user };
 };
 
 export const actions: Actions = {

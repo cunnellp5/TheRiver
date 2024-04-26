@@ -3,6 +3,7 @@ import { env } from '$env/dynamic/private';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async () => {
+	// TODO fetch url from cloudinary figure out media
 	const videoURL = env.VIDEO_URL;
 
 	if (!videoURL) {

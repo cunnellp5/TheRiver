@@ -20,13 +20,14 @@
 	method="POST"
 	action={actionLocation}
 	use:enhance={({ cancel }) => {
+		// eslint-disable-next-line no-alert, no-restricted-globals
 		if (confirm('Are you sure you want to delete this post?')) {
 			if (redirect) {
 				return async ({ update }) => update().then(() => goto('/admin/posts'));
 			}
 			return async ({ update }) => update();
 		}
-		cancel();
+		return cancel();
 	}}>
 	<input type="hidden" name="slug" id="slug" value={slug} />
 	<button class="delete" type="submit">

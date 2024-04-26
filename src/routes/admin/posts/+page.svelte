@@ -1,9 +1,9 @@
 <script lang="ts">
-	import PostsCard from '$lib/components/ui/posts/PostsCard.svelte';
 	import Plus from 'lucide-svelte/icons/plus';
 	import type { Post } from '@prisma/client';
+	import PostsCard from './components/PostsCard.svelte';
 	import type { PageData } from './$types';
-	import EditDeleteActions from './EditDeleteActions.svelte';
+	import EditDeleteActions from './components/EditDeleteActions.svelte';
 
 	export let data: PageData;
 	let posts: Post[];

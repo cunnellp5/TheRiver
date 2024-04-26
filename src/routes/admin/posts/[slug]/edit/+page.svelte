@@ -1,5 +1,5 @@
 <script lang="ts">
-	import PostsForm from '$lib/components/ui/posts/PostsForm.svelte';
+	import PostsForm from '../../components/PostsForm.svelte';
 	// eslint-disable-next-line import/no-unresolved
 	import { page } from '$app/stores';
 	import 'quill/dist/quill.snow.css';

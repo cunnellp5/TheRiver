@@ -129,6 +129,7 @@
 			type="reset"
 			id="resetForm"
 			on:click|preventDefault={() => {
+				// eslint-disable-next-line no-alert, no-restricted-globals
 				if (confirm('Are you sure you want to reset the form?')) resetForm();
 			}}>
 			Reset to Initial Data

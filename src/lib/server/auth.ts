@@ -8,6 +8,9 @@ const adapter = new PrismaAdapter(db.session, db.user);
 
 interface DtatbaseUserAttributes {
 	isAdmin: boolean;
+	firstName: string;
+	lastName: string;
+	email: string;
 }
 
 export const lucia = new Lucia(adapter, {
@@ -17,7 +20,10 @@ export const lucia = new Lucia(adapter, {
 		}
 	},
 	getUserAttributes: (user) => ({
-		isAdmin: user.isAdmin
+		isAdmin: user.isAdmin,
+		firstName: user.firstName,
+		lastName: user.lastName,
+		email: user.email
 	})
 });
 
