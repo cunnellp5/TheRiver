@@ -28,21 +28,25 @@
 	}
 </script>
 
-<button class:current={currentFilter === null} on:click={() => updatePosts(null)}>
-	All posts ({posts.length})
-</button>
-<button class:current={currentFilter === true} on:click={() => updatePosts(true)}>
-	Published ({publishedPosts.length})
-</button>
-<button class:current={currentFilter === false} on:click={() => updatePosts(false)}>
-	Unpublished ({unpublishedPosts.length})
-</button>
-<button class="create">
-	<a href="/admin/posts/create"><Plus /></a>
-</button>
+<section>
+	<button class:current={currentFilter === null} on:click={() => updatePosts(null)}>
+		All posts ({posts.length})
+	</button>
+	<button class:current={currentFilter === true} on:click={() => updatePosts(true)}>
+		Published ({publishedPosts.length})
+	</button>
+	<button class:current={currentFilter === false} on:click={() => updatePosts(false)}>
+		Unpublished ({unpublishedPosts.length})
+	</button>
+	<button class="create">
+		<a href="/admin/posts/create"><Plus /></a>
+	</button>
+</section>
 
 {#if postDataToShow && postDataToShow.length === 0}
-	<p>No posts.</p>
+	<section>
+		<p>No posts.</p>
+	</section>
 {:else}
 	{#each postDataToShow as { title, tags, createdAt, slug, description, published }}
 		<section>
@@ -66,6 +70,14 @@
 <style>
 	button {
 		font-weight: var(--font-weight-1);
+	}
+	section {
+		display: flex;
+		justify-content: center;
+		margin: auto;
+	}
+	button {
+		margin-inline: var(--size-2);
 	}
 	.actionsGroup {
 		display: flex;
