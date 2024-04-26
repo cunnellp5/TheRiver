@@ -4,20 +4,34 @@
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
+enum ServiceAvailability {
+  AVAILABLE
+  BOOKED_OUT
+  COMING_SOON
+  LIMITED_AVAILABILITY
+  UNAVAILABLE
+}
+
+enum ServiceCategory {
+  HAIR
+  NAILS
+  WAX
+}
+
 enum BookingStatus {
-  PENDING
-  CONFIRMED
   CANCELED
+  CONFIRMED
+  PENDING
 }
 
 enum EnumCategory {
   BLOG
   CASHAPP
   EP
+  LINKTREE
   MERCH
   MUSIC
   OTHER
-  LINKTREE
   SOCIALS
 }
 
@@ -74,14 +88,16 @@ model Guest {
 }
 
 model Service {
-  id           Int       @id @default(autoincrement())
-  createdAt    DateTime  @default(now())
-  updatedAt    DateTime  @updatedAt
+  id           Int                 @id @default(autoincrement())
+  createdAt    DateTime            @default(now())
+  updatedAt    DateTime            @updatedAt
   name         String
   description  String
-  price        Float
   duration     Int
-  availability Boolean
+  availability ServiceAvailability @default(AVAILABLE)
+  category     ServiceCategory
+  price        Float
+  slug         String              @unique
   bookings     Booking[]
 }
 
@@ -93,7 +109,7 @@ model Booking {
   guestId   Int?
   serviceId Int
   dateTime  DateTime
-  status    BookingStatus
+  status    BookingStatus @default(PENDING)
   notes     String?
   user      User?         @relation(fields: [userId], references: [id])
   guest     Guest?        @relation(fields: [guestId], references: [id])
