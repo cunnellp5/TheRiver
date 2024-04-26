@@ -41,6 +41,7 @@
 			</div>
 
 			<br />
+			<br />
 			<p>Merch</p>
 			<li>etsy.com/shop/MadeByTheRiverBed</li>
 
@@ -74,14 +75,17 @@
 		align-items: center;
 	}
 	p {
+		margin-block-end: var(--size-1);
 		color: var(--gray-5);
-		font-size: var(--font-size-1);
+		font-size: var(--font-size-0);
 	}
 	li {
 		transition: transform 0.3s ease;
 		transition: text-shadow 0.3s ease;
+		margin-inline: var(--size-1);
 		color: var(--gray-7);
 		font-size: var(--font-size-0);
+		line-height: var(--size-4);
 		list-style: none;
 	}
 	li:hover {
