@@ -29,15 +29,25 @@
 <style>
 	/* Add your table styles here */
 	table {
-		box-shadow: var(--shadow-2);
-		/* border-collapse: collapse; */
+		border: none;
+		border-collapse: collapse;
 		width: 100%;
-		font-size: var(--size-6);
+		font-size: var(--size-4);
 	}
 	th {
-		color: var(--link);
+		color: hsl(var(--gray-7-hsl) / 60%);
 	}
 
+	table,
+	th,
+	td {
+		background-color: unset;
+		text-align: left;
+	}
+
+	tr {
+		border-bottom: 1px solid var(--border);
+	}
 	button {
 		padding-block: 0;
 	}
