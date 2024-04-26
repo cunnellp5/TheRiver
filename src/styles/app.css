@@ -20,7 +20,7 @@ html {
 	--link-dark: var(--teal-2);
 
 	/* light */
-	--background-light: none;
+	--background-light: var(--brown-0);
 	--border-light: var(--gray-4);
 	--brand-light: var(--cyan-10);
 	--socials-1-light: var(--gray-5);
@@ -123,8 +123,13 @@ body {
 html {
 	background-image: var(--background);
 	background-attachment: fixed;
+	background-color: var(--background);
 	color: var(--text-1);
 	accent-color: var(--link);
+}
+
+button {
+	background-color: var(--background);
 }
 
 .surface-1 {
