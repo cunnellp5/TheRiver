@@ -30,8 +30,8 @@
 		{/each}
 	</div>
 	<a class="blogLink" href={link}>
-		read more
 		<SquareArrowOurUpRight size="10" />
+		Read more
 	</a>
 	{#if allowSlot}
 		<slot />
@@ -68,7 +68,7 @@
 		justify-content: end;
 		gap: var(--size-1);
 		margin-block: var(--size-2);
-		color: var(--link);
+		font-weight: var(--font-weight-7);
 		font-size: var(--font-size-0);
 	}
 </style>
