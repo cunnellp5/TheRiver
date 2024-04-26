@@ -26,6 +26,9 @@
 </main>
 
 <style>
+	h1 {
+		text-transform: uppercase;
+	}
 	main {
 		/* display: grid; */
 		/* grid-template-columns: max-content auto; */
