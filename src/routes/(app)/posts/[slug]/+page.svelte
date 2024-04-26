@@ -100,7 +100,8 @@
 		& *::before,
 		& *::placeholder {
 			/* background-color: var(--yellow-0); */
-			color: var(--stone-2);
+			color: var(--text-1);
+			font-weight: 100;
 		}
 		& blockquote {
 			padding-inline: var(--size-4);
