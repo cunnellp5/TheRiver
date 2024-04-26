@@ -1,9 +1,9 @@
 <script lang="ts">
-	import Table2 from '$lib/components/ui/Table2.svelte';
+	import Table from '$lib/components/ui/Table.svelte';
 
 	let columns = ['Service', 'Price', 'Duration'];
 	let data = [
-		{ Service: 'Rainbow hair', Price: '$100', Duration: '1 hour' },
+		{ Service: 'Hair', Price: '$100', Duration: '1 hour' },
 		{ Service: 'Nails', Price: '$200', Duration: '2 hours' }
 		// Add more rows as needed
 	];
@@ -20,7 +20,7 @@
 		<div class="page-indicator">1</div>
 	</section>
 	<section class="service-table">
-		<Table2 {columns} {data} />
+		<Table {columns} {data} />
 	</section>
 </main>
 
