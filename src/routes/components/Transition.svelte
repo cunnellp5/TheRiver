@@ -4,7 +4,7 @@
 	import { page } from '$app/stores';
 </script>
 
-{#key $page.url.pathname}
+{#key $page.url.pathname.split('/')[1]}
 	<div class="transition" in:fade>
 		<slot />
 	</div>
