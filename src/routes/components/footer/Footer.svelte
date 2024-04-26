@@ -22,7 +22,6 @@
 
 	<!-- row 2 col 2 -->
 	<div class="footer-middle-second">
-		<hr />
 		<div class="toggler-pt-2">
 			<div class="footer-second">
 				<p>Socials</p>
@@ -132,6 +131,8 @@
 		flex-direction: column;
 		justify-content: end;
 		align-items: center;
+		/* box-shadow: var(--shadow-3); */
+		padding-block: var(--size-7);
 	}
 
 	@media (min-width: 768px) {

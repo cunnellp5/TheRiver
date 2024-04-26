@@ -128,10 +128,7 @@ html {
 	accent-color: var(--link);
 }
 
-button {
-	background-color: var(--background);
-}
-
+/* UTILITIES */
 .surface-1 {
 	background-color: var(--surface-1);
 	color: var(--text-2);
@@ -151,3 +148,24 @@ button {
 	background-color: var(--surface-4);
 	color: var(--text-1);
 }
+
+.primary {
+	background-color: hsl(var(--teal-7-hsl) / 40%);
+	/* background: var(--teal-3); */
+	text-shadow: 0 1px 0 var(--cyan-9);
+}
+
+.primary:hover {
+	background-color: hsl(var(--teal-2-hsl) / 50%);
+}
+
+/* TYPOGRAPHIES */
+
+/* COMPONENTS */
+button {
+	background-color: var(--surface-4);
+	color: var(--text-1);
+	text-shadow: none;
+}
+
+/* begin primary theming */

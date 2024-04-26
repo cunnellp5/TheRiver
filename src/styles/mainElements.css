@@ -39,14 +39,3 @@ ol {
 li {
 	padding-inline-start: 0;
 }
-
-/* begin primary theming */
-button.primary {
-	background: var(--teal-3);
-	color: white;
-	text-shadow: 0 1px 0 var(--cyan-9);
-}
-
-button.primary:hover {
-	background: var(--teal-8);
-}
