@@ -3,7 +3,7 @@
 	import { page } from '$app/stores';
 </script>
 
-<main>
+<main class:hype={$page.status === 404}>
 	{#if $page.status === 404}
 		<h1>The River</h1>
 		<section>
@@ -27,7 +27,7 @@
 </main>
 
 <style>
-	h1 {
+	.hype > h1 {
 		font-size: var(--size-15);
 		/* letter-spacing: var(--size-8); */
 	}
