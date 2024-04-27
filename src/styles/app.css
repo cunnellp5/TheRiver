@@ -2,8 +2,12 @@
 
 html {
 	/* font */
-	--font-sans: 'Roboto', sans-serif;
-	--font-mono: 'Roboto', monospace;
+	/* --font-sans: 'Roboto', sans-serif;
+	--font-mono: 'Roboto', monospace; */
+	--font-sans: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+	--font-serif: ui-serif, serif;
+	--font-mono: Dank Mono, Operator Mono, Inconsolata, Fira Mono, ui-monospace, SF Mono, Monaco,
+		Droid Sans Mono, Source Code Pro, monospace;
 
 	/* dark */
 	--background-dark: var(--gradient-8);
@@ -128,6 +132,10 @@ html {
 	accent-color: var(--link);
 }
 
+tbody > tr:hover {
+	background-color: var(--surface-2);
+}
+
 /* UTILITIES */
 .surface-1 {
 	background-color: var(--surface-1);
@@ -151,12 +159,12 @@ html {
 
 .primary {
 	/* background: var(--teal-3); */
-	background-color: hsl(var(--teal-4-hsl) / 50%);
-	text-shadow: 0 1px 0 var(--cyan-9);
+	/* background-color: hsl(var(--teal-4-hsl) / 50%); */
+	background-color: hsl(var(--yellow-2-hsl) / 40%);
 }
 
 .primary:hover {
-	background-color: hsl(var(--teal-2-hsl) / 50%);
+	background-color: hsl(var(--yellow-2-hsl) / 50%);
 }
 
 /* TYPOGRAPHIES */

@@ -202,15 +202,15 @@
 		form:before {
 			position: absolute;
 			top: 0;
-			right: 25%;
+			right: 20%;
 			bottom: 0;
-			left: 25%;
+			left: 20%;
 			opacity: 0;
 			z-index: -1;
 			-webkit-transition: all 0.35s ease;
 			transition: all 0.35s ease;
-			border-right: 1px solid var(--link);
-			border-left: 1px solid var(--link);
+			border-right: 1px dotted var(--link);
+			border-left: 1px dotted var(--link);
 			content: '';
 		}
 	}
@@ -297,8 +297,8 @@
 
 		& li:hover {
 			cursor: pointer;
-			border-right: 1px solid var(--link);
-			border-left: 1px solid var(--link);
+			/* border-right: 1px solid var(--link); */
+			/* border-left: 1px solid var(--link); */
 			/* background-color: var(--border); */
 			& button {
 				background: unset;

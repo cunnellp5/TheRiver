@@ -7,7 +7,7 @@
 </script>
 
 <header>
-	<h1>Admin portal</h1>
+	<h1>ADMIN PORTAL</h1>
 </header>
 <main>
 	<aside>
