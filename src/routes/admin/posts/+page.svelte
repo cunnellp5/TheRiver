@@ -85,7 +85,7 @@
 		gap: var(--size-2);
 	}
 	.current {
-		background-color: var(--gray-9);
-		color: var(--gray-1);
+		background-color: var(--button-active);
+		/* color: var(--gray-1); */
 	}
 </style>
