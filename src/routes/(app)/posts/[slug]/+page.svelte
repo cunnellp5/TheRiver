@@ -36,7 +36,7 @@
 </script>
 
 <main>
-	<section>
+	<section class="surface-4">
 		<hgroup>
 			<div class="headerAction">
 				<h1 id={post.slug}>{post.title}</h1>
@@ -69,6 +69,10 @@
 		flex-direction: column;
 		align-items: center;
 		height: 100vh;
+	}
+	section {
+		box-shadow: var(--shadow-2);
+		padding: var(--size-7);
 	}
 	date {
 		color: var(--gray-7);
