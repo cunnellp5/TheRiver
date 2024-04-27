@@ -22,7 +22,7 @@
 </script>
 
 <main>
-	<section class="surface-3">
+	<section>
 		<h1>Contact</h1>
 		<p>theriverrunsfast@gmail.com</p>
 		<aside class="buttons">
@@ -54,7 +54,7 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		box-shadow: var(--shadow-2);
+		/* box-shadow: var(--shadow-1); */
 		border-radius: var(--radius-2);
 		padding: var(--size-7);
 		width: 30%;
