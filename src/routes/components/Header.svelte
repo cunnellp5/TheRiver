@@ -108,10 +108,10 @@
 					</li>
 				</form>
 			{:else}
-				<a href="/signup">
+				<a href="/signup" class:current={$page.url.pathname === '/signup'}>
 					<li>Signup</li>
 				</a>
-				<a href="/login">
+				<a href="/login" class:current={$page.url.pathname === '/login'}>
 					<li>Login</li>
 				</a>
 			{/if}
@@ -189,7 +189,8 @@
 			-webkit-box-sizing: border-box;
 			box-sizing: border-box;
 		}
-		& a {
+		& a,
+		form {
 			display: inline-block;
 			position: relative;
 			/* padding-block: var(--size-1); */
@@ -197,13 +198,15 @@
 			font-weight: var(--font-weight-7);
 			text-decoration: none;
 		}
-		& a:before {
+		& a:before,
+		form:before {
 			position: absolute;
 			top: 0;
 			right: 25%;
 			bottom: 0;
 			left: 25%;
 			opacity: 0;
+			z-index: -1;
 			-webkit-transition: all 0.35s ease;
 			transition: all 0.35s ease;
 			border-right: 1px solid var(--link);
@@ -214,8 +217,7 @@
 
 	.links a:hover,
 	.links .current a,
-	.links-horz a:hover,
-	.links-horz .current a {
+	.links-horz a:hover .links-horz .current a {
 		color: var(--text-1);
 	}
 
@@ -227,7 +229,9 @@
 	}
 
 	.links-horz a:hover:before,
-	.links-horz .current a:before {
+	.links-horz .current a:before,
+	.links-horz form:hover:before,
+	.links-horz .current form:before {
 		right: 0;
 		left: 0;
 		opacity: 1;
