@@ -5,17 +5,24 @@
 </script>
 
 <table>
-	<thead class="surface-4">
+	<thead class="surface-2">
 		<tr>
+			<th></th>
 			{#each columns as column (column)}
-				<th>{column}</th>
+				<th>
+					<h6>
+						{column}
+					</h6>
+				</th>
 			{/each}
+			<th></th>
 			<th></th>
 		</tr>
 	</thead>
-	<tbody class="surface-1">
+	<tbody class="">
 		{#each data as row (row)}
 			<tr>
+				<td></td>
 				{#each Object.values(row) as cell (cell)}
 					<td>{cell}</td>
 				{/each}
@@ -39,24 +46,50 @@
 	}
 	th {
 		color: var(--text-2);
-		/* color: hsl(var(--gray-7-hsl) / 60%); */
+		text-align: left;
 	}
-
 	table,
 	th,
 	td {
-		background-color: unset;
+		/* border-right: 1px solid var(--text-2); */
+		background-color: var(--table);
+		/* background-color: unset; */
 		text-align: left;
 	}
-	tr:not(:last-child) {
-		border-bottom: 1px solid var(--text-2);
+	tbody > tr {
+		border-top: 1px solid var(--text-2);
+	}
+	thead,
+	th {
+		background-image: var(--table);
+		/* background-image: linear-gradient(#111, #111, #191919); */
+	}
+	tbody,
+	th {
+		font-weight: var(--font-weight-7);
+		/* font-size: var(--size-5); */
+		text-transform: uppercase;
+	}
+	thead,
+	th {
+		font-weight: var(--font-weight-5);
+		/* font-size: var(--size-5); */
+		text-transform: uppercase;
 	}
 
 	button {
-		padding-block: 0;
+		/* padding-block: 0; */
+		font-weight: var(--font-weight-9);
 	}
 
 	/* .table-body {
 		background: hsl(var(--gray-7-hsl) / 70%);
 	} */
+
+	h6 {
+		background: var(--gradient-22) fixed;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
 </style>
