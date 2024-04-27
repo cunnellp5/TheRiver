@@ -4,16 +4,32 @@
 	export let data;
 	const { services } = data;
 
-	const listOfServices = services.map((service) => ({
-		Service: service.name,
-		Description: service.description,
-		Availability: service.availability,
-		Category: service.category,
-		Duration: service.duration,
-		Price: service.price
-	}));
+	// const listOfServices = services.map((service) => {
+	// 	return {
+	// 		Service: service.name,
+	// 		Description: service.description,
+	// 		Availability: service.availability,
+	// 		Category: service.category,
+	// 		Duration: service.duration,
+	// 		Price: service.price
+	// 	};
+	// });
 
-	const columns = ['Service', 'Description', 'Availability', 'Category', 'Duration', 'Price'];
+	const remappedServices = services.reduce((acc, service) => {
+		if (!acc[service.category]) {
+			acc[service.category] = [];
+		}
+		acc[service.category].push({
+			Service: service.name,
+			Description: service.description,
+			Availability: service.availability,
+			Duration: service.duration,
+			Price: `$${service.price}`
+		});
+		return acc;
+	}, {});
+
+	const columns = ['Service', 'Description', 'Availability', 'Duration', 'Price'];
 
 	// console.log(services.name);
 </script>
@@ -28,9 +44,12 @@
 
 		<!-- <div class="page-indicator">1</div> -->
 	</section>
-	<section class="service-table">
-		<Table {columns} data={listOfServices} />
-	</section>
+	{#each Object.entries(remappedServices) as [category, listOfServices]}
+		<section class="service-table">
+			<h2>{category}</h2>
+			<Table {columns} data={listOfServices} />
+		</section>
+	{/each}
 </main>
 
 <style>
@@ -69,10 +88,10 @@
 	}
 	.service-table {
 		display: flex;
-		/* flex-direction: column; */
+		flex-direction: column;
 		justify-content: center;
+		/* margin-block: var(--size-4); */
 		width: 100%;
-		width: 100%;
-		height: 50vh;
+		min-height: 30vh;
 	}
 </style>
