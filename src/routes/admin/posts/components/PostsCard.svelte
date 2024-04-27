@@ -12,7 +12,7 @@
 	export let link: string = `/posts/${slug}`;
 </script>
 
-<div class="card">
+<div class="card surface-4">
 	<div>
 		<h5>
 			<a href={link}>

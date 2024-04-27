@@ -72,6 +72,7 @@
 		display: flex;
 		justify-content: center;
 		margin: auto;
+		margin-block-end: var(--size-4);
 	}
 	button {
 		margin-inline: var(--size-2);
