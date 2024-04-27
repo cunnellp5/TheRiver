@@ -127,3 +127,10 @@ model SocialLinks {
   svg       String?
   icon      String?
 }
+
+// TODO add newsletter model: email, name, createdAt, updatedAt
+// the isSubscribed bool on the user table for registered users will determine if they have a newsletter row
+// unusbscribed users will only have a record in the newsletter table
+
+// TODO add a model for time slots and calendar days
+// 
