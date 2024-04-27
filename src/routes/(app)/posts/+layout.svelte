@@ -17,7 +17,7 @@
 			</div>
 
 			{#if isPostsHome}
-				<p>Showing {posts.length} posts.</p>
+				<p>Showing {posts.length} post{posts.length > 1 ? 's' : ''}.</p>
 			{/if}
 		</header>
 		<hr />
