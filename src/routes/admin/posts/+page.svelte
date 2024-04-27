@@ -68,16 +68,15 @@
 {/if}
 
 <style>
-	button {
-		font-weight: var(--font-weight-1);
-	}
 	section {
 		display: flex;
 		justify-content: center;
 		margin: auto;
+		margin-block-end: var(--size-4);
 	}
 	button {
 		margin-inline: var(--size-2);
+		font-weight: var(--font-weight-1);
 	}
 	.actionsGroup {
 		display: flex;
@@ -86,10 +85,7 @@
 		gap: var(--size-2);
 	}
 	.current {
-		background-color: var(--gray-9);
-		color: var(--gray-1);
-	}
-	.create {
-		background-color: hsl(var(--purple-4-hsl) / 50%);
+		background-color: var(--button-active);
+		/* color: var(--gray-1); */
 	}
 </style>

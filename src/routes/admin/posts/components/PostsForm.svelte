@@ -4,6 +4,7 @@
 	import { QuillConfig, quillContentInit } from '$lib/utils/QuillConfig';
 	import { error } from '@sveltejs/kit';
 	import type Quill from 'quill';
+	import Badge from '$lib/components/ui/Badge.svelte';
 	// eslint-disable-next-line import/no-unresolved
 	import { enhance } from '$app/forms';
 	import 'quill/dist/quill.snow.css';
@@ -62,8 +63,7 @@
 		}
 	}
 
-	function handleRemoveTag(event: MouseEvent) {
-		const tag = (event.target as HTMLElement).previousElementSibling?.textContent;
+	function handleRemoveTag(tag: string) {
 		if (tag) {
 			tagInput = tagInput.filter((t: string) => t !== tag);
 		}
@@ -83,14 +83,16 @@
 </script>
 
 <form method="POST" use:enhance>
+	👋 Dont forget to publish
 	<div class="banner" class:published class:not-published={!published}>
 		{published ? 'PUBLISH' : 'UNPUBLISH'}
 		<SliderToggle checked={published} on:change={handleToggle} id="published" name="published" />
 	</div>
-
+	<br />
+	<br />
 	<hgroup>
 		<label for="title">📣 Title</label>
-		<h1>
+		<h1 class="marginalize">
 			<textarea
 				name="title"
 				id="title"
@@ -103,28 +105,30 @@
 			<label for="tags">🔖 Tags</label>
 			<div class="inputWrapper">
 				<input type="hidden" id="tagInput" name="tagInput" bind:value={tagInput} />
-				<input type="text" placeholder="Add tags" on:keydown={handleKeyDown} />
+				<input class="marginalize" type="text" placeholder="Add tags" on:keydown={handleKeyDown} />
 			</div>
 			<div class="badgesWrapper">
 				{#each tagInput as tag}
-					<div class="badge">
-						<div>{tag}</div>
-						<button class="deleteBadge" on:click|preventDefault={handleRemoveTag}>X</button>
-					</div>
+					<Badge {tag}>
+						<button class="deleteBadge" on:click|preventDefault={() => handleRemoveTag(tag)}>
+							X
+						</button>
+					</Badge>
 				{/each}
 			</div>
 		</div>
 	</hgroup>
+	<br />
 	<div class="form-group">
 		<label for="content">📝 Content</label>
-		<div class="editor-wrapper">
+		<div class="editor-wrapper marginalize">
 			<div id="editor" bind:this={editor}></div>
 			<input type="hidden" id="content" name="content" bind:value={content} />
 			<input type="hidden" id="description" name="description" bind:value={description} />
 		</div>
 	</div>
 	<div class="buttonWrapper">
-		<button>Submit Form</button>
+		<button class="primary">Create post!</button>
 		<button
 			type="reset"
 			id="resetForm"
@@ -151,16 +155,6 @@
 	}
 
 	/* CLASSES */
-	.badge {
-		margin-inline-end: var(--size-1);
-		border-radius: var(--radius-3);
-
-		background: hsl(var(--gray-8-hsl) / 50%);
-		padding-inline: var(--size-2);
-		padding-block: var(--size-1);
-		color: hsl(var(--pink-2-hsl) / 50%);
-		font-size: var(--font-size-0);
-	}
 	.tags {
 		margin-block-start: var(--size-4);
 	}
@@ -183,7 +177,8 @@
 		& *,
 		& *::before,
 		& *::placeholder {
-			color: var(--stone-2);
+			color: var(--text-1);
+			font-weight: 100;
 		}
 		& button {
 			box-shadow: none;
@@ -195,8 +190,10 @@
 			margin-inline-end: var(--size-2);
 		}
 	}
-	.deleteBadge {
+	.deleteBadge,
+	.deleteBadge:hover {
 		margin: 0;
+		box-shadow: unset;
 		border: unset;
 		background: unset;
 		padding: unset;
@@ -209,11 +206,10 @@
 		display: flex;
 		flex-flow: row wrap;
 	}
-	.badge {
-		display: flex;
-		flex-direction: row;
-		gap: var(--size-2);
-		margin-block: var(--size-1);
-		width: fit-content;
+	.marginalize {
+		margin-block: var(--size-3);
+	}
+	button {
+		text-shadow: none;
 	}
 </style>

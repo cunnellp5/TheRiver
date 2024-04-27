@@ -71,7 +71,7 @@
 	}
 
 	.sidenav a:hover {
-		color: #f1f1f1;
+		color: var(--link);
 	}
 
 	.videos,

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Badge from '$lib/components/ui/Badge.svelte';
 	import formatDate from '$lib/utils/formatDate';
 	import SquareArrowOurUpRight from 'lucide-svelte/icons/square-arrow-out-up-right';
 
@@ -9,7 +10,7 @@
 	export let description: string;
 </script>
 
-<div class="card">
+<div class="card surface-4">
 	<div>
 		<div>
 			<h5>
@@ -24,12 +25,12 @@
 		</p>
 		<div>
 			{#each tags as tag}
-				<span class="badge"># {tag}</span>
+				<Badge {tag} prefix={'#'} />
 			{/each}
 		</div>
 		<a class="blogLink" href="/posts/{slug}">
-			Read more
 			<SquareArrowOurUpRight size="10" />
+			Read more
 		</a>
 	</div>
 </div>
@@ -50,8 +51,10 @@
 
 	/* CLASSES */
 	.card {
+		margin: 0 auto;
 		box-shadow: var(--shadow-2);
 		padding: var(--size-4);
+		width: 50%;
 	}
 	.description {
 		margin-block: var(--size-4);
@@ -59,21 +62,12 @@
 		font-family: var(--font-serif);
 		letter-spacing: var(--font-letterspacing-2);
 	}
-	.badge {
-		margin-inline-end: var(--size-1);
-		border-radius: var(--radius-3);
-		background: hsl(var(--gray-8-hsl) / 50%);
-		padding-inline: var(--size-2);
-		padding-block: var(--size-1);
-		color: hsl(var(--pink-2-hsl) / 50%);
-		font-size: var(--font-size-0);
-	}
 	.blogLink {
 		display: flex;
 		justify-content: end;
 		gap: var(--size-1);
 		margin-block: var(--size-2);
-		color: var(--link);
+		font-weight: var(--font-weight-7);
 		font-size: var(--font-size-0);
 	}
 </style>

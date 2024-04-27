@@ -25,7 +25,7 @@
 	<section>
 		<h1>Contact</h1>
 		<p>theriverrunsfast@gmail.com</p>
-		<section class="buttons">
+		<aside class="buttons">
 			<button on:click={copyEmail}>
 				{#if copied}
 					<Check />
@@ -36,7 +36,7 @@
 			<a href="mailto:{email}">
 				<button> <Send /> </button>
 			</a>
-		</section>
+		</aside>
 	</section>
 </main>
 
@@ -54,6 +54,10 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+		/* box-shadow: var(--shadow-1); */
+		border-radius: var(--radius-2);
+		padding: var(--size-7);
+		width: 30%;
 	}
 
 	h1 {

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Badge from '$lib/components/ui/Badge.svelte';
 	import formatDate from '$lib/utils/formatDate';
 	import SquareArrowOurUpRight from 'lucide-svelte/icons/square-arrow-out-up-right';
 
@@ -11,7 +12,7 @@
 	export let link: string = `/posts/${slug}`;
 </script>
 
-<div class="card">
+<div class="card surface-4">
 	<div>
 		<h5>
 			<a href={link}>
@@ -25,12 +26,12 @@
 	</p>
 	<div>
 		{#each tags as tag}
-			<span class="badge"># {tag}</span>
+			<Badge {tag} prefix={'#'} />
 		{/each}
 	</div>
 	<a class="blogLink" href={link}>
-		read more
 		<SquareArrowOurUpRight size="10" />
+		Read more
 	</a>
 	{#if allowSlot}
 		<slot />
@@ -62,21 +63,12 @@
 		font-family: var(--font-serif);
 		letter-spacing: var(--font-letterspacing-2);
 	}
-	.badge {
-		margin-inline-end: var(--size-1);
-		border-radius: var(--radius-3);
-		background: hsl(var(--gray-8-hsl) / 50%);
-		padding-inline: var(--size-2);
-		padding-block: var(--size-1);
-		color: hsl(var(--pink-2-hsl) / 50%);
-		font-size: var(--font-size-0);
-	}
 	.blogLink {
 		display: flex;
 		justify-content: end;
 		gap: var(--size-1);
 		margin-block: var(--size-2);
-		color: var(--link);
+		font-weight: var(--font-weight-7);
 		font-size: var(--font-size-0);
 	}
 </style>

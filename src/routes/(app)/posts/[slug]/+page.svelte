@@ -3,6 +3,7 @@
 	import formatDate from '$lib/utils/formatDate';
 	import type Quill from 'quill';
 	import { onMount } from 'svelte';
+	import Badge from '$lib/components/ui/Badge.svelte';
 	import type { PageData } from './$types';
 	// eslint-disable-next-line import/no-unresolved
 	import { page } from '$app/stores';
@@ -35,7 +36,7 @@
 </script>
 
 <main>
-	<section>
+	<section class="surface-4">
 		<hgroup>
 			<div class="headerAction">
 				<h1 id={post.slug}>{post.title}</h1>
@@ -43,7 +44,7 @@
 			<date>{formatDate(new Date(post.createdAt))}</date>
 			<div class="tags">
 				{#each post.tags as tag}
-					<span class="badge"># {tag}</span>
+					<Badge {tag} prefix={'#'} />
 				{/each}
 			</div>
 		</hgroup>
@@ -69,6 +70,10 @@
 		align-items: center;
 		height: 100vh;
 	}
+	section {
+		box-shadow: var(--shadow-2);
+		padding: var(--size-7);
+	}
 	date {
 		color: var(--gray-7);
 		font-size: var(--font-size-0);
@@ -78,17 +83,6 @@
 	}
 
 	/* CLASSES */
-	.badge {
-		margin-inline-end: var(--size-1);
-		border-radius: var(--radius-3);
-
-		background: hsl(var(--gray-8-hsl) / 50%);
-		padding-inline: var(--size-2);
-		padding-block: var(--size-1);
-		color: hsl(var(--pink-2-hsl) / 50%);
-		font-size: var(--font-size-0);
-	}
-
 	.tags {
 		margin-block-start: var(--size-4);
 	}
@@ -110,7 +104,8 @@
 		& *::before,
 		& *::placeholder {
 			/* background-color: var(--yellow-0); */
-			color: var(--stone-2);
+			color: var(--text-1);
+			font-weight: 100;
 		}
 		& blockquote {
 			padding-inline: var(--size-4);

@@ -7,7 +7,7 @@
 </script>
 
 <header>
-	<h1>Admin portal</h1>
+	<h1>ADMIN PORTAL</h1>
 </header>
 <main>
 	<aside>
@@ -90,7 +90,8 @@
 	.sidenav {
 		position: relative;
 		z-index: 1;
-		background-color: hsl(var(--gray-9-hsl) / 30%);
+		background-color: var(--surface);
+		/* background-color: hsl(var(--gray-9-hsl) / 30%); */
 		width: var(--size-12);
 		overflow-x: hidden;
 	}
@@ -102,17 +103,15 @@
 	}
 	.sidenav a:hover {
 		cursor: pointer;
-		background-color: var(--gray-9);
-		color: #f1f1f1;
+		background-color: var(--border);
+		/* color: #f1f1f1; */
 	}
 	.current {
-		background-color: var(--gray-9);
-		color: var(--gray-1);
+		/* background-color: var(--gray-9); */
+		/* color: var(--gray-1); */
+		color: var(--link);
 	}
 
-	.dropdown {
-		background-color: hsl(var(--gray-10-hsl) / 30%);
-	}
 	.parent-menu {
 		display: flex;
 		/* justify-content: center; */

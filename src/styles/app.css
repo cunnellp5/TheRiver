@@ -2,33 +2,43 @@
 
 html {
 	/* font */
-	--font-sans: 'Roboto', sans-serif;
-	--font-mono: 'Roboto', monospace;
+	/* --font-sans: 'Roboto', sans-serif;
+	--font-mono: 'Roboto', monospace; */
+	--font-sans: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+	--font-serif: ui-serif, serif;
+	--font-mono: Dank Mono, Operator Mono, Inconsolata, Fira Mono, ui-monospace, SF Mono, Monaco,
+		Droid Sans Mono, Source Code Pro, monospace;
 
 	/* dark */
 	--background-dark: var(--gradient-8);
 	--border-dark: var(--gray-9);
 	--brand-dark: var(--cyan-3);
+	--button-dark: var(--gray-7);
+	--button-active-dark: var(--gray-10);
 	--socials-1-dark: var(--gray-7);
 	--socials-2-dark: var(--gray-5);
 	--surface-1-dark: var(--gray-12);
 	--surface-2-dark: var(--gray-11);
 	--surface-3-dark: var(--gray-10);
 	--surface-4-dark: var(--gray-9);
+	--table-dark: var(--gray-8);
 	--text-1-dark: var(--gray-3);
 	--text-2-dark: var(--gray-5);
 	--link-dark: var(--teal-2);
 
 	/* light */
-	--background-light: none;
+	--background-light: var(--brown-0);
 	--border-light: var(--gray-4);
 	--brand-light: var(--cyan-10);
+	--button-light: var(--gray-3);
+	--button-active-light: var(--gray-2);
 	--socials-1-light: var(--gray-5);
 	--socials-2-light: var(--gray-7);
 	--surface-1-light: var(--gray-0);
 	--surface-2-light: var(--gray-1);
 	--surface-3-light: var(--gray-2);
 	--surface-4-light: var(--gray-3);
+	--table-light: var(--gray-0);
 	--text-1-light: var(--gray-8);
 	--text-2-light: var(--gray-7);
 	--link-light: var(--teal-7);
@@ -47,12 +57,15 @@ html {
 	--background: var(--background-dark);
 	--border: var(--border-dark);
 	--brand: var(--brand-dark);
+	--button: var(--button-dark);
+	--button-active: var(--button-active-dark);
 	--socials-1: var(--socials-1-dark);
 	--socials-2: var(--socials-2-dark);
 	--surface-1: var(--surface-1-dark);
 	--surface-2: var(--surface-2-dark);
 	--surface-3: var(--surface-3-dark);
 	--surface-4: var(--surface-4-dark);
+	--table: var(--table-dark);
 	--text-1: var(--text-1-dark);
 	--text-2: var(--text-2-dark);
 	--link: var(--link-dark);
@@ -65,12 +78,15 @@ html {
 		--background: var(--background-light);
 		--border: var(--border-light);
 		--brand: var(--brand-light);
+		--button: var(--button-light);
+		--button-active: var(--button-active-light);
 		--socials-1: var(--socials-1-light);
 		--socials-2: var(--socials-2-light);
 		--surface-1: var(--surface-1-light);
 		--surface-2: var(--surface-2-light);
 		--surface-3: var(--surface-3-light);
 		--surface-4: var(--surface-4-light);
+		--table: var(--table-light);
 		--text-1: var(--text-1-light);
 		--text-2: var(--text-2-light);
 		--link: var(--link-light);
@@ -83,12 +99,15 @@ html {
 	--background: var(--background-dark);
 	--border: var(--border-dark);
 	--brand: var(--brand-dark);
+	--button: var(--button-dark);
+	--button-active: var(--button-active-dark);
 	--socials-1: var(--socials-1-dark);
 	--socials-2: var(--socials-2-dark);
 	--surface-1: var(--surface-1-dark);
 	--surface-2: var(--surface-2-dark);
 	--surface-3: var(--surface-3-dark);
 	--surface-4: var(--surface-4-dark);
+	--table: var(--table-dark);
 	--text-1: var(--text-1-dark);
 	--text-2: var(--text-2-dark);
 	--link: var(--link-dark);
@@ -100,12 +119,15 @@ html {
 	--background: var(--background-light);
 	--border: var(--border-light);
 	--brand: var(--brand-light);
+	--button: var(--button-light);
+	--button-active: var(--button-active-light);
 	--socials-1: var(--socials-1-light);
 	--socials-2: var(--socials-2-light);
 	--surface-1: var(--surface-1-light);
 	--surface-2: var(--surface-2-light);
 	--surface-3: var(--surface-3-light);
 	--surface-4: var(--surface-4-light);
+	--table: var(--table-light);
 	--text-1: var(--text-1-light);
 	--text-2: var(--text-2-light);
 	--link: var(--link-light);
@@ -123,10 +145,16 @@ body {
 html {
 	background-image: var(--background);
 	background-attachment: fixed;
+	background-color: var(--background);
 	color: var(--text-1);
 	accent-color: var(--link);
 }
 
+tbody > tr:hover {
+	background-color: var(--surface-2);
+}
+
+/* UTILITIES */
 .surface-1 {
 	background-color: var(--surface-1);
 	color: var(--text-2);
@@ -146,3 +174,24 @@ html {
 	background-color: var(--surface-4);
 	color: var(--text-1);
 }
+
+.primary {
+	/* background: var(--teal-3); */
+	/* background-color: hsl(var(--teal-4-hsl) / 50%); */
+	background-color: hsl(var(--yellow-2-hsl) / 40%);
+}
+
+.primary:hover {
+	background-color: hsl(var(--yellow-2-hsl) / 50%);
+}
+
+/* TYPOGRAPHIES */
+
+/* COMPONENTS */
+button {
+	background-color: var(--button);
+	color: var(--text-1);
+	text-shadow: none;
+}
+
+/* begin primary theming */

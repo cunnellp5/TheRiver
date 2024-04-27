@@ -1,6 +1,7 @@
 <script lang="ts">
 	import LogoR from '$lib/components/svgs/logos/LogoR2.svelte';
 	import Ellipsis from 'lucide-svelte/icons/ellipsis';
+	import ChevronDown from 'lucide-svelte/icons/chevron-down';
 	import Waves from 'lucide-svelte/icons/waves';
 	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
@@ -42,7 +43,7 @@
 				<LogoR />
 			</a>
 			<ul class="links">
-				<li class="border-left"></li>
+				<li></li>
 				<li
 					class:current={$page.url.pathname.includes('/admin')}
 					aria-current={$page.url.pathname.includes('/admin')}>
@@ -91,11 +92,15 @@
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 			<li on:click={toggleAuthMenu} class="ellipsis">
-				<Ellipsis size="28" />
+				{#if showAuthLinks}
+					<ChevronDown size="28" />
+				{:else}
+					<Ellipsis size="28" />
+				{/if}
 			</li>
 		</ul>
 
-		<ul class="card" class:hidden={!showAuthLinks}>
+		<ul class="card surface-4 links-horz" class:hidden={!showAuthLinks}>
 			{#if isSignedIn}
 				<form id="logoutForm" method="POST" action="/logout">
 					<li>
@@ -103,10 +108,10 @@
 					</li>
 				</form>
 			{:else}
-				<a href="/signup">
+				<a href="/signup" class:current={$page.url.pathname === '/signup'}>
 					<li>Signup</li>
 				</a>
-				<a href="/login">
+				<a href="/login" class:current={$page.url.pathname === '/login'}>
 					<li>Login</li>
 				</a>
 			{/if}
@@ -156,8 +161,9 @@
 		& a {
 			display: inline-block;
 			position: relative;
-			padding: var(--size-1) 0;
-			color: var(--gray-6);
+			padding-block: var(--size-1);
+			color: var(--text-2);
+			font-weight: var(--font-weight-7);
 			text-decoration: none;
 		}
 		& a:before {
@@ -175,16 +181,59 @@
 		}
 	}
 
+	.links-horz {
+		text-align: center;
+		& * {
+			-webkit-transition: all 0.35s ease;
+			transition: all 0.35s ease;
+			-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+		& a,
+		form {
+			display: inline-block;
+			position: relative;
+			/* padding-block: var(--size-1); */
+			color: var(--text-2);
+			font-weight: var(--font-weight-7);
+			text-decoration: none;
+		}
+		& a:before,
+		form:before {
+			position: absolute;
+			top: 0;
+			right: 20%;
+			bottom: 0;
+			left: 20%;
+			opacity: 0;
+			z-index: -1;
+			-webkit-transition: all 0.35s ease;
+			transition: all 0.35s ease;
+			border-right: 1px dotted var(--link);
+			border-left: 1px dotted var(--link);
+			content: '';
+		}
+	}
+
 	.links a:hover,
-	.links .current a {
-		color: var(--stone-1);
-		/* text-shadow: 2px 2px 10px var(--sand-9); */
+	.links .current a,
+	.links-horz a:hover .links-horz .current a {
+		color: var(--text-1);
 	}
 
 	.links a:hover:before,
 	.links .current a:before {
 		top: 0;
 		bottom: 0;
+		opacity: 1;
+	}
+
+	.links-horz a:hover:before,
+	.links-horz .current a:before,
+	.links-horz form:hover:before,
+	.links-horz .current form:before {
+		right: 0;
+		left: 0;
 		opacity: 1;
 	}
 
@@ -217,21 +266,25 @@
 		top: 100%;
 		right: 0;
 		border-radius: var(--radius-0);
-		background-color: hsl(var(--gray-8-hsl) / 75%);
-		text-align: left;
-
+		background-color: hsl(var(--background) / 75%);
 		& li {
-			padding-inline: var(--size-4);
+			margin-block: var(--size-1);
+			padding-inline: var(--size-2);
 			padding-block: var(--size-2);
 		}
 		& a,
 		li,
 		button {
+			display: block;
+			/* display: inline-block; */
+			/* position: relative; */
 			box-shadow: none;
+			/* padding-block: var(--size-1); */
 			color: var(--text-2);
-			font-weight: 100;
+			font-weight: var(--font-weight-7);
 			font-size: var(--font-size-0);
 			letter-spacing: var(--font-letterspacing-3);
+			/* text-decoration: none; */
 			text-shadow: none;
 			text-transform: uppercase;
 		}
@@ -244,7 +297,9 @@
 
 		& li:hover {
 			cursor: pointer;
-			background-color: hsl(var(--gray-4-hsl) / 40%);
+			/* border-right: 1px solid var(--link); */
+			/* border-left: 1px solid var(--link); */
+			/* background-color: var(--border); */
 			& button {
 				background: unset;
 			}
