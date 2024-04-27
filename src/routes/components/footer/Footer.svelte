@@ -131,7 +131,10 @@
 		flex-direction: column;
 		justify-content: end;
 		align-items: center;
-		/* box-shadow: var(--shadow-3); */
+		/* box-shadow: var(--shadow-6); */
+		border-right: 1px dashed var(--link);
+		/* border-left: 1px dashed var(--link); */
+		padding-inline: var(--size-3);
 		padding-block: var(--size-7);
 	}
 
