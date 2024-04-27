@@ -23,7 +23,7 @@
 			Service: service.name,
 			Description: service.description,
 			Availability: service.availability,
-			Duration: service.duration,
+			Duration: `${service.duration} min`,
 			Price: `$${service.price}`
 		});
 		return acc;
