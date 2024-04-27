@@ -150,8 +150,8 @@ html {
 }
 
 .primary {
-	background-color: hsl(var(--teal-7-hsl) / 40%);
 	/* background: var(--teal-3); */
+	background-color: hsl(var(--teal-4-hsl) / 50%);
 	text-shadow: 0 1px 0 var(--cyan-9);
 }
 
