@@ -10,7 +10,7 @@
 	export let description: string;
 </script>
 
-<div class="card">
+<div class="card surface-4">
 	<div>
 		<div>
 			<h5>
@@ -51,8 +51,10 @@
 
 	/* CLASSES */
 	.card {
+		margin: 0 auto;
 		box-shadow: var(--shadow-2);
 		padding: var(--size-4);
+		width: 50%;
 	}
 	.description {
 		margin-block: var(--size-4);
