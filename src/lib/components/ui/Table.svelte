@@ -15,8 +15,6 @@
 					</h6>
 				</th>
 			{/each}
-			<th></th>
-			<th></th>
 		</tr>
 	</thead>
 	<tbody class="">
@@ -24,7 +22,15 @@
 			<tr>
 				<td></td>
 				{#each Object.values(row) as cell (cell)}
-					<td>{cell}</td>
+					{#if cell === 'AVAILABLE'}
+						<td>available</td>
+					{:else if cell === 'COMING_SOON'}
+						<td>soon</td>
+					{:else if cell === 'LIMITED_AVAILABILITY'}
+						<td>limited supplies (x3 left )</td>
+					{:else}
+						<td>{cell}</td>
+					{/if}
 				{/each}
 				<td>
 					<button class="primary">Book now</button>
@@ -68,7 +74,7 @@
 	th {
 		font-weight: var(--font-weight-7);
 		/* font-size: var(--size-5); */
-		text-transform: uppercase;
+		/* text-transform: uppercase; */
 	}
 	thead,
 	th {
