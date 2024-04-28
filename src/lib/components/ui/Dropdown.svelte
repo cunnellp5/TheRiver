@@ -6,6 +6,9 @@
 	}
 </script>
 
+<!-- svelte-ignore a11y-no-static-element-interactions -->
+<!-- svelte-ignore a11y-missing-attribute -->
+<!-- svelte-ignore a11y-click-events-have-key-events -->
 <a class="dropdown" on:click={toggle}>
 	<div class="parent-menu">
 		<div class="arrow">{isOpen ? '▼' : '►'}</div>
@@ -33,10 +36,9 @@
 	.child-menu {
 		transition: transform 0.3s ease;
 		margin-left: var(--size-3);
-		border-left: 1px solid var(--link);
 	}
 	.arrow {
-		margin-inline: var(--size-2);
+		/* margin-inline: var(--size-2); */
 		font-size: var(--size-2);
 	}
 </style>
