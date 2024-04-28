@@ -19,8 +19,11 @@ enum ServiceCategory {
 }
 
 enum BookingStatus {
-  CANCELED
+  CANCELED_ON_TIME
+  CANCELED_LATE
+  COMPLETED_SUCCESS
   CONFIRMED
+  NO_SHOW
   PENDING
 }
 
