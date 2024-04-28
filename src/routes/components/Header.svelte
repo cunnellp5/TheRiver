@@ -64,8 +64,8 @@
 				<a href="/music"> Music </a>
 			</li>
 			<li
-				class:current={$page.url.pathname === '/services'}
-				aria-current={$page.url.pathname === '/services'}>
+				class:current={$page.url.pathname.includes('/services')}
+				aria-current={$page.url.pathname.includes('/services')}>
 				<a href="/services"> services </a>
 			</li>
 			<li
