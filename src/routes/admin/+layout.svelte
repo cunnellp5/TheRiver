@@ -1,9 +1,7 @@
 <script lang="ts">
+	import Dropdown from '$lib/components/ui/Dropdown.svelte';
 	// eslint-disable-next-line import/no-unresolved
 	import { page } from '$app/stores';
-
-	let showChildMenuApp = true;
-	let showChildMenuAdmin = true;
 </script>
 
 <header>
@@ -13,54 +11,29 @@
 	<aside>
 		<nav class="sidenav">
 			<a class:current={$page.url.pathname === '/admin'} href="/admin/"> Home </a>
-			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<!-- svelte-ignore a11y-no-static-element-interactions -->
-			<!-- svelte-ignore a11y-missing-attribute -->
-			<a
-				class="dropdown"
-				on:click={() => {
-					showChildMenuApp = !showChildMenuApp;
-				}}>
-				<div class="parent-menu">
-					<div class="arrow">{showChildMenuApp ? '▼' : '►'}</div>
-					App
-				</div>
-			</a>
-			{#if showChildMenuApp}
-				<div class="child-menu">
-					<a class:current={$page.url.pathname.includes('/admin/services')} href="/admin/services">
-						Services
-					</a>
-					<a class:current={$page.url.pathname.includes('/admin/posts')} href="/admin/posts">
-						Posts
-					</a>
-				</div>
-			{/if}
-			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<!-- svelte-ignore a11y-no-static-element-interactions -->
-			<!-- svelte-ignore a11y-missing-attribute -->
-			<a
-				class="dropdown"
-				on:click={() => {
-					showChildMenuAdmin = !showChildMenuAdmin;
-				}}>
-				<div class="parent-menu">
-					<div class="arrow">{showChildMenuAdmin ? '▼' : '►'}</div>
-					Admin
-				</div>
-			</a>
-			{#if showChildMenuAdmin}
-				<div class="child-menu">
-					<a class:current={$page.url.pathname === '/admin/apphomepage'} href="/admin/apphomepage">
-						home page
-					</a>
-					<a class:current={$page.url.pathname === '/admin/users'} href="/admin/users">Users</a>
-					<a class:current={$page.url.pathname === '/admin/footer'} href="/admin/footer">Footer</a>
-					<a class:current={$page.url.pathname === '/admin/settings'} href="/admin/settings">
-						Settings
-					</a>
-				</div>
-			{/if}
+			<Dropdown>
+				<div class="dropLabel" slot="label">App</div>
+				<a class:current={$page.url.pathname.includes('/admin/services')} href="/admin/services">
+					Services
+				</a>
+				<!-- <a class:current={$page.url.pathname.includes('/admin/services')} href="/admin/services">
+					Services
+				</a> -->
+				<a class:current={$page.url.pathname.includes('/admin/posts')} href="/admin/posts">
+					Posts
+				</a>
+			</Dropdown>
+			<Dropdown>
+				<div class="dropLabel" slot="label">Admin</div>
+				<!-- <a class:current={$page.url.pathname === '/admin/apphomepage'} href="/admin/apphomepage">
+					home page
+				</a> -->
+				<a class:current={$page.url.pathname === '/admin/users'} href="/admin/users">Users</a>
+				<!-- <a class:current={$page.url.pathname === '/admin/footer'} href="/admin/footer">Footer</a> -->
+				<!-- <a class:current={$page.url.pathname === '/admin/settings'} href="/admin/settings">
+					Settings
+				</a> -->
+			</Dropdown>
 		</nav>
 	</aside>
 	<article>
@@ -82,7 +55,8 @@
 	article {
 		margin-inline: var(--size-4);
 	}
-	a {
+	a,
+	.dropLabel {
 		color: var(--gray-7);
 		user-select: none;
 	}
@@ -95,13 +69,15 @@
 		width: var(--size-12);
 		overflow-x: hidden;
 	}
-	.sidenav a {
+	.sidenav a,
+	.dropLabel {
 		display: block;
 		border-bottom: 1px solid var(--gray-9);
 		padding: var(--size-3);
 		text-decoration: none;
 	}
-	.sidenav a:hover {
+	.sidenav a:hover,
+	.dropLabel:hover {
 		cursor: pointer;
 		background-color: var(--border);
 		/* color: #f1f1f1; */
@@ -112,19 +88,7 @@
 		color: var(--link);
 	}
 
-	.parent-menu {
-		display: flex;
-		/* justify-content: center; */
-		align-items: center;
-		/* padding: var(--size-3); */
-	}
-	.child-menu {
-		transition: transform 0.3s ease;
-		margin-left: var(--size-3);
-		border-left: 1px solid var(--link);
-	}
-	.arrow {
-		margin-inline-end: var(--size-2);
-		font-size: var(--size-2);
+	.dropLabel {
+		width: 100%;
 	}
 </style>
