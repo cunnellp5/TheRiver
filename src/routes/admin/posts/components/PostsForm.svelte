@@ -128,7 +128,7 @@
 		</div>
 	</div>
 	<div class="buttonWrapper">
-		<button class="primary">Create post!</button>
+		<button class="primary">Save</button>
 		<button
 			type="reset"
 			id="resetForm"
