@@ -4,8 +4,6 @@
 	const { services } = data;
 </script>
 
-<h2>Services</h2>
-
 {#each services as service}
 	<div class="surface-4">
 		<h4>{service.name}</h4>
