@@ -75,7 +75,7 @@
 
 <style>
 	.home-page {
-		fill: white;
+		fill: var(--stone-3);
 	}
 
 	.fill-color {
