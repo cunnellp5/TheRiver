@@ -49,8 +49,8 @@
 						Jobs
 					</a>
 					<a
-						class:current={$page.url.pathname.includes('/admin/services/bookings')}
-						href="/admin/services/bookings">
+						class:current={$page.url.pathname.includes('/admin/services/booking')}
+						href="/admin/services/booking">
 						Bookings
 					</a>
 					<a
