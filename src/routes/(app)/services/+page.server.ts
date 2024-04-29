@@ -1,5 +1,5 @@
 import db from '$lib/server/database';
-import { error } from '@sveltejs/kit';
+import { error, redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async () => {
@@ -27,6 +27,9 @@ export const actions: Actions = {
 		// signein user moves to booking a time slot
 
 		const formData = await request.formData();
+
 		console.log(locals, 'chchchceeeck');
+
+		throw redirect(302, '/services/booking');
 	}
 };
