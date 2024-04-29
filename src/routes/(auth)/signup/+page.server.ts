@@ -11,7 +11,7 @@ import type { Actions, PageServerLoad } from './$types';
 export const load: PageServerLoad = async (event) => {
 	if (event.locals.session) redirect(302, '/login');
 };
-
+// TODO https://www.prisma.io/docs/orm/prisma-client/queries/custom-validation
 export const actions: Actions = {
 	default: async ({ cookies, request }) => {
 		const formData = await request.formData();

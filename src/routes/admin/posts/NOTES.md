@@ -8,3 +8,4 @@
 - store 'mark as read' blogs in localstorage
 - add the 'createdat - updated at - author' in the (app) section by the date
 - maybe add social links in each blog post (app)
+- `$: estimatedReadingTime = wordCount / 250;`
