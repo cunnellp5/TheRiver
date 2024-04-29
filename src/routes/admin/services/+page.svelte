@@ -40,7 +40,7 @@
 							<td>{cell}</td>
 						{/each}
 						<td class="actions">
-							<button class="primary">Book now</button>
+							<button class="secondary">Select</button>
 						</td>
 					</tr>
 					<!-- <tr> -->

@@ -32,15 +32,15 @@
 <main bind:this={section}>
 	<div class="hero">
 		{#if visible}
-			<h1 in:fly={{ x: 200, duration: 800 }}>Download stems</h1>
+			<h1 in:fly={{ x: 200, duration: 800 }} out:fade>Download stems</h1>
 		{/if}
 
 		{#if visible}
-			<p in:fly={{ x: -200, duration: 800 }}>Send me your creations.</p>
+			<p in:fly={{ x: -200, duration: 800 }} out:fade>Send me your creations.</p>
 		{/if}
 
 		{#if visible}
-			<ul in:fade={{ duration: 2000 }}>
+			<ul in:fade={{ duration: 1000 }} out:fade>
 				<li>
 					<a
 						href="https://drive.google.com/drive/folders/1zMLDz-1iEerzgr4eu_bZ30GzVUBgr3cr"

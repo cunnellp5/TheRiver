@@ -204,4 +204,12 @@ button {
 	text-shadow: none;
 }
 
+/* OVERRIDES THE INITIAL HOVER/ACTIVE size */
+/* button:hover {
+	box-shadow: 0px 0px 0px var(--size-1) hsl(var(--gray-1-hsl) / 30%);
+}
+button:active {
+	box-shadow: 0px 0px 0px 0px hsl(var(--gray-1-hsl) / 10%);
+} */
+
 /* begin primary theming */
