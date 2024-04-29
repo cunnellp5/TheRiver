@@ -1,18 +1,30 @@
-<!-- Table.svelte -->
 <script lang="ts">
-	export let columns = [];
+	import Check from 'lucide-svelte/icons/check';
+	import { createEventDispatcher } from 'svelte';
+	import { fly } from 'svelte/transition';
+
+	const dispatch = createEventDispatcher();
 	export let data = [];
+	export let selectedServices; // defined as a new Set() in the parent
+
+	function select(serviceRowId: number) {
+		dispatch('selectService', {
+			id: serviceRowId
+		});
+	}
 </script>
 
 <table>
 	<thead class="surface-2">
 		<tr>
-			{#each columns as column (column)}
-				<th>
-					<h6>
-						{column}
-					</h6>
-				</th>
+			{#each Object.keys(data[0]) as column (column)}
+				{#if column !== 'id'}
+					<th>
+						<h6>
+							{column}
+						</h6>
+					</th>
+				{/if}
 			{/each}
 		</tr>
 	</thead>
@@ -20,27 +32,43 @@
 		{#each data as row (row)}
 			<tr>
 				{#each Object.values(row) as cell (cell)}
-					{#if cell === 'AVAILABLE'}
-						<td>available</td>
-					{:else if cell === 'COMING_SOON'}
-						<td>soon</td>
-					{:else if cell === 'LIMITED_AVAILABILITY'}
-						<td>limited supplies (x3 left )</td>
-					{:else}
+					{#if cell !== row.id}
 						<td>{cell}</td>
 					{/if}
 				{/each}
 				<td class="actions">
-					<button class="primary">Book now</button>
+					{#if selectedServices.has(row.id)}
+						<button in:fly={{ x: -10 }} class="primary" on:click={() => select(row.id)}>
+							<Check />
+						</button>
+					{:else}
+						<button in:fly={{ x: 10 }} class="secondary" on:click={() => select(row.id)}>
+							Select
+						</button>
+					{/if}
+
+					<!-- <button class="secondary" on:click={() => select(row.id)}>Select</button> -->
 				</td>
 			</tr>
+			<!-- <tr> -->
+			<!-- <td colspan={columns.length - 2} class="description">
+				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem ratione maxime deleniti
+				tempora tempore cumque, iusto quas expedita tenetur doloribus dolor sed unde ipsam beatae
+				perspiciatis doloremque. Itaque, ad. Mollitia!
+			</td> -->
+			<!-- </tr> -->
 		{/each}
 	</tbody>
 </table>
 
 <style>
 	button {
+		width: 100px;
+		height: 50px;
+		overflow: hidden;
 		font-weight: var(--font-weight-9);
+		text-overflow: ellipsis;
+		white-space: nowrap;
 	}
 	h6 {
 		background: var(--gradient-22) fixed;
@@ -54,9 +82,10 @@
 		border: none;
 		border-collapse: collapse;
 		background-color: var(--table);
-		width: 100%;
+		/* width: 100%; */
+		color: var(--text-1);
 		font-weight: var(--font-weight-2);
-		font-size: var(--size-4);
+		font-size: var(--size-3);
 	}
 	tbody {
 		font-weight: var(--font-weight-7);
@@ -68,7 +97,6 @@
 	th {
 		background-image: var(--table);
 		background-color: var(--table);
-		color: var(--text-2);
 		font-weight: var(--font-weight-7);
 		text-align: left;
 	}
@@ -81,5 +109,10 @@
 		&:not(.actions) {
 			text-align: left;
 		}
+	}
+
+	.description {
+		color: var(--text-2);
+		font-size: var(--font-size-0);
 	}
 </style>
