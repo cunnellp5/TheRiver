@@ -178,11 +178,21 @@ tbody > tr:hover {
 .primary {
 	/* background: var(--teal-3); */
 	/* background-color: hsl(var(--teal-4-hsl) / 50%); */
-	background-color: hsl(var(--yellow-2-hsl) / 40%);
+	background-color: hsl(var(--lime-2-hsl) / 950%);
+	color: var(--gray-9);
 }
 
 .primary:hover {
-	background-color: hsl(var(--yellow-2-hsl) / 50%);
+	background-color: hsl(var(--lime-3-hsl) / 100%);
+}
+
+.secondary {
+	background-color: hsl(var(--teal-2-hsl) / 95%);
+	color: var(--gray-9);
+}
+
+.disabled {
+	opacity: 0.5;
 }
 
 /* TYPOGRAPHIES */
