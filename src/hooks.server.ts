@@ -1,5 +1,5 @@
 // import { sequence } from '@sveltejs/kit/hooks';
-import { error } from '@sveltejs/kit';
+import { redirect } from '@sveltejs/kit';
 import { lucia } from '$lib/server/auth';
 import type { Handle } from '@sveltejs/kit';
 
@@ -40,7 +40,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 		(!event.locals.session && event.route.id?.includes('/admin')) ||
 		(event.locals.session && !event.locals.user.isAdmin && event.route.id?.includes('/admin'))
 	) {
-		throw error(404, 'Not found');
+		throw redirect(302, '/');
 	}
 
 	return resolve(event);
