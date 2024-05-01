@@ -47,27 +47,27 @@
 	function toNext() {
 		[prev, current] = [current, next];
 
-		if (++month > 11) {
+		month += 1;
+		if (month > 11) {
 			month = 0;
-			year++;
+			year += 1;
 		}
 
 		next = calendarize(new Date(year, month + 1), offset);
 	}
 
-	function isToday(day) {
+	function isToday(day: number | null) {
 		const res = today && today_year === year && today_month === month && today_day === day;
-		console.log(res, 'rez');
 		return res;
 	}
 
-	function isBeforeToday(date) {
-		const today = new Date();
-		today.setHours(0, 0, 0, 0); // set time to 00:00:00.000
-		return new Date(year, month, date) < today;
+	function isBeforeToday(date: number | undefined) {
+		const now = new Date();
+		now.setHours(0, 0, 0, 0);
+		return new Date(year, month, date) < now;
 	}
 
-	function isWeekend(date) {
+	function isWeekend(date: number | undefined) {
 		const dayOfWeek = new Date(year, month, date).getDay();
 		return dayOfWeek === 0 || dayOfWeek === 6; // 0 is Sunday, 6 is Saturday
 	}
@@ -115,24 +115,6 @@
 </div>
 
 <style>
-	.weekend {
-		background-color: rgba(89, 89, 89, 0.1);
-	}
-
-	.before-today::after {
-		position: absolute;
-		top: 50%;
-		left: 0;
-		transform: rotate(-45deg);
-		background-color: rgb(99, 40, 40);
-		width: 100%;
-		height: 3px;
-		content: '';
-	}
-
-	.date {
-		position: relative;
-	}
 	header {
 		display: flex;
 		justify-content: center;
@@ -165,6 +147,7 @@
 	}
 
 	.date {
+		position: relative;
 		border: 1px solid #e6e4e4;
 		padding-right: 4px;
 		padding: 0.5rem;
@@ -186,5 +169,20 @@
 
 	.date.other {
 		opacity: 0.2;
+	}
+
+	.weekend {
+		background-color: rgba(89, 89, 89, 0.1);
+	}
+
+	.before-today::after {
+		position: absolute;
+		top: 50%;
+		left: 25%;
+		transform: rotate(-45deg);
+		background: var(--gradient-2) fixed;
+		width: 50%;
+		height: 1px;
+		content: '';
 	}
 </style>
