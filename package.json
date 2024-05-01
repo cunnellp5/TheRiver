@@ -52,6 +52,7 @@
 	"dependencies": {
 		"@lucia-auth/adapter-prisma": "^4.0.1",
 		"@prisma/client": "^5.12.1",
+		"calendarize": "^1.1.1",
 		"cloudinary": "^2.2.0",
 		"lucide-svelte": "^0.368.0",
 		"open-props": "^1.7.2",
