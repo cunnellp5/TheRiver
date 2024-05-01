@@ -7,7 +7,7 @@
 	export let year = new Date().getFullYear();
 	export let month = new Date().getMonth(); // Jan
 	export let offset = 0; // Sun
-	export let today: Date | null = null; // Date
+	export let today: Date = new Date();
 
 	export let labels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 	export let months = [
@@ -36,9 +36,10 @@
 	function toPrev() {
 		[current, next] = [prev, current];
 
-		if (--month < 0) {
+		month -= 1;
+		if (month < 0) {
 			month = 11;
-			year--;
+			year -= 1;
 		}
 
 		prev = calendarize(new Date(year, month - 1), offset);
@@ -56,11 +57,6 @@
 		next = calendarize(new Date(year, month + 1), offset);
 	}
 
-	function isToday(day: number | null) {
-		const res = today && today_year === year && today_month === month && today_day === day;
-		return res;
-	}
-
 	function isBeforeToday(date: number | undefined) {
 		const now = new Date();
 		now.setHours(0, 0, 0, 0);
@@ -71,7 +67,32 @@
 		const dayOfWeek = new Date(year, month, date).getDay();
 		return dayOfWeek === 0 || dayOfWeek === 6; // 0 is Sunday, 6 is Saturday
 	}
+
+	function getWeek(date: number | Date) {
+		const firstDayOfYear = new Date(date.getFullYear(), 0, 1);
+		const pastDaysOfYear = (date - firstDayOfYear) / 86400000;
+		return Math.ceil((pastDaysOfYear + firstDayOfYear.getDay() + 1) / 7);
+	}
+
+	function isToday(date, calendarWeek, calendarYear) {
+		return (
+			date === today.getDate() &&
+			calendarWeek === getWeek(today) &&
+			calendarYear === today.getFullYear()
+		);
+	}
+
+	function goToToday() {
+		const now = new Date();
+		month = now.getMonth();
+		year = now.getFullYear();
+		current = calendarize(now, offset);
+		prev = calendarize(new Date(year, month - 1), offset);
+		next = calendarize(new Date(year, month + 1), offset);
+	}
 </script>
+
+<button on:click={goToToday}>today</button>
 
 <header>
 	<!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -97,17 +118,36 @@
 				{#if current[idxw][idxd] !== 0}
 					<span
 						class="date"
-						class:today={isToday(current[idxw][idxd])}
+						class:today={isToday(
+							current[idxw][idxd],
+							getWeek(new Date(year, month, current[idxw][idxd])),
+							year
+						)}
 						class:before-today={isBeforeToday(current[idxw][idxd])}
 						class:weekend={isWeekend(current[idxw][idxd])}>
 						{current[idxw][idxd]}
 					</span>
 				{:else if idxw < 1}
-					<span class="date other">
+					<span
+						class="date other"
+						class:before-today={isBeforeToday(current[idxw][idxd])}
+						class:today={isToday(
+							prev[prev.length - 1][idxd],
+							getWeek(new Date(year, month - 1, prev[prev.length - 1][idxd])),
+							year
+						)}>
 						{prev[prev.length - 1][idxd]}
 					</span>
 				{:else}
-					<span class="date other">{next[0][idxd]}</span>
+					<span
+						class="date other"
+						class:today={isToday(
+							next[0][idxd],
+							getWeek(new Date(year, month + 1, next[0][idxd])),
+							year
+						)}>
+						{next[0][idxd]}
+					</span>
 				{/if}
 			{/each}
 		{/if}
