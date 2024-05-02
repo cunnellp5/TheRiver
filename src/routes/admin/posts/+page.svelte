@@ -38,9 +38,11 @@
 	<button class:current={currentFilter === false} on:click={() => updatePosts(false)}>
 		Unpublished ({unpublishedPosts.length})
 	</button>
-	<button class="create">
-		<a href="/admin/posts/create"><Plus /></a>
-	</button>
+	<a href="/admin/posts/create">
+		<button class="create">
+			<Plus />
+		</button>
+	</a>
 </section>
 
 {#if postDataToShow && postDataToShow.length === 0}
@@ -77,6 +79,11 @@
 	button {
 		margin-inline: var(--size-2);
 		font-weight: var(--font-weight-1);
+	}
+	a {
+		display: inline-block;
+		align-self: center;
+		min-width: max-content;
 	}
 	.actionsGroup {
 		display: flex;

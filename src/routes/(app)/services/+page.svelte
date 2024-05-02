@@ -6,6 +6,7 @@
 	export let data;
 	const { services } = data;
 	let selectedServices = new Set();
+	let scroll;
 
 	function setSelected(event) {
 		if (selectedServices.has(event.detail.id)) {
@@ -33,11 +34,14 @@
 	}, {});
 </script>
 
+<svelte:window bind:scrollY={scroll} />
+
 <main>
 	<section class="top">
 		<h1>THE RIVER BEAUTY</h1>
 		<p>Denver based beauty</p>
 		<img
+			style:transform={`translateY(${scroll / 5}px)`}
 			src="https://res.cloudinary.com/dswpu3qez/image/upload/v1714083850/TheRiver/alexisArt_fr62uy.png"
 			alt="" />
 
