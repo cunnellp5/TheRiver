@@ -25,13 +25,19 @@
 		'Dec'
 	];
 
-	$: today_month = today && today.getMonth();
-	$: today_year = today && today.getFullYear();
-	$: today_day = today && today.getDate();
+	// $: today_month = today && today.getMonth();
+	// $: today_year = today && today.getFullYear();
+	// $: today_day = today && today.getDate();
 
 	let prev = calendarize(new Date(year, month - 1), offset);
 	let current = calendarize(new Date(year, month), offset);
 	let next = calendarize(new Date(year, month + 1), offset);
+
+	let selectedDate = null;
+
+	function selectDate(date) {
+		selectedDate = date;
+	}
 
 	function toPrev() {
 		[current, next] = [prev, current];
@@ -94,6 +100,7 @@
 
 <button on:click={goToToday}>today</button>
 
+{selectedDate}
 <header>
 	<!-- svelte-ignore a11y-click-events-have-key-events -->
 	<!-- svelte-ignore a11y-no-static-element-interactions -->
@@ -124,7 +131,9 @@
 							year
 						)}
 						class:before-today={isBeforeToday(current[idxw][idxd])}
-						class:weekend={isWeekend(current[idxw][idxd])}>
+						class:weekend={isWeekend(current[idxw][idxd])}
+						class:selected={selectedDate === current[idxw][idxd]}
+						on:click={() => selectDate(current[idxw][idxd])}>
 						{current[idxw][idxd]}
 					</span>
 				{:else if idxw < 1}
@@ -135,7 +144,9 @@
 							prev[prev.length - 1][idxd],
 							getWeek(new Date(year, month - 1, prev[prev.length - 1][idxd])),
 							year
-						)}>
+						)}
+						class:selected={selectedDate === current[idxw][idxd]}
+						on:click={() => selectDate(current[idxw][idxd])}>
 						{prev[prev.length - 1][idxd]}
 					</span>
 				{:else}
@@ -145,7 +156,9 @@
 							next[0][idxd],
 							getWeek(new Date(year, month + 1, next[0][idxd])),
 							year
-						)}>
+						)}
+						class:selected={selectedDate === current[idxw][idxd]}
+						on:click={() => selectDate(current[idxw][idxd])}>
 						{next[0][idxd]}
 					</span>
 				{/if}
@@ -179,6 +192,8 @@
 	}
 
 	.label {
+		position: sticky;
+		top: 0;
 		opacity: 0.6;
 		margin-bottom: 0.5rem;
 		font-weight: 300;
@@ -224,5 +239,13 @@
 		width: 50%;
 		height: 1px;
 		content: '';
+	}
+
+	.selected {
+		/* color: var(--surface-1); */
+
+		border: 1px solid var(--gradient-2);
+		background: hsl(var(--green-3-hsl) / 30%);
+		color: var(--pink-3);
 	}
 </style>
