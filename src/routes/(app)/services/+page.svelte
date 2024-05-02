@@ -38,10 +38,15 @@
 
 <main>
 	<section class="top">
-		<h1>THE RIVER BEAUTY</h1>
-		<p>Denver based beauty</p>
+		<h1 style:transform={`translate3d(${scroll / 3}px, 0, 0)`}>THE RIVER BEAUTY</h1>
+		<p
+			style:transform={(`translate3d(-${scroll / 10}px, ${scroll / 5}px, 0)`,
+			`rotate(${scroll / 18}deg)`)}
+			style:letter-spacing={`${scroll / 25}px`}>
+			Denver based
+		</p>
 		<img
-			style:transform={`translateY(${scroll / 5}px)`}
+			style:transform={`translate3d(-${scroll / 10}px, ${scroll / 5}px, 0)`}
 			src="https://res.cloudinary.com/dswpu3qez/image/upload/v1714083850/TheRiver/alexisArt_fr62uy.png"
 			alt="" />
 
