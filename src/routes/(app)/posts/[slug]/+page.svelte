@@ -12,7 +12,7 @@
 	let quill: Quill | null;
 	let reader: string | HTMLElement;
 
-	const post = data.posts.find((p) => p.slug === $page.params.slug) || {
+	$: post = data.posts.find((p) => p.slug === $page.params.slug) || {
 		title: '',
 		content: '',
 		tags: [],
@@ -33,6 +33,10 @@
 			// TODO: unable to load quill, provide some fall back
 		}
 	});
+
+	$: index = data.posts.findIndex((p) => p.slug === $page.params.slug);
+	$: next = data.posts[index - 1];
+	$: previous = data.posts[index + 1];
 </script>
 
 <main>
@@ -61,6 +65,12 @@
 			{data.post.content}
 		</p> -->
 	</section>
+	{#if previous}
+		<p>Previous post: <a href="/posts/{previous.slug}">{previous.title}</a></p>
+	{/if}
+	{#if next}
+		<p>Next post: <a href="/posts/{next.slug}">{next.title}</a></p>
+	{/if}
 </main>
 
 <style>
