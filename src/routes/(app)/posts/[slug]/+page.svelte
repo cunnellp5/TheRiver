@@ -4,11 +4,12 @@
 	import type Quill from 'quill';
 	import { onMount } from 'svelte';
 	import Badge from '$lib/components/ui/Badge.svelte';
-	import type { PageData } from './$types';
 	// eslint-disable-next-line import/no-unresolved
-	import { page } from '$app/stores';
 	import ChevronRight from 'lucide-svelte/icons/chevron-right';
 	import ChevronLeft from 'lucide-svelte/icons/chevron-left';
+	import { fly } from 'svelte/transition';
+	import { page } from '$app/stores';
+	import type { PageData } from './$types';
 
 	export let data: PageData;
 	let quill: Quill | null;
@@ -42,38 +43,14 @@
 </script>
 
 <main>
-	<div>
-		<section class="surface-4">
-			<hgroup>
-				<div class="headerAction">
-					<h1 id={post.slug}>{post.title}</h1>
-				</div>
-				<date>{formatDate(new Date(post.createdAt))}</date>
-				<div class="tags">
-					{#each post.tags as tag}
-						<Badge {tag} prefix={'#'} />
-					{/each}
-				</div>
-			</hgroup>
-
-			<div class="reader-wrapper">
-				<div bind:this={reader} />
-			</div>
-			<!-- TODO figure out if both the following are needed? -->
-			<!-- <div class="reader-wrapper" class:hidden={!quill}>
-				<div bind:this={reader} />
-			</div>
-	
-			<p class="content" class:hidden={quill}>
-				{data.post.content}
-			</p> -->
-		</section>
+	<div class="section surface-4">
 		<div class="prevNext">
 			{#if previous}
 				<p title={previous.title}>
 					<a class="row" href="/posts/{previous.slug}"><ChevronLeft /> Previous </a>
 				</p>
 			{/if}
+			&nbsp; &nbsp; &nbsp;
 			{#if next}
 				<p title={next.title}>
 					<a class="row" href="/posts/{next.slug}">
@@ -82,13 +59,36 @@
 				</p>
 			{/if}
 		</div>
+		<hgroup>
+			<div class="headerAction">
+				<h1 id={post.slug}>{post.title}</h1>
+			</div>
+			<date>{formatDate(new Date(post.createdAt))}</date>
+			<div class="tags">
+				{#each post.tags as tag}
+					<Badge {tag} prefix={'#'} />
+				{/each}
+			</div>
+		</hgroup>
+
+		<div class="reader-wrapper">
+			<div bind:this={reader} />
+		</div>
+		<!-- TODO figure out if both the following are needed? -->
+		<!-- <div class="reader-wrapper" class:hidden={!quill}>
+				<div bind:this={reader} />
+			</div>
+	
+			<p class="content" class:hidden={quill}>
+				{data.post.content}
+			</p> -->
 	</div>
 	{#if data.posts.length > 5}
 		<div class="sidemenu">
 			<aside>Other posts:</aside>
 			<ul>
 				{#each data.posts as { slug, title }}
-					<li>
+					<li class:selectedMenu={slug === $page.url.pathname.split('/').pop()}>
 						<a href="/posts/{slug}">{title}</a>
 					</li>
 				{/each}
@@ -99,13 +99,13 @@
 
 <style>
 	main {
-		display: flex;
-		flex-direction: row;
-		justify-content: flex-end;
-		/* align-items: center; */
-		height: 100vh;
+		display: grid;
+		grid-template-columns: 3fr 0.5fr;
+		/* justify-content: space-between; */
+		justify-items: center;
 	}
-	section {
+	.section {
+		align-self: center;
 		box-shadow: var(--shadow-2);
 		padding: var(--size-7);
 	}
@@ -148,20 +148,30 @@
 	}
 
 	.sidemenu {
-		position: relative;
-		padding: var(--size-4);
-		width: var(--size-14);
+		margin-left: var(--size-4);
+		border-left: 1px solid var(--border);
+		padding: var(--size-3);
+		width: var(--size-13);
 		& li {
 			margin-bottom: var(--size-2);
 			margin-left: var(--size-2);
+			font-size: var(--font-size-0);
 		}
 	}
 	.prevNext {
 		display: flex;
+		position: sticky;
+		top: 0;
 		justify-content: space-between;
 	}
 	.row {
 		display: flex;
 		flex-direction: row;
+	}
+	.selectedMenu {
+		display: inline-block;
+		background: hsl(var(--gray-7-hsl) / 49%);
+		padding: var(--size-2);
+		font-weight: var(--font-weight-7);
 	}
 </style>
