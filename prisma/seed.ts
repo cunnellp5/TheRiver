@@ -27,12 +27,13 @@ function slugify(text: string) {
 async function main() {
 	const posts = await getPosts();
 
-	const data = posts.map((post) => ({
+	const data = posts.map((post, i) => ({
 		title: post.title,
 		content: post.body,
 		slug: slugify(post.title),
 		tags: post.tags,
-		description: `${post.body.slice(0, 100)}...`
+		description: `${post.body.slice(0, 100)}...`,
+		published: i % 2 === 0
 	}));
 
 	await db.post.createMany({ data });
@@ -43,7 +44,7 @@ async function main() {
 				name: 'Haircut',
 				description: 'Get your hair cut and styled',
 				duration: 60,
-				availability: 'AVAILABLE', // 'AVAILABLE' | 'UNAVAILABLE' | 'COMING_SOON
+				availability: 'AVAILABLE',
 				category: 'HAIR',
 				slug: 'haircut',
 				price: 100
@@ -52,7 +53,7 @@ async function main() {
 				name: 'Gel nails',
 				description: 'Get your nails did',
 				duration: 90,
-				availability: 'LIMITED_AVAILABILITY', // 'AVAILABLE' | 'UNAVAILABLE' | 'COMING_SOON
+				availability: 'LIMITED_AVAILABILITY',
 				category: 'NAILS',
 				slug: 'gel-nails',
 				price: 69
@@ -61,7 +62,7 @@ async function main() {
 				name: 'Waxing',
 				description: 'Wax your booty',
 				duration: 30,
-				availability: 'COMING_SOON', // 'AVAILABLE' | 'UNAVAILABLE' | 'COMING_SOON
+				availability: 'COMING_SOON',
 				category: 'WAX',
 				slug: 'wax',
 				price: 35
@@ -70,7 +71,7 @@ async function main() {
 				name: 'Rainbow extensions',
 				description: 'Get fully organic extesions',
 				duration: 120,
-				availability: 'LIMITED_AVAILABILITY', // 'AVAILABLE' | 'UNAVAILABLE' | 'COMING_SOON
+				availability: 'LIMITED_AVAILABILITY',
 				category: 'HAIR',
 				slug: 'rainbow-extensions',
 				price: 35
@@ -88,6 +89,17 @@ async function main() {
 			isSubscribed: true,
 			hashedPassword,
 			isAdmin: true
+		}
+	});
+
+	await db.timeSlot.create({
+		data: {
+			startTime: new Date('2024-05-05T13:00:00Z'),
+			endTime: new Date('2024-05-05T14:00:00Z'),
+			day: new Date('2024-05-05T19:00:00.000Z'),
+			availability: 'AVAILABLE',
+			serviceId: 1,
+			duration: 60
 		}
 	});
 }
