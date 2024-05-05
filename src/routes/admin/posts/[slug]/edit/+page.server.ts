@@ -5,7 +5,7 @@ import type { Actions, PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ locals }) => {
 	if (!locals.session || !locals?.user?.isAdmin) {
-		return error(401, 'Unauthorized');
+		return error(404, 'Not found');
 	}
 
 	return { user: locals.user };
@@ -14,7 +14,7 @@ export const load: PageServerLoad = async ({ locals }) => {
 export const actions: Actions = {
 	default: async ({ request, params, locals }) => {
 		if (!locals.user && !locals.user?.isAdmin) {
-			return error(401, { message: 'Unauthorized' });
+			return error(404, { message: 'Not found' });
 		}
 
 		const formData = await request.formData();

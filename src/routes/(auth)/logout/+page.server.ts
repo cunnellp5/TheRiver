@@ -5,7 +5,7 @@ import type { Actions } from './$types';
 export const actions: Actions = {
 	default: async (event) => {
 		if (!event.locals.session) {
-			return fail(401);
+			return fail(404);
 		}
 
 		await lucia.invalidateSession(event.locals.session.id);

@@ -8,8 +8,8 @@ export const load: PageServerLoad = async (event) => {
 	}
 
 	try {
-		const services = await db.service.findMany();
-		return { services };
+		const timeSlots = await db.timeSlot.findMany();
+		return { timeSlots };
 	} catch (err) {
 		return error(500, 'Internal Server Error');
 	}

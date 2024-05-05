@@ -3,7 +3,7 @@ import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async (event) => {
 	if (!event.locals.session) {
-		return error(401, 'Unauthorized');
+		return error(404, 'Not found');
 	}
 
 	return { user: event.locals.user };
