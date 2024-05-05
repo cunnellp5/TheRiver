@@ -7,6 +7,8 @@
 	import type { PageData } from './$types';
 	// eslint-disable-next-line import/no-unresolved
 	import { page } from '$app/stores';
+	import ChevronRight from 'lucide-svelte/icons/chevron-right';
+	import ChevronLeft from 'lucide-svelte/icons/chevron-left';
 
 	export let data: PageData;
 	let quill: Quill | null;
@@ -40,44 +42,67 @@
 </script>
 
 <main>
-	<section class="surface-4">
-		<hgroup>
-			<div class="headerAction">
-				<h1 id={post.slug}>{post.title}</h1>
+	<div>
+		<section class="surface-4">
+			<hgroup>
+				<div class="headerAction">
+					<h1 id={post.slug}>{post.title}</h1>
+				</div>
+				<date>{formatDate(new Date(post.createdAt))}</date>
+				<div class="tags">
+					{#each post.tags as tag}
+						<Badge {tag} prefix={'#'} />
+					{/each}
+				</div>
+			</hgroup>
+
+			<div class="reader-wrapper">
+				<div bind:this={reader} />
 			</div>
-			<date>{formatDate(new Date(post.createdAt))}</date>
-			<div class="tags">
-				{#each post.tags as tag}
-					<Badge {tag} prefix={'#'} />
+			<!-- TODO figure out if both the following are needed? -->
+			<!-- <div class="reader-wrapper" class:hidden={!quill}>
+				<div bind:this={reader} />
+			</div>
+	
+			<p class="content" class:hidden={quill}>
+				{data.post.content}
+			</p> -->
+		</section>
+		<div class="prevNext">
+			{#if previous}
+				<p title={previous.title}>
+					<a class="row" href="/posts/{previous.slug}"><ChevronLeft /> Previous </a>
+				</p>
+			{/if}
+			{#if next}
+				<p title={next.title}>
+					<a class="row" href="/posts/{next.slug}">
+						Next <ChevronRight />
+					</a>
+				</p>
+			{/if}
+		</div>
+	</div>
+	{#if data.posts.length > 5}
+		<div class="sidemenu">
+			<aside>Other posts:</aside>
+			<ul>
+				{#each data.posts as { slug, title }}
+					<li>
+						<a href="/posts/{slug}">{title}</a>
+					</li>
 				{/each}
-			</div>
-		</hgroup>
-
-		<div class="reader-wrapper">
-			<div bind:this={reader} />
+			</ul>
 		</div>
-		<!-- TODO figure out if both the following are needed? -->
-		<!-- <div class="reader-wrapper" class:hidden={!quill}>
-			<div bind:this={reader} />
-		</div>
-
-		<p class="content" class:hidden={quill}>
-			{data.post.content}
-		</p> -->
-	</section>
-	{#if previous}
-		<p>Previous post: <a href="/posts/{previous.slug}">{previous.title}</a></p>
-	{/if}
-	{#if next}
-		<p>Next post: <a href="/posts/{next.slug}">{next.title}</a></p>
 	{/if}
 </main>
 
 <style>
 	main {
 		display: flex;
-		flex-direction: column;
-		align-items: center;
+		flex-direction: row;
+		justify-content: flex-end;
+		/* align-items: center; */
 		height: 100vh;
 	}
 	section {
@@ -120,5 +145,23 @@
 		& blockquote {
 			padding-inline: var(--size-4);
 		}
+	}
+
+	.sidemenu {
+		position: relative;
+		padding: var(--size-4);
+		width: var(--size-14);
+		& li {
+			margin-bottom: var(--size-2);
+			margin-left: var(--size-2);
+		}
+	}
+	.prevNext {
+		display: flex;
+		justify-content: space-between;
+	}
+	.row {
+		display: flex;
+		flex-direction: row;
 	}
 </style>
