@@ -33,3 +33,10 @@
 		<Trash />
 	</button>
 </form>
+
+<style>
+	a,
+	form {
+		flex-shrink: 0;
+	}
+</style>

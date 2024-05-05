@@ -39,9 +39,11 @@
 <main>
 	<section>
 		<hgroup>
+			<div class="btnWrapper">
+				<EditDeleteActions slug={post.slug} redirect={true} />
+			</div>
 			<div class="headerAction">
 				<h1 id={post.slug}>{post.title}</h1>
-				<EditDeleteActions slug={post.slug} redirect={true} />
 			</div>
 			<date>{formatDate(new Date(post.createdAt))}</date>
 			<div class="tags">
@@ -63,13 +65,23 @@
 			{data.post.content}
 		</p> -->
 	</section>
+	<ul>
+		{#each data.posts as post}
+			<li>
+				<a href={`/admin/posts/${post.slug}`}>
+					{post.title}
+				</a>
+			</li>
+		{/each}
+	</ul>
 </main>
 
 <style>
 	main {
 		display: flex;
-		flex-direction: column;
-		align-items: center;
+		flex-direction: row;
+		justify-content: center;
+		align-items: start;
 		height: 100vh;
 	}
 	date {
@@ -108,5 +120,11 @@
 		& blockquote {
 			padding-inline: var(--size-4);
 		}
+	}
+	.btnWrapper {
+		display: flex;
+		flex-direction: column;
+		gap: var(--size-2);
+		width: 100;
 	}
 </style>
