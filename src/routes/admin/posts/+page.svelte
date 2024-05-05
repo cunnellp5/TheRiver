@@ -1,6 +1,8 @@
 <script lang="ts">
 	import Plus from 'lucide-svelte/icons/plus';
 	import type { Post } from '@prisma/client';
+	import Check from 'lucide-svelte/icons/check';
+	import X from 'lucide-svelte/icons/x';
 	import PostsCard from './components/PostsCard.svelte';
 	import type { PageData } from './$types';
 	import EditDeleteActions from './components/EditDeleteActions.svelte';
@@ -61,8 +63,16 @@
 				allowSlot={true}
 				link={`/admin/posts/${slug}`}>
 				<div class="actionsGroup">
-					<p>published {published}</p>
-					<EditDeleteActions {slug} />
+					<p class="isPublished" class:published class:unpublished={!published}>
+						{#if published}
+							<Check />&nbsp;Published
+						{:else}
+							<X />&nbsp;Unpublished
+						{/if}
+					</p>
+					<div>
+						<EditDeleteActions {slug} />
+					</div>
 				</div>
 			</PostsCard>
 		</section>
@@ -87,12 +97,30 @@
 	}
 	.actionsGroup {
 		display: flex;
-		justify-content: end;
+		justify-content: space-between;
 		align-items: center;
 		gap: var(--size-2);
+		& > div {
+			display: flex;
+			flex-direction: row;
+			gap: var(--size-2);
+		}
 	}
 	.current {
 		background-color: var(--button-active);
 		/* color: var(--gray-1); */
+	}
+	.isPublished {
+		display: flex;
+		justify-content: center;
+		padding-inline: var(--size-4);
+		/* background: var(--yellow-9); */
+		width: max-content;
+	}
+	.published {
+		background: var(--gradient-8);
+	}
+	.unpublished {
+		background: var(--gradient-20);
 	}
 </style>
