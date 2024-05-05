@@ -3,11 +3,13 @@
 	// import Arrow from './Arrow.svelte';
 	import ArrowRight from 'lucide-svelte/icons/arrow-right';
 	import ArrowLeft from 'lucide-svelte/icons/arrow-left';
+	import formatHours from '$lib/utils/formatHours';
 
 	export let year = new Date().getFullYear();
-	export let month = new Date().getMonth(); // Jan
+	export let month = new Date().getMonth();
 	export let offset = 0; // Sun
 	export let today: Date = new Date();
+	export let timeSlots = [];
 
 	export let labels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 	export let months = [
@@ -96,6 +98,18 @@
 		prev = calendarize(new Date(year, month - 1), offset);
 		next = calendarize(new Date(year, month + 1), offset);
 	}
+
+	let timeSlotsByDate = {};
+	$: {
+		timeSlotsByDate = timeSlots?.reduce((acc, slot) => {
+			const dateStr = slot.day.toISOString().split('T')[0]; // Get the date part of the ISO string
+			if (!acc[dateStr]) {
+				acc[dateStr] = [];
+			}
+			acc[dateStr].push(slot);
+			return acc;
+		}, {});
+	}
 </script>
 
 <button on:click={goToToday}>today</button>
@@ -134,7 +148,17 @@
 						class:weekend={isWeekend(current[idxw][idxd])}
 						class:selected={selectedDate === current[idxw][idxd]}
 						on:click={() => selectDate(current[idxw][idxd])}>
-						{current[idxw][idxd]}
+						<p>{current[idxw][idxd]}</p>
+						<!-- Add time slots for this date -->
+						{#if timeSlotsByDate[new Date(year, month, current[idxw][idxd])
+								.toISOString()
+								.split('T')[0]]}
+							{#each timeSlotsByDate[new Date(year, month, current[idxw][idxd])
+									.toISOString()
+									.split('T')[0]] as slot (slot.id)}
+								<p>{formatHours(slot.startTime)} - {formatHours(slot.endTime)}</p>
+							{/each}
+						{/if}
 					</span>
 				{:else if idxw < 1}
 					<span
@@ -207,9 +231,9 @@
 		padding-right: 4px;
 		padding: 0.5rem;
 		height: var(--size-12);
-		font-weight: 700;
-		font-size: 16px;
-		letter-spacing: -1px;
+		font-weight: 500;
+		font-size: var(--size-7);
+		letter-spacing: var(--font-letterspacing-0);
 	}
 
 	.date:hover {
