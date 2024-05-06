@@ -47,14 +47,14 @@
 		<div class="prevNext">
 			{#if previous}
 				<p title={previous.title}>
-					<a class="row" href="/posts/{previous.slug}"><ChevronLeft /> Previous </a>
+					<a class="row" href="/posts/{previous.slug}"><ChevronLeft /> Older </a>
 				</p>
 			{/if}
 			&nbsp; &nbsp; &nbsp;
 			{#if next}
 				<p title={next.title}>
 					<a class="row" href="/posts/{next.slug}">
-						Next <ChevronRight />
+						Newer <ChevronRight />
 					</a>
 				</p>
 			{/if}

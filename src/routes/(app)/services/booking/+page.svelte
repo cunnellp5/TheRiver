@@ -1,8 +1,23 @@
 <script lang="ts">
+	import Calendar from '$lib/components/ui/Calendar.svelte';
+
 	export let data;
 </script>
 
-<h4>hey from Bookings</h4>
-<pre>
-  {JSON.stringify(data, null, 2)}
-</pre>
+<h4>Choose a day and time</h4>
+
+<section>
+	<div>section1</div>
+	<aside>
+		<Calendar />
+	</aside>
+</section>
+
+<style>
+	section {
+		/* display: grid; */
+		/* grid-template-columns: 1fr 0.1fr; */
+		/* width: 50vw; */
+		/* height: 20vh; */
+	}
+</style>
