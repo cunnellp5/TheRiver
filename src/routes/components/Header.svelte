@@ -1,7 +1,5 @@
 <script lang="ts">
 	import LogoR from '$lib/components/svgs/logos/LogoR2.svelte';
-	import Ellipsis from 'lucide-svelte/icons/ellipsis';
-	import ChevronDown from 'lucide-svelte/icons/chevron-down';
 	import Waves from 'lucide-svelte/icons/waves';
 	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
@@ -44,11 +42,13 @@
 			</a>
 			<ul class="links">
 				<li></li>
+
 				<li
 					class:current={$page.url.pathname.includes('/admin')}
 					aria-current={$page.url.pathname.includes('/admin')}>
 					<a href="/admin"> Admin </a>
 				</li>
+
 				<li
 					class:current={$page.url.pathname === '/dashboard'}
 					aria-current={$page.url.pathname === '/dashboard'}>
@@ -63,11 +63,13 @@
 				aria-current={$page.url.pathname === '/music'}>
 				<a href="/music"> Music </a>
 			</li>
+
 			<li
 				class:current={$page.url.pathname.includes('/services')}
 				aria-current={$page.url.pathname.includes('/services')}>
 				<a href="/services"> services </a>
 			</li>
+
 			<li
 				class:current={$page.url.pathname === '/shop'}
 				aria-current={$page.url.pathname === '/shop'}>
@@ -89,31 +91,19 @@
 
 			<li class="border-left"></li>
 
-			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-			<li on:click={toggleAuthMenu} class="ellipsis">
-				{#if showAuthLinks}
-					<ChevronDown size="28" />
-				{:else}
-					<Ellipsis size="28" />
-				{/if}
-			</li>
-		</ul>
-
-		<ul class="card surface-4 links-horz" class:hidden={!showAuthLinks}>
 			{#if isSignedIn}
-				<form id="logoutForm" method="POST" action="/logout">
-					<li>
+				<form class="logout-wrapper" id="logoutForm" method="POST" action="/logout">
+					<li class:current={$page.url.pathname === '/logout'}>
 						<button class="logout-button" type="submit">Logout</button>
 					</li>
 				</form>
 			{:else}
-				<a href="/signup" class:current={$page.url.pathname === '/signup'}>
-					<li>Signup</li>
-				</a>
-				<a href="/login" class:current={$page.url.pathname === '/login'}>
-					<li>Login</li>
-				</a>
+				<li class:current={$page.url.pathname === '/signup'}>
+					<a href="/signup"> Signup </a>
+				</li>
+				<li class:current={$page.url.pathname === '/login'}>
+					<a href="/login"> Login </a>
+				</li>
 			{/if}
 		</ul>
 	</nav>
@@ -128,10 +118,8 @@
 
 <style>
 	nav {
-		/* padding-inline: var(--size-3); */
 		position: relative;
 		align-items: center;
-		/* background-color: hsl(var(--gray-9-hsl) / 95%); */
 		padding-block: var(--size-2);
 	}
 
@@ -146,10 +134,11 @@
 		text-transform: uppercase;
 	}
 
-	/* a:hover,
-	a:active {
-		color: var(--link);
-	} */
+	.logout-button {
+		box-shadow: none;
+		font-size: var(--font-size-0);
+		text-transform: uppercase;
+	}
 
 	.links {
 		& * {
@@ -158,7 +147,8 @@
 			-webkit-box-sizing: border-box;
 			box-sizing: border-box;
 		}
-		& a {
+		& a,
+		.logout-button {
 			display: inline-block;
 			position: relative;
 			padding-block: var(--size-1);
@@ -166,7 +156,8 @@
 			font-weight: var(--font-weight-7);
 			text-decoration: none;
 		}
-		& a:before {
+		& a:before,
+		.logout-button:before {
 			position: absolute;
 			top: 25%;
 			right: 0;
@@ -180,60 +171,18 @@
 			content: '';
 		}
 	}
-
-	.links-horz {
-		text-align: center;
-		& * {
-			-webkit-transition: all 0.35s ease;
-			transition: all 0.35s ease;
-			-webkit-box-sizing: border-box;
-			box-sizing: border-box;
-		}
-		& a,
-		form {
-			display: inline-block;
-			position: relative;
-			/* padding-block: var(--size-1); */
-			color: var(--text-2);
-			font-weight: var(--font-weight-7);
-			text-decoration: none;
-		}
-		& a:before,
-		form:before {
-			position: absolute;
-			top: 0;
-			right: 20%;
-			bottom: 0;
-			left: 20%;
-			opacity: 0;
-			z-index: -1;
-			-webkit-transition: all 0.35s ease;
-			transition: all 0.35s ease;
-			border-right: 1px dotted var(--link);
-			border-left: 1px dotted var(--link);
-			content: '';
-		}
-	}
-
+	.logout-wrapper .logout-button:hover,
 	.links a:hover,
 	.links .current a,
 	.links-horz a:hover .links-horz .current a {
 		color: var(--text-1);
 	}
 
+	.logout-wrapper .logout-button:hover:before,
 	.links a:hover:before,
 	.links .current a:before {
 		top: 0;
 		bottom: 0;
-		opacity: 1;
-	}
-
-	.links-horz a:hover:before,
-	.links-horz .current a:before,
-	.links-horz form:hover:before,
-	.links-horz .current form:before {
-		right: 0;
-		left: 0;
 		opacity: 1;
 	}
 
@@ -261,63 +210,9 @@
 		height: var(--size-5);
 	}
 
-	.card {
-		position: absolute;
-		top: 100%;
-		right: 0;
-		border-radius: var(--radius-0);
-		background-color: hsl(var(--background) / 75%);
-		& li {
-			margin-block: var(--size-1);
-			padding-inline: var(--size-2);
-			padding-block: var(--size-2);
-		}
-		& a,
-		li,
-		button {
-			display: block;
-			/* display: inline-block; */
-			/* position: relative; */
-			box-shadow: none;
-			/* padding-block: var(--size-1); */
-			color: var(--text-2);
-			font-weight: var(--font-weight-7);
-			font-size: var(--font-size-0);
-			letter-spacing: var(--font-letterspacing-3);
-			/* text-decoration: none; */
-			text-shadow: none;
-			text-transform: uppercase;
-		}
-
-		& button {
-			box-shadow: none;
-			border: none;
-			padding: 0;
-		}
-
-		& li:hover {
-			cursor: pointer;
-			/* border-right: 1px solid var(--link); */
-			/* border-left: 1px solid var(--link); */
-			/* background-color: var(--border); */
-			& button {
-				background: unset;
-			}
-		}
-	}
-
-	.ellipsis {
-		cursor: pointer;
-		padding: var(--size-1);
-	}
-
 	.logout-button {
 		background: inherit;
 		padding: 0;
-	}
-
-	.hidden {
-		display: none;
 	}
 
 	@media (min-width: 768px) {
