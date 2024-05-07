@@ -227,31 +227,36 @@
 
 	.date {
 		position: relative;
-		border: 1px solid #e6e4e4;
+		border: 1px solid hsl(var(--stone-6-hsl) / 90%);
 		padding-right: 4px;
 		padding: 0.5rem;
 		height: var(--size-12);
+		/* height: 100%; */
 		font-weight: 500;
 		font-size: var(--size-7);
 		letter-spacing: var(--font-letterspacing-0);
 	}
 
 	.date:hover {
-		background: var(--surface-4);
+		opacity: 0.5;
 	}
 
 	.date.today {
 		border-color: currentColor;
-		background: #c4d9fd;
-		color: #5286fa;
+		border: 1px solid hsl(var(--stone-3-hsl) / 100%);
+		/* background: #c4d9fd; */
+		/* background: hsl(var(--gray-3-hsl) / 30%); */
+		color: hsl(var(--green-4-hsl) / 100%);
 	}
 
 	.date.other {
-		opacity: 0.2;
+		opacity: 0.1;
 	}
 
 	.weekend {
-		background-color: rgba(89, 89, 89, 0.1);
+		border: none;
+		/* background-color: rgba(89, 89, 89, 0.1); */
+		background-color: hsl(var(--gray-3-hsl) / 6%);
 	}
 
 	.before-today::after {
@@ -265,11 +270,15 @@
 		content: '';
 	}
 
+	.before-today {
+		color: var(--gray-8);
+	}
+
 	.selected {
 		/* color: var(--surface-1); */
 
-		border: 1px solid var(--gradient-2);
-		background: hsl(var(--green-3-hsl) / 30%);
+		/* border: 1px solid var(--gradient-2); */
+		background: hsl(var(--indigo-3-hsl) / 20%);
 		color: var(--pink-3);
 	}
 </style>
