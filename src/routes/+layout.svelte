@@ -1,17 +1,20 @@
 <script lang="ts">
-	import PageTransition from './components/Transition.svelte';
+	import Toasts from '$lib/components/ui/Toasts.svelte';
 	import 'open-props/buttons';
 	import 'open-props/colors-hsl';
 	import 'open-props/masks/edges';
 	import 'open-props/normalize';
 	import 'open-props/style';
 	import '../styles/app.css';
-	import Footer from './components/footer/Footer.svelte';
-	import Header from './components/Header.svelte';
 	import type { PageData } from './$types';
+	import Header from './components/Header.svelte';
+	import PageTransition from './components/Transition.svelte';
+	import Footer from './components/footer/Footer.svelte';
 
 	export let data: PageData;
 </script>
+
+<Toasts />
 
 <div class="layout">
 	<Header isSignedIn={data.isSignedIn} />
