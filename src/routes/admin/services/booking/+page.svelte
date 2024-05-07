@@ -2,15 +2,12 @@
 	import Calendar from '$lib/components/ui/Calendar.svelte';
 	// import Calendar from '@event-calendar/core';
 	// import TimeGrid from '@event-calendar/time-grid';
-	import Toasts from '$lib/components/ui/Toasts.svelte';
 	import { addToast } from '$lib/stores/toast';
 	import Modal from '$lib/components/ui/Modal.svelte';
 
 	const today = new Date();
 	let showModal = false;
 </script>
-
-<Toasts />
 
 <Modal bind:showModal>
 	<h2 slot="header">
@@ -43,13 +40,16 @@
 	on:click={() => addToast({ message: 'hello', type: 'info', dismissible: true, timeout: 5000 })}>
 	Add toast
 </button>
-<div class="">
+<div class="clanedar-wrapper">
 	<Calendar {today} month={today.getMonth()} year={today.getFullYear()} />
 </div>
 
 <style>
 	/* .surface-4 {
-		box-shadow: var(--shadow-1);
+	box-shadow: var(--shadow-1);
 		padding: var(--size-4);
+	} */
+	/* .clanedar-wrapper {
+		height: var(--size-12);
 	} */
 </style>
