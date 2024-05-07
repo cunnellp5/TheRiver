@@ -2,6 +2,7 @@
 	import CircleAlert from 'lucide-svelte/icons/circle-alert';
 	// eslint-disable-next-line import/no-unresolved
 	import { enhance } from '$app/forms';
+	import { addToast } from '$lib/stores/toast.js';
 
 	export let form;
 
@@ -22,7 +23,17 @@
 			<p class="error-message"><CircleAlert />{form.message}</p>
 		{/if}
 
-		<form method="post" use:enhance>
+		<form
+			method="post"
+			use:enhance={({ cancel }) =>
+				async ({ update }) =>
+					update()
+						.then(() =>
+							addToast({ message: 'logged in!', type: 'info', dismissible: true, timeout: 5000 })
+						)
+						.catch(() => {
+							cancel();
+						})}>
 			<label for="email">Email</label>
 			<input bind:value={email} type="email" name="email" id="email" required />
 
