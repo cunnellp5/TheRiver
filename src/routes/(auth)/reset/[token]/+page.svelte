@@ -1,6 +1,7 @@
 <script lang="ts">
-	import CircleAlert from 'lucide-svelte/icons/circle-alert';
 	import Check from 'lucide-svelte/icons/check';
+	// eslint-disable-next-line import/no-unresolved
+	import { enhance } from '$app/forms';
 	export let data;
 
 	const { email } = data;
@@ -23,7 +24,7 @@
 	<section>
 		<h1>RESET PASSWORD</h1>
 
-		<form action="">
+		<form action="POST" use:enhance>
 			<p>{email}</p>
 			<!-- <label for="password">password</label>
 			<input type="password" id="password" name="password" required />
@@ -47,6 +48,7 @@
 					required />
 
 				<br />
+
 				<label for="confirm">Confirm Password</label>
 				<input
 					class:invalid={!isConfirmPasswordValid && confirmPassword.length > 0}
@@ -72,6 +74,8 @@
 					</div>
 				</div>
 			</div>
+
+			<input type="hidden" name="email" id="email" value={email} />
 
 			<button type="submit">reset password</button>
 		</form>
