@@ -37,7 +37,7 @@
 			<p class="error-message"><CircleAlert />{form.message}</p>
 		{/if}
 
-		<form method="post" use:enhance>
+		<form method="POST" use:enhance>
 			<label for="firstName">First name</label>
 			<input bind:value={firstName} name="firstName" id="firstName" required />
 
