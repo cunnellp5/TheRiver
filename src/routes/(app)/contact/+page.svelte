@@ -28,14 +28,20 @@
 		<aside class="buttons">
 			<button on:click={copyEmail}>
 				{#if copied}
-					<Check />
+					<a>
+						<Check size="36" />
+					</a>
 				{:else}
-					<Copy />
+					<a>
+						<Copy size="36" />
+					</a>
 				{/if}
 			</button>
-			<a href="mailto:{email}">
-				<button> <Send /> </button>
-			</a>
+			<button>
+				<a href="mailto:{email}">
+					<Send size="36" />
+				</a>
+			</button>
 		</aside>
 	</section>
 </main>
@@ -43,21 +49,20 @@
 <style>
 	main {
 		display: flex;
-		flex-direction: row;
-		justify-content: center;
+		flex-direction: column;
+		/* justify-content: center; */
 		align-items: center;
-		height: 100vh;
+		margin-block: var(--size-9);
+		/* height: 100vh; */
 	}
 
 	section {
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
-		align-items: center;
+		/* justify-content: center; */
+		/* align-items: center; */
 		/* box-shadow: var(--shadow-1); */
-		border-radius: var(--radius-2);
-		padding: var(--size-7);
-		width: 30%;
+		/* padding: var(--size-7); */
 	}
 
 	h1 {
@@ -70,8 +75,8 @@
 
 	.buttons {
 		display: flex;
-		flex-direction: row;
+		flex-direction: column;
 		gap: var(--size-4);
-		margin-block-start: var(--size-2);
+		margin-block-start: var(--size-6);
 	}
 </style>
