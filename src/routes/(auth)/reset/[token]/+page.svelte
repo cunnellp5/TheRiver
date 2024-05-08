@@ -25,13 +25,8 @@
 	<section>
 		<h1>RESET PASSWORD</h1>
 
-		<form action="POST" use:enhance>
+		<form method="POST" use:enhance>
 			<p>{email}</p>
-			<!-- <label for="password">password</label>
-			<input type="password" id="password" name="password" required />
-
-			<label for="password_confirmation">password confirmation</label>
-			<input type="password" id="password_confirmation" name="password_confirmation" required /> -->
 			<div
 				class="passwords"
 				class:invalidPasswords={(!isConfirmPasswordValid && confirmPassword.length > 0) ||
@@ -78,7 +73,7 @@
 
 			<input type="hidden" name="email" id="email" value={email} />
 
-			<button type="submit">reset password</button>
+			<button type="submit">Reset</button>
 		</form>
 	</section>
 </main>
