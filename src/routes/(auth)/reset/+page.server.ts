@@ -1,5 +1,5 @@
 import { lucia } from '$lib/server/auth';
-import { fail, redirect, success } from '@sveltejs/kit';
+import { fail, redirect } from '@sveltejs/kit';
 import { Argon2id } from 'oslo/password';
 import db from '$lib/server/database';
 import type { Actions } from './$types';
@@ -27,10 +27,10 @@ export const actions: Actions = {
 				throw new Error('should trickle down and throw success');
 			}
 		} catch (error) {
-			return success(
-				200,
-				'An email was sent to the email address provided. Please check your email.'
-			);
+			return {
+				status: 200,
+				message: 'An email was sent to the email address provided. Please check your email.'
+			};
 			// return fail(404, 'If the email exists, an email was sent');
 		}
 
