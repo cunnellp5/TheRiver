@@ -21,9 +21,9 @@
 
 ### Beauty booking service
 
-- Users can sign up for an offered service
+- Users can sign up for an offered service [GUEST || CREATE ACCOUNT]
 - Users can view a scheduled appointment on a calendar
-- Users should get email notifications/reminders?
+- Users should get email notifications/reminders
 
 ### Merch (ecommerce)
 
@@ -36,3 +36,5 @@
 ### CMS
 
 - The entire site can be managed by a custom UI
+  - Admin can CRUD posts
+  - Admin can CRUD users
