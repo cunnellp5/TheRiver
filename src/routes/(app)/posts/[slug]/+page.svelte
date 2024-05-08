@@ -98,6 +98,11 @@
 </main>
 
 <style>
+	ul {
+		display: flex;
+		flex-direction: column;
+		gap: var(--size-3);
+	}
 	main {
 		display: grid;
 		grid-template-columns: 3fr 0.5fr;
@@ -105,8 +110,9 @@
 		justify-items: center;
 	}
 	.section {
-		align-self: center;
+		/* align-self: center; */
 		box-shadow: var(--shadow-2);
+		border-radius: var(--radius-2);
 		padding: var(--size-7);
 	}
 	date {
@@ -140,7 +146,7 @@
 		& *::placeholder {
 			/* background-color: var(--yellow-0); */
 			color: var(--text-1);
-			font-weight: 100;
+			/* font-weight: 100; */
 		}
 		& blockquote {
 			padding-inline: var(--size-4);
@@ -148,14 +154,17 @@
 	}
 
 	.sidemenu {
-		margin-left: var(--size-4);
 		border-left: 1px solid var(--border);
-		padding: var(--size-3);
+		padding: var(--size-2);
 		width: var(--size-13);
+		line-height: var(--font-lineheight-0);
 		& li {
-			margin-bottom: var(--size-2);
+			/* margin-block: var(--size-2); */
 			margin-left: var(--size-2);
-			font-size: var(--font-size-0);
+			padding: var(--size-2);
+		}
+		& a:hover {
+			text-decoration: none;
 		}
 	}
 	.prevNext {
@@ -170,8 +179,14 @@
 	}
 	.selectedMenu {
 		display: inline-block;
-		background: hsl(var(--gray-7-hsl) / 49%);
-		padding: var(--size-2);
+		transition:
+			font-weight 1.2s,
+			background-color 1.2s;
+		border-radius: var(--radius-2);
+		background: hsl(var(--gray-7-hsl) / 20%);
 		font-weight: var(--font-weight-7);
+		& a {
+			color: hsl(var(--green-1-hsl) / 85%);
+		}
 	}
 </style>
