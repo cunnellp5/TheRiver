@@ -2,6 +2,7 @@
 	import Check from 'lucide-svelte/icons/check';
 	// eslint-disable-next-line import/no-unresolved
 	import { enhance } from '$app/forms';
+
 	export let data;
 
 	const { email } = data;
