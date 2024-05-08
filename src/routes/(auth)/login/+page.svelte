@@ -46,6 +46,7 @@
 				</button>
 				<hr />
 				<a href="/signup"> Don't have an account? Sign up here. </a>
+				<a href="/reset"> Forgot password? </a>
 			</div>
 		</form>
 	</section>
