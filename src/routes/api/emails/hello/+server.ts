@@ -3,15 +3,15 @@ import { render } from 'svelte-email';
 import Hello from '$lib/emails/Hello.svelte';
 import nodemailer from 'nodemailer';
 import { Argon2id } from 'oslo/password';
-import { GMAIL_USER, GMAIL_PASS } from '$lib/env';
+import { env } from '$env/dynamic/private';
 
 const transporter = nodemailer.createTransport({
 	host: 'smtp.gmail.com', // hostname
 	secureConnection: false, // TLS requires secureConnection to be false
 	port: 587, // port for secure SMTP
 	auth: {
-		user: GMAIL_USER,
-		pass: GMAIL_PASS
+		user: env.GMAIL_USER,
+		pass: env.GMAIL_PASS
 	}
 	// host: 'smtp.ethereal.email',
 	// port: 587,
@@ -50,10 +50,10 @@ export const POST: RequestHandler = async ({
 	const { email } = await request.json();
 
 	const options = {
-		from: 'TheRiverSiings',
-		to: email,
+		from: 'TheRiverSings - Alexis',
+		to: 'philip.cunnell@colorado.edu',
 		subject:
-			'This is the password reset email, attached is a link to reset your password, this link will expire in 24 hours.',
+			'Sent from TheRiver website - This is the password reset email. Click the link to reset your password.',
 		html: emailHtml
 	};
 
@@ -68,10 +68,10 @@ export const POST: RequestHandler = async ({
 		error(500, (err as Error).message);
 	}
 
-	const hashedEmail = Argon2id.hash(email);
+	const hashedEmail = await new Argon2id().hash(email);
 
 	setHeaders({
-		Authentication: `Bearer ${hashedEmail}`
+		Authorization: `Bearer ${hashedEmail}`
 	});
 
 	return {
