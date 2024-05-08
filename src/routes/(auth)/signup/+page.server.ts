@@ -3,8 +3,8 @@ import { error, fail, redirect } from '@sveltejs/kit';
 import { Argon2id } from 'oslo/password';
 import db from '$lib/server/database';
 import { parse, ValiError } from 'valibot';
-import { SignUpSchema } from '$lib/test/ValibotSchemas/SignUpSchema';
-import type { SignUpValidator } from '$lib/test/ValibotSchemas/SignUpSchema';
+import { SignUpSchema } from '$lib/utils/ValibotSchemas/SignUp';
+import type { SignUpValidator } from '$lib/utils/ValibotSchemas/SignUpSchema';
 
 import type { Actions, PageServerLoad } from './$types';
 
