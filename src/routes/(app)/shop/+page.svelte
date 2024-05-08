@@ -12,10 +12,11 @@
 	main {
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
+		/* justify-content: center; */
 		align-items: center;
 		margin-block: var(--size-7);
-		height: 100vh;
+		/* height: 100vh; */
+		padding-block: var(--size-11);
 	}
 	h1 {
 		transform: rotate(4deg);
