@@ -1,10 +1,8 @@
 import db from '$lib/server/database';
 import { EmailSchema } from '$lib/utils/Valibot/EmailSchema';
 import { fail } from '@sveltejs/kit';
-import { sha256 } from 'oslo/crypto';
+import { alphabet, generateRandomString, sha256 } from 'oslo/crypto';
 import { encodeHex } from 'oslo/encoding';
-import { Argon2id } from 'oslo/password';
-import { generateRandomString, alphabet } from 'oslo/crypto';
 import { ValiError, parse } from 'valibot';
 import type { Actions } from './$types';
 
@@ -117,7 +115,10 @@ export const actions: Actions = {
 			console.log(error, 'something funny happened when sending email');
 		}
 
-		console.log('reset done');
-		return RESET_MESSAGE;
+		return {
+			status: 200,
+			message: 'Your request was sent to the provided address.',
+			success: true
+		};
 	}
 };
