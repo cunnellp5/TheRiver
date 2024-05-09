@@ -1,8 +1,8 @@
 <script lang="ts">
 	import CircleAlert from 'lucide-svelte/icons/circle-alert';
+	import { addToast } from '$lib/stores/toast';
 	// eslint-disable-next-line import/no-unresolved
 	import { enhance } from '$app/forms';
-	import { addToast } from '$lib/stores/toast.js';
 
 	export let form;
 

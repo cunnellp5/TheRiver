@@ -53,17 +53,18 @@ datasource db {
 }
 
 model User {
-  id             String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  createdAt      DateTime  @default(now())
-  updatedat      DateTime  @updatedAt
-  email          String    @unique
-  hashedPassword String
-  firstName      String?
-  lastName       String?
-  isAdmin        Boolean   @default(false)
-  isSubscribed   Boolean   @default(true)
-  sessions       Session[]
-  Booking        Booking[]
+  id                   String                @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  createdAt            DateTime              @default(now())
+  updatedat            DateTime              @updatedAt
+  email                String                @unique
+  hashedPassword       String
+  firstName            String?
+  lastName             String?
+  isAdmin              Boolean               @default(false)
+  isSubscribed         Boolean               @default(true)
+  sessions             Session[]
+  Booking              Booking[]
+  ResetPasswordSession ResetPasswordSession?
 }
 
 model Session {
@@ -71,6 +72,14 @@ model Session {
   expiresAt DateTime
   user      User     @relation(references: [id], fields: [userId], onDelete: Cascade)
   userId    String   @db.Uuid
+}
+
+model ResetPasswordSession {
+  id        Int      @id @default(autoincrement())
+  token     String   @unique
+  expiresAt DateTime
+  user      User     @relation(fields: userId, references: id)
+  userId    String   @unique @db.Uuid
 }
 
 model Post {

@@ -1,10 +1,10 @@
 import { lucia } from '$lib/server/auth';
+import db from '$lib/server/database';
+import { SignUpSchema } from '$lib/utils/Valibot/SignUp';
 import { error, fail, redirect } from '@sveltejs/kit';
 import { Argon2id } from 'oslo/password';
-import db from '$lib/server/database';
-import { parse, ValiError } from 'valibot';
-import { SignUpSchema } from '$lib/utils/ValibotSchemas/SignUp';
-import type { SignUpValidator } from '$lib/utils/ValibotSchemas/SignUpSchema';
+import { ValiError, parse } from 'valibot';
+import type { SignUpValidator } from '$lib/utils/Valibot/SignUp';
 
 import type { Actions, PageServerLoad } from './$types';
 
