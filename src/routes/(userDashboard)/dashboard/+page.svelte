@@ -9,13 +9,14 @@
 
 	{#if data.user}
 		<div class="surface-4">
-			<p>id: {data.user.id}</p>
 			<p>isAdmin: {data.user.isAdmin}</p>
 			<p>firstName: {data.user.firstName}</p>
 			<p>lastName: {data.user.lastName}</p>
 			<p>email: {data.user.email}</p>
 		</div>
 	{/if}
+
+	<a href="/reset"> Reset password </a>
 </section>
 
 <style>
