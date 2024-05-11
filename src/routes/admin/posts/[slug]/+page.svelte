@@ -78,11 +78,13 @@
 
 <style>
 	main {
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-		align-items: start;
-		height: 100vh;
+		display: grid;
+		grid-template-columns: 80% 20%;
+
+		/* flex-direction: row; */
+		/* justify-content: space-between; */
+		/* align-self: flex-start; */
+		/* height: 100vh; */
 	}
 	date {
 		color: var(--gray-7);
@@ -91,7 +93,17 @@
 	hgroup {
 		margin-block-end: var(--size-6);
 	}
-
+	section {
+		padding-inline-start: var(--size-12);
+		padding-block-start: var(--size-6);
+	}
+	ul {
+		display: flex;
+		flex-direction: column;
+		& li {
+			margin-block-end: var(--size-4);
+		}
+	}
 	/* CLASSES */
 	.tags {
 		margin-block-start: var(--size-4);
@@ -123,8 +135,9 @@
 	}
 	.btnWrapper {
 		display: flex;
-		flex-direction: column;
 		gap: var(--size-2);
-		width: 100;
+		& button {
+			width: var(--size-12);
+		}
 	}
 </style>
