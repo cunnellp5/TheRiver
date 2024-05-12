@@ -23,6 +23,26 @@
 		slug: ''
 	};
 
+	async function selectPost(
+		clickedPost:
+			| {
+					id: number;
+					createdAt: Date;
+					updatedAt: Date;
+					title: string;
+					content: string;
+					description: string;
+					slug: string;
+					published: boolean;
+					tags: string[];
+			  }
+			| { title: string; content: string; tags: never[]; createdAt: Date; slug: string }
+	) {
+		const quillData = await quillContentInit(post.content);
+		quill?.setContents(quillData);
+		post = clickedPost;
+	}
+
 	onMount(async () => {
 		try {
 			const { default: Quill } = await import('quill');
@@ -88,7 +108,9 @@
 			<aside>Other posts:</aside>
 			<ul>
 				{#each data.posts as { slug, title }}
-					<li class:selectedMenu={slug === $page.url.pathname.split('/').pop()}>
+					<li
+						class:selectedMenu={slug === $page.url.pathname.split('/').pop()}
+						on:click={() => selectPost(post)}>
 						<a href="/posts/{slug}">{title}</a>
 					</li>
 				{/each}
