@@ -53,6 +53,7 @@
 	.card {
 		margin: 0 auto;
 		box-shadow: var(--shadow-2);
+		border-radius: var(--radius-2);
 		padding: var(--size-4);
 		width: 50%;
 	}
