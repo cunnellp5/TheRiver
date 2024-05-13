@@ -136,6 +136,7 @@
 		box-shadow: var(--shadow-2);
 		border-radius: var(--radius-2);
 		padding: var(--size-7);
+		height: fit-content;
 	}
 	date {
 		color: var(--gray-7);
