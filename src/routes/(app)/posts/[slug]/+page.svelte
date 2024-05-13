@@ -23,6 +23,20 @@
 		slug: ''
 	};
 
+	async function setQuillData() {
+		try {
+			const { default: Quill } = await import('quill');
+
+			quill = new Quill(reader, QuillConfigReadonly);
+
+			const quillData = await quillContentInit(post.content);
+
+			quill.setContents(quillData);
+		} catch (error) {
+			// TODO: unable to load quill, provide some fall back
+		}
+	}
+
 	async function selectPost(
 		clickedPost:
 			| {
@@ -38,23 +52,12 @@
 			  }
 			| { title: string; content: string; tags: never[]; createdAt: Date; slug: string }
 	) {
-		const quillData = await quillContentInit(post.content);
-		quill?.setContents(quillData);
 		post = clickedPost;
+		setQuillData();
 	}
 
-	onMount(async () => {
-		try {
-			const { default: Quill } = await import('quill');
-
-			quill = new Quill(reader, QuillConfigReadonly);
-
-			const quillData = await quillContentInit(post.content);
-
-			quill.setContents(quillData);
-		} catch (error) {
-			// TODO: unable to load quill, provide some fall back
-		}
+	onMount(() => {
+		setQuillData();
 	});
 
 	$: index = data.posts.findIndex((p) => p.slug === $page.params.slug);
