@@ -42,9 +42,12 @@
 	}
 
 	function toPrev() {
+		selectedDate = null;
+
 		[current, next] = [prev, current];
 
 		month -= 1;
+
 		if (month < 0) {
 			month = 11;
 			year -= 1;
@@ -54,9 +57,12 @@
 	}
 
 	function toNext() {
+		selectedDate = null;
+
 		[prev, current] = [current, next];
 
 		month += 1;
+
 		if (month > 11) {
 			month = 0;
 			year += 1;
@@ -129,6 +135,8 @@
 	</div>
 </header>
 
+<!-- class:weekend={isWeekend(current[idxw][idxd])} -->
+
 <div class="month">
 	{#each labels as txt, idx (txt)}
 		<span class="label">{labels[(idx + offset) % 7]}</span>
@@ -145,7 +153,6 @@
 							year
 						)}
 						class:before-today={isBeforeToday(current[idxw][idxd])}
-						class:weekend={isWeekend(current[idxw][idxd])}
 						class:selected={selectedDate === current[idxw][idxd]}
 						on:click={() => selectDate(current[idxw][idxd])}>
 						<p>{current[idxw][idxd]}</p>

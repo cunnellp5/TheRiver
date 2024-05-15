@@ -7,7 +7,7 @@
 <h4>Choose a day and time</h4>
 
 <section>
-	<div>section1</div>
+	<div>display booking service up here</div>
 	<aside>
 		<Calendar />
 	</aside>
@@ -15,10 +15,11 @@
 
 <style>
 	aside {
-		& .month {
+		width: 20%;
+
+		/* & .month {
 			width: 20%;
-			/* height: 50%; */
-		}
+		} */
 		/* height: var(--size-4); */
 		/* display: grid; */
 		/* grid-template-columns: 1fr 0.1fr; */
