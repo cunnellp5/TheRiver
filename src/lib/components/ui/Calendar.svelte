@@ -211,30 +211,32 @@
 	.month {
 		display: grid;
 		grid-template-columns: repeat(7, 1fr);
+		cursor: pointer;
 		text-align: right;
-		grid-gap: var(--size-1);
+		/* grid-gap: var(--size-1); */
 	}
 
 	.label {
-		position: sticky;
-		top: 0;
+		/* position: sticky; */
+		/* top: 0; */
 		opacity: 0.6;
 		margin-bottom: 0.5rem;
-		font-weight: 300;
+		font-weight: 100;
+		font-size: var(--font-size-00);
 		text-align: center;
 		text-transform: uppercase;
 	}
 
 	.date {
 		position: relative;
-		border: 1px solid hsl(var(--stone-6-hsl) / 90%);
-		padding-right: 4px;
+		border: 0.5px solid hsl(var(--stone-6-hsl) / 90%);
+		/* padding-right: var(--size-1); */
 		padding: 0.5rem;
-		height: var(--size-12);
+		/* height: var(--size-12); */
 		/* height: 100%; */
-		font-weight: 500;
-		font-size: var(--size-7);
-		letter-spacing: var(--font-letterspacing-0);
+		/* font-weight: 500; */
+		/* font-size: var(--size-7); */
+		/* letter-spacing: var(--font-letterspacing-0); */
 	}
 
 	.date:hover {
@@ -258,7 +260,7 @@
 		/* background-color: rgba(89, 89, 89, 0.1); */
 		background-color: hsl(var(--gray-3-hsl) / 6%);
 	}
-
+	/* 
 	.before-today::after {
 		position: absolute;
 		top: 50%;
@@ -268,7 +270,7 @@
 		width: 50%;
 		height: 1px;
 		content: '';
-	}
+	} */
 
 	.before-today {
 		color: var(--gray-8);
