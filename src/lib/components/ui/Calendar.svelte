@@ -121,81 +121,84 @@
 <button on:click={goToToday}>today</button>
 
 {selectedDate}
-<header>
-	<!-- svelte-ignore a11y-click-events-have-key-events -->
-	<!-- svelte-ignore a11y-no-static-element-interactions -->
-	<div on:click={toPrev}>
-		<ArrowLeft />
-	</div>
-	<h4>{months[month]} {year}</h4>
-	<!-- svelte-ignore a11y-click-events-have-key-events -->
-	<!-- svelte-ignore a11y-no-static-element-interactions -->
-	<div on:click={toNext}>
-		<ArrowRight />
-	</div>
-</header>
 
-<!-- class:weekend={isWeekend(current[idxw][idxd])} -->
+<div class="surface-4 calendar-wrapper">
+	<header>
+		<!-- svelte-ignore a11y-click-events-have-key-events -->
+		<!-- svelte-ignore a11y-no-static-element-interactions -->
+		<div on:click={toPrev}>
+			<ArrowLeft />
+		</div>
+		<h4>{months[month]} {year}</h4>
+		<!-- svelte-ignore a11y-click-events-have-key-events -->
+		<!-- svelte-ignore a11y-no-static-element-interactions -->
+		<div on:click={toNext}>
+			<ArrowRight />
+		</div>
+	</header>
 
-<div class="month">
-	{#each labels as txt, idx (txt)}
-		<span class="label">{labels[(idx + offset) % 7]}</span>
-	{/each}
-	{#each { length: 6 } as w, idxw (idxw)}
-		{#if current[idxw]}
-			{#each { length: 7 } as d, idxd (idxd)}
-				{#if current[idxw][idxd] !== 0}
-					<span
-						class="date"
-						class:today={isToday(
-							current[idxw][idxd],
-							getWeek(new Date(year, month, current[idxw][idxd])),
-							year
-						)}
-						class:before-today={isBeforeToday(current[idxw][idxd])}
-						class:selected={selectedDate === current[idxw][idxd]}
-						on:click={() => selectDate(current[idxw][idxd])}>
-						<p>{current[idxw][idxd]}</p>
-						<!-- Add time slots for this date -->
-						{#if timeSlotsByDate[new Date(year, month, current[idxw][idxd])
-								.toISOString()
-								.split('T')[0]]}
-							{#each timeSlotsByDate[new Date(year, month, current[idxw][idxd])
+	<!-- class:weekend={isWeekend(current[idxw][idxd])} -->
+
+	<div class="month">
+		{#each labels as txt, idx (txt)}
+			<span class="label">{labels[(idx + offset) % 7]}</span>
+		{/each}
+		{#each { length: 6 } as w, idxw (idxw)}
+			{#if current[idxw]}
+				{#each { length: 7 } as d, idxd (idxd)}
+					{#if current[idxw][idxd] !== 0}
+						<span
+							class="date"
+							class:today={isToday(
+								current[idxw][idxd],
+								getWeek(new Date(year, month, current[idxw][idxd])),
+								year
+							)}
+							class:before-today={isBeforeToday(current[idxw][idxd])}
+							class:selected={selectedDate === current[idxw][idxd]}
+							on:click={() => selectDate(current[idxw][idxd])}>
+							<p>{current[idxw][idxd]}</p>
+							<!-- Add time slots for this date -->
+							{#if timeSlotsByDate[new Date(year, month, current[idxw][idxd])
 									.toISOString()
-									.split('T')[0]] as slot (slot.id)}
-								<p>{formatHours(slot.startTime)} - {formatHours(slot.endTime)}</p>
-							{/each}
-						{/if}
-					</span>
-				{:else if idxw < 1}
-					<span
-						class="date other"
-						class:before-today={isBeforeToday(current[idxw][idxd])}
-						class:today={isToday(
-							prev[prev.length - 1][idxd],
-							getWeek(new Date(year, month - 1, prev[prev.length - 1][idxd])),
-							year
-						)}
-						class:selected={selectedDate === current[idxw][idxd]}
-						on:click={() => selectDate(current[idxw][idxd])}>
-						{prev[prev.length - 1][idxd]}
-					</span>
-				{:else}
-					<span
-						class="date other"
-						class:today={isToday(
-							next[0][idxd],
-							getWeek(new Date(year, month + 1, next[0][idxd])),
-							year
-						)}
-						class:selected={selectedDate === current[idxw][idxd]}
-						on:click={() => selectDate(current[idxw][idxd])}>
-						{next[0][idxd]}
-					</span>
-				{/if}
-			{/each}
-		{/if}
-	{/each}
+									.split('T')[0]]}
+								{#each timeSlotsByDate[new Date(year, month, current[idxw][idxd])
+										.toISOString()
+										.split('T')[0]] as slot (slot.id)}
+									<p>{formatHours(slot.startTime)} - {formatHours(slot.endTime)}</p>
+								{/each}
+							{/if}
+						</span>
+					{:else if idxw < 1}
+						<span
+							class="date other"
+							class:before-today={isBeforeToday(current[idxw][idxd])}
+							class:today={isToday(
+								prev[prev.length - 1][idxd],
+								getWeek(new Date(year, month - 1, prev[prev.length - 1][idxd])),
+								year
+							)}
+							class:selected={selectedDate === current[idxw][idxd]}
+							on:click={() => selectDate(current[idxw][idxd])}>
+							{prev[prev.length - 1][idxd]}
+						</span>
+					{:else}
+						<span
+							class="date other"
+							class:today={isToday(
+								next[0][idxd],
+								getWeek(new Date(year, month + 1, next[0][idxd])),
+								year
+							)}
+							class:selected={selectedDate === current[idxw][idxd]}
+							on:click={() => selectDate(current[idxw][idxd])}>
+							{next[0][idxd]}
+						</span>
+					{/if}
+				{/each}
+			{/if}
+		{/each}
+	</div>
 </div>
 
 <style>
@@ -203,7 +206,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		margin: 2rem auto;
+		margin-block-end: var(--size-4);
 		user-select: none;
 	}
 
@@ -219,8 +222,16 @@
 		display: grid;
 		grid-template-columns: repeat(7, 1fr);
 		cursor: pointer;
-		text-align: right;
+		text-align: center;
 		/* grid-gap: var(--size-1); */
+	}
+
+	.calendar-wrapper {
+		box-shadow: var(--shadow-2);
+		border-radius: var(--radius-2);
+		/* padding-inline: var(--size-7); */
+		padding: var(--size-4);
+		max-width: var(--size-14);
 	}
 
 	.label {

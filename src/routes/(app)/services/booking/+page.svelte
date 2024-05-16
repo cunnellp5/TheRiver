@@ -23,8 +23,6 @@
 	}
 
 	aside {
-		width: 20%;
-
 		/* & .month {
 			width: 20%;
 		} */
