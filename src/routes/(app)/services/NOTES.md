@@ -52,3 +52,5 @@ https://developers.google.com/calendar/api/guides/create-events
 
 add to calendar button
 https://www.npmjs.com/package/add-to-calendar-button
+
+good example https://demo.easyappointments.org/index.php
