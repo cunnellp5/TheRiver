@@ -2,7 +2,6 @@
 	import { fly, slide } from 'svelte/transition';
 	import type { PageData } from './$types';
 	import BlogCard from './components/BlogCard.svelte';
-	import Slug from './[slug]/+page.svelte';
 
 	export let data: PageData;
 	const { posts } = data;

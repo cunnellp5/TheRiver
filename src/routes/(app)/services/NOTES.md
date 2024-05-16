@@ -1,46 +1,56 @@
-# Services / todo
+# Booking service workflow
 
-## User Authentication:
+1. User Selection of Service:
 
-- Implement user authentication to allow users to sign in to their accounts securely.
-- Ensure that only authenticated users can access the booking service functionalities.
+The user browses the available services offered by the artist and selects the service they wish to book. This selection might occur on the artist's website or app.
 
-## Service Selection:
+2. Authentication/Login:
 
-- Provide a user-friendly interface for users to browse available services (e.g., hair styling, makeup, etc.).
-- Allow users to select the services they want to book from the available options.
+If the user is not already logged in, they are prompted to authenticate or create an account. This step ensures that the booking is associated with the user's profile and allows for tracking of past and future bookings.
 
-## Date and Time Selection:
+3. Navigating to Booking Page:
 
-- Offer a calendar or date picker component for users to choose their preferred date and time for the appointment.
-- Display available time slots based on the artist's schedule and any existing bookings.
+After selecting the desired service and logging in (if necessary), the user navigates to the booking page (/booking or similar) to schedule an appointment.
 
-## Booking Form:
+5. Selecting Date and Time:
 
-- Design a booking form where users can provide additional details such as their name, contact information, and any specific requirements or preferences for the service.
-- Implement form validation to ensure that users provide all necessary information correctly.
+On the booking page, the user is presented with options to choose a date and time for their appointment. This could be done using a calendar interface or a dropdown menu of available dates and times.
 
-## Payment Integration:
+6. Checking Availability:
 
-- Integrate a payment gateway to handle transactions securely.
-- Allow users to pay for the booking using a credit card or other supported payment methods.
+The system checks the availability of the selected date and time for the chosen service. It ensures that the selected slot is not already booked or unavailable due to scheduling constraints.
 
-## Confirmation and Notifications:
+7. Confirming Booking Details:
 
-- Provide users with a confirmation message or email containing the details of their appointment once the booking is complete.
-- Implement notification functionality to alert the artist of new bookings and remind users of their upcoming appointments.
+Once the user selects a date and time, they review the booking details, including the selected service, date, and time. They may also have the option to add any additional notes or preferences.
 
-## Cancellation and Refunds:
+8. Providing Contact Information:
 
-- Allow users to cancel their bookings within a specified timeframe.
-- Implement a cancellation policy and handle refunds if applicable.
+The user provides their contact information, such as name, email address, and phone number, for appointment confirmation and communication purposes.
 
-## Admin Dashboard (Optional):
+9. Payment (if applicable):
 
-- Create an admin dashboard where the artist can view and manage bookings, schedule availability, and adjust service offerings.
-- Implement authentication and authorization to restrict access to the admin dashboard to authorized users.
+If the service requires payment, the user provides payment details and completes the transaction securely. This step may involve integrating with a payment gateway like Stripe to process payments.
 
-## Security Measures:
+10. Confirmation and Notifications:
 
-- Ensure that sensitive information such as payment details and user data is handled securely.
-- Implement measures to protect against common security threats such as cross-site scripting (XSS), SQL injection, and session hijacking.
+After successfully booking the appointment, the user receives a confirmation message or email containing the details of their booking, including the service, date, time, and any other relevant information. Additionally, the artist or salon staff may receive a notification of the new booking.
+
+11. Adding to Calendar (optional):
+
+The user may have the option to add the appointment to their calendar (e.g., Google Calendar, Apple Calendar) for easy reference and reminders.
+
+12. Reminder and Follow-up:
+
+As the appointment date approaches, the user may receive reminder notifications to ensure they don't miss their scheduled appointment. After the appointment, the artist or salon staff may follow up with the user for feedback or to schedule future appointments.
+
+---
+
+update google calendars:
+
+https://developers.google.com/calendar/api/guides/create-events
+
+add to calendar button
+https://www.npmjs.com/package/add-to-calendar-button
+
+good example https://demo.easyappointments.org/index.php

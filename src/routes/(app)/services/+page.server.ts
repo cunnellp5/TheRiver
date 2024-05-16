@@ -28,7 +28,10 @@ export const actions: Actions = {
 
 		const formData = await request.formData();
 
+		const selectedServices = formData.get('selectedServices');
+
 		console.log(locals, 'chchchceeeck');
+		console.log([...selectedServices], 'selectedServices');
 
 		throw redirect(302, '/services/booking');
 	}

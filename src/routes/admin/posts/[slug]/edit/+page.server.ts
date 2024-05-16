@@ -52,7 +52,7 @@ export const actions: Actions = {
 								.map((tag: string) => tag.trim())
 						: [],
 					slug: slugified,
-					description: description ? description.toString() : '',
+					description: description ? `${description.slice(0, 100)}...` : '',
 					published: !!published
 				}
 			});

@@ -6,7 +6,7 @@
 	export let data;
 	const { services } = data;
 	let selectedServices = new Set();
-	let scroll;
+	let scroll: number;
 
 	function setSelected(event) {
 		if (selectedServices.has(event.detail.id)) {
@@ -15,6 +15,7 @@
 			return;
 		}
 		selectedServices = selectedServices.add(event.detail.id);
+		console.log(selectedServices, 'wtff');
 	}
 
 	// TODO table mapper function?
@@ -72,6 +73,11 @@
 		</aside>
 	{/if}
 	<form method="POST" use:enhance>
+		<input
+			name="selectedServices"
+			id="selectedServices"
+			type="hidden"
+			bind:value={selectedServices} />
 		<button
 			class:disabled={selectedServices.size === 0}
 			disabled={selectedServices.size === 0}

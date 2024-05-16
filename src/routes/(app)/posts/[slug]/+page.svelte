@@ -23,7 +23,7 @@
 		slug: ''
 	};
 
-	onMount(async () => {
+	async function setQuillData() {
 		try {
 			const { default: Quill } = await import('quill');
 
@@ -35,6 +35,29 @@
 		} catch (error) {
 			// TODO: unable to load quill, provide some fall back
 		}
+	}
+
+	async function selectPost(
+		clickedPost:
+			| {
+					id: number;
+					createdAt: Date;
+					updatedAt: Date;
+					title: string;
+					content: string;
+					description: string;
+					slug: string;
+					published: boolean;
+					tags: string[];
+			  }
+			| { title: string; content: string; tags: never[]; createdAt: Date; slug: string }
+	) {
+		post = clickedPost;
+		setQuillData();
+	}
+
+	onMount(() => {
+		setQuillData();
 	});
 
 	$: index = data.posts.findIndex((p) => p.slug === $page.params.slug);
@@ -88,7 +111,9 @@
 			<aside>Other posts:</aside>
 			<ul>
 				{#each data.posts as { slug, title }}
-					<li class:selectedMenu={slug === $page.url.pathname.split('/').pop()}>
+					<li
+						class:selectedMenu={slug === $page.url.pathname.split('/').pop()}
+						on:click={() => selectPost(post)}>
 						<a href="/posts/{slug}">{title}</a>
 					</li>
 				{/each}
@@ -114,6 +139,7 @@
 		box-shadow: var(--shadow-2);
 		border-radius: var(--radius-2);
 		padding: var(--size-7);
+		height: fit-content;
 	}
 	date {
 		color: var(--gray-7);
