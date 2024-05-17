@@ -1,5 +1,6 @@
 <script lang="ts">
 	export let showModal: boolean;
+	export let overrideButtons: boolean = false;
 
 	let dialog: HTMLDialogElement;
 
@@ -20,11 +21,19 @@
 		<slot />
 		<hr />
 		<!-- svelte-ignore a11y-autofocus -->
-		<button autofocus on:click={() => dialog.close()}>close modal</button>
+		{#if overrideButtons}
+			<slot name="buttons" />
+		{/if}
+		{#if !overrideButtons}
+			<button on:click={() => dialog.close()}>Close</button>
+		{/if}
 	</div>
 </dialog>
 
 <style>
+	hr {
+		margin-block: var(--size-8);
+	}
 	dialog {
 		border: none;
 		border-radius: 0.2em;

@@ -6,6 +6,7 @@
 	export let data;
 	const { services } = data;
 	let selectedServices = new Set();
+	let selectedServicesInput: string;
 	let scroll: number;
 
 	function setSelected(event) {
@@ -15,7 +16,7 @@
 			return;
 		}
 		selectedServices = selectedServices.add(event.detail.id);
-		console.log(selectedServices, 'wtff');
+		selectedServicesInput = [...selectedServices].join(',');
 	}
 
 	// TODO table mapper function?
@@ -77,7 +78,7 @@
 			name="selectedServices"
 			id="selectedServices"
 			type="hidden"
-			bind:value={selectedServices} />
+			bind:value={selectedServicesInput} />
 		<button
 			class:disabled={selectedServices.size === 0}
 			disabled={selectedServices.size === 0}
