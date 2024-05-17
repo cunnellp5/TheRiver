@@ -30,9 +30,6 @@ export const actions: Actions = {
 
 		const selectedServices = formData.get('selectedServices');
 
-		console.log(locals, 'chchchceeeck');
-		console.log([...selectedServices], 'selectedServices');
-
-		throw redirect(302, '/services/booking');
+		throw redirect(302, `/services/booking/?selectedServices=${selectedServices}`);
 	}
 };
