@@ -23,6 +23,10 @@
 
 <main>
 	<section>
+		<!-- <video autoplay muted loop playsinline class="background-video">
+			<source src="water.mp4" type="video/mp4" />
+			Your browser does not support HTML5 video.
+		</video> -->
 		<h1>Contact</h1>
 		<p>theriverrunsfast@gmail.com</p>
 		<aside class="buttons">
@@ -58,6 +62,7 @@
 
 	section {
 		display: flex;
+		/* position: relative; */
 		flex-direction: column;
 		/* justify-content: center; */
 		/* align-items: center; */
@@ -79,4 +84,12 @@
 		gap: var(--size-4);
 		margin-block-start: var(--size-6);
 	}
+	/* 
+	.background-video {
+		position: relative;
+		z-index: -1;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	} */
 </style>
