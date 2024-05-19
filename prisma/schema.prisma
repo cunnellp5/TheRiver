@@ -159,6 +159,13 @@ model SocialLinks {
   icon      String?
 }
 
+model BlackoutDay {
+  id        Int      @id @default(autoincrement())
+  day       DateTime @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
 // TODO add newsletter model: email, name, createdAt, updatedAt
 // the isSubscribed bool on the user table for registered users will determine if they have a newsletter row
 // unusbscribed users will only have a record in the newsletter table
