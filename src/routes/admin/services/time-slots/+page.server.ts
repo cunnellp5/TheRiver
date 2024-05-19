@@ -8,7 +8,11 @@ export const load: PageServerLoad = async (event) => {
 	}
 
 	try {
-		const timeSlots = await db.timeSlot.findMany();
+		const timeSlots = await db.timeSlot.findMany({
+			orderBy: {
+				day: 'asc'
+			}
+		});
 		return { timeSlots };
 	} catch (err) {
 		return error(500, 'Internal Server Error');
@@ -19,21 +23,24 @@ export const actions: Actions = {
 	add: async ({ request }) => {
 		const form = await request.formData();
 
-		// TODO validate with valibot
+		// Validate input
+		const availability = form.get('availability');
+		const day = form.get('day');
+		const startTime = form.get('startTime');
+		const endTime = form.get('endTime');
 
-		const day = `${form.get('day')}T00:00:00.000Z`;
-
-		const timeSlot = {
-			availability: form.get('availability'),
-			day,
-			endTime: `${day.split('T')[0]}T${form.get('endTime')}:00.000Z`,
-			startTime: `${day.split('T')[0]}T${form.get('startTime')}:00.000Z`
-		};
-
-		if (!timeSlot) {
-			return error(400, 'Bad Request');
+		if (!availability || !day || !startTime || !endTime) {
+			return error(400, 'Bad Request: Missing required fields');
 		}
 
+		// Create time slot object
+		const dayString = `${day}T00:00:00.000Z`;
+		const timeSlot = {
+			availability: availability === 'true', // Assuming availability is a boolean
+			day: new Date(dayString),
+			startTime: new Date(`${day}T${startTime}:00.000Z`),
+			endTime: new Date(`${day}T${endTime}:00.000Z`)
+		};
 		try {
 			await db.timeSlot.create({ data: timeSlot });
 			return { status: 201 };
