@@ -132,7 +132,8 @@ html {
 	--text-2: var(--text-2-light);
 	--link: var(--link-light);
 
-	input {
+	input,
+	select {
 		background-color: var(--gray-3);
 	}
 }
