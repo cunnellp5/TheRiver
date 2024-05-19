@@ -103,6 +103,7 @@
 		current = calendarize(now, offset);
 		prev = calendarize(new Date(year, month - 1), offset);
 		next = calendarize(new Date(year, month + 1), offset);
+		selectedDate = now.getDate();
 	}
 
 	let timeSlotsByDate = {};
@@ -147,15 +148,18 @@
 			{#if current[idxw]}
 				{#each { length: 7 } as d, idxd (idxd)}
 					{#if current[idxw][idxd] !== 0}
+						<!-- svelte-ignore a11y-no-static-element-interactions -->
+						<!-- svelte-ignore a11y-click-events-have-key-events -->
 						<span
 							class="date"
+							class:before-today={isBeforeToday(current[idxw][idxd])}
+							class:selected={selectedDate === current[idxw][idxd]}
+							class:weekend={isWeekend(current[idxw][idxd])}
 							class:today={isToday(
 								current[idxw][idxd],
 								getWeek(new Date(year, month, current[idxw][idxd])),
 								year
 							)}
-							class:before-today={isBeforeToday(current[idxw][idxd])}
-							class:selected={selectedDate === current[idxw][idxd]}
 							on:click={() => selectDate(current[idxw][idxd])}>
 							<p>{current[idxw][idxd]}</p>
 							<!-- Add time slots for this date -->
@@ -170,30 +174,9 @@
 							{/if}
 						</span>
 					{:else if idxw < 1}
-						<span
-							class="date other"
-							class:before-today={isBeforeToday(current[idxw][idxd])}
-							class:today={isToday(
-								prev[prev.length - 1][idxd],
-								getWeek(new Date(year, month - 1, prev[prev.length - 1][idxd])),
-								year
-							)}
-							class:selected={selectedDate === current[idxw][idxd]}
-							on:click={() => selectDate(current[idxw][idxd])}>
-							{prev[prev.length - 1][idxd]}
-						</span>
+						<span><!-- EMPTY ON PURPOSE --></span>
 					{:else}
-						<span
-							class="date other"
-							class:today={isToday(
-								next[0][idxd],
-								getWeek(new Date(year, month + 1, next[0][idxd])),
-								year
-							)}
-							class:selected={selectedDate === current[idxw][idxd]}
-							on:click={() => selectDate(current[idxw][idxd])}>
-							{next[0][idxd]}
-						</span>
+						<span><!-- EMPTY ON PURPOSE --></span>
 					{/if}
 				{/each}
 			{/if}
@@ -246,37 +229,35 @@
 	}
 
 	.date {
-		position: relative;
-		border: 0.5px solid hsl(var(--stone-6-hsl) / 90%);
-		/* padding-right: var(--size-1); */
-		padding: 0.5rem;
 		/* height: var(--size-12); */
 		/* height: 100%; */
 		/* font-weight: 500; */
 		/* font-size: var(--size-7); */
 		/* letter-spacing: var(--font-letterspacing-0); */
+		position: relative;
+		border: 0.5px solid hsl(var(--stone-6-hsl) / 30%);
+		background-color: hsl(var(--stone-3-hsl) / 6%);
+		/* padding-right: var(--size-1); */
+		padding: 0.5rem;
 	}
 
 	.date:hover {
-		opacity: 0.5;
+		border: 0.5px solid hsl(var(--stone-6-hsl) / 90%);
 	}
 
 	.date.today {
 		border-color: currentColor;
 		border: 1px solid hsl(var(--stone-3-hsl) / 100%);
-		/* background: #c4d9fd; */
-		/* background: hsl(var(--gray-3-hsl) / 30%); */
 		color: hsl(var(--green-4-hsl) / 100%);
 	}
 
 	.date.other {
-		opacity: 0.1;
+		/* opacity: 0.5; */
+		background: hsl(var(--stone-9-hsl) / 30%);
 	}
 
 	.weekend {
-		border: none;
-		/* background-color: rgba(89, 89, 89, 0.1); */
-		background-color: hsl(var(--gray-3-hsl) / 6%);
+		background-color: inherit;
 	}
 	/* 
 	.before-today::after {
@@ -291,7 +272,7 @@
 	} */
 
 	.before-today {
-		color: var(--gray-8);
+		color: var(--gray-7);
 	}
 
 	.selected {
