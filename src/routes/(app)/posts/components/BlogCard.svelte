@@ -48,8 +48,6 @@
 	a:hover {
 		text-decoration: none;
 	}
-
-	/* CLASSES */
 	.card {
 		margin: 0 auto;
 		box-shadow: var(--shadow-2);
