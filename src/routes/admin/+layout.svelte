@@ -87,17 +87,18 @@
 
 	.sidenav a {
 		display: block;
-		padding: var(--size-1);
+		padding-inline: var(--size-2);
+		padding-block: var(--size-1);
 		text-decoration: none;
 	}
 
 	.sidenav a:hover {
 		cursor: pointer;
-		background-color: var(--border);
+		border-radius: var(--radius-2);
+		/* background-color: var(--border); */
 	}
 
 	.current {
-		background-color: var(--surface-3);
 		color: var(--link);
 	}
 

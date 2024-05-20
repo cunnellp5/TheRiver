@@ -63,11 +63,11 @@
 				allowSlot={true}
 				link={`/admin/posts/${slug}`}>
 				<div class="actionsGroup">
-					<p class="isPublished" class:published class:unpublished={!published}>
+					<p class="isPublished">
 						{#if published}
-							<Check />&nbsp;Published
+							<Check color="green" />&nbsp;Published
 						{:else}
-							<X />&nbsp;Unpublished
+							<X color="red" />&nbsp;Unpublished
 						{/if}
 					</p>
 					<div>
@@ -116,11 +116,5 @@
 		padding-inline: var(--size-4);
 		/* background: var(--yellow-9); */
 		width: max-content;
-	}
-	.published {
-		background: var(--gradient-8);
-	}
-	.unpublished {
-		background: var(--gradient-20);
 	}
 </style>
