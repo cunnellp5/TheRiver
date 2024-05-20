@@ -2,15 +2,19 @@
 	import Badge from '$lib/components/ui/Badge.svelte';
 	import formatDate from '$lib/utils/formatDate';
 	import SquareArrowOurUpRight from 'lucide-svelte/icons/square-arrow-out-up-right';
+	// eslint-disable-next-line import/no-unresolved
+	import { page } from '$app/stores';
 
 	export let title: string;
 	export let tags: string[];
 	export let createdAt: Date;
 	export let slug: string;
 	export let description: string;
+
+	$: selectedHighlight = $page.url.pathname.includes(slug);
 </script>
 
-<div class="card surface-4">
+<div class="card surface-4" class:selected={selectedHighlight}>
 	<div>
 		<div>
 			<h5>
@@ -51,9 +55,10 @@
 	.card {
 		margin: 0 auto;
 		box-shadow: var(--shadow-2);
+		border: 1px solid var(--surface-4);
+		/* width: 50%; */
 		border-radius: var(--radius-2);
 		padding: var(--size-4);
-		/* width: 50%; */
 	}
 	.description {
 		margin-block: var(--size-4);
@@ -68,5 +73,9 @@
 		margin-block: var(--size-2);
 		font-weight: var(--font-weight-7);
 		font-size: var(--font-size-0);
+	}
+	.selected {
+		display: inline-block;
+		border: 1px solid var(--link);
 	}
 </style>

@@ -1,11 +1,19 @@
 <script lang="ts">
+	import { slide } from 'svelte/transition';
+	import { onMount } from 'svelte';
+	import { quintOut } from 'svelte/easing';
 	// eslint-disable-next-line import/no-unresolved
-	import { fly, slide } from 'svelte/transition';
 	import { page } from '$app/stores';
 	import type { PageData } from './$types';
 	import BlogCard from './components/BlogCard.svelte';
+	// import Page from './+page.svelte';
 
 	export let data: PageData;
+	let showElement = false;
+
+	onMount(() => {
+		showElement = true;
+	});
 
 	const isPostsHome = $page.url.pathname === '/posts';
 	$: ({ posts } = data);
@@ -26,33 +34,71 @@
 		</header>
 		<hr />
 		<div class="posts-wrapper">
-			{#if posts.length > 0}
-				<ul>
-					{#each posts as { createdAt, description, slug, tags, title }}
-						<div in:fly={{ y: 20 }} out:slide>
-							<BlogCard {title} {tags} {createdAt} {slug} {description} />
+			<div>
+				<nav>TODO put a search bar here, maybe some sorting action?</nav>
+				<section>
+					{#if posts.length > 0}
+						<ul>
+							{#each posts as { createdAt, description, slug, tags, title }}
+								{#if showElement}
+									<li transition:slide={{ delay: 150, duration: 900, easing: quintOut }}>
+										<BlogCard {title} {tags} {createdAt} {slug} {description} />
+									</li>
+								{/if}
+							{/each}
+						</ul>
+					{:else}
+						<div class="noPostsWrapper">
+							<p>No posts.</p>
 						</div>
-					{/each}
-				</ul>
-			{:else}
-				<div class="noPostsWrapper">
-					<p>No posts.</p>
-				</div>
-			{/if}
+					{/if}
+				</section>
+			</div>
 
-			<slot />
+			<div>
+				<nav>marketing stuff here?</nav>
+				<section>
+					<slot />
+				</section>
+			</div>
 		</div>
 	</section>
 </main>
 
 <style>
-	ul {
+	nav {
+		border: 1px solid white;
+		padding: var(--size-4);
+	}
+	/* ul {
 		display: flex;
 		flex-direction: column;
 		gap: var(--size-4);
 		margin-inline: var(--size-4);
+	} */
+	ul {
+		display: grid;
+		grid-template-rows: auto auto auto;
+		grid-template-columns: auto auto auto;
+		grid-auto-flow: dense;
+		gap: var(--size-4);
+		margin-inline: var(--size-4);
 		height: 80vh;
 		overflow: scroll;
+	}
+	li:nth-child(odd) {
+		grid-column: span 2;
+	}
+	li:nth-child(even) {
+		grid-row: span 2;
+	}
+	.noPostsWrapper {
+		margin-block: var(--size-content-1);
+	}
+	@media (max-width: 768px) {
+		section {
+			margin-inline: 0;
+		}
 	}
 	h1 {
 		text-transform: uppercase;

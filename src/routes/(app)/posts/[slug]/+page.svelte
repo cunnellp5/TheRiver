@@ -106,7 +106,7 @@
 				{data.post.content}
 			</p> -->
 	</div>
-	{#if data.posts.length > 5}
+	<!-- {#if data.posts.length > 5}
 		<div class="sidemenu">
 			<aside>Other posts:</aside>
 			<ul>
@@ -119,20 +119,20 @@
 				{/each}
 			</ul>
 		</div>
-	{/if}
+	{/if} -->
 </main>
 
 <style>
-	ul {
+	/* ul {
 		display: flex;
 		flex-direction: column;
 		gap: var(--size-3);
-	}
+	} */
 	main {
-		display: grid;
-		grid-template-columns: 3fr 0.5fr;
+		/* display: grid; */
+		/* grid-template-columns: 3fr 0.5fr; */
 		/* justify-content: space-between; */
-		justify-items: center;
+		/* justify-items: center; */
 	}
 	.section {
 		/* align-self: center; */
