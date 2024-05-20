@@ -25,15 +25,15 @@
 <main>
 	<aside>
 		<nav class="sidenav">
-			<div class="dropLabel">Main</div>
+			<div class="dropLabel">MAIN</div>
 			<a class:current={$page.url.pathname === '/admin'} href="/admin/"> Home </a>
 
 			<a class:current={$page.url.pathname === '/admin/users'} href="/admin/users">Users</a>
 
-			<div class="dropLabel">Blog</div>
+			<div class="dropLabel">BLOG</div>
 			<a class:current={$page.url.pathname.includes('/admin/posts')} href="/admin/posts"> Posts </a>
 
-			<div class="dropLabel">Services</div>
+			<div class="dropLabel">SERVICES</div>
 			<a class:current={$page.url.pathname === '/admin/services'} href="/admin/services"> Jobs </a>
 			<a
 				class:current={$page.url.pathname.includes('/admin/services/booking')}
@@ -46,7 +46,7 @@
 				Time slots
 			</a>
 
-			<div class="dropLabel">Contact</div>
+			<div class="dropLabel">CONTACT</div>
 		</nav>
 	</aside>
 	<article>
@@ -104,6 +104,7 @@
 	.dropLabel {
 		margin-top: var(--size-5);
 		width: 100%;
-		color: var(--stone-8);
+		color: var(--stone-10);
+		font-size: var(--font-size-0);
 	}
 </style>
