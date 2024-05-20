@@ -123,6 +123,12 @@
 </main>
 
 <style>
+	h1 {
+		background: var(--gradient-7) fixed;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
 	/* ul {
 		display: flex;
 		flex-direction: column;

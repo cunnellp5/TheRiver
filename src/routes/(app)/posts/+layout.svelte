@@ -43,7 +43,6 @@
 				<p>Showing {filteredPosts.length} post{filteredPosts.length > 1 ? 's' : ''}.</p>
 			{/if}
 		</header>
-		<hr />
 		<div class="posts-wrapper">
 			<div class="list-of-posts">
 				<nav>

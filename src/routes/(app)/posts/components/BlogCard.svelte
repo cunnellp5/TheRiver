@@ -14,7 +14,10 @@
 	$: selectedHighlight = $page.url.pathname.includes(slug);
 </script>
 
-<div class="card surface-4" class:selected={selectedHighlight}>
+<div
+	class="card surface-4"
+	class:selected={selectedHighlight}
+	class:unselected={!selectedHighlight && $page.url.pathname.includes('/posts/')}>
 	<div>
 		<div>
 			<h5>
@@ -27,27 +30,44 @@
 		<p class="description">
 			{description}
 		</p>
-		<div>
-			{#each tags as tag}
-				<Badge {tag} />
-			{/each}
-		</div>
-		<a class="blogLink" href="/posts/{slug}">
-			<SquareArrowOurUpRight size="10" />
-			Read more
-		</a>
+		<aside>
+			<div>
+				{#each tags as tag}
+					<Badge {tag} />
+				{/each}
+			</div>
+			<a class="blogLink" href="/posts/{slug}">
+				<SquareArrowOurUpRight size="20" />
+			</a>
+		</aside>
 	</div>
 </div>
 
 <style>
+	h5 {
+		background: unset;
+		-webkit-background-clip: unset;
+		-webkit-text-fill-color: unset;
+		background-clip: unset;
+		font-weight: var(--font-weight-7);
+		& a {
+			color: var(--text-2);
+		}
+	}
 	date {
 		color: var(--stone-9);
 		font-size: var(--font-size-0);
 	}
 	p {
-		color: var(--text-2);
+		color: var(--text-1);
 		line-height: var(--font-lineheight-0);
 		font-family: var(--font-mono);
+	}
+	aside {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
 	}
 	a:hover {
 		text-decoration: none;
@@ -76,6 +96,11 @@
 	}
 	.selected {
 		display: inline-block;
+		opacity: 1;
 		border: 1px solid var(--link);
+	}
+
+	.unselected {
+		opacity: 0.5;
 	}
 </style>
