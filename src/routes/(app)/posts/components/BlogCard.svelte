@@ -54,7 +54,7 @@
 	}
 	.card {
 		margin: 0 auto;
-		box-shadow: var(--shadow-2);
+		box-shadow: var(--shadow-1);
 		border: 1px solid var(--surface-4);
 		/* width: 50%; */
 		border-radius: var(--radius-2);

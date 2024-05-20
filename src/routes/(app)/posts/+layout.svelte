@@ -11,12 +11,23 @@
 	export let data: PageData;
 	let showElement = false;
 
+	let search = '';
+
 	onMount(() => {
 		showElement = true;
 	});
 
 	const isPostsHome = $page.url.pathname === '/posts';
-	$: ({ posts } = data);
+
+	let filteredPosts = data.posts;
+
+	$: {
+		filteredPosts = data.posts.filter(
+			(post) =>
+				post.title.toLowerCase().includes(search.toLowerCase()) ||
+				post.description.toLowerCase().includes(search.toLowerCase())
+		);
+	}
 </script>
 
 <main>
@@ -29,17 +40,19 @@
 			</div>
 
 			{#if isPostsHome}
-				<p>Showing {posts.length} post{posts.length > 1 ? 's' : ''}.</p>
+				<p>Showing {filteredPosts.length} post{filteredPosts.length > 1 ? 's' : ''}.</p>
 			{/if}
 		</header>
 		<hr />
 		<div class="posts-wrapper">
-			<div>
-				<nav>TODO put a search bar here, maybe some sorting action?</nav>
+			<div class="list-of-posts">
+				<nav>
+					<input type="search" bind:value={search} placeholder="Search posts..." />
+				</nav>
 				<section>
-					{#if posts.length > 0}
+					{#if filteredPosts.length > 0}
 						<ul>
-							{#each posts as { createdAt, description, slug, tags, title }}
+							{#each filteredPosts as { createdAt, description, slug, tags, title }}
 								{#if showElement}
 									<li transition:slide={{ delay: 150, duration: 900, easing: quintOut }}>
 										<BlogCard {title} {tags} {createdAt} {slug} {description} />
@@ -67,7 +80,7 @@
 
 <style>
 	nav {
-		border: 1px solid white;
+		border-bottom: 1px solid var(--stone-10);
 		padding: var(--size-4);
 	}
 	/* ul {
@@ -77,14 +90,12 @@
 		margin-inline: var(--size-4);
 	} */
 	ul {
-		display: grid;
-		grid-template-rows: auto auto auto;
-		grid-template-columns: auto auto auto;
-		grid-auto-flow: dense;
-		gap: var(--size-4);
-		margin-inline: var(--size-4);
-		height: 80vh;
+		height: 90vh;
 		overflow: scroll;
+		& li {
+			margin-inline: var(--size-3);
+			margin-block: var(--size-2);
+		}
 	}
 	li:nth-child(odd) {
 		grid-column: span 2;
@@ -133,7 +144,12 @@
 
 	.posts-wrapper {
 		display: grid;
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: auto 1fr;
+		border: 1px solid var(--stone-10);
 		/* gap: var(--size-4); */
+	}
+
+	.list-of-posts {
+		border-right: 1px solid var(--stone-10);
 	}
 </style>

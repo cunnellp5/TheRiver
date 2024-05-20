@@ -136,7 +136,7 @@
 	}
 	.section {
 		/* align-self: center; */
-		box-shadow: var(--shadow-2);
+		box-shadow: var(--shadow-1);
 		border-radius: var(--radius-2);
 		padding: var(--size-7);
 		height: fit-content;
