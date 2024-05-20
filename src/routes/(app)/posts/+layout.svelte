@@ -62,14 +62,16 @@
 						</ul>
 					{:else}
 						<div class="noPostsWrapper">
-							<p>No posts.</p>
+							<p>No posts</p>
 						</div>
 					{/if}
 				</section>
 			</div>
 
 			<div>
-				<nav>marketing stuff here?</nav>
+				<nav class="hide">
+					<div class="size-same-as-input"></div>
+				</nav>
 				<section>
 					<slot />
 				</section>
@@ -80,7 +82,10 @@
 
 <style>
 	nav {
-		border-bottom: 1px solid var(--stone-10);
+		position: relative;
+		z-index: 1; /* Add this line */
+		box-shadow: var(--shadow-1);
+		border-bottom: 1px solid var(--stone-11);
 		padding: var(--size-4);
 	}
 	/* ul {
@@ -93,8 +98,8 @@
 		height: 90vh;
 		overflow: scroll;
 		& li {
-			margin-inline: var(--size-3);
-			margin-block: var(--size-2);
+			margin-inline: var(--size-4);
+			margin-block: var(--size-4);
 		}
 	}
 	li:nth-child(odd) {
@@ -104,7 +109,7 @@
 		grid-row: span 2;
 	}
 	.noPostsWrapper {
-		margin-block: var(--size-content-1);
+		margin: var(--size-content-1);
 	}
 	@media (max-width: 768px) {
 		section {
@@ -145,11 +150,18 @@
 	.posts-wrapper {
 		display: grid;
 		grid-template-columns: auto 1fr;
-		border: 1px solid var(--stone-10);
+		border: 1px solid var(--stone-11);
 		/* gap: var(--size-4); */
 	}
 
 	.list-of-posts {
-		border-right: 1px solid var(--stone-10);
+		/* border-right: 1px solid var(--stone-10); */
+	}
+
+	.hide {
+		display: hidden;
+	}
+	.size-same-as-input {
+		height: var(--size-7);
 	}
 </style>
