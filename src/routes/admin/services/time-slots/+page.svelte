@@ -13,45 +13,11 @@
 	let lunchBreakStart = '12:00';
 	let lunchBreakEnd = '13:00';
 	let otherBreaks = '';
-	let timeSlotVisual = [];
 
 	function handleDateSelection(dates) {
 		selectedDates = dates.map((date) => new Date(date).toLocaleDateString('en-CA'));
 		updateTimeSlots();
-	}
-
-	function updateTimeSlots() {
-		const startTime = new Date(`1970-01-01T${startOfDay}:00`);
-		const endTime = new Date(`1970-01-01T${endOfDay}:00`);
-
-		timeSlotVisual = [];
-		for (
-			let time = new Date(startTime);
-			time < endTime;
-			time.setMinutes(time.getMinutes() + timeSlotInterval)
-		) {
-			const formattedTime = time.toISOString().slice(11, 16);
-			const isLunchBreak =
-				new Date(`1970-01-01T${lunchBreakStart}:00`) <= time &&
-				time < new Date(`1970-01-01T${lunchBreakEnd}:00`);
-			const isOtherBreak = otherBreaks.split(',').some((b) => {
-				const [start, end] = b
-					.trim()
-					.split('-')
-					.map((t) => new Date(`1970-01-01T${t}:00`));
-				return start <= time && time < end;
-			});
-
-			if (!isLunchBreak && !isOtherBreak) {
-				timeSlotVisual.push(formattedTime);
-			}
-		}
-	}
-
-	onMount(() => {
-		enhance(document.querySelector('form'));
-		updateTimeSlots();
-	});
+	},
 </script>
 
 <div class="container">
@@ -123,60 +89,8 @@
 				on:change={updateTimeSlots} />
 		</div>
 
-		<div class="form-group">
-			<label for="lunchBreakStart">Lunch Break Start:</label>
-			<input
-				type="time"
-				name="lunchBreakStart"
-				id="lunchBreakStart"
-				bind:value={lunchBreakStart}
-				required
-				on:change={updateTimeSlots} />
-		</div>
-
-		<div class="form-group">
-			<label for="lunchBreakEnd">Lunch Break End:</label>
-			<input
-				type="time"
-				name="lunchBreakEnd"
-				id="lunchBreakEnd"
-				bind:value={lunchBreakEnd}
-				required
-				on:change={updateTimeSlots} />
-		</div>
-
-		<div class="form-group">
-			<label for="timeSlotInterval">Time Slot Interval (15 minutes recommended):</label>
-			<input
-				type="number"
-				name="timeSlotInterval"
-				id="timeSlotInterval"
-				bind:value={timeSlotInterval}
-				required
-				min="15"
-				step="15"
-				on:change={updateTimeSlots} />
-		</div>
-
-		<div class="form-group">
-			<label for="otherBreaks">Other Breaks (comma separated times in HH:mm-HH:mm format):</label>
-			<input
-				type="text"
-				name="otherBreaks"
-				id="otherBreaks"
-				bind:value={otherBreaks}
-				on:change={updateTimeSlots} />
-		</div>
-
 		<button type="submit">Generate Time Slots</button>
 	</form>
-
-	<div class="time-slot-visual">
-		<h3>Time Slot Preview</h3>
-		{#each timeSlotVisual as timeSlot (timeSlot)}
-			<div class="time-slot">{timeSlot}</div>
-		{/each}
-	</div>
 </div>
 
 <style>
@@ -213,6 +127,7 @@
 
 	.time-slot-visual {
 		display: flex;
+		flex-direction: column;
 		flex-wrap: wrap;
 		gap: 0.5rem;
 		margin-top: 1rem;
