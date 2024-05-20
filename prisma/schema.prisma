@@ -4,11 +4,6 @@
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
-enum TimeSlotAvailability {
-  AVAILABLE
-  UNAVAILABLE
-}
-
 enum ServiceAvailability {
   AVAILABLE
   BOOKED_OUT
@@ -135,16 +130,15 @@ model Booking {
 }
 
 model TimeSlot {
-  id           Int                  @id @default(autoincrement())
-  createdAt    DateTime             @default(now())
-  updatedAt    DateTime             @updatedAt
-  day          DateTime
-  duration     Int?
-  startTime    DateTime
-  endTime      DateTime
-  availability TimeSlotAvailability @default(AVAILABLE)
-  service      Service?             @relation(fields: [serviceId], references: [id])
-  serviceId    Int?
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  day       DateTime
+  startTime DateTime
+  endTime   DateTime
+  available Boolean  @default(true)
+  service   Service? @relation(fields: [serviceId], references: [id])
+  serviceId Int?
 }
 
 model SocialLinks {

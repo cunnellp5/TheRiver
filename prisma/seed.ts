@@ -97,9 +97,8 @@ async function main() {
 			startTime: new Date('2024-05-05T13:00:00Z'),
 			endTime: new Date('2024-05-05T14:00:00Z'),
 			day: new Date('2024-05-05T19:00:00.000Z'),
-			availability: 'AVAILABLE',
-			serviceId: 1,
-			duration: 60
+			available: true,
+			serviceId: 1
 		}
 	});
 }
