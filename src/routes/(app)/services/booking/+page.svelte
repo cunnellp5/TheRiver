@@ -25,7 +25,6 @@
 
 <Modal bind:showModal overrideButtons={true}>
 	<h2 slot="header">Choose booking style</h2>
-
 	<ol class="definition-list">
 		{#each services as service, i}
 			<div class="service-wrapper">
