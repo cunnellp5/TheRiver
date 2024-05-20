@@ -39,9 +39,10 @@
 		align-items: center;
 		margin: 0 auto 0.5rem auto;
 		border-radius: 0.2rem;
-		padding: 0.75rem 1.5rem;
-		width: 20rem;
-		color: white;
+		padding-inline: var(--size-2);
+		padding-block: var(--size-4);
+		width: var(--size-14);
+		color: var(--stone-1);
 	}
 	.error {
 		background: IndianRed;
@@ -50,17 +51,18 @@
 		background: MediumSeaGreen;
 	}
 	.info {
-		background: SkyBlue;
+		background: var(--cyan-7);
 	}
 	.text {
 		margin-left: 1rem;
 	}
 	button {
 		margin: 0 0 0 auto;
+		box-shadow: none;
 		border: 0 none;
 		background: transparent;
 		padding: 0;
-		color: white;
+		color: var(--stone-1);
 		font-size: 1rem;
 		line-height: 1;
 	}

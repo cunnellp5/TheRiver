@@ -9,15 +9,10 @@
 	let selectedDates = [];
 	let startOfDay = '09:00';
 	let endOfDay = '18:00';
-	let timeSlotInterval = 15;
-	let lunchBreakStart = '12:00';
-	let lunchBreakEnd = '13:00';
-	let otherBreaks = '';
 
 	function handleDateSelection(dates) {
 		selectedDates = dates.map((date) => new Date(date).toLocaleDateString('en-CA'));
-		updateTimeSlots();
-	},
+	}
 </script>
 
 <div class="container">
@@ -73,20 +68,12 @@
 				id="startOfDay"
 				bind:value={startOfDay}
 				step="900"
-				required
-				on:change={updateTimeSlots} />
+				required />
 		</div>
 
 		<div class="form-group">
 			<label for="endOfDay">End of Day:</label>
-			<input
-				type="time"
-				name="endOfDay"
-				id="endOfDay"
-				bind:value={endOfDay}
-				step="900"
-				required
-				on:change={updateTimeSlots} />
+			<input type="time" name="endOfDay" id="endOfDay" bind:value={endOfDay} step="900" required />
 		</div>
 
 		<button type="submit">Generate Time Slots</button>

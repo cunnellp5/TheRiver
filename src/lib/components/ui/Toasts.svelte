@@ -24,8 +24,7 @@
 		left: 0;
 		flex-direction: column;
 		justify-content: center;
-		z-index: 1000;
+		/* z-index: 1000; */
 		margin-top: 1rem;
-		width: 100%;
 	}
 </style>
