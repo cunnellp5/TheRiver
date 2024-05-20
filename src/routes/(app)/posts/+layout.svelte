@@ -1,8 +1,12 @@
 <script lang="ts">
 	// eslint-disable-next-line import/no-unresolved
+	import { fly, slide } from 'svelte/transition';
 	import { page } from '$app/stores';
+	import type { PageData } from './$types';
+	import BlogCard from './components/BlogCard.svelte';
 
-	export let data;
+	export let data: PageData;
+
 	const isPostsHome = $page.url.pathname === '/posts';
 	$: ({ posts } = data);
 </script>
@@ -21,7 +25,23 @@
 			{/if}
 		</header>
 		<hr />
-		<slot />
+		<div class="posts-wrapper">
+			{#if posts.length > 0}
+				<ul>
+					{#each posts as { createdAt, description, slug, tags, title }}
+						<div in:fly={{ y: 20 }} out:slide>
+							<BlogCard {title} {tags} {createdAt} {slug} {description} />
+						</div>
+					{/each}
+				</ul>
+			{:else}
+				<div class="noPostsWrapper">
+					<p>No posts.</p>
+				</div>
+			{/if}
+
+			<slot />
+		</div>
 	</section>
 </main>
 
@@ -55,5 +75,11 @@
 			flex-grow: 0;
 			flex-shrink: 0;
 		}
+	}
+
+	.posts-wrapper {
+		display: flex;
+		flex-direction: row;
+		gap: var(--size-4);
 	}
 </style>
