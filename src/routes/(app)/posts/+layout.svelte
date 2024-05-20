@@ -46,6 +46,14 @@
 </main>
 
 <style>
+	ul {
+		display: flex;
+		flex-direction: column;
+		gap: var(--size-4);
+		margin-inline: var(--size-4);
+		height: 80vh;
+		overflow: scroll;
+	}
 	h1 {
 		text-transform: uppercase;
 	}
@@ -78,8 +86,8 @@
 	}
 
 	.posts-wrapper {
-		display: flex;
-		flex-direction: row;
-		gap: var(--size-4);
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		/* gap: var(--size-4); */
 	}
 </style>
