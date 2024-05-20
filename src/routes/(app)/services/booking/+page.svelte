@@ -18,7 +18,6 @@
 	});
 
 	const toggleModal = () => {
-		console.log('hloo');
 		showModal = !showModal;
 	};
 </script>
