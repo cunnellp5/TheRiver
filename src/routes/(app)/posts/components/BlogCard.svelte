@@ -25,7 +25,7 @@
 		</p>
 		<div>
 			{#each tags as tag}
-				<Badge {tag} prefix={'#'} />
+				<Badge {tag} />
 			{/each}
 		</div>
 		<a class="blogLink" href="/posts/{slug}">
@@ -53,7 +53,7 @@
 		box-shadow: var(--shadow-2);
 		border-radius: var(--radius-2);
 		padding: var(--size-4);
-		width: 50%;
+		/* width: 50%; */
 	}
 	.description {
 		margin-block: var(--size-4);

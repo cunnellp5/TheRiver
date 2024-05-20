@@ -26,7 +26,7 @@
 	</p>
 	<div>
 		{#each tags as tag}
-			<Badge {tag} prefix={'#'} />
+			<Badge {tag} />
 		{/each}
 	</div>
 	<a class="blogLink" href={link}>

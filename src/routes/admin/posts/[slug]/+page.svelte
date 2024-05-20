@@ -48,7 +48,7 @@
 			<date>{formatDate(new Date(post.createdAt))}</date>
 			<div class="tags">
 				{#each post.tags as tag}
-					<Badge {tag} prefix={'#'} />
+					<Badge {tag} />
 				{/each}
 			</div>
 		</hgroup>
