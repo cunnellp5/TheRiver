@@ -4,7 +4,7 @@
 </script>
 
 {#if prefix}
-	<span class="badge surface-3">{prefix} {tag}</span>
+	<span class="badge surface-3">{tag}</span>
 {:else}
 	<span class="badge surface-3">
 		{tag}
