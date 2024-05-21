@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { slide } from 'svelte/transition';
+	import { slide, fly, fade } from 'svelte/transition';
 	import { onMount } from 'svelte';
 	import { quintOut } from 'svelte/easing';
 	// eslint-disable-next-line import/no-unresolved
@@ -18,7 +18,6 @@
 	});
 
 	const isPostsHome = $page.url.pathname === '/posts';
-
 	let filteredPosts = data.posts;
 
 	$: {
@@ -71,7 +70,8 @@
 				<nav class="hide">
 					<div class="size-same-as-input"></div>
 				</nav>
-				<section>
+				<!-- TODO bubble up click events to trigger these animations, make them cooler too -->
+				<section in:fly={{ x: -200, duration: 800, delay: 500 }} out:fade>
 					<slot />
 				</section>
 			</div>

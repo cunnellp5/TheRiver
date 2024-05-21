@@ -214,3 +214,8 @@ button:active {
 } */
 
 /* begin primary theming */
+
+/* below is to remove the white highlight around the buttons found in quill the editor (specifically in dark mode) */
+:where(.btn, button, input:is([type='button'], [type='submit'], [type='reset'])) > :where(svg) {
+	filter: none;
+}
