@@ -25,15 +25,16 @@
 <main>
 	<aside>
 		<nav class="sidenav">
-			<div class="dropLabel">MAIN</div>
+			<div class="dropLabel">Main</div>
 			<a class:current={$page.url.pathname === '/admin'} href="/admin/"> Home </a>
-
 			<a class:current={$page.url.pathname === '/admin/users'} href="/admin/users">Users</a>
+			<hr />
 
-			<div class="dropLabel">BLOG</div>
+			<div class="dropLabel">Blog</div>
 			<a class:current={$page.url.pathname.includes('/admin/posts')} href="/admin/posts"> Posts </a>
+			<hr />
 
-			<div class="dropLabel">SERVICES</div>
+			<div class="dropLabel">Services</div>
 			<a class:current={$page.url.pathname === '/admin/services'} href="/admin/services"> Jobs </a>
 			<a
 				class:current={$page.url.pathname.includes('/admin/services/booking')}
@@ -46,7 +47,8 @@
 				Time slots
 			</a>
 
-			<div class="dropLabel">CONTACT</div>
+			<hr />
+			<div class="dropLabel">Contact</div>
 		</nav>
 	</aside>
 	<article>
@@ -71,9 +73,13 @@
 		margin-inline: var(--size-4);
 	}
 
-	a,
-	.dropLabel {
+	hr {
+		margin-block: var(--size-4);
+	}
+
+	a {
 		color: var(--gray-7);
+		font-weight: 200;
 		user-select: none;
 	}
 
@@ -87,15 +93,14 @@
 
 	.sidenav a {
 		display: block;
-		padding-inline: var(--size-2);
-		padding-block: var(--size-1);
+		padding: var(--size-1);
 		text-decoration: none;
 	}
 
 	.sidenav a:hover {
 		cursor: pointer;
 		border-radius: var(--radius-2);
-		/* background-color: var(--border); */
+		background-color: var(--gray-9);
 	}
 
 	.current {
@@ -104,8 +109,9 @@
 
 	.dropLabel {
 		margin-top: var(--size-5);
+		margin-bottom: var(--size-1);
 		width: 100%;
-		color: var(--stone-10);
-		font-size: var(--font-size-0);
+		color: var(--stone-5);
+		font-weight: 200;
 	}
 </style>
