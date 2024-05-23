@@ -44,7 +44,7 @@
 			<a
 				class:current={$page.url.pathname.includes('/admin/services/time-slots')}
 				href="/admin/services/time-slots">
-				Time slots
+				Schedule
 			</a>
 
 			<hr />

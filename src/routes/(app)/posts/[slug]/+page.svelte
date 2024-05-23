@@ -15,13 +15,7 @@
 	let quill: Quill | null;
 	let reader: string | HTMLElement;
 
-	$: post = data.posts.find((p) => p.slug === $page.params.slug) || {
-		title: '',
-		content: '',
-		tags: [],
-		createdAt: new Date(),
-		slug: ''
-	};
+	let post = data.posts.find((p) => p.slug === $page.params.slug);
 
 	async function setQuillData() {
 		try {
@@ -29,7 +23,7 @@
 
 			quill = new Quill(reader, QuillConfigReadonly);
 
-			const quillData = await quillContentInit(post.content);
+			const quillData = await quillContentInit(post?.content);
 
 			quill.setContents(quillData);
 		} catch (error) {
@@ -37,22 +31,14 @@
 		}
 	}
 
-	async function selectPost(
-		clickedPost:
-			| {
-					id: number;
-					createdAt: Date;
-					updatedAt: Date;
-					title: string;
-					content: string;
-					description: string;
-					slug: string;
-					published: boolean;
-					tags: string[];
-			  }
-			| { title: string; content: string; tags: never[]; createdAt: Date; slug: string }
-	) {
-		post = clickedPost;
+	$: {
+		post = data.posts.find((p) => p.slug === $page.params.slug) || {
+			title: '',
+			content: '',
+			tags: [],
+			createdAt: new Date(),
+			slug: ''
+		};
 		setQuillData();
 	}
 
