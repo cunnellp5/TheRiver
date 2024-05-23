@@ -11,6 +11,7 @@
 	let endOfDay = '18:00';
 
 	function handleDateSelection(dates) {
+		console.log(selectedDates, 'wtff');
 		selectedDates = dates.map((date) => new Date(date).toLocaleDateString('en-CA'));
 	}
 </script>
@@ -18,9 +19,9 @@
 <div class="container">
 	<h4>Services <span>&rsaquo;</span> Time Slots</h4>
 
-	<Calendar on:select={handleDateSelection} />
+	<Calendar />
 
-	<h2>Existing Time Slots</h2>
+	<!-- <h2>Existing Time Slots</h2>
 	<table>
 		<thead>
 			<tr>
@@ -48,7 +49,7 @@
 				</tr>
 			{/each}
 		</tbody>
-	</table>
+	</table> -->
 
 	<form action="?/add" method="POST" class="form" use:enhance>
 		<div class="form-group">

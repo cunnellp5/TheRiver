@@ -18,6 +18,8 @@
 	}, {});
 </script>
 
+<p>todo add csv download or upload??</p>
+
 {#each Object.entries(remappedServices) as [category, listOfServices]}
 	<section class="service-table">
 		<h2>{category}</h2>

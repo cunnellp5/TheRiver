@@ -18,9 +18,6 @@
 
 <header>
 	<h1>ADMIN PORTAL</h1>
-	<div>
-		<BreadCrumb {crumbs}></BreadCrumb>
-	</div>
 </header>
 <main>
 	<aside>
@@ -52,6 +49,9 @@
 		</nav>
 	</aside>
 	<article>
+		<div>
+			<BreadCrumb {crumbs}></BreadCrumb>
+		</div>
 		<slot />
 	</article>
 </main>
