@@ -4,10 +4,9 @@
 	import type Quill from 'quill';
 	import { onMount } from 'svelte';
 	import Badge from '$lib/components/ui/Badge.svelte';
-	// eslint-disable-next-line import/no-unresolved
 	import ChevronRight from 'lucide-svelte/icons/chevron-right';
 	import ChevronLeft from 'lucide-svelte/icons/chevron-left';
-	import { fly } from 'svelte/transition';
+	// eslint-disable-next-line import/no-unresolved
 	import { page } from '$app/stores';
 	import type { PageData } from './$types';
 
