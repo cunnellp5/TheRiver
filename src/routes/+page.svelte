@@ -35,7 +35,13 @@
 <main>
 	<div id="video-background">
 		{#if visible}
-			<video in:fade={{ duration: 800, delay: 600 }} autoplay loop muted bind:this={videoElement}>
+			<video
+				class="zoom"
+				in:fade={{ duration: 800, delay: 600 }}
+				autoplay
+				loop
+				muted
+				bind:this={videoElement}>
 				<source src={videoURL} type="video/mp4" />
 				<track kind="captions" srclang="en" label="English" />
 			</video>
@@ -63,6 +69,7 @@
 <style>
 	#video-background {
 		position: absolute;
+
 		right: 0;
 		bottom: 0;
 		z-index: -100;
@@ -70,6 +77,7 @@
 		min-width: 100%;
 		height: auto;
 		min-height: 100%;
+		overflow: hidden;
 	}
 
 	#video-tint {
@@ -95,5 +103,27 @@
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
+	}
+
+	.zoom {
+		animation: zoom 20s 1;
+	}
+
+	@keyframes zoom {
+		0% {
+			transform: scale(1);
+		}
+		100% {
+			transform: scale(1.1);
+		}
+	}
+
+	@keyframes psychedelic {
+		from {
+			filter: hue-rotate(0deg);
+		}
+		to {
+			filter: hue-rotate(360deg);
+		}
 	}
 </style>
