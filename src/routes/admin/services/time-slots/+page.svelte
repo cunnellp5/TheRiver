@@ -2,13 +2,22 @@
 	import Calendar from '$lib/components/ui/Calendar.svelte';
 	import { enhance } from '$app/forms';
 	import { onMount } from 'svelte';
+	import { writable } from 'svelte/store';
 
 	export let data;
 	const { timeSlots, blackoutDays } = data;
 
+	const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+	let availability = writable([]);
+
+	function addAvailability(day, startTime, endTime) {
+		availability.update((current) => [...current, { day, startTime, endTime }]);
+	}
 	let selectedDates = [];
 	let startOfDay = '09:00';
 	let endOfDay = '18:00';
+	let startTime = '09:00';
+	let endTime = '18:00';
 
 	function handleDateSelection(dates) {
 		console.log(selectedDates, 'wtff');
@@ -76,6 +85,16 @@
 			<label for="endOfDay">End of Day:</label>
 			<input type="time" name="endOfDay" id="endOfDay" bind:value={endOfDay} step="900" required />
 		</div>
+
+		{#each days as day}
+			<div class="form-group">
+				<label>{day}</label>
+				<input type="time" bind:this={startTime} step="900" placeholder="Start Time" />
+				<input type="time" bind:this={endTime} step="900" placeholder="End Time" />
+				<button type="button" on:click={() => addAvailability(day, startTime.value, endTime.value)}
+					>Add</button>
+			</div>
+		{/each}
 
 		<button type="submit">Generate Time Slots</button>
 	</form>
