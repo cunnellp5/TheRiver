@@ -37,7 +37,10 @@
 			<label for="email">Email</label>
 			<input bind:value={email} type="email" name="email" id="email" required />
 
-			<label for="password">Password</label>
+			<div class="pw-wrapper">
+				<label for="password">Password</label>
+				<a href="/reset"> Forgot password? </a>
+			</div>
 			<input bind:value={password} type="password" name="password" id="password" required />
 
 			<div class="button-list">
@@ -46,7 +49,6 @@
 				</button>
 				<hr />
 				<a href="/signup"> Don't have an account? Sign up here. </a>
-				<a href="/reset"> Forgot password? </a>
 			</div>
 		</form>
 	</section>
@@ -54,6 +56,13 @@
 
 <style>
 	@import '../auth.css';
+
+	.pw-wrapper {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		font-size: var(--font-size-0);
+	}
 
 	@media (max-width: 768px) {
 		main {
