@@ -22,7 +22,7 @@ label {
 }
 
 hr {
-	margin-block: var(--size-1);
+	margin-block: var(--size-0);
 }
 
 /* MAIN CLASSES */
