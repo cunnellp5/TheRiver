@@ -31,7 +31,7 @@
 			{description}
 		</p>
 		<aside>
-			<div>
+			<div class="badges">
 				{#each tags as tag}
 					<Badge {tag} />
 				{/each}

@@ -24,7 +24,7 @@
 	<p class="description">
 		{description}
 	</p>
-	<div>
+	<div class="tags">
 		{#each tags as tag}
 			<Badge {tag} />
 		{/each}
@@ -53,9 +53,12 @@
 	}
 
 	/* CLASSES */
+	.tags {
+		width: 100%;
+	}
 	.card {
 		box-shadow: var(--shadow-2);
-		padding: var(--size-4);
+		padding: var(--size-3);
 	}
 	.description {
 		margin-block: var(--size-4);
