@@ -84,6 +84,7 @@
 		position: absolute;
 		top: 0;
 		left: 0;
+		backdrop-filter: blur(3px);
 		background: rgba(0, 0, 0, 0.6); /* Black tint with 50% opacity */
 		width: 100%;
 		height: 100%;
@@ -117,7 +118,7 @@
 			transform: scale(1.1);
 		}
 	}
-
+	/* 
 	@keyframes psychedelic {
 		from {
 			filter: hue-rotate(0deg);
@@ -125,5 +126,5 @@
 		to {
 			filter: hue-rotate(360deg);
 		}
-	}
+	} */
 </style>
