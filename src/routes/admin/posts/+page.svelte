@@ -85,6 +85,9 @@
 		justify-content: center;
 		margin: auto;
 		margin-block-end: var(--size-4);
+		& .card {
+			width: 50%;
+		}
 	}
 	button {
 		margin-inline: var(--size-2);
