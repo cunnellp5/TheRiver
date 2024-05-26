@@ -7,7 +7,7 @@
 	export let data;
 	const { timeSlots, blackoutDays } = data;
 
-	const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+	const days = ['Mon', 'Tue', 'Wed', 'Thr', 'Fri', 'Sat', 'Sun'];
 	let availability = writable([]);
 
 	function addAvailability(day, startTime, endTime) {
@@ -20,7 +20,6 @@
 	let endTime = '18:00';
 
 	function handleDateSelection(dates) {
-		console.log(selectedDates, 'wtff');
 		selectedDates = dates.map((date) => new Date(date).toLocaleDateString('en-CA'));
 	}
 </script>
@@ -87,12 +86,13 @@
 		</div>
 
 		{#each days as day}
-			<div class="form-group">
+			<div class="form-group days-forms-wrapper">
 				<label>{day}</label>
-				<input type="time" bind:this={startTime} step="900" placeholder="Start Time" />
-				<input type="time" bind:this={endTime} step="900" placeholder="End Time" />
-				<button type="button" on:click={() => addAvailability(day, startTime.value, endTime.value)}
-					>Add</button>
+				<input type="time" bind:value={startTime} step="900" placeholder="Start Time" />
+				<input type="time" bind:value={endTime} step="900" placeholder="End Time" />
+				<button type="button" on:click={() => addAvailability(day, startTime.value, endTime.value)}>
+					Add
+				</button>
 			</div>
 		{/each}
 
@@ -113,6 +113,22 @@
 
 	h4 {
 		margin-bottom: 1rem;
+	}
+
+	.days-forms-wrapper {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		/* & div {
+			display: flex;
+			flex-direction: row;
+		} */
+		& label {
+			width: 20%;
+		}
+		& button {
+			width: 20%;
+		}
 	}
 
 	table {
