@@ -7,12 +7,41 @@
 	import '@event-calendar/core/index.css';
 	import { theme } from '$lib/stores/theme';
 
-	$: currentTheme = $theme;
+	export let data;
+	const { timeSlots, blackoutDays } = data;
+
+	let ec;
 
 	const plugins = [DayGrid, List, TimeGrid, Interaction];
 	const options = {
+		view: 'dayGridMonth',
+		eventSources: [
+			{
+				events: function () {
+					console.log('fetching...');
+					return [];
+				}
+			}
+		],
 		events: [
-			// your list of events
+			{
+				allDay: false,
+				start: '2024-05-23T13:00:00',
+				end: '2024-05-23T11:00:00',
+				title: 'test 1'
+			},
+			{
+				allDay: false,
+				start: '2024-05-23T09:00:00',
+				end: '2024-05-23T10:00:00',
+				title: 'test 1'
+			},
+			{
+				allDay: false,
+				start: '2024-05-26T22:00:00',
+				end: '2024-05-26T23:00:00',
+				title: 'test 1'
+			}
 		],
 		// slotDuration: '00:15do:00',
 		slotLabelFormat: {
@@ -34,57 +63,29 @@
 			timeGridWeek: 'week',
 			timeGridDay: 'day',
 			today: 'today'
-		}
-	};
-	// import Calendar from '$lib/components/ui/Calendar.svelte';
-	// import { enhance } from '$app/forms';
-	// import { onMount } from 'svelte';
-	// import { writable } from 'svelte/store';
-
-	const STEP_SIZE = 900; // this is in ms, so 900 is 15 minutes
-
-	export let data;
-	const { timeSlots, blackoutDays } = data;
-
-	const days = ['Mon', 'Tue', 'Wed', 'Thr', 'Fri', 'Sat', 'Sun'];
-	// let availability = writable([]);
-
-	// function addAvailability(day, startTime, endTime) {
-	// 	availability.update((current) => [...current, { day, startTime, endTime }]);
-	// }
-	// let selectedDates = [];
-	// let startOfDay = '09:00';
-	// let endOfDay = '18:00';
-	// let startTime = '09:00';
-	// let endTime = '18:00';
-
-	// function handleDateSelection(dates) {
-	// 	selectedDates = dates.map((date) => new Date(date).toLocaleDateString('en-CA'));
-	// }
-
-	const availability = days.map((day) => ({
-		day,
-		startOfDay: '09:00',
-		endOfDay: '18:00',
-		breaks: [],
-		buffer: 15 // default buffer time in minutes
-	}));
-
-	const addBreak = (index: number) => {
-		availability[index].breaks.push({ start: '', end: '' });
-		console.log(availability);
+		},
+		selectable: true,
+		editable: true
 	};
 
-	const removeBreak = (dayIndex: number, breakIndex: number) => {
-		availability[dayIndex].breaks.splice(breakIndex, 1);
-		console.log(availability);
-	};
+	function handleSelect(info) {
+		// handle the select event
+		console.log(ec, 'hello');
+	}
+
+	function handleDateClick(info) {
+		// handle the dateClick info
+		console.log(ec, 'date clicked');
+	}
+	function invokeMethod() {
+		ec.refetchEvents();
+	}
 </script>
 
 <div
 	class="container ec-dark"
-	class:ec-dark={currentTheme === 'dark'}
-	class:ec-light={currentTheme === 'light'}>
+	class:ec-dark={$theme === 'dark'}
+	class:ec-light={$theme === 'light'}>
 	<h4>Schedule</h4>
 
 	<p>This generates time slots on the backend in 15 min chunks</p>
@@ -96,7 +97,14 @@
 		4 - add buffer time between each time slot
 	</pre>
 
-	<Calendar {plugins} {options} />
+	<button on:click={invokeMethod}>Refetch events</button>
+
+	<Calendar
+		bind:this={ec}
+		{plugins}
+		{options}
+		on:select={handleSelect}
+		on:dateClick={handleDateClick} />
 	<!-- <form action="?/add" method="POST" class="form" use:enhance></form> -->
 </div>
 
