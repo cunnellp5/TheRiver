@@ -14,15 +14,15 @@
 
 	const plugins = [DayGrid, List, TimeGrid, Interaction];
 	const options = {
-		view: 'dayGridMonth',
-		eventSources: [
-			{
-				events: function () {
-					console.log('fetching...');
-					return [];
-				}
-			}
-		],
+		height: '700px',
+		scrollTime: '09:00:00',
+		slotMinTime: '05:00:00',
+		slotMaxTime: '22:00:00',
+		view: 'timeGridWeek',
+		// views: {
+		// 	timeGridWeek: { pointer: true },
+		// },
+		nowIndicator: true,
 		events: [
 			{
 				allDay: false,
@@ -65,27 +65,15 @@
 			today: 'today'
 		},
 		selectable: true,
-		editable: true
+		editable: true,
+		selectBackgroundColor: 'red'
 	};
-
-	function handleSelect(info) {
-		// handle the select event
-		console.log(ec, 'hello');
-	}
-
-	function handleDateClick(info) {
-		// handle the dateClick info
-		console.log(ec, 'date clicked');
-	}
-	function invokeMethod() {
-		ec.refetchEvents();
-	}
+	// const handleDateClick = (arg) => {
+	// 	alert(arg.dateStr);
+	// };
 </script>
 
-<div
-	class="container ec-dark"
-	class:ec-dark={$theme === 'dark'}
-	class:ec-light={$theme === 'light'}>
+<div class="container" class:ec-dark={$theme === 'dark'} class:ec-light={$theme === 'light'}>
 	<h4>Schedule</h4>
 
 	<p>This generates time slots on the backend in 15 min chunks</p>
@@ -97,14 +85,7 @@
 		4 - add buffer time between each time slot
 	</pre>
 
-	<button on:click={invokeMethod}>Refetch events</button>
-
-	<Calendar
-		bind:this={ec}
-		{plugins}
-		{options}
-		on:select={handleSelect}
-		on:dateClick={handleDateClick} />
+	<Calendar bind:this={ec} {plugins} {options} />
 	<!-- <form action="?/add" method="POST" class="form" use:enhance></form> -->
 </div>
 
