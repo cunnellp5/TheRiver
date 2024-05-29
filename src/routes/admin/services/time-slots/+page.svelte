@@ -10,7 +10,7 @@
 	export let data;
 	const { timeSlots, blackoutDays } = data;
 
-	let ec;
+	let ec: Calendar;
 
 	function padNumbers(num: number) {
 		const norm = Math.floor(Math.abs(num));
@@ -132,6 +132,14 @@
 		editable: true,
 		selectBackgroundColor: 'red',
 		pointer: true,
+		select(info) {
+			ec.addEvent({
+				start: info.startStr,
+				end: info.endStr,
+				display: 'auto'
+			});
+			console.log(info, 'select');
+		},
 		eventDragStart(info) {
 			console.log('dragStart');
 		},
@@ -142,7 +150,10 @@
 			console.log('drop');
 		},
 		dateClick(info) {
-			console.log('dateClick');
+			console.log(info, 'fuuuu');
+		},
+		eventClick(info) {
+			console.log(info, 'fuuuu');
 		}
 	};
 </script>
