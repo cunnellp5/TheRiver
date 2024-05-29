@@ -147,7 +147,6 @@
 	};
 </script>
 
-/** eslint-disable no-console */
 <div class="container" class:ec-dark={$theme === 'dark'} class:ec-light={$theme === 'light'}>
 	<h3>Schedule</h3>
 
@@ -166,4 +165,14 @@
 </div>
 
 <style>
+	.calendar-wrapper {
+		& h4 {
+			background: unset;
+			-webkit-background-clip: unset;
+			-webkit-text-fill-color: unset;
+			background-clip: unset;
+			color: var(--text-1);
+			font-size: var(--font-size-1);
+		}
+	}
 </style>
