@@ -6,7 +6,7 @@ export const load: PageServerLoad = async (event) => {
 	const serviceIds = event.url.searchParams.get('selectedServices');
 
 	if (!event.url.searchParams.get('selectedServices')) {
-		throw error(404, 'No services found');
+		error(404, 'No services found');
 	}
 
 	const ids = serviceIds?.split(',').map(Number);
@@ -22,11 +22,11 @@ export const load: PageServerLoad = async (event) => {
 			}
 		});
 	} catch (err) {
-		throw error(500, err.message);
+		error(500, err.message);
 	}
 
 	if (!services) {
-		throw error(404, 'No services found');
+		error(404, 'No services found');
 	}
 
 	return {

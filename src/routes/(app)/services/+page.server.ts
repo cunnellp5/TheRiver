@@ -30,6 +30,6 @@ export const actions: Actions = {
 
 		const selectedServices = formData.get('selectedServices');
 
-		throw redirect(302, `/services/booking/?selectedServices=${selectedServices}`);
+		redirect(302, `/services/booking/?selectedServices=${selectedServices}`);
 	}
 };

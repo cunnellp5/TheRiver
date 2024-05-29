@@ -93,12 +93,12 @@ export const actions: Actions = {
 					...sessionCookie.attributes
 				});
 
-				throw redirect(302, '/dashboard');
+				redirect(302, '/dashboard');
 			} catch {
-				throw error(500, { message: 'Failed to create session' });
+				error(500, { message: 'Failed to create session' });
 			}
 		} catch {
-			throw error(500, { message: 'Failed to create user' });
+			error(500, { message: 'Failed to create user' });
 		}
 	}
 };

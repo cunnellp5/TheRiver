@@ -17,13 +17,13 @@ export const load: PageServerLoad = async (event) => {
 		});
 	} catch (error) {
 		// TODO if an actual error, should consider doing something more helpful here
-		throw redirect(302, '/reset');
+		redirect(302, '/reset');
 	}
 
 	// cannot redirect inside try catch!
 	// if one doesnt exist or its stale, redirect
 	if (!foundToken) {
-		throw redirect(302, '/reset');
+		redirect(302, '/reset');
 	}
 
 	// find related user, and return the email at least
@@ -34,12 +34,12 @@ export const load: PageServerLoad = async (event) => {
 		});
 	} catch (error) {
 		// TODO if an actual error, should consider doing something more helpful here
-		throw redirect(302, '/reset');
+		redirect(302, '/reset');
 	}
 
 	// cannot redirect inside try catch!
 	if (!user) {
-		throw redirect(302, '/reset');
+		redirect(302, '/reset');
 	}
 
 	return {
@@ -95,7 +95,7 @@ export const actions: Actions = {
 		try {
 			existingUser = await db.user.findUnique({ where: { email } });
 		} catch (err) {
-			throw error(404, { message: 'User not found' });
+			error(404, { message: 'User not found' });
 		}
 
 		if (!existingUser) {
@@ -122,12 +122,12 @@ export const actions: Actions = {
 					...sessionCookie.attributes
 				});
 			} catch (errorair) {
-				throw error(500, { message: 'Failed to create session' });
+				error(500, { message: 'Failed to create session' });
 			}
 		} catch {
-			throw error(500, { message: 'Failed to update user' });
+			error(500, { message: 'Failed to update user' });
 		}
 
-		throw redirect(302, '/dashboard');
+		redirect(302, '/dashboard');
 	}
 };

@@ -67,6 +67,6 @@ export const actions: Actions = {
 			throw new Error(message);
 		}
 
-		throw redirect(302, `/admin/posts/${slugified}`);
+		redirect(302, `/admin/posts/${slugified}`);
 	}
 };

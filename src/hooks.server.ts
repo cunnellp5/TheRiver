@@ -40,7 +40,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 		(!event.locals.session && event.route.id?.includes('/admin')) ||
 		(event.locals.session && !event.locals.user.isAdmin && event.route.id?.includes('/admin'))
 	) {
-		throw redirect(302, '/');
+		redirect(302, '/');
 	}
 
 	return resolve(event);
