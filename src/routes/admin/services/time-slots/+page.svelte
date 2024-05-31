@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Modal from '$lib/components/ui/Modal.svelte';
 	import { theme } from '$lib/stores/theme';
 	import Calendar from '@event-calendar/core';
 	import '@event-calendar/core/index.css';
@@ -9,6 +10,11 @@
 
 	export let data;
 	const { timeSlots, blackoutDays } = data;
+	let showModal = false;
+
+	const toggleModal = () => {
+		showModal = !showModal;
+	};
 
 	let ec: Calendar;
 
@@ -149,6 +155,11 @@
 				}
 			});
 			console.log(info, 'select');
+			// render modal
+
+			toggleModal();
+
+			// modal creates title, description, and submit button
 		},
 		eventDragStart(info) {
 			console.log('eventDragStart');
@@ -167,6 +178,14 @@
 		}
 	};
 </script>
+
+<Modal bind:showModal overrideButtons={true}>
+	<h2 slot="header">Modal test</h2>
+
+	<div slot="buttons" class="buttons">
+		<button on:click={toggleModal}>close</button>
+	</div>
+</Modal>
 
 <div class="container" class:ec-dark={$theme === 'dark'} class:ec-light={$theme === 'light'}>
 	<h3>Schedule</h3>
