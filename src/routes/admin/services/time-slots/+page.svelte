@@ -132,28 +132,38 @@
 		editable: true,
 		selectBackgroundColor: 'red',
 		pointer: true,
+		popup: true,
 		select(info) {
 			ec.addEvent({
 				start: info.startStr,
 				end: info.endStr,
-				display: 'auto'
+				display: 'auto',
+				resourceId: 1,
+				title: 'Available',
+				editable: true,
+				durationEditable: true,
+				startEditable: true,
+				constraint: 'businessHours',
+				extendedProps: {
+					availability: true
+				}
 			});
 			console.log(info, 'select');
 		},
 		eventDragStart(info) {
-			console.log('dragStart');
+			console.log('eventDragStart');
 		},
 		eventDragStop(info) {
-			console.log('dragStop');
+			console.log('drageventDragStopStop');
 		},
 		eventDrop(info) {
-			console.log('drop');
+			console.log('eventDrop');
 		},
 		dateClick(info) {
-			console.log(info, 'fuuuu');
+			console.log(info, 'dateClick');
 		},
 		eventClick(info) {
-			console.log(info, 'fuuuu');
+			console.log(info, 'eventClick');
 		}
 	};
 </script>
