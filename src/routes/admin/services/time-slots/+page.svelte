@@ -183,7 +183,7 @@
 	<h2 slot="header">Modal test</h2>
 
 	<div slot="buttons" class="buttons">
-		<button on:click={toggleModal}>close</button>
+		<button on:click|preventDefault={() => toggleModal}>close</button>
 	</div>
 </Modal>
 
