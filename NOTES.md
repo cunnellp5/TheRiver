@@ -66,3 +66,8 @@ Visibility
 Box model
 Dimensions
 Text
+
+### Random
+
+1. error `Cannot find name 'svelteHTML'`
+   - solution: Ctrl + Shift + P -> Svelte: Restart Language Server

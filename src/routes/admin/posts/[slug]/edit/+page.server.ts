@@ -1,3 +1,5 @@
+// TODO use the client side views to render in admin portal, and ensure CRUD ui works along with reactive routing
+
 import db from '$lib/server/database';
 import slugify from '$lib/utils/slugify';
 import { error, fail, redirect } from '@sveltejs/kit';
