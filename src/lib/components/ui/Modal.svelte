@@ -1,6 +1,11 @@
 <script lang="ts">
+	import { createEventDispatcher } from 'svelte';
+
 	export let showModal: boolean;
 	export let overrideButtons: boolean = false;
+	export let buttonText: string = 'Close';
+
+	const dispatch = createEventDispatcher();
 
 	let dialog: HTMLDialogElement;
 
@@ -12,6 +17,7 @@
 	bind:this={dialog}
 	on:close={() => {
 		showModal = false;
+		dispatch('close');
 	}}
 	on:click|self={() => dialog.close()}>
 	<!-- svelte-ignore a11y-no-static-element-interactions -->
@@ -20,12 +26,7 @@
 		<hr />
 		<slot />
 		<hr />
-		{#if overrideButtons}
-			<slot name="buttons" />
-		{/if}
-		{#if !overrideButtons}
-			<button on:click={() => dialog.close()}>Close</button>
-		{/if}
+		<button on:click={() => dialog.close()}>{buttonText}</button>
 	</div>
 </dialog>
 
