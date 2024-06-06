@@ -16,12 +16,18 @@
 
 	let eventStart: string = '';
 	let eventEnd: string = '';
-	let eventTitle: string = '';
+	let eventTitle: string = 'Available';
 
 	let eventInfo;
 
 	let showModal = false;
 	let ec: Calendar;
+
+	const reset = () => {
+		eventStart = '';
+		eventEnd = '';
+		eventTitle = 'Available';
+	};
 
 	const toggleModal = () => {
 		showModal = !showModal;
@@ -50,6 +56,7 @@
 				availability: true
 			}
 		});
+		reset();
 	}
 
 	const plugins = [DayGrid, List, TimeGrid, Interaction];
@@ -84,7 +91,7 @@
 </script>
 
 <Modal bind:showModal on:close={handleClose} buttonText="Save">
-	<h2 slot="header">Save availability</h2>
+	<h2 slot="header">Schedule</h2>
 
 	<div class="form-group">
 		<label for="eventTitle">Title</label>
