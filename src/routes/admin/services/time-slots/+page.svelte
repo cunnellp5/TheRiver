@@ -6,9 +6,10 @@
 	import DayGrid from '@event-calendar/day-grid';
 	import Interaction from '@event-calendar/interaction';
 	import List from '@event-calendar/list';
+	// eslint-disable-next-line import/no-unresolved
+	import { enhance } from '$app/forms';
 	import TimeGrid from '@event-calendar/time-grid';
 	import { configOptions } from './calendarConfig';
-	import { ViewIcon } from 'lucide-svelte';
 
 	export let data;
 
@@ -36,10 +37,8 @@
 	function handleClose() {
 		showModal = false;
 
-		eventStart = eventInfo.startStr;
-		eventEnd = eventInfo.endStr;
-
-		console.log(eventStart, 'test');
+		eventStart = eventInfo.startStr; // save me in the DB
+		eventEnd = eventInfo.endStr; // save me in the DB
 
 		// adds event to calendar, vars are being updated from modal inputs
 		ec.addEvent({
@@ -67,7 +66,6 @@
 			eventStart = info.startStr;
 			eventEnd = info.endStr;
 			eventInfo = { ...info };
-			console.log(info, 'select');
 			// render modal
 			toggleModal();
 			// modal creates title, description, and submit button
@@ -93,58 +91,27 @@
 <Modal bind:showModal on:close={handleClose} buttonText="Save">
 	<h2 slot="header">Schedule</h2>
 
-	<div class="form-group">
-		<label for="eventTitle">Title</label>
-		<input
-			placeholder="Title of event"
-			name="eventTitle"
-			type="text"
-			id="eventTitle"
-			bind:value={eventTitle} />
-	</div>
-	<!-- <div>
-			<label for="eventStart">Start</label>
-			<input type="text" id="eventStart" bind:value={eventStart} />
-		</div>
+	<form action="?/add" method="POST" class="form" use:enhance>
+		<div class="form-group">
+			<label for="eventTitle">Title</label>
+			<input
+				placeholder="Title of event"
+				name="eventTitle"
+				type="text"
+				id="eventTitle"
+				bind:value={eventTitle} />
 
-		<div>
-			<label for="eventEnd">End</label>
-			<input type="text" id="eventEnd" bind:value={eventEnd} />
-		</div> -->
-
-	<!-- <div>
-			<span>repeat for:</span>
-			<div class="weekdays">
-				<div class="day">
-					<label for="monday">Monday</label>
-					<input type="checkbox" id="monday" />
-				</div>
-				<div class="day">
-					<label for="tuesday">Tuesday</label>
-					<input type="checkbox" id="tuesday" />
-				</div>
-				<div class="day">
-					<label for="wednesday">Wednesday</label>
-					<input type="checkbox" id="wednesday" />
-				</div>
-				<div class="day">
-					<label for="thursday">Thursday</label>
-					<input type="checkbox" id="thursday" />
-				</div>
-				<div class="day">
-					<label for="friday">Friday</label>
-					<input type="checkbox" id="friday" />
-				</div>
-				<div class="day">
-					<label for="saturday">Saturday</label>
-					<input type="checkbox" id="saturday" />
-				</div>
-				<div class="day">
-					<label for="sunday">Sunday</label>
-					<input type="checkbox" id="sunday" />
-				</div>
+			<div>
+				<label for="eventStart">Start</label>
+				<input type="text" id="eventStart" bind:value={eventStart} />
 			</div>
-		</div> -->
+
+			<div>
+				<label for="eventEnd">End</label>
+				<input type="text" id="eventEnd" bind:value={eventEnd} />
+			</div>
+		</div>
+	</form>
 </Modal>
 
 <div class="container" class:ec-dark={$theme === 'dark'} class:ec-light={$theme === 'light'}>
@@ -161,9 +128,9 @@
 	<div class="calendar-wrapper">
 		<Calendar bind:this={ec} {plugins} {options} />
 	</div>
-	<!-- <form action="?/add" method="POST" class="form" use:enhance></form> -->
 </div>
 
+<!-- TODO put the form down here with a save button that then collects all the time-slots from the calendar -->
 <!-- deleting https://github.com/vkurko/calendar/discussions/91 -->
 
 <style>
