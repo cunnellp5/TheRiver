@@ -22,6 +22,7 @@ export function convertTimeSlots(timeSlots: TimeSlot[]) {
 			start: `${day.toISOString().slice(0, 10)}T${start.toTimeString().slice(0, 8)}`,
 			end: `${day.toISOString().slice(0, 10)}T${end.toTimeString().slice(0, 8)}`,
 			title: 'Available', // TODO use title from admin form,
+			selectable: true,
 			editable: false,
 			durationEditable: false,
 			startEditable: false,
