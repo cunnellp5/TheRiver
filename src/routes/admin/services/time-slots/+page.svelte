@@ -9,7 +9,7 @@
 	// eslint-disable-next-line import/no-unresolved
 	import { enhance } from '$app/forms';
 	import TimeGrid from '@event-calendar/time-grid';
-	import { configOptions } from './calendarConfig';
+	import { configOptions, convertTimeSlots } from './calendarConfig';
 
 	export let data;
 
@@ -66,6 +66,7 @@
 
 	const options = {
 		...configOptions,
+		events: convertTimeSlots(timeSlots) || [],
 		select(info) {
 			eventStart = info.startStr;
 			eventEnd = info.endStr;
