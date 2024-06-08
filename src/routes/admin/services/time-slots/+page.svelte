@@ -7,8 +7,8 @@
 	import Interaction from '@event-calendar/interaction';
 	import List from '@event-calendar/list';
 	// eslint-disable-next-line import/no-unresolved
-	import { enhance } from '$app/forms';
 	import TimeGrid from '@event-calendar/time-grid';
+	import { enhance } from '$app/forms';
 	import { configOptions, convertTimeSlots } from './calendarConfig';
 
 	export let data;
@@ -17,19 +17,18 @@
 
 	let eventStart: string = '';
 	let eventEnd: string = '';
-	let eventTitle: string = 'Available';
-
+	let eventTitle: string = 'NEW';
 	let allEvents = [];
-
 	let eventInfo;
-
 	let showModal = false;
+	let showEvent = false;
+	let eventDisplay;
 	let ec: Calendar;
 
 	const reset = () => {
 		eventStart = '';
 		eventEnd = '';
-		eventTitle = 'Available';
+		eventTitle = 'NEW';
 	};
 
 	const toggleModal = () => {
@@ -89,10 +88,33 @@
 		},
 		eventClick(info) {
 			console.log(info, 'eventClick');
+			// show a hidden element and populate it with this info
+			eventDisplay = { ...info.event };
+			// eventDisplay.style = {
+			// 	top: info.jsEvent.clientY,
+			// 	left: info.jsEvent.clientX
+			// };
+
+			const popover = document.querySelector('.event-info');
+
+			if (popover) {
+				popover.style.position = 'absolute';
+				popover.style.left = `${info.el.style.left}`;
+				// popover.style.top = `${info.el.style.top - info.el.style.height}`;
+			}
+
+			console.log(popover, 'pooop');
+
+			showEvent = true;
+			// here we should have an X that deletes the record
 		}
+		// eventContent(info) {
+		// return { html: '<p class="popover">some HTML</p>' };
+		// }
 	};
 </script>
 
+<!-- elements that are hidden/absolutely positioned -->
 <Modal bind:showModal on:close={handleClose} buttonText="Save">
 	<h2 slot="header">Schedule</h2>
 
@@ -117,6 +139,7 @@
 	</div>
 </Modal>
 
+<!-- Actual struture of the page -->
 <div class="container" class:ec-dark={$theme === 'dark'} class:ec-light={$theme === 'light'}>
 	<h3>Schedule</h3>
 
@@ -132,6 +155,15 @@
 		<Calendar bind:this={ec} {plugins} {options} />
 	</div>
 </div>
+
+{#if showEvent}
+	<div class="event-info">
+		<p>{eventDisplay.title}</p>
+		<p>{eventDisplay.start}</p>
+		<p>{eventDisplay.end}</p>
+	</div>
+{/if}
+
 <form action="?/add" method="POST" class="form" use:enhance>
 	<input type="hidden" name="events" value={JSON.stringify(allEvents)} />
 	<button type="submit">Save</button>
@@ -160,4 +192,14 @@
 			margin-bottom: var(--size-1);
 		}
 	}
+
+	/* .event-info {
+		position: absolute;
+		top: 0;
+		left: 0;
+		border-radius: var(--size-1);
+		background: var(--bg-1);
+		padding: var(--size-1);
+		color: var(--text-1);
+	} */
 </style>
