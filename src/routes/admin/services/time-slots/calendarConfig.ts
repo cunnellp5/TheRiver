@@ -93,7 +93,7 @@ export const configOptions = {
 	slotMaxTime: '22:00:00',
 	view: 'timeGridWeek',
 	nowIndicator: true,
-	events: createEvents(),
+	events: [],
 	slotLabelFormat: {
 		hour: 'numeric',
 		minute: '2-digit',

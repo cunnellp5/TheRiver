@@ -6,41 +6,70 @@
 	import DayGrid from '@event-calendar/day-grid';
 	import Interaction from '@event-calendar/interaction';
 	import List from '@event-calendar/list';
+	// eslint-disable-next-line import/no-unresolved
+	import { enhance } from '$app/forms';
 	import TimeGrid from '@event-calendar/time-grid';
-	import { createEvents, configOptions } from './calendarConfig';
+	import { configOptions } from './calendarConfig';
 
 	export let data;
 
 	const { timeSlots, blackoutDays } = data;
 
-	$: showModal = false;
+	let eventStart: string = '';
+	let eventEnd: string = '';
+	let eventTitle: string = 'Available';
+
+	let allEvents = [];
+
+	let eventInfo;
+
+	let showModal = false;
+	let ec: Calendar;
+
+	const reset = () => {
+		eventStart = '';
+		eventEnd = '';
+		eventTitle = 'Available';
+	};
 
 	const toggleModal = () => {
 		showModal = !showModal;
 	};
 
-	let ec: Calendar;
+	function handleClose() {
+		showModal = false;
+
+		eventStart = eventInfo.startStr; // save me in the DB
+		eventEnd = eventInfo.endStr; // save me in the DB
+
+		// adds event to calendar, vars are being updated from modal inputs
+		ec.addEvent({
+			start: eventStart,
+			end: eventEnd,
+			display: 'auto',
+			resourceId: 1,
+			title: eventTitle,
+			editable: true,
+			durationEditable: true,
+			startEditable: true,
+			constraint: 'businessHours',
+			extendedProps: {
+				availability: true
+			}
+		});
+
+		allEvents = [...ec.getEvents()];
+		reset();
+	}
 
 	const plugins = [DayGrid, List, TimeGrid, Interaction];
 
 	const options = {
 		...configOptions,
 		select(info) {
-			ec.addEvent({
-				start: info.startStr,
-				end: info.endStr,
-				display: 'auto',
-				resourceId: 1,
-				title: 'Available',
-				editable: true,
-				durationEditable: true,
-				startEditable: true,
-				constraint: 'businessHours',
-				extendedProps: {
-					availability: true
-				}
-			});
-			console.log(info, 'select');
+			eventStart = info.startStr;
+			eventEnd = info.endStr;
+			eventInfo = { ...info };
 			// render modal
 			toggleModal();
 			// modal creates title, description, and submit button
@@ -63,14 +92,27 @@
 	};
 </script>
 
-<Modal bind:showModal overrideButtons={true}>
-	<h2 slot="header">Modal test</h2>
+<Modal bind:showModal on:close={handleClose} buttonText="Save">
+	<h2 slot="header">Schedule</h2>
 
-	<div slot="buttons" class="buttons">
-		<button
-			on:click={() => {
-				showModal = false;
-			}}>close</button>
+	<div class="form-group">
+		<label for="eventTitle">Title</label>
+		<input
+			placeholder="Title of event"
+			name="eventTitle"
+			type="text"
+			id="eventTitle"
+			bind:value={eventTitle} />
+
+		<div>
+			<label for="eventStart">Start</label>
+			<input type="text" id="eventStart" bind:value={eventStart} />
+		</div>
+
+		<div>
+			<label for="eventEnd">End</label>
+			<input type="text" id="eventEnd" bind:value={eventEnd} />
+		</div>
 	</div>
 </Modal>
 
@@ -88,8 +130,14 @@
 	<div class="calendar-wrapper">
 		<Calendar bind:this={ec} {plugins} {options} />
 	</div>
-	<!-- <form action="?/add" method="POST" class="form" use:enhance></form> -->
 </div>
+<form action="?/add" method="POST" class="form" use:enhance>
+	<input type="hidden" name="events" value={JSON.stringify(allEvents)} />
+	<button type="submit">Save</button>
+</form>
+
+<!-- TODO put the form down here with a save button that then collects all the time-slots from the calendar -->
+<!-- deleting https://github.com/vkurko/calendar/discussions/91 -->
 
 <style>
 	.calendar-wrapper {
@@ -101,6 +149,14 @@
 			background-clip: unset;
 			color: var(--text-1);
 			font-size: var(--font-size-1);
+		}
+	}
+
+	.form-group {
+		display: flex;
+		flex-direction: column;
+		& label {
+			margin-bottom: var(--size-1);
 		}
 	}
 </style>

@@ -2,6 +2,13 @@ import db from '$lib/server/database';
 import { error, type Actions } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
+interface TimeSlot {
+	startTime: Date;
+	endTime: Date;
+	available: boolean;
+	day: string;
+}
+
 export const load: PageServerLoad = async (event) => {
 	if (!event.locals.session || !event.locals.user) {
 		return error(404, 'Not found');
@@ -22,13 +29,29 @@ export const load: PageServerLoad = async (event) => {
 export const actions: Actions = {
 	add: async ({ request }) => {
 		const form = await request.formData();
-		const selectedDates = form.getAll('selectedDates');
-		const startOfDay = form.get('startOfDay');
-		const endOfDay = form.get('endOfDay');
+		const events = JSON.parse(form.get('events'));
+
+		const timeSlots: TimeSlot[] = [];
+
+		events.forEach((event) => {
+			const start = new Date(event.start);
+			const end = new Date(event.end);
+
+			while (start < end) {
+				const timeSlot = {
+					startTime: new Date(start),
+					endTime: new Date(start.getTime() + 15 * 60000),
+					available: true,
+					day: new Date(new Date(event.start).setHours(0, 0, 0, 0)).toISOString()
+				};
+				timeSlots.push(timeSlot);
+				start.setMinutes(start.getMinutes() + 15);
+			}
+		});
 
 		try {
 			await db.timeSlot.createMany({
-				data: []
+				data: timeSlots
 			});
 			return { status: 201 };
 		} catch (err) {
