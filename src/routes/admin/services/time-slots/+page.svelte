@@ -19,6 +19,8 @@
 	let eventEnd: string = '';
 	let eventTitle: string = 'Available';
 
+	let allEvents = [];
+
 	let eventInfo;
 
 	let showModal = false;
@@ -55,6 +57,8 @@
 				availability: true
 			}
 		});
+
+		allEvents = [...ec.getEvents()];
 		reset();
 	}
 
@@ -91,27 +95,25 @@
 <Modal bind:showModal on:close={handleClose} buttonText="Save">
 	<h2 slot="header">Schedule</h2>
 
-	<form action="?/add" method="POST" class="form" use:enhance>
-		<div class="form-group">
-			<label for="eventTitle">Title</label>
-			<input
-				placeholder="Title of event"
-				name="eventTitle"
-				type="text"
-				id="eventTitle"
-				bind:value={eventTitle} />
+	<div class="form-group">
+		<label for="eventTitle">Title</label>
+		<input
+			placeholder="Title of event"
+			name="eventTitle"
+			type="text"
+			id="eventTitle"
+			bind:value={eventTitle} />
 
-			<div>
-				<label for="eventStart">Start</label>
-				<input type="text" id="eventStart" bind:value={eventStart} />
-			</div>
-
-			<div>
-				<label for="eventEnd">End</label>
-				<input type="text" id="eventEnd" bind:value={eventEnd} />
-			</div>
+		<div>
+			<label for="eventStart">Start</label>
+			<input type="text" id="eventStart" bind:value={eventStart} />
 		</div>
-	</form>
+
+		<div>
+			<label for="eventEnd">End</label>
+			<input type="text" id="eventEnd" bind:value={eventEnd} />
+		</div>
+	</div>
 </Modal>
 
 <div class="container" class:ec-dark={$theme === 'dark'} class:ec-light={$theme === 'light'}>
@@ -129,6 +131,10 @@
 		<Calendar bind:this={ec} {plugins} {options} />
 	</div>
 </div>
+<form action="?/add" method="POST" class="form" use:enhance>
+	<input type="hidden" name="events" value={JSON.stringify(allEvents)} />
+	<button type="submit">Save</button>
+</form>
 
 <!-- TODO put the form down here with a save button that then collects all the time-slots from the calendar -->
 <!-- deleting https://github.com/vkurko/calendar/discussions/91 -->
