@@ -122,10 +122,10 @@ export function createEvents() {
 
 // Configuration options for the calendar
 export const configOptions = {
-	height: '900px',
-	scrollTime: '09:00:00',
-	slotMinTime: '05:00:00',
-	slotMaxTime: '22:00:00',
+	// height: '900px',
+	// scrollTime: '09:00:00',
+	// slotMinTime: '05:00:00',
+	// slotMaxTime: '22:00:00',
 	slotDuration: '00:15:00',
 	view: 'timeGridWeek',
 	nowIndicator: true,

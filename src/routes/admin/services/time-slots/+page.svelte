@@ -99,7 +99,13 @@
 
 			if (popover) {
 				popover.style.position = 'absolute';
-				popover.style.left = `${info.el.style.left}`;
+				popover.style.left = `0px`;
+				popover.style.top = `${info.el.offsetTop}px`;
+				popover.style.zIndex = '2';
+				popover.style.backgroundColor = 'black';
+				popover.style.padding = '24px';
+				popover.style.height = '240px';
+
 				// popover.style.top = `${info.el.style.top - info.el.style.height}`;
 			}
 
@@ -153,16 +159,17 @@
 
 	<div class="calendar-wrapper">
 		<Calendar bind:this={ec} {plugins} {options} />
+		{#if showEvent}
+			<div class="event-info">
+				<p>{eventDisplay.title}</p>
+				<p>{eventDisplay.start}</p>
+				<p>{eventDisplay.end}</p>
+				<button on:click={() => (showEvent = false)}>close</button>
+				<button>delete</button>
+			</div>
+		{/if}
 	</div>
 </div>
-
-{#if showEvent}
-	<div class="event-info">
-		<p>{eventDisplay.title}</p>
-		<p>{eventDisplay.start}</p>
-		<p>{eventDisplay.end}</p>
-	</div>
-{/if}
 
 <form action="?/add" method="POST" class="form" use:enhance>
 	<input type="hidden" name="events" value={JSON.stringify(allEvents)} />
