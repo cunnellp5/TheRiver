@@ -7,6 +7,7 @@
 	import Interaction from '@event-calendar/interaction';
 	import List from '@event-calendar/list';
 	import TimeGrid from '@event-calendar/time-grid';
+	import type { Info } from '$lib/types.js';
 	// eslint-disable-next-line import/no-unresolved
 	import { enhance } from '$app/forms';
 	import { configOptions, convertTimeSlots } from './calendarConfig';
@@ -19,7 +20,7 @@
 	let eventEnd: string = '';
 	let eventTitle: string = 'NEW';
 	let allEvents = [];
-	let eventInfo;
+	let eventInfo: { startStr: string; endStr: string };
 	let showModal = false;
 	let showEvent = false;
 	let eventDisplay;
@@ -66,7 +67,7 @@
 	const options = {
 		...configOptions,
 		events: convertTimeSlots(timeSlots) || [],
-		select(info) {
+		select(info: Info) {
 			eventStart = info.startStr;
 			eventEnd = info.endStr;
 			eventInfo = { ...info };
@@ -74,19 +75,19 @@
 			toggleModal();
 			// modal creates title, description, and submit button
 		},
-		eventDragStart(info) {
-			console.log('eventDragStart');
+		eventDragStart(info: Info) {
+			console.log(info, 'eventDragStart');
 		},
-		eventDragStop(info) {
-			console.log('drageventDragStopStop');
+		eventDragStop(info: Info) {
+			console.log(info, 'drageventDragStopStop');
 		},
-		eventDrop(info) {
-			console.log('eventDrop');
+		eventDrop(info: Info) {
+			console.log(info, 'eventDrop');
 		},
-		dateClick(info) {
+		dateClick(info: Info) {
 			console.log(info, 'dateClick');
 		},
-		eventClick(info) {
+		eventClick(info: Info) {
 			console.log(info, 'eventClick');
 			// show a hidden element and populate it with this info
 			eventDisplay = { ...info.event };
