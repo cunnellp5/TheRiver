@@ -6,8 +6,8 @@
 	import DayGrid from '@event-calendar/day-grid';
 	import Interaction from '@event-calendar/interaction';
 	import List from '@event-calendar/list';
-	// eslint-disable-next-line import/no-unresolved
 	import TimeGrid from '@event-calendar/time-grid';
+	// eslint-disable-next-line import/no-unresolved
 	import { enhance } from '$app/forms';
 	import { configOptions, convertTimeSlots } from './calendarConfig';
 
@@ -95,17 +95,16 @@
 			// 	left: info.jsEvent.clientX
 			// };
 
-			const popover = document.querySelector('.event-info');
+			const popover = document.querySelector('.event-info') as HTMLElement;
 
 			if (popover) {
-				popover.style.position = 'absolute';
-				popover.style.left = `0px`;
-				popover.style.top = `${info.el.offsetTop}px`;
-				popover.style.zIndex = '2';
-				popover.style.backgroundColor = 'black';
-				popover.style.padding = '24px';
-				popover.style.height = '240px';
+				const pageHeight = document.body.scrollHeight;
+				const calendarHeight = info.el.parentElement.offsetParent.clientHeight;
+				const eventHeight = info.el.clientHeight;
+				const popoverHeight = popover.clientHeight;
 
+				popover.style.left = `0px`;
+				popover.style.top = `${pageHeight - calendarHeight - eventHeight - popoverHeight * 3 + info.el.offsetTop}px`;
 				// popover.style.top = `${info.el.style.top - info.el.style.height}`;
 			}
 
@@ -164,7 +163,10 @@
 				<p>{eventDisplay.title}</p>
 				<p>{eventDisplay.start}</p>
 				<p>{eventDisplay.end}</p>
-				<button on:click={() => (showEvent = false)}>close</button>
+				<button
+					on:click={() => {
+						showEvent = false;
+					}}>close</button>
 				<button>delete</button>
 			</div>
 		{/if}
@@ -200,13 +202,13 @@
 		}
 	}
 
-	/* .event-info {
+	.event-info {
 		position: absolute;
-		top: 0;
-		left: 0;
-		border-radius: var(--size-1);
-		background: var(--bg-1);
-		padding: var(--size-1);
-		color: var(--text-1);
-	} */
+		z-index: var(--layer-2);
+		box-shadow: var(--shadow-3);
+		background-color: var(--stone-11);
+		padding: 24px;
+		height: 240px;
+		color: var(--stone-6);
+	}
 </style>
