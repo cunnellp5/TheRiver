@@ -12,6 +12,7 @@ declare global {
 		// interface PageState {}
 		// interface Platform {}
 
+		// CALENDAR TYPES
 		interface Info {
 			start: Date;
 			end: Date;
@@ -21,8 +22,9 @@ declare global {
 			jsEvent: Event;
 			view: View;
 			resource: Resource;
+			event: Event;
+			el: HTMLElement;
 		}
-
 		interface View {
 			type:
 				| 'dayGridMonth'
@@ -39,12 +41,31 @@ declare global {
 			activeStart: Date;
 			activeEnd: Date;
 		}
-
 		interface Resource {
 			id: string;
 			title: string;
 			eventBackgroundColor: string;
 			eventTextColor: string;
+		}
+		interface Event {
+			id: string;
+			resourceIds: string[]; // array of resource IDs
+			allDay: boolean;
+			start: Date;
+			end: Date;
+			title: string | Content;
+			editable: boolean | undefined;
+			startEditable: boolean | undefined;
+			durationEditable: boolean | undefined;
+			display: 'auto' | 'background' | 'ghost' | 'preview' | 'pointer';
+			backgroundColor: string;
+			textColor: string;
+			extendedProps: object;
+		}
+
+		interface Content {
+			html: string;
+			domNodes: HTMLElement[];
 		}
 	}
 }
