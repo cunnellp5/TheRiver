@@ -111,8 +111,6 @@
 				// popover.style.top = `${info.el.style.top - info.el.style.height}`;
 			}
 
-			console.log(popover, 'pooop');
-
 			showEvent = true;
 			// here we should have an X that deletes the record
 		}
