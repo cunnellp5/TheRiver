@@ -2,7 +2,7 @@ import db from '$lib/server/database';
 import { error, type Actions } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
-interface TimeSlot {
+export interface TimeSlot {
 	startTime: Date;
 	endTime: Date;
 	available: boolean;
