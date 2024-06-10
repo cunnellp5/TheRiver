@@ -7,23 +7,25 @@
 	import Interaction from '@event-calendar/interaction';
 	import List from '@event-calendar/list';
 	import TimeGrid from '@event-calendar/time-grid';
-	import type { Info } from '$lib/types.js';
+	import type { Info, Event } from '$lib/types.js';
 	// eslint-disable-next-line import/no-unresolved
 	import { enhance } from '$app/forms';
 	import { configOptions, convertTimeSlots } from './calendarConfig';
+	// import type { TimeSlot } from '@prisma/client';
+	import type { TimeSlot } from './+page.server.ts';
 
 	export let data;
 
-	const { timeSlots, blackoutDays } = data;
+	const { timeSlots: TimeSlot } = data;
 
 	let eventStart: string = '';
 	let eventEnd: string = '';
 	let eventTitle: string = 'NEW';
-	let allEvents = [];
+	let allEvents: Event[] = [];
 	let eventInfo: { startStr: string; endStr: string };
 	let showModal = false;
 	let showEvent = false;
-	let eventDisplay;
+	let eventDisplay: Event;
 	let ec: Calendar;
 
 	const reset = () => {
@@ -100,7 +102,7 @@
 
 			if (popover) {
 				const pageHeight = document.body.scrollHeight;
-				const calendarHeight = info.el.parentElement.offsetParent.clientHeight;
+				const calendarHeight = info.el.parentElement?.offsetParent?.clientHeight || 0;
 				const eventHeight = info.el.clientHeight;
 				const popoverHeight = popover.clientHeight;
 
