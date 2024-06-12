@@ -11,12 +11,10 @@
 	// eslint-disable-next-line import/no-unresolved
 	import { enhance } from '$app/forms';
 	import { configOptions, convertTimeSlots } from './calendarConfig';
-	// import type { TimeSlot } from '@prisma/client';
-	import type { TimeSlot } from './+page.server.ts';
 
 	export let data;
 
-	const { timeSlots: TimeSlot } = data;
+	const { timeSlots } = data;
 
 	let eventStart: string = '';
 	let eventEnd: string = '';

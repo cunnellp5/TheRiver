@@ -31,8 +31,6 @@ export const actions: Actions = {
 		const form = await request.formData();
 		const events = JSON.parse(form.get('events'));
 
-		console.log(events, 'where is the new keyword');
-
 		const timeSlots: TimeSlot[] = [];
 
 		events.forEach((event) => {
