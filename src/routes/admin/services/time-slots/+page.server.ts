@@ -31,21 +31,25 @@ export const actions: Actions = {
 		const form = await request.formData();
 		const events = JSON.parse(form.get('events'));
 
+		console.log(events, 'where is the new keyword');
+
 		const timeSlots: TimeSlot[] = [];
 
 		events.forEach((event) => {
 			const start = new Date(event.start);
 			const end = new Date(event.end);
 
-			while (start < end) {
-				const timeSlot = {
-					startTime: new Date(start),
-					endTime: new Date(start.getTime() + 15 * 60000),
-					available: true,
-					day: new Date(new Date(event.start).setHours(0, 0, 0, 0)).toISOString()
-				};
-				timeSlots.push(timeSlot);
-				start.setMinutes(start.getMinutes() + 15);
+			if (event.title === 'NEW') {
+				while (start < end) {
+					const timeSlot = {
+						startTime: new Date(start),
+						endTime: new Date(start.getTime() + 15 * 60000),
+						available: true,
+						day: new Date(new Date(event.start).setHours(0, 0, 0, 0)).toISOString()
+					};
+					timeSlots.push(timeSlot);
+					start.setMinutes(start.getMinutes() + 15);
+				}
 			}
 		});
 
