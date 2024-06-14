@@ -2,7 +2,7 @@ import db from '$lib/server/database';
 import { error, type Actions } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
-interface TimeSlot {
+export interface TimeSlot {
 	startTime: Date;
 	endTime: Date;
 	available: boolean;
@@ -37,15 +37,17 @@ export const actions: Actions = {
 			const start = new Date(event.start);
 			const end = new Date(event.end);
 
-			while (start < end) {
-				const timeSlot = {
-					startTime: new Date(start),
-					endTime: new Date(start.getTime() + 15 * 60000),
-					available: true,
-					day: new Date(new Date(event.start).setHours(0, 0, 0, 0)).toISOString()
-				};
-				timeSlots.push(timeSlot);
-				start.setMinutes(start.getMinutes() + 15);
+			if (event.title === 'NEW') {
+				while (start < end) {
+					const timeSlot = {
+						startTime: new Date(start),
+						endTime: new Date(start.getTime() + 15 * 60000),
+						available: true,
+						day: new Date(new Date(event.start).setHours(0, 0, 0, 0)).toISOString()
+					};
+					timeSlots.push(timeSlot);
+					start.setMinutes(start.getMinutes() + 15);
+				}
 			}
 		});
 

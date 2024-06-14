@@ -6,30 +6,30 @@
 	import DayGrid from '@event-calendar/day-grid';
 	import Interaction from '@event-calendar/interaction';
 	import List from '@event-calendar/list';
+	import TimeGrid from '@event-calendar/time-grid';
+	import type { Info, Event } from '$lib/types.js';
 	// eslint-disable-next-line import/no-unresolved
 	import { enhance } from '$app/forms';
-	import TimeGrid from '@event-calendar/time-grid';
-	import { configOptions } from './calendarConfig';
+	import { configOptions, convertTimeSlots } from './calendarConfig';
 
 	export let data;
 
-	const { timeSlots, blackoutDays } = data;
+	const { timeSlots } = data;
 
 	let eventStart: string = '';
 	let eventEnd: string = '';
-	let eventTitle: string = 'Available';
-
-	let allEvents = [];
-
-	let eventInfo;
-
+	let eventTitle: string = 'NEW';
+	let allEvents: Event[] = [];
+	let eventInfo: { startStr: string; endStr: string };
 	let showModal = false;
+	let showEvent = false;
+	let eventDisplay: Event;
 	let ec: Calendar;
 
 	const reset = () => {
 		eventStart = '';
 		eventEnd = '';
-		eventTitle = 'Available';
+		eventTitle = 'NEW';
 	};
 
 	const toggleModal = () => {
@@ -66,7 +66,8 @@
 
 	const options = {
 		...configOptions,
-		select(info) {
+		events: convertTimeSlots(timeSlots) || [],
+		select(info: Info) {
 			eventStart = info.startStr;
 			eventEnd = info.endStr;
 			eventInfo = { ...info };
@@ -74,24 +75,50 @@
 			toggleModal();
 			// modal creates title, description, and submit button
 		},
-		eventDragStart(info) {
-			console.log('eventDragStart');
+		eventDragStart(info: Info) {
+			console.log(info, 'eventDragStart');
 		},
-		eventDragStop(info) {
-			console.log('drageventDragStopStop');
+		eventDragStop(info: Info) {
+			console.log(info, 'drageventDragStopStop');
 		},
-		eventDrop(info) {
-			console.log('eventDrop');
+		eventDrop(info: Info) {
+			console.log(info, 'eventDrop');
 		},
-		dateClick(info) {
+		dateClick(info: Info) {
 			console.log(info, 'dateClick');
 		},
-		eventClick(info) {
+		eventClick(info: Info) {
 			console.log(info, 'eventClick');
+			// show a hidden element and populate it with this info
+			eventDisplay = { ...info.event };
+			// eventDisplay.style = {
+			// 	top: info.jsEvent.clientY,
+			// 	left: info.jsEvent.clientX
+			// };
+
+			const popover = document.querySelector('.event-info') as HTMLElement;
+
+			if (popover) {
+				const pageHeight = document.body.scrollHeight;
+				const calendarHeight = info.el.parentElement?.offsetParent?.clientHeight || 0;
+				const eventHeight = info.el.clientHeight;
+				const popoverHeight = popover.clientHeight;
+
+				popover.style.left = `0px`;
+				popover.style.top = `${pageHeight - calendarHeight - eventHeight - popoverHeight * 3 + info.el.offsetTop}px`;
+				// popover.style.top = `${info.el.style.top - info.el.style.height}`;
+			}
+
+			showEvent = true;
+			// here we should have an X that deletes the record
 		}
+		// eventContent(info) {
+		// return { html: '<p class="popover">some HTML</p>' };
+		// }
 	};
 </script>
 
+<!-- elements that are hidden/absolutely positioned -->
 <Modal bind:showModal on:close={handleClose} buttonText="Save">
 	<h2 slot="header">Schedule</h2>
 
@@ -116,6 +143,7 @@
 	</div>
 </Modal>
 
+<!-- Actual struture of the page -->
 <div class="container" class:ec-dark={$theme === 'dark'} class:ec-light={$theme === 'light'}>
 	<h3>Schedule</h3>
 
@@ -129,8 +157,21 @@
 
 	<div class="calendar-wrapper">
 		<Calendar bind:this={ec} {plugins} {options} />
+		{#if showEvent}
+			<div class="event-info">
+				<p>{eventDisplay.title}</p>
+				<p>{eventDisplay.start}</p>
+				<p>{eventDisplay.end}</p>
+				<button
+					on:click={() => {
+						showEvent = false;
+					}}>close</button>
+				<button>delete</button>
+			</div>
+		{/if}
 	</div>
 </div>
+
 <form action="?/add" method="POST" class="form" use:enhance>
 	<input type="hidden" name="events" value={JSON.stringify(allEvents)} />
 	<button type="submit">Save</button>
@@ -158,5 +199,15 @@
 		& label {
 			margin-bottom: var(--size-1);
 		}
+	}
+
+	.event-info {
+		position: absolute;
+		z-index: var(--layer-2);
+		box-shadow: var(--shadow-3);
+		background-color: var(--stone-11);
+		padding: 24px;
+		height: 240px;
+		color: var(--stone-6);
 	}
 </style>

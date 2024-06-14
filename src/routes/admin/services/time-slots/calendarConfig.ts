@@ -1,3 +1,38 @@
+interface TimeSlot {
+	startTime: Date;
+	endTime: Date;
+	available: boolean;
+	day: string;
+}
+
+export function convertTimeSlots(timeSlots: TimeSlot[]) {
+	const events = [];
+
+	timeSlots.forEach((timeSlot) => {
+		const start = new Date(timeSlot.startTime);
+		const end = new Date(timeSlot.endTime);
+		const day = new Date(timeSlot.day);
+
+		if (Number.isNaN(day.getTime())) {
+			console.error(`Invalid date string: ${timeSlot.day}`);
+			return;
+		}
+
+		events.push({
+			start: `${day.toISOString().slice(0, 10)}T${start.toTimeString().slice(0, 8)}`,
+			end: `${day.toISOString().slice(0, 10)}T${end.toTimeString().slice(0, 8)}`,
+			title: 'Available', // TODO use title from admin form,
+			selectable: true,
+			editable: false,
+			durationEditable: false,
+			startEditable: false,
+			color: 'rgb(18, 184, 134)'
+		});
+	});
+
+	return events;
+}
+
 // Temporary events for calendar display
 function padNumbers(num: number) {
 	const norm = Math.floor(Math.abs(num));
@@ -87,13 +122,13 @@ export function createEvents() {
 
 // Configuration options for the calendar
 export const configOptions = {
-	height: '900px',
-	scrollTime: '09:00:00',
-	slotMinTime: '05:00:00',
-	slotMaxTime: '22:00:00',
+	// height: '900px',
+	// scrollTime: '09:00:00',
+	// slotMinTime: '05:00:00',
+	// slotMaxTime: '22:00:00',
+	slotDuration: '00:15:00',
 	view: 'timeGridWeek',
 	nowIndicator: true,
-	events: [],
 	slotLabelFormat: {
 		hour: 'numeric',
 		minute: '2-digit',
