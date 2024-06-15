@@ -7,6 +7,7 @@
 	import TheRiver from './components/TheRiver.svelte';
 
 	export let data;
+
 	const { videoURL } = data;
 
 	let isPlaying = true;
@@ -27,6 +28,10 @@
 
 	onMount(() => {
 		visible = true;
+
+		window.addEventListener('scroll', () => {
+			videoElement.style.objectPosition = `0px ${window.pageYOffset * 0.5}px`;
+		});
 	});
 </script>
 
