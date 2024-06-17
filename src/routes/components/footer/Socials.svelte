@@ -25,10 +25,10 @@
 <style>
 	ul {
 		display: flex;
-		flex-wrap: wrap;
+		/* flex-wrap: wrap; */
 		justify-content: space-between;
 		padding-inline: 0;
-		width: 100%;
+		/* width: 100%; */
 		list-style: none;
 	}
 
