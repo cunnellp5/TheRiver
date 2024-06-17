@@ -2,10 +2,10 @@
 	import { slide, fly, fade } from 'svelte/transition';
 	import { onMount } from 'svelte';
 	import { quintOut } from 'svelte/easing';
+	import BlogCard from '$lib/components/ui/BlogCard.svelte';
 	// eslint-disable-next-line import/no-unresolved
 	import { page } from '$app/stores';
 	import type { PageData } from './$types';
-	import BlogCard from './components/BlogCard.svelte';
 	// import Page from './+page.svelte';
 
 	export let data: PageData;
