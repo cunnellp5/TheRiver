@@ -36,10 +36,10 @@
 					<Badge {tag} />
 				{/each}
 			</div>
-			<a class="blogLink" href="/posts/{slug}">
-				<SquareArrowOurUpRight size="20" />
-			</a>
 		</aside>
+		<a class="blogLink" href="/posts/{slug}">
+			<SquareArrowOurUpRight size="20" />
+		</a>
 	</div>
 </div>
 
@@ -66,7 +66,6 @@
 	aside {
 		display: flex;
 		flex-direction: row;
-		justify-content: space-between;
 		align-items: center;
 	}
 	a:hover {
