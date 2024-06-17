@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
 	import Plus from 'lucide-svelte/icons/plus';
 	import type { Post } from '@prisma/client';
 	import Check from 'lucide-svelte/icons/check';
@@ -120,4 +120,4 @@
 		/* background: var(--yellow-9); */
 		width: max-content;
 	}
-</style>
+</style> -->
