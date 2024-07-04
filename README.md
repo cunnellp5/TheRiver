@@ -39,5 +39,30 @@
   - Admin can CRUD posts
   - Admin can CRUD users
 
+## Technology
+
+#### Current tech:
+
+- sveltekit
+  - prettier
+  - eslint
+  - typescript
+- lucide icons
+- open-props css
+
+- prisma
+- cloudinary
+- lucia
+
+#### Future tech:
+
+- youtube api
+- soundcloud api
+- spotify api
+- stripe
+
+## Misc
+
 https://www.n4.studio/
+
 Favoritpro,sans-serif
