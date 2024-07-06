@@ -23,12 +23,33 @@
 	<aside>
 		<nav class="sidenav">
 			<div class="dropLabel">Main</div>
-			<a class:current={$page.url.pathname === '/admin'} href="/admin/"> Home </a>
+			<!-- <a class:current={$page.url.pathname === '/admin'} href="/admin/"> Home </a> -->
 			<a class:current={$page.url.pathname === '/admin/users'} href="/admin/users">Users</a>
+
+			<hr />
+
+			<div class="dropLabel">Home page</div>
+			<a
+				class:current={$page.url.pathname === '/admin/homepage/music'}
+				href="/admin/homepage/music">
+				Music
+			</a>
+			<a
+				class:current={$page.url.pathname === '/admin/homepage/videos'}
+				href="/admin/homepage/videos">
+				Videos
+			</a>
+			<a
+				class:current={$page.url.pathname === '/admin/homepage/articles'}
+				href="/admin/homepage/articles">
+				Articles
+			</a>
+
 			<hr />
 
 			<div class="dropLabel">Blog</div>
 			<a class:current={$page.url.pathname.includes('/admin/posts')} href="/admin/posts"> Posts </a>
+
 			<hr />
 
 			<div class="dropLabel">Services</div>
