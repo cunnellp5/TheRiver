@@ -1,5 +1,7 @@
 <h2>Description</h2>
 
+<!-- this is /admin -->
+
 <p>This is how you can change the contents of your website.</p>
 
 <style>
