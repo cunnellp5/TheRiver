@@ -160,6 +160,15 @@ model BlackoutDay {
   updatedAt DateTime @updatedAt
 }
 
+model Article {
+  id             Int    @id @default(autoincrement())
+  articleImgUrl  String
+  contentMessage String
+  contentAuthor  String
+  linkUrl        String
+  linkTitle      String
+}
+
 // TODO add newsletter model: email, name, createdAt, updatedAt
 // the isSubscribed bool on the user table for registered users will determine if they have a newsletter row
 // unusbscribed users will only have a record in the newsletter table
