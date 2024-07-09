@@ -2,7 +2,7 @@
 	import { fade } from 'svelte/transition';
 	// import LogoWhite from '$lib/components/svgs/logos/LogoWhite.svelte';
 	import { onMount } from 'svelte';
-	import BlogMentions from './components/BlogMentions.svelte';
+	import Card from '$lib/components/ui/Card.svelte';
 	import TestVideo from './components/TestVideo.svelte';
 	import TheRiver from './components/TheRiver.svelte';
 
@@ -61,7 +61,7 @@
 
 	<TestVideo />
 
-	<BlogMentions />
+	<Card />
 </main>
 
 <style>
