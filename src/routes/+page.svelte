@@ -36,7 +36,6 @@
 </script>
 
 <title>The River</title>
-
 <main>
 	<div id="video-background">
 		{#if visible}
@@ -66,9 +65,16 @@
 </main>
 
 <style>
+	video {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
 	#video-background {
 		position: absolute;
-
 		right: 0;
 		bottom: 0;
 		z-index: -100;
@@ -96,14 +102,6 @@
 		height: 100vh;
 	}
 
-	video {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-	}
 	/* 
 	.zoom {
 		animation: zoom 20s;
