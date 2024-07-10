@@ -8,7 +8,7 @@
 
 	export let data;
 
-	const { videoURL } = data;
+	const { videoURL, articles } = data;
 
 	let isPlaying = true;
 
@@ -61,7 +61,16 @@
 
 	<TestVideo />
 
-	<Card />
+	<section>
+		{#each articles as article}
+			<Card
+				articleImage={article.articleImgUrl}
+				articleTitle={article.linkTitle}
+				message={article.contentMessage}
+				link={article.linkUrl}>
+			</Card>
+		{/each}
+	</section>
 </main>
 
 <style>
@@ -73,6 +82,14 @@
 		height: 100%;
 		object-fit: cover;
 	}
+
+	section {
+		display: flex;
+		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+		flex-flow: row wrap;
+		/* gap: var(--size-6); */
+	}
+
 	#video-background {
 		position: absolute;
 		right: 0;
