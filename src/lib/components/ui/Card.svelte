@@ -1,4 +1,7 @@
 <script lang="ts">
+	import SkeletonText from '$lib/components/ui/skeletons/SkeletonText.svelte';
+	import SkeletonImg from '$lib/components/ui/skeletons/SkeletonImg.svelte';
+
 	export let articleImage;
 	export let articleTitle;
 	export let message;
@@ -8,7 +11,11 @@
 <div class="card">
 	<figure>
 		<figure>
-			<img class="skeleton" src={articleImage} alt={articleTitle} />
+			{#if articleImage}
+				<img class="skeleton" src={articleImage} alt={articleTitle} />
+			{:else}
+				<SkeletonImg />
+			{/if}
 		</figure>
 	</figure>
 	<div class="contentWrapper">
@@ -16,21 +23,21 @@
 			{#if articleTitle}
 				{articleTitle}
 			{:else}
-				<div class="skeleton skeleton-text-title"></div>
+				<SkeletonText title={true} />
 			{/if}
 		</h5>
 		<div data-message>
 			{#if message}
 				<p>{message}</p>
 			{:else}
-				<div class="skeleton skeleton-text"></div>
-				<div class="skeleton skeleton-text"></div>
+				<SkeletonText />
+				<SkeletonText />
 			{/if}
 		</div>
 		{#if link}
 			<a data-link href={link}>{articleTitle}</a>
 		{:else}
-			<div class="skeleton skeleton-text-short"></div>
+			<SkeletonText short={true} />
 		{/if}
 	</div>
 </div>
@@ -72,8 +79,6 @@
 		transition-delay: var(--transition-delay-1);
 		border-radius: 0;
 		aspect-ratio: var(--ratio-square);
-		min-width: 200px;
-		min-height: 200px;
 		object-fit: cover;
 	}
 
@@ -86,39 +91,5 @@
 		margin: 0;
 		padding: 0;
 		overflow: hidden;
-	}
-
-	/* SKELETONS */
-	.skeleton {
-		opacity: 0.7;
-		animation: skeleton-loading 1s linear infinite alternate;
-	}
-	.skeleton-text {
-		animation: skeleton-loading 1s linear infinite alternate;
-		margin-block: var(--size-2);
-		border-radius: var(--radius-1);
-		width: 100%;
-		height: var(--size-3);
-	}
-	.skeleton-text-short {
-		margin-top: var(--size-3);
-		border-radius: var(--radius-1);
-		width: 20%;
-		height: var(--size-2);
-	}
-	.skeleton-text-title {
-		margin-bottom: var(--size-3);
-		border-radius: var(--radius-1);
-		width: 100%;
-		height: var(--size-5);
-	}
-
-	@keyframes skeleton-loading {
-		0% {
-			background-color: hsl(200, 20%, 40%);
-		}
-		100% {
-			background-color: hsl(200, 20%, 90%);
-		}
 	}
 </style>
