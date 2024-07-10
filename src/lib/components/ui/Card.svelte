@@ -8,13 +8,30 @@
 <div class="card">
 	<figure>
 		<figure>
-			<img src={articleImage} alt={articleTitle} />
+			<img class="skeleton" src={articleImage} alt={articleTitle} />
 		</figure>
 	</figure>
 	<div class="contentWrapper">
-		<h5>{articleTitle}</h5>
-		<p>{message}</p>
-		<a href={link}>{articleTitle}</a>
+		<h5 class="title" data-title>
+			{#if articleTitle}
+				{articleTitle}
+			{:else}
+				<div class="skeleton skeleton-text-title"></div>
+			{/if}
+		</h5>
+		<div data-message>
+			{#if message}
+				<p>{message}</p>
+			{:else}
+				<div class="skeleton skeleton-text"></div>
+				<div class="skeleton skeleton-text"></div>
+			{/if}
+		</div>
+		{#if link}
+			<a data-link href={link}>{articleTitle}</a>
+		{:else}
+			<div class="skeleton skeleton-text-short"></div>
+		{/if}
 	</div>
 </div>
 
@@ -31,10 +48,6 @@
 		padding: var(--size-4);
 	}
 
-	/* .card > h5 {
-		line-height: var(--font-lineheight-0);
-	} */
-
 	a {
 		color: var(--link);
 		font-size: var(--font-size-0);
@@ -47,6 +60,10 @@
 		font-size: var(--font-size-1);
 	}
 
+	figure {
+		border-radius: var(--radius-2);
+	}
+
 	img {
 		-webkit-transform: scale(1);
 		transform: scale(1);
@@ -55,6 +72,8 @@
 		transition-delay: var(--transition-delay-1);
 		border-radius: 0;
 		aspect-ratio: var(--ratio-square);
+		min-width: 200px;
+		min-height: 200px;
 		object-fit: cover;
 	}
 
@@ -67,5 +86,39 @@
 		margin: 0;
 		padding: 0;
 		overflow: hidden;
+	}
+
+	/* SKELETONS */
+	.skeleton {
+		opacity: 0.7;
+		animation: skeleton-loading 1s linear infinite alternate;
+	}
+	.skeleton-text {
+		animation: skeleton-loading 1s linear infinite alternate;
+		margin-block: var(--size-2);
+		border-radius: var(--radius-1);
+		width: 100%;
+		height: var(--size-3);
+	}
+	.skeleton-text-short {
+		margin-top: var(--size-3);
+		border-radius: var(--radius-1);
+		width: 20%;
+		height: var(--size-2);
+	}
+	.skeleton-text-title {
+		margin-bottom: var(--size-3);
+		border-radius: var(--radius-1);
+		width: 100%;
+		height: var(--size-5);
+	}
+
+	@keyframes skeleton-loading {
+		0% {
+			background-color: hsl(200, 20%, 40%);
+		}
+		100% {
+			background-color: hsl(200, 20%, 90%);
+		}
 	}
 </style>
