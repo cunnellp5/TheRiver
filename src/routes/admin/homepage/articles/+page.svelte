@@ -8,6 +8,8 @@
 
 <pre>this page CRUDs homepage articles</pre>
 
+<button>Add</button>
+
 <section>
 	{#each articles as article}
 		<Card
@@ -15,6 +17,10 @@
 			articleTitle={article.linkTitle}
 			message={article.contentMessage}
 			link={article.linkUrl}>
+			<div slot="buttons">
+				<button>edit</button>
+				<button>delete</button>
+			</div>
 		</Card>
 	{/each}
 </section>
@@ -24,6 +30,5 @@
 		display: flex;
 		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 		flex-flow: row wrap;
-		gap: var(--size-6);
 	}
 </style>
