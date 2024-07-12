@@ -40,6 +40,9 @@
 			<SkeletonText short={true} />
 		{/if}
 	</div>
+	<div>
+		<slot class="buttons" name="buttons"></slot>
+	</div>
 </div>
 
 <style>
@@ -91,5 +94,10 @@
 		margin: 0;
 		padding: 0;
 		overflow: hidden;
+	}
+
+	.buttons {
+		display: flex;
+		flex-direction: column;
 	}
 </style>
