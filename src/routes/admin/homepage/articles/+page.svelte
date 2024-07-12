@@ -8,7 +8,9 @@
 
 <pre>this page CRUDs homepage articles</pre>
 
-<button>Add</button>
+<a href="/admin/homepage/articles/add">
+	<button>Add</button>
+</a>
 
 <section>
 	{#each articles as article}
