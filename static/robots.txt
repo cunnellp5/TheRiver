@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+
+TODO: adding dummy sitemap here, fix the url
+
+Sitemap: https://www.yourwebsite.com/sitemap.xml
