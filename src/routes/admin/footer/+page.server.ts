@@ -43,6 +43,10 @@ export const actions: Actions = {
 		};
 	},
 	deleteLink: async (event) => {
+		if (!event.locals.session) {
+			redirect(302, '/login');
+		}
+
 		const formData = await event.request.formData();
 		const linkId = Number(formData.get('linkId'));
 
