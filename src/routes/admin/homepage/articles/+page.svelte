@@ -8,7 +8,7 @@
 
 <pre>this page CRUDs homepage articles</pre>
 
-<a href="/admin/homepage/articles/add">
+<a href="/admin/homepage/articles/create">
 	<button>Add</button>
 </a>
 
@@ -20,7 +20,9 @@
 			message={article.contentMessage}
 			link={article.linkUrl}>
 			<div slot="buttons">
-				<button>edit</button>
+				<a href="/admin/homepage/articles/update">
+					<button>edit</button>
+				</a>
 				<button>delete</button>
 			</div>
 		</Card>
