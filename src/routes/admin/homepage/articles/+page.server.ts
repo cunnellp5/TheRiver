@@ -16,33 +16,27 @@ export const load: PageServerLoad = async (event) => {
 };
 
 export const actions: Actions = {
-	createArticle: async (event) => {
-		console.log(event);
-		// if (!event.locals.session) {
-		// 	redirect(302, '/login');
-		// }
+	deleteArticle: async (event) => {
+		if (!event.locals.session) {
+			redirect(302, '/login');
+		}
+
 		const formData = await event.request.formData();
-		console.log(formData, 'formdatum');
-		// const title = formData.get('title');
-		// const url = formData.get('url');
-		// // TODO figure out how to upload icons or svgs?
+		const articleId = Number(formData.get('articleId'));
 
-		// if (typeof title !== 'string' || title.length < 3 || title.length > 255) {
-		// 	return fail(400, {
-		// 		message: 'Invalid title'
-		// 	});
-		// }
+		// TODO add delete message in UI
+		if (!articleId) {
+			return fail(400, {
+				message: 'Invalid article id'
+			});
+		}
 
-		// const link = await db.article.create({
-		// 	data: {
-		// 		title,
-		// 		url: url?.toString() || ''
-		// 	}
-		// });
+		await db.article.delete({
+			where: {
+				id: articleId
+			}
+		});
 
-		// return {
-		// 	message: `Link to ${link.title} created`,
-		// 	socialLink: link
-		// };
+		return { message: 'Article deleted' };
 	}
 };
