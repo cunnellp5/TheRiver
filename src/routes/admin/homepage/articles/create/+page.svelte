@@ -16,20 +16,20 @@
 
 <section>
 	<form method="POST" use:enhance>
-		<label for="articleImgUrl">Article Image URL:</label>
-		<input id="articleImgUrl" type="text" bind:value={article.articleImgUrl} />
+		<label for="articleImgUrl"> Article Image URL: </label>
+		<input id="articleImgUrl" name="articleImgUrl" type="text" bind:value={article.articleImgUrl} />
 
 		<label for="contentMessage">Content Message:</label>
-		<textarea id="contentMessage" bind:value={article.contentMessage}></textarea>
+		<textarea id="contentMessage" name="contentMessage" bind:value={article.contentMessage} />
 
 		<label for="contentAuthor">Content Author:</label>
-		<input id="contentAuthor" type="text" bind:value={article.contentAuthor} />
+		<input id="contentAuthor" name="contentAuthor" type="text" bind:value={article.contentAuthor} />
 
 		<label for="linkUrl">Link URL:</label>
-		<input id="linkUrl" type="text" bind:value={article.linkUrl} />
+		<input id="linkUrl" name="linkUrl" type="text" bind:value={article.linkUrl} />
 
 		<label for="linkTitle">Link Title:</label>
-		<input id="linkTitle" type="text" bind:value={article.linkTitle} />
+		<input id="linkTitle" name="linkTitle" type="text" bind:value={article.linkTitle} />
 
 		<button class="primary" type="submit">Submit Article</button>
 	</form>
