@@ -16,13 +16,14 @@
 
 <section>
 	{#each articles as article}
+		<div>{article.id}</div>
 		<Card
 			articleImage={article.articleImgUrl}
 			articleTitle={article.linkTitle}
 			message={article.contentMessage}
 			link={article.linkUrl}>
 			<div slot="buttons">
-				<a href="/admin/homepage/articles/update">
+				<a href={`/admin/homepage/articles/${article.id}`}>
 					<button>edit</button>
 				</a>
 				<!-- TODO make card data dynamic for refreshing, add notification message or toast -->
