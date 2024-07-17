@@ -23,7 +23,7 @@
 			message={article.contentMessage}
 			link={article.linkUrl}>
 			<div slot="buttons">
-				<a href={`/admin/homepage/articles/${article.id}`}>
+				<a href={`/admin/homepage/articles/${article.id}/edit`}>
 					<button>edit</button>
 				</a>
 				<!-- TODO make card data dynamic for refreshing, add notification message or toast -->
