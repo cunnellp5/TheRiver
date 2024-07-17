@@ -11,17 +11,11 @@ export const actions: Actions = {
 		const formData = await event.request.formData();
 
 		const article = {
-			articleImgUrl: formData.get('articleImgUrl')
-				? JSON.stringify(formData.get('articleImgUrl'))
-				: '',
-			contentMessage: formData.get('contentMessage')
-				? JSON.stringify(formData.get('contentMessage'))
-				: '',
-			contentAuthor: formData.get('contentAuthor')
-				? JSON.stringify(formData.get('contentAuthor'))
-				: '',
-			linkUrl: formData.get('linkUrl') ? JSON.stringify(formData.get('linkUrl')) : '',
-			linkTitle: formData.get('linkTitle') ? JSON.stringify(formData.get('linkTitle')) : ''
+			articleImgUrl: (formData.get('articleImgUrl') as string) || '',
+			contentMessage: (formData.get('contentMessage') as string) || '',
+			contentAuthor: (formData.get('contentAuthor') as string) || '',
+			linkUrl: (formData.get('linkUrl') as string) || '',
+			linkTitle: (formData.get('linkTitle') as string) || ''
 		};
 
 		console.log(article, 'ARTICLE');
