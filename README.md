@@ -1,17 +1,10 @@
 # The River
 
-> A monorepo for an artist
+> A portfolio website for an artist, Alexis. This website will have many apps rolled into one. E-commerce, blog, booking services, and an artist showcase
 
-<br>
+## Sections:
 
-🎤 `TheRiver` - Sings<br>
-💅 `TheRiver` - Beauty<br>
-👗 `TheRiver` - Creates<br>
-🗣️ `TheRiver` - Speaks
-
-## Features:
-
-### Music
+### 1. Music
 
 - View recent video uploads to youtube
 - View new up and coming music
@@ -19,50 +12,71 @@
   - View Soundcloud
   - View Apple music
 
-### Beauty booking service
+### 2. Beauty booking service
 
 - Users can sign up for an offered service [GUEST || CREATE ACCOUNT]
 - Users can view a scheduled appointment on a calendar
 - Users should get email notifications/reminders
 
-### Merch (ecommerce)
+### 3. Merch
 
 - Users can buy merchandise
 
-### Blog
+### 4. Blog
 
 - Users can view blog posts written by TheRiver
+- Users can mark a post as read
+- Users can search blogs (using any keyword)
+- Blogs can be searched with tags
 
-### CMS
+### 5. CMS
 
-- The entire site can be managed by a custom UI
-  - Admin can CRUD posts
-  - Admin can CRUD users
+- CRUD all contents of website
+- Notes on users who use services
+
+### 6. Users
+
+- Users can see history of purchases
+- Users can see history of services
+- Users can sign up for newsletter
+- Dont have to sign in and can remain a 'guest'
+
+---
+
+---
+
+---
 
 ## Technology
 
-#### Current tech:
+#### Language
 
-- sveltekit
-  - prettier
-  - eslint
-  - typescript
+- JavaScript
+- TypeScript
+
+#### Meta Framework
+
+- Sveltekit
+- Prisma ORM
+
+#### DB
+
+- PostgreSQL
+
+#### Tools
+
+- prettier
+- eslint
+- typescript
 - lucide icons
 - open-props css
+- cloudinary (for media)
+- lucia (auth)
+- Quill (blog WYSIWYG)
 
-- prisma
-- cloudinary
-- lucia
+#### APIs:
 
-#### Future tech:
-
-- youtube api
-- soundcloud api
-- spotify api
+- youtube
+- soundcloud
+- spotify
 - stripe
-
-## Misc
-
-https://www.n4.studio/
-
-Favoritpro,sans-serif

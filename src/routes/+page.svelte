@@ -2,13 +2,13 @@
 	import { fade } from 'svelte/transition';
 	// import LogoWhite from '$lib/components/svgs/logos/LogoWhite.svelte';
 	import { onMount } from 'svelte';
-	import BlogMentions from './components/BlogMentions.svelte';
+	import Card from '$lib/components/ui/Card.svelte';
 	import TestVideo from './components/TestVideo.svelte';
 	import TheRiver from './components/TheRiver.svelte';
 
 	export let data;
 
-	const { videoURL } = data;
+	const { videoURL, articles } = data;
 
 	let isPlaying = true;
 
@@ -36,7 +36,6 @@
 </script>
 
 <title>The River</title>
-
 <main>
 	<div id="video-background">
 		{#if visible}
@@ -62,13 +61,37 @@
 
 	<TestVideo />
 
-	<BlogMentions />
+	<section>
+		{#each articles as article}
+			<Card
+				articleImage={article.articleImgUrl}
+				articleTitle={article.linkTitle}
+				message={article.contentMessage}
+				link={article.linkUrl}>
+			</Card>
+		{/each}
+	</section>
 </main>
 
 <style>
+	video {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	section {
+		display: flex;
+		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+		flex-flow: row wrap;
+		/* gap: var(--size-6); */
+	}
+
 	#video-background {
 		position: absolute;
-
 		right: 0;
 		bottom: 0;
 		z-index: -100;
@@ -96,14 +119,6 @@
 		height: 100vh;
 	}
 
-	video {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-	}
 	/* 
 	.zoom {
 		animation: zoom 20s;

@@ -29,17 +29,13 @@ const transporter = nodemailer.createTransport({
 // };
 
 export const POST: RequestHandler = async ({ request }): Promise<Response> => {
-	console.log(request.body, 'request');
 	let email, token;
 
 	try {
 		({ email, token } = await request.json());
 	} catch (error) {
-		console.log('Error parsing request body', error);
 		return { status: 400, body: 'Invalid request body' };
 	}
-
-	console.log(email, 'wwwwweeemail');
 
 	const options = {
 		from: 'TheRiverSings - Alexis', // TODO figure this out later
@@ -58,10 +54,8 @@ export const POST: RequestHandler = async ({ request }): Promise<Response> => {
 	try {
 		await transporter.sendMail(options);
 	} catch (err: unknown | Error) {
-		console.log(err, 'error from transporter email');
 		error(500, (err as Error).message);
 	}
 
-	console.log('testing');
 	return json({ status: 200, message: 'Email sent successfully' });
 };

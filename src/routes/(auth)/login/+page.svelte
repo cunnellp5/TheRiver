@@ -34,8 +34,10 @@
 						.catch(() => {
 							cancel();
 						})}>
-			<label for="email">Email</label>
-			<input bind:value={email} type="email" name="email" id="email" required />
+			<div class="email-wrapper">
+				<label for="email">Email</label>
+				<input bind:value={email} type="email" name="email" id="email" required />
+			</div>
 
 			<div class="pw-wrapper">
 				<label for="password">Password</label>
@@ -56,6 +58,16 @@
 
 <style>
 	@import '../auth.css';
+
+	.under-hero {
+		font-size: var(--font-size-1);
+	}
+
+	.email-wrapper {
+		display: flex;
+		flex-direction: column;
+		padding-block: var(--size-3);
+	}
 
 	.pw-wrapper {
 		display: flex;

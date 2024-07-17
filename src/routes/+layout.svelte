@@ -20,6 +20,7 @@
 	<Header isSignedIn={data.isSignedIn} />
 
 	<!-- TODO move transitions to a new layout so admin portal looks better when navigating -->
+	<!-- TODO remove padding and width restrictions at this level to allow for custom full width pages -->
 	<PageTransition>
 		<slot />
 	</PageTransition>

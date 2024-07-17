@@ -24,6 +24,15 @@
 		isConfirmPasswordValid &&
 		isFirstNameValid &&
 		isLastNameValid;
+
+	// below are all derived
+	$: invalidPasswordsCheck =
+		(!isConfirmPasswordValid && confirmPassword.length > 0) ||
+		(!isPasswordValid && password.length > 0 && confirmPassword.length > 0);
+
+	$: validPasswordsCheck = isConfirmPasswordValid && confirmPassword.length > 0 && isPasswordValid;
+
+	$: passwordValidCheck = isConfirmPasswordValid && confirmPassword.length > 0;
 </script>
 
 <main>
@@ -31,7 +40,7 @@
 		<h1 class="hero-message">
 			<div>Signup</div>
 		</h1>
-		<p class="under-hero">Create an account to book services with Alexis</p>
+		<p class="under-hero">Create an account to book services with <strong>Alexis</strong></p>
 
 		{#if form?.message}
 			<p class="error-message"><CircleAlert />{form.message}</p>
@@ -51,11 +60,8 @@
 
 			<div
 				class="passwords"
-				class:invalidPasswords={(!isConfirmPasswordValid && confirmPassword.length > 0) ||
-					(!isPasswordValid && password.length > 0 && confirmPassword.length > 0)}
-				class:validPasswords={isConfirmPasswordValid &&
-					confirmPassword.length > 0 &&
-					isPasswordValid}>
+				class:invalidPasswords={invalidPasswordsCheck}
+				class:validPasswords={validPasswordsCheck}>
 				<label id="pw-label" for="password">Password</label>
 				<input
 					bind:value={password}
@@ -67,8 +73,8 @@
 
 				<label for="confirm">Confirm Password</label>
 				<input
-					class:invalid={!isConfirmPasswordValid && confirmPassword.length > 0}
-					class:valid={isConfirmPasswordValid && confirmPassword.length > 0}
+					class:invalid={!passwordValidCheck}
+					class:valid={passwordValidCheck}
 					bind:value={confirmPassword}
 					type="password"
 					name="confirm"
@@ -83,7 +89,7 @@
 						Passwords should be 6 characters long
 					</div>
 					<div class="checker">
-						{#if isConfirmPasswordValid && confirmPassword.length > 0}
+						{#if passwordValidCheck}
 							<Check size="16" />
 						{/if}
 						Confirmed matching
@@ -94,7 +100,7 @@
 			<br />
 
 			<div class="checkbox-wrapper">
-				<label for="isSubscribed">Subscibe for updates</label>
+				<label for="isSubscribed">Subscibe for newsletter</label>
 				<input type="checkbox" name="isSubscribed" id="isSubscribed" checked />
 			</div>
 
@@ -114,6 +120,10 @@
 
 	main {
 		flex-direction: row;
+	}
+
+	.under-hero {
+		font-size: var(--font-size-1);
 	}
 
 	.middle-hr {
