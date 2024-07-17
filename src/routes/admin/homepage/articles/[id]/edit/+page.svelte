@@ -1,7 +1,7 @@
 <script lang="ts">
+	import Card from '$lib/components/ui/Card.svelte';
 	// eslint-disable-next-line import/no-unresolved
 	import { enhance } from '$app/forms';
-	import Card from '$lib/components/ui/Card.svelte';
 
 	export let data;
 
@@ -15,15 +15,14 @@
 		<label for="articleImgUrl">Article Image URL</label>
 		<input type="text" name="articleImgUrl" id="articleImgUrl" value={article.articleImgUrl} />
 
+		<label for="contentMessage">Content Message</label>
+		<textarea name="contentMessage" id="contentMessage" value={article.contentMessage} rows="4" />
+
+		<label for="contentAuthor">Content Author</label>
+		<input type="text" name="contentAuthor" id="contentAuthor" value={article.contentAuthor} />
+
 		<label for="linkTitle">Link Title</label>
 		<input type="text" name="linkTitle" id="linkTitle" value={article.linkTitle} />
-
-		<label for="contentMessage">Content Message</label>
-		<textarea
-			type="text"
-			name="contentMessage"
-			id="contentMessage"
-			value={article.contentMessage} />
 
 		<label for="linkUrl">Link URL</label>
 		<input type="text" name="linkUrl" id="linkUrl" value={article.linkUrl} />
@@ -50,13 +49,16 @@
 		display: flex;
 		flex-direction: column;
 		gap: var(--size-3);
-		/* max-width: 50%; */
 		border: 1px solid white;
 		padding: var(--size-7);
 		min-width: 50%;
 	}
+	/* TODO Consider lifting label styles to global scope */
 	label {
+		margin-block: var(--size-1);
+		color: var(--link);
 		font-weight: bold;
+		font-size: var(--font-size-0);
 	}
 	input {
 		border: 1px solid var(--color-gray-300);
