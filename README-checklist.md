@@ -78,6 +78,7 @@ Responsive for mobile
 - [] CRUD bookings
 - [] view calendar with existing time slots
 - [] generate new timeslots
+- [] view transactions for services
 
 ## CMS
 
