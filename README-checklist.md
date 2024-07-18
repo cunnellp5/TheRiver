@@ -23,6 +23,7 @@
   - [] Admin
   - [] Dashboard
 - [] check for semanitc HTML - everywhere
+- [] test skeleton loaders
 
 ## Homepage
 
