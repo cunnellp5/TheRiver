@@ -21,7 +21,7 @@
 	});
 </script>
 
-<h1>Information</h1>
+<h1>Contact</h1>
 <p>TODO add a map</p>
 <div class="main-page-wrapper">
 	<!-- TODO put this video in cloudinary -->
@@ -31,7 +31,7 @@
 	</video>
 	<section>
 		<div>
-			<h2>The River</h2>
+			<h1>The River</h1>
 			<p>Located in Denver, CO</p>
 		</div>
 		<div>
@@ -41,9 +41,7 @@
 				<div class="newsletter-form">
 					<input type="email" name="email" placeholder="test@example.com" />
 					<button title="Send email">
-						<a>
-							<Send />
-						</a>
+						<Send />
 					</button>
 				</div>
 			</form>
@@ -54,13 +52,9 @@
 			<aside class="buttons">
 				<button on:click={copyEmail} title="Copy email to clipboard">
 					{#if copied}
-						<a>
-							<Check size="24" />
-						</a>
+						<Check size="24" />
 					{:else}
-						<a>
-							<Copy size="24" />
-						</a>
+						<Copy size="24" />
 					{/if}
 				</button>
 				<button title="Send email">
@@ -74,76 +68,77 @@
 </div>
 
 <style>
+	/* ELEMENTS */
 	section {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		/* align-items: center; */
 		gap: var(--size-8);
-		margin-inline-start: var(--size-4);
+		animation: animateBorderRadius 12s infinite linear;
 		margin: 0 auto;
-		border-radius: var(--radius-1);
-		background-color: hsl(var(--cyan-6-hsl) / 85%);
-		padding: var(--size-4);
+		box-shadow: var(--shadow-4);
+		border-radius: var(--radius-blob-1);
+		background-color: var(--surface-4);
+		padding: var(--size-11);
 		width: fit-content;
-		/* color: black; */
-	}
-	section > div {
-		margin-inline: var(--size-8);
 	}
 	h1,
 	h2 {
 		text-transform: uppercase;
 	}
-
 	p {
 		letter-spacing: var(--font-letterspacing-3);
 	}
-
 	video {
+		animation: animateBorderRadius 12s infinite linear;
 		box-shadow: var(--shadow-1);
-		border-radius: var(--radius-4);
-		/* inline-size: var(--size-5); */
+		border-radius: var(--radius-blob-1);
 	}
-	/* .main-page-wrapper {
-		display: flex;
-		flex-direction: row-reverse;
-		justify-content: center;
-	} */
+	/* CLASSES */
 	.buttons {
 		display: flex;
 		flex-direction: row;
 		gap: var(--size-4);
 		margin-block-start: var(--size-2);
 	}
-
-	/* .background-video {
-		position: relative;
-		z-index: -1;
-		object-fit: cover;
-	} */
-
 	.main-page-wrapper {
 		position: relative;
 	}
-
 	.background-video {
 		position: absolute;
-		top: 0;
-		left: 0;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		opacity: 0.9;
 		z-index: -1;
-		width: 100%;
-		height: 100%;
+		min-width: var(--size-content-3);
+		height: 120%;
 		object-fit: cover;
 	}
-
-	section {
-		position: relative;
-	}
-
 	.newsletter-form {
 		display: flex;
 		gap: var(--size-2);
 		margin-block-start: var(--size-2);
+	}
+	/* ANIMATIONS */
+	@keyframes animateBorderRadius {
+		0% {
+			border-radius: var(--radius-blob-1);
+		}
+		20% {
+			border-radius: var(--radius-blob-2);
+		}
+		40% {
+			border-radius: var(--radius-blob-3);
+		}
+		60% {
+			border-radius: var(--radius-blob-4);
+		}
+		80% {
+			border-radius: var(--radius-blob-5);
+		}
+		100% {
+			border-radius: var(--radius-blob-1);
+		}
 	}
 </style>
