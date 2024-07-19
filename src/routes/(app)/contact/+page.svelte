@@ -21,8 +21,19 @@
 	});
 </script>
 
-<h1>Contact</h1>
-<p>TODO add a map</p>
+<h1>The River</h1>
+<p>Denver, CO</p>
+<div class="map-container">
+	<iframe
+		title="map"
+		height="450"
+		style="border:0"
+		loading="lazy"
+		allowfullscreen
+		referrerpolicy="no-referrer-when-downgrade"
+		src="https://www.google.com/maps/embed/v1/place?key={/*LOAD ENV VAR FROM BACKEND*/}&q=39.73942555127294,-104.99025636441803">
+	</iframe>
+</div>
 <div class="main-page-wrapper">
 	<!-- TODO put this video in cloudinary -->
 	<video autoplay muted loop playsinline class="background-video">
@@ -30,10 +41,6 @@
 		Your browser does not support HTML5 video.
 	</video>
 	<section>
-		<div>
-			<h1>The River</h1>
-			<p>Located in Denver, CO</p>
-		</div>
 		<div>
 			<h2>NEWSLETTER</h2>
 			<form action="">
@@ -47,7 +54,7 @@
 			</form>
 		</div>
 		<div>
-			<h2>CONTACT</h2>
+			<h3>CONTACT</h3>
 			<p>theriverrunsfast@gmail.com</p>
 			<aside class="buttons">
 				<button on:click={copyEmail} title="Copy email to clipboard">
@@ -74,9 +81,9 @@
 		flex-direction: column;
 		justify-content: center;
 		gap: var(--size-8);
-		animation: animateBorderRadius 12s infinite linear;
+		animation: animateBorderRadius 21s infinite linear;
 		margin: 0 auto;
-		box-shadow: var(--shadow-4);
+		box-shadow: var(--shadow-5);
 		border-radius: var(--radius-blob-1);
 		background-color: var(--surface-4);
 		padding: var(--size-11);
@@ -90,7 +97,7 @@
 		letter-spacing: var(--font-letterspacing-3);
 	}
 	video {
-		animation: animateBorderRadius 12s infinite linear;
+		animation: animateBorderRadius 24s infinite linear;
 		box-shadow: var(--shadow-1);
 		border-radius: var(--radius-blob-1);
 	}
@@ -119,6 +126,12 @@
 		display: flex;
 		gap: var(--size-2);
 		margin-block-start: var(--size-2);
+	}
+	.map-container > iframe {
+		margin-top: var(--size-8);
+		margin-bottom: var(--size-12);
+		border-radius: var(--radius-2);
+		width: 100%;
 	}
 	/* ANIMATIONS */
 	@keyframes animateBorderRadius {
