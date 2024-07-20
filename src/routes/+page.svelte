@@ -87,7 +87,8 @@
 		display: flex;
 		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 		flex-flow: row wrap;
-		/* gap: var(--size-6); */
+		gap: var(--size-7);
+		margin-block: var(--size-7);
 	}
 
 	#video-background {
