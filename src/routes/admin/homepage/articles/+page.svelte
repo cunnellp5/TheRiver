@@ -18,7 +18,7 @@
 
 <section>
 	{#each articles as article}
-		<div>{article.id}</div>
+		<!-- <div>{article.id}</div> -->
 		<Card
 			articleImage={article.articleImgUrl}
 			articleTitle={article.linkTitle}
@@ -43,6 +43,7 @@
 		display: flex;
 		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 		flex-flow: row wrap;
+		gap: var(--size-7);
 	}
 	.buttons {
 		display: flex;
