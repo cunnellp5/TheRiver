@@ -11,7 +11,7 @@
 <h4>EDIT</h4>
 
 <div class="form-and-preview">
-	<form action="POST" use:enhance>
+	<form method="POST" use:enhance>
 		<label for="articleImgUrl">Article Image URL</label>
 		<input type="text" name="articleImgUrl" id="articleImgUrl" value={article.articleImgUrl} />
 
