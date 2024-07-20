@@ -122,7 +122,7 @@
 	.sidenav a:hover {
 		cursor: pointer;
 		border-radius: var(--radius-2);
-		background-color: var(--gray-9);
+		background-color: var(--hover-1);
 	}
 
 	.current {
