@@ -25,6 +25,11 @@ html {
 	--text-1-dark: var(--gray-3);
 	--text-2-dark: var(--gray-5);
 	--link-dark: var(--teal-2);
+	/* crud styles */
+	--create-dark: var(--green-8);
+	--delete-dark: var(--red-6);
+	--on-crud-text-dark: var(--gray-1);
+	--update-dark: var(--blue-6);
 
 	/* light */
 	--background-light: var(--brown-0);
@@ -42,6 +47,11 @@ html {
 	--text-1-light: var(--gray-8);
 	--text-2-light: var(--gray-7);
 	--link-light: var(--teal-7);
+	/* crud styles */
+	--create-light: var(--green-3);
+	--delete-light: var(--red-4);
+	--on-crud-text-light: var(--gray-9);
+	--update-light: var(--blue-4);
 
 	transition:
 		background-color 1.5s ease,
@@ -69,6 +79,11 @@ html {
 	--text-1: var(--text-1-dark);
 	--text-2: var(--text-2-dark);
 	--link: var(--link-dark);
+	/* crud styles */
+	--create: var(--create-dark);
+	--delete: var(--delete-dark);
+	--on-crud-text: var(--on-crud-text-dark);
+	--update: var(--update-dark);
 }
 
 @media (prefers-color-scheme: light) {
@@ -90,6 +105,11 @@ html {
 		--text-1: var(--text-1-light);
 		--text-2: var(--text-2-light);
 		--link: var(--link-light);
+		/* crud styles */
+		--create: var(--create-light);
+		--delete: var(--delete-light);
+		--on-crud-text: var(--on-crud-text-light);
+		--update: var(--update-light);
 	}
 }
 
@@ -111,6 +131,11 @@ html {
 	--text-1: var(--text-1-dark);
 	--text-2: var(--text-2-dark);
 	--link: var(--link-dark);
+	/* crud styles */
+	--create: var(--create-dark);
+	--delete: var(--delete-dark);
+	--on-crud-text: var(--on-crud-text-dark);
+	--update: var(--update-dark);
 }
 
 [color-scheme='light'] {
@@ -131,6 +156,11 @@ html {
 	--text-1: var(--text-1-light);
 	--text-2: var(--text-2-light);
 	--link: var(--link-light);
+	/* crud styles */
+	--create: var(--create-light);
+	--delete: var(--delete-light);
+	--on-crud-text: var(--on-crud-text-light);
+	--update: var(--update-light);
 
 	input,
 	select {
