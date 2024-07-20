@@ -9,55 +9,54 @@
 </script>
 
 <div class="card">
-	<figure>
+	<a href={link}>
 		<figure>
-			{#if articleImage}
-				<img class="skeleton" src={articleImage} alt={articleTitle} />
-			{:else}
-				<SkeletonImg />
-			{/if}
+			<div class="imageWrapper">
+				{#if articleImage}
+					<img class="skeleton" src={articleImage} alt={articleTitle} />
+					<p class="overlayTitle">{articleTitle}</p>
+				{:else}
+					<SkeletonImg />
+				{/if}
+			</div>
 		</figure>
-	</figure>
-	<div class="contentWrapper">
-		<h5 class="title" data-title>
-			{#if articleTitle}
-				{articleTitle}
-			{:else}
-				<SkeletonText title={true} />
-			{/if}
-		</h5>
-		<div data-message>
-			{#if message}
-				<p>{message}</p>
-			{:else}
-				<SkeletonText />
-				<SkeletonText />
-			{/if}
+		<div class="contentWrapper">
+			<!-- <h5 class="title" data-title>
+				{#if articleTitle}
+					{articleTitle}
+				{:else}
+					<SkeletonText title={true} />
+				{/if}
+			</h5> -->
+			<div data-message>
+				{#if message}
+					<p>{message}</p>
+				{:else}
+					<SkeletonText />
+					<SkeletonText />
+				{/if}
+			</div>
+			<div class="link-wrapper">
+				{#if link}
+					<p data-link class="credits">{articleTitle}</p>
+				{:else}
+					<SkeletonText short={true} />
+				{/if}
+			</div>
 		</div>
-		{#if link}
-			<a data-link href={link}>{articleTitle}</a>
-		{:else}
-			<SkeletonText short={true} />
-		{/if}
-	</div>
-	<div>
-		<slot class="buttons" name="buttons"></slot>
-	</div>
+		<div>
+			<slot class="buttons" name="buttons"></slot>
+		</div>
+	</a>
 </div>
 
-<style>
-	.card {
-		display: flex;
-		flex: 1 1 var(--size-14);
-		flex-direction: column;
-		gap: var(--size-3);
-		transition:
-			flex-grow 0.5s ease,
-			flex-shrink 0.5s ease;
-		box-shadow: var(--shadow-1);
-		padding: var(--size-4);
-	}
+<!-- 
+background: var(--gradient-1) fixed;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text; -->
 
+<style>
 	a {
 		color: var(--link);
 		font-size: var(--font-size-0);
@@ -96,8 +95,52 @@
 		overflow: hidden;
 	}
 
+	.credits {
+		color: var(--link);
+		font-size: var(--font-size-0);
+	}
+	.imageWrapper {
+		position: relative;
+		width: 100%;
+		height: auto;
+	}
+	.link-wrapper {
+		display: flex;
+		justify-content: flex-end;
+	}
+	.card {
+		display: flex;
+		position: relative;
+		flex: 1 1 var(--size-14);
+		flex-direction: column;
+		gap: var(--size-3);
+		transition:
+			flex-grow 0.5s ease,
+			flex-shrink 0.5s ease;
+		/* margin-inline: var(--size-5); */
+		/* margin: var(--size-5); */
+		box-shadow: var(--shadow-1);
+		background: var(--surface-3);
+		padding: var(--size-5);
+	}
+	.card:hover {
+		-webkit-transition: 0.3s ease-in-out;
+		transition: 0.3s ease-in-out;
+		transition-delay: var(--transition-delay-1);
+		box-shadow: var(--shadow-2);
+	}
 	.buttons {
 		display: flex;
 		flex-direction: column;
+	}
+	.overlayTitle {
+		position: absolute;
+		bottom: 0;
+		/* transform: rotate(2deg); */
+		background-color: rgba(181, 81, 81, 0.9);
+		padding: var(--size-1);
+		color: white;
+		font-weight: var(--font-weight-7);
+		font-size: var(--size-4);
 	}
 </style>
