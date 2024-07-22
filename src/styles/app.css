@@ -175,6 +175,7 @@ html {
 	--update: var(--update-light);
 
 	input,
+	textarea,
 	select {
 		background-color: var(--gray-3);
 	}

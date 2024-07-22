@@ -163,9 +163,9 @@ model BlackoutDay {
 model Article {
   id           Int      @id @default(autoincrement())
   articleTitle String
-  img          String
-  description  String
   author       String
+  description  String
+  img          String
   link         String
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
