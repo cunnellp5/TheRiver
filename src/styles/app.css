@@ -15,6 +15,7 @@ html {
 	--brand-dark: var(--cyan-3);
 	--button-dark: var(--gray-7);
 	--button-active-dark: var(--gray-10);
+	--error-text-dark: var(--red-6);
 	--hover-1-dark: var(--gray-9);
 	--socials-1-dark: var(--gray-7);
 	--socials-2-dark: var(--gray-5);
@@ -38,6 +39,7 @@ html {
 	--brand-light: var(--cyan-10);
 	--button-light: var(--gray-3);
 	--button-active-light: var(--gray-2);
+	--error-text-light: var(--red-6);
 	--hover-1-light: var(--gray-2);
 	--socials-1-light: var(--gray-5);
 	--socials-2-light: var(--gray-7);
@@ -72,6 +74,7 @@ html {
 	--button: var(--button-dark);
 	--button-active: var(--button-active-dark);
 	--hover-1: var(--hover-1-dark);
+	--error-text: var(--error-text-dark);
 	--socials-1: var(--socials-1-dark);
 	--socials-2: var(--socials-2-dark);
 	--surface-1: var(--surface-1-dark);
@@ -99,6 +102,7 @@ html {
 		--button: var(--button-light);
 		--button-active: var(--button-active-light);
 		--hover-1: var(--hover-1-light);
+		--error-text: var(--error-text-light);
 		--socials-1: var(--socials-1-light);
 		--socials-2: var(--socials-2-light);
 		--surface-1: var(--surface-1-light);
@@ -125,6 +129,7 @@ html {
 	--brand: var(--brand-dark);
 	--button: var(--button-dark);
 	--button-active: var(--button-active-dark);
+	--error-text: var(--error-text-dark);
 	--hover-1: var(--hover-1-dark);
 	--socials-1: var(--socials-1-dark);
 	--socials-2: var(--socials-2-dark);
@@ -151,6 +156,7 @@ html {
 	--brand: var(--brand-light);
 	--button: var(--button-light);
 	--button-active: var(--button-active-light);
+	--error-text: var(--error-text-light);
 	--hover-1: var(--hover-1-light);
 	--socials-1: var(--socials-1-light);
 	--socials-2: var(--socials-2-light);
