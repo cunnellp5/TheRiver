@@ -16,6 +16,7 @@
 
 <section>
 	<form method="POST" use:enhance>
+		<!-- TODO refactor this to have an img upload flow for cloudinary, for now lets assume we have a url -->
 		<label for="img"> Article Image URL: </label>
 		<input id="img" name="img" type="text" bind:value={article.img} />
 
@@ -28,19 +29,19 @@
 		<label for="link">Link URL:</label>
 		<input id="link" name="link" type="text" bind:value={article.link} />
 
-		<label for="linkTitle">Link Title:</label>
+		<label for="linkTitle">Title:</label>
 		<input id="linkTitle" name="linkTitle" type="text" bind:value={article.linkTitle} />
 
 		<button class="primary" type="submit">Submit Article</button>
 	</form>
 
 	<div>
-		<h4>Example article layout:</h4>
+		<h4>Example article:</h4>
 		<Card
-			author="Author Name"
+			author="Author name"
 			articleImage={'https://place-hold.it/300x300'}
-			articleTitle="Link Title goes here"
-			description="Content description goes here"
+			articleTitle="Title goes here"
+			description="Description goes here"
 			link="actual link url">
 		</Card>
 	</div>
