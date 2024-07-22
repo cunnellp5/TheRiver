@@ -13,7 +13,8 @@
 		"lintall": "eslint --ext .js,.cjs,.ts,.svelte .",
 		"lintall:fix": "eslint --ext .js,.cjs,.ts,.svelte . --fix",
 		"format": "prettier --write .",
-		"db:reset": "npx prisma migrate reset"
+		"db:reset": "npx prisma migrate reset",
+		"db:restart": "npx prisma migrate dev --name init && npx prisma db seed"
 	},
 	"devDependencies": {
 		"@event-calendar/core": "^3.0.1",
