@@ -21,8 +21,8 @@
 		<label for="author">Content Author</label>
 		<input type="text" name="author" id="author" value={article.author} />
 
-		<label for="linkTitle">Link Title</label>
-		<input type="text" name="linkTitle" id="linkTitle" value={article.linkTitle} />
+		<label for="articleTitle">Link Title</label>
+		<input type="text" name="articleTitle" id="articleTitle" value={article.articleTitle} />
 
 		<label for="link">Link URL</label>
 		<input type="text" name="link" id="link" value={article.link} />

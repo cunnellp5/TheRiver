@@ -34,7 +34,7 @@ export const actions: Actions = {
 
 		const formData = await event.request.formData();
 		const articleId = Number(formData.get('articleId'));
-		const linkTitle = formData.get('linkTitle') as string;
+		const articleTitle = formData.get('articleTitle') as string;
 		const description = formData.get('description') as string;
 
 		// TODO test me
@@ -57,7 +57,7 @@ export const actions: Actions = {
 					id: articleId
 				},
 				data: {
-					linkTitle,
+					articleTitle,
 					description
 				}
 			});
