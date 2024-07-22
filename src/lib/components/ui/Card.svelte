@@ -1,6 +1,7 @@
 <script lang="ts">
 	import SkeletonText from '$lib/components/ui/skeletons/SkeletonText.svelte';
 	import SkeletonImg from '$lib/components/ui/skeletons/SkeletonImg.svelte';
+	import { CldImage } from 'svelte-cloudinary';
 
 	export let articleImage;
 	export let articleTitle;
@@ -12,9 +13,16 @@
 <div class="card">
 	<a href={link} target="_blank">
 		<figure>
-			<div class="imageWrapper">
+			<div class="imageContainer">
 				{#if articleImage}
-					<img class="skeleton" src={articleImage} alt={articleTitle} />
+					<div class="imgWrapper">
+						<CldImage
+							width="600"
+							height="600"
+							crop="pad"
+							src="TheRiver/alexisCutout"
+							alt={articleTitle} />
+					</div>
 					<p class="overlayTitle">{articleTitle}</p>
 				{:else}
 					<SkeletonImg />
@@ -22,13 +30,6 @@
 			</div>
 		</figure>
 		<div class="contentWrapper">
-			<!-- <h5 class="title" data-title>
-				{#if articleTitle}
-					{articleTitle}
-				{:else}
-					<SkeletonText title={true} />
-				{/if}
-			</h5> -->
 			<div data-description class="description">
 				{#if description}
 					<p>{description}</p>
@@ -64,9 +65,14 @@
 		font-size: var(--font-size-1);
 	}
 	figure {
+		margin: 0;
 		border-radius: var(--radius-2);
+		padding: 0;
+		overflow: hidden;
 	}
-	img {
+
+	/* CLASSES */
+	.imgWrapper {
 		-webkit-transform: scale(1);
 		transform: scale(1);
 		-webkit-transition: 0.3s ease-in-out;
@@ -76,25 +82,18 @@
 		aspect-ratio: var(--ratio-square);
 		object-fit: cover;
 	}
-	img:hover {
+	.imgWrapper:hover {
 		-webkit-transform: scale(1.05);
 		transform: scale(1.05);
 	}
-	figure {
-		margin: 0;
-		padding: 0;
-		overflow: hidden;
-	}
-
-	/* CLASSES */
-	.credits {
-		color: var(--link);
-		font-size: var(--font-size-0);
-	}
-	.imageWrapper {
+	.imageContainer {
 		position: relative;
 		width: 100%;
 		height: auto;
+	}
+	.credits {
+		color: var(--link);
+		font-size: var(--font-size-0);
 	}
 	.link-wrapper {
 		display: flex;
