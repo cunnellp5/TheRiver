@@ -45,7 +45,7 @@ export const actions: Actions = {
 				confirm
 			}) as SignUpValidator;
 		} catch (err) {
-			const errors = err as ValiError;
+			const errors = err as ValiError<typeof SignUpSchema>;
 			return fail(400, {
 				message: errors.message
 			});

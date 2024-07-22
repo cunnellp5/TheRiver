@@ -6,13 +6,6 @@ import { encodeHex } from 'oslo/encoding';
 import { ValiError, parse } from 'valibot';
 import type { Actions } from './$types';
 
-// i dont want to expose if the email exists, the user should get the same message regardless.
-// security through obscurity
-const RESET_MESSAGE = {
-	status: 200,
-	message: 'Your request was sent to the provided address.'
-};
-
 export const actions: Actions = {
 	default: async ({ request, fetch }) => {
 		const formData = await request.formData();
@@ -28,7 +21,7 @@ export const actions: Actions = {
 		try {
 			await parse(EmailSchema, { email });
 		} catch (err) {
-			const errors = err as ValiError;
+			const errors = err as ValiError<typeof EmailSchema>;
 			return fail(400, {
 				message: errors.message
 			});
@@ -43,11 +36,9 @@ export const actions: Actions = {
 
 			if (!user) {
 				return fail(400, { message: 'no user found' });
-				// return RESET_MESSAGE;
 			}
 		} catch (error) {
 			return fail(400, { message: 'something happened when finding user' });
-			// return RESET_MESSAGE;
 		}
 
 		// 3. check if there's an existing reset password session
@@ -61,7 +52,6 @@ export const actions: Actions = {
 			});
 		} catch (error) {
 			return fail(400, { message: 'something happened when finding user' });
-			// return RESET_MESSAGE;
 		}
 
 		// if email exists, create a token and send it to the user
