@@ -131,7 +131,7 @@
 		color: var(--stone-2);
 		font-weight: var(--font-weight-7);
 		font-size: var(--size-4);
-		line-height: var(--size-4);
+		line-height: var(--size-5);
 	}
 	.description {
 		line-height: var(--size-4);
