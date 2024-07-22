@@ -110,8 +110,7 @@ async function main() {
 				description:
 					'Ever since releasing her first song in June 2021, she has had her foot on the gas.',
 				img: 'https://res.cloudinary.com/dswpu3qez/image/upload/v1707412331/sample.jpg',
-				link: 'https://ratingsgamemusic.com/2022/01/08/the-river-delivers-angry-verses-on-hours/',
-				linkTitle: 'Victória Santiago [Ratings Game Music Blogger]'
+				link: 'https://ratingsgamemusic.com/2022/01/08/the-river-delivers-angry-verses-on-hours/'
 			},
 			{
 				articleTitle: 'The River’s “Hours” digs deep into the dynamics of failed relationships',
@@ -119,8 +118,7 @@ async function main() {
 				description:
 					"On Hours: The production here is sublime and crisp as each instrument stands out with clarity while The River's commanding vocals cut through the mix with ease.",
 				img: 'https://res.cloudinary.com/dswpu3qez/image/upload/v1707412341/samples/people/jazz.jpg',
-				link: 'https://earmilk.com/2022/01/10/the-rivers-hours-digs-deep-into-the-dynamics-of-failed-relationships/',
-				linkTitle: 'Earmilk'
+				link: 'https://earmilk.com/2022/01/10/the-rivers-hours-digs-deep-into-the-dynamics-of-failed-relationships/'
 			},
 			{
 				articleTitle: 'It aint that deep',
@@ -128,8 +126,7 @@ async function main() {
 				description:
 					"The vocals are confidently delivered, imbued with the effortless coolness that comes with being insanely naturally gifted. Plus, the arrangement and production create the most infectious groove you'll ever hear.",
 				img: 'https://res.cloudinary.com/dswpu3qez/image/upload/v1707412345/samples/ecommerce/accessories-bag.jpg',
-				link: 'https://musicfashionblog.com/it-aint-that-deep-the-river/',
-				linkTitle: 'Read more'
+				link: 'https://musicfashionblog.com/it-aint-that-deep-the-river/'
 			},
 			{
 				articleTitle: 'Soulful and introspective track',
@@ -137,8 +134,7 @@ async function main() {
 				description:
 					"Somewhere in the lyrics there is peace and truth. The River's latest single “Hours” facing the reality of love, respect, and emotions. Over and acoustic melody the rain pours over the lyrical expressions of facing your feelings.",
 				img: 'https://res.cloudinary.com/dswpu3qez/image/upload/v1707412364/samples/man-portrait.jpg',
-				link: 'EXPIRED_URL', // https://www.laonlock.com/reviews/1/11/2022/the-river-hours-review
-				linkTitle: 'Kreadiv Kesh [LA On Lock Blogger]'
+				link: 'EXPIRED_URL' // https://www.laonlock.com/reviews/1/11/2022/the-river-hours-review
 			}
 		]
 	});
