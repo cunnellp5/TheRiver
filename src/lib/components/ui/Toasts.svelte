@@ -24,7 +24,7 @@
 		left: 0;
 		flex-direction: column;
 		justify-content: center;
-		/* z-index: 1000; */
+		z-index: var(--layer-important);
 		margin-top: 1rem;
 	}
 </style>

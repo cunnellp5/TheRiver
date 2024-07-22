@@ -55,6 +55,7 @@
 	}
 	.text {
 		margin-left: 1rem;
+		user-select: none;
 	}
 	button {
 		margin: 0 0 0 auto;
