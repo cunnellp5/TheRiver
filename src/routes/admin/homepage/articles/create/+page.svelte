@@ -158,6 +158,7 @@
 		min-width: 50%;
 	}
 	label {
+		color: var(--link);
 		font-weight: bold;
 	}
 	input,

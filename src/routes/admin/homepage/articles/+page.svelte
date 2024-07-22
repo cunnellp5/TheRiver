@@ -42,7 +42,7 @@
 			link={article.link}>
 			<div class="buttons" slot="buttons">
 				<a href={`/admin/homepage/articles/${article.id}/edit`}>
-					<button class="edit-article-button"><Pencil strokeWidth={STROKE_WIDTH} />Edit</button>
+					<button class="update-article-button"><Pencil strokeWidth={STROKE_WIDTH} />Edit</button>
 				</a>
 				<form
 					method="POST"
@@ -89,7 +89,7 @@
 		color: var(--on-crud-text);
 		font-weight: var(--font-weight-7);
 	}
-	.edit-article-button {
+	.update-article-button {
 		background-color: var(--update);
 		color: var(--on-crud-text);
 		font-weight: var(--font-weight-7);
