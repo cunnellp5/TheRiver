@@ -29,7 +29,7 @@
 				async ({ update }) =>
 					update()
 						.then(() =>
-							addToast({ message: 'logged in!', type: 'info', dismissible: true, timeout: 5000 })
+							addToast({ message: 'Logged in!', type: 'info', dismissible: true, timeout: 5000 })
 						)
 						.catch(() => {
 							cancel();
