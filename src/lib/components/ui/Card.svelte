@@ -4,8 +4,9 @@
 
 	export let articleImage;
 	export let articleTitle;
-	export let message;
+	export let author;
 	export let link;
+	export let description;
 </script>
 
 <div class="card">
@@ -28,9 +29,9 @@
 					<SkeletonText title={true} />
 				{/if}
 			</h5> -->
-			<div data-message>
-				{#if message}
-					<p>{message}</p>
+			<div data-description class="description">
+				{#if description}
+					<p>{description}</p>
 				{:else}
 					<SkeletonText />
 					<SkeletonText />
@@ -38,7 +39,7 @@
 			</div>
 			<div class="link-wrapper">
 				{#if link}
-					<p data-link class="credits">{articleTitle}</p>
+					<p data-link class="credits">{author}</p>
 				{:else}
 					<SkeletonText short={true} />
 				{/if}
@@ -50,29 +51,21 @@
 	</a>
 </div>
 
-<!-- 
-background: var(--gradient-1) fixed;
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text; -->
-
 <style>
+	/* ELEMENTS */
 	a {
 		color: var(--link);
 		font-size: var(--font-size-0);
 		text-decoration: none;
 	}
-
 	p {
-		margin-block: var(--size-3);
+		margin-block-start: var(--size-3);
 		color: var(--text-2);
 		font-size: var(--font-size-1);
 	}
-
 	figure {
 		border-radius: var(--radius-2);
 	}
-
 	img {
 		-webkit-transform: scale(1);
 		transform: scale(1);
@@ -83,18 +76,17 @@ background-clip: text; -->
 		aspect-ratio: var(--ratio-square);
 		object-fit: cover;
 	}
-
 	img:hover {
 		-webkit-transform: scale(1.05);
 		transform: scale(1.05);
 	}
-
 	figure {
 		margin: 0;
 		padding: 0;
 		overflow: hidden;
 	}
 
+	/* CLASSES */
 	.credits {
 		color: var(--link);
 		font-size: var(--font-size-0);
@@ -117,8 +109,6 @@ background-clip: text; -->
 		transition:
 			flex-grow 0.5s ease,
 			flex-shrink 0.5s ease;
-		/* margin-inline: var(--size-5); */
-		/* margin: var(--size-5); */
 		box-shadow: var(--shadow-1);
 		background: var(--surface-3);
 		padding: var(--size-5);
@@ -136,11 +126,14 @@ background-clip: text; -->
 	.overlayTitle {
 		position: absolute;
 		bottom: 0;
-		/* transform: rotate(2deg); */
 		background-color: rgba(181, 81, 81, 0.9);
 		padding: var(--size-1);
-		color: white;
+		color: var(--stone-2);
 		font-weight: var(--font-weight-7);
 		font-size: var(--size-4);
+		line-height: var(--size-4);
+	}
+	.description {
+		line-height: var(--size-4);
 	}
 </style>
