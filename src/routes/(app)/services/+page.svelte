@@ -2,6 +2,7 @@
 	import Table from '$lib/components/ui/Table.svelte';
 	// eslint-disable-next-line import/no-unresolved
 	import { enhance } from '$app/forms';
+	import { CldImage } from 'svelte-cloudinary';
 
 	export let data;
 	const { services } = data;
@@ -40,17 +41,26 @@
 
 <main>
 	<section class="top">
-		<h1 style:transform={`translate3d(${scroll / 3}px, 0, 0)`}>THE RIVER BEAUTY</h1>
+		<h1 style:transform={`translate3d(${scroll / 10}px, 0, 0)`}>THE RIVER BEAUTY</h1>
 		<p
-			style:transform={(`translate3d(-${scroll / 10}px, ${scroll / 5}px, 0)`,
-			`rotate(${scroll / 18}deg)`)}
-			style:letter-spacing={`${scroll / 25}px`}>
+			style:transform={(`translate3d(-${scroll / 20}px, ${scroll / 5}px, 0)`,
+			`rotate(${scroll / 18}deg)`)}>
+			<!-- style:letter-spacing={`${scroll / 25}px`} -->
 			Denver based
 		</p>
-		<img
-			style:transform={`translate3d(-${scroll / 10}px, ${scroll / 5}px, 0)`}
-			src="https://res.cloudinary.com/dswpu3qez/image/upload/v1714083850/TheRiver/alexisArt_fr62uy.png"
-			alt="" />
+		<div class="cutoutImg" style:transform={`translate3d(-${scroll / 20}px, ${scroll / 5}px, 0)`}>
+			<CldImage
+				height="1000"
+				width="600"
+				sizes="100vw"
+				crop="pad"
+				src={'/TheRiver/alexisCutout'}
+				alt="alexis cutout" />
+			<!-- <img
+				style:transform={`translate3d(-${scroll / 10}px, ${scroll / 5}px, 0)`}
+				src="https://res.cloudinary.com/dswpu3qez/image/upload/v1714083850/TheRiver/alexisArt_fr62uy.png"
+				alt="" /> -->
+		</div>
 
 		<!-- <div class="page-indicator">1</div> -->
 	</section>
@@ -97,7 +107,7 @@
 		line-height: var(--font-lineheight-4);
 		letter-spacing: var(--font-letterspacing-3);
 	}
-	img {
+	.cutoutImg {
 		position: absolute;
 		top: var(--size-8);
 		left: 0;
