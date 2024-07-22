@@ -25,7 +25,7 @@ export const actions: Actions = {
 
 	deleteArticle: async (event) => {
 		if (!event.locals.session || !event.locals.user?.isAdmin) {
-			throw new Error('Unauthorized');
+			return error(401, 'Unauthorized');
 		}
 
 		const formData = await event.request.formData();

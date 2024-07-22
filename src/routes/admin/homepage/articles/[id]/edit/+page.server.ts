@@ -1,4 +1,4 @@
-import { error, redirect, fail } from '@sveltejs/kit';
+import { error, fail } from '@sveltejs/kit';
 import db from '$lib/server/database';
 import type { Actions, PageServerLoad } from './$types';
 
@@ -29,7 +29,7 @@ export const actions: Actions = {
 	updateArticle: async (event) => {
 		// TODO test me
 		if (!event.locals.session) {
-			throw new Error('Unauthorized access');
+			return error(401, 'Unauthorized');
 		}
 
 		const formData = await event.request.formData();

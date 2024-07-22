@@ -1,4 +1,4 @@
-import { redirect, fail } from '@sveltejs/kit';
+import { error, fail } from '@sveltejs/kit';
 import { ArticleSchema } from '$lib/utils/Valibot/ArticleSchema';
 import type { ArticleValidator } from '$lib/utils/Valibot/ArticleSchema';
 import db from '$lib/server/database';
@@ -14,7 +14,7 @@ export const actions: Actions = {
 
 	default: async (event) => {
 		if (!event.locals.session || !event.locals.user?.isAdmin) {
-			redirect(302, '/login');
+			return error(401, 'Unauthorized');
 		}
 
 		const formData = await event.request.formData();
@@ -53,8 +53,6 @@ export const actions: Actions = {
 				}
 			});
 		}
-
-		// TODO handle validation errors
 
 		try {
 			await db.article.create({
