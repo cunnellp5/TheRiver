@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { addToast } from '$lib/stores/toast';
 	import Card from '$lib/components/ui/Card.svelte';
 	import Pencil from 'lucide-svelte/icons/pencil';
 	import Plus from 'lucide-svelte/icons/plus';
@@ -7,10 +8,18 @@
 	import { enhance } from '$app/forms';
 
 	export let data;
+	export let form;
 
 	const STROKE_WIDTH = 1.2;
 
-	const { articles } = data;
+	function showToast() {
+		addToast({ message: 'Article deleted', type: 'info', dismissible: true, timeout: 5000 });
+	}
+
+	$: articles = data.articles;
+	$: if (form?.deleteSuccess) {
+		showToast();
+	}
 </script>
 
 <h2>Articles</h2>
@@ -18,6 +27,10 @@
 <a href="/admin/homepage/articles/create">
 	<button class="create-article-button"> <Plus strokeWidth={3} />Add new article</button>
 </a>
+
+{#if articles.length === 0}
+	<p>No articles found</p>
+{/if}
 
 <section>
 	{#each articles as article}
@@ -33,7 +46,16 @@
 					<button class="edit-article-button"><Pencil strokeWidth={STROKE_WIDTH} />Edit</button>
 				</a>
 				<!-- TODO make card data dynamic for refreshing, add notification message or toast -->
-				<form method="POST" action="?/deleteArticle" use:enhance>
+				<form
+					method="POST"
+					action="?/deleteArticle"
+					use:enhance={({ cancel }) => {
+						// eslint-disable-next-line no-alert, no-restricted-globals
+						if (confirm('Are you sure you want to delete this article?')) {
+							return async ({ update }) => update();
+						}
+						return cancel();
+					}}>
 					<input type="hidden" name="articleId" id="articleId" value={article.id} />
 					<button class="delete-article-button"><Trash strokeWidth={STROKE_WIDTH} />Delete</button>
 				</form>
@@ -43,12 +65,14 @@
 </section>
 
 <style>
+	/* ELEMENTS */
 	section {
 		display: flex;
 		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 		flex-flow: row wrap;
 		gap: var(--size-7);
 	}
+	/* CLASSES */
 	.buttons {
 		display: flex;
 		flex-direction: column;
