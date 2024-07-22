@@ -34,12 +34,12 @@
 		src="https://www.google.com/maps/embed/v1/place?key={/*LOAD ENV VAR FROM BACKEND*/}&q=39.73942555127294,-104.99025636441803">
 	</iframe>
 </div>
-<!-- TODO put this video in cloudinary -->
-<video autoplay muted loop playsinline class="background-video">
-	<source src="water.mp4" type="video/mp4" />
-	Your browser does not support HTML5 video.
-</video>
 <div class="main-page-wrapper">
+	<!-- TODO put this video in cloudinary -->
+	<video autoplay muted loop playsinline class="background-video">
+		<source src="water.mp4" type="video/mp4" />
+		Your browser does not support HTML5 video.
+	</video>
 	<section>
 		<div>
 			<h2>NEWSLETTER</h2>
@@ -116,13 +116,13 @@
 	}
 	.background-video {
 		position: absolute;
-		top: 15%;
+		top: 50%;
 		left: 50%;
-		transform: translate(-50%, 0%);
+		transform: translate(-50%, -50%);
 		opacity: 0.9;
 		z-index: -1;
 		min-width: var(--size-content-3);
-		height: 120%;
+		height: 100%;
 		object-fit: cover;
 	}
 	.newsletter-form {
