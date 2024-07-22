@@ -9,7 +9,7 @@
 </script>
 
 <div class="card">
-	<a href={link}>
+	<a href={link} target="_blank">
 		<figure>
 			<div class="imageWrapper">
 				{#if articleImage}
