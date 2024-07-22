@@ -34,7 +34,6 @@
 
 <section>
 	{#each articles as article}
-		<!-- <div>{article.id}</div> -->
 		<Card
 			author={article.author}
 			articleImage={article.img}
@@ -45,7 +44,6 @@
 				<a href={`/admin/homepage/articles/${article.id}/edit`}>
 					<button class="edit-article-button"><Pencil strokeWidth={STROKE_WIDTH} />Edit</button>
 				</a>
-				<!-- TODO make card data dynamic for refreshing, add notification message or toast -->
 				<form
 					method="POST"
 					action="?/deleteArticle"
