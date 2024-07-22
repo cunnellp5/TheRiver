@@ -35,7 +35,7 @@ export const actions: Actions = {
 		const formData = await event.request.formData();
 		const articleId = Number(formData.get('articleId'));
 		const linkTitle = formData.get('linkTitle') as string;
-		const contentMessage = formData.get('contentMessage') as string;
+		const description = formData.get('description') as string;
 
 		// TODO test me
 		if (Number.isNaN(articleId) || articleId <= 0) {
@@ -58,7 +58,7 @@ export const actions: Actions = {
 				},
 				data: {
 					linkTitle,
-					contentMessage
+					description
 				}
 			});
 

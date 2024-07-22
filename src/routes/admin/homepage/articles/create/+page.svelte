@@ -4,10 +4,10 @@
 	import { enhance } from '$app/forms';
 
 	$: article = {
-		articleImgUrl: '',
-		contentMessage: '',
-		contentAuthor: '',
-		linkUrl: '',
+		img: '',
+		description: '',
+		author: '',
+		link: '',
 		linkTitle: ''
 	};
 </script>
@@ -16,17 +16,17 @@
 
 <section>
 	<form method="POST" use:enhance>
-		<label for="articleImgUrl"> Article Image URL: </label>
-		<input id="articleImgUrl" name="articleImgUrl" type="text" bind:value={article.articleImgUrl} />
+		<label for="img"> Article Image URL: </label>
+		<input id="img" name="img" type="text" bind:value={article.img} />
 
-		<label for="contentMessage">Content Message:</label>
-		<textarea id="contentMessage" name="contentMessage" bind:value={article.contentMessage} />
+		<label for="description">Content Message:</label>
+		<textarea id="description" name="description" bind:value={article.description} />
 
-		<label for="contentAuthor">Content Author:</label>
-		<input id="contentAuthor" name="contentAuthor" type="text" bind:value={article.contentAuthor} />
+		<label for="author">Content Author:</label>
+		<input id="author" name="author" type="text" bind:value={article.author} />
 
-		<label for="linkUrl">Link URL:</label>
-		<input id="linkUrl" name="linkUrl" type="text" bind:value={article.linkUrl} />
+		<label for="link">Link URL:</label>
+		<input id="link" name="link" type="text" bind:value={article.link} />
 
 		<label for="linkTitle">Link Title:</label>
 		<input id="linkTitle" name="linkTitle" type="text" bind:value={article.linkTitle} />
@@ -37,10 +37,11 @@
 	<div>
 		<h4>Example article layout:</h4>
 		<Card
+			author="Author Name"
 			articleImage={'https://place-hold.it/300x300'}
 			articleTitle="Link Title goes here"
-			message="Content Message goes here"
-			link="linkUrl">
+			description="Content description goes here"
+			link="actual link url">
 		</Card>
 	</div>
 </section>

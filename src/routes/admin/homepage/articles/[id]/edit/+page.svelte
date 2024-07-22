@@ -12,30 +12,31 @@
 
 <div class="form-and-preview">
 	<form method="POST" use:enhance>
-		<label for="articleImgUrl">Article Image URL</label>
-		<input type="text" name="articleImgUrl" id="articleImgUrl" value={article.articleImgUrl} />
+		<label for="img">Article Image URL</label>
+		<input type="text" name="img" id="img" value={article.img} />
 
-		<label for="contentMessage">Content Message</label>
-		<textarea name="contentMessage" id="contentMessage" value={article.contentMessage} rows="4" />
+		<label for="description">Content Message</label>
+		<textarea name="description" id="description" value={article.description} rows="4" />
 
-		<label for="contentAuthor">Content Author</label>
-		<input type="text" name="contentAuthor" id="contentAuthor" value={article.contentAuthor} />
+		<label for="author">Content Author</label>
+		<input type="text" name="author" id="author" value={article.author} />
 
 		<label for="linkTitle">Link Title</label>
 		<input type="text" name="linkTitle" id="linkTitle" value={article.linkTitle} />
 
-		<label for="linkUrl">Link URL</label>
-		<input type="text" name="linkUrl" id="linkUrl" value={article.linkUrl} />
+		<label for="link">Link URL</label>
+		<input type="text" name="link" id="link" value={article.link} />
 
 		<button>Submit</button>
 	</form>
 
 	<section>
 		<Card
-			articleImage={article.articleImgUrl}
-			articleTitle={article.linkTitle}
-			message={article.contentMessage}
-			link={article.linkUrl}>
+			author={article.author}
+			articleImage={article.img}
+			articleTitle={article.articleTitle}
+			description={article.description}
+			link={article.link}>
 		</Card>
 	</section>
 </div>

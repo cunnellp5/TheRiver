@@ -64,10 +64,11 @@
 	<section>
 		{#each articles as article}
 			<Card
-				articleImage={article.articleImgUrl}
-				articleTitle={article.linkTitle}
-				message={article.contentMessage}
-				link={article.linkUrl}>
+				articleImage={article.img}
+				articleTitle={article.articleTitle}
+				description={article.description}
+				link={article.link}
+				author={article.author}>
 			</Card>
 		{/each}
 	</section>

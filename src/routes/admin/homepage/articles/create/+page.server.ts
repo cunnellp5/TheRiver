@@ -11,10 +11,10 @@ export const actions: Actions = {
 		const formData = await event.request.formData();
 
 		const article = {
-			articleImgUrl: (formData.get('articleImgUrl') as string) || '',
-			contentMessage: (formData.get('contentMessage') as string) || '',
-			contentAuthor: (formData.get('contentAuthor') as string) || '',
-			linkUrl: (formData.get('linkUrl') as string) || '',
+			img: (formData.get('img') as string) || '',
+			description: (formData.get('description') as string) || '',
+			author: (formData.get('author') as string) || '',
+			link: (formData.get('link') as string) || '',
 			linkTitle: (formData.get('linkTitle') as string) || ''
 		};
 
@@ -24,10 +24,10 @@ export const actions: Actions = {
 
 		await db.article.create({
 			data: {
-				articleImgUrl: article.articleImgUrl,
-				contentMessage: article.contentMessage,
-				contentAuthor: article.contentAuthor,
-				linkUrl: article.linkUrl,
+				img: article.img,
+				description: article.description,
+				author: article.author,
+				link: article.link,
 				linkTitle: article.linkTitle
 			}
 		});

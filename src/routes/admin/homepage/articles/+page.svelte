@@ -23,10 +23,11 @@
 	{#each articles as article}
 		<!-- <div>{article.id}</div> -->
 		<Card
-			articleImage={article.articleImgUrl}
-			articleTitle={article.linkTitle}
-			message={article.contentMessage}
-			link={article.linkUrl}>
+			author={article.author}
+			articleImage={article.img}
+			articleTitle={article.articleTitle}
+			description={article.description}
+			link={article.link}>
 			<div class="buttons" slot="buttons">
 				<a href={`/admin/homepage/articles/${article.id}/edit`}>
 					<button class="edit-article-button"><Pencil strokeWidth={STROKE_WIDTH} />Edit</button>
