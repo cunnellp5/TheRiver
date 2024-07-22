@@ -51,7 +51,7 @@
 	}
 
 	$: if (form?.dbError) {
-		showToast(form.message || 'Something is messed up', 'error');
+		showToast(form.message, 'error');
 	}
 </script>
 
