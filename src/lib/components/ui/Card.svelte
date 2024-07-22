@@ -62,6 +62,7 @@
 	figure {
 		margin: 0;
 		border-radius: var(--radius-2);
+		border-bottom-left-radius: 0px;
 		padding: 0;
 		overflow: hidden;
 	}
@@ -73,14 +74,14 @@
 		-webkit-transition: 0.3s ease-in-out;
 		transition: 0.3s ease-in-out;
 		transition-delay: var(--transition-delay-1);
-		border-radius: 0;
 		aspect-ratio: var(--ratio-square);
 		object-fit: cover;
+		& > img {
+			border-radius: var(--radius-2);
+		}
 	}
-	.imgWrapper:hover {
-		-webkit-transform: scale(1.05);
-		transform: scale(1.05);
-	}
+	/* .imgWrapper:hover {
+	} */
 	.imageContainer {
 		position: relative;
 		width: 100%;
@@ -112,6 +113,10 @@
 		transition: 0.3s ease-in-out;
 		transition-delay: var(--transition-delay-1);
 		box-shadow: var(--shadow-2);
+		& .imgWrapper {
+			-webkit-transform: scale(1.05);
+			transform: scale(1.05);
+		}
 	}
 	.buttons {
 		display: flex;
