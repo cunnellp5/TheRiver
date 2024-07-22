@@ -161,14 +161,15 @@ model BlackoutDay {
 }
 
 model Article {
-  id             Int      @id @default(autoincrement())
-  articleImgUrl  String
-  contentMessage String
-  contentAuthor  String
-  linkUrl        String
-  linkTitle      String
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
+  id           Int      @id @default(autoincrement())
+  articleTitle String
+  img          String
+  description  String
+  author       String
+  link         String
+  linkTitle    String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }
 
 // TODO add newsletter model: email, name, createdAt, updatedAt
