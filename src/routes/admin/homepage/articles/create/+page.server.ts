@@ -1,55 +1,79 @@
-import { error, redirect, fail } from '@sveltejs/kit';
+import { error, fail } from '@sveltejs/kit';
+import { ArticleSchema } from '$lib/utils/Valibot/ArticleSchema';
+import type { ArticleValidator } from '$lib/utils/Valibot/ArticleSchema';
 import db from '$lib/server/database';
+import { ValiError, parse, flatten } from 'valibot';
 import type { Actions } from './$types';
 
 export const actions: Actions = {
+	// 1. check user is logged in and admin
+	// 2. get form data
+	// 3. validate form data
+	// 4. create article
+	// 5. return success or error message
+
 	default: async (event) => {
-		if (!event.locals.session) {
-			redirect(302, '/login');
+		if (!event.locals.session || !event.locals.user?.isAdmin) {
+			return error(401, 'Unauthorized');
 		}
 
 		const formData = await event.request.formData();
 
 		const article = {
-			articleImgUrl: (formData.get('articleImgUrl') as string) || '',
-			contentMessage: (formData.get('contentMessage') as string) || '',
-			contentAuthor: (formData.get('contentAuthor') as string) || '',
-			linkUrl: (formData.get('linkUrl') as string) || '',
-			linkTitle: (formData.get('linkTitle') as string) || ''
+			articleTitle: (formData.get('articleTitle') as string) || '',
+			author: (formData.get('author') as string) || '',
+			description: (formData.get('description') as string) || '',
+			img: (formData.get('img') as string) || '',
+			link: (formData.get('link') as string) || ''
 		};
 
-		console.log(article, 'ARTICLE');
-		// TODO handle validation errors
-		// TODO ensure the fall back values render something other than a skeleton loader (probably want to avoid empty strings)
+		// Input validations
+		try {
+			parse(ArticleSchema, {
+				articleTitle: article.articleTitle,
+				author: article.author,
+				description: article.description,
+				img: article.img,
+				link: article.link
+			}) as ArticleValidator;
+		} catch (err) {
+			const errors = err as ValiError<typeof ArticleSchema>;
+			const issues = flatten(errors.issues);
 
-		await db.article.create({
-			data: {
-				articleImgUrl: article.articleImgUrl,
-				contentMessage: article.contentMessage,
-				contentAuthor: article.contentAuthor,
-				linkUrl: article.linkUrl,
-				linkTitle: article.linkTitle
-			}
-		});
+			// return error message defined by validation schema
+			return fail(400, {
+				fail: true,
+				message: errors.message,
+				error: {
+					articleTitle: issues.nested?.articleTitle,
+					author: issues.nested?.author,
+					description: issues.nested?.description,
+					img: issues.nested?.img,
+					link: issues.nested?.link
+				}
+			});
+		}
 
-		// const submitForm = async () => {
-		// 	// Example POST request to your API endpoint
-		// 	const response = await fetch('/api/articles', {
-		// 		method: 'POST',
-		// 		headers: {
-		// 			'Content-Type': 'application/json'
-		// 		},
-		// 		body: JSON.stringify(article)
-		// 	});
-
-		// 	if (response.ok) {
-		// 		// Handle success response
-		// 		console.log('Article submitted successfully');
-		// 		// Optionally, clear the form or redirect the user
-		// 	} else {
-		// 		// Handle error response
-		// 		console.error('Failed to submit article');
-		// 	}
-		// };
+		try {
+			await db.article.create({
+				data: {
+					articleTitle: article.articleTitle,
+					author: article.author,
+					description: article.description,
+					img: article.img,
+					link: article.link
+				}
+			});
+			return {
+				success: true,
+				message: 'Article created successfully'
+			};
+		} catch (err) {
+			return {
+				dbError: true,
+				error: err,
+				message: 'Error creating article'
+			};
+		}
 	}
 };

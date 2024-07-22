@@ -36,14 +36,10 @@
 
 ### 6. Users
 
+- Users can be a guest
 - Users can see history of purchases
 - Users can see history of services
 - Users can sign up for newsletter
-- Dont have to sign in and can remain a 'guest'
-
----
-
----
 
 ---
 

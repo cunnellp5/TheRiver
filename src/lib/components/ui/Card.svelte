@@ -1,80 +1,73 @@
 <script lang="ts">
-	import SkeletonText from '$lib/components/ui/skeletons/SkeletonText.svelte';
 	import SkeletonImg from '$lib/components/ui/skeletons/SkeletonImg.svelte';
+	import SkeletonText from '$lib/components/ui/skeletons/SkeletonText.svelte';
+	import { CldImage } from 'svelte-cloudinary';
 
 	export let articleImage;
 	export let articleTitle;
-	export let message;
+	export let author;
 	export let link;
+	export let description;
 </script>
 
 <div class="card">
-	<figure>
+	<a href={link} target="_blank">
 		<figure>
-			{#if articleImage}
-				<img class="skeleton" src={articleImage} alt={articleTitle} />
-			{:else}
-				<SkeletonImg />
-			{/if}
+			<div class="imageContainer">
+				{#if articleImage}
+					<div class="imgWrapper">
+						<CldImage height="600" width="600" crop="thumb" src={articleImage} alt={articleTitle} />
+					</div>
+					<p class="overlayTitle">{articleTitle}</p>
+				{:else}
+					<SkeletonImg />
+				{/if}
+			</div>
 		</figure>
-	</figure>
-	<div class="contentWrapper">
-		<h5 class="title" data-title>
-			{#if articleTitle}
-				{articleTitle}
-			{:else}
-				<SkeletonText title={true} />
-			{/if}
-		</h5>
-		<div data-message>
-			{#if message}
-				<p>{message}</p>
-			{:else}
-				<SkeletonText />
-				<SkeletonText />
-			{/if}
+		<div class="contentWrapper">
+			<div data-description class="description">
+				{#if description}
+					<p>{description}</p>
+				{:else}
+					<SkeletonText />
+					<SkeletonText />
+				{/if}
+			</div>
+			<div class="link-wrapper">
+				{#if link}
+					<p data-link class="credits">{author}</p>
+				{:else}
+					<SkeletonText short={true} />
+				{/if}
+			</div>
 		</div>
-		{#if link}
-			<a data-link href={link}>{articleTitle}</a>
-		{:else}
-			<SkeletonText short={true} />
-		{/if}
-	</div>
-	<div>
-		<slot class="buttons" name="buttons"></slot>
-	</div>
+		<div>
+			<slot class="buttons" name="buttons"></slot>
+		</div>
+	</a>
 </div>
 
 <style>
-	.card {
-		display: flex;
-		flex: 1 1 var(--size-14);
-		flex-direction: column;
-		gap: var(--size-3);
-		transition:
-			flex-grow 0.5s ease,
-			flex-shrink 0.5s ease;
-		box-shadow: var(--shadow-1);
-		padding: var(--size-4);
-	}
-
+	/* ELEMENTS */
 	a {
 		color: var(--link);
 		font-size: var(--font-size-0);
 		text-decoration: none;
 	}
-
 	p {
-		margin-block: var(--size-3);
+		margin-block-start: var(--size-3);
 		color: var(--text-2);
 		font-size: var(--font-size-1);
 	}
-
 	figure {
+		margin: 0;
 		border-radius: var(--radius-2);
+		padding: 0;
+		overflow: hidden;
 	}
 
-	img {
+	/* CLASSES */
+	.imgWrapper {
 		-webkit-transform: scale(1);
 		transform: scale(1);
 		-webkit-transition: 0.3s ease-in-out;
@@ -84,20 +77,57 @@
 		aspect-ratio: var(--ratio-square);
 		object-fit: cover;
 	}
-
-	img:hover {
+	.imgWrapper:hover {
 		-webkit-transform: scale(1.05);
 		transform: scale(1.05);
 	}
-
-	figure {
-		margin: 0;
-		padding: 0;
-		overflow: hidden;
+	.imageContainer {
+		position: relative;
+		width: 100%;
+		height: auto;
 	}
-
+	.credits {
+		color: var(--link);
+		font-size: var(--font-size-0);
+	}
+	.link-wrapper {
+		display: flex;
+		justify-content: flex-end;
+	}
+	.card {
+		display: flex;
+		position: relative;
+		flex: 1 1 var(--size-14);
+		flex-direction: column;
+		gap: var(--size-3);
+		transition:
+			flex-grow 0.5s ease,
+			flex-shrink 0.5s ease;
+		box-shadow: var(--shadow-1);
+		background: var(--surface-3);
+		padding: var(--size-5);
+	}
+	.card:hover {
+		-webkit-transition: 0.3s ease-in-out;
+		transition: 0.3s ease-in-out;
+		transition-delay: var(--transition-delay-1);
+		box-shadow: var(--shadow-2);
+	}
 	.buttons {
 		display: flex;
 		flex-direction: column;
+	}
+	.overlayTitle {
+		position: absolute;
+		bottom: 0;
+		background-color: rgba(181, 81, 81, 0.9);
+		padding: var(--size-1);
+		color: var(--stone-2);
+		font-weight: var(--font-weight-7);
+		font-size: var(--size-4);
+		line-height: var(--size-5);
+	}
+	.description {
+		line-height: var(--size-4);
 	}
 </style>

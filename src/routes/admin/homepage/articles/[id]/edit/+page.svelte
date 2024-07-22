@@ -19,28 +19,31 @@
 		};
 	};
 
+	export let data;
 	export let form: ActionData & ArticleForm; // This isn't ideal and i dont like how redundant this is, but TS isnt recognizing the inferred nested ActionData types below, and If i just go with the explicitly typed form object, it causes issues with the form object in the script tag
+
+	const { article } = data; // by pulling a reference to the data obj, we can use that to init the form fields and then use the data obj to refresh with the latest data
 
 	function showToast(msg: string, type: string) {
 		addToast({ message: msg, type, dismissible: true, timeout: 5000 });
 	}
 
-	$: article = {
-		articleTitle: '',
-		author: '',
-		description: '',
-		img: '',
-		link: ''
+	$: articlePreview = {
+		author: article.author,
+		img: article.img,
+		title: article.articleTitle,
+		description: article.description,
+		link: article.link
 	};
 
 	$: if (form?.success) {
-		// Reset article fields
-		article = {
-			articleTitle: '',
-			author: '',
-			description: '',
-			img: '',
-			link: ''
+		// Reset article fields with latest data
+		articlePreview = {
+			author: data.article.author,
+			img: data.article.img,
+			title: data.article.articleTitle,
+			description: data.article.description,
+			link: data.article.link
 		};
 
 		// Show success toast
@@ -50,24 +53,37 @@
 		form = { ...form, success: undefined, message: '' };
 	}
 
-	$: if (form?.dbError) {
-		showToast(form.message, 'error');
+	function resetForm() {
+		// eslint-disable-next-line no-alert, no-restricted-globals
+		if (confirm('Are you sure you want to reset the form?')) {
+			articlePreview = {
+				author: article.author,
+				img: article.img,
+				title: article.articleTitle,
+				description: article.description,
+				link: article.link
+			};
+		}
 	}
+
+	$: disabled =
+		article.articleTitle === articlePreview.title &&
+		article.author === articlePreview.author &&
+		article.description === articlePreview.description &&
+		article.img === articlePreview.img &&
+		article.link === articlePreview.link;
 </script>
 
-<h2>Add article:</h2>
-
-<section>
+<div class="form-and-preview">
 	<form method="POST" use:enhance>
-		<!-- TODO refactor this to have an img upload flow for cloudinary, for now lets assume we have a url -->
 		<div class="input-group">
-			<label for="articleTitle">Title:</label>
+			<label for="articleTitle">Title</label>
 			<input
 				class:error={form?.fail && form?.error?.articleTitle}
-				id="articleTitle"
-				name="articleTitle"
 				type="text"
-				bind:value={article.articleTitle} />
+				name="articleTitle"
+				id="articleTitle"
+				bind:value={articlePreview.title} />
 			<p class="error-text">
 				{#if form?.error?.articleTitle}
 					{form?.error?.articleTitle[0]}
@@ -76,13 +92,13 @@
 		</div>
 
 		<div class="input-group">
-			<label for="img"> Article Image URL: </label>
+			<label for="img">Article img</label>
 			<input
 				class:error={form?.fail && form?.error?.img}
-				id="img"
-				name="img"
 				type="text"
-				bind:value={article.img} />
+				name="img"
+				id="img"
+				bind:value={articlePreview.img} />
 			<p class="error-text">
 				{#if form?.error?.img}
 					{form?.error?.img[0]}
@@ -91,12 +107,13 @@
 		</div>
 
 		<div class="input-group">
-			<label for="description">Content Message:</label>
+			<label for="description">Description</label>
 			<textarea
 				class:error={form?.fail && form?.error?.description}
-				id="description"
 				name="description"
-				bind:value={article.description} />
+				id="description"
+				bind:value={articlePreview.description}
+				rows="4" />
 			<p class="error-text">
 				{#if form?.error?.description}
 					{form?.error?.description[0]}
@@ -105,13 +122,13 @@
 		</div>
 
 		<div class="input-group">
-			<label for="author">Content Author:</label>
+			<label for="author">Author</label>
 			<input
 				class:error={form?.fail && form?.error?.author}
-				id="author"
-				name="author"
 				type="text"
-				bind:value={article.author} />
+				name="author"
+				id="author"
+				bind:value={articlePreview.author} />
 			<p class="error-text">
 				{#if form?.error?.author}
 					{form?.error?.author[0]}
@@ -120,13 +137,13 @@
 		</div>
 
 		<div class="input-group">
-			<label for="link">Link URL:</label>
+			<label for="link">Link URL</label>
 			<input
 				class:error={form?.fail && form?.error?.link}
-				id="link"
-				name="link"
 				type="text"
-				bind:value={article.link} />
+				name="link"
+				id="link"
+				bind:value={articlePreview.link} />
 			<p class="error-text">
 				{#if form?.error?.link}
 					{form?.error?.link[0]}
@@ -134,50 +151,69 @@
 			</p>
 		</div>
 
-		<button class="primary" type="submit">Submit Article</button>
+		<div class="button-group">
+			<button class="reset-article-button" type="button" on:click={resetForm}> Reset Form </button>
+			<button class:disabled {disabled} class="update-article-button">Update</button>
+		</div>
 	</form>
 
-	<div>
-		<h4>Example article:</h4>
+	<section>
+		<h4>Live preview</h4>
 		<Card
-			author="Author name"
-			articleImage={'https://place-hold.it/300x300'}
-			articleTitle="Title goes here"
-			description="Description goes here"
-			link="actual link url">
+			author={articlePreview.author}
+			articleImage={articlePreview.img}
+			articleTitle={articlePreview.title}
+			description={articlePreview.description}
+			link={articlePreview.link}>
 		</Card>
-	</div>
-</section>
+	</section>
+</div>
 
 <style>
 	/* ELEMENTS */
-	h2 {
-		padding-block-end: var(--size-7);
+	section {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
 	}
 	form {
+		display: flex;
+		flex-direction: column;
+		/* border: 1px solid white; */
+		padding-inline: var(--size-7);
 		min-width: 50%;
 	}
 	label {
 		color: var(--link);
 		font-weight: bold;
 	}
-	input,
-	textarea {
-		border: 1px solid var(--border);
+	input {
+		border: 1px solid var(--color-gray-300);
 		border-radius: var(--size-1);
 		padding: var(--size-2);
 	}
-	section {
+	/* CLASSES */
+	.button-group {
 		display: flex;
-		justify-content: space-evenly;
+		flex-direction: column;
+		gap: var(--size-2);
+		margin-block-start: var(--size-8);
+	}
+	.form-and-preview {
+		display: flex;
+		margin-block-start: var(--size-8);
 		width: 100%;
 	}
-	/* CLASSES */
 	.input-group {
 		display: flex;
 		flex-direction: column;
 		gap: var(--size-2);
-		margin-block-end: var(--size-2);
+		margin-block-end: var(--size-4);
+	}
+	.update-article-button {
+		background-color: var(--update);
+		color: var(--on-crud-text);
+		font-weight: var(--font-weight-7);
 	}
 	.error-text {
 		display: block;

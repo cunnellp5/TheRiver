@@ -1,3 +1,4 @@
+<!-- TODO add this to homepage after breaking out of the layout styles so this can be full width rather than being constrained by the layout style width -->
 <div class="marquee marquee-hover-pause">
 	<div class="marquee_group">
 		<span>The River Sings</span>

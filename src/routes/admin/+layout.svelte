@@ -16,9 +16,10 @@
 	}
 </script>
 
+<!-- 
 <header>
 	<h1>ADMIN PORTAL</h1>
-</header>
+</header> -->
 <main>
 	<aside>
 		<nav class="sidenav">
@@ -83,12 +84,12 @@
 		grid-template-columns: var(--size-12) 1fr;
 	}
 
-	header {
+	/* header {
 		display: flex;
 		flex-direction: column;
 		margin-block: var(--size-5);
 		padding-block: var(--size-5);
-	}
+	} */
 
 	article {
 		margin-inline: var(--size-4);
@@ -121,7 +122,7 @@
 	.sidenav a:hover {
 		cursor: pointer;
 		border-radius: var(--radius-2);
-		background-color: var(--gray-9);
+		background-color: var(--hover-1);
 	}
 
 	.current {

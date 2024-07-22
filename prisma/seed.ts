@@ -105,41 +105,36 @@ async function main() {
 	await db.article.createMany({
 		data: [
 			{
-				articleImgUrl: 'https://res.cloudinary.com/dswpu3qez/image/upload/v1707412331/sample.jpg',
-				contentMessage:
+				articleTitle: 'The River Delivers Angry Verses On “Hours”',
+				author: 'Victória Santiago',
+				description:
 					'Ever since releasing her first song in June 2021, she has had her foot on the gas.',
-				contentAuthor: 'Victória Santiago',
-				linkUrl:
-					'https://ratingsgamemusic.com/2022/01/08/the-river-delivers-angry-verses-on-hours/',
-				linkTitle: 'Victória Santiago [Ratings Game Music Blogger]'
+				img: 'https://res.cloudinary.com/dswpu3qez/image/upload/v1707412331/sample.jpg',
+				link: 'https://ratingsgamemusic.com/2022/01/08/the-river-delivers-angry-verses-on-hours/'
 			},
 			{
-				articleImgUrl:
-					'https://res.cloudinary.com/dswpu3qez/image/upload/v1707412341/samples/people/jazz.jpg',
-				contentMessage:
+				articleTitle: 'The River’s “Hours” digs deep into the dynamics of failed relationships',
+				author: 'TAYO ODUTOLA',
+				description:
 					"On Hours: The production here is sublime and crisp as each instrument stands out with clarity while The River's commanding vocals cut through the mix with ease.",
-				contentAuthor: 'TAYO ODUTOLA',
-				linkUrl:
-					'https://earmilk.com/2022/01/10/the-rivers-hours-digs-deep-into-the-dynamics-of-failed-relationships/',
-				linkTitle: 'Earmilk'
+				img: 'https://res.cloudinary.com/dswpu3qez/image/upload/v1707412341/samples/people/jazz.jpg',
+				link: 'https://earmilk.com/2022/01/10/the-rivers-hours-digs-deep-into-the-dynamics-of-failed-relationships/'
 			},
 			{
-				articleImgUrl:
-					'https://res.cloudinary.com/dswpu3qez/image/upload/v1707412345/samples/ecommerce/accessories-bag.jpg',
-				contentMessage:
+				articleTitle: 'It aint that deep',
+				author: 'Alyce Lindberg',
+				description:
 					"The vocals are confidently delivered, imbued with the effortless coolness that comes with being insanely naturally gifted. Plus, the arrangement and production create the most infectious groove you'll ever hear.",
-				contentAuthor: 'Alyce Lindberg',
-				linkUrl: 'https://musicfashionblog.com/it-aint-that-deep-the-river/',
-				linkTitle: 'Read more'
+				img: 'https://res.cloudinary.com/dswpu3qez/image/upload/v1707412345/samples/ecommerce/accessories-bag.jpg',
+				link: 'https://musicfashionblog.com/it-aint-that-deep-the-river/'
 			},
 			{
-				articleImgUrl:
-					'https://res.cloudinary.com/dswpu3qez/image/upload/v1707412364/samples/man-portrait.jpg',
-				contentMessage:
+				articleTitle: 'Soulful and introspective track',
+				author: 'Kreadiv Kesh',
+				description:
 					"Somewhere in the lyrics there is peace and truth. The River's latest single “Hours” facing the reality of love, respect, and emotions. Over and acoustic melody the rain pours over the lyrical expressions of facing your feelings.",
-				contentAuthor: 'Kreadiv Kesh',
-				linkUrl: 'EXPIRED_URL', // https://www.laonlock.com/reviews/1/11/2022/the-river-hours-review
-				linkTitle: 'Kreadiv Kesh [LA On Lock Blogger]'
+				img: 'https://res.cloudinary.com/dswpu3qez/image/upload/v1707412364/samples/man-portrait.jpg',
+				link: 'EXPIRED_URL' // https://www.laonlock.com/reviews/1/11/2022/the-river-hours-review
 			}
 		]
 	});

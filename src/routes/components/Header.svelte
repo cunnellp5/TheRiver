@@ -14,11 +14,11 @@
 
 	let visible = false;
 
-	const toggleAuthMenu = (event: MouseEvent) => {
-		event.preventDefault();
-		event.stopPropagation();
-		showAuthLinks = !showAuthLinks;
-	};
+	// const toggleAuthMenu = (event: MouseEvent) => {
+	// 	event.preventDefault();
+	// 	event.stopPropagation();
+	// 	showAuthLinks = !showAuthLinks;
+	// };
 
 	if (browser) {
 		window.addEventListener('click', () => {
@@ -32,6 +32,18 @@
 	onMount(() => {
 		visible = true;
 	});
+
+	$: includesAdmin = $page.url.pathname.includes('/admin');
+	$: includesPosts = $page.url.pathname.includes('/posts');
+	$: includesService = $page.url.pathname.includes('/services');
+	$: isContact = $page.url.pathname === '/contact';
+	$: isDashboard = $page.url.pathname === '/dashboard';
+	$: isHomePage = $page.url.pathname === '/';
+	$: isLogin = $page.url.pathname === '/login';
+	$: isLogout = $page.url.pathname === '/logout';
+	$: isMusic = $page.url.pathname === '/music';
+	$: isShop = $page.url.pathname === '/shop';
+	$: isSignup = $page.url.pathname === '/signup';
 </script>
 
 {#if visible}
@@ -40,52 +52,38 @@
 			<a class="logo-link" href="/">
 				<LogoR />
 			</a>
-			<ul class="links">
+			<ul class="links" class:homepageText={isHomePage}>
 				<li></li>
 
-				<li
-					class:current={$page.url.pathname.includes('/admin')}
-					aria-current={$page.url.pathname.includes('/admin')}>
+				<li class:current={includesAdmin} aria-current={includesAdmin}>
 					<a href="/admin"> Admin </a>
 				</li>
 
-				<li
-					class:current={$page.url.pathname === '/dashboard'}
-					aria-current={$page.url.pathname === '/dashboard'}>
+				<li class:current={isDashboard} aria-current={isDashboard}>
 					<a href="/dashboard"> Dashboard </a>
 				</li>
 			</ul>
 		</div>
 
-		<ul class="links">
-			<li
-				class:current={$page.url.pathname === '/music'}
-				aria-current={$page.url.pathname === '/music'}>
+		<ul class="links" class:homepageText={isHomePage}>
+			<li class:current={isMusic} aria-current={isMusic}>
 				<a href="/music"> Music </a>
 			</li>
 
-			<li
-				class:current={$page.url.pathname.includes('/services')}
-				aria-current={$page.url.pathname.includes('/services')}>
+			<li class:current={includesService} aria-current={includesService}>
 				<a href="/services"> services </a>
 			</li>
 
-			<li
-				class:current={$page.url.pathname === '/shop'}
-				aria-current={$page.url.pathname === '/shop'}>
+			<li class:current={isShop} aria-current={isShop}>
 				<a href="/shop"> Market </a>
 			</li>
 
 			<li class="border-left"></li>
 
-			<li
-				class:current={$page.url.pathname.includes('/posts')}
-				aria-current={$page.url.pathname.includes('/posts')}>
+			<li class:current={includesPosts} aria-current={includesPosts}>
 				<a href="/posts"> Posts </a>
 			</li>
-			<li
-				class:current={$page.url.pathname === '/contact'}
-				aria-current={$page.url.pathname === '/contact'}>
+			<li class:current={isContact} aria-current={isContact}>
 				<a href="/contact"> Contact </a>
 			</li>
 
@@ -93,15 +91,15 @@
 
 			{#if isSignedIn}
 				<form class="logout-wrapper" id="logoutForm" method="POST" action="/logout">
-					<li class:current={$page.url.pathname === '/logout'}>
+					<li class:current={isLogout} class:homepageText={isHomePage}>
 						<button class="logout-button" type="submit">Logout</button>
 					</li>
 				</form>
 			{:else}
-				<li class:current={$page.url.pathname === '/signup'}>
+				<li class:current={isSignup}>
 					<a href="/signup"> Signup </a>
 				</li>
-				<li class:current={$page.url.pathname === '/login'}>
+				<li class:current={isLogin}>
 					<a href="/login"> Login </a>
 				</li>
 			{/if}
@@ -208,6 +206,16 @@
 	.border-left {
 		border-left: 1px solid var(--border);
 		height: var(--size-5);
+	}
+
+	.homepageText {
+		& a,
+		.logout-button {
+			color: var(--gray-1);
+		}
+		& .border-left {
+			border-left: 1px solid var(--border-light);
+		}
 	}
 
 	.logout-button {

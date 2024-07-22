@@ -64,10 +64,11 @@
 	<section>
 		{#each articles as article}
 			<Card
-				articleImage={article.articleImgUrl}
-				articleTitle={article.linkTitle}
-				message={article.contentMessage}
-				link={article.linkUrl}>
+				articleImage={article.img}
+				articleTitle={article.articleTitle}
+				description={article.description}
+				link={article.link}
+				author={article.author}>
 			</Card>
 		{/each}
 	</section>
@@ -87,7 +88,8 @@
 		display: flex;
 		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 		flex-flow: row wrap;
-		/* gap: var(--size-6); */
+		gap: var(--size-7);
+		margin-block: var(--size-7);
 	}
 
 	#video-background {
