@@ -1,4 +1,4 @@
-import { error, redirect, fail } from '@sveltejs/kit';
+import { redirect, fail } from '@sveltejs/kit';
 import { ArticleSchema } from '$lib/utils/Valibot/ArticleSchema';
 import type { ArticleValidator } from '$lib/utils/Valibot/ArticleSchema';
 import db from '$lib/server/database';
