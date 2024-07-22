@@ -61,7 +61,7 @@
 
 	<TestVideo />
 
-	<section>
+	<section class="article-wrapper">
 		{#each articles as article}
 			<Card
 				articleImage={article.img}
@@ -82,14 +82,6 @@
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-	}
-
-	section {
-		display: flex;
-		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-		flex-flow: row wrap;
-		gap: var(--size-7);
-		margin-block: var(--size-7);
 	}
 
 	#video-background {

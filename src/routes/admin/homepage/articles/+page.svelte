@@ -32,7 +32,7 @@
 	<p>No articles found</p>
 {/if}
 
-<section>
+<section class="article-wrapper">
 	{#each articles as article}
 		<Card
 			author={article.author}
@@ -63,13 +63,6 @@
 </section>
 
 <style>
-	/* ELEMENTS */
-	section {
-		display: flex;
-		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-		flex-flow: row wrap;
-		gap: var(--size-7);
-	}
 	/* CLASSES */
 	.buttons {
 		display: flex;

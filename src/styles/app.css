@@ -239,6 +239,22 @@ tbody > tr:hover {
 	opacity: 0.5;
 }
 
+/* UTILITIES TIED TO CUSTOM COMPONENTS */
+.article-wrapper {
+	display: flex;
+	flex-flow: row wrap;
+	gap: var(--size-7);
+	margin-block: var(--size-7);
+	/* & > div {
+		flex: 1 0 auto;
+		max-width: calc(50% - var(--size-7));
+	} */
+	& > div:last-child {
+		margin: 0 auto;
+		max-width: calc(50% - var(--size-7)); /* Prevent the last item from taking full width */
+	}
+}
+
 /* TYPOGRAPHIES */
 
 /* COMPONENTS */
