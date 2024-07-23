@@ -1,10 +1,11 @@
 <main>
 	<section>
-		<h1>THE RIVER MARKET</h1>
 		<a target="_blank" href="https://www.etsy.com/shop/MadeByTheRiverBed">
+			<h1>THE RIVER MARKET</h1>
+		</a>
+		<a class="animation" target="_blank" href="https://www.etsy.com/shop/MadeByTheRiverBed">
 			etsy.com @MadeByTheRiverBed
 		</a>
-		<div class="animation">Check out the store</div>
 	</section>
 </main>
 
@@ -19,7 +20,7 @@
 		padding-block: var(--size-11);
 	}
 	h1 {
-		transform: rotate(4deg);
+		transform: rotate(2deg);
 		margin-block: var(--size-7);
 	}
 
