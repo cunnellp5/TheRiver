@@ -132,7 +132,6 @@
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
-		opacity: 0.9;
 		z-index: -1;
 		min-width: var(--size-content-3);
 		height: 100%;
