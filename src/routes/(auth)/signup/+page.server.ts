@@ -65,7 +65,7 @@ export const actions: Actions = {
 		try {
 			hashedPassword = await new Argon2id().hash(password);
 		} catch (err) {
-			error(500, { message: 'Something unexpected occured' });
+			return error(500, { message: 'Something unexpected occured' });
 		}
 
 		let newUser = null;
@@ -92,13 +92,15 @@ export const actions: Actions = {
 					path: '.',
 					...sessionCookie.attributes
 				});
-
-				redirect(302, '/dashboard');
+				// DO i need to do anything here?
 			} catch {
-				error(500, { message: 'Failed to create session' });
+				return error(500, { message: 'Failed to create session' });
 			}
+			// or do anything here?
 		} catch {
-			error(500, { message: 'Failed to create user' });
+			return error(500, { message: 'Failed to create user' });
 		}
+
+		return redirect(302, '/dashboard');
 	}
 };
