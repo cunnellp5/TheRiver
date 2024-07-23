@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { slide, fly, fade } from 'svelte/transition';
+	import { slide } from 'svelte/transition';
 	import { onMount } from 'svelte';
 	import { quintOut } from 'svelte/easing';
 	import BlogCard from '$lib/components/ui/BlogCard.svelte';
@@ -10,16 +10,15 @@
 
 	export let data: PageData;
 	let showElement = false;
-
 	let search = '';
 
 	onMount(() => {
 		showElement = true;
 	});
 
-	const isPostsHome = $page.url.pathname === '/posts';
 	let filteredPosts = data.posts;
 
+	// $: isPostsHome = $page.url.pathname === '/posts';
 	$: {
 		filteredPosts = data.posts.filter(
 			(post) =>
@@ -29,23 +28,21 @@
 	}
 </script>
 
+<div class="titleWrapper">
+	<a href="/posts">
+		<h1 class="jumbo">River Blog</h1>
+	</a>
+</div>
 <main>
 	<section>
-		<header>
-			<div class="titleWrapper">
-				<a href="/posts">
-					<h1>The River Posts</h1>
-				</a>
-			</div>
-
-			{#if isPostsHome}
-				<p>Showing {filteredPosts.length} post{filteredPosts.length > 1 ? 's' : ''}.</p>
-			{/if}
-		</header>
+		<header></header>
 		<div class="posts-wrapper">
 			<div class="list-of-posts">
-				<nav>
+				<nav class="posts-search">
 					<input type="search" bind:value={search} placeholder="Search posts..." />
+					<p class="posts-count">
+						{filteredPosts.length} post{filteredPosts.length > 1 ? 's' : ''}
+					</p>
 				</nav>
 				<section>
 					{#if filteredPosts.length > 0}
@@ -67,11 +64,7 @@
 			</div>
 
 			<div>
-				<nav class="hide">
-					<div class="size-same-as-input"></div>
-				</nav>
-				<!-- TODO bubble up click events to trigger these animations, make them cooler too -->
-				<section in:fly={{ x: -200, duration: 800, delay: 500 }} out:fade>
+				<section>
 					<slot />
 				</section>
 			</div>
@@ -81,19 +74,12 @@
 
 <style>
 	nav {
-		position: relative;
-		z-index: 1; /* Add this line */
-		box-shadow: var(--shadow-1);
 		border-bottom: 1px solid var(--stone-11);
 		padding: var(--size-4);
 	}
-	/* ul {
-		display: flex;
-		flex-direction: column;
-		gap: var(--size-4);
-		margin-inline: var(--size-4);
-	} */
 	ul {
+		/* TODO conditionally flex the ul if on the home page so the lay out looks like bricks instead of one column */
+		/* display: flex; */
 		height: 90vh;
 		overflow: scroll;
 		& li {
@@ -107,60 +93,46 @@
 	li:nth-child(even) {
 		grid-row: span 2;
 	}
-	.noPostsWrapper {
-		margin: var(--size-content-1);
-	}
-	@media (max-width: 768px) {
-		section {
-			margin-inline: 0;
-		}
-	}
 	h1 {
 		text-transform: uppercase;
 	}
 	main {
-		/* display: grid; */
-		/* grid-template-columns: max-content auto; */
-		margin-block-start: var(--size-7);
+		display: flex;
+		justify-content: center;
 	}
-	a:hover {
+	a {
 		text-decoration: none;
 	}
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		margin: 0 auto;
-		width: 100%;
-	}
 
+	/* CLASSES */
+	.jumbo {
+		display: fixed;
+		z-index: -1;
+		font-size: var(--size-12);
+		font-family: var(--font-serif);
+	}
+	.noPostsWrapper {
+		margin: var(--size-content-1);
+	}
 	.titleWrapper {
 		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		align-items: center;
-		gap: var(--size-4);
-		& button {
-			flex-grow: 0;
-			flex-shrink: 0;
-		}
+		justify-content: center;
+		margin-block: var(--size-7);
+		width: 100%;
+		user-select: none;
 	}
-
 	.posts-wrapper {
 		display: grid;
 		grid-template-columns: auto 1fr;
-		border: 1px solid var(--stone-11);
-		/* gap: var(--size-4); */
+		/* border: 1px solid var(--stone-11); */
 	}
-
-	.list-of-posts {
-		/* border-right: 1px solid var(--stone-10); */
+	.posts-count {
+		color: var(--text-2);
+		font-size: var(--font-size-0);
 	}
-
-	.hide {
-		display: hidden;
-	}
-	.size-same-as-input {
-		height: var(--size-7);
+	.posts-search {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
 	}
 </style>
