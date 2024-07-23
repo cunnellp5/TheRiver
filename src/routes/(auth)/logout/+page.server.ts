@@ -17,6 +17,6 @@ export const actions: Actions = {
 			...sessionCookie.attributes
 		});
 
-		redirect(302, '/logout');
+		return redirect(302, '/logout');
 	}
 };
