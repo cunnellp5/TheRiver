@@ -15,7 +15,7 @@ export const load: PageServerLoad = async (event) => {
 		foundToken = await db.resetPasswordSession.findFirst({
 			where: { token, expiresAt: { gt: new Date() } }
 		});
-	} catch (error) {
+	} catch (err) {
 		// TODO if an actual error, should consider doing something more helpful here
 		redirect(302, '/reset');
 	}
@@ -32,7 +32,7 @@ export const load: PageServerLoad = async (event) => {
 		user = await db.user.findFirst({
 			where: { id: foundToken.userId }
 		});
-	} catch (error) {
+	} catch (err) {
 		// TODO if an actual error, should consider doing something more helpful here
 		redirect(302, '/reset');
 	}
@@ -75,7 +75,7 @@ export const actions: Actions = {
 				confirm
 			});
 		} catch (err) {
-			const errors = err as ValiError;
+			const errors = err as ValiError<typeof PasswordSchema>;
 			return fail(400, {
 				message: errors.message
 			});

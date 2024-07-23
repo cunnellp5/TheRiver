@@ -24,15 +24,15 @@
 <h1>The River</h1>
 <p>Denver, CO</p>
 <div class="map-container">
-	<iframe
+	<!-- <iframe
 		title="map"
 		height="450"
 		style="border:0"
 		loading="lazy"
 		allowfullscreen
 		referrerpolicy="no-referrer-when-downgrade"
-		src="https://www.google.com/maps/embed/v1/place?key={/*LOAD ENV VAR FROM BACKEND*/}&q=39.73942555127294,-104.99025636441803">
-	</iframe>
+		src="https://www.google.com/maps/embed/v1/place?key={env.GOOGLE_MAP_KEY}&q=39.73942555127294,-104.99025636441803">
+	</iframe> -->
 </div>
 <div class="main-page-wrapper">
 	<!-- TODO put this video in cloudinary -->
@@ -76,6 +76,13 @@
 
 <style>
 	/* ELEMENTS */
+	h1 {
+		position: absolute;
+		z-index: -1;
+		font-size: var(--size-15);
+		user-select: none;
+		/* letter-spacing: var(--size-8); */
+	}
 	iframe {
 		box-shadow: var(--shadow-3);
 	}
@@ -90,7 +97,7 @@
 		border-radius: var(--radius-blob-1);
 		background-color: var(--surface-4);
 		padding: var(--size-11);
-		width: fit-content;
+		height: 50%;
 	}
 	h1,
 	h2 {
@@ -100,9 +107,11 @@
 		letter-spacing: var(--font-letterspacing-3);
 	}
 	video {
+		z-index: -3 !important;
 		animation: animateBorderRadius 24s infinite linear;
 		box-shadow: var(--shadow-1);
 		border-radius: var(--radius-blob-1);
+		user-select: none;
 	}
 	/* CLASSES */
 	.buttons {
@@ -112,7 +121,11 @@
 		margin-block-start: var(--size-2);
 	}
 	.main-page-wrapper {
+		display: flex;
 		position: relative;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
 	}
 	.background-video {
 		position: absolute;
