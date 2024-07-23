@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Badge from '$lib/components/ui/Badge.svelte';
 	import formatDate from '$lib/utils/formatDate';
-	// import SquareArrowOurUpRight from 'lucide-svelte/icons/square-arrow-out-up-right';
 	// eslint-disable-next-line import/no-unresolved
 	import { page } from '$app/stores';
 
@@ -38,7 +37,6 @@
 					{/each}
 				</div>
 			</aside>
-			<!-- <SquareArrowOurUpRight size="20" /> -->
 		</div>
 	</div>
 </a>
