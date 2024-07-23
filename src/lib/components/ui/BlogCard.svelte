@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Badge from '$lib/components/ui/Badge.svelte';
 	import formatDate from '$lib/utils/formatDate';
-	import SquareArrowOurUpRight from 'lucide-svelte/icons/square-arrow-out-up-right';
+	// import SquareArrowOurUpRight from 'lucide-svelte/icons/square-arrow-out-up-right';
 	// eslint-disable-next-line import/no-unresolved
 	import { page } from '$app/stores';
 
@@ -14,34 +14,34 @@
 	$: selectedHighlight = $page.url.pathname.includes(slug);
 </script>
 
-<div
-	class="card surface-4"
-	class:selected={selectedHighlight}
-	class:unselected={!selectedHighlight && $page.url.pathname.includes('/posts/')}>
-	<div>
+<a class="blogLink" href="/posts/{slug}">
+	<div
+		class="card surface-4"
+		class:selected={selectedHighlight}
+		class:unselected={!selectedHighlight && $page.url.pathname.includes('/posts/')}>
 		<div>
-			<h5>
-				<a href="/posts/{slug}">
-					{title}
-				</a>
-			</h5>
-			<date>{formatDate(new Date(createdAt))}</date>
-		</div>
-		<p class="description">
-			{description}
-		</p>
-		<aside>
-			<div class="badges">
-				{#each tags as tag}
-					<Badge {tag} />
-				{/each}
+			<div>
+				<h5>
+					<a href="/posts/{slug}">
+						{title}
+					</a>
+				</h5>
+				<date>{formatDate(new Date(createdAt))}</date>
 			</div>
-		</aside>
-		<a class="blogLink" href="/posts/{slug}">
-			<SquareArrowOurUpRight size="20" />
-		</a>
+			<p class="description">
+				{description}
+			</p>
+			<aside>
+				<div class="badges">
+					{#each tags as tag}
+						<Badge {tag} />
+					{/each}
+				</div>
+			</aside>
+			<!-- <SquareArrowOurUpRight size="20" /> -->
+		</div>
 	</div>
-</div>
+</a>
 
 <style>
 	h5 {
@@ -81,7 +81,7 @@
 	}
 	.description {
 		margin-block: var(--size-4);
-		font-size: var(--font-size-2);
+		font-size: var(--font-size-1);
 		font-family: var(--font-serif);
 		letter-spacing: var(--font-letterspacing-2);
 	}
