@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { fade, slide } from 'svelte/transition';
+	import { quintOut } from 'svelte/easing';
 	import { QuillConfigReadonly, quillContentInit } from '$lib/utils/QuillConfig';
 	import formatDate from '$lib/utils/formatDate';
 	import type Quill from 'quill';
@@ -51,37 +53,44 @@
 </script>
 
 <main>
-	<div class="section surface-4">
-		<div class="prevNext">
-			{#if previous}
-				<p title={previous.title}>
-					<a class="row" href="/posts/{previous.slug}"><ChevronLeft /> Older </a>
-				</p>
-			{/if}
-			&nbsp; &nbsp; &nbsp;
-			{#if next}
-				<p title={next.title}>
-					<a class="row" href="/posts/{next.slug}">
-						Newer <ChevronRight />
-					</a>
-				</p>
-			{/if}
-		</div>
-		<hgroup>
-			<div class="headerAction">
-				<h1 id={post.slug}>{post.title}</h1>
-			</div>
-			<date>{formatDate(new Date(post.createdAt))}</date>
-			<div class="tags">
-				{#each post.tags as tag}
-					<Badge {tag} />
-				{/each}
-			</div>
-		</hgroup>
+	<div
+		in:slide={{ delay: 250, duration: 300, easing: quintOut, axis: 'x' }}
+		out:slide={{ duration: 300, easing: quintOut, axis: 'x' }}
+		class="section surface-4">
+		{#key post}
+			<div in:fade={{ duration: 1400, delay: 100 }} class="blog-content-wrapper-for-animations">
+				<div class="prevNext">
+					{#if previous}
+						<p title={previous.title}>
+							<a class="row" href="/posts/{previous.slug}"><ChevronLeft /> Older </a>
+						</p>
+					{/if}
+					&nbsp; &nbsp; &nbsp;
+					{#if next}
+						<p title={next.title}>
+							<a class="row" href="/posts/{next.slug}">
+								Newer <ChevronRight />
+							</a>
+						</p>
+					{/if}
+				</div>
+				<hgroup>
+					<div class="headerAction">
+						<h1 id={post.slug}>{post.title}</h1>
+					</div>
+					<date>{formatDate(new Date(post.createdAt))}</date>
+					<div class="tags">
+						{#each post.tags as tag}
+							<Badge {tag} />
+						{/each}
+					</div>
+				</hgroup>
 
-		<div class="reader-wrapper">
-			<div bind:this={reader} />
-		</div>
+				<div class="reader-wrapper">
+					<div bind:this={reader} />
+				</div>
+			</div>
+		{/key}
 		<!-- TODO figure out if both the following are needed? -->
 		<!-- <div class="reader-wrapper" class:hidden={!quill}>
 				<div bind:this={reader} />
