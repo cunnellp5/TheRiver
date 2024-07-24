@@ -1,123 +1,142 @@
-<!-- <script lang="ts">
+<script lang="ts">
+	import BlogCard from '$lib/components/ui/BlogCard.svelte';
+	import { onMount } from 'svelte';
+	import Pencil from 'lucide-svelte/icons/pencil';
 	import Plus from 'lucide-svelte/icons/plus';
-	import type { Post } from '@prisma/client';
-	import Check from 'lucide-svelte/icons/check';
-	import X from 'lucide-svelte/icons/x';
-	import PostsCard from './components/PostsCard.svelte';
+	import Trash from 'lucide-svelte/icons/trash';
+	// eslint-disable-next-line import/no-unresolved
+	import { page } from '$app/stores';
 	import type { PageData } from './$types';
-	import EditDeleteActions from './components/EditDeleteActions.svelte';
+	import { enhance } from '$app/forms';
 
 	export let data: PageData;
-	let posts: Post[];
-	let publishedPosts: Post[];
-	let unpublishedPosts: Post[];
-	let postDataToShow: Post[];
-	let currentFilter: boolean | null = null;
+	let showElement = false;
+	let search = '';
+	const STROKE_WIDTH = 1.2;
+
+	onMount(() => {
+		showElement = true;
+	});
+
+	const isPostsHome = $page.url.pathname === '/posts';
+	let filteredPosts = data.posts;
 
 	$: {
-		posts = data.posts;
-		publishedPosts = posts.filter((post) => post.published);
-		unpublishedPosts = posts.filter((post) => !post.published);
-		postDataToShow = posts;
-	}
-
-	function updatePosts(published: boolean | null) {
-		currentFilter = published;
-		if (published === null) {
-			postDataToShow = posts;
-		}
-		postDataToShow = published ? publishedPosts : unpublishedPosts;
+		filteredPosts = data.posts.filter(
+			(post) =>
+				post.title.toLowerCase().includes(search.toLowerCase()) ||
+				post.description.toLowerCase().includes(search.toLowerCase())
+		);
 	}
 </script>
 
-<section>
-	<button class:current={currentFilter === null} on:click={() => updatePosts(null)}>
-		All posts ({posts.length})
-	</button>
-	<button class:current={currentFilter === true} on:click={() => updatePosts(true)}>
-		Published ({publishedPosts.length})
-	</button>
-	<button class:current={currentFilter === false} on:click={() => updatePosts(false)}>
-		Unpublished ({unpublishedPosts.length})
-	</button>
-	<a href="/admin/posts/create">
-		<button class="create">
-			<Plus />
-		</button>
-	</a>
-</section>
+<a href="/admin/posts/create">
+	<button class="create-post-button"> <Plus strokeWidth={3} />Add new post</button>
+</a>
 
-{#if postDataToShow && postDataToShow.length === 0}
+<main>
 	<section>
-		<p>No posts.</p>
+		<header>
+			<div class="titleWrapper">
+				<a href="/admin/posts">
+					<h1>The River Posts</h1>
+				</a>
+			</div>
+
+			{#if isPostsHome}
+				<p>Showing {filteredPosts.length} post{filteredPosts.length > 1 ? 's' : ''}.</p>
+			{/if}
+		</header>
+		<div class="posts-wrapper">
+			<div class="list-of-posts">
+				<nav>
+					<input type="search" bind:value={search} placeholder="Search posts..." />
+				</nav>
+				<section>
+					{#if filteredPosts.length > 0}
+						<ul>
+							{#each filteredPosts as { createdAt, description, slug, tags, title }}
+								{#if showElement}
+									<li>
+										<BlogCard
+											link={`/admin/posts/${slug}`}
+											{title}
+											{tags}
+											{createdAt}
+											{slug}
+											{description}>
+											<div class="buttons" slot="buttons">
+												<a href={`/admin/posts/${slug}/edit`}>
+													<button class="update-post-button">
+														<Pencil strokeWidth={STROKE_WIDTH} />Edit</button>
+												</a>
+												<form
+													method="POST"
+													action="?/deletePost"
+													use:enhance={({ cancel }) => {
+														// eslint-disable-next-line no-alert, no-restricted-globals
+														if (confirm('Are you sure you want to delete this post?')) {
+															return async ({ update }) => update();
+														}
+														return cancel();
+													}}>
+													<input type="hidden" name="postId" id="postId" value={slug} />
+													<button class="delete-post-button">
+														<Trash strokeWidth={STROKE_WIDTH} />
+														Delete
+													</button>
+												</form>
+											</div>
+										</BlogCard>
+									</li>
+								{/if}
+							{/each}
+						</ul>
+					{:else}
+						<div class="noPostsWrapper">
+							<p>No posts</p>
+						</div>
+					{/if}
+				</section>
+			</div>
+
+			<div>
+				<slot />
+			</div>
+		</div>
 	</section>
-{:else}
-	{#each postDataToShow as { title, tags, createdAt, slug, description, published }}
-		<section>
-			<PostsCard
-				{title}
-				{tags}
-				{createdAt}
-				{slug}
-				{description}
-				allowSlot={true}
-				link={`/admin/posts/${slug}`}>
-				<div class="actionsGroup">
-					<p class="isPublished">
-						{#if published}
-							<Check color="green" />&nbsp;Published
-						{:else}
-							<X color="red" />&nbsp;Unpublished
-						{/if}
-					</p>
-					<div>
-						<EditDeleteActions {slug} />
-					</div>
-				</div>
-			</PostsCard>
-		</section>
-	{/each}
-{/if}
+</main>
 
 <style>
-	section {
+	/* CLASSES */
+	.buttons {
 		display: flex;
-		justify-content: center;
-		margin: auto;
-		margin-block-end: var(--size-4);
-		& .card {
-			width: 50%;
-		}
-	}
-	button {
-		margin-inline: var(--size-2);
-		font-weight: var(--font-weight-1);
-	}
-	a {
-		display: inline-block;
-		align-self: center;
-		min-width: max-content;
-	}
-	.actionsGroup {
-		display: flex;
-		justify-content: space-between;
+		flex-direction: column;
 		align-items: center;
-		gap: var(--size-2);
-		& > div {
-			display: flex;
-			flex-direction: row;
-			gap: var(--size-2);
+		gap: var(--size-3);
+		margin-block-start: var(--size-6);
+		width: 100%;
+		font-size: var(--font-size-0);
+		& button,
+		a,
+		form {
+			width: 100%;
 		}
 	}
-	.current {
-		background-color: var(--button-active);
-		/* color: var(--gray-1); */
+	.create-post-button {
+		margin-block: var(--size-7);
+		background-color: var(--create);
+		color: var(--on-crud-text);
+		font-weight: var(--font-weight-7);
 	}
-	.isPublished {
-		display: flex;
-		justify-content: center;
-		padding-inline: var(--size-4);
-		/* background: var(--yellow-9); */
-		width: max-content;
+	.update-post-button {
+		background-color: var(--update);
+		color: var(--on-crud-text);
+		font-weight: var(--font-weight-7);
 	}
-</style> -->
+	.delete-post-button {
+		background-color: var(--delete);
+		color: var(--on-crud-text);
+		font-weight: var(--font-weight-7);
+	}
+</style>

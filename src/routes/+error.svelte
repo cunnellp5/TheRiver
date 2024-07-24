@@ -7,14 +7,18 @@
 	{#if $page.status === 404}
 		<h1>The River</h1>
 		<section>
-			<div>
+			<a href="/shop">
 				<h3>Creates</h3>
+			</a>
+			<a href="/music">
 				<h2>&nbsp;&nbsp;Sings</h2>
+			</a>
+			<a href="/services">
 				<h4>Beauty</h4>
-				<a href="/">
-					<h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Home</h5>
-				</a>
-			</div>
+			</a>
+			<a href="/">
+				<h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Home</h5>
+			</a>
 		</section>
 	{:else if $page.status === 500}
 		<h1>We weren't expecting that</h1>
@@ -29,14 +33,11 @@
 <style>
 	.hype > h1 {
 		font-size: var(--size-15);
-		/* letter-spacing: var(--size-8); */
 	}
 	section {
 		position: absolute;
-		/* flex-direction: row; */
 		justify-content: start;
 	}
-
 	main {
 		display: flex;
 		flex-direction: column;
@@ -44,12 +45,17 @@
 		align-items: center;
 		height: 100vh;
 	}
-
 	p {
 		color: var(--text-2);
 		font-weight: 800;
 		font-size: var(--size-3);
 		font-family: var(--font-mono);
 		text-transform: uppercase;
+	}
+	a {
+		text-decoration: none;
+	}
+	a:hover {
+		text-decoration: underline;
 	}
 </style>

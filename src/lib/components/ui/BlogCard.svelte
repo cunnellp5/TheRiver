@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Badge from '$lib/components/ui/Badge.svelte';
 	import formatDate from '$lib/utils/formatDate';
-	import SquareArrowOurUpRight from 'lucide-svelte/icons/square-arrow-out-up-right';
 	// eslint-disable-next-line import/no-unresolved
 	import { page } from '$app/stores';
 
@@ -10,18 +9,19 @@
 	export let createdAt: Date;
 	export let slug: string;
 	export let description: string;
+	export let link: string = `/posts/${slug}`;
 
 	$: selectedHighlight = $page.url.pathname.includes(slug);
 </script>
 
-<div
-	class="card surface-4"
-	class:selected={selectedHighlight}
-	class:unselected={!selectedHighlight && $page.url.pathname.includes('/posts/')}>
-	<div>
+<a class="blogLink" href={link}>
+	<div
+		class="card surface-4"
+		class:selected={selectedHighlight}
+		class:unselected={!selectedHighlight && $page.url.pathname.includes('/posts/')}>
 		<div>
 			<h5>
-				<a href="/posts/{slug}">
+				<a href={link}>
 					{title}
 				</a>
 			</h5>
@@ -37,19 +37,18 @@
 				{/each}
 			</div>
 		</aside>
-		<a class="blogLink" href="/posts/{slug}">
-			<SquareArrowOurUpRight size="20" />
-		</a>
+		<div>
+			<slot class="buttons" name="buttons"></slot>
+		</div>
 	</div>
-</div>
+</a>
 
 <style>
 	h5 {
-		background: unset;
-		-webkit-background-clip: unset;
-		-webkit-text-fill-color: unset;
-		background-clip: unset;
-		font-weight: var(--font-weight-7);
+		background: var(--gradient-24) fixed;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
 		& a {
 			color: var(--text-2);
 		}
@@ -61,7 +60,6 @@
 	p {
 		color: var(--text-1);
 		line-height: var(--font-lineheight-0);
-		font-family: var(--font-mono);
 	}
 	aside {
 		display: flex;
@@ -75,23 +73,19 @@
 		margin: 0 auto;
 		box-shadow: var(--shadow-1);
 		border: 1px solid var(--surface-4);
-		/* width: 50%; */
 		border-radius: var(--radius-2);
 		padding: var(--size-4);
 	}
 	.description {
 		margin-block: var(--size-4);
-		font-size: var(--font-size-2);
-		font-family: var(--font-serif);
-		letter-spacing: var(--font-letterspacing-2);
+		font-size: var(--font-size-1);
+		letter-spacing: var(--font-letterspacing-1);
 	}
 	.blogLink {
 		display: flex;
 		justify-content: end;
 		gap: var(--size-1);
 		margin-block: var(--size-2);
-		font-weight: var(--font-weight-7);
-		font-size: var(--font-size-0);
 	}
 	.selected {
 		display: inline-block;

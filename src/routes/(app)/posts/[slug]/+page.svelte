@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { fade, slide } from 'svelte/transition';
 	import { QuillConfigReadonly, quillContentInit } from '$lib/utils/QuillConfig';
 	import formatDate from '$lib/utils/formatDate';
 	import type Quill from 'quill';
@@ -9,128 +10,120 @@
 	// eslint-disable-next-line import/no-unresolved
 	import { page } from '$app/stores';
 	import type { PageData } from './$types';
+	// eslint-disable-next-line import/no-unresolved
+	import { browser } from '$app/environment';
 
 	export let data: PageData;
 	let quill: Quill | null;
 	let reader: string | HTMLElement;
+	let quillError = '';
 
-	let post = data.posts.find((p) => p.slug === $page.params.slug);
+	function findPost(slug: string) {
+		return data.posts.find((p) => p.slug === slug) || undefined;
+	}
+
+	let post = findPost($page.params.slug); // initial post
 
 	async function setQuillData() {
+		if (!browser) return;
+
 		try {
 			const { default: Quill } = await import('quill');
-
 			quill = new Quill(reader, QuillConfigReadonly);
-
-			const quillData = await quillContentInit(post?.content);
-
+			const quillData = await quillContentInit(post ? post.content : 'No content found');
 			quill.setContents(quillData);
-		} catch (error) {
-			// TODO: unable to load quill, provide some fall back
+			quillError = ''; // Reset error message on success
+		} catch (err) {
+			// eslint-disable-next-line no-console
+			console.error('Failed to set Quill data:', err);
+			quillError = 'Failed to load the editor. Please try again later.';
 		}
 	}
 
 	$: {
-		post = data.posts.find((p) => p.slug === $page.params.slug) || {
-			title: '',
-			content: '',
-			tags: [],
-			createdAt: new Date(),
-			slug: ''
-		};
+		post = findPost($page.params.slug); // updates page with selected post data
 		setQuillData();
 	}
+	$: index = data.posts.findIndex((p) => p.slug === $page.params.slug);
+	$: next = data.posts[index - 1];
+	$: previous = data.posts[index + 1];
 
 	onMount(() => {
 		setQuillData();
 	});
-
-	$: index = data.posts.findIndex((p) => p.slug === $page.params.slug);
-	$: next = data.posts[index - 1];
-	$: previous = data.posts[index + 1];
 </script>
 
-<main>
-	<div class="section surface-4">
-		<div class="prevNext">
-			{#if previous}
-				<p title={previous.title}>
-					<a class="row" href="/posts/{previous.slug}"><ChevronLeft /> Older </a>
-				</p>
-			{/if}
-			&nbsp; &nbsp; &nbsp;
-			{#if next}
-				<p title={next.title}>
-					<a class="row" href="/posts/{next.slug}">
-						Newer <ChevronRight />
-					</a>
-				</p>
-			{/if}
-		</div>
-		<hgroup>
-			<div class="headerAction">
-				<h1 id={post.slug}>{post.title}</h1>
+<section>
+	<div
+		in:slide={{ duration: 500, axis: 'x' }}
+		out:slide={{ duration: 200, axis: 'x' }}
+		class="section surface-4"
+		class:error-border={!post}>
+		{#key post}
+			<div in:fade={{ duration: 1400 }} class="blog-content-wrapper">
+				{#if post}
+					<div>
+						<hgroup>
+							<div class="headerAction">
+								<h1 id={post.slug}>{post.title}</h1>
+							</div>
+							<date>{formatDate(new Date(post.createdAt))}</date>
+							<div class="tags">
+								{#each post.tags as tag}
+									<Badge {tag} />
+								{/each}
+							</div>
+						</hgroup>
+						{#if quillError}
+							<p>{quillError}</p>
+						{:else}
+							<div class="reader-wrapper">
+								<div bind:this={reader} />
+							</div>
+						{/if}
+					</div>
+				{:else}
+					<p>Post not found</p>
+				{/if}
 			</div>
-			<date>{formatDate(new Date(post.createdAt))}</date>
-			<div class="tags">
-				{#each post.tags as tag}
-					<Badge {tag} />
-				{/each}
-			</div>
-		</hgroup>
-
-		<div class="reader-wrapper">
-			<div bind:this={reader} />
-		</div>
-		<!-- TODO figure out if both the following are needed? -->
-		<!-- <div class="reader-wrapper" class:hidden={!quill}>
-				<div bind:this={reader} />
-			</div>
-	
-			<p class="content" class:hidden={quill}>
-				{data.post.content}
-			</p> -->
+		{/key}
 	</div>
-	<!-- {#if data.posts.length > 5}
-		<div class="sidemenu">
-			<aside>Other posts:</aside>
-			<ul>
-				{#each data.posts as { slug, title }}
-					<li
-						class:selectedMenu={slug === $page.url.pathname.split('/').pop()}
-						on:click={() => selectPost(post)}>
-						<a href="/posts/{slug}">{title}</a>
-					</li>
-				{/each}
-			</ul>
-		</div>
-	{/if} -->
-</main>
+	<div class="prevNext-wrapper">
+		{#if post}
+			{#if previous}
+				<a class="prevNext" href="/posts/{previous.slug}">
+					<ChevronLeft size={12} />
+					Previous
+				</a>
+			{:else}
+				<span>
+					<ChevronLeft size={12} />
+					Previous
+				</span>
+			{/if}
+			{#if next}
+				<a class="prevNext" href="/posts/{next.slug}">
+					Next
+					<ChevronRight size={12} />
+				</a>
+			{:else}
+				<span class="prevNext">
+					Next
+					<ChevronRight size={12} />
+				</span>
+			{/if}
+		{/if}
+	</div>
+</section>
 
 <style>
+	/* ELEMENTS */
 	h1 {
 		background: var(--gradient-7) fixed;
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
 		background-clip: text;
-	}
-	/* ul {
-		display: flex;
-		flex-direction: column;
-		gap: var(--size-3);
-	} */
-	main {
-		/* display: grid; */
-		/* grid-template-columns: 3fr 0.5fr; */
-		/* justify-content: space-between; */
-		/* justify-items: center; */
-	}
-	.section {
-		/* align-self: center; */
-		box-shadow: var(--shadow-1);
-		border-radius: var(--radius-2);
-		padding: var(--size-7);
-		height: fit-content;
+		line-height: var(--font-lineheight-0);
 	}
 	date {
 		color: var(--gray-7);
@@ -144,45 +137,34 @@
 	.tags {
 		margin-block-start: var(--size-4);
 	}
-
+	.section {
+		box-shadow: var(--shadow-1);
+		border-radius: var(--radius-2);
+		padding: var(--size-7);
+		height: fit-content;
+	}
 	.headerAction {
 		display: flex;
-		/* justify-content: space-between; */
 		align-items: center;
 		& button {
 			margin-inline-start: var(--size-2);
 		}
 	}
-	/* .hidden {
-		display: none;
-	} */
 	.reader-wrapper {
 		width: 100%;
+		letter-spacing: var(--font-letterspacing-1);
 		& *,
 		& *::before,
 		& *::placeholder {
-			/* background-color: var(--yellow-0); */
 			color: var(--text-1);
-			/* font-weight: 100; */
 		}
 		& blockquote {
 			padding-inline: var(--size-4);
 		}
 	}
-
-	.sidemenu {
-		border-left: 1px solid var(--border);
-		padding: var(--size-2);
-		width: var(--size-13);
-		line-height: var(--font-lineheight-0);
-		& li {
-			/* margin-block: var(--size-2); */
-			margin-left: var(--size-2);
-			padding: var(--size-2);
-		}
-		& a:hover {
-			text-decoration: none;
-		}
+	.prevNext-wrapper {
+		display: flex;
+		justify-content: space-between;
 	}
 	.prevNext {
 		display: flex;
@@ -190,20 +172,16 @@
 		top: 0;
 		justify-content: space-between;
 	}
-	.row {
+	.blog-content-wrapper {
 		display: flex;
-		flex-direction: row;
 	}
-	.selectedMenu {
-		display: inline-block;
-		transition:
-			font-weight 1.2s,
-			background-color 1.2s;
-		border-radius: var(--radius-2);
-		background: hsl(var(--gray-7-hsl) / 20%);
-		font-weight: var(--font-weight-7);
-		& a {
-			color: hsl(var(--green-1-hsl) / 85%);
-		}
+	.prevNext {
+		display: flex;
+		opacity: 0.7;
+		margin-block: var(--size-2);
+		font-size: var(--font-size-0);
+	}
+	.error-border {
+		border: 1px solid var(--error-text);
 	}
 </style>

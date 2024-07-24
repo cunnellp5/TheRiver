@@ -56,35 +56,13 @@
 		<div class="reader-wrapper">
 			<div bind:this={reader} />
 		</div>
-		<!-- TODO figure out if both the following are needed? -->
-		<!-- <div class="reader-wrapper" class:hidden={!quill}>
-			<div bind:this={reader} />
-		</div>
-
-		<p class="content" class:hidden={quill}>
-			{data.post.content}
-		</p> -->
 	</section>
-	<ul>
-		{#each data.posts as post}
-			<li>
-				<a href={`/admin/posts/${post.slug}`}>
-					{post.title}
-				</a>
-			</li>
-		{/each}
-	</ul>
 </main>
 
 <style>
 	main {
 		display: grid;
 		grid-template-columns: 80% 20%;
-
-		/* flex-direction: row; */
-		/* justify-content: space-between; */
-		/* align-self: flex-start; */
-		/* height: 100vh; */
 	}
 	date {
 		color: var(--gray-7);
@@ -97,18 +75,11 @@
 		padding-inline-start: var(--size-12);
 		padding-block-start: var(--size-6);
 	}
-	ul {
-		display: flex;
-		flex-direction: column;
-		& li {
-			margin-block-end: var(--size-4);
-		}
-	}
+
 	/* CLASSES */
 	.tags {
 		margin-block-start: var(--size-4);
 	}
-
 	.headerAction {
 		display: flex;
 		/* justify-content: space-between; */

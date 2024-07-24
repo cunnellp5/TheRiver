@@ -16,10 +16,6 @@
 	}
 </script>
 
-<!-- 
-<header>
-	<h1>ADMIN PORTAL</h1>
-</header> -->
 <main>
 	<aside>
 		<nav class="sidenav">
@@ -71,6 +67,9 @@
 		</nav>
 	</aside>
 	<article>
+		<header>
+			<h1>ADMIN PORTAL</h1>
+		</header>
 		<div>
 			<BreadCrumb {crumbs}></BreadCrumb>
 		</div>
@@ -84,12 +83,14 @@
 		grid-template-columns: var(--size-12) 1fr;
 	}
 
-	/* header {
+	header {
 		display: flex;
 		flex-direction: column;
+		align-items: center;
 		margin-block: var(--size-5);
+		border: 1px solid var(--stone-11);
 		padding-block: var(--size-5);
-	} */
+	}
 
 	article {
 		margin-inline: var(--size-4);
