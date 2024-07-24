@@ -11,6 +11,8 @@
 	// eslint-disable-next-line import/no-unresolved
 	import { page } from '$app/stores';
 	import type { PageData } from './$types';
+	// eslint-disable-next-line import/no-unresolved
+	import { browser } from '$app/environment';
 
 	export let data: PageData;
 	let quill: Quill | null;
@@ -24,6 +26,8 @@
 	let post = findPost($page.params.slug); // initial post
 
 	async function setQuillData() {
+		if (!browser) return;
+
 		try {
 			const { default: Quill } = await import('quill');
 			quill = new Quill(reader, QuillConfigReadonly);
@@ -120,6 +124,7 @@
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
 		background-clip: text;
+		line-height: var(--font-lineheight-0);
 	}
 	date {
 		color: var(--gray-7);

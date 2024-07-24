@@ -83,9 +83,6 @@
 			margin-block: var(--size-4);
 		}
 	}
-	h1 {
-		text-transform: uppercase;
-	}
 	main {
 		display: flex;
 		justify-content: center;
@@ -97,7 +94,9 @@
 	/* CLASSES */
 	.jumbo {
 		font-size: var(--size-12);
+		line-height: var(--font-lineheight-00);
 		font-family: var(--font-serif);
+		text-transform: uppercase;
 	}
 	.noPostsWrapper {
 		margin: var(--size-content-1);
