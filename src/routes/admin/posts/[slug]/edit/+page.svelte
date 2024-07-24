@@ -40,6 +40,7 @@
 	main {
 		display: flex;
 		justify-content: center;
+		margin-inline-start: var(--size-7);
 	}
 	blockquote {
 		margin-block: var(--size-7);

@@ -13,7 +13,7 @@
 	let quill: Quill | null;
 	let reader: string | HTMLElement;
 
-	const post = data.posts.find((p) => p.slug === $page.params.slug) || {
+	$: post = data.posts.find((p) => p.slug === $page.params.slug) || {
 		title: '',
 		content: '',
 		tags: [],
@@ -72,7 +72,6 @@
 		margin-block-end: var(--size-6);
 	}
 	section {
-		padding-inline-start: var(--size-12);
 		padding-block-start: var(--size-6);
 	}
 
