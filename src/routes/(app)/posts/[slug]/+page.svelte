@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { fade, slide } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
-	import { error } from '@sveltejs/kit';
 	import { QuillConfigReadonly, quillContentInit } from '$lib/utils/QuillConfig';
 	import formatDate from '$lib/utils/formatDate';
 	import type Quill from 'quill';
@@ -57,7 +56,8 @@
 	<div
 		in:slide={{ delay: 100, duration: 300, easing: quintOut, axis: 'x' }}
 		out:slide={{ duration: 300, easing: quintOut, axis: 'x' }}
-		class="section surface-4">
+		class="section surface-4"
+		class:error-border={!post}>
 		{#key post}
 			<div in:fade={{ duration: 1400, delay: 100 }} class="blog-content-wrapper">
 				{#if post}
@@ -88,27 +88,29 @@
 		{/key}
 	</div>
 	<div class="prevNext-wrapper">
-		{#if previous}
-			<a class="prevNext" href="/posts/{previous.slug}">
-				<ChevronLeft size={12} />
-				Previous
-			</a>
-		{:else}
-			<span>
-				<ChevronLeft size={12} />
-				Previous
-			</span>
-		{/if}
-		{#if next}
-			<a class="prevNext" href="/posts/{next.slug}">
-				Next
-				<ChevronRight size={12} />
-			</a>
-		{:else}
-			<span class="prevNext">
-				Next
-				<ChevronRight size={12} />
-			</span>
+		{#if post}
+			{#if previous}
+				<a class="prevNext" href="/posts/{previous.slug}">
+					<ChevronLeft size={12} />
+					Previous
+				</a>
+			{:else}
+				<span>
+					<ChevronLeft size={12} />
+					Previous
+				</span>
+			{/if}
+			{#if next}
+				<a class="prevNext" href="/posts/{next.slug}">
+					Next
+					<ChevronRight size={12} />
+				</a>
+			{:else}
+				<span class="prevNext">
+					Next
+					<ChevronRight size={12} />
+				</span>
+			{/if}
 		{/if}
 	</div>
 </main>
@@ -175,5 +177,8 @@
 		opacity: 0.7;
 		margin-block: var(--size-2);
 		font-size: var(--font-size-0);
+	}
+	.error-border {
+		border: 1px solid var(--error-text);
 	}
 </style>
