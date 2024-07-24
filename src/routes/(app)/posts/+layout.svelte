@@ -3,8 +3,6 @@
 	import { onMount } from 'svelte';
 	import { quintOut } from 'svelte/easing';
 	import BlogCard from '$lib/components/ui/BlogCard.svelte';
-	// eslint-disable-next-line import/no-unresolved
-	import { page } from '$app/stores';
 	import type { PageData } from './$types';
 	// import Page from './+page.svelte';
 
@@ -73,6 +71,9 @@
 </main>
 
 <style>
+	section {
+		min-width: var(--size-12);
+	}
 	nav {
 		border-bottom: 1px solid var(--stone-11);
 		padding: var(--size-4);
