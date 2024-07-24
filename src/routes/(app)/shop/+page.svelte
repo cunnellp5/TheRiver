@@ -1,11 +1,13 @@
+<script lang="ts">
+	const shoppingURL = 'https://www.etsy.com/shop/MadeByTheRiverBed';
+</script>
+
 <main>
 	<section>
-		<a target="_blank" href="https://www.etsy.com/shop/MadeByTheRiverBed">
+		<a target="_blank" href={shoppingURL}>
 			<h1>THE RIVER MARKET</h1>
 		</a>
-		<a class="animation" target="_blank" href="https://www.etsy.com/shop/MadeByTheRiverBed">
-			etsy.com @MadeByTheRiverBed
-		</a>
+		<a class="animation" target="_blank" href={shoppingURL}> etsy.com @MadeByTheRiverBed </a>
 	</section>
 </main>
 
@@ -13,10 +15,8 @@
 	main {
 		display: flex;
 		flex-direction: column;
-		/* justify-content: center; */
 		align-items: center;
 		margin-block: var(--size-7);
-		/* height: 100vh; */
 		padding-block: var(--size-11);
 	}
 	h1 {

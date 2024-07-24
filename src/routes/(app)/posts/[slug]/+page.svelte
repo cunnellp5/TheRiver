@@ -16,7 +16,23 @@
 	let quill: Quill | null;
 	let reader: string | HTMLElement;
 
-	let post = data.posts.find((p) => p.slug === $page.params.slug);
+	const defaultPost = {
+		content: '',
+		createdAt: new Date(),
+		description: '',
+		id: 0,
+		published: false,
+		slug: '',
+		tags: [],
+		title: '',
+		updatedAt: new Date()
+	};
+
+	function findPost(slug: string) {
+		return data.posts.find((p) => p.slug === slug) || defaultPost;
+	}
+
+	let post = findPost($page.params.slug); // initial post
 
 	async function setQuillData() {
 		try {
@@ -24,7 +40,7 @@
 
 			quill = new Quill(reader, QuillConfigReadonly);
 
-			const quillData = await quillContentInit(post?.content);
+			const quillData = await quillContentInit(post ? post.content : 'No content found');
 
 			quill.setContents(quillData);
 		} catch (error) {
@@ -33,23 +49,16 @@
 	}
 
 	$: {
-		post = data.posts.find((p) => p.slug === $page.params.slug) || {
-			title: '',
-			content: '',
-			tags: [],
-			createdAt: new Date(),
-			slug: ''
-		};
+		post = findPost($page.params.slug); // updates page with selected post data
 		setQuillData();
 	}
+	$: index = data.posts.findIndex((p) => p.slug === $page.params.slug);
+	$: next = data.posts[index - 1];
+	$: previous = data.posts[index + 1];
 
 	onMount(() => {
 		setQuillData();
 	});
-
-	$: index = data.posts.findIndex((p) => p.slug === $page.params.slug);
-	$: next = data.posts[index - 1];
-	$: previous = data.posts[index + 1];
 </script>
 
 <main>
@@ -58,88 +67,60 @@
 		out:slide={{ duration: 300, easing: quintOut, axis: 'x' }}
 		class="section surface-4">
 		{#key post}
-			<div in:fade={{ duration: 1400, delay: 100 }} class="blog-content-wrapper-for-animations">
-				<div class="prevNext">
-					{#if previous}
-						<p title={previous.title}>
-							<a class="row" href="/posts/{previous.slug}"><ChevronLeft /> Older </a>
-						</p>
-					{/if}
-					&nbsp; &nbsp; &nbsp;
-					{#if next}
-						<p title={next.title}>
-							<a class="row" href="/posts/{next.slug}">
-								Newer <ChevronRight />
-							</a>
-						</p>
-					{/if}
-				</div>
-				<hgroup>
-					<div class="headerAction">
-						<h1 id={post.slug}>{post.title}</h1>
-					</div>
-					<date>{formatDate(new Date(post.createdAt))}</date>
-					<div class="tags">
-						{#each post.tags as tag}
-							<Badge {tag} />
-						{/each}
-					</div>
-				</hgroup>
+			<div in:fade={{ duration: 1400, delay: 100 }} class="blog-content-wrapper">
+				<div>
+					<hgroup>
+						<div class="headerAction">
+							<h1 id={post.slug}>{post.title}</h1>
+						</div>
+						<date>{formatDate(new Date(post.createdAt))}</date>
+						<div class="tags">
+							{#each post.tags as tag}
+								<Badge {tag} />
+							{/each}
+						</div>
+					</hgroup>
 
-				<div class="reader-wrapper">
-					<div bind:this={reader} />
+					<div class="reader-wrapper">
+						<div bind:this={reader} />
+					</div>
 				</div>
 			</div>
 		{/key}
-		<!-- TODO figure out if both the following are needed? -->
-		<!-- <div class="reader-wrapper" class:hidden={!quill}>
-				<div bind:this={reader} />
-			</div>
-	
-			<p class="content" class:hidden={quill}>
-				{data.post.content}
-			</p> -->
 	</div>
-	<!-- {#if data.posts.length > 5}
-		<div class="sidemenu">
-			<aside>Other posts:</aside>
-			<ul>
-				{#each data.posts as { slug, title }}
-					<li
-						class:selectedMenu={slug === $page.url.pathname.split('/').pop()}
-						on:click={() => selectPost(post)}>
-						<a href="/posts/{slug}">{title}</a>
-					</li>
-				{/each}
-			</ul>
-		</div>
-	{/if} -->
+	<div class="prevNext-wrapper">
+		{#if previous}
+			<a class="prevNext" href="/posts/{previous.slug}">
+				<ChevronLeft size={12} />
+				Previous
+			</a>
+		{:else}
+			<span>
+				<ChevronLeft size={12} />
+				Previous
+			</span>
+		{/if}
+		{#if next}
+			<a class="prevNext" href="/posts/{next.slug}">
+				Next
+				<ChevronRight size={12} />
+			</a>
+		{:else}
+			<span class="prevNext">
+				Next
+				<ChevronRight size={12} />
+			</span>
+		{/if}
+	</div>
 </main>
 
 <style>
+	/* ELEMENTS */
 	h1 {
 		background: var(--gradient-7) fixed;
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
 		background-clip: text;
-	}
-	/* ul {
-		display: flex;
-		flex-direction: column;
-		gap: var(--size-3);
-	} */
-	main {
-		/* display: grid; */
-		/* grid-template-columns: 3fr 0.5fr; */
-		/* justify-content: space-between; */
-		/* justify-items: center; */
-	}
-	.section {
-		/* align-self: center; */
-		box-shadow: var(--shadow-1);
-		border-radius: var(--radius-2);
-		padding: var(--size-7);
-		height: fit-content;
 	}
 	date {
 		color: var(--gray-7);
@@ -153,45 +134,33 @@
 	.tags {
 		margin-block-start: var(--size-4);
 	}
-
+	.section {
+		box-shadow: var(--shadow-1);
+		border-radius: var(--radius-2);
+		padding: var(--size-7);
+		height: fit-content;
+	}
 	.headerAction {
 		display: flex;
-		/* justify-content: space-between; */
 		align-items: center;
 		& button {
 			margin-inline-start: var(--size-2);
 		}
 	}
-	/* .hidden {
-		display: none;
-	} */
 	.reader-wrapper {
 		width: 100%;
 		& *,
 		& *::before,
 		& *::placeholder {
-			/* background-color: var(--yellow-0); */
 			color: var(--text-1);
-			/* font-weight: 100; */
 		}
 		& blockquote {
 			padding-inline: var(--size-4);
 		}
 	}
-
-	.sidemenu {
-		border-left: 1px solid var(--border);
-		padding: var(--size-2);
-		width: var(--size-13);
-		line-height: var(--font-lineheight-0);
-		& li {
-			/* margin-block: var(--size-2); */
-			margin-left: var(--size-2);
-			padding: var(--size-2);
-		}
-		& a:hover {
-			text-decoration: none;
-		}
+	.prevNext-wrapper {
+		display: flex;
+		justify-content: space-between;
 	}
 	.prevNext {
 		display: flex;
@@ -199,20 +168,13 @@
 		top: 0;
 		justify-content: space-between;
 	}
-	.row {
+	.blog-content-wrapper {
 		display: flex;
-		flex-direction: row;
 	}
-	.selectedMenu {
-		display: inline-block;
-		transition:
-			font-weight 1.2s,
-			background-color 1.2s;
-		border-radius: var(--radius-2);
-		background: hsl(var(--gray-7-hsl) / 20%);
-		font-weight: var(--font-weight-7);
-		& a {
-			color: hsl(var(--green-1-hsl) / 85%);
-		}
+	.prevNext {
+		display: flex;
+		opacity: 0.7;
+		margin-block: var(--size-2);
+		font-size: var(--font-size-0);
 	}
 </style>
