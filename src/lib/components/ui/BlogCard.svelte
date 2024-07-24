@@ -9,34 +9,36 @@
 	export let createdAt: Date;
 	export let slug: string;
 	export let description: string;
+	export let link: string = `/posts/${slug}`;
 
 	$: selectedHighlight = $page.url.pathname.includes(slug);
 </script>
 
-<a class="blogLink" href="/posts/{slug}">
+<a class="blogLink" href={link}>
 	<div
 		class="card surface-4"
 		class:selected={selectedHighlight}
 		class:unselected={!selectedHighlight && $page.url.pathname.includes('/posts/')}>
 		<div>
-			<div>
-				<h5>
-					<a href="/posts/{slug}">
-						{title}
-					</a>
-				</h5>
-				<date>{formatDate(new Date(createdAt))}</date>
+			<h5>
+				<a href={link}>
+					{title}
+				</a>
+			</h5>
+			<date>{formatDate(new Date(createdAt))}</date>
+		</div>
+		<p class="description">
+			{description}
+		</p>
+		<aside>
+			<div class="badges">
+				{#each tags as tag}
+					<Badge {tag} />
+				{/each}
 			</div>
-			<p class="description">
-				{description}
-			</p>
-			<aside>
-				<div class="badges">
-					{#each tags as tag}
-						<Badge {tag} />
-					{/each}
-				</div>
-			</aside>
+		</aside>
+		<div>
+			<slot class="buttons" name="buttons"></slot>
 		</div>
 	</div>
 </a>
