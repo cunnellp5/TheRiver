@@ -33,7 +33,6 @@
 </div>
 <main>
 	<section>
-		<header></header>
 		<div class="posts-wrapper">
 			<div class="list-of-posts">
 				<nav class="posts-search">
@@ -61,11 +60,9 @@
 				</section>
 			</div>
 
-			<div>
-				<section>
-					<slot />
-				</section>
-			</div>
+			<section>
+				<slot />
+			</section>
 		</div>
 	</section>
 </main>
@@ -79,20 +76,12 @@
 		padding: var(--size-4);
 	}
 	ul {
-		/* TODO conditionally flex the ul if on the home page so the lay out looks like bricks instead of one column */
-		/* display: flex; */
 		height: 90vh;
 		overflow: scroll;
 		& li {
 			margin-inline: var(--size-4);
 			margin-block: var(--size-4);
 		}
-	}
-	li:nth-child(odd) {
-		grid-column: span 2;
-	}
-	li:nth-child(even) {
-		grid-row: span 2;
 	}
 	h1 {
 		text-transform: uppercase;
@@ -107,8 +96,6 @@
 
 	/* CLASSES */
 	.jumbo {
-		display: fixed;
-		z-index: -1;
 		font-size: var(--size-12);
 		font-family: var(--font-serif);
 	}
@@ -123,9 +110,7 @@
 		user-select: none;
 	}
 	.posts-wrapper {
-		display: grid;
-		grid-template-columns: auto 1fr;
-		/* border: 1px solid var(--stone-11); */
+		display: flex;
 	}
 	.posts-count {
 		color: var(--text-2);
@@ -135,5 +120,12 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+	}
+
+	/* MEDIA QUERIES */
+	@media (max-width: 768px) {
+		.posts-wrapper {
+			flex-direction: column-reverse;
+		}
 	}
 </style>

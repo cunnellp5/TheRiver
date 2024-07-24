@@ -23,8 +23,6 @@
 
 	let post = findPost($page.params.slug); // initial post
 
-	// By not returning anything, we can foce posts to remain undefined
-	// This may be an anti pattern as we're not actually handling errors
 	async function setQuillData() {
 		try {
 			const { default: Quill } = await import('quill');
