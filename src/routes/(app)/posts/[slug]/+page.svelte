@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { fade, slide } from 'svelte/transition';
-	import { quintOut } from 'svelte/easing';
 	import { QuillConfigReadonly, quillContentInit } from '$lib/utils/QuillConfig';
 	import formatDate from '$lib/utils/formatDate';
 	import type Quill from 'quill';
@@ -54,14 +53,14 @@
 	});
 </script>
 
-<main>
+<section>
 	<div
-		in:slide={{ delay: 100, duration: 300, easing: quintOut, axis: 'x' }}
-		out:slide={{ duration: 300, easing: quintOut, axis: 'x' }}
+		in:slide={{ duration: 500, axis: 'x' }}
+		out:slide={{ duration: 200, axis: 'x' }}
 		class="section surface-4"
 		class:error-border={!post}>
 		{#key post}
-			<div in:fade={{ duration: 1400, delay: 100 }} class="blog-content-wrapper">
+			<div in:fade={{ duration: 1400 }} class="blog-content-wrapper">
 				{#if post}
 					<div>
 						<hgroup>
@@ -115,7 +114,7 @@
 			{/if}
 		{/if}
 	</div>
-</main>
+</section>
 
 <style>
 	/* ELEMENTS */
@@ -153,6 +152,7 @@
 	}
 	.reader-wrapper {
 		width: 100%;
+		letter-spacing: var(--font-letterspacing-1);
 		& *,
 		& *::before,
 		& *::placeholder {

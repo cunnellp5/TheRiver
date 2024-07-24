@@ -4,7 +4,6 @@
 	import { quintOut } from 'svelte/easing';
 	import BlogCard from '$lib/components/ui/BlogCard.svelte';
 	import type { PageData } from './$types';
-	// import Page from './+page.svelte';
 
 	export let data: PageData;
 	let showElement = false;
@@ -16,7 +15,6 @@
 
 	let filteredPosts = data.posts;
 
-	// $: isPostsHome = $page.url.pathname === '/posts';
 	$: {
 		filteredPosts = data.posts.filter(
 			(post) =>
@@ -32,45 +30,38 @@
 	</a>
 </div>
 <main>
-	<section>
-		<div class="posts-wrapper">
-			<div class="list-of-posts">
-				<nav class="posts-search">
-					<input type="search" bind:value={search} placeholder="Search posts..." />
-					<p class="posts-count">
-						{filteredPosts.length} post{filteredPosts.length > 1 ? 's' : ''}
-					</p>
-				</nav>
-				<section>
-					{#if filteredPosts.length > 0}
-						<ul>
-							{#each filteredPosts as { createdAt, description, slug, tags, title }}
-								{#if showElement}
-									<li transition:slide={{ delay: 150, duration: 900, easing: quintOut }}>
-										<BlogCard {title} {tags} {createdAt} {slug} {description} />
-									</li>
-								{/if}
-							{/each}
-						</ul>
-					{:else}
-						<div class="noPostsWrapper">
-							<p>No posts</p>
-						</div>
-					{/if}
-				</section>
-			</div>
-
+	<div class="posts-wrapper">
+		<div class="list-of-posts">
+			<nav class="posts-search">
+				<input type="search" bind:value={search} placeholder="Search posts..." />
+				<p class="posts-count">
+					{filteredPosts.length} post{filteredPosts.length > 1 ? 's' : ''}
+				</p>
+			</nav>
 			<section>
-				<slot />
+				{#if filteredPosts.length > 0}
+					<ul>
+						{#each filteredPosts as { createdAt, description, slug, tags, title }}
+							{#if showElement}
+								<li transition:slide={{ delay: 150, duration: 900, easing: quintOut }}>
+									<BlogCard {title} {tags} {createdAt} {slug} {description} />
+								</li>
+							{/if}
+						{/each}
+					</ul>
+				{:else}
+					<div class="noPostsWrapper">
+						<p>No posts</p>
+					</div>
+				{/if}
 			</section>
 		</div>
-	</section>
+
+		<slot />
+	</div>
 </main>
 
 <style>
-	section {
-		min-width: var(--size-12);
-	}
 	nav {
 		border-bottom: 1px solid var(--stone-11);
 		padding: var(--size-4);

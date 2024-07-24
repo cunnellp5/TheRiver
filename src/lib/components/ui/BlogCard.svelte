@@ -43,11 +43,10 @@
 
 <style>
 	h5 {
-		background: unset;
-		-webkit-background-clip: unset;
-		-webkit-text-fill-color: unset;
-		background-clip: unset;
-		font-weight: var(--font-weight-7);
+		background: var(--gradient-24) fixed;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
 		& a {
 			color: var(--text-2);
 		}
@@ -59,7 +58,6 @@
 	p {
 		color: var(--text-1);
 		line-height: var(--font-lineheight-0);
-		font-family: var(--font-mono);
 	}
 	aside {
 		display: flex;
@@ -73,23 +71,19 @@
 		margin: 0 auto;
 		box-shadow: var(--shadow-1);
 		border: 1px solid var(--surface-4);
-		/* width: 50%; */
 		border-radius: var(--radius-2);
 		padding: var(--size-4);
 	}
 	.description {
 		margin-block: var(--size-4);
 		font-size: var(--font-size-1);
-		font-family: var(--font-serif);
-		letter-spacing: var(--font-letterspacing-2);
+		letter-spacing: var(--font-letterspacing-1);
 	}
 	.blogLink {
 		display: flex;
 		justify-content: end;
 		gap: var(--size-1);
 		margin-block: var(--size-2);
-		font-weight: var(--font-weight-7);
-		font-size: var(--font-size-0);
 	}
 	.selected {
 		display: inline-block;
