@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { fade, slide } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
+	import { error } from '@sveltejs/kit';
 	import { QuillConfigReadonly, quillContentInit } from '$lib/utils/QuillConfig';
 	import formatDate from '$lib/utils/formatDate';
 	import type Quill from 'quill';
@@ -15,36 +16,27 @@
 	export let data: PageData;
 	let quill: Quill | null;
 	let reader: string | HTMLElement;
-
-	const defaultPost = {
-		content: '',
-		createdAt: new Date(),
-		description: '',
-		id: 0,
-		published: false,
-		slug: '',
-		tags: [],
-		title: '',
-		updatedAt: new Date()
-	};
+	let quillError = '';
 
 	function findPost(slug: string) {
-		return data.posts.find((p) => p.slug === slug) || defaultPost;
+		return data.posts.find((p) => p.slug === slug) || undefined;
 	}
 
 	let post = findPost($page.params.slug); // initial post
 
+	// By not returning anything, we can foce posts to remain undefined
+	// This may be an anti pattern as we're not actually handling errors
 	async function setQuillData() {
 		try {
 			const { default: Quill } = await import('quill');
-
 			quill = new Quill(reader, QuillConfigReadonly);
-
 			const quillData = await quillContentInit(post ? post.content : 'No content found');
-
 			quill.setContents(quillData);
-		} catch (error) {
-			// TODO: unable to load quill, provide some fall back
+			quillError = ''; // Reset error message on success
+		} catch (err) {
+			// eslint-disable-next-line no-console
+			console.error('Failed to set Quill data:', err);
+			quillError = 'Failed to load the editor. Please try again later.';
 		}
 	}
 
@@ -63,28 +55,35 @@
 
 <main>
 	<div
-		in:slide={{ delay: 250, duration: 300, easing: quintOut, axis: 'x' }}
+		in:slide={{ delay: 100, duration: 300, easing: quintOut, axis: 'x' }}
 		out:slide={{ duration: 300, easing: quintOut, axis: 'x' }}
 		class="section surface-4">
 		{#key post}
 			<div in:fade={{ duration: 1400, delay: 100 }} class="blog-content-wrapper">
-				<div>
-					<hgroup>
-						<div class="headerAction">
-							<h1 id={post.slug}>{post.title}</h1>
-						</div>
-						<date>{formatDate(new Date(post.createdAt))}</date>
-						<div class="tags">
-							{#each post.tags as tag}
-								<Badge {tag} />
-							{/each}
-						</div>
-					</hgroup>
-
-					<div class="reader-wrapper">
-						<div bind:this={reader} />
+				{#if post}
+					<div>
+						<hgroup>
+							<div class="headerAction">
+								<h1 id={post.slug}>{post.title}</h1>
+							</div>
+							<date>{formatDate(new Date(post.createdAt))}</date>
+							<div class="tags">
+								{#each post.tags as tag}
+									<Badge {tag} />
+								{/each}
+							</div>
+						</hgroup>
+						{#if quillError}
+							<p>{quillError}</p>
+						{:else}
+							<div class="reader-wrapper">
+								<div bind:this={reader} />
+							</div>
+						{/if}
 					</div>
-				</div>
+				{:else}
+					<p>Post not found</p>
+				{/if}
 			</div>
 		{/key}
 	</div>

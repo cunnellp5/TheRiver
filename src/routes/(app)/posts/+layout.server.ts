@@ -23,6 +23,6 @@ export const load: PageServerLoad = async () => {
 		return { posts };
 	} catch (err) {
 		const { message } = err as Error;
-		throw new Error(message);
+		return error(500, message);
 	}
 };
