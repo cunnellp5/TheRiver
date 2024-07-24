@@ -1,18 +1,16 @@
 # The River
 
-> A portfolio website for an artist, Alexis. This website will have many apps rolled into one. E-commerce, blog, booking services, and an artist showcase
+> An singluar place to contain E-commerce, blog, booking services, and an artist showcase for music including videos and audio
 
 ## Sections:
 
 ### 1. Music
 
+- View and download stems
 - View recent video uploads to youtube
 - View new up and coming music
-  - View spotify tracks
-  - View Soundcloud
-  - View Apple music
 
-### 2. Beauty booking service
+### 2. Booking service
 
 - Users can sign up for an offered service [GUEST || CREATE ACCOUNT]
 - Users can view a scheduled appointment on a calendar
@@ -24,14 +22,12 @@
 
 ### 4. Blog
 
-- Users can view blog posts written by TheRiver
-- Users can mark a post as read
-- Users can search blogs (using any keyword)
-- Blogs can be searched with tags
+- Users can view blog posts
+- Users can search blogs
 
 ### 5. CMS
 
-- CRUD all contents of website
+- CRUD contents of website
 - Notes on users who use services
 
 ### 6. Users
