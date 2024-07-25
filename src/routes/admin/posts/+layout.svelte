@@ -4,9 +4,11 @@
 	import Pencil from 'lucide-svelte/icons/pencil';
 	import Plus from 'lucide-svelte/icons/plus';
 	import Trash from 'lucide-svelte/icons/trash';
+	import type { MouseEventHandler } from 'svelte/elements';
 	// eslint-disable-next-line import/no-unresolved
 	import { page } from '$app/stores';
 	import type { PageData } from './$types';
+	// eslint-disable-next-line import/no-unresolved
 	import { enhance } from '$app/forms';
 
 	export let data: PageData;
@@ -28,34 +30,53 @@
 				post.description.toLowerCase().includes(search.toLowerCase())
 		);
 	}
+
+	function showAllPosts() {
+		filteredPosts = data.posts;
+		search = '';
+	}
+
+	function showPublishedPosts(isPublished: boolean): MouseEventHandler<HTMLButtonElement> {
+		return () => {
+			filteredPosts = data.posts.filter((post) => post.published === isPublished);
+			search = '';
+		};
+	}
 </script>
 
-<a href="/admin/posts/create">
+<a href="/admin/posts/create" data-sveltekit-noscroll>
 	<button class="create-post-button"> <Plus strokeWidth={3} />Add new post</button>
 </a>
 
 <main>
 	<section>
 		<header>
-			<div class="titleWrapper">
-				<a href="/admin/posts">
-					<h1>The River Posts</h1>
-				</a>
-			</div>
-
+			<a class="title" href="/admin/posts" data-sveltekit-noscroll>
+				<h1>RIVER BLOG</h1>
+			</a>
 			{#if isPostsHome}
 				<p>Showing {filteredPosts.length} post{filteredPosts.length > 1 ? 's' : ''}.</p>
 			{/if}
 		</header>
 		<div class="posts-wrapper">
 			<div class="list-of-posts">
-				<nav>
-					<input type="search" bind:value={search} placeholder="Search posts..." />
+				<nav class="posts-search">
+					<div class="search-count-group">
+						<input type="search" bind:value={search} placeholder="Search posts..." />
+						<p class="posts-count">
+							{filteredPosts.length} post{filteredPosts.length > 1 ? 's' : ''}
+						</p>
+					</div>
+					<div class="filter-buttons">
+						<button on:click={showAllPosts}>all</button>
+						<button on:click={showPublishedPosts(true)}>published</button>
+						<button on:click={showPublishedPosts(false)}>draft</button>
+					</div>
 				</nav>
 				<section>
 					{#if filteredPosts.length > 0}
 						<ul>
-							{#each filteredPosts as { createdAt, description, slug, tags, title }}
+							{#each filteredPosts as { createdAt, description, slug, tags, title, published }}
 								{#if showElement}
 									<li>
 										<BlogCard
@@ -65,8 +86,15 @@
 											{createdAt}
 											{slug}
 											{description}>
+											<div
+												class="isPublished"
+												slot="published"
+												class:published
+												class:unpublished={!published}>
+												{published ? 'Published' : 'Draft'}
+											</div>
 											<div class="buttons" slot="buttons">
-												<a href={`/admin/posts/${slug}/edit`}>
+												<a href={`/admin/posts/${slug}/edit`} data-sveltekit-noscroll>
 													<button class="update-post-button">
 														<Pencil strokeWidth={STROKE_WIDTH} />Edit</button>
 												</a>
@@ -108,6 +136,11 @@
 </main>
 
 <style>
+	/* ELEMENTS */
+	nav {
+		border-bottom: 1px solid var(--stone-11);
+		padding: var(--size-4);
+	}
 	ul {
 		height: 90vh;
 		overflow: scroll;
@@ -116,7 +149,27 @@
 			margin-block: var(--size-4);
 		}
 	}
+
 	/* CLASSES */
+	.posts-search {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+	}
+	.filter-buttons {
+		display: flex;
+		flex-direction: row;
+		gap: var(--size-3);
+		margin-block-start: var(--size-3);
+		width: 100%;
+	}
+	.search-count-group {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		width: 100%;
+	}
 	.buttons {
 		display: flex;
 		flex-direction: column;
@@ -149,5 +202,18 @@
 	}
 	.posts-wrapper {
 		display: flex;
+	}
+	.isPublished {
+		margin-block: var(--size-2);
+		font-size: var(--font-size-0);
+		text-align: center;
+	}
+	.published {
+		border: 1px dashed var(--green-4);
+		color: var(--green-4);
+	}
+	.unpublished {
+		border: 1px dashed var(--yellow-4);
+		color: var(--yellow-4);
 	}
 </style>
