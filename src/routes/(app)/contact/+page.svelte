@@ -23,17 +23,6 @@
 
 <h1>The River</h1>
 <p>Denver, CO</p>
-<div class="map-container">
-	<!-- <iframe
-		title="map"
-		height="450"
-		style="border:0"
-		loading="lazy"
-		allowfullscreen
-		referrerpolicy="no-referrer-when-downgrade"
-		src="https://www.google.com/maps/embed/v1/place?key={env.GOOGLE_MAP_KEY}&q=39.73942555127294,-104.99025636441803">
-	</iframe> -->
-</div>
 <div class="main-page-wrapper">
 	<!-- TODO put this video in cloudinary -->
 	<video autoplay muted loop playsinline class="background-video">
@@ -43,12 +32,12 @@
 	<section>
 		<div>
 			<h2>NEWSLETTER</h2>
-			<form action="">
-				<label for="email">Sign up to receive emails from The River</label>
+			<form method="POST">
+				<label for="email">Email</label>
 				<div class="newsletter-form">
 					<input type="email" name="email" placeholder="test@example.com" />
 					<button title="Send email">
-						<Send />
+						<Send /> sign up
 					</button>
 				</div>
 			</form>
@@ -56,19 +45,19 @@
 		<div>
 			<h3>CONTACT</h3>
 			<p>theriverrunsfast@gmail.com</p>
-			<aside class="buttons">
+			<aside class="buttons-wrapper">
 				<button on:click={copyEmail} title="Copy email to clipboard">
 					{#if copied}
-						<Check size="24" />
+						<Check size="24" /> copied!
 					{:else}
-						<Copy size="24" />
+						<Copy size="24" /> copy
 					{/if}
 				</button>
-				<button title="Send email">
-					<a href="mailto:{email}">
-						<Send size="24" />
-					</a>
-				</button>
+				<a href="mailto:{email}">
+					<button title="Send email">
+						<Send size="24" /> email
+					</button>
+				</a>
 			</aside>
 		</div>
 	</section>
@@ -81,10 +70,13 @@
 		z-index: -1;
 		font-size: var(--size-15);
 		user-select: none;
-		/* letter-spacing: var(--size-8); */
 	}
-	iframe {
-		box-shadow: var(--shadow-3);
+	h2,
+	h3 {
+		margin-block: var(--size-2);
+	}
+	label {
+		color: var(--text-2);
 	}
 	section {
 		display: flex;
@@ -113,8 +105,12 @@
 		border-radius: var(--radius-blob-1);
 		user-select: none;
 	}
+	button {
+		margin-block: var(--size-2);
+	}
+
 	/* CLASSES */
-	.buttons {
+	.buttons-wrapper {
 		display: flex;
 		flex-direction: row;
 		gap: var(--size-4);
@@ -139,15 +135,11 @@
 	}
 	.newsletter-form {
 		display: flex;
+		flex-direction: column;
 		gap: var(--size-2);
 		margin-block-start: var(--size-2);
 	}
-	.map-container > iframe {
-		margin-top: var(--size-8);
-		margin-bottom: var(--size-12);
-		border-radius: var(--radius-2);
-		width: 100%;
-	}
+
 	/* ANIMATIONS */
 	@keyframes animateBorderRadius {
 		0% {
