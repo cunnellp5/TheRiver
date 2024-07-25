@@ -14,16 +14,17 @@
 	$: selectedHighlight = $page.url.pathname.includes(slug);
 </script>
 
-<a class="blogLink" href={link}>
+<a class="blogLink" href={link} data-sveltekit-noscroll>
 	<div
 		class="card surface-4"
 		class:selected={selectedHighlight}
 		class:unselected={!selectedHighlight && $page.url.pathname.includes('/posts/')}>
 		<div>
+			<span>
+				<slot name="published"></slot>
+			</span>
 			<h5>
-				<a href={link}>
-					{title}
-				</a>
+				{title}
 			</h5>
 			<date>{formatDate(new Date(createdAt))}</date>
 		</div>
