@@ -3,13 +3,10 @@
 	import { onMount } from 'svelte';
 	import Pencil from 'lucide-svelte/icons/pencil';
 	import Plus from 'lucide-svelte/icons/plus';
-	import Trash from 'lucide-svelte/icons/trash';
 	import type { MouseEventHandler } from 'svelte/elements';
 	// eslint-disable-next-line import/no-unresolved
 	import { page } from '$app/stores';
 	import type { PageData } from './$types';
-	// eslint-disable-next-line import/no-unresolved
-	import { enhance } from '$app/forms';
 
 	export let data: PageData;
 	let showElement = false;
@@ -68,9 +65,15 @@
 						</p>
 					</div>
 					<div class="filter-buttons">
-						<button on:click={showAllPosts}>all</button>
-						<button on:click={showPublishedPosts(true)}>published</button>
-						<button on:click={showPublishedPosts(false)}>draft</button>
+						<a href="/admin/posts" data-sveltekit-noscroll>
+							<button on:click={showAllPosts}>all</button>
+						</a>
+						<a href="/admin/posts" data-sveltekit-noscroll>
+							<button on:click={showPublishedPosts(true)}>published</button>
+						</a>
+						<a href="/admin/posts" data-sveltekit-noscroll>
+							<button on:click={showPublishedPosts(false)}>draft</button>
+						</a>
 					</div>
 				</nav>
 				<section>
@@ -98,22 +101,6 @@
 													<button class="update-post-button">
 														<Pencil strokeWidth={STROKE_WIDTH} />Edit</button>
 												</a>
-												<form
-													method="POST"
-													action="?/deletePost"
-													use:enhance={({ cancel }) => {
-														// eslint-disable-next-line no-alert, no-restricted-globals
-														if (confirm('Are you sure you want to delete this post?')) {
-															return async ({ update }) => update();
-														}
-														return cancel();
-													}}>
-													<input type="hidden" name="postId" id="postId" value={slug} />
-													<button class="delete-post-button">
-														<Trash strokeWidth={STROKE_WIDTH} />
-														Delete
-													</button>
-												</form>
 											</div>
 										</BlogCard>
 									</li>
@@ -151,6 +138,9 @@
 	}
 
 	/* CLASSES */
+	.title {
+		text-decoration: none;
+	}
 	.posts-search {
 		display: flex;
 		flex-direction: column;
@@ -192,11 +182,6 @@
 	}
 	.update-post-button {
 		background-color: var(--update);
-		color: var(--on-crud-text);
-		font-weight: var(--font-weight-7);
-	}
-	.delete-post-button {
-		background-color: var(--delete);
 		color: var(--on-crud-text);
 		font-weight: var(--font-weight-7);
 	}
