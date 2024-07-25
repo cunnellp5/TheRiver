@@ -21,10 +21,10 @@
 		position: fixed;
 		top: 0;
 		right: 0;
-		left: 0;
 		flex-direction: column;
 		justify-content: center;
 		z-index: var(--layer-important);
-		margin-top: 1rem;
+		margin-top: var(--size-4);
+		margin-right: var(--size-4);
 	}
 </style>

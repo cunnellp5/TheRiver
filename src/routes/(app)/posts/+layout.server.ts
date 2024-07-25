@@ -12,6 +12,7 @@ export const load: PageServerLoad = async () => {
 		});
 
 		if (!posts) {
+			// TODO maybe dont throw an error, just return an empty array
 			return error(404, 'Posts not found.');
 		}
 
