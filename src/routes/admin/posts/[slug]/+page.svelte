@@ -8,40 +8,50 @@
 	// eslint-disable-next-line import/no-unresolved
 	import { page } from '$app/stores';
 	import EditDeleteActions from '../components/EditDeleteActions.svelte';
+	// eslint-disable-next-line import/no-unresolved
+	import { browser } from '$app/environment';
 
 	export let data: PageData;
 	let quill: Quill | null;
 	let reader: string | HTMLElement;
+	let quillError = '';
 
-	const post = data.posts.find((p) => p.slug === $page.params.slug) || {
-		title: '',
-		content: '',
-		tags: [],
-		createdAt: new Date(),
-		slug: ''
-	};
+	function findPost(slug: string) {
+		return data.posts.find((p) => p.slug === slug) || undefined;
+	}
 
-	onMount(async () => {
+	let post = findPost($page.params.slug); // initial post
+
+	async function setQuillData() {
+		if (!browser) return;
+
 		try {
 			const { default: Quill } = await import('quill');
-
 			quill = new Quill(reader, QuillConfigReadonly);
 
-			const quillData = await quillContentInit(post.content);
+			const quillData = await quillContentInit(post ? post.content : 'No content found');
 
 			quill.setContents(quillData);
-		} catch (error) {
-			// TODO: unable to load quill, provide some fall back
+		} catch (err) {
+			// eslint-disable-next-line no-console
+			console.error('Failed to set Quill data:', err);
+			quillError = 'Failed to load the editor. Please try again later.';
 		}
+	}
+
+	$: {
+		post = findPost($page.params.slug);
+		setQuillData();
+	}
+
+	onMount(async () => {
+		setQuillData();
 	});
 </script>
 
-<main>
-	<section>
+<section>
+	{#if post}
 		<hgroup>
-			<div class="btnWrapper">
-				<EditDeleteActions slug={post.slug} redirect={true} />
-			</div>
 			<div class="headerAction">
 				<h1 id={post.slug}>{post.title}</h1>
 			</div>
@@ -56,14 +66,17 @@
 		<div class="reader-wrapper">
 			<div bind:this={reader} />
 		</div>
-	</section>
-</main>
+		<div class="btnWrapper">
+			<EditDeleteActions slug={post?.slug || $page.params.slug} redirect={true} />
+		</div>
+	{:else if quillError}
+		<p>Quill broken try again</p>
+	{:else}
+		<p>Post not found</p>
+	{/if}
+</section>
 
 <style>
-	main {
-		display: grid;
-		grid-template-columns: 80% 20%;
-	}
 	date {
 		color: var(--gray-7);
 		font-size: var(--font-size-0);
@@ -72,7 +85,6 @@
 		margin-block-end: var(--size-6);
 	}
 	section {
-		padding-inline-start: var(--size-12);
 		padding-block-start: var(--size-6);
 	}
 
@@ -82,23 +94,17 @@
 	}
 	.headerAction {
 		display: flex;
-		/* justify-content: space-between; */
 		align-items: center;
 		& button {
 			margin-inline-start: var(--size-2);
 		}
 	}
-	/* .hidden {
-		display: none;
-	} */
 	.reader-wrapper {
 		width: 100%;
 		& *,
 		& *::before,
 		& *::placeholder {
-			/* background-color: var(--yellow-0); */
 			color: var(--text-1);
-			font-weight: 100;
 		}
 		& blockquote {
 			padding-inline: var(--size-4);
@@ -106,9 +112,17 @@
 	}
 	.btnWrapper {
 		display: flex;
+		flex-direction: column;
 		gap: var(--size-2);
+		width: 100%;
 		& button {
-			width: var(--size-12);
+			width: 100%;
+		}
+		& .edit {
+			background-color: var(--update);
+		}
+		& .delete {
+			background-color: var(--delete);
 		}
 	}
 </style>

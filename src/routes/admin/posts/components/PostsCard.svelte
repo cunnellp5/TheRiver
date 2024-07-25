@@ -15,7 +15,7 @@
 <div class="card surface-4">
 	<div>
 		<h5>
-			<a href={link}>
+			<a href={link} data-sveltekit-noscroll>
 				{title}
 			</a>
 		</h5>

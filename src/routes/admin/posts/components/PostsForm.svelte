@@ -178,7 +178,6 @@
 		& *::before,
 		& *::placeholder {
 			color: var(--text-1);
-			font-weight: 100;
 		}
 		& button {
 			box-shadow: none;

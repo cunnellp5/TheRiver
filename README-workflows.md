@@ -86,3 +86,7 @@
 | Easy to customize each day.                                                   | Adding buffer time between services might be challenging.                                                   |
 | Simple UI that is very intuitive and easy to use.                             | Generating time slots on the backend requires careful logic to avoid bugs.                                  |
 | Easy to generate time slots on the backend for a single day.                  |                                                                                                             |
+
+### Form input ideas
+
+- invitees cant schedule within range

@@ -10,7 +10,7 @@
 	export let redirect: boolean = false;
 </script>
 
-<a href="/admin/posts/{slug}/edit">
+<a href="/admin/posts/{slug}/edit" data-sveltekit-noscroll>
 	<button class="edit" type="button">
 		<Pencil />
 	</button>
