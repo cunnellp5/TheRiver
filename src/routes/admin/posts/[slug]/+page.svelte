@@ -81,23 +81,17 @@
 	}
 	.headerAction {
 		display: flex;
-		/* justify-content: space-between; */
 		align-items: center;
 		& button {
 			margin-inline-start: var(--size-2);
 		}
 	}
-	/* .hidden {
-		display: none;
-	} */
 	.reader-wrapper {
 		width: 100%;
 		& *,
 		& *::before,
 		& *::placeholder {
-			/* background-color: var(--yellow-0); */
 			color: var(--text-1);
-			font-weight: 100;
 		}
 		& blockquote {
 			padding-inline: var(--size-4);
