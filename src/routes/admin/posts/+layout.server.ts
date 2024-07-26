@@ -1,9 +1,9 @@
 import db from '$lib/server/database';
 import type { Post } from '@prisma/client';
 import { error } from '@sveltejs/kit';
-import type { PageServerLoad } from '../../$types';
+import type { PageServerLoad } from './$types';
 
-export const load: PageServerLoad = async ({ locals }) => {
+export const load: PageServerLoad = async ({ locals }: { locals: App.Locals }) => {
 	try {
 		const posts: Post[] = await db.post.findMany({
 			orderBy: [{ updatedAt: 'desc' }, { createdAt: 'desc' }]

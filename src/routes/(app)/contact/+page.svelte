@@ -2,6 +2,7 @@
 	import Check from 'lucide-svelte/icons/check';
 	import Copy from 'lucide-svelte/icons/copy';
 	import Send from 'lucide-svelte/icons/send';
+	import MailCheck from 'lucide-svelte/icons/mail-check';
 	import { onMount } from 'svelte';
 
 	const email = 'theriverrunsfast@gmail.com';
@@ -36,9 +37,7 @@
 				<label for="email">Email</label>
 				<div class="newsletter-form">
 					<input type="email" name="email" placeholder="test@example.com" />
-					<button title="Send email">
-						<Send /> sign up
-					</button>
+					<button title="Send email"> <MailCheck />Sign up </button>
 				</div>
 			</form>
 		</div>
