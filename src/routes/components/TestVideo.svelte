@@ -12,7 +12,7 @@
 			src="https://www.youtube-nocookie.com/embed/oWPTJSC0qJU?si=BDXlYQ5voEemMnhN&amp;controls=0"
 			title="YouTube video player"
 			frameborder="0"
-			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
 			referrerpolicy="strict-origin-when-cross-origin"
 			allowfullscreen>
 		</iframe>
