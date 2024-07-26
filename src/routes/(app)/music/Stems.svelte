@@ -31,9 +31,7 @@
 
 <main bind:this={section}>
 	<div class="hero">
-		{#if visible}
-			<h1 in:fly={{ x: 200, duration: 800 }} out:fade>Download stems</h1>
-		{/if}
+		<h1>Download stems</h1>
 
 		{#if visible}
 			<p in:fly={{ x: -200, duration: 800 }} out:fade>Send me your creations.</p>
