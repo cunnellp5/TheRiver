@@ -89,6 +89,8 @@ processAllButtons();
 ]
 
 I would store in a DB, but if we have to run this every now and then, there's no point in storing the same text
+
+// TODO consider writing an actual scraper? but if this will be run on a deployed free tier, id rather not wait for everything to load
 */
 import type { PageServerLoad } from './$types';
 
