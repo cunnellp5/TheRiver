@@ -18,7 +18,7 @@
 #### Future tech:
 
 - youtube api
-- soundcloud api
+- soundcloud api (this gateway has been shut down, can no longer get an auth token: brute forcing this one)
 - spotify api
 - stripe
 
