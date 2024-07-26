@@ -36,12 +36,13 @@
 	$: includesAdmin = $page.url.pathname.includes('/admin');
 	$: includesPosts = $page.url.pathname.includes('/posts');
 	$: includesService = $page.url.pathname.includes('/services');
+	$: includesMusic = $page.url.pathname.includes('/music');
+
 	$: isContact = $page.url.pathname === '/contact';
 	$: isDashboard = $page.url.pathname === '/dashboard';
 	$: isHomePage = $page.url.pathname === '/';
 	$: isLogin = $page.url.pathname === '/login';
 	$: isLogout = $page.url.pathname === '/logout';
-	$: isMusic = $page.url.pathname === '/music';
 	$: isShop = $page.url.pathname === '/shop';
 	$: isSignup = $page.url.pathname === '/signup';
 </script>
@@ -66,7 +67,7 @@
 		</div>
 
 		<ul class="links" class:homepageText={isHomePage}>
-			<li class:current={isMusic} aria-current={isMusic}>
+			<li class:current={includesMusic} aria-current={includesMusic}>
 				<a href="/music"> Music </a>
 			</li>
 
