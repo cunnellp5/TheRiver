@@ -45,9 +45,9 @@
 	}
 
 	.defaultUser {
-		background-color: var(--teal-12);
+		background-color: var(--create);
 	}
 	.admin {
-		background-color: var(--pink-12);
+		background-color: var(--delete);
 	}
 </style>

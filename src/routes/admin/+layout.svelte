@@ -112,6 +112,12 @@
 		background-color: var(--surface);
 		width: var(--size-12);
 		overflow-x: hidden;
+		& a {
+			font-weight: var(--font-weight-5);
+		}
+		& div {
+			font-weight: var(--font-weight-7);
+		}
 	}
 
 	.sidenav a {
