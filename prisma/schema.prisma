@@ -171,9 +171,9 @@ model Article {
   updatedAt    DateTime @updatedAt
 }
 
-// TODO add newsletter model: email, name, createdAt, updatedAt
-// the isSubscribed bool on the user table for registered users will determine if they have a newsletter row
-// unusbscribed users will only have a record in the newsletter table
-
-// TODO add a model for time slots and calendar days
-// 
+model YoutubeVideo {
+  id        Int      @id @default(autoincrement())
+  iframe    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
