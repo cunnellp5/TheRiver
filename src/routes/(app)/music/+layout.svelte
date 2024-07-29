@@ -19,13 +19,16 @@
 			ad sequi temporibus voluptas omnis, aliquam rerum. Aspernatur magni aliquam libero dolor,
 			quibusdam ad perferendis delectus.
 		</p>
-		<div class="gradient-point-up"></div>
+		<!-- <div class="gradient-point-up"></div> -->
 		<slot></slot>
 	</section>
 </div>
 
 <style>
 	/* ELEMENTS */
+	p {
+		color: var(--text-2);
+	}
 	h1 {
 		margin-block: var(--size-7);
 		text-transform: uppercase;
@@ -88,13 +91,13 @@
 	.current {
 		color: var(--link);
 	}
-	.gradient-point-up {
+	/* .gradient-point-up {
 		-webkit-mask: var(--mask-edge-drip-bottom);
 		mask: var(--mask-edge-drip-bottom);
 		border-radius: var(--radius-round);
 		background-image: var(--gradient-2), var(--noise-3);
 		height: var(--size-9);
-	}
+	} */
 
 	/* MEDIA QUERIES */
 	/* @media (max-width: 1440px) {
