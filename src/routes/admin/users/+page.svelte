@@ -33,6 +33,7 @@
 
 <style>
 	table {
+		/* background-color: var(--table); */
 		width: 100%;
 	}
 

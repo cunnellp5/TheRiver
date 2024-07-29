@@ -88,7 +88,8 @@
 		flex-direction: column;
 		align-items: center;
 		margin-block: var(--size-5);
-		border: 1px solid var(--stone-11);
+		/* box-shadow: var(--shadow-4); */
+		border: 1px dashed var(--stone-11);
 		padding-block: var(--size-5);
 	}
 
