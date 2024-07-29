@@ -8,9 +8,22 @@
 	export { className as class };
 </script>
 
-<th
-	class={`text-muted-foreground h-12 px-4 text-left align-middle font-medium [&:has([role=checkbox])]:pr-0
-		${className}`}
-	{...$$restProps}>
+<th class={`[&:has([role=checkbox])]:pr-0 ${className}`} {...$$restProps}>
 	<slot />
 </th>
+
+<style>
+	th {
+		vertical-align: middle;
+		background-color: unset;
+		padding-inline: var(--size-3);
+		height: var(--size-8);
+		color: var(--text-2);
+		font-weight: 500;
+		text-align: left;
+	}
+
+	/* :global(&:has([role='checkbox'])) {
+		padding-right: 0;
+	} */
+</style>

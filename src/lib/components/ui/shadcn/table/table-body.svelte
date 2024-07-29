@@ -11,3 +11,9 @@
 <tbody class={`[&_tr:last-child]:border-0 ${className}`} {...$$restProps}>
 	<slot />
 </tbody>
+
+<style>
+	tbody {
+		font-weight: var(--font-weight-6);
+	}
+</style>

@@ -12,3 +12,9 @@
 <thead class={`[&_tr]:border-b ${className}`} {...$$restProps} on:click on:keydown>
 	<slot />
 </thead>
+
+<style>
+	thead {
+		background-color: unset;
+	}
+</style>
