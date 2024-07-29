@@ -1,12 +1,26 @@
-import { error } from '@sveltejs/kit';
+import db from '$lib/server/database';
+import { error, fail } from '@sveltejs/kit';
 import type { Actions } from '@sveltejs/kit';
-import { env } from '$env/dynamic/private';
+import type { PageServerLoad } from './$types';
 import type { PlaylistItemResource, VideoResource } from './youtubeTypes';
+import { env } from '$env/dynamic/private';
 
-// TODO Check playlist title for 'originals'?
+export const load: PageServerLoad = async (event) => {
+	if (!event.locals.session || !event.locals.user) {
+		return error(404, 'Not found');
+	}
+
+	try {
+		const videos = await db.youtubeVideo.findMany();
+
+		return { videos };
+	} catch (err) {
+		return error(500, 'Internal Server Error');
+	}
+};
 
 export const actions: Actions = {
-	default: async (event) => {
+	getLatestYoutubeVideos: async (event) => {
 		if (!event.locals.session || !event.locals.user?.isAdmin) {
 			return error(401, 'Unauthorized');
 		}
@@ -36,8 +50,19 @@ export const actions: Actions = {
 			(item: VideoResource) => item.player.embedHtml
 		);
 
-		return {
-			data: embededElements
-		};
+		// DELETE ALL or check for UNIQUENESS FIRST
+		const res = await db.youtubeVideo.createMany({
+			data: youtubeResults.items.map((item: VideoResource) => ({
+				iframe: item.player.embedHtml
+			}))
+		});
+
+		if (res.count > 0) {
+			return {
+				data: embededElements
+			};
+		}
+
+		return fail(400, { message: res.errors[0].message });
 	}
 };
