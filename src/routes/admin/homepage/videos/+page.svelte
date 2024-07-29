@@ -38,7 +38,7 @@
 				<Table.Caption>A list of your recent invoices.</Table.Caption>
 				<Table.Header>
 					<Table.Row>
-						<Table.Head class="w-[100px]">Iframe</Table.Head>
+						<Table.Head class="w-[100px]">Source</Table.Head>
 						<Table.Head>Created</Table.Head>
 					</Table.Row>
 				</Table.Header>
