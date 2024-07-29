@@ -1,6 +1,5 @@
 <script lang="ts">
 	import * as Card from '$lib/components/ui/shadcn/card';
-	import SliderToggle from '$lib/components/ui/SliderToggle.svelte';
 	import Users from 'lucide-svelte/icons/users';
 
 	export let data;
@@ -44,16 +43,32 @@
 		<Card.Root>
 			<Card.Header>
 				<Card.Title>Services</Card.Title>
-				<Card.Description>Brief history of your services</Card.Description>
+				<Card.Description>History of appts</Card.Description>
 			</Card.Header>
 			<Card.Content>
-				<p>
-					Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus dolorum neque sequi soluta
-				</p>
+				<table>
+					<tr>
+						<th>Service</th>
+						<th>Date</th>
+						<th>Cost</th>
+					</tr>
+					<!-- {#each data.user?.services as service} -->
+					<tr>
+						<td>Nails</td>
+						<td>July 15th</td>
+						<td>$50</td>
+					</tr>
+					<tr>
+						<td>wax</td>
+						<td>July 15th</td>
+						<td>$50</td>
+					</tr>
+					<!-- {/each} -->
+				</table>
 			</Card.Content>
 			<Card.Footer>
 				<a href="/services">
-					<button class="primary">Schedule Service</button>
+					<button class="primary">Schedule</button>
 				</a>
 			</Card.Footer>
 		</Card.Root>
@@ -61,22 +76,23 @@
 		<Card.Root>
 			<Card.Header>
 				<Card.Title>Newsletter</Card.Title>
-				<Card.Description
-					>None of your info is shared with third parties or anyone other than TheRiver</Card.Description>
+				<Card.Description>
+					None of your info is shared with third parties or anyone other than TheRiver
+				</Card.Description>
 			</Card.Header>
 			<Card.Content>
-				<p>
-					You are currently
-					<span class="isSubscribed">
-						{data.user?.isSubscribed ? 'SUBSCRIBED' : 'NOT SUBSCRIBED'}
-					</span>
-					to the newsletter.
-				</p>
-				<p>Toggle below to change that</p>
+				<div class="newsletter-content-wrapper">
+					<p>
+						You are currently
+						<span class="isSubscribed">
+							{data.user?.isSubscribed ? 'SUBSCRIBED' : 'NOT SUBSCRIBED'}
+						</span>
+						to the newsletter
+					</p>
+				</div>
 			</Card.Content>
 			<Card.Footer>
-				<!-- TODO fetch user -->
-				<SliderToggle checked={data.user?.isSubscribed} id="published" name="published" />
+				<button class="secondary"> Unsubscribe </button>
 			</Card.Footer>
 		</Card.Root>
 
@@ -85,6 +101,13 @@
 				<Card.Title>Merch</Card.Title>
 				<Card.Description>Check the store</Card.Description>
 			</Card.Header>
+			<Card.Content>
+				<div>
+					Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquid voluptatum consequatur
+					veniam neque quisquam doloribus praesentium eum provident quasi expedita tenetur quam
+					suscipit, obcaecati quod perferendis harum deserunt labore consectetur!
+				</div>
+			</Card.Content>
 			<Card.Footer>
 				<a href="/reset">
 					<button class="secondary"> Etsy </button>
@@ -112,7 +135,11 @@
 </section>
 
 <style>
-	.headWrapper {
+	table {
+		width: 100%;
+	}
+	.headWrapper,
+	.newsletter-content-wrapper {
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;

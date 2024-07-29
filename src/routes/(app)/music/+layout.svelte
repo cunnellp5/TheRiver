@@ -19,8 +19,8 @@
 			ad sequi temporibus voluptas omnis, aliquam rerum. Aspernatur magni aliquam libero dolor,
 			quibusdam ad perferendis delectus.
 		</p>
-		<slot></slot>
 		<div class="gradient-point-up"></div>
+		<slot></slot>
 	</section>
 </div>
 
