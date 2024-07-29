@@ -1,21 +1,9 @@
 import { error } from '@sveltejs/kit';
 import type { Actions } from '@sveltejs/kit';
 import { env } from '$env/dynamic/private';
+import type { PlaylistItemResource, VideoResource } from './youtubeTypes';
 
-// Check playlist title for 'originals'
-const playlistId = 'PLfz9_FVWWQKey0AHxueGFOdEtv111qvy8';
-
-// temporarily saving videoIds from the selected playlist
-const videoIds = [
-	'KzFmhEvBsKg',
-	'EHsp2l08DyY',
-	'H5lNpqJjvqM',
-	'zEa9hCH_acs',
-	'qa9NtCoOaCk',
-	'0zhzvcDHcDs',
-	'Gj1zGmGRfIQ',
-	'oWPTJSC0qJU'
-];
+// TODO Check playlist title for 'originals'?
 
 export const actions: Actions = {
 	default: async (event) => {
@@ -23,36 +11,33 @@ export const actions: Actions = {
 			return error(401, 'Unauthorized');
 		}
 
-		// // FIRST GET video IDS from 'originals' playlist
-		const playlistItems = await event.fetch(
-			`https://www.googleapis.com/youtube/v3/playlistItems?key=${env.YOUTUBE_KEY}&channelId=${env.YOUTUBE_CHANNEL_ID}&playlistId=${playlistId}&part=snippet&maxResults=50`
-		);
-		const data = await playlistItems.json();
+		// FIRST GET video IDS from 'originals' playlist
+		// Then get all videos from the playlist
+		const youtubeResults = await event
+			.fetch(
+				`https://www.googleapis.com/youtube/v3/playlistItems?key=${env.YOUTUBE_KEY}&channelId=${env.YOUTUBE_CHANNEL_ID}&playlistId=${env.YOUTUBE_PLAYLIST_ID}&part=snippet&maxResults=50`
+			)
+			.then(async (res) => {
+				const data = await res.json();
+				return data.items.map((item: PlaylistItemResource) => item.snippet.resourceId.videoId);
+			})
+			.then(async (videoIds) => {
+				const videos = await event.fetch(
+					`https://www.googleapis.com/youtube/v3/videos?key=${env.YOUTUBE_KEY}&channelId=${env.YOUTUBE_CHANNEL_ID}&id=${videoIds.join(',')}&part=player&maxResults=50`
+				);
+				const data = await videos.json();
+				return data;
+			})
+			.catch((err) => ({
+				data: err
+			}));
 
-		const mapped = data.items.map((item) => {
-			console.log(item.snippet.resourceId.videoId, 'snippet');
-			return item.snippet.resourceId.videoId;
-		});
+		const embededElements = youtubeResults.items.map(
+			(item: VideoResource) => item.player.embedHtml
+		);
 
 		return {
-			data: mapped
+			data: embededElements
 		};
-
-		// save video IDs, compare to existing, add new ones, remove old ones
-
-		// // THEN GET ALL VIDEOS embedded players
-		// const playlistItems = await event.fetch(
-		// 	`https://www.googleapis.com/youtube/v3/videos?key=${env.YOUTUBE_KEY}&channelId=${channelId}&id=KzFmhEvBsKg,EHsp2l08DyY&part=player&maxResults=50`
-		// );
-		// const data = await playlistItems.json();
-		// console.log(data, 'datum');
-		// // const mapped = data.items.map((item) => {
-		// // 	console.log(item.snippet.resourceId.videoId, 'snippet');
-		// // 	return item.snippet.resourceId.videoId;
-		// // });
-
-		// return {
-		// 	data
-		// };
 	}
 };
