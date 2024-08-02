@@ -1,28 +1,34 @@
 <script lang="ts">
+	import * as Table from '$lib/components/ui/shadcn/table';
+
 	export let data;
 	const { tracks } = data;
 </script>
 
 {#if data}
 	<h3>Tracks from SoundCloud</h3>
-	{#each tracks as track}
-		<ul>
-			<li>
-				<p>
-					{track.title}
-				</p>
-			</li>
-		</ul>
-	{/each}
+	<Table.Root>
+		<Table.Caption>A list of your SoundCloud tracks.</Table.Caption>
+		<Table.Header>
+			<Table.Row>
+				<Table.Head class="w-[100px]">Title</Table.Head>
+				<Table.Head>Order</Table.Head>
+			</Table.Row>
+		</Table.Header>
+		<Table.Body>
+			{#each tracks as track}
+				<Table.Row>
+					<Table.Cell class="font-medium">{track.title}</Table.Cell>
+					<Table.Cell>{track.order}</Table.Cell>
+				</Table.Row>
+			{/each}
+		</Table.Body>
+	</Table.Root>
 {:else}
 	<p>no tracks</p>
 {/if}
 
 <style>
-	li {
-		margin: var(--size-1);
-		font-size: var(--font-size-4);
-	}
 	p {
 		font-size: var(--font-size-1);
 	}
