@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { addToast } from '$lib/stores/toast';
 	import Card from '$lib/components/ui/Card.svelte';
+	import * as GenericCard from '$lib/components/ui/shadcn/card';
 	import Pencil from 'lucide-svelte/icons/pencil';
 	import Plus from 'lucide-svelte/icons/plus';
 	import Trash from 'lucide-svelte/icons/trash';
@@ -22,11 +23,20 @@
 	}
 </script>
 
-<h2>Articles</h2>
-
-<a href="/admin/homepage/articles/create">
-	<button class="create-article-button"> <Plus strokeWidth={3} />Add new article</button>
-</a>
+<div class="adminIntroCardWrapper">
+	<GenericCard.Root>
+		<GenericCard.Header>
+			<GenericCard.Title>Articles</GenericCard.Title>
+			<GenericCard.Description
+				>Create, Edit, or Delete articles found on the home page</GenericCard.Description>
+		</GenericCard.Header>
+		<GenericCard.Footer>
+			<a href="/admin/homepage/articles/create">
+				<button class="create-article-button"> <Plus strokeWidth={3} />Add new article</button>
+			</a>
+		</GenericCard.Footer>
+	</GenericCard.Root>
+</div>
 
 {#if articles.length === 0}
 	<p>No articles found</p>
@@ -77,7 +87,6 @@
 		}
 	}
 	.create-article-button {
-		margin-block: var(--size-7);
 		background-color: var(--create);
 		color: var(--on-crud-text);
 		font-weight: var(--font-weight-7);

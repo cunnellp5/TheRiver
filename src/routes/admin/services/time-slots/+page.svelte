@@ -1,4 +1,5 @@
 <script lang="ts">
+	import * as Card from '$lib/components/ui/shadcn/card';
 	import Modal from '$lib/components/ui/Modal.svelte';
 	import { theme } from '$lib/stores/theme';
 	import Calendar from '@event-calendar/core';
@@ -144,17 +145,22 @@
 </Modal>
 
 <!-- Actual struture of the page -->
+<div class="adminIntroCardWrapper">
+	<Card.Root>
+		<Card.Header>
+			<Card.Title>Scheduler</Card.Title>
+			<Card.Description>Create, Edit, or delete your schedule</Card.Description>
+		</Card.Header>
+		<Card.Content>
+			<p>This will create 'availbility' for services</p>
+
+			<p>1 - create available chunks of time on the calendar</p>
+			<p>2 - after creating submit, this will generate 15 min slots of available times</p>
+			<p>3 - user can book these slots</p>
+		</Card.Content>
+	</Card.Root>
+</div>
 <div class="container" class:ec-dark={$theme === 'dark'} class:ec-light={$theme === 'light'}>
-	<h3>Schedule</h3>
-
-	<p>This will create 'availbility' for services</p>
-
-	<pre>
-		1 - create available chunks of time on the calendar
-		2 - after creating submit, this will generate 15 min slots of available times
-		3 - user can book these slots
-	</pre>
-
 	<div class="calendar-wrapper">
 		<Calendar bind:this={ec} {plugins} {options} />
 		{#if showEvent}

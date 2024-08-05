@@ -1,4 +1,5 @@
 <script lang="ts">
+	import * as Card from '$lib/components/ui/shadcn/card';
 	import Calendar from '$lib/components/ui/Calendar.svelte';
 	// import Calendar from '@event-calendar/core';
 	// import TimeGrid from '@event-calendar/time-grid';
@@ -8,6 +9,15 @@
 	const today = new Date();
 	let showModal = false;
 </script>
+
+<div class="adminIntroCardWrapper">
+	<Card.Root>
+		<Card.Header>
+			<Card.Title>Existing bookings</Card.Title>
+			<Card.Description>View currently booked appointments</Card.Description>
+		</Card.Header>
+	</Card.Root>
+</div>
 
 <Modal bind:showModal>
 	<h2 slot="header">

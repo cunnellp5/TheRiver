@@ -1,4 +1,5 @@
 <script lang="ts">
+	import * as Card from '$lib/components/ui/shadcn/card';
 	import BlogCard from '$lib/components/ui/BlogCard.svelte';
 	import { onMount } from 'svelte';
 	import Pencil from 'lucide-svelte/icons/pencil';
@@ -41,16 +42,25 @@
 	}
 </script>
 
-<a href="/admin/posts/create" data-sveltekit-noscroll>
-	<button class="create-post-button"> <Plus strokeWidth={3} />Add new post</button>
-</a>
+<div class="adminIntroCardWrapper">
+	<Card.Root>
+		<Card.Header>
+			<Card.Title>
+				<a class="title" href="/admin/posts" data-sveltekit-noscroll>Blog posts</a>
+			</Card.Title>
+			<Card.Description>Create, Edit, or delete your blog posts</Card.Description>
+		</Card.Header>
+		<Card.Footer>
+			<a href="/admin/posts/create" data-sveltekit-noscroll>
+				<button class="create-post-button"> <Plus strokeWidth={3} />Add new post</button>
+			</a>
+		</Card.Footer>
+	</Card.Root>
+</div>
 
 <main>
 	<section>
 		<header>
-			<a class="title" href="/admin/posts" data-sveltekit-noscroll>
-				<h1>RIVER BLOG</h1>
-			</a>
 			{#if isPostsHome}
 				<p>Showing {filteredPosts.length} post{filteredPosts.length > 1 ? 's' : ''}.</p>
 			{/if}
@@ -175,7 +185,6 @@
 		}
 	}
 	.create-post-button {
-		margin-block: var(--size-7);
 		background-color: var(--create);
 		color: var(--on-crud-text);
 		font-weight: var(--font-weight-7);

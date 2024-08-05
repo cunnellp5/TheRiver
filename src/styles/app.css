@@ -278,3 +278,9 @@ button:active {
 :where(.btn, button, input:is([type='button'], [type='submit'], [type='reset'])) > :where(svg) {
 	filter: none;
 }
+
+
+/* wrapper for all top admin info cards */
+.adminIntroCardWrapper {
+	margin-block: var(--size-4);
+}
