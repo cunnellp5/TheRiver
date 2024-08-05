@@ -50,9 +50,18 @@
 						{/each}
 					</ul>
 				{:else}
-					<div class="noPostsWrapper">
-						<p>No posts</p>
-					</div>
+					<ul>
+						{#if showElement}
+							<li transition:slide={{ delay: 150, duration: 900, easing: quintOut }}>
+								<BlogCard
+									title={'No Posts'}
+									tags={[]}
+									createdAt={new Date()}
+									slug={'no-posts'}
+									description={''} />
+							</li>
+						{/if}
+					</ul>
 				{/if}
 			</section>
 		</div>
@@ -88,9 +97,6 @@
 		line-height: var(--font-lineheight-00);
 		font-family: var(--font-serif);
 		text-transform: uppercase;
-	}
-	.noPostsWrapper {
-		margin: var(--size-content-1);
 	}
 	.titleWrapper {
 		display: flex;

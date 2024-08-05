@@ -45,6 +45,7 @@
 </a>
 
 <style>
+	/* ELEMENTS */
 	h5 {
 		background: var(--gradient-24) fixed;
 		-webkit-background-clip: text;
@@ -70,12 +71,15 @@
 	a:hover {
 		text-decoration: none;
 	}
+
+	/* CLASSES */
 	.card {
 		margin: 0 auto;
 		box-shadow: var(--shadow-1);
 		border: 1px solid var(--surface-4);
 		border-radius: var(--radius-2);
 		padding: var(--size-4);
+		min-width: var(--size-content-2);
 	}
 	.description {
 		margin-block: var(--size-4);
@@ -87,6 +91,7 @@
 		justify-content: end;
 		gap: var(--size-1);
 		margin-block: var(--size-2);
+		width: 100%;
 	}
 	.selected {
 		display: inline-block;
