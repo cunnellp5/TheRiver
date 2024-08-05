@@ -31,7 +31,7 @@
 
 {#each Object.entries(remappedServices) as [category, listOfServices]}
 	<section class="service-table">
-		<h2>{category}</h2>
+		<h4>{category}</h4>
 		<table>
 			<thead class="surface-2">
 				<tr>
@@ -68,4 +68,7 @@
 {/each}
 
 <style>
+	.service-table {
+		margin-block: var(--size-4);
+	}
 </style>

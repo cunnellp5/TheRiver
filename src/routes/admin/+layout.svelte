@@ -61,11 +61,6 @@
 
 			<hr />
 
-			<div class="dropLabel">Blog</div>
-			<a class:current={$page.url.pathname.includes('/admin/posts')} href="/admin/posts"> Posts </a>
-
-			<hr />
-
 			<div class="dropLabel">Services</div>
 			<a class:current={$page.url.pathname === '/admin/services'} href="/admin/services"> Jobs </a>
 			<a
@@ -80,6 +75,21 @@
 			</a>
 
 			<hr />
+
+			<a
+				class:current={$page.url.pathname.includes('/admin/market')}
+				class="stand-alone"
+				href="/admin/market">
+				<div class="dropLabel">Market</div>
+			</a>
+
+			<hr />
+
+			<div class="dropLabel">Blog</div>
+			<a class:current={$page.url.pathname.includes('/admin/posts')} href="/admin/posts"> Posts </a>
+
+			<hr />
+
 			<div class="dropLabel">Contact</div>
 			<a
 				class:current={$page.url.pathname.includes('/admin/contact/info')}
@@ -90,7 +100,9 @@
 	</aside>
 	<article>
 		<header>
-			<h1>ADMIN PORTAL</h1>
+			<a href="/admin">
+				<h1>ADMIN PORTAL</h1>
+			</a>
 		</header>
 		<div>
 			<BreadCrumb {crumbs}></BreadCrumb>
@@ -100,35 +112,32 @@
 </main>
 
 <style>
+	/* ELEMENTS */
 	main {
 		display: grid;
 		grid-template-columns: var(--size-12) 1fr;
 	}
-
 	header {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		margin-block: var(--size-5);
-		/* box-shadow: var(--shadow-4); */
 		border: 1px dashed var(--stone-11);
 		padding-block: var(--size-5);
 	}
-
 	article {
 		margin-inline: var(--size-4);
 	}
-
 	hr {
 		margin-block: var(--size-4);
 	}
-
 	a {
 		color: var(--gray-7);
 		font-weight: 200;
 		user-select: none;
+		text-decoration: none;
 	}
-
+	/* CLASSES */
 	.sidenav {
 		position: relative;
 		z-index: 1;
@@ -142,26 +151,20 @@
 			font-weight: var(--font-weight-7);
 		}
 	}
-
 	.sidenav a {
 		display: block;
 		padding: var(--size-1);
 		text-decoration: none;
 	}
-
 	.sidenav a:hover {
 		cursor: pointer;
 		border-radius: var(--radius-2);
 		background-color: var(--hover-1);
 	}
-
 	.current {
 		color: var(--link);
 	}
-
 	.dropLabel {
-		margin-top: var(--size-5);
-		margin-bottom: var(--size-1);
 		width: 100%;
 		color: var(--stone-5);
 		font-weight: 200;
