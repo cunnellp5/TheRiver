@@ -16,6 +16,8 @@
 - Users can view a scheduled appointment on a calendar
 - Users should get email notifications/reminders
 
+- food for thought: https://appointly-demo.myshopify.com/
+
 ### 3. Merch
 
 - Users can buy merchandise
@@ -71,4 +73,4 @@
 - youtube
 - soundcloud
 - spotify
-- stripe
+- <del>stripe<del> consider using shopify 'starter' its $5/mo less set up

@@ -5,6 +5,15 @@ import type { PageServerLoad } from './$types';
 import type { PlaylistItemResource, VideoResource } from './youtubeTypes';
 import { env } from '$env/dynamic/private';
 
+function removeEscapeCharacters(str: string): string {
+	return str.replace(/[\n\t\r\b\f\v\\]/g, '');
+}
+
+function extractSrcFromIframe(iframe: string): string | null {
+	const match = iframe.match(/src="([^"]*)"/);
+	return match ? match[1] : null;
+}
+
 export const load: PageServerLoad = async (event) => {
 	if (!event.locals.session || !event.locals.user) {
 		return error(404, 'Not found');
@@ -46,23 +55,28 @@ export const actions: Actions = {
 				data: err
 			}));
 
+		// This is a list of iframes with escaped characters
 		const embededElements = youtubeResults.items.map(
 			(item: VideoResource) => item.player.embedHtml
 		);
 
+		const cleanedIframes = embededElements.map((iframe: string) => removeEscapeCharacters(iframe));
+
+		const srcs = cleanedIframes.map((iframe: string) => extractSrcFromIframe(iframe));
+
+		await db.youtubeVideo.deleteMany();
+
 		// DELETE ALL or check for UNIQUENESS FIRST
 		const res = await db.youtubeVideo.createMany({
-			data: youtubeResults.items.map((item: VideoResource) => ({
-				iframe: item.player.embedHtml
-			}))
+			data: srcs.map((src: string) => ({ iframe: src }))
 		});
 
 		if (res.count > 0) {
 			return {
-				data: embededElements
+				data: srcs
 			};
 		}
 
-		return fail(400, { message: res.errors[0].message });
+		return fail(500, { message: 'something with the DB broke' });
 	}
 };

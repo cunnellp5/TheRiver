@@ -90,3 +90,18 @@
 ### Form input ideas
 
 - invitees cant schedule within range
+
+### meeting ideas
+
+- 1. how standard is the schedule?
+- reclaim.ai
+
+- ask alexis how far out she might want her schedule to go
+- is 15 min chunks better or 30min chunks
+- how far out could vacations get set
+- for overlapping services: consider the display time wouldnt reflect the working time (hair coloring for 2 hours example):
+  - consider types, could we schedule two 'hair colors' back to back (should ask her how some of the services work exactly)
+
+- do we need a buffer time (client side)
+- bulk editing would be cool
+- yearlist, monthlist, daylist views might not be helpful

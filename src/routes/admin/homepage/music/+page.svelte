@@ -1,20 +1,35 @@
-<ul>
-	<li>music was ripped from soundcloud using their widget feature</li>
-	<li>they wont let developers use their api at the moment</li>
-	<li>I manually ripped the urls from the widget and added them to the app</li>
-	<li>
-		we can add them to the DB, but for now they're not added because I'm not sure if we're going to
-		keep them and its easy to update here
-	</li>
-</ul>
+<script lang="ts">
+	import * as Table from '$lib/components/ui/shadcn/table';
+
+	export let data;
+	const { tracks } = data;
+</script>
+
+{#if data}
+	<h3>Tracks from SoundCloud</h3>
+	<Table.Root>
+		<Table.Caption>A list of your SoundCloud tracks.</Table.Caption>
+		<Table.Header>
+			<Table.Row>
+				<Table.Head class="w-[100px]">Title</Table.Head>
+				<Table.Head>Order</Table.Head>
+			</Table.Row>
+		</Table.Header>
+		<Table.Body>
+			{#each tracks as track}
+				<Table.Row>
+					<Table.Cell class="font-medium">{track.title}</Table.Cell>
+					<Table.Cell>{track.order}</Table.Cell>
+				</Table.Row>
+			{/each}
+		</Table.Body>
+	</Table.Root>
+{:else}
+	<p>no tracks</p>
+{/if}
 
 <style>
-	ul {
-		margin-block: var(--size-7);
-		& li {
-			margin: var(--size-4);
-			list-style-type: disc; /* Add this line to set bullet points */
-			text-decoration: dotted;
-		}
+	p {
+		font-size: var(--font-size-1);
 	}
 </style>

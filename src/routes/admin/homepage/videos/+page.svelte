@@ -1,4 +1,6 @@
 <script>
+	import * as Table from '$lib/components/ui/shadcn/table';
+	import formatDate from '$lib/utils/formatDate';
 	// eslint-disable-next-line import/no-unresolved
 	import { enhance } from '$app/forms';
 
@@ -32,13 +34,23 @@
 			<li>No videos in the db</li>
 		{:else}
 			<h4>DB data</h4>
-			{#each videos as { id, iframe, updatedAt, createdAt } (id)}
-				<li>
-					<p>{iframe}</p>
-					<p>{updatedAt}</p>
-					<p>{createdAt}</p>
-				</li>
-			{/each}
+			<Table.Root>
+				<Table.Caption>A list of your recent invoices.</Table.Caption>
+				<Table.Header>
+					<Table.Row>
+						<Table.Head class="w-[100px]">Source</Table.Head>
+						<Table.Head>Created</Table.Head>
+					</Table.Row>
+				</Table.Header>
+				<Table.Body>
+					{#each videos as { iframe, createdAt }, i (i)}
+						<Table.Row>
+							<Table.Cell class="font-medium">{iframe}</Table.Cell>
+							<Table.Cell>{formatDate(createdAt)}</Table.Cell>
+						</Table.Row>
+					{/each}
+				</Table.Body>
+			</Table.Root>
 		{/if}
 	</ul>
 </div>
@@ -86,7 +98,7 @@
 	/* CLASSES */
 	.video-data-wrapper {
 		display: flex;
-		flex-direction: row;
+		flex-direction: column;
 		/* align-items: center; */
 	}
 	.videos-from-db {
