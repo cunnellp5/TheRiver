@@ -1,0 +1,13 @@
+{
+  "home": "nothin muffin?",
+  "music": "fuuuug yeab",
+  "service": "cool",
+  "market": "This is the about that will show up in the /market section",
+  "blog": "This is the about that will show up in the /blog section",
+  "contact": "This is the about that will show up in the /contact section",
+  "announcement": "sanitize data plz",
+  "contactData": {
+    "email": "test@example.com",
+    "location": "1234 Example St, Example City, EX 12345"
+  }
+}
