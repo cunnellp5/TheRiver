@@ -1,6 +1,7 @@
 <!-- leaving below just in case i dont want to scroll on nav -->
 <!-- data-sveltekit-noscroll -->
 <script lang="ts">
+	import about from '$lib/data/json/about.json';
 	// eslint-disable-next-line import/no-unresolved
 	import { page } from '$app/stores';
 </script>
@@ -15,9 +16,7 @@
 	<section>
 		<h1>The River Sings</h1>
 		<p>
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum quisquam sed modi nemo nisi
-			ad sequi temporibus voluptas omnis, aliquam rerum. Aspernatur magni aliquam libero dolor,
-			quibusdam ad perferendis delectus.
+			{about.music}
 		</p>
 		<!-- <div class="gradient-point-up"></div> -->
 		<slot></slot>
