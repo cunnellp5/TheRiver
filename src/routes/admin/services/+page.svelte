@@ -26,6 +26,14 @@
 			<Card.Title>Services</Card.Title>
 			<Card.Description>Create, Edit, or delete your services</Card.Description>
 		</Card.Header>
+		<Card.Content>
+			<p>todo</p>
+			<ul>
+				<li>move to generic table</li>
+				<li>MVP is create a way to CRUD services</li>
+				<li>dont let users start scheduling, yet</li>
+			</ul>
+		</Card.Content>
 	</Card.Root>
 </div>
 

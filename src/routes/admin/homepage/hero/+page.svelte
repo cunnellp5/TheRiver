@@ -8,7 +8,7 @@
 			<Card.Title>Hero Video</Card.Title>
 			<Card.Description>Edit the hero video</Card.Description>
 		</Card.Header>
-		<Card.Content>🚧 under construction</Card.Content>
-		<Card.Footer></Card.Footer>
+		<Card.Content></Card.Content>
+		<Card.Footer>🚧 under construction</Card.Footer>
 	</Card.Root>
 </div>

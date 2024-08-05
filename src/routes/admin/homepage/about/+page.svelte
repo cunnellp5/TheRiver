@@ -43,10 +43,18 @@
 	<Card.Root>
 		<Card.Header>
 			<Card.Title>About</Card.Title>
-			<Card.Description>Edit your about section</Card.Description>
+			<Card.Description>Edit your about sections</Card.Description>
 		</Card.Header>
-		<Card.Content>🚧 under construction</Card.Content>
-		<Card.Footer></Card.Footer>
+		<Card.Content>
+			<ul>
+				TODOs
+				<li>Move inputs to components with scoped state</li>
+				<li>Add a show/hide boolean to data</li>
+			</ul>
+		</Card.Content>
+		<Card.Footer>
+			<p>🚧 under construction</p>
+		</Card.Footer>
 	</Card.Root>
 </div>
 

@@ -148,7 +148,7 @@
 <div class="adminIntroCardWrapper">
 	<Card.Root>
 		<Card.Header>
-			<Card.Title>Scheduler</Card.Title>
+			<Card.Title>Time slot scheduler</Card.Title>
 			<Card.Description>Create, Edit, or delete your schedule</Card.Description>
 		</Card.Header>
 		<Card.Content>
