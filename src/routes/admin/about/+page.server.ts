@@ -25,8 +25,6 @@ export const actions: Actions = {
 		const inputAbout = formData.get('about') as string;
 		const inputTitle = formData.get('title') as string;
 
-		console.log(inputAbout, 'saving abouts');
-
 		// Define the path to the file
 		const filePath = path.join(process.cwd(), './src/lib/data/json/about.json');
 

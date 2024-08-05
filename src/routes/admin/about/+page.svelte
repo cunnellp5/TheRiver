@@ -5,35 +5,33 @@
 	// eslint-disable-next-line import/no-unresolved
 	import { enhance } from '$app/forms';
 
-	let editToggle = false;
-
 	const routesWithAbout = [
 		{
-			title: 'Home',
+			title: 'home',
 			about: about.home
 		},
 		{
-			title: 'Music',
+			title: 'music',
 			about: about.music
 		},
 		{
-			title: 'Service',
+			title: 'service',
 			about: about.service
 		},
 		{
-			title: 'Market',
+			title: 'market',
 			about: about.market
 		},
 		{
-			title: 'Blog',
+			title: 'blog',
 			about: about.blog
 		},
 		{
-			title: 'Contact',
+			title: 'contact',
 			about: about.contact
 		},
 		{
-			title: 'Announcement',
+			title: 'announcement',
 			about: about.announcement
 		}
 	];
@@ -70,11 +68,11 @@
 	<Table.Body>
 		{#each routesWithAbout as aboutInfo}
 			<Table.Row>
-				<Table.Cell>{aboutInfo.title}</Table.Cell>
+				<Table.Cell>&#47;{aboutInfo.title}</Table.Cell>
 				<Table.Cell>{aboutInfo.about}</Table.Cell>
 				<Table.Cell>
 					<form method="POST" data-sveltekit-noscroll use:enhance>
-						<textarea name="about" cols="40" />
+						<textarea name="about" cols="40" rows="1" />
 						<input type="hidden" name="title" value={aboutInfo.title} />
 						<button type="submit">Save</button>
 					</form>
