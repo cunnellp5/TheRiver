@@ -25,21 +25,38 @@
 
 			<hr />
 
-			<div class="dropLabel">Home page</div>
-			<a
-				class:current={$page.url.pathname === '/admin/homepage/music'}
-				href="/admin/homepage/music">
-				Music
+			<div class="dropLabel">Home</div>
+			<a class:current={$page.url.pathname === '/admin/homepage/hero'} href="/admin/homepage/hero">
+				HeroVideo
 			</a>
 			<a
-				class:current={$page.url.pathname === '/admin/homepage/videos'}
-				href="/admin/homepage/videos">
-				Videos
+				class:current={$page.url.pathname === '/admin/homepage/about'}
+				href="/admin/homepage/about">
+				About
 			</a>
 			<a
 				class:current={$page.url.pathname === '/admin/homepage/articles'}
 				href="/admin/homepage/articles">
 				Articles
+			</a>
+
+			<hr />
+
+			<div class="dropLabel">Music</div>
+			<a
+				class:current={$page.url.pathname === '/admin/musicpage/tracks'}
+				href="/admin/musicpage/tracks">
+				Tracks
+			</a>
+			<a
+				class:current={$page.url.pathname === '/admin/musicpage/videos'}
+				href="/admin/musicpage/videos">
+				Videos
+			</a>
+			<a
+				class:current={$page.url.pathname === '/admin/musicpage/stems'}
+				href="/admin/musicpage/stems">
+				Stems
 			</a>
 
 			<hr />
@@ -64,6 +81,11 @@
 
 			<hr />
 			<div class="dropLabel">Contact</div>
+			<a
+				class:current={$page.url.pathname.includes('/admin/contact/info')}
+				href="/admin/contact/info">
+				Info
+			</a>
 		</nav>
 	</aside>
 	<article>

@@ -98,7 +98,6 @@
 		opacity: 1;
 		border: 1px solid var(--link);
 	}
-
 	.unselected {
 		opacity: 0.5;
 	}

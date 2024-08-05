@@ -3,8 +3,6 @@
 	import Users from 'lucide-svelte/icons/users';
 
 	export let data;
-
-	console.log(data.user);
 </script>
 
 <section>

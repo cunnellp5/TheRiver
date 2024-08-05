@@ -1,10 +1,19 @@
 <script lang="ts">
+	import * as Card from '$lib/components/ui/shadcn/card';
+
 	export let data;
 
 	const { users } = data;
 </script>
 
-<h3>All users</h3>
+<div class="adminIntroCardWrapper">
+	<Card.Root>
+		<Card.Header>
+			<Card.Title>Users</Card.Title>
+			<Card.Description>List of users</Card.Description>
+		</Card.Header>
+	</Card.Root>
+</div>
 
 <table>
 	<thead>

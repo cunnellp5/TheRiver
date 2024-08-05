@@ -52,7 +52,7 @@
 				{:else}
 					<ul>
 						{#if showElement}
-							<li transition:slide={{ delay: 150, duration: 900, easing: quintOut }}>
+							<li>
 								<BlogCard
 									title={'No Posts'}
 									tags={[]}

@@ -1,4 +1,6 @@
 <script lang="ts">
+	import * as Card from '$lib/components/ui/shadcn/card';
+
 	export let data;
 
 	const { services } = data;
@@ -18,7 +20,14 @@
 	}, {});
 </script>
 
-<p>todo add csv download or upload??</p>
+<div class="adminIntroCardWrapper">
+	<Card.Root>
+		<Card.Header>
+			<Card.Title>Services</Card.Title>
+			<Card.Description>Create, Edit, or delete your services</Card.Description>
+		</Card.Header>
+	</Card.Root>
+</div>
 
 {#each Object.entries(remappedServices) as [category, listOfServices]}
 	<section class="service-table">
@@ -59,13 +68,4 @@
 {/each}
 
 <style>
-	div {
-		margin-block: var(--size-4);
-		box-shadow: var(--shadow-1);
-		border: 1px solid var(--color-gray-1);
-		padding: var(--size-4);
-	}
-	.surface-4 {
-		width: max-content;
-	}
 </style>
