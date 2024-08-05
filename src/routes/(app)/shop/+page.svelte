@@ -1,13 +1,13 @@
 <script lang="ts">
-	const shoppingURL = 'https://www.etsy.com/shop/MadeByTheRiverBed';
+	import market from '$lib/data/json/market.json';
 </script>
 
 <main>
 	<section>
-		<a target="_blank" href={shoppingURL}>
+		<a target="_blank" href={market.url}>
 			<h1>THE RIVER MARKET</h1>
 		</a>
-		<a class="animation" target="_blank" href={shoppingURL}> etsy.com @MadeByTheRiverBed </a>
+		<a class="animation" target="_blank" href={market.url}> {market.text} </a>
 	</section>
 </main>
 
