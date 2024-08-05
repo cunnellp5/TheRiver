@@ -22,14 +22,14 @@
 		<Table.Caption>A list of your SoundCloud tracks.</Table.Caption>
 		<Table.Header>
 			<Table.Row>
-				<Table.Head class="w-[100px]">Title</Table.Head>
+				<Table.Head>Title</Table.Head>
 				<Table.Head>Order</Table.Head>
 			</Table.Row>
 		</Table.Header>
 		<Table.Body>
 			{#each tracks as track}
 				<Table.Row>
-					<Table.Cell class="font-medium">{track.title}</Table.Cell>
+					<Table.Cell>{track.title}</Table.Cell>
 					<Table.Cell>{track.order}</Table.Cell>
 				</Table.Row>
 			{/each}

@@ -66,14 +66,14 @@
 				<Table.Caption>A list of visible videos.</Table.Caption>
 				<Table.Header>
 					<Table.Row>
-						<Table.Head class="w-[100px]">Source</Table.Head>
+						<Table.Head>Source</Table.Head>
 						<Table.Head>Created</Table.Head>
 					</Table.Row>
 				</Table.Header>
 				<Table.Body>
 					{#each videos as { iframe, createdAt }, i (i)}
 						<Table.Row>
-							<Table.Cell class="font-medium">{iframe}</Table.Cell>
+							<Table.Cell>{iframe}</Table.Cell>
 							<Table.Cell>{formatDate(createdAt)}</Table.Cell>
 						</Table.Row>
 					{/each}

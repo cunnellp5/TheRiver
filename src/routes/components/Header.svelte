@@ -47,73 +47,74 @@
 	$: isSignup = $page.url.pathname === '/signup';
 </script>
 
-{#if visible}
-	<nav class="nav-desktop" in:fly={{ duration: 500, y: -400, delay: 500 }}>
-		<div>
-			<a class="logo-link" href="/">
-				<LogoR />
-			</a>
-			<ul class="links" class:homepageText={isHomePage}>
-				<li></li>
-
-				<li class:current={includesAdmin} aria-current={includesAdmin}>
-					<a href="/admin"> Admin </a>
-				</li>
-
-				<li class:current={isDashboard} aria-current={isDashboard}>
-					<a href="/dashboard"> Dashboard </a>
-				</li>
-			</ul>
-		</div>
-
-		<ul class="links" class:homepageText={isHomePage}>
-			<li class:current={includesMusic} aria-current={includesMusic}>
-				<a href="/music"> Music </a>
-			</li>
-
-			<li class:current={includesService} aria-current={includesService}>
-				<a href="/services"> services </a>
-			</li>
-
-			<li class:current={isShop} aria-current={isShop}>
-				<a href="/shop"> Market </a>
-			</li>
-
-			<li class="border-left"></li>
-
-			<li class:current={includesPosts} aria-current={includesPosts}>
-				<a href="/posts"> Posts </a>
-			</li>
-			<li class:current={isContact} aria-current={isContact}>
-				<a href="/contact"> Contact </a>
-			</li>
-
-			<li class="border-left"></li>
-
-			{#if isSignedIn}
-				<form class="logout-wrapper" id="logoutForm" method="POST" action="/logout">
-					<li class:current={isLogout} class:homepageText={isHomePage}>
-						<button class="logout-button" type="submit">Logout</button>
-					</li>
-				</form>
-			{:else}
-				<li class:current={isSignup}>
-					<a href="/signup"> Signup </a>
-				</li>
-				<li class:current={isLogin}>
-					<a href="/login"> Login </a>
-				</li>
-			{/if}
-		</ul>
-	</nav>
-
-	<nav class="nav-mobile">
-		<a href="/" class="logo-link">
+<!-- {#if visible} -->
+<nav class="nav-desktop" in:fly={{ duration: 500, y: -400, delay: 500 }}>
+	<div>
+		<a class="logo-link" href="/">
 			<LogoR />
 		</a>
-		<Waves />
-	</nav>
-{/if}
+		<ul class="links" class:homepageText={isHomePage}>
+			<li></li>
+
+			<li class:current={includesAdmin} aria-current={includesAdmin}>
+				<a href="/admin"> Admin </a>
+			</li>
+
+			<li class:current={isDashboard} aria-current={isDashboard}>
+				<a href="/dashboard"> Dashboard </a>
+			</li>
+		</ul>
+	</div>
+
+	<ul class="links" class:homepageText={isHomePage}>
+		<li class:current={includesMusic} aria-current={includesMusic}>
+			<a href="/music"> Music </a>
+		</li>
+
+		<li class:current={includesService} aria-current={includesService}>
+			<a href="/services"> services </a>
+		</li>
+
+		<li class:current={isShop} aria-current={isShop}>
+			<a href="/shop"> Market </a>
+		</li>
+
+		<li class="border-left"></li>
+
+		<li class:current={includesPosts} aria-current={includesPosts}>
+			<a href="/posts"> Posts </a>
+		</li>
+		<li class:current={isContact} aria-current={isContact}>
+			<a href="/contact"> Contact </a>
+		</li>
+
+		<li class="border-left"></li>
+
+		{#if isSignedIn}
+			<form class="logout-wrapper" id="logoutForm" method="POST" action="/logout">
+				<li class:current={isLogout} class:homepageText={isHomePage}>
+					<button class="logout-button" type="submit">Logout</button>
+				</li>
+			</form>
+		{:else}
+			<li class:current={isSignup}>
+				<a href="/signup"> Signup </a>
+			</li>
+			<li class:current={isLogin}>
+				<a href="/login"> Login </a>
+			</li>
+		{/if}
+	</ul>
+</nav>
+
+<nav class="nav-mobile">
+	<a href="/" class="logo-link">
+		<LogoR />
+	</a>
+	<Waves />
+</nav>
+
+<!-- {/if} -->
 
 <style>
 	nav {
@@ -187,6 +188,7 @@
 
 	.nav-desktop {
 		display: none;
+		/* min-height: var(--size-9); */
 	}
 
 	.nav-mobile {
