@@ -1,12 +1,23 @@
 <script lang="ts">
 	import * as Table from '$lib/components/ui/shadcn/table';
+	import * as Card from '$lib/components/ui/shadcn/card';
 
 	export let data;
 	const { tracks } = data;
 </script>
 
+<div class="adminIntroCardWrapper">
+	<Card.Root>
+		<Card.Header>
+			<Card.Title>Tracks</Card.Title>
+			<Card.Description>
+				This page shows a list of current Tracks being rendered from Soundcloud
+			</Card.Description>
+		</Card.Header>
+	</Card.Root>
+</div>
+
 {#if data}
-	<h3>Tracks from SoundCloud</h3>
 	<Table.Root>
 		<Table.Caption>A list of your SoundCloud tracks.</Table.Caption>
 		<Table.Header>
