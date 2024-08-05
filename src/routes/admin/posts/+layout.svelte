@@ -118,9 +118,16 @@
 							{/each}
 						</ul>
 					{:else}
-						<div class="noPostsWrapper">
-							<p>No posts</p>
-						</div>
+						<ul>
+							<li>
+								<BlogCard
+									title={'No Posts'}
+									tags={[]}
+									createdAt={new Date()}
+									slug={'no-posts'}
+									description={''} />
+							</li>
+						</ul>
 					{/if}
 				</section>
 			</div>
