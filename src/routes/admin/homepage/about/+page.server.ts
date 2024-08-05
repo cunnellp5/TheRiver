@@ -37,8 +37,10 @@ export const actions: Actions = {
 		// Write the data to the file
 		fs.writeFile(filePath, JSON.stringify(data, null, 2), 'utf8', (err) => {
 			if (err) {
+				// SHOW ERROR ON THE PAGE
 				console.error('Error writing file:', err);
 			} else {
+				// SHOW SOME TOAST
 				console.log('File has been saved.');
 			}
 		});
