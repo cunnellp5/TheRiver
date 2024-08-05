@@ -127,7 +127,7 @@
 				<h1>ADMIN PORTAL</h1>
 			</a>
 		</header>
-		<div>
+		<div class="crumb">
 			<BreadCrumb {crumbs}></BreadCrumb>
 		</div>
 		<slot />
@@ -144,9 +144,9 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		margin-block: var(--size-5);
+		margin-block: var(--size-4);
 		border: 1px dashed var(--stone-11);
-		padding-block: var(--size-5);
+		padding-block: var(--size-4);
 	}
 	article {
 		margin-inline-start: var(--size-2);
@@ -175,12 +175,6 @@
 			font-weight: var(--font-weight-7);
 		}
 	}
-	.sidenav .stand-alone {
-		display: block;
-		/* padding: var(--size-1); */
-		/* font-size: var(--font-size-0); */
-		text-decoration: none;
-	}
 
 	.sidenav .indented {
 		display: block;
@@ -188,8 +182,7 @@
 		font-size: var(--font-size-0);
 		text-decoration: none;
 	}
-	.sidenav .indented:hover,
-	.sidenav .stand-alone:hover {
+	.sidenav .indented:hover {
 		cursor: pointer;
 		border-radius: var(--radius-2);
 		background-color: var(--hover-1);
@@ -201,5 +194,8 @@
 		width: 100%;
 		color: var(--stone-5);
 		font-weight: 200;
+	}
+	.crumb {
+		min-height: var(--size-5);
 	}
 </style>
