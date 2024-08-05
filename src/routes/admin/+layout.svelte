@@ -21,8 +21,12 @@
 		<nav class="sidenav">
 			<div class="dropLabel">Main</div>
 			<!-- <a class:current={$page.url.pathname === '/admin'} href="/admin/"> Home </a> -->
-			<a class="indented" class:current={$page.url.pathname === '/admin/users'} href="/admin/users"
-				>Users</a>
+			<a class="indented" class:current={$page.url.pathname === '/admin/users'} href="/admin/users">
+				Users
+			</a>
+			<a class="indented" class:current={$page.url.pathname === '/admin/about'} href="/admin/about">
+				About
+			</a>
 
 			<hr />
 
@@ -32,12 +36,6 @@
 				class:current={$page.url.pathname === '/admin/homepage/hero'}
 				href="/admin/homepage/hero">
 				HeroVideo
-			</a>
-			<a
-				class="indented"
-				class:current={$page.url.pathname === '/admin/homepage/about'}
-				href="/admin/homepage/about">
-				About
 			</a>
 			<a
 				class="indented"
@@ -188,6 +186,8 @@
 		background-color: var(--hover-1);
 	}
 	.current {
+		border-radius: var(--radius-2);
+		background-color: var(--hover-1);
 		color: var(--link);
 	}
 	.dropLabel {
