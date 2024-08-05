@@ -21,20 +21,26 @@
 		<nav class="sidenav">
 			<div class="dropLabel">Main</div>
 			<!-- <a class:current={$page.url.pathname === '/admin'} href="/admin/"> Home </a> -->
-			<a class:current={$page.url.pathname === '/admin/users'} href="/admin/users">Users</a>
+			<a class="indented" class:current={$page.url.pathname === '/admin/users'} href="/admin/users"
+				>Users</a>
 
 			<hr />
 
 			<div class="dropLabel">Home</div>
-			<a class:current={$page.url.pathname === '/admin/homepage/hero'} href="/admin/homepage/hero">
+			<a
+				class="indented"
+				class:current={$page.url.pathname === '/admin/homepage/hero'}
+				href="/admin/homepage/hero">
 				HeroVideo
 			</a>
 			<a
+				class="indented"
 				class:current={$page.url.pathname === '/admin/homepage/about'}
 				href="/admin/homepage/about">
 				About
 			</a>
 			<a
+				class="indented"
 				class:current={$page.url.pathname === '/admin/homepage/articles'}
 				href="/admin/homepage/articles">
 				Articles
@@ -44,16 +50,19 @@
 
 			<div class="dropLabel">Music</div>
 			<a
+				class="indented"
 				class:current={$page.url.pathname === '/admin/musicpage/tracks'}
 				href="/admin/musicpage/tracks">
 				Tracks
 			</a>
 			<a
+				class="indented"
 				class:current={$page.url.pathname === '/admin/musicpage/videos'}
 				href="/admin/musicpage/videos">
 				Videos
 			</a>
 			<a
+				class="indented"
 				class:current={$page.url.pathname === '/admin/musicpage/stems'}
 				href="/admin/musicpage/stems">
 				Stems
@@ -62,13 +71,20 @@
 			<hr />
 
 			<div class="dropLabel">Services</div>
-			<a class:current={$page.url.pathname === '/admin/services'} href="/admin/services"> Jobs </a>
 			<a
+				class="indented"
+				class:current={$page.url.pathname === '/admin/services'}
+				href="/admin/services">
+				Jobs
+			</a>
+			<a
+				class="indented"
 				class:current={$page.url.pathname.includes('/admin/services/booking')}
 				href="/admin/services/booking">
 				Bookings
 			</a>
 			<a
+				class="indented"
 				class:current={$page.url.pathname.includes('/admin/services/time-slots')}
 				href="/admin/services/time-slots">
 				Schedule
@@ -76,24 +92,31 @@
 
 			<hr />
 
+			<div class="dropLabel">Market</div>
 			<a
 				class:current={$page.url.pathname.includes('/admin/market')}
-				class="stand-alone"
+				class="indented"
 				href="/admin/market">
-				<div class="dropLabel">Market</div>
+				Info
 			</a>
 
 			<hr />
 
 			<div class="dropLabel">Blog</div>
-			<a class:current={$page.url.pathname.includes('/admin/posts')} href="/admin/posts"> Posts </a>
+			<a
+				class="indented"
+				class:current={$page.url.pathname.includes('/admin/posts')}
+				href="/admin/posts">
+				Posts
+			</a>
 
 			<hr />
 
 			<div class="dropLabel">Contact</div>
 			<a
-				class:current={$page.url.pathname.includes('/admin/contact/info')}
-				href="/admin/contact/info">
+				class="indented"
+				class:current={$page.url.pathname.includes('/admin/contact')}
+				href="/admin/contact">
 				Info
 			</a>
 		</nav>
@@ -126,10 +149,10 @@
 		padding-block: var(--size-5);
 	}
 	article {
-		margin-inline: var(--size-4);
+		margin-inline-start: var(--size-2);
 	}
 	hr {
-		margin-block: var(--size-4);
+		margin-block: var(--size-2);
 	}
 	a {
 		color: var(--gray-7);
@@ -141,6 +164,7 @@
 	.sidenav {
 		position: relative;
 		z-index: 1;
+		margin-block-start: var(--size-4);
 		background-color: var(--surface);
 		width: var(--size-12);
 		overflow-x: hidden;
@@ -151,12 +175,21 @@
 			font-weight: var(--font-weight-7);
 		}
 	}
-	.sidenav a {
+	.sidenav .stand-alone {
 		display: block;
-		padding: var(--size-1);
+		/* padding: var(--size-1); */
+		/* font-size: var(--font-size-0); */
 		text-decoration: none;
 	}
-	.sidenav a:hover {
+
+	.sidenav .indented {
+		display: block;
+		padding: var(--size-1);
+		font-size: var(--font-size-0);
+		text-decoration: none;
+	}
+	.sidenav .indented:hover,
+	.sidenav .stand-alone:hover {
 		cursor: pointer;
 		border-radius: var(--radius-2);
 		background-color: var(--hover-1);
