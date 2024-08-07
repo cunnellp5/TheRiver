@@ -8,28 +8,31 @@
 
 	const { videos } = data;
 
-	const YOUTUBE_BASE_EMBED_URL = 'https://www.youtube.com/embed/';
+	// const YOUTUBE_BASE_EMBED_URL = 'https://www.youtube.com/embed/';
 </script>
 
-<div class="w-full">
+<div class="carousel-wrapper">
 	<Carousel.Root>
 		<Carousel.Content>
 			{#each videos as video, i (i)}
 				<Carousel.Item>
-					<Card.Root>
-						<Card.Content>
-							<span class="text-4xl font-semibold">{i + 1}</span>
-							<a href={`${YOUTUBE_BASE_EMBED_URL}${video.videoId}`}>
+					<a class="is-snapped-anchor" target="_blank" href={video.videoId}>
+						<Card.Root>
+							<Card.Content>
 								<img src={video.thumbnail} alt={video.title} />
+							</Card.Content>
+							<Card.Footer>
 								<label for="img">{video.title}</label>
-							</a>
-						</Card.Content>
-					</Card.Root>
+							</Card.Footer>
+						</Card.Root>
+					</a>
 				</Carousel.Item>
 			{/each}
 		</Carousel.Content>
-		<Carousel.Previous />
-		<Carousel.Next />
+		<div class="carousel-button-wrapper">
+			<Carousel.Previous />
+			<Carousel.Next />
+		</div>
 	</Carousel.Root>
 </div>
 
@@ -40,19 +43,33 @@
 		border-radius: var(--radius-2);
 	}
 	label {
-		font-size: var(--font-size-0);
+		color: var(--text-2);
+		font-size: var(--font-size-1);
 	}
 	a {
 		text-align: center;
 	}
 
 	/* CLASSES */
-	.w-full {
-		display: flex;
-		justify-content: center;
-		/* width: 100%; */
-		/* max-width: var(--size-content-2); */
+	.carousel-wrapper {
+		margin-block: var(--size-4);
+		/* border: 1px solid red; */
+		padding-block: var(--size-4);
 	}
+	.carousel-button-wrapper {
+		display: flex;
+		justify-content: end;
+		gap: var(--size-4);
+		margin-inline-end: var(--size-2);
+		margin-block: var(--size-4);
+	}
+	/* CLASSES */
+	/* .w-full { */
+	/* display: flex; */
+	/* justify-content: center; */
+	/* width: 100%; */
+	/* max-width: var(--size-content-2); */
+	/* } */
 	/* .grid-container {
 		margin-block: var(--size-7);
 	}

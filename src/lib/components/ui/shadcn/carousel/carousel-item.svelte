@@ -1,6 +1,5 @@
 <script lang="ts">
 	// import { getEmblaContext } from './context.js';
-
 	// const { orientation } = getEmblaContext('<Carousel.Item/>');
 </script>
 
@@ -14,6 +13,7 @@
 </div>
 
 <style>
+	/* ELEMENTS */
 	div {
 		/* flex-grow: 0; */
 		flex-shrink: 0;
@@ -26,10 +26,14 @@
 		justify-content: center;
 	}
 
+	/* CLASSES */
 	.embla__slide {
 		transition: opacity 0.2s ease-in-out;
 	}
 	.embla__slide:not(.is-snapped) {
 		opacity: 0.16;
+		& .is-snapped-anchor {
+			pointer-events: none;
+		}
 	}
 </style>
