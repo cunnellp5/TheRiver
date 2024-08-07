@@ -20,7 +20,7 @@
 
 ### 3. Merch
 
-- Users can buy merchandise
+- Users can buy merchandise (https://www.youtube.com/watch?v=7mUGqExgPdQ)
 
 ### 4. Blog
 
