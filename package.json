@@ -59,6 +59,8 @@
 		"@prisma/client": "^5.12.1",
 		"calendarize": "^1.1.1",
 		"cloudinary": "^2.2.0",
+		"embla-carousel-class-names": "^8.1.8",
+		"embla-carousel-svelte": "^8.1.8",
 		"lucide-svelte": "^0.368.0",
 		"nodemailer": "^6.9.13",
 		"open-props": "^1.7.2",
