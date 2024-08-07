@@ -6,7 +6,6 @@
 	import { enhance } from '$app/forms';
 
 	export let data;
-	export let form;
 
 	let loading = false;
 
@@ -47,17 +46,6 @@
 </div>
 
 <div class="video-data-wrapper">
-	{#if form}
-		<div>
-			<h4>youtube data</h4>
-			<pre>{JSON.stringify(form, null, 2)}</pre>
-			<form method="POST" action="?/updateDb">
-				<input type="hidden" name="iframes" value={form} />
-				<button class="primary" type="submit">Update the DB</button>
-			</form>
-		</div>
-	{/if}
-
 	<ul class="videos-from-db">
 		{#if videos.length === 0}
 			<li>No videos in the db</li>
@@ -66,14 +54,21 @@
 				<Table.Caption>A list of visible videos.</Table.Caption>
 				<Table.Header>
 					<Table.Row>
-						<Table.Head>Source</Table.Head>
-						<Table.Head>Created</Table.Head>
+						<Table.Head>VideoId</Table.Head>
+						<Table.Head>Title</Table.Head>
+						<Table.Head>Description</Table.Head>
+						<Table.Head>Position</Table.Head>
+						<Table.Head>Thumbnail</Table.Head>
 					</Table.Row>
 				</Table.Header>
 				<Table.Body>
-					{#each videos as { iframe, createdAt }, i (i)}
+					{#each videos as { videoId, title, description, position, thumbnail, createdAt }}
 						<Table.Row>
-							<Table.Cell>{iframe}</Table.Cell>
+							<Table.Cell>{videoId}</Table.Cell>
+							<Table.Cell>{title}</Table.Cell>
+							<Table.Cell>{description}</Table.Cell>
+							<Table.Cell>{position}</Table.Cell>
+							<Table.Cell>{thumbnail}</Table.Cell>
 							<Table.Cell>{formatDate(createdAt)}</Table.Cell>
 						</Table.Row>
 					{/each}
@@ -95,16 +90,9 @@
 		font-size: var(--font-size-1);
 		list-style-type: number;
 	}
-	pre {
-		border: 1px solid var(--border);
-		padding: var(--size-3);
-		max-width: var(--size-content-3);
-		overflow: auto;
-	}
 	button {
 		font-weight: var(--font-weight-6);
 	}
-
 	/* CLASSES */
 	.video-data-wrapper {
 		display: flex;

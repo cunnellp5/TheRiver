@@ -2,17 +2,16 @@ import db from '$lib/server/database';
 import { error, fail } from '@sveltejs/kit';
 import type { Actions } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
-import type { PlaylistItemResource, VideoResource } from './youtubeTypes';
+import type { PlaylistItemResource } from './youtubeTypes';
 import { env } from '$env/dynamic/private';
 
-function removeEscapeCharacters(str: string): string {
-	return str.replace(/[\n\t\r\b\f\v\\]/g, '');
-}
-
-function extractSrcFromIframe(iframe: string): string | null {
-	const match = iframe.match(/src="([^"]*)"/);
-	return match ? match[1] : null;
-}
+type YoutubeVideo = {
+	videoId: string;
+	title: string;
+	description: string;
+	position: number;
+	thumbnail: string;
+};
 
 export const load: PageServerLoad = async (event) => {
 	if (!event.locals.session || !event.locals.user) {
@@ -21,10 +20,12 @@ export const load: PageServerLoad = async (event) => {
 
 	try {
 		const videos = await db.youtubeVideo.findMany();
-
+		if (!videos) {
+			return { videos: [] };
+		}
 		return { videos };
 	} catch (err) {
-		return error(500, 'Internal Server Error');
+		return { videos: [] };
 	}
 };
 
@@ -42,38 +43,41 @@ export const actions: Actions = {
 			)
 			.then(async (res) => {
 				const data = await res.json();
-				return data.items.map((item: PlaylistItemResource) => item.snippet.resourceId.videoId);
-			})
-			.then(async (videoIds) => {
-				const videos = await event.fetch(
-					`https://www.googleapis.com/youtube/v3/videos?key=${env.YOUTUBE_KEY}&channelId=${env.YOUTUBE_CHANNEL_ID}&id=${videoIds.join(',')}&part=player&maxResults=50`
-				);
-				const data = await videos.json();
-				return data;
+				return data.items
+					.filter(
+						(item: PlaylistItemResource) =>
+							!item.snippet.title.toLowerCase().includes('private') ||
+							!item.snippet.description.toLowerCase().includes('private')
+					)
+					.map((item: PlaylistItemResource) => ({
+						videoId: item.snippet.resourceId.videoId,
+						title: item.snippet.title,
+						description: item.snippet.description,
+						position: item.snippet.position,
+						thumbnail: item.snippet?.thumbnails?.standard?.url
+					}));
 			})
 			.catch((err) => ({
 				data: err
 			}));
 
-		// This is a list of iframes with escaped characters
-		const embededElements = youtubeResults.items.map(
-			(item: VideoResource) => item.player.embedHtml
-		);
-
-		const cleanedIframes = embededElements.map((iframe: string) => removeEscapeCharacters(iframe));
-
-		const srcs = cleanedIframes.map((iframe: string) => extractSrcFromIframe(iframe));
-
+		// DELETE ALL
 		await db.youtubeVideo.deleteMany();
 
-		// DELETE ALL or check for UNIQUENESS FIRST
+		// REUPDATE
 		const res = await db.youtubeVideo.createMany({
-			data: srcs.map((src: string) => ({ iframe: src }))
+			data: youtubeResults.map((src: YoutubeVideo) => ({
+				videoId: src.videoId,
+				title: src.title,
+				description: src.description,
+				position: src.position,
+				thumbnail: src.thumbnail
+			}))
 		});
 
 		if (res.count > 0) {
 			return {
-				data: srcs
+				data: res
 			};
 		}
 
