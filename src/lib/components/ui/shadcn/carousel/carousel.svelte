@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { writable } from 'svelte/store';
-	import { onDestroy } from 'svelte';
+	import { onDestroy, createEventDispatcher } from 'svelte';
 	import { type CarouselAPI, type CarouselProps, setEmblaContext } from './context.js';
+
+	const YOUTUBE_BASE_EMBED_URL = 'https://www.youtube.com/embed/';
 
 	type $$Props = CarouselProps;
 
@@ -24,30 +26,41 @@
 	$: pluginStore.set(plugins);
 	$: optionsStore.set(opts);
 
+	function setUrlOnAnchor() {
+		const anchor = document.querySelector('.is-snapped a.is-snapped-anchor');
+		const videoId = anchor?.getAttribute('href');
+		const url = YOUTUBE_BASE_EMBED_URL + videoId;
+		anchor?.setAttribute('href', url);
+	}
+
 	function scrollPrev() {
 		api?.scrollPrev();
+
+		if (document) {
+			setUrlOnAnchor();
+		}
 	}
 	function scrollNext() {
 		api?.scrollNext();
+
+		if (document) {
+			setUrlOnAnchor();
+		}
 	}
 	function scrollTo(index: number, jump?: boolean) {
 		api?.scrollTo(index, jump);
 	}
-
 	function onSelect(selectApi: CarouselAPI) {
 		if (!selectApi) return;
 		canScrollPrev.set(selectApi.canScrollPrev());
 		canScrollNext.set(selectApi.canScrollNext());
-	}
-	function logSlidesInView(emblaApi) {
-		console.log(emblaApi.slideNodes());
 	}
 
 	$: if (api) {
 		onSelect(api);
 		api.on('select', onSelect);
 		api.on('reInit', onSelect);
-		api.on('slidesInView', logSlidesInView);
+		// api.on('slidesInView', onSnapped);
 	}
 
 	function handleKeyDown(e: KeyboardEvent) {
@@ -64,6 +77,9 @@
 		api = event.detail;
 		apiStore.set(api);
 		scrollSnapsStore.set(api.scrollSnapList());
+		if (document) {
+			setUrlOnAnchor();
+		}
 	}
 
 	setEmblaContext({
@@ -99,6 +115,7 @@
 
 <style>
 	div {
+		position: relative;
 		overflow: hidden;
 	}
 </style>
