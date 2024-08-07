@@ -16,15 +16,29 @@
 	}
 </script>
 
+<header>
+	<a href="/admin">
+		<h1>ADMIN PORTAL</h1>
+	</a>
+</header>
+
 <main>
 	<aside>
 		<nav class="sidenav">
 			<div class="dropLabel">Main</div>
 			<!-- <a class:current={$page.url.pathname === '/admin'} href="/admin/"> Home </a> -->
-			<a class="indented" class:current={$page.url.pathname === '/admin/users'} href="/admin/users">
+			<a
+				class="indented"
+				class:current={$page.url.pathname === '/admin/users'}
+				href="/admin/users"
+				data-sveltekit-noscroll>
 				Users
 			</a>
-			<a class="indented" class:current={$page.url.pathname === '/admin/about'} href="/admin/about">
+			<a
+				class="indented"
+				class:current={$page.url.pathname === '/admin/about'}
+				href="/admin/about"
+				data-sveltekit-noscroll>
 				About
 			</a>
 
@@ -34,13 +48,15 @@
 			<a
 				class="indented"
 				class:current={$page.url.pathname === '/admin/homepage/hero'}
-				href="/admin/homepage/hero">
+				href="/admin/homepage/hero"
+				data-sveltekit-noscroll>
 				HeroVideo
 			</a>
 			<a
 				class="indented"
 				class:current={$page.url.pathname === '/admin/homepage/articles'}
-				href="/admin/homepage/articles">
+				href="/admin/homepage/articles"
+				data-sveltekit-noscroll>
 				Articles
 			</a>
 
@@ -50,19 +66,22 @@
 			<a
 				class="indented"
 				class:current={$page.url.pathname === '/admin/musicpage/tracks'}
-				href="/admin/musicpage/tracks">
+				href="/admin/musicpage/tracks"
+				data-sveltekit-noscroll>
 				Tracks
 			</a>
 			<a
 				class="indented"
 				class:current={$page.url.pathname === '/admin/musicpage/videos'}
-				href="/admin/musicpage/videos">
+				href="/admin/musicpage/videos"
+				data-sveltekit-noscroll>
 				Videos
 			</a>
 			<a
 				class="indented"
 				class:current={$page.url.pathname === '/admin/musicpage/stems'}
-				href="/admin/musicpage/stems">
+				href="/admin/musicpage/stems"
+				data-sveltekit-noscroll>
 				Stems
 			</a>
 
@@ -72,19 +91,22 @@
 			<a
 				class="indented"
 				class:current={$page.url.pathname === '/admin/services'}
-				href="/admin/services">
+				href="/admin/services"
+				data-sveltekit-noscroll>
 				Jobs
 			</a>
 			<a
 				class="indented"
 				class:current={$page.url.pathname.includes('/admin/services/booking')}
-				href="/admin/services/booking">
+				href="/admin/services/booking"
+				data-sveltekit-noscroll>
 				Bookings
 			</a>
 			<a
 				class="indented"
 				class:current={$page.url.pathname.includes('/admin/services/time-slots')}
-				href="/admin/services/time-slots">
+				href="/admin/services/time-slots"
+				data-sveltekit-noscroll>
 				Schedule
 			</a>
 
@@ -94,7 +116,8 @@
 			<a
 				class:current={$page.url.pathname.includes('/admin/market')}
 				class="indented"
-				href="/admin/market">
+				href="/admin/market"
+				data-sveltekit-noscroll>
 				Info
 			</a>
 
@@ -104,7 +127,8 @@
 			<a
 				class="indented"
 				class:current={$page.url.pathname.includes('/admin/posts')}
-				href="/admin/posts">
+				href="/admin/posts"
+				data-sveltekit-noscroll>
 				Posts
 			</a>
 
@@ -114,17 +138,13 @@
 			<a
 				class="indented"
 				class:current={$page.url.pathname.includes('/admin/contact')}
-				href="/admin/contact">
+				href="/admin/contact"
+				data-sveltekit-noscroll>
 				Info
 			</a>
 		</nav>
 	</aside>
 	<article>
-		<header>
-			<a href="/admin">
-				<h1>ADMIN PORTAL</h1>
-			</a>
-		</header>
 		<div class="crumb">
 			<BreadCrumb {crumbs}></BreadCrumb>
 		</div>
@@ -142,8 +162,8 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		margin-block: var(--size-4);
-		border: 1px dashed var(--stone-11);
+		margin-block: var(--size-8);
+		border: thick dashed var(--stone-11);
 		padding-block: var(--size-4);
 	}
 	article {
@@ -162,7 +182,6 @@
 	.sidenav {
 		position: relative;
 		z-index: 1;
-		margin-block-start: var(--size-4);
 		background-color: var(--surface);
 		width: var(--size-12);
 		overflow-x: hidden;
