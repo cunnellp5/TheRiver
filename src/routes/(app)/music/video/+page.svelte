@@ -1,41 +1,27 @@
 <script lang="ts">
-	// TODO
-	// 1. put src logic on the backend
-	// 2. consider a carousel for the videos
-	// 3. add logic to stop playing all videos when carousel advances
-	// 4. consider logic for full screen viewing of video such that the user has to explicitly exit the full screen mode
-
+	// control the iframe: https://developers.google.com/youtube/iframe_api_reference
+	// carousel: https://www.shadcn-svelte.com/docs/components/carousel
 	export let data;
 
-	function removeEscapeCharacters(str: string): string {
-		return str.replace(/[\n\t\r\b\f\v\\]/g, '');
-	}
+	const { videos } = data;
 
-	function extractSrcFromIframe(iframe: string): string | null {
-		const match = iframe.match(/src="([^"]*)"/);
-		return match ? match[1] : null;
-	}
-
-	const iframes = data.videos.map((video) => removeEscapeCharacters(video));
-	const srcs = iframes.map((iframe) => extractSrcFromIframe(iframe));
+	const YOUTUBE_BASE_EMBED_URL = 'https://www.youtube.com/embed/';
 </script>
 
 <div class="grid-container">
 	<div class="videos">
-		{#each srcs as src}
-			{#if src}
-				<div class="iframe">
-					<iframe
-						width="100%"
-						height="315"
-						{src}
-						title="YouTube video player"
-						frameborder="0"
-						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
-						referrerpolicy="strict-origin-when-cross-origin"
-						allowfullscreen>
-					</iframe>
-				</div>
+		{#each videos as video}
+			{#if video}
+				<!-- <button
+					type="button"
+					on:click={() => {
+						showModal = true;
+					}}> -->
+				<a href={`${YOUTUBE_BASE_EMBED_URL}${video.videoId}`}>
+					<img src={video.thumbnail} alt={video.title} />
+					<label for="img">{video.title}</label>
+				</a>
+				<!-- </button> -->
 			{/if}
 		{/each}
 	</div>
@@ -43,6 +29,16 @@
 
 <style>
 	/* ELEMENTS */
+	img {
+		cursor: pointer;
+		border-radius: var(--radius-2);
+	}
+	label {
+		font-size: var(--font-size-0);
+	}
+	a {
+		text-align: center;
+	}
 
 	/* CLASSES */
 	.grid-container {
