@@ -13,9 +13,6 @@
 				<a href="/admin/homepage/hero">
 					<li>🦸 Hero</li>
 				</a>
-				<a href="/admin/homepage/about">
-					<li>📖 About</li>
-				</a>
 				<a href="/admin/homepage/articles">
 					<li>🗞️ Articles</li>
 				</a>
