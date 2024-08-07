@@ -1,6 +1,7 @@
 <script lang="ts">
 	import * as Card from '$lib/components/ui/shadcn/card';
 	import Users from 'lucide-svelte/icons/users';
+	import market from '$lib/data/json/market.json';
 
 	export let data;
 </script>
@@ -107,7 +108,7 @@
 				</div>
 			</Card.Content>
 			<Card.Footer>
-				<a href="/reset">
+				<a href={market.url} target="_blank">
 					<button class="secondary"> Etsy </button>
 				</a>
 			</Card.Footer>
