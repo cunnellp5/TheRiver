@@ -64,11 +64,13 @@
 
 	/* CLASSES */
 	.card-content-description {
+		overflow: hidden;
 		word-break: break-all;
 		& img {
+			transition: transform 0.5s ease;
 			width: var(--size-content-2);
 			height: var(--size-content-2);
-			object-fit: cover;
+			object-fit: scale-down;
 		}
 		& p.description {
 			margin-block: var(--size-2);
@@ -78,8 +80,11 @@
 		& p.price {
 			margin-block: var(--size-2);
 			font-size: var(--font-size-1);
-			/* text-align: right; */
-			/* color: var(--text-2); */
+		}
+	}
+	.card-content-description:hover {
+		& img {
+			transform: scale(1.5);
 		}
 	}
 	.animation {
