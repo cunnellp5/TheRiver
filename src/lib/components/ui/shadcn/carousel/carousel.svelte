@@ -10,7 +10,6 @@
 
 	export let opts = {};
 	export let plugins: NonNullable<$$Props['plugins']> = [];
-	// eslint-disable-next-line no-undef-init
 	export let api: $$Props['api'] = undefined;
 	export let orientation: NonNullable<$$Props['orientation']> = 'horizontal';
 

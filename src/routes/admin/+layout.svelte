@@ -1,8 +1,6 @@
 <script lang="ts">
 	import BreadCrumb from '$lib/components/ui/BreadCrumb.svelte';
-	// eslint-disable-next-line import/no-unresolved
 	import { browser } from '$app/environment';
-	// eslint-disable-next-line import/no-unresolved
 	import { page } from '$app/stores';
 
 	let crumbs: { name: string; link: string }[] = [];

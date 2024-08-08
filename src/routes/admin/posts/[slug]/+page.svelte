@@ -5,10 +5,8 @@
 	import { onMount } from 'svelte';
 	import Badge from '$lib/components/ui/Badge.svelte';
 	import type { PageData } from './$types';
-	// eslint-disable-next-line import/no-unresolved
 	import { page } from '$app/stores';
 	import EditDeleteActions from '../components/EditDeleteActions.svelte';
-	// eslint-disable-next-line import/no-unresolved
 	import { browser } from '$app/environment';
 
 	export let data: PageData;

@@ -2,7 +2,6 @@
 <!-- data-sveltekit-noscroll -->
 <script lang="ts">
 	import about from '$lib/data/json/about.json';
-	// eslint-disable-next-line import/no-unresolved
 	import { page } from '$app/stores';
 </script>
 

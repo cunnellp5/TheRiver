@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Badge from '$lib/components/ui/Badge.svelte';
 	import formatDate from '$lib/utils/formatDate';
-	// eslint-disable-next-line import/no-unresolved
 	import { page } from '$app/stores';
 
 	export let title: string;

@@ -7,10 +7,8 @@
 	import Badge from '$lib/components/ui/Badge.svelte';
 	import ChevronRight from 'lucide-svelte/icons/chevron-right';
 	import ChevronLeft from 'lucide-svelte/icons/chevron-left';
-	// eslint-disable-next-line import/no-unresolved
 	import { page } from '$app/stores';
 	import type { PageData } from './$types';
-	// eslint-disable-next-line import/no-unresolved
 	import { browser } from '$app/environment';
 
 	export let data: PageData;

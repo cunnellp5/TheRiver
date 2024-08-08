@@ -5,7 +5,6 @@
 	import Pencil from 'lucide-svelte/icons/pencil';
 	import Plus from 'lucide-svelte/icons/plus';
 	import type { MouseEventHandler } from 'svelte/elements';
-	// eslint-disable-next-line import/no-unresolved
 	import { page } from '$app/stores';
 	import type { PageData } from './$types';
 

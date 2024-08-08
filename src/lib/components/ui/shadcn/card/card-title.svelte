@@ -6,7 +6,6 @@
 		tag?: HeadingLevel;
 	};
 
-	// eslint-disable-next-line no-undef-init
 	let className: $$Props['class'] = undefined;
 	export let tag: $$Props['tag'] = 'h3';
 	export { className as class };

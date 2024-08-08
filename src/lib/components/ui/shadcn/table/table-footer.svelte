@@ -3,7 +3,6 @@
 
 	type $$Props = HTMLAttributes<HTMLTableSectionElement>;
 
-	// eslint-disable-next-line no-undef-init
 	let className: $$Props['class'] = undefined;
 	export { className as class };
 </script>

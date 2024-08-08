@@ -3,9 +3,7 @@
 	import Waves from 'lucide-svelte/icons/waves';
 	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
-	// eslint-disable-next-line import/no-unresolved
 	import { page } from '$app/stores';
-	// eslint-disable-next-line import/no-unresolved
 	import { browser } from '$app/environment';
 
 	export let isSignedIn = false;
