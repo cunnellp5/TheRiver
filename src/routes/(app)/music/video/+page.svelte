@@ -1,69 +1,93 @@
 <script lang="ts">
-	// TODO
-	// 1. put src logic on the backend
-	// 2. consider a carousel for the videos
-	// 3. add logic to stop playing all videos when carousel advances
-	// 4. consider logic for full screen viewing of video such that the user has to explicitly exit the full screen mode
+	// control the iframe: https://developers.google.com/youtube/iframe_api_reference
+	// carousel: https://www.shadcn-svelte.com/docs/components/carousel
+	import * as Card from '$lib/components/ui/shadcn/card';
+	import * as Carousel from '$lib/components/ui/shadcn/carousel';
 
 	export let data;
 
-	function removeEscapeCharacters(str: string): string {
-		return str.replace(/[\n\t\r\b\f\v\\]/g, '');
-	}
+	const { videos } = data;
 
-	function extractSrcFromIframe(iframe: string): string | null {
-		const match = iframe.match(/src="([^"]*)"/);
-		return match ? match[1] : null;
-	}
-
-	const iframes = data.videos.map((video) => removeEscapeCharacters(video));
-	const srcs = iframes.map((iframe) => extractSrcFromIframe(iframe));
+	// const YOUTUBE_BASE_EMBED_URL = 'https://www.youtube.com/embed/';
 </script>
 
-<div class="grid-container">
-	<div class="videos">
-		{#each srcs as src}
-			{#if src}
-				<div class="iframe">
-					<iframe
-						width="100%"
-						height="315"
-						{src}
-						title="YouTube video player"
-						frameborder="0"
-						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
-						referrerpolicy="strict-origin-when-cross-origin"
-						allowfullscreen>
-					</iframe>
-				</div>
-			{/if}
-		{/each}
-	</div>
+<div class="carousel-wrapper">
+	<Carousel.Root>
+		<Carousel.Content>
+			{#each videos as video, i (i)}
+				<Carousel.Item>
+					<a class="is-snapped-anchor" target="_blank" href={video.videoId}>
+						<Card.Root>
+							<Card.Content>
+								<img src={video.thumbnail} alt={video.title} />
+							</Card.Content>
+							<Card.Footer>
+								<label for="img">{video.title}</label>
+							</Card.Footer>
+						</Card.Root>
+					</a>
+				</Carousel.Item>
+			{/each}
+		</Carousel.Content>
+		<div class="carousel-button-wrapper">
+			<Carousel.Previous />
+			<Carousel.Next />
+		</div>
+	</Carousel.Root>
 </div>
 
 <style>
 	/* ELEMENTS */
+	img {
+		cursor: pointer;
+		border-radius: var(--radius-2);
+	}
+	label {
+		color: var(--text-2);
+		font-size: var(--font-size-1);
+	}
+	a {
+		text-align: center;
+	}
 
 	/* CLASSES */
-	.grid-container {
+	.carousel-wrapper {
+		margin-block: var(--size-4);
+		/* border: 1px solid red; */
+		padding-block: var(--size-4);
+	}
+	.carousel-button-wrapper {
+		display: flex;
+		justify-content: end;
+		gap: var(--size-4);
+		margin-inline-end: var(--size-2);
+		margin-block: var(--size-4);
+	}
+	/* CLASSES */
+	/* .w-full { */
+	/* display: flex; */
+	/* justify-content: center; */
+	/* width: 100%; */
+	/* max-width: var(--size-content-2); */
+	/* } */
+	/* .grid-container {
 		margin-block: var(--size-7);
 	}
 	.videos {
 		display: grid;
-		grid-template-columns: repeat(3, 1fr); /* 3 columns */
-		grid-auto-rows: minmax(200px, auto); /* Set a base row height */
+		grid-template-columns: repeat(3, 1fr);
+		grid-auto-rows: minmax(200px, auto);
 		gap: var(--size-7);
 	}
 
-	/* MEDIA QUERIES */
 	@media (max-width: 1440px) {
 		.videos {
-			grid-template-columns: repeat(2, 1fr); /* 2 columns */
+			grid-template-columns: repeat(2, 1fr);
 		}
 	}
 	@media (max-width: 768px) {
 		.videos {
-			grid-template-columns: repeat(1, 1fr); /* 1 column */
+			grid-template-columns: repeat(1, 1fr);
 		}
-	}
+	} */
 </style>

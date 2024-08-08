@@ -38,7 +38,7 @@ export type PlaylistItemResource = {
 		title: string;
 		description: string;
 		thumbnails: {
-			(key: string): {
+			[key: string]: {
 				url: string;
 				width: number;
 				height: number;
@@ -88,7 +88,7 @@ export type VideoResource = {
 		title: string;
 		description: string;
 		thumbnails: {
-			(key: string): {
+			[key: string]: {
 				url: string;
 				width: number;
 				height: number;

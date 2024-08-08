@@ -172,8 +172,12 @@ model Article {
 }
 
 model YoutubeVideo {
-  id        Int      @id @default(autoincrement())
-  iframe    String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id          Int      @id @default(autoincrement())
+  videoId     String
+  title       String
+  description String
+  position    Int
+  thumbnail   String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }

@@ -6,9 +6,7 @@ export const load: PageServerLoad = async () => {
 	try {
 		const videos = await db.youtubeVideo.findMany();
 
-		const iframes = videos.map((video) => video.iframe);
-
-		return { videos: iframes };
+		return { videos };
 	} catch (err) {
 		return error(500, 'Internal Server Error');
 	}
