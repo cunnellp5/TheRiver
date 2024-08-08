@@ -2,7 +2,6 @@
 	import * as Card from '$lib/components/ui/shadcn/card';
 	import * as Table from '$lib/components/ui/shadcn/table';
 	import about from '$lib/data/json/about.json';
-	// eslint-disable-next-line import/no-unresolved
 	import { enhance } from '$app/forms';
 
 	const routesWithAbout = [

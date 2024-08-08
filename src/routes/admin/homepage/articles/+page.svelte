@@ -5,7 +5,6 @@
 	import Pencil from 'lucide-svelte/icons/pencil';
 	import Plus from 'lucide-svelte/icons/plus';
 	import Trash from 'lucide-svelte/icons/trash';
-	// eslint-disable-next-line import/no-unresolved
 	import { enhance } from '$app/forms';
 
 	export let data;

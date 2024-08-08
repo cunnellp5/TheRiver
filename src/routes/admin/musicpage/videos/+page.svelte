@@ -2,7 +2,6 @@
 	import * as Table from '$lib/components/ui/shadcn/table';
 	import * as Card from '$lib/components/ui/shadcn/card';
 	import formatDate from '$lib/utils/formatDate';
-	// eslint-disable-next-line import/no-unresolved
 	import { enhance } from '$app/forms';
 
 	export let data;

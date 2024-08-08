@@ -1,5 +1,3 @@
-// TODO verify this is caching media from cloudinary at least
-
 /// <reference types="@sveltejs/kit" />
 /// <reference no-default-lib="true"/>
 /// <reference lib="esnext" />

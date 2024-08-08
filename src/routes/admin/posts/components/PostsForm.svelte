@@ -5,7 +5,6 @@
 	import { error } from '@sveltejs/kit';
 	import type Quill from 'quill';
 	import Badge from '$lib/components/ui/Badge.svelte';
-	// eslint-disable-next-line import/no-unresolved
 	import { enhance } from '$app/forms';
 	import 'quill/dist/quill.snow.css';
 

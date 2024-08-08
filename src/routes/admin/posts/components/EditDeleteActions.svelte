@@ -1,9 +1,7 @@
 <script lang="ts">
 	import Pencil from 'lucide-svelte/icons/pencil';
 	import Trash from 'lucide-svelte/icons/trash';
-	// eslint-disable-next-line import/no-unresolved
 	import { enhance } from '$app/forms';
-	// eslint-disable-next-line import/no-unresolved
 	import { goto } from '$app/navigation';
 
 	export let slug: string;

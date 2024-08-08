@@ -1,5 +1,4 @@
 <script lang="ts">
-	// eslint-disable-next-line import/no-unresolved
 	import { enhance } from '$app/forms';
 	import type { PageData } from './$types';
 

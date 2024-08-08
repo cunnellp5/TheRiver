@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Card from '$lib/components/ui/Card.svelte';
 	import { addToast } from '$lib/stores/toast';
-	// eslint-disable-next-line import/no-unresolved
 	import { enhance } from '$app/forms';
 	import type { ActionData } from './$types';
 

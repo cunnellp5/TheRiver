@@ -9,7 +9,6 @@
 	import List from '@event-calendar/list';
 	import TimeGrid from '@event-calendar/time-grid';
 	import type { Info, Event } from '$lib/types.js';
-	// eslint-disable-next-line import/no-unresolved
 	import { enhance } from '$app/forms';
 	import { configOptions, convertTimeSlots } from './calendarConfig';
 

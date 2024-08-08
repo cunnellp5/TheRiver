@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Table from '$lib/components/ui/Table.svelte';
 	import { CldImage } from 'svelte-cloudinary';
-	// eslint-disable-next-line import/no-unresolved
 	import { enhance } from '$app/forms';
 
 	export let data;
