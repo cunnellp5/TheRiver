@@ -15,7 +15,7 @@
 		<a class="animation" target="_blank" href={market.url}> {market.text} </a>
 	</section>
 	<div class="grid-container">
-		<div id="tracks" class="tracks">
+		<div id="items" class="items">
 			{#each feed as item}
 				<a href={item.guid} target="_blank">
 					<Card.Root>
@@ -67,7 +67,7 @@
 		display: grid;
 		margin-block: var(--size-7);
 	}
-	.tracks {
+	.items {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 		/* grid-auto-rows: minmax(100px, auto); */
@@ -76,12 +76,12 @@
 
 	/* MEDIA QUERIES */
 	@media (max-width: 1440px) {
-		.tracks {
+		.items {
 			grid-template-columns: repeat(2, 1fr); /* 2 columns */
 		}
 	}
 	@media (max-width: 768px) {
-		.tracks {
+		.items {
 			grid-template-columns: repeat(1, 1fr); /* 1 column */
 		}
 	}
