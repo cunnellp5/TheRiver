@@ -27,7 +27,7 @@
 					<Card.Root>
 						<Card.Header>
 							<Card.Title>
-								<div>
+								<div class="title">
 									{item.title?.replace(' by TheRiverDesign', '')}
 								</div>
 							</Card.Title>
@@ -52,7 +52,7 @@
 		flex-direction: column;
 		align-items: center;
 		margin-block: var(--size-7);
-		padding-block: var(--size-11);
+		padding-block: var(--size-9);
 	}
 	h1 {
 		transform: rotate(2deg);
@@ -66,6 +66,10 @@
 	.card-content-description {
 		overflow: hidden;
 		word-break: break-all;
+		& p.image {
+			display: flex;
+			justify-content: center;
+		}
 		& img {
 			transition: transform 0.5s ease;
 			width: var(--size-content-2);
@@ -73,18 +77,27 @@
 			object-fit: scale-down;
 		}
 		& p.description {
+			transition: opacity 0.5s ease;
 			margin-block: var(--size-2);
 			color: var(--text-2);
 			font-size: var(--font-size-1);
 		}
 		& p.price {
+			transition: opacity 0.5s ease;
 			margin-block: var(--size-2);
 			font-size: var(--font-size-1);
 		}
 	}
+	.title {
+		font-size: var(--font-size-4);
+	}
 	.card-content-description:hover {
 		& img {
 			transform: scale(1.5);
+		}
+		& p.description,
+		p.price {
+			opacity: 0;
 		}
 	}
 	.animation {

@@ -18,8 +18,13 @@
 			<Card.Description>This page shows a list of current videos</Card.Description>
 		</Card.Header>
 		<Card.Content>
-			<p>Clicking the button below will fetch the latest youtube videos and update the DB.</p>
-			<p>The <em>/music/videos</em> section will then have the latest videos.</p>
+			<p>
+				Clicking the button below will fetch the latest youtube videos from your ORIGINAL SONGS
+				playlist and updates the DB.
+			</p>
+			<p>
+				The <a href="/music/video">/music/videos</a> section will then have the latest videos.
+			</p>
 		</Card.Content>
 		<Card.Footer>
 			<form
@@ -90,6 +95,10 @@
 	}
 	button {
 		font-weight: var(--font-weight-6);
+	}
+	p {
+		margin-block: var(--size-4);
+		font-size: var(--font-size-1);
 	}
 	/* CLASSES */
 	.video-data-wrapper {
