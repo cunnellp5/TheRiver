@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { writable } from 'svelte/store';
-	import { onDestroy, createEventDispatcher } from 'svelte';
+	import { onDestroy } from 'svelte';
 	import { type CarouselAPI, type CarouselProps, setEmblaContext } from './context.js';
 
 	const YOUTUBE_BASE_EMBED_URL = 'https://www.youtube.com/embed/';
@@ -27,25 +27,20 @@
 	$: optionsStore.set(opts);
 
 	function setUrlOnAnchor() {
-		const anchor = document.querySelector('.is-snapped a.is-snapped-anchor');
-		const videoId = anchor?.getAttribute('href');
-		const url = YOUTUBE_BASE_EMBED_URL + videoId;
-		anchor?.setAttribute('href', url);
+		// Adding a set timeout because the anchor is not rendered yet, 50 is arbitrary
+		setTimeout(() => {
+			const anchor = document.querySelector('.is-snapped a.is-snapped-anchor');
+			const videoId = anchor?.getAttribute('data-id');
+			const url = YOUTUBE_BASE_EMBED_URL + videoId;
+			anchor?.setAttribute('href', url);
+		}, 50);
 	}
 
 	function scrollPrev() {
 		api?.scrollPrev();
-
-		if (document) {
-			setUrlOnAnchor();
-		}
 	}
 	function scrollNext() {
 		api?.scrollNext();
-
-		if (document) {
-			setUrlOnAnchor();
-		}
 	}
 	function scrollTo(index: number, jump?: boolean) {
 		api?.scrollTo(index, jump);
@@ -60,7 +55,7 @@
 		onSelect(api);
 		api.on('select', onSelect);
 		api.on('reInit', onSelect);
-		// api.on('slidesInView', onSnapped);
+		api.on('slidesInView', setUrlOnAnchor);
 	}
 
 	function handleKeyDown(e: KeyboardEvent) {

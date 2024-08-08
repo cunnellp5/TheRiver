@@ -16,7 +16,8 @@
 		<Carousel.Content>
 			{#each videos as video, i (i)}
 				<Carousel.Item>
-					<a class="is-snapped-anchor" target="_blank" href={video.videoId}>
+					<!-- svelte-ignore a11y-missing-attribute -->
+					<a class="is-snapped-anchor" target="_blank" data-id={video.videoId}>
 						<Card.Root>
 							<Card.Content>
 								<img src={video.thumbnail} alt={video.title} />
