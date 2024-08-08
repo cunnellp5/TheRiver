@@ -5,6 +5,12 @@
 	export let data;
 
 	const { feed } = data;
+
+	// function safeHTML(html: string) {
+	// 	const element = document.createElement('div');
+	// 	element.innerHTML = html;
+	// 	return element.innerHTML;
+	// }
 </script>
 
 <main>
@@ -20,12 +26,17 @@
 				<a href={item.guid} target="_blank">
 					<Card.Root>
 						<Card.Header>
-							<Card.Title>{item.title}</Card.Title>
+							<Card.Title>
+								<div>
+									{item.title?.replace(' by TheRiverDesign', '')}
+								</div>
+							</Card.Title>
 							<Card.Description></Card.Description>
 						</Card.Header>
 						<Card.Content>
 							<div class="card-content-description">
-								{item.description}
+								<!-- eslint-disable-next-line svelte/no-at-html-tags -->
+								{@html item.description}
 							</div>
 						</Card.Content>
 					</Card.Root>
@@ -54,6 +65,22 @@
 	/* CLASSES */
 	.card-content-description {
 		word-break: break-all;
+		& img {
+			width: var(--size-content-2);
+			height: var(--size-content-2);
+			object-fit: cover;
+		}
+		& p.description {
+			margin-block: var(--size-2);
+			color: var(--text-2);
+			font-size: var(--font-size-1);
+		}
+		& p.price {
+			margin-block: var(--size-2);
+			font-size: var(--font-size-1);
+			/* text-align: right; */
+			/* color: var(--text-2); */
+		}
 	}
 	.animation {
 		display: flex;
