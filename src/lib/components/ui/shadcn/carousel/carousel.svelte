@@ -3,7 +3,8 @@
 	import { onDestroy } from 'svelte';
 	import { type CarouselAPI, type CarouselProps, setEmblaContext } from './context.js';
 
-	const YOUTUBE_BASE_EMBED_URL = 'https://www.youtube.com/embed/';
+	// const YOUTUBE_BASE_EMBED_URL = 'https://www.youtube.com/embed/';
+	const YOUTUBE_BASE_EMBED_URL = 'https://www.youtube.com/watch?v=';
 
 	type $$Props = CarouselProps;
 

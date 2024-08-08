@@ -54,7 +54,8 @@ export const actions: Actions = {
 						title: item.snippet.title,
 						description: item.snippet.description,
 						position: item.snippet.position,
-						thumbnail: item.snippet?.thumbnails?.standard?.url
+						thumbnail:
+							item.snippet?.thumbnails?.maxres?.url || item.snippet?.thumbnails?.standard?.url // consider just using standard
 					}));
 			})
 			.catch((err) => ({
