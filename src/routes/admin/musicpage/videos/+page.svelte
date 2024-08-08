@@ -16,7 +16,6 @@
 	<Card.Root>
 		<Card.Header>
 			<Card.Title>Videos</Card.Title>
-			<!-- <Users /> -->
 			<Card.Description>This page shows a list of current videos</Card.Description>
 		</Card.Header>
 		<Card.Content>
