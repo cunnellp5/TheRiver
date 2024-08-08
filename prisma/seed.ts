@@ -60,7 +60,7 @@ async function main() {
 			},
 			{
 				name: 'Waxing',
-				description: 'Wax your booty',
+				description: 'Wax your brow',
 				duration: 30,
 				availability: 'COMING_SOON',
 				category: 'WAX',
