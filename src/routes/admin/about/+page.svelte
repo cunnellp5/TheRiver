@@ -7,31 +7,38 @@
 	const routesWithAbout = [
 		{
 			title: 'home',
-			about: about.home
+			about: about.home,
+			url: '/'
 		},
 		{
 			title: 'music',
-			about: about.music
+			about: about.music,
+			url: '/music'
 		},
 		{
-			title: 'service',
-			about: about.service
+			title: 'services',
+			about: about.services,
+			url: '/services'
 		},
 		{
-			title: 'market',
-			about: about.market
+			title: 'shop',
+			about: about.shop,
+			url: '/shop'
 		},
 		{
-			title: 'blog',
-			about: about.blog
+			title: 'posts',
+			about: about.posts,
+			url: '/posts'
 		},
 		{
 			title: 'contact',
-			about: about.contact
+			about: about.contact,
+			url: '/contact'
 		},
 		{
 			title: 'announcement',
-			about: about.announcement
+			about: about.announcement,
+			url: '/'
 		}
 	];
 </script>
@@ -67,7 +74,11 @@
 	<Table.Body>
 		{#each routesWithAbout as aboutInfo}
 			<Table.Row>
-				<Table.Cell>&#47;{aboutInfo.title}</Table.Cell>
+				<Table.Cell>
+					<a href={`${aboutInfo.url}`}>
+						&#47;{aboutInfo.title}
+					</a>
+				</Table.Cell>
 				<Table.Cell>{aboutInfo.about}</Table.Cell>
 				<Table.Cell>
 					<form method="POST" data-sveltekit-noscroll use:enhance>
