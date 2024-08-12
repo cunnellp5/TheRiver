@@ -95,6 +95,13 @@
 			</a>
 			<a
 				class="indented"
+				class:current={$page.url.pathname === '/admin/services/categories'}
+				href="/admin/services/categories"
+				data-sveltekit-noscroll>
+				Categories
+			</a>
+			<a
+				class="indented"
 				class:current={$page.url.pathname.includes('/admin/services/booking')}
 				href="/admin/services/booking"
 				data-sveltekit-noscroll>
