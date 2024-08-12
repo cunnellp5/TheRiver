@@ -23,73 +23,73 @@
 			</ul>
 		</Card.Content>
 		<Card.Footer>
-			<a href="/admin/services/create" data-sveltekit-noscroll>
-				<button class="create-service-button"> Add new service</button>
-			</a>
+			<div class="buttons-wrapper">
+				<a href="/admin/services/create" data-sveltekit-noscroll>
+					<button class="create-button"> Add new service</button>
+				</a>
+				<a href="/admin/services/create" data-sveltekit-noscroll>
+					<button class="create-button"> Add new category</button>
+				</a>
+			</div>
 		</Card.Footer>
 	</Card.Root>
 </div>
 
-{#each Object.entries(services) as [category, listOfServices]}
+<!-- {#each Object.entries(services) as [category, listOfServices]}
 	<section class="service-table">
-		<h4>{category}</h4>
 		<table>
 			<thead class="surface-2">
 				<tr>
-					{#each Object.keys(listOfServices[0]) as column (column)}
-						<th>
-							<h6>
-								{column}
-							</h6>
-						</th>
-					{/each}
+					<th>
+						<h6>{category}</h6>
+					</th>
 				</tr>
 			</thead>
 			<tbody class="">
-				{#each listOfServices as row (row)}
+				{#each listOfServices as service}
 					<tr>
-						{#each Object.values(row) as cell (cell)}
-							<td>{cell}</td>
-						{/each}
+						<td>{service.name}</td>
+						<td>${service.price}</td>
+						<td>{service.duration} min</td>
 						<td class="actions">
 							<button class="update-button">Edit</button>
 							<button class="delete-button">delete</button>
 						</td>
 					</tr>
-					<!-- <tr> -->
-					<!-- <td colspan={columns.length - 2} class="description">
-					Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quidem ratione maxime deleniti
-					tempora tempore cumque, iusto quas expedita tenetur doloribus dolor sed unde ipsam beatae
-					perspiciatis doloremque. Itaque, ad. Mollitia!
-				</td> -->
-					<!-- </tr> -->
 				{/each}
 			</tbody>
 		</table>
 	</section>
-{/each}
+{/each} -->
 
 {#each Object.entries(services) as [category, data]}
 	<section>
 		<Table.Root>
-			<Table.Caption>
-				<h5>
-					{category}
-				</h5>
-			</Table.Caption>
+			<Table.Caption>{data[0].category.description}</Table.Caption>
 			<Table.Header>
 				<Table.Row>
-					<Table.Head>Service</Table.Head>
-					<Table.Head>Duration</Table.Head>
-					<Table.Head>Price</Table.Head>
+					<div class="table-row-header">
+						<h5>
+							{category.toUpperCase()}
+						</h5>
+						<small>{data.length} ct</small>
+					</div>
 				</Table.Row>
 			</Table.Header>
 			<Table.Body>
 				{#each data as service}
 					<Table.Row>
 						<Table.Cell>{service.name}</Table.Cell>
-						<Table.Cell>{service.duration} min</Table.Cell>
-						<Table.Cell>${service.price}</Table.Cell>
+						<Table.Cell>
+							<div class="price-duration">
+								<span class="price">
+									${service.price}.00
+								</span>
+								<span class="time">
+									{service.duration} min
+								</span>
+							</div>
+						</Table.Cell>
 					</Table.Row>
 				{/each}
 			</Table.Body>
@@ -112,9 +112,26 @@
 	.service-table {
 		margin-block: var(--size-4);
 	}
-	.create-service-button {
-		background-color: var(--create);
-		color: var(--on-crud-text);
-		font-weight: var(--font-weight-7);
+	.buttons-wrapper {
+		display: flex;
+		gap: var(--size-4);
+	}
+	.price-duration {
+		display: flex;
+		flex-direction: column;
+		/* text-align: right; */
+	}
+	.time {
+		color: var(--text-2);
+		font-size: var(--font-size-00);
+	}
+	.price {
+		font-size: var(--font-size-0);
+	}
+	.table-row-header {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: var(--size-3);
 	}
 </style>
