@@ -12,11 +12,19 @@ enum ServiceAvailability {
   UNAVAILABLE
 }
 
-enum ServiceCategory {
-  HAIR
-  NAILS
-  WAX
-}
+// enum ServiceCategory {
+//   HAIR_CUT
+//   HAIR_COLOR
+//   HAIR_ADD_ON
+//   NEW_CLIENT
+//   NAILS
+
+//   IDEAL_HYBRID_WEFTS
+//   HAND_TIED_EXTENSIONS
+//   TAPE_IN
+//   FUSION
+//   I_TIP
+// }
 
 enum BookingStatus {
   CANCELED_ON_TIME
@@ -100,18 +108,27 @@ model Guest {
 }
 
 model Service {
-  id           Int                 @id @default(autoincrement())
-  createdAt    DateTime            @default(now())
-  updatedAt    DateTime            @updatedAt
-  name         String
-  description  String
-  duration     Int
-  availability ServiceAvailability @default(AVAILABLE)
-  category     ServiceCategory
-  price        Float
-  slug         String              @unique
-  bookings     Booking[]
-  TimeSlot     TimeSlot[]
+  id            Int                 @id @default(autoincrement())
+  createdAt     DateTime            @default(now())
+  updatedAt     DateTime            @updatedAt
+  name          String
+  description   String?
+  duration      Int?
+  availability  ServiceAvailability @default(AVAILABLE)
+  price         Float
+  bookingTalley Int                 @default(0)
+  bookings      Booking[]
+  TimeSlot      TimeSlot[]
+  category      ServiceCategory     @relation(fields: [categoryId], references: [id])
+  categoryId    Int
+}
+
+model ServiceCategory {
+  id          Int       @id @default(autoincrement())
+  name        String
+  value       String
+  description String?
+  services    Service[]
 }
 
 model Booking {
