@@ -3,44 +3,7 @@
 	import * as Table from '$lib/components/ui/shadcn/table';
 	import about from '$lib/data/json/about.json';
 	import { enhance } from '$app/forms';
-
-	const routesWithAbout = [
-		{
-			title: 'home',
-			about: about.home,
-			url: '/'
-		},
-		{
-			title: 'music',
-			about: about.music,
-			url: '/music'
-		},
-		{
-			title: 'services',
-			about: about.services,
-			url: '/services'
-		},
-		{
-			title: 'shop',
-			about: about.shop,
-			url: '/shop'
-		},
-		{
-			title: 'posts',
-			about: about.posts,
-			url: '/posts'
-		},
-		{
-			title: 'contact',
-			about: about.contact,
-			url: '/contact'
-		},
-		{
-			title: 'announcement',
-			about: about.announcement,
-			url: '/'
-		}
-	];
+	import About from './About.svelte';
 </script>
 
 <div class="adminIntroCardWrapper">
@@ -49,16 +12,6 @@
 			<Card.Title>About</Card.Title>
 			<Card.Description>Edit your about sections</Card.Description>
 		</Card.Header>
-		<Card.Content>
-			<ul>
-				TODOs
-				<li>Move inputs to components with scoped state</li>
-				<li>Add a show/hide boolean to data</li>
-			</ul>
-		</Card.Content>
-		<Card.Footer>
-			<p>🚧 under construction</p>
-		</Card.Footer>
 	</Card.Root>
 </div>
 
@@ -67,35 +20,15 @@
 	<Table.Header>
 		<Table.Row>
 			<Table.Head>Page</Table.Head>
-			<Table.Head>About description</Table.Head>
-			<Table.Head>Input</Table.Head>
+			<Table.Head>IsShowing</Table.Head>
+			<Table.Head>Description</Table.Head>
 		</Table.Row>
 	</Table.Header>
 	<Table.Body>
-		{#each routesWithAbout as aboutInfo}
+		{#each Object.entries(about) as [key, value]}
 			<Table.Row>
-				<Table.Cell>
-					<a href={`${aboutInfo.url}`}>
-						&#47;{aboutInfo.title}
-					</a>
-				</Table.Cell>
-				<Table.Cell>{aboutInfo.about}</Table.Cell>
-				<Table.Cell>
-					<form method="POST" data-sveltekit-noscroll use:enhance>
-						<textarea name="about" cols="40" rows="1" />
-						<input type="hidden" name="title" value={aboutInfo.title} />
-						<button type="submit">Save</button>
-					</form>
-				</Table.Cell>
+				<About url={value.url} title={key} about={value.text} isShowing={value.isShowing}></About>
 			</Table.Row>
 		{/each}
 	</Table.Body>
 </Table.Root>
-
-<style>
-	form {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-	}
-</style>

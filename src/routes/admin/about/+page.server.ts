@@ -4,18 +4,11 @@ import path from 'path';
 import about from '$lib/data/json/about.json';
 
 interface AboutData {
-	home: string;
-	music: string;
-	service: string;
-	market: string;
-	blog: string;
-	contact: string;
-	announcement: string;
-	contactData: {
-		email: string;
-		location: string;
+	[key: string]: {
+		text: string;
+		isShowing: boolean;
+		url: string | null;
 	};
-	[key: string]: string | { email: string; location: string };
 }
 
 export const actions: Actions = {
@@ -24,12 +17,18 @@ export const actions: Actions = {
 
 		const inputAbout = formData.get('about') as string;
 		const inputTitle = formData.get('title') as string;
+		const isShowing = (formData.get('isShowing') as string) === 'true';
+		const url = formData.get('url') as string;
 
 		// Define the path to the file
 		const filePath = path.join(process.cwd(), './src/lib/data/json/about.json');
 
 		// Create the data object to be written
-		(about as AboutData)[inputTitle.toLowerCase()] = inputAbout;
+		(about as AboutData)[inputTitle.toLowerCase()] = {
+			text: inputAbout,
+			isShowing: isShowing,
+			url
+		};
 		const data = JSON.parse(JSON.stringify(about));
 
 		// Write the data to the file
