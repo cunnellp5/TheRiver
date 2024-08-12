@@ -18,11 +18,14 @@
 </tr>
 
 <style>
-	tr:hover {
-		background-color: hsl(
-			var(--stone-2-hsl) / 0.3
-		); /* TODO figure out a better hover for light mode*/
+	:where(tbody tr):hover {
+		cursor: pointer;
 	}
+
+	/* :where(tbody tr):hover {
+		background-color: hsl(var(--stone-2-hsl) / 0.2);
+	} */
+
 	/* todo figure out selected states */
 	/* [data-\[state='selected\]'] {
 		background-color: var(--text-1);

@@ -7,7 +7,7 @@
 	export { className as class };
 </script>
 
-<tfoot class={`bg-primary text-primary-foreground font-medium ${className}`} {...$$restProps}>
+<tfoot class={`${className}`} {...$$restProps}>
 	<slot />
 </tfoot>
 

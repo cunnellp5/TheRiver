@@ -7,7 +7,7 @@
 	export { className as class };
 </script>
 
-<th class={`[&:has([role=checkbox])]:pr-0 ${className}`} {...$$restProps}>
+<th class={`${className}`} {...$$restProps}>
 	<slot />
 </th>
 
@@ -15,10 +15,12 @@
 	th {
 		vertical-align: middle;
 		background-color: unset;
+		/* background-color: hsl(var(--stone-10-hsl) / 0.2); */
 		padding-inline: var(--size-3);
 		height: var(--size-8);
 		color: var(--text-2);
-		font-weight: 500;
+		/* color: var(--link); */
+		font-weight: var(--font-weight-0);
 		text-align: left;
 	}
 

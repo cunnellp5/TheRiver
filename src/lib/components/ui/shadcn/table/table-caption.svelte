@@ -7,7 +7,7 @@
 	export { className as class };
 </script>
 
-<caption class={`text-muted-foreground mt-4 text-sm ${className}`} {...$$restProps}>
+<caption class={`${className}`} {...$$restProps}>
 	<slot />
 </caption>
 
