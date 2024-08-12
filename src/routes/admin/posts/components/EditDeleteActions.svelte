@@ -9,8 +9,8 @@
 </script>
 
 <a href="/admin/posts/{slug}/edit" data-sveltekit-noscroll>
-	<button class="edit" type="button">
-		<Pencil />
+	<button class="update-button" type="button">
+		<Pencil /> Edit
 	</button>
 </a>
 <form
@@ -27,8 +27,8 @@
 		return cancel();
 	}}>
 	<input type="hidden" name="slug" id="slug" value={slug} />
-	<button class="delete" type="submit">
-		<Trash />
+	<button class="delete-button" type="submit">
+		<Trash /> Delete
 	</button>
 </form>
 

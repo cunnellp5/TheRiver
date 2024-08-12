@@ -31,7 +31,7 @@
 		</GenericCard.Header>
 		<GenericCard.Footer>
 			<a href="/admin/homepage/articles/create">
-				<button class="create-article-button"> <Plus strokeWidth={3} />Add article</button>
+				<button class="create-button"> <Plus strokeWidth={3} />Add article</button>
 			</a>
 		</GenericCard.Footer>
 	</GenericCard.Root>
@@ -51,7 +51,7 @@
 			link={article.link}>
 			<div class="buttons" slot="buttons">
 				<a href={`/admin/homepage/articles/${article.id}/edit`}>
-					<button class="update-article-button"><Pencil strokeWidth={STROKE_WIDTH} />Edit</button>
+					<button class="update-button"><Pencil strokeWidth={STROKE_WIDTH} />Edit</button>
 				</a>
 				<form
 					method="POST"
@@ -64,7 +64,7 @@
 						return cancel();
 					}}>
 					<input type="hidden" name="articleId" id="articleId" value={article.id} />
-					<button class="delete-article-button"><Trash strokeWidth={STROKE_WIDTH} />Delete</button>
+					<button class="delete-button"><Trash strokeWidth={STROKE_WIDTH} />Delete</button>
 				</form>
 			</div>
 		</Card>
@@ -84,20 +84,5 @@
 		form {
 			width: 100%;
 		}
-	}
-	.create-article-button {
-		background-color: var(--create);
-		color: var(--on-crud-text);
-		font-weight: var(--font-weight-7);
-	}
-	.update-article-button {
-		background-color: var(--update);
-		color: var(--on-crud-text);
-		font-weight: var(--font-weight-7);
-	}
-	.delete-article-button {
-		background-color: var(--delete);
-		color: var(--on-crud-text);
-		font-weight: var(--font-weight-7);
 	}
 </style>

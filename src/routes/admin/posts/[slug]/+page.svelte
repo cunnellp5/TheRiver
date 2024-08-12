@@ -116,11 +116,5 @@
 		& button {
 			width: 100%;
 		}
-		& .edit {
-			background-color: var(--update);
-		}
-		& .delete {
-			background-color: var(--delete);
-		}
 	}
 </style>
