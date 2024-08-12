@@ -7,7 +7,7 @@
 	export { className as class };
 </script>
 
-<td class={`[&:has([role=checkbox])]:pr-0 ${className}`} {...$$restProps} on:click on:keydown>
+<td class={`${className}`} {...$$restProps} on:click on:keydown>
 	<slot />
 </td>
 

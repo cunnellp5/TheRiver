@@ -7,7 +7,9 @@
 	<Card.Root>
 		<Card.Header>
 			<Card.Title>Market</Card.Title>
-			<Card.Description>place holder for your e-commerce store</Card.Description>
+			<Card.Description>
+				All the images and data loads from etsys RSS feed, so the UI should update automatically
+			</Card.Description>
 		</Card.Header>
 		<Card.Content>
 			<p>

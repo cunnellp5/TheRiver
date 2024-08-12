@@ -1,6 +1,8 @@
 <script lang="ts">
 	import type { HTMLTableAttributes } from 'svelte/elements';
 
+	export let captionLocation = 'bottom';
+
 	type $$Props = HTMLTableAttributes;
 
 	let className: $$Props['class'] = undefined;
@@ -8,7 +10,11 @@
 </script>
 
 <div class="relative w-full overflow-auto">
-	<table class={`w-full caption-bottom text-sm ${className}`} {...$$restProps}>
+	<table
+		class:caption-bottom={captionLocation === 'bottom'}
+		class:caption-top={captionLocation === 'top'}
+		class={`w-full text-sm ${className}`}
+		{...$$restProps}>
 		<slot />
 	</table>
 </div>

@@ -3,7 +3,6 @@
 	import BlogCard from '$lib/components/ui/BlogCard.svelte';
 	import { onMount } from 'svelte';
 	import Pencil from 'lucide-svelte/icons/pencil';
-	import Plus from 'lucide-svelte/icons/plus';
 	import type { MouseEventHandler } from 'svelte/elements';
 	import { page } from '$app/stores';
 	import type { PageData } from './$types';
@@ -51,7 +50,7 @@
 		</Card.Header>
 		<Card.Footer>
 			<a href="/admin/posts/create" data-sveltekit-noscroll>
-				<button class="create-post-button"> <Plus strokeWidth={3} />Add new post</button>
+				<button class="create-button">Add new post</button>
 			</a>
 		</Card.Footer>
 	</Card.Root>
@@ -107,7 +106,7 @@
 											</div>
 											<div class="buttons" slot="buttons">
 												<a href={`/admin/posts/${slug}/edit`} data-sveltekit-noscroll>
-													<button class="update-post-button">
+													<button class="update-button">
 														<Pencil strokeWidth={STROKE_WIDTH} />Edit</button>
 												</a>
 											</div>
@@ -189,16 +188,6 @@
 		form {
 			width: 100%;
 		}
-	}
-	.create-post-button {
-		background-color: var(--create);
-		color: var(--on-crud-text);
-		font-weight: var(--font-weight-7);
-	}
-	.update-post-button {
-		background-color: var(--update);
-		color: var(--on-crud-text);
-		font-weight: var(--font-weight-7);
 	}
 	.posts-wrapper {
 		display: flex;
