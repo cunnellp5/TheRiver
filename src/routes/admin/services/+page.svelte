@@ -69,7 +69,7 @@
 	</section>
 {/each}
 
-{#each Object.entries(services) as [category, listOfServices]}
+{#each Object.entries(services) as [category, data]}
 	<section>
 		<Table.Root>
 			<Table.Caption>
@@ -79,33 +79,17 @@
 			</Table.Caption>
 			<Table.Header>
 				<Table.Row>
-					{#each Object.keys(listOfServices[0]) as column (column)}
-						<Table.Head>{column}</Table.Head>
-						<!-- <Table.Head>About description</Table.Head> -->
-						<!-- <Table.Head>Input</Table.Head> -->
-					{/each}
+					<Table.Head>Service</Table.Head>
+					<Table.Head>Duration</Table.Head>
+					<Table.Head>Price</Table.Head>
 				</Table.Row>
 			</Table.Header>
 			<Table.Body>
-				{#each listOfServices as row (row)}
+				{#each data as service}
 					<Table.Row>
-						{#each Object.values(row) as cell (cell)}
-							<Table.Cell>
-								<!-- <a href={`${aboutInfo.url}`}> -->
-								<!-- &#47;{aboutInfo.title} -->
-								<!-- </a> -->
-								{cell}
-							</Table.Cell>
-						{/each}
-
-						<!-- <Table.Cell>{aboutInfo.about}</Table.Cell>
-						<Table.Cell>
-							<form method="POST" data-sveltekit-noscroll use:enhance>
-								<textarea name="about" cols="40" rows="1" />
-								<input type="hidden" name="title" value={aboutInfo.title} />
-								<button type="submit">Save</button>
-							</form>
-						</Table.Cell> -->
+						<Table.Cell>{service.name}</Table.Cell>
+						<Table.Cell>{service.duration} min</Table.Cell>
+						<Table.Cell>${service.price}</Table.Cell>
 					</Table.Row>
 				{/each}
 			</Table.Body>
