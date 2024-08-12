@@ -20,7 +20,11 @@
 				<li>crud categories</li>
 			</ul>
 		</Card.Content>
-		<Card.Footer>category footer</Card.Footer>
+		<Card.Footer>
+			<a href="/admin/services/create" data-sveltekit-noscroll>
+				<button class="create-button">Add new category</button>
+			</a>
+		</Card.Footer>
 	</Card.Root>
 </div>
 
@@ -30,7 +34,6 @@
 		<Table.Row>
 			<Table.Head>#</Table.Head>
 			<Table.Head>Name</Table.Head>
-			<Table.Head>Value</Table.Head>
 			<Table.Head>Description</Table.Head>
 		</Table.Row>
 	</Table.Header>
@@ -39,7 +42,6 @@
 			<Table.Row>
 				<Table.Cell>{i + 1}</Table.Cell>
 				<Table.Cell>{category.name}</Table.Cell>
-				<Table.Cell>{category.value}</Table.Cell>
 				<Table.Cell>{category.description}</Table.Cell>
 			</Table.Row>
 		{/each}

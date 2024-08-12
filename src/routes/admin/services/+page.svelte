@@ -23,14 +23,9 @@
 			</ul>
 		</Card.Content>
 		<Card.Footer>
-			<div class="buttons-wrapper">
-				<a href="/admin/services/create" data-sveltekit-noscroll>
-					<button class="create-button"> Add new service</button>
-				</a>
-				<a href="/admin/services/create" data-sveltekit-noscroll>
-					<button class="create-button"> Add new category</button>
-				</a>
-			</div>
+			<a href="/admin/services/create" data-sveltekit-noscroll>
+				<button class="create-button"> Add new service</button>
+			</a>
 		</Card.Footer>
 	</Card.Root>
 </div>
@@ -98,24 +93,11 @@
 {/each}
 
 <style>
+	/* ELEMENTS */
 	section {
 		margin-block: var(--size-12);
 	}
-	table {
-		width: 100%;
-		font-size: var(--font-size-0);
-		& :where(td:not(:has(:last-child))),
-		th {
-			text-align: left;
-		}
-	}
-	.service-table {
-		margin-block: var(--size-4);
-	}
-	.buttons-wrapper {
-		display: flex;
-		gap: var(--size-4);
-	}
+	/* CLASSES */
 	.price-duration {
 		display: flex;
 		flex-direction: column;
