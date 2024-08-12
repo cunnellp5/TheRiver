@@ -16,12 +16,13 @@
 </div>
 
 <Table.Root>
-	<Table.Caption>List of About</Table.Caption>
+	<Table.Caption>Abouts</Table.Caption>
 	<Table.Header>
 		<Table.Row>
-			<Table.Head>Page</Table.Head>
-			<Table.Head>IsShowing</Table.Head>
-			<Table.Head>Description</Table.Head>
+			Change your about info
+			<!-- <Table.Head>Page</Table.Head> -->
+			<!-- <Table.Head>IsShowing</Table.Head> -->
+			<!-- <Table.Head>Description</Table.Head> -->
 		</Table.Row>
 	</Table.Header>
 	<Table.Body>

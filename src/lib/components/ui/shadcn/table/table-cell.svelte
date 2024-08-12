@@ -3,7 +3,7 @@
 
 	type $$Props = HTMLTdAttributes;
 
-	let className: $$Props['class'] = undefined;
+	let className: $$Props['class'] = '';
 	export { className as class };
 </script>
 
@@ -18,5 +18,8 @@
 		&:has([role='checkbox']) {
 			padding-right: 0;
 		}
+	}
+	.full-width {
+		width: 100%;
 	}
 </style>

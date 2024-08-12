@@ -31,7 +31,7 @@
 		</GenericCard.Header>
 		<GenericCard.Footer>
 			<a href="/admin/homepage/articles/create">
-				<button class="create-button"> <Plus strokeWidth={3} />Add article</button>
+				<button class="create-button">Add article</button>
 			</a>
 		</GenericCard.Footer>
 	</GenericCard.Root>

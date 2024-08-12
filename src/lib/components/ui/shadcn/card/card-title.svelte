@@ -6,7 +6,7 @@
 		tag?: HeadingLevel;
 	};
 
-	let className: $$Props['class'] = undefined;
+	let className: $$Props['class'] = '';
 	export let tag: $$Props['tag'] = 'h3';
 	export { className as class };
 </script>

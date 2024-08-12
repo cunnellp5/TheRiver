@@ -15,7 +15,7 @@
 	<section>
 		<h1>The River Sings</h1>
 		<p>
-			{about.music}
+			{about.music.text}
 		</p>
 		<!-- <div class="gradient-point-up"></div> -->
 		<slot></slot>
