@@ -22,4 +22,12 @@
 	.full-width {
 		width: 100%;
 	}
+	.center {
+		display: flex;
+		justify-content: center;
+	}
+	.end {
+		display: flex;
+		justify-content: end;
+	}
 </style>
