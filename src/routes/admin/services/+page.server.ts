@@ -1,9 +1,7 @@
 import db from '$lib/server/database';
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
-import type { Service } from '@prisma/client';
-
-type TableServiceInfo = Record<string, Service[]>;
+import { servicesMapper } from '$lib/utils/servicesMapper';
 
 export const load: PageServerLoad = async (event) => {
 	if (!event.locals.session || !event.locals.user) {
@@ -18,25 +16,8 @@ export const load: PageServerLoad = async (event) => {
 			}
 		});
 
-		// FORMAT SUCH THAT IT CAN BE USED IN THE TABLE, MANUALLY SORTING CATEGORIES BELOW
-		const remappedServices = services.reduce(
-			(acc: TableServiceInfo, service) => {
-				if (!acc[service.category.name]) {
-					acc[service.category.name] = [];
-				}
-				acc[service.category.name].push({
-					...service
-				});
-				return acc;
-			},
-			{
-				'New Client': [],
-				Haircut: [],
-				'Hair Color': [],
-				'Hair Add-on': [],
-				Nails: []
-			} as TableServiceInfo
-		);
+		// FORMAT SUCH THAT IT CAN BE USED IN THE TABLE
+		const remappedServices = servicesMapper(services);
 
 		return { services: remappedServices };
 	} catch (err) {

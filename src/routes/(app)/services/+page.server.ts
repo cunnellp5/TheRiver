@@ -1,18 +1,21 @@
 import db from '$lib/server/database';
 import { error, redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
+import { servicesMapper } from '$lib/utils/servicesMapper';
 
 export const load: PageServerLoad = async () => {
 	try {
 		const services = await db.service.findMany({
-			orderBy: {
-				availability: 'asc'
+			include: {
+				category: true
 			}
 		});
 
 		if (!services) return error(404, 'No services found');
 
-		return { services };
+		const remappedServices = servicesMapper(services);
+
+		return { services: remappedServices };
 	} catch (err) {
 		return error(500, err.message);
 	}
