@@ -4,8 +4,7 @@
 
 ## application
 
-- Vercel (free tier until e commerce is implemented)
-- consider e-commerce elsewhere(shopify?) and route to a subdomain
+- Vercel
 
 ## database
 
@@ -13,5 +12,37 @@
 
 ## media
 
-- Currently using Cloudinary but the cost is too high
+- Currently using Cloudinary
+- Supabase storage
 - Backblaze vs s3
+
+rollout plan verified:
+
+- Media (ignoring)
+  - Supabase (storage)
+  - cloudinary
+  - s3
+- Supabase
+  - DB
+  - Auth supabase
+    - Could store customers
+  - Auth regular could be just admin
+    - No customers via this route
+  - Consider splitting users between e-commerce / services / general users
+  - PII shiiiit don’t store info but keep the relationship to Stripe purchases
+- Stripe = 2.9%
+- Vercel = 20/mo
+
+---
+
+- Page analytics - Google Analytics
+- Backup DB script
+- Move .json files to DB
+
+---
+
+---
+
+Other DB hosts: render.com
+
+---

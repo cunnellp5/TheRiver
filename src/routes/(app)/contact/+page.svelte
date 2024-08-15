@@ -3,7 +3,6 @@
 	import Copy from 'lucide-svelte/icons/copy';
 	import Send from 'lucide-svelte/icons/send';
 	import MailCheck from 'lucide-svelte/icons/mail-check';
-	import { onMount } from 'svelte';
 
 	const email = 'theriverrunsfast@gmail.com';
 	let copied = false;
@@ -16,10 +15,6 @@
 			return copied;
 		}, 800); // Reset after 2 seconds
 	}
-
-	onMount(() => {
-		document.title = 'Contact | The River Sings';
-	});
 </script>
 
 <h1>The River</h1>
