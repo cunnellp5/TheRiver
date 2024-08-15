@@ -104,6 +104,7 @@
 					{/each}
 				</Table.Body>
 			</Table.Root>
+			<hr />
 		</section>
 	{/each}
 
@@ -177,7 +178,7 @@
 	.tables {
 		align-items: center;
 		align-self: center;
-		width: 50%;
+		width: var(--size-content-3);
 	}
 	.cutoutImg {
 		position: absolute;
@@ -211,6 +212,7 @@
 		align-items: center;
 		gap: var(--size-3);
 	}
+	/* KEEPING BELOW FOR REFERENCE */
 	.service-table {
 		display: flex;
 		flex-direction: column;
