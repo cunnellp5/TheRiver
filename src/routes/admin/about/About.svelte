@@ -27,10 +27,8 @@
 	</a>
 </Table.Cell>
 {#if isEditing}
-	<!-- below is empty on purpose -->
-	<Table.Cell></Table.Cell>
 	<Table.Cell class="full-width">
-		<form method="POST" data-sveltekit-noscroll use:enhance>
+		<form class="content" method="POST" data-sveltekit-noscroll use:enhance>
 			<fieldset>
 				<legend>Change visibility</legend>
 
@@ -45,33 +43,36 @@
 				</div>
 			</fieldset>
 
-			<textarea name="about" cols="80" rows="5" value={about} />
+			<textarea name="about" cols="80" rows="3" value={about} />
 
-			<input type="hidden" name="title" value={title} />
-			<input type="hidden" name="url" value={url} />
+			<div class="buttons-wrapper">
+				<input type="hidden" name="title" value={title} />
+				<input type="hidden" name="url" value={url} />
 
-			<button class="create-button" type="submit">Save</button>
+				<button class="create-button" type="submit">Save</button>
+				<button class="delete-button" on:click={toggleEditOff}>Nvm</button>
+			</div>
 		</form>
 	</Table.Cell>
-	<Table.Cell>
-		<button class="delete-button" on:click={toggleEditOff}>Nvm</button>
-	</Table.Cell>
 {:else}
-	<Table.Cell>{isShowing ? 'Visible' : 'Hidden'}</Table.Cell>
-	<Table.Cell>{about}</Table.Cell>
 	<Table.Cell>
+		<div class="content">
+			<span>
+				{isShowing ? 'Visible' : 'Hidden'}
+			</span>
+			<span>
+				{about}
+			</span>
+		</div>
+	</Table.Cell>
+	<Table.Cell class="end">
 		<button class="update-button" on:click={toggleEditOn}>edit</button>
 	</Table.Cell>
 {/if}
 
 <style>
-	form {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-	}
 	button {
-		max-height: var(--size-6);
+		max-height: var(--size-7);
 	}
 	fieldset {
 		& div {
@@ -79,7 +80,15 @@
 			align-items: center;
 			gap: var(--size-1);
 		}
-		/* justify-content: center; */
-		/* align-self: center; */
+	}
+	/* CLASSES */
+	.content {
+		display: flex;
+		align-items: center;
+		gap: var(--size-10);
+	}
+	.buttons-wrapper {
+		display: flex;
+		gap: var(--size-3);
 	}
 </style>

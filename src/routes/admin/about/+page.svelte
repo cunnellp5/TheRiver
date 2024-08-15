@@ -10,20 +10,17 @@
 	<Card.Root>
 		<Card.Header>
 			<Card.Title>About</Card.Title>
-			<Card.Description>Edit your about sections</Card.Description>
+			<Card.Description>Toggle visibility</Card.Description>
+			<Card.Description>Change the text</Card.Description>
+			<Card.Description>Follow link to view changes</Card.Description>
 		</Card.Header>
 	</Card.Root>
 </div>
 
 <Table.Root>
-	<Table.Caption>Abouts</Table.Caption>
+	<Table.Caption>Change any of the about sections</Table.Caption>
 	<Table.Header>
-		<Table.Row>
-			Change your about info
-			<!-- <Table.Head>Page</Table.Head> -->
-			<!-- <Table.Head>IsShowing</Table.Head> -->
-			<!-- <Table.Head>Description</Table.Head> -->
-		</Table.Row>
+		<Table.Row>About table</Table.Row>
 	</Table.Header>
 	<Table.Body>
 		{#each Object.entries(about) as [key, value]}
