@@ -1,5 +1,6 @@
 <script lang="ts">
-	import Table from '$lib/components/ui/Table.svelte';
+	// import Table from '$lib/components/ui/Table.svelte';
+	import * as Table from '$lib/components/ui/shadcn/table';
 	import { CldImage } from 'svelte-cloudinary';
 	import { enhance } from '$app/forms';
 
@@ -20,20 +21,20 @@
 	}
 
 	// TODO table mapper function?
-	const remappedServices = services.reduce((acc, service) => {
-		if (!acc[service.category]) {
-			acc[service.category] = [];
-		}
-		acc[service.category].push({
-			id: service.id,
-			Service: service.name,
-			Description: service.description,
-			Duration: `${service.duration} min`,
-			Availability: service.availability,
-			Price: `$${service.price}`
-		});
-		return acc;
-	}, {});
+	// const remappedServices = services.reduce((acc, service) => {
+	// 	if (!acc[service.category]) {
+	// 		acc[service.category] = [];
+	// 	}
+	// 	acc[service.category].push({
+	// 		id: service.id,
+	// 		Service: service.name,
+	// 		Description: service.description,
+	// 		Duration: `${service.duration} min`,
+	// 		Availability: service.availability,
+	// 		Price: `$${service.price}`
+	// 	});
+	// 	return acc;
+	// }, {});
 </script>
 
 <svelte:window bind:scrollY={scroll} />
@@ -63,12 +64,46 @@
 
 		<!-- <div class="page-indicator">1</div> -->
 	</section>
-	{#each Object.entries(remappedServices) as [category, listOfServices]}
+	<!-- {#each Object.entries(remappedServices) as [category, listOfServices]}
 		<section class="service-table">
 			<div>
 				<h2>{category}</h2>
 				<Table data={listOfServices} {selectedServices} on:selectService={setSelected} />
 			</div>
+		</section>
+	{/each} -->
+	{#each Object.entries(services) as [category, data]}
+		<section class="tables">
+			<Table.Root>
+				<Table.Caption>{data[0].category.description}</Table.Caption>
+				<Table.Header>
+					<Table.Row>
+						<div class="table-row-header">
+							<h5>
+								{category.toUpperCase()}
+							</h5>
+							<small>{data.length} ct</small>
+						</div>
+					</Table.Row>
+				</Table.Header>
+				<Table.Body>
+					{#each data as service}
+						<Table.Row>
+							<Table.Cell>{service.name}</Table.Cell>
+							<Table.Cell>
+								<div class="price-duration">
+									<span class="price">
+										${service.price}.00
+									</span>
+									<span class="time">
+										{service.duration} min
+									</span>
+								</div>
+							</Table.Cell>
+						</Table.Row>
+					{/each}
+				</Table.Body>
+			</Table.Root>
 		</section>
 	{/each}
 
@@ -106,13 +141,6 @@
 		line-height: var(--font-lineheight-4);
 		letter-spacing: var(--font-letterspacing-3);
 	}
-	.cutoutImg {
-		position: absolute;
-		top: var(--size-8);
-		left: 0;
-		z-index: -1;
-		clip-path: polygon(0 0, 100% 0, 100% 75%, 0% 100%);
-	}
 	button {
 		align-self: end;
 		margin: 0 auto;
@@ -125,7 +153,6 @@
 		align-self: center;
 		width: var(--size-content-2);
 	}
-
 	aside {
 		position: sticky;
 		bottom: var(--size-7);
@@ -133,8 +160,8 @@
 		border-radius: var(--radius-2);
 		padding: var(--size-4);
 		width: max-content;
-		/* justify-content: end; */
 	}
+	/* CLASSES */
 	/* .page-indicator {
 		display: flex;
 		position: fixed;
@@ -147,6 +174,18 @@
 		height: var(--size-7);
 		color: var(--link);
 	} */
+	.tables {
+		align-items: center;
+		align-self: center;
+		width: 50%;
+	}
+	.cutoutImg {
+		position: absolute;
+		top: var(--size-8);
+		left: 0;
+		z-index: -1;
+		clip-path: polygon(0 0, 100% 0, 100% 75%, 0% 100%);
+	}
 	.top {
 		display: flex;
 		flex-direction: column;
@@ -154,6 +193,23 @@
 		align-items: end;
 		width: 100%;
 		height: 40vh;
+	}
+	.price-duration {
+		display: flex;
+		flex-direction: column;
+	}
+	.time {
+		color: var(--text-2);
+		font-size: var(--font-size-00);
+	}
+	.price {
+		font-size: var(--font-size-0);
+	}
+	.table-row-header {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: var(--size-3);
 	}
 	.service-table {
 		display: flex;
