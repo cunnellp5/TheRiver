@@ -2,18 +2,24 @@
 	import { page } from '$app/stores';
 </script>
 
-<main class:hype={$page.status === 404}>
+<main class:hype={$page.status === 404} class="app-layout">
 	{#if $page.status === 404}
 		<h1>The River</h1>
 		<section>
 			<a href="/shop">
-				<h3>Creates</h3>
+				<h3>Merch</h3>
 			</a>
 			<a href="/music">
-				<h2>&nbsp;&nbsp;Sings</h2>
+				<h2>&nbsp;&nbsp;Music</h2>
 			</a>
 			<a href="/services">
-				<h4>Beauty</h4>
+				<h4>Book now</h4>
+			</a>
+			<a href="/posts">
+				<h5>&nbsp;&nbsp;&nbsp;Blog</h5>
+			</a>
+			<a href="/contact">
+				<h5>&nbsp;&nbsp;&nbsp;&nbsp;Contact</h5>
 			</a>
 			<a href="/">
 				<h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Home</h5>
@@ -52,9 +58,12 @@
 		text-transform: uppercase;
 	}
 	a {
+		display: block;
+		transition: 0.1s ease-in-out;
 		text-decoration: none;
 	}
 	a:hover {
-		text-decoration: underline;
+		/* text-decoration: underline; */
+		transform: scale(1.2);
 	}
 </style>
