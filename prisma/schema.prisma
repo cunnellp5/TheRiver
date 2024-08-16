@@ -207,3 +207,16 @@ model About {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model BusinessInfo {
+  id        Int      @id @default(autoincrement())
+  name      String?
+  address   String?
+  city      String?
+  state     String?
+  zip       String?
+  phone     String?
+  email     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
