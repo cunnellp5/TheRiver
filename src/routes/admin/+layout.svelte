@@ -20,7 +20,7 @@
 	</a>
 </header>
 
-<main>
+<main class="app-layout">
 	<aside>
 		<nav class="sidenav">
 			<div class="dropLabel">Main</div>
@@ -52,7 +52,7 @@
 			</a>
 			<a
 				class="indented"
-				class:current={$page.url.pathname === '/admin/homepage/articles'}
+				class:current={$page.url.pathname.includes('/admin/homepage/articles')}
 				href="/admin/homepage/articles"
 				data-sveltekit-noscroll>
 				Articles

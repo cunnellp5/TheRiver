@@ -13,7 +13,7 @@
 	// }
 </script>
 
-<main>
+<main class="app-layout">
 	<section>
 		<a target="_blank" href={market.url}>
 			<h1>THE RIVER MARKET</h1>
