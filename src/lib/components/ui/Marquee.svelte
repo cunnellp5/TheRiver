@@ -1,14 +1,14 @@
 <!-- TODO add this to homepage after breaking out of the layout styles so this can be full width rather than being constrained by the layout style width -->
 <div class="marquee marquee-hover-pause">
 	<div class="marquee_group">
-		<span>The River Sings</span>
-		<span>The River Speaks</span>
-		<span>The River Creates</span>
+		<span>THE RIVER SINGS&nbsp;</span>
+		<span>THE RIVER SPEAKS&nbsp;</span>
+		<span>THE RIVER CREATES&nbsp;</span>
 	</div>
 	<div class="marquee_group" aria-hidden="true">
-		<span>The River Sings</span>
-		<span>The River Speaks</span>
-		<span>The River Creates</span>
+		<span>THE RIVER SINGS&nbsp;</span>
+		<span>THE RIVER SPEAKS&nbsp;</span>
+		<span>THE RIVER CREATES&nbsp;</span>
 	</div>
 </div>
 
@@ -43,12 +43,15 @@
 		color: white;
 		font-weight: 800;
 		font-size: 7vw;
-		font-family: 'Syne', sans-serif !important;
+		font-family: 'Syne', sansserif !important;
 		white-space: nowrap;
 	}
 
 	.marquee-hover-pause:hover .marquee_group {
 		animation-play-state: paused;
+		cursor:
+			url('https://fav.farm/🎙️') 15 0,
+			auto;
 	}
 
 	@keyframes scroll {
