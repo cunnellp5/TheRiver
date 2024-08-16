@@ -17,44 +17,46 @@
 	}
 </script>
 
-<h1>The River</h1>
-<p>Denver, CO</p>
-<div class="main-page-wrapper">
-	<!-- TODO put this video in cloudinary -->
-	<video autoplay muted loop playsinline class="background-video">
-		<source src="water.mp4" type="video/mp4" />
-		Your browser does not support HTML5 video.
-	</video>
-	<section>
-		<div>
-			<h2>NEWSLETTER</h2>
-			<form method="POST">
-				<label for="email">Email</label>
-				<div class="newsletter-form">
-					<input type="email" name="email" placeholder="test@example.com" />
-					<button title="Send email"> <MailCheck />Sign up </button>
-				</div>
-			</form>
-		</div>
-		<div>
-			<h3>CONTACT</h3>
-			<p>theriverrunsfast@gmail.com</p>
-			<aside class="buttons-wrapper">
-				<button on:click={copyEmail} title="Copy email to clipboard">
-					{#if copied}
-						<Check size="24" /> copied!
-					{:else}
-						<Copy size="24" /> copy
-					{/if}
-				</button>
-				<a href="mailto:{email}">
-					<button title="Send email">
-						<Send size="24" /> email
+<div class="app-layout">
+	<h1>The River</h1>
+	<p>Denver, CO</p>
+	<div class="main-page-wrapper">
+		<!-- TODO put this video in cloudinary -->
+		<video autoplay muted loop playsinline class="background-video">
+			<source src="water.mp4" type="video/mp4" />
+			Your browser does not support HTML5 video.
+		</video>
+		<section>
+			<div>
+				<h2>NEWSLETTER</h2>
+				<form method="POST">
+					<label for="email">Email</label>
+					<div class="newsletter-form">
+						<input type="email" name="email" placeholder="test@example.com" />
+						<button title="Send email"> <MailCheck />Sign up </button>
+					</div>
+				</form>
+			</div>
+			<div>
+				<h3>CONTACT</h3>
+				<p>theriverrunsfast@gmail.com</p>
+				<aside class="buttons-wrapper">
+					<button on:click={copyEmail} title="Copy email to clipboard">
+						{#if copied}
+							<Check size="24" /> copied!
+						{:else}
+							<Copy size="24" /> copy
+						{/if}
 					</button>
-				</a>
-			</aside>
-		</div>
-	</section>
+					<a href="mailto:{email}">
+						<button title="Send email">
+							<Send size="24" /> email
+						</button>
+					</a>
+				</aside>
+			</div>
+		</section>
+	</div>
 </div>
 
 <style>

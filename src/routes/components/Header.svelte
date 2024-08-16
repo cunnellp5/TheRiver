@@ -118,6 +118,10 @@
 	nav {
 		position: relative;
 		align-items: center;
+		backdrop-filter: blur(
+			2px
+		); /* unsure if i want this style in the header or blur the entire background */
+		padding-inline: var(--size-4); /* unsure if i want this style or blur the entire background */
 		padding-block: var(--size-2);
 	}
 

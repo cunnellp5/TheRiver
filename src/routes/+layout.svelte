@@ -16,8 +16,10 @@
 
 <Toasts />
 
-<div class="layout">
-	<Header isSignedIn={data.isSignedIn} />
+<div>
+	<div class="app-layout">
+		<Header isSignedIn={data.isSignedIn} />
+	</div>
 
 	<!-- TODO move transitions to a new layout so admin portal looks better when navigating -->
 	<!-- TODO remove padding and width restrictions at this level to allow for custom full width pages -->
@@ -25,7 +27,9 @@
 		<slot />
 	</PageTransition>
 
-	<Footer />
+	<div class="app-layout">
+		<Footer />
+	</div>
 </div>
 
 <style>
@@ -38,18 +42,18 @@
 		padding-inline: var(--size-7);
 	} */
 
-	.layout {
+	/* .layout {
 		display: grid;
 		grid-template-rows: auto 1fr auto;
 		margin-inline: auto;
 		padding-inline: var(--size-7);
 		height: 100%;
 		max-inline-size: 1440px;
-	}
+	} */
 
-	@media (min-width: 1440px) {
-		.layout {
+	/* @media (min-width: 1440px) {
+		.app-layout {
 			padding-inline: 0;
 		}
-	}
+	} */
 </style>

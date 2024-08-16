@@ -39,7 +39,7 @@
 
 <svelte:window bind:scrollY={scroll} />
 
-<main>
+<main class="app-layout">
 	<section class="top">
 		<h1 style:transform={`translate3d(${scroll / 10}px, 0, 0)`}>THE RIVER BEAUTY</h1>
 		<p

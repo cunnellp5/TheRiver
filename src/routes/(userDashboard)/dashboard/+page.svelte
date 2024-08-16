@@ -6,7 +6,7 @@
 	export let data;
 </script>
 
-<section>
+<section class="app-layout">
 	<div class="top-user-card">
 		<Card.Root>
 			<Card.Header>

@@ -5,7 +5,7 @@
 	import { page } from '$app/stores';
 </script>
 
-<div class="grid-container">
+<div class="grid-container app-layout">
 	<div class="sidenav">
 		<a href="/music" class:current={$page.url.pathname === '/music'}>Tracks</a>
 		<a href="/music/video" class:current={$page.url.pathname === '/music/video'}>Videos</a>

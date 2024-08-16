@@ -5,6 +5,7 @@
 	import Card from '$lib/components/ui/Card.svelte';
 	import TestVideo from './components/TestVideo.svelte';
 	import TheRiver from './components/TheRiver.svelte';
+	// import Marquee from '$lib/components/ui/Marquee.svelte';
 
 	export let data;
 
@@ -55,23 +56,27 @@
 		on:mouseleave={pauseVideo}>
 		<!-- <LogoWhite isHomePage={true} /> -->
 		{#if visible}
+			<!-- <div class="app-layout"> -->
 			<TheRiver />
+			<!-- </div> -->
 		{/if}
 	</div>
-
 	<TestVideo />
 
-	<section class="article-wrapper">
-		{#each articles as article}
-			<Card
-				articleImage={article.img}
-				articleTitle={article.articleTitle}
-				description={article.description}
-				link={article.link}
-				author={article.author}>
-			</Card>
-		{/each}
-	</section>
+	<div class="app-layout">
+		<section class="article-wrapper">
+			{#each articles as article}
+				<Card
+					articleImage={article.img}
+					articleTitle={article.articleTitle}
+					description={article.description}
+					link={article.link}
+					author={article.author}>
+				</Card>
+			{/each}
+		</section>
+	</div>
+	<!-- <Marquee /> -->
 </main>
 
 <style>
@@ -100,8 +105,8 @@
 		position: absolute;
 		top: 0;
 		left: 0;
-		backdrop-filter: blur(3px);
-		background: rgba(0, 0, 0, 0.6); /* Black tint with 50% opacity */
+		/* backdrop-filter: blur(3px); keeping here in case i do want to blur the background */
+		background: rgba(0, 0, 0, 0.6);
 		width: 100%;
 		height: 100%;
 	}
@@ -110,7 +115,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		height: 100vh;
+		height: 93.5vh;
 	}
 
 	/* 
