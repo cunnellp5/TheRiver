@@ -20,7 +20,7 @@
 					<a class="is-snapped-anchor" target="_blank" data-id={video.videoId}>
 						<Card.Root>
 							<Card.Content>
-								<img src={video.thumbnail} alt={video.title} />
+								<img src={video.thumbnail} alt={video.title} class="thumbnail" />
 							</Card.Content>
 							<Card.Footer>
 								<label for="img">{video.title}</label>
@@ -41,7 +41,12 @@
 	/* ELEMENTS */
 	img {
 		cursor: pointer;
+		margin-block-start: var(--size-6);
 		border-radius: var(--radius-2);
+		width: var(--size-content-4);
+		height: var(--size-content-2);
+		object-fit: cover;
+		pointer-events: none;
 	}
 	label {
 		color: var(--text-2);

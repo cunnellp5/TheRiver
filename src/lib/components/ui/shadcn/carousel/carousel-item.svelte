@@ -32,6 +32,7 @@
 	}
 	.embla__slide:not(.is-snapped) {
 		opacity: 0.16;
+		pointer-events: none;
 		& .is-snapped-anchor {
 			pointer-events: none;
 		}
