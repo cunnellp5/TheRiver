@@ -157,6 +157,7 @@
 			<p>2 - after creating submit, this will generate 15 min slots of available times</p>
 			<p>3 - user can book these slots</p>
 		</Card.Content>
+		<Card.Footer>🚧 Under Construction</Card.Footer>
 	</Card.Root>
 </div>
 <div class="container" class:ec-dark={$theme === 'dark'} class:ec-light={$theme === 'light'}>

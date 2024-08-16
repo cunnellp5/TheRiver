@@ -17,7 +17,6 @@
 		<Card.Content>
 			<p>todo</p>
 			<ul>
-				<li>move to generic table</li>
 				<li>MVP is create a way to CRUD services</li>
 				<li>dont let users start scheduling, yet</li>
 			</ul>
