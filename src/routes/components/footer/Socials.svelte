@@ -6,20 +6,33 @@
 	import Spotify from '$lib/components/svgs/socials/Spotify.svelte';
 	import Youtube from '$lib/components/svgs/socials/Youtube.svelte';
 	import LogoR from '$lib/components/svgs/logos/LogoR2.svelte';
+	import socialLinks from '$lib/data/socialLinks';
 </script>
 
 <ul>
-	<li class="socials"><Facebook /></li>
-	<li class="socials"><Youtube /></li>
-	<li class="socials"><Instagram /></li>
+	<a class="socials" href={socialLinks.facebook} target="_blank">
+		<li><Facebook /></li>
+	</a>
+	<a class="socials" href={socialLinks.instagram} target="_blank">
+		<li><Youtube /></li>
+	</a>
+	<a class="socials" href={socialLinks.instagram} target="_blank">
+		<li><Instagram /></li>
+	</a>
 	<li class="logo-link">
 		<a href="/">
 			<LogoR />
 		</a>
 	</li>
-	<li class="socials"><LinkTree /></li>
-	<li class="socials"><Spotify /></li>
-	<li class="socials"><Etsy /></li>
+	<a class="socials" href={socialLinks.linkTree} target="_blank">
+		<li><LinkTree /></li>
+	</a>
+	<a class="socials" href={socialLinks.spotify} target="_blank">
+		<li><Spotify /></li>
+	</a>
+	<a class="socials" href={socialLinks.etsy} target="_blank">
+		<li><Etsy /></li>
+	</a>
 </ul>
 
 <style>
@@ -32,7 +45,7 @@
 		list-style: none;
 	}
 
-	li {
+	a {
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -41,7 +54,7 @@
 		width: var(--size-8);
 	}
 
-	li:hover {
+	a:hover {
 		cursor: pointer;
 	}
 
