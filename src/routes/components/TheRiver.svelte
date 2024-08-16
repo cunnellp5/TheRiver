@@ -81,6 +81,7 @@
 <style>
 	.homePage {
 		fill: var(--stone-3);
+		width: 100%;
 	}
 	/* 
 	#R,
