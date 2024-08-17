@@ -35,7 +35,7 @@
 		justify-content: space-between;
 		align-items: center;
 		gap: 0.2rem;
-		animation: scroll 15s linear infinite;
+		animation: scroll 45s linear infinite;
 		min-width: 100%;
 	}
 
