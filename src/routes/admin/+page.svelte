@@ -13,12 +13,7 @@
 			<Card.Title>Welcome</Card.Title>
 			<Card.Description>Update all content on your website</Card.Description>
 		</Card.Header>
-		<Card.Content>
-			<p>👈 Use the side menu to find what you want to change</p>
-			<p>
-				🗒️ Each section is divided by page and each page has its own section for the related content
-			</p>
-		</Card.Content>
+		<Card.Content></Card.Content>
 	</Card.Root>
 </div>
 <div class="adminIntroCardWrapper">
@@ -28,7 +23,20 @@
 			<Table.Row>The River LLC</Table.Row>
 		</Table.Header>
 		<Table.Body>
-			<Table.Row>
+			{#if business}
+				{#each Object.entries(business) as [key, value]}
+					<Table.Row>
+						{#if key !== 'id' && key !== 'createdAt' && key !== 'updatedAt'}
+							<Table.Cell>{key.toUpperCase()}</Table.Cell>
+							<Table.Cell>{value}</Table.Cell>
+							<div class="button-wrapper">
+								<button class="update-button">edit</button>
+							</div>
+						{/if}
+					</Table.Row>
+				{/each}
+			{/if}
+			<!-- <Table.Row>
 				<Table.Cell>Name</Table.Cell>
 				<Table.Cell>{business?.name || 'no name'}</Table.Cell>
 			</Table.Row>
@@ -55,7 +63,7 @@
 			<Table.Row>
 				<Table.Cell>Email</Table.Cell>
 				<Table.Cell>{business?.email || 'no email'}</Table.Cell>
-			</Table.Row>
+			</Table.Row> -->
 		</Table.Body>
 	</Table.Root>
 </div>
@@ -64,5 +72,13 @@
 	p {
 		margin-block: var(--size-2);
 		font-size: var(--font-size-1);
+	}
+	.button-wrapper {
+		display: flex;
+		align-content: center;
+		justify-content: center;
+	}
+	.update-button {
+		height: 100%;
 	}
 </style>

@@ -1,7 +1,9 @@
 <script lang="ts">
 	import * as Card from '$lib/components/ui/shadcn/card';
+	import * as Table from '$lib/components/ui/shadcn/table';
 	import Users from 'lucide-svelte/icons/users';
 	import market from '$lib/data/json/market.json';
+	import Marquee from '$lib/components/ui/Marquee.svelte';
 
 	export let data;
 </script>
@@ -20,19 +22,37 @@
 				<Card.Description></Card.Description>
 			</Card.Header>
 			<Card.Content>
-				<ul>
-					<li>
-						{data.user?.email}
-					</li>
-				</ul>
+				<div class="adminIntroCardWrapper">
+					<Table.Root>
+						<!-- <Table.Caption>User information</Table.Caption> -->
+						<Table.Header>
+							<!-- <Table.Row></Table.Row> -->
+						</Table.Header>
+						<Table.Body>
+							<Table.Row>
+								<Table.Cell>Email</Table.Cell>
+								<Table.Cell>{data.user?.email}</Table.Cell>
+							</Table.Row>
+							<Table.Row>
+								<Table.Cell>Subscription</Table.Cell>
+								<Table.Cell>{data.user?.isSubscribed}</Table.Cell>
+							</Table.Row>
+							<!-- {#each Object.entries(business) as [key, value]}
+									<Table.Row>
+											<Table.Cell>{key.toUpperCase()}</Table.Cell>
+											<Table.Cell>{value}</Table.Cell>
+											<div class="button-wrapper">
+												<button class="update-button">edit</button>
+											</div>
+									</Table.Row>
+								{/each} -->
+						</Table.Body>
+					</Table.Root>
+				</div>
 			</Card.Content>
 			<Card.Footer>
 				<div class="pw-reset">
-					<a href="/reset">
-						<!-- <button class="secondary"> -->
-						Reset Password
-						<!-- </button> -->
-					</a>
+					<a href="/reset"> Reset Password </a>
 				</div>
 			</Card.Footer>
 		</Card.Root>
@@ -42,7 +62,7 @@
 		<Card.Root>
 			<Card.Header>
 				<Card.Title>Services</Card.Title>
-				<Card.Description>History of appts</Card.Description>
+				<Card.Description>History</Card.Description>
 			</Card.Header>
 			<Card.Content>
 				<table>
@@ -67,17 +87,15 @@
 			</Card.Content>
 			<Card.Footer>
 				<a href="/services">
-					<button class="primary">Schedule</button>
+					<button class="primary">See Services</button>
 				</a>
 			</Card.Footer>
 		</Card.Root>
 
-		<Card.Root>
+		<!-- <Card.Root>
 			<Card.Header>
 				<Card.Title>Newsletter</Card.Title>
-				<Card.Description>
-					None of your info is shared with third parties or anyone other than TheRiver
-				</Card.Description>
+				<Card.Description>No personal information is shared with anyone</Card.Description>
 			</Card.Header>
 			<Card.Content>
 				<div class="newsletter-content-wrapper">
@@ -93,23 +111,18 @@
 			<Card.Footer>
 				<button class="secondary"> Unsubscribe </button>
 			</Card.Footer>
-		</Card.Root>
+		</Card.Root> -->
 
 		<Card.Root>
 			<Card.Header>
 				<Card.Title>Merch</Card.Title>
-				<Card.Description>Check the store</Card.Description>
+				<Card.Description>Handmade jewelry</Card.Description>
+				<Card.Description>Custom clothes</Card.Description>
+				<Card.Description>And more!</Card.Description>
 			</Card.Header>
-			<Card.Content>
-				<div>
-					Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquid voluptatum consequatur
-					veniam neque quisquam doloribus praesentium eum provident quasi expedita tenetur quam
-					suscipit, obcaecati quod perferendis harum deserunt labore consectetur!
-				</div>
-			</Card.Content>
 			<Card.Footer>
 				<a href={market.url} target="_blank">
-					<button class="secondary"> Etsy </button>
+					<button class="secondary"> Etsy store </button>
 				</a>
 			</Card.Footer>
 		</Card.Root>
@@ -160,5 +173,10 @@
 	.isSubscribed {
 		/* color: var(--color-primary); */
 		font-weight: bold;
+	}
+	.adminIntroCardWrapper {
+		display: flex;
+		justify-content: center;
+		width: 25%;
 	}
 </style>
