@@ -96,8 +96,7 @@
 		font-size: var(--font-size-0);
 	}
 	a {
-		transition: transform 0.3s ease;
-		transition: text-shadow 0.3s ease;
+		transition: color 0.1s ease;
 		margin-inline: var(--size-1);
 		color: var(--gray-7);
 		font-size: var(--font-size-0);
@@ -108,7 +107,8 @@
 		display: inline-block;
 		/* transform: scale(1.2); */
 		cursor: pointer;
-		/* color: var(--gray-9); */
+		color: var(--link);
+		text-decoration: none;
 		/* text-shadow:
 			0 0 10px #fff,
 			0 0 20px #fff,
