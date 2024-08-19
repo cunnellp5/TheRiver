@@ -18,4 +18,8 @@
 		justify-content: space-between;
 		padding: var(--size-6);
 	}
+
+	.noPadding {
+		padding: unset;
+	}
 </style>
