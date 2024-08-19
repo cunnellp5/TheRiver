@@ -60,6 +60,10 @@
 		}
 	} */
 	.blur-bar {
-		backdrop-filter: blur(2px);
+		position: sticky; /* Make the nav sticky */
+		top: 0;
+		z-index: 1000;
+		/* backdrop-filter: blur(6px); */
+		background: var(--background);
 	}
 </style>

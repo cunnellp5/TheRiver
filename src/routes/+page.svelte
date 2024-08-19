@@ -2,10 +2,12 @@
 	import { fade } from 'svelte/transition';
 	// import LogoWhite from '$lib/components/svgs/logos/LogoWhite.svelte';
 	import { onMount } from 'svelte';
-	import Card from '$lib/components/ui/Card.svelte';
+	import { CldImage } from 'svelte-cloudinary';
+	// import Card from '$lib/components/ui/Card.svelte';
+	import * as GenericCard from '$lib/components/ui/shadcn/card';
 	import TestVideo from './components/TestVideo.svelte';
 	import TheRiver from './components/TheRiver.svelte';
-	// import Marquee from '$lib/components/ui/Marquee.svelte';
+	import Marquee from '$lib/components/ui/Marquee.svelte';
 
 	export let data;
 
@@ -30,115 +32,108 @@
 	onMount(() => {
 		visible = true;
 
-		window.addEventListener('scroll', () => {
-			videoElement.style.objectPosition = `0px ${window.pageYOffset * 0.5}px`;
-		});
+		// window.addEventListener('scroll', () => {
+		// 	videoElement.style.objectPosition = `0px ${window.pageYOffset * 0.5}px`;
+		// });
 	});
 </script>
 
 <title>The River</title>
 <main>
-	<div id="video-background">
-		{#if visible}
-			<video in:fade={{ duration: 800, delay: 600 }} autoplay loop muted bind:this={videoElement}>
-				<source src={videoURL} type="video/mp4" />
-				<track kind="captions" srclang="en" label="English" />
-			</video>
-		{/if}
-		<div id="video-tint"></div>
-	</div>
+	<div class="img-video-overlay-wrapper">
+		<div id="video-background">
+			{#if visible}
+				<video in:fade={{ duration: 800, delay: 600 }} autoplay loop muted bind:this={videoElement}>
+					<source src={videoURL} type="video/mp4" />
+					<track kind="captions" srclang="en" label="English" />
+				</video>
+			{/if}
+			<div id="video-tint"></div>
+		</div>
 
-	<div
-		role="img"
-		aria-label={isPlaying ? 'Play video' : 'Pause video'}
-		id="image-container"
-		on:mouseenter={playVideo}
-		on:mouseleave={pauseVideo}>
-		<!-- <LogoWhite isHomePage={true} /> -->
-		{#if visible}
-			<!-- <div class="app-layout"> -->
-			<TheRiver />
-			<!-- </div> -->
-		{/if}
+		<!-- on:mouseenter={playVideo}
+		on:mouseleave={pauseVideo} -->
+		<div role="img" aria-label={isPlaying ? 'Play video' : 'Pause video'} id="image-container">
+			<!-- <LogoWhite isHomePage={true} /> -->
+			{#if visible}
+				<!-- <div class="app-layout"> -->
+				<TheRiver />
+				<!-- </div> -->
+			{/if}
+		</div>
 	</div>
-	<TestVideo />
-
-	<div class="app-layout">
-		<section class="article-wrapper">
-			{#each articles as article}
-				<Card
+	<Marquee />
+	<section class="articlesRoot">
+		{#each articles as article, i}
+			<!-- <Card
 					articleImage={article.img}
 					articleTitle={article.articleTitle}
 					description={article.description}
 					link={article.link}
 					author={article.author}>
-				</Card>
-			{/each}
-		</section>
-	</div>
-	<!-- <Marquee /> -->
+				</Card> -->
+
+			<GenericCard.Root class={i % 2 === 0 ? 'option1' : 'option2'}>
+				<div class="app-layout articleWrapper">
+					<GenericCard.Header>
+						<GenericCard.Title>
+							{article.articleTitle}
+						</GenericCard.Title>
+						<GenericCard.Description>
+							{article.description}
+						</GenericCard.Description>
+					</GenericCard.Header>
+					<GenericCard.Content class="noPadding">
+						<CldImage height="450px" width="450px" src={article.img} alt={article.articleTitle} />
+					</GenericCard.Content>
+					<!-- <GenericCard.Footer></GenericCard.Footer> -->
+				</div>
+			</GenericCard.Root>
+		{/each}
+	</section>
+	<TestVideo />
 </main>
 
 <style>
+	/* ELEMENTS */
 	video {
+		width: 100%;
+		height: 100%;
+		object-fit: cover; /* Ensure the video covers the entire area */
+	}
+	/* CLASSES */
+	.img-video-overlay-wrapper {
+		position: relative;
+		z-index: 1; /* Ensure it is below the nav */
+		height: 100vh; /* Make the wrapper take up the full height of the viewport */
+	}
+	/* .articlesRoot {
+		width: 100%;
+	} */
+	/* IDS */
+	#video-background {
+		position: relative;
+		height: 100%; /* Make the video background take up the full height of the wrapper */
+	}
+	#image-container {
+		display: flex;
 		position: absolute;
 		top: 0;
 		left: 0;
+		justify-content: center;
+		align-items: center;
+		z-index: 2; /* Ensure it is above the video */
+		backdrop-filter: blur(1px);
 		width: 100%;
 		height: 100%;
-		object-fit: cover;
 	}
-
-	#video-background {
-		position: absolute;
-		right: 0;
-		bottom: 0;
-		z-index: -100;
-		width: auto;
-		min-width: 100%;
-		height: auto;
-		min-height: 100%;
-		overflow: hidden;
-	}
-
 	#video-tint {
 		position: absolute;
 		top: 0;
 		left: 0;
-		/* backdrop-filter: blur(3px); keeping here in case i do want to blur the background */
-		background: rgba(0, 0, 0, 0.6);
+		z-index: 1; /* Ensure it is above the video but below the text */
+		background: rgba(0, 0, 0, 0.5); /* Optional: Add a tint over the video */
 		width: 100%;
 		height: 100%;
 	}
-
-	#image-container {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		height: 93.5vh;
-	}
-
-	/* 
-	.zoom {
-		animation: zoom 20s;
-		animation-fill-mode: forwards;
-	} */
-	/* 
-	@keyframes zoom {
-		from {
-			transform: scale(1);
-		}
-		to {
-			transform: scale(1.1);
-		}
-	} */
-
-	/* @keyframes psychedelic {
-		from {
-			filter: hue-rotate(0deg);
-		}
-		to {
-			filter: hue-rotate(360deg);
-		}
-	} */
 </style>
