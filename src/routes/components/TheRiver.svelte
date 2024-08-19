@@ -83,9 +83,8 @@
 		fill: var(--stone-3);
 		width: 100%;
 	}
-	/* 
-	#R,
-	#R2 {
-		fill: var(--indigo-1);
-	} */
+
+	/* .homePage { */
+	/* fill: var(--brown-0); */
+	/* } */
 </style>

@@ -208,7 +208,7 @@
 		height: var(--size-5);
 	}
 
-	.homepageText {
+	/* .homepageText {
 		& a,
 		.logout-button {
 			color: var(--gray-1);
@@ -216,7 +216,7 @@
 		& .border-left {
 			border-left: 1px solid var(--border-light);
 		}
-	}
+	} */
 
 	.logout-button {
 		background: inherit;

@@ -34,7 +34,7 @@ html {
 	--update-dark: var(--blue-6);
 
 	/* light */
-	--background-light: var(--brown-0);
+	--background-light: var(--gray-0);
 	--border-light: var(--gray-4);
 	--brand-light: var(--cyan-10);
 	--button-light: var(--gray-3);
