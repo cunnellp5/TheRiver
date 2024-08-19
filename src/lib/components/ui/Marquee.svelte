@@ -15,15 +15,15 @@
 <style>
 	.marquee {
 		display: flex;
-		padding-top: 11rem;
-		padding-bottom: 12rem;
-		height: 40vh;
+		/* padding-top: 11rem; */
+		/* padding-bottom: 12rem; */
+		/* height: 40vh; */
 		overflow: hidden;
 		user-select: none;
 	}
 
 	.marquee:hover {
-		-webkit-text-stroke: 1.5px #fff;
+		-webkit-text-stroke: 1.5px var(--link);
 		-webkit-text-fill-color: transparent;
 		color: transparent;
 		-webkit-font-smoothing: antialiased;
@@ -32,17 +32,16 @@
 	.marquee_group {
 		display: flex;
 		flex-shrink: 0;
-		justify-content: space-between;
-		align-items: center;
-		gap: 0.2rem;
+		/* justify-content: space-between; */
+		/* align-items: center; */
 		animation: scroll 45s linear infinite;
 		min-width: 100%;
 	}
 
 	.marquee_group span {
-		color: white;
+		color: var(--link);
 		font-weight: 800;
-		font-size: 7vw;
+		font-size: var(--size-content-1);
 		font-family: 'Syne', sansserif !important;
 		white-space: nowrap;
 	}
