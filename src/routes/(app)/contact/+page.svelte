@@ -28,32 +28,24 @@
 		</video>
 		<section>
 			<div>
-				<h2>NEWSLETTER</h2>
-				<form method="POST">
-					<label for="email">Email</label>
-					<div class="newsletter-form">
-						<input type="email" name="email" placeholder="test@example.com" />
-						<button title="Send email"> <MailCheck />Sign up </button>
-					</div>
-				</form>
-			</div>
-			<div>
-				<h3>CONTACT</h3>
-				<p>theriverrunsfast@gmail.com</p>
-				<aside class="buttons-wrapper">
-					<button on:click={copyEmail} title="Copy email to clipboard">
+				<!-- <h3>Hmu</h3> -->
+				<p class="email-wrapper">
+					theriverrunsfast@gmail.com
+					<!-- svelte-ignore a11y-click-events-have-key-events -->
+					<!-- svelte-ignore a11y-no-static-element-interactions -->
+					<span class="copy" on:click={copyEmail} title="Copy email to clipboard">
 						{#if copied}
-							<Check size="24" /> copied!
+							<Check size="24" />
 						{:else}
-							<Copy size="24" /> copy
+							<Copy size="24" />
 						{/if}
-					</button>
+					</span>
 					<a href="mailto:{email}">
-						<button title="Send email">
-							<Send size="24" /> email
-						</button>
+						<div title="Send email">
+							<Send size="24" />
+						</div>
 					</a>
-				</aside>
+				</p>
 			</div>
 		</section>
 	</div>
@@ -79,16 +71,14 @@
 		flex-direction: column;
 		justify-content: center;
 		gap: var(--size-8);
-		animation: animateBorderRadius 21s infinite linear;
+		/* animation: animateBorderRadius 21s infinite linear; */
 		margin: 0 auto;
 		box-shadow: var(--shadow-5);
-		border-radius: var(--radius-blob-1);
+		border-radius: var(--radius-2);
 		background-color: var(--surface-4);
-		padding: var(--size-11);
-		height: 50%;
+		padding: var(--size-9);
 	}
-	h1,
-	h2 {
+	h1 {
 		text-transform: uppercase;
 	}
 	p {
@@ -102,13 +92,21 @@
 		user-select: none;
 	}
 	button {
-		margin-block: var(--size-2);
+		width: 100%;
+		/* margin-block: var(--size-2); */
 	}
 
 	/* CLASSES */
+	.copy {
+		cursor: pointer;
+	}
+	.email-wrapper {
+		display: flex;
+		gap: var(--size-2);
+	}
 	.buttons-wrapper {
 		display: flex;
-		flex-direction: row;
+		flex-direction: column;
 		gap: var(--size-4);
 		margin-block-start: var(--size-2);
 	}
@@ -134,6 +132,9 @@
 		flex-direction: column;
 		gap: var(--size-2);
 		margin-block-start: var(--size-2);
+	}
+	.app-layout {
+		margin-block: var(--size-9);
 	}
 
 	/* ANIMATIONS */
