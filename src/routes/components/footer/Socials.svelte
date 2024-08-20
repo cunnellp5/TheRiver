@@ -10,6 +10,11 @@
 </script>
 
 <ul>
+	<li class="logo-link">
+		<a href="/">
+			<LogoR />
+		</a>
+	</li>
 	<a class="socials" href={socialLinks.facebook} target="_blank">
 		<li><Facebook /></li>
 	</a>
@@ -19,11 +24,6 @@
 	<a class="socials" href={socialLinks.instagram} target="_blank">
 		<li><Instagram /></li>
 	</a>
-	<li class="logo-link">
-		<a href="/">
-			<LogoR />
-		</a>
-	</li>
 	<a class="socials" href={socialLinks.linkTree} target="_blank">
 		<li><LinkTree /></li>
 	</a>
@@ -38,11 +38,11 @@
 <style>
 	ul {
 		display: flex;
+		flex-direction: column;
 		/* flex-wrap: wrap; */
-		justify-content: space-between;
 		padding-inline: 0;
 		/* width: 100%; */
-		list-style: none;
+		/* list-style: none; */
 	}
 
 	a {
