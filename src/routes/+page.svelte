@@ -74,20 +74,22 @@
 				</Card> -->
 
 			<GenericCard.Root class={i % 2 === 0 ? 'option1' : 'option2'}>
-				<div class="app-layout articleWrapper">
-					<GenericCard.Header>
-						<GenericCard.Title>
-							{article.articleTitle}
-						</GenericCard.Title>
-						<GenericCard.Description>
-							{article.description}
-						</GenericCard.Description>
-					</GenericCard.Header>
-					<GenericCard.Content class="noPadding">
-						<CldImage height="450px" width="450px" src={article.img} alt={article.articleTitle} />
-					</GenericCard.Content>
-					<!-- <GenericCard.Footer></GenericCard.Footer> -->
-				</div>
+				<a href={article.link} target="_blank" class="articleLink">
+					<div class="app-layout articleWrapper">
+						<GenericCard.Header>
+							<GenericCard.Title>
+								{article.articleTitle}
+							</GenericCard.Title>
+							<GenericCard.Description class="bigger-text">
+								{article.description}
+							</GenericCard.Description>
+						</GenericCard.Header>
+						<GenericCard.Content class="noPadding">
+							<CldImage height="450px" width="450px" src={article.img} alt={article.articleTitle} />
+						</GenericCard.Content>
+						<!-- <GenericCard.Footer></GenericCard.Footer> -->
+					</div>
+				</a>
 			</GenericCard.Root>
 		{/each}
 	</section>
@@ -96,6 +98,9 @@
 
 <style>
 	/* ELEMENTS */
+	a {
+		color: var(--sand-2);
+	}
 	video {
 		width: 100%;
 		height: 100%;
@@ -104,12 +109,23 @@
 	/* CLASSES */
 	.img-video-overlay-wrapper {
 		position: relative;
-		z-index: 1; /* Ensure it is below the nav */
-		height: 100vh; /* Make the wrapper take up the full height of the viewport */
+		z-index: 1;
+		height: 100vh;
 	}
-	/* .articlesRoot {
-		width: 100%;
-	} */
+	.articleLink {
+		text-decoration: none;
+		& img {
+			-webkit-transition: 0.3s ease-in-out;
+			transition: 0.3s ease-in-out;
+			transition-delay: var(--transition-delay-1);
+		}
+	}
+	.articleLink:hover {
+		& img {
+			-webkit-transform: scale(1.05);
+			transform: scale(1.05);
+		}
+	}
 	/* IDS */
 	#video-background {
 		position: relative;
