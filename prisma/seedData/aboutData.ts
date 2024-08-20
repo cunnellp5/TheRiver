@@ -24,10 +24,10 @@ export default [
 		url: '/shop'
 	},
 	{
-		name: 'posts',
+		name: 'blog',
 		text: 'Welcome to the blog',
 		isShowing: true,
-		url: '/posts'
+		url: '/blog'
 	},
 	{
 		name: 'contact',

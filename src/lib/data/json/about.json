@@ -1,37 +1,37 @@
 {
-  "home": {
-    "text": "yeeeeee sir swrerr what? test",
-    "isShowing": true,
-    "url": "/"
-  },
-  "music": {
-    "text": "yup",
-    "isShowing": false,
-    "url": "/music"
-  },
-  "services": {
-    "text": "cool",
-    "isShowing": true,
-    "url": "/services"
-  },
-  "shop": {
-    "text": "This is the about that will show up in the /market section",
-    "isShowing": true,
-    "url": "/shop"
-  },
-  "posts": {
-    "text": "This is the about that will show up in the /blog section",
-    "isShowing": true,
-    "url": "/posts"
-  },
-  "contact": {
-    "text": "This is the about that will show up in the /contact section",
-    "isShowing": true,
-    "url": "/contact"
-  },
-  "announcement": {
-    "text": "sanitize data plz",
-    "isShowing": true,
-    "url": "/"
-  }
+	"home": {
+		"text": "yeeeeee sir swrerr what? test",
+		"isShowing": true,
+		"url": "/"
+	},
+	"music": {
+		"text": "yup",
+		"isShowing": false,
+		"url": "/music"
+	},
+	"services": {
+		"text": "cool",
+		"isShowing": true,
+		"url": "/services"
+	},
+	"shop": {
+		"text": "This is the about that will show up in the /market section",
+		"isShowing": true,
+		"url": "/shop"
+	},
+	"blog": {
+		"text": "This is the about that will show up in the /blog section",
+		"isShowing": true,
+		"url": "/blog"
+	},
+	"contact": {
+		"text": "This is the about that will show up in the /contact section",
+		"isShowing": true,
+		"url": "/contact"
+	},
+	"announcement": {
+		"text": "sanitize data plz",
+		"isShowing": true,
+		"url": "/"
+	}
 }

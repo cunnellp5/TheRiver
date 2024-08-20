@@ -15,7 +15,7 @@
 			<a href="/services">
 				<h4>Book now</h4>
 			</a>
-			<a href="/posts">
+			<a href="/blog">
 				<h5>&nbsp;&nbsp;&nbsp;Blog</h5>
 			</a>
 			<a href="/contact">

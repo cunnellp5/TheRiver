@@ -16,4 +16,8 @@
 		color: var(--text-2);
 		font-size: var(--font-size-0);
 	}
+
+	.bigger-text {
+		font-size: var(--font-size-1);
+	}
 </style>

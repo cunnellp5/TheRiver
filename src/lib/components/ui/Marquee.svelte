@@ -20,14 +20,14 @@
 		/* height: 40vh; */
 		overflow: hidden;
 		user-select: none;
-	}
-
-	.marquee:hover {
 		-webkit-text-stroke: 1.5px var(--link);
 		-webkit-text-fill-color: transparent;
 		color: transparent;
 		-webkit-font-smoothing: antialiased;
 	}
+
+	/* .marquee:hover {
+	} */
 
 	.marquee_group {
 		display: flex;
@@ -46,12 +46,12 @@
 		white-space: nowrap;
 	}
 
-	.marquee-hover-pause:hover .marquee_group {
-		animation-play-state: paused;
-		cursor:
+	/* .marquee-hover-pause:hover .marquee_group { */
+	/* animation-play-state: paused; */
+	/* cursor:
 			url('https://fav.farm/🎙️') 15 0,
-			auto;
-	}
+			auto; */
+	/* } */
 
 	@keyframes scroll {
 		0% {

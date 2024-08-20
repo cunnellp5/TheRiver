@@ -32,10 +32,12 @@
 		box-shadow: var(--shadow-1);
 		border: unset;
 		border-radius: unset;
-		background: var(--surface-4);
+		/* background: var(--gradient-9); */
+		/* background-image: var(--gradient-23), var(--noise-5); */
+		/* background: var(--surface-4); */
 		height: 60vh;
 		color: var(--text-1);
-		& > div {
+		& > a > div {
 			display: flex;
 			flex-direction: row;
 			justify-content: space-between;
@@ -49,7 +51,7 @@
 		background: var(--gradient-16);
 		height: 60vh;
 		color: var(--text-1);
-		& > div {
+		& > a > div {
 			display: flex;
 			flex-direction: row-reverse;
 			justify-content: space-between;
