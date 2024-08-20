@@ -50,7 +50,7 @@ html {
 	--table-light: var(--gray-0);
 	--text-1-light: var(--gray-8);
 	--text-2-light: var(--gray-7);
-	--link-light: var(--teal-7);
+	--link-light: var(--teal-5);
 	/* crud styles */
 	--create-light: var(--green-3);
 	--delete-light: var(--red-4);
