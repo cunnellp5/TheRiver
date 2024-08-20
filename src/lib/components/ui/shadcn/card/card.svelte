@@ -29,12 +29,9 @@
 		color: unset;
 	}
 	.option1 {
-		box-shadow: var(--shadow-1);
 		border: unset;
 		border-radius: unset;
-		/* background: var(--gradient-9); */
-		/* background-image: var(--gradient-23), var(--noise-5); */
-		/* background: var(--surface-4); */
+		background: var(--surface-4);
 		height: 60vh;
 		color: var(--text-1);
 		& > a > div {
@@ -45,10 +42,9 @@
 		}
 	}
 	.option2 {
-		box-shadow: var(--shadow-1);
 		border: unset;
 		border-radius: unset;
-		background: var(--gradient-16);
+		background: unset;
 		height: 60vh;
 		color: var(--text-1);
 		& > a > div {
