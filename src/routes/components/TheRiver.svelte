@@ -84,7 +84,7 @@
 		width: 100%;
 	}
 
-	/* .homePage { */
-	/* fill: var(--brown-0); */
-	/* } */
+	.homePage {
+		fill: var(--sand-2);
+	}
 </style>
