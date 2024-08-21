@@ -29,7 +29,7 @@ export default [
 	},
 	{
 		name: 'spotify',
-		url: 'https://www.open.spotify.com/artist/5zNnchh2RwfMl1iCs8JRPV'
+		url: 'https://open.spotify.com/artist/5zNnchh2RwfMl1iCs8JRPV'
 	},
 	{
 		name: 'tiktok',
