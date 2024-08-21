@@ -4,6 +4,7 @@
 	import { onMount } from 'svelte';
 	import { CldImage } from 'svelte-cloudinary';
 	// import Card from '$lib/components/ui/Card.svelte';
+	import Socials from './components/footer/Socials.svelte';
 	import * as GenericCard from '$lib/components/ui/shadcn/card';
 	import TestVideo from './components/TestVideo.svelte';
 	import TheRiver from './components/TheRiver.svelte';
@@ -62,6 +63,39 @@
 			{/if}
 		</div>
 	</div>
+	<div class="about">
+		<h2>About</h2>
+		<p>
+			Welcome to The River, where beauty meets creativity. I’m a beauty expert, singer, and creator
+			passionate about helping you embrace your unique style. Whether it's through my beauty
+			services, music, or custom merch, I'm here to inspire and empower. Explore my world, connect,
+			and discover the art of being your true self.
+		</p>
+		<!-- <p>
+			Welcome to The River, where <a href="/services">beauty</a>, music, and creativity flow
+			together. I'm not just a beauty expert—I'm an artist, a singer, and a creator with a passion
+			for expressing the essence of who we are. Whether I'm crafting the perfect look, writing a new
+			song, or designing unique <a href="/shop">merch</a>, my goal is to inspire and empower you to
+			embrace your own unique style and spirit.
+		</p>
+		<p>
+			At The River, beauty isn't just skin deep. It's an experience that starts with self-love and
+			radiates outward. My services are tailored to bring out your natural glow, while my <a
+				href="/music">music</a>
+			and <a href="/music/video">videos</a> are crafted to uplift and move you. Each piece of
+			<a href="/shop">merch</a> is designed with care, reflecting the same creativity and passion that
+			I pour into everything I do.
+		</p>
+		<p>
+			This is more than just a brand—it's a journey. Join me on the <a href="/blog">blog</a>, where
+			I share tips, stories, and inspiration. Whether you're here for a beauty transformation, a new
+			soundtrack, or just to connect, The River is a place where you can be your authentic self.
+		</p> -->
+		<p>Let’s flow together.</p>
+		<div class="socials">
+			<Socials />
+		</div>
+	</div>
 	<Marquee />
 	<section class="articlesRoot">
 		{#each articles as article, i}
@@ -85,7 +119,12 @@
 							</GenericCard.Description>
 						</GenericCard.Header>
 						<GenericCard.Content class="noPadding">
-							<CldImage height="450px" width="450px" src={article.img} alt={article.articleTitle} />
+							<CldImage
+								height="600px"
+								width="600px"
+								src={article.img}
+								alt={article.articleTitle}
+								crop="fill" />
 						</GenericCard.Content>
 						<!-- <GenericCard.Footer></GenericCard.Footer> -->
 					</div>
@@ -93,20 +132,39 @@
 			</GenericCard.Root>
 		{/each}
 	</section>
+	<div class="beauty">
+		<h2>Beauty Appointments</h2>
+		<p>Schedule your appointment today.</p>
+		<button class="primary">Book</button>
+	</div>
 	<TestVideo />
 </main>
 
 <style>
 	/* ELEMENTS */
-	a {
-		color: var(--sand-2);
-	}
+	/* a { */
+	/* color: var(--sand-2); */
+	/* } */
 	video {
 		width: 100%;
 		height: 100%;
 		object-fit: cover; /* Ensure the video covers the entire area */
 	}
 	/* CLASSES */
+	.about,
+	.beauty {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: var(--size-5);
+		margin-block: var(--size-content-1);
+		/* text-align: center; */
+		& p {
+			font-weight: var(--font-weight-2);
+			line-height: var(--font-lineheight-4);
+			font-family: 'Roboto', sans-serif;
+		}
+	}
 	.img-video-overlay-wrapper {
 		position: relative;
 		z-index: 1;
@@ -125,6 +183,9 @@
 			-webkit-transform: scale(1.05);
 			transform: scale(1.05);
 		}
+	}
+	.socials {
+		margin-block-start: var(--size-4);
 	}
 	/* IDS */
 	#video-background {
