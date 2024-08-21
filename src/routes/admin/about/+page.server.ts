@@ -3,14 +3,6 @@ import type { Actions } from '@sveltejs/kit';
 import db from '$lib/server/database';
 import type { PageServerLoad } from './$types';
 
-interface AboutData {
-	[key: string]: {
-		text: string;
-		isShowing: boolean;
-		url: string | null;
-	};
-}
-
 export const load: PageServerLoad = async (event) => {
 	if (!event.locals.session || !event.locals.user) {
 		return error(404, 'Not found');

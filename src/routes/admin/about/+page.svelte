@@ -1,8 +1,6 @@
 <script lang="ts">
 	import * as Card from '$lib/components/ui/shadcn/card';
 	import * as Table from '$lib/components/ui/shadcn/table';
-	// import about from '$lib/data/json/about.json';
-	import { enhance } from '$app/forms';
 	import About from './About.svelte';
 
 	export let data;

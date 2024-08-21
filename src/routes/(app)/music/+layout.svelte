@@ -1,8 +1,10 @@
 <!-- leaving below just in case i dont want to scroll on nav -->
 <!-- data-sveltekit-noscroll -->
 <script lang="ts">
-	import about from '$lib/data/json/about.json';
 	import { page } from '$app/stores';
+	import type { LayoutData } from './$types';
+
+	export let data: LayoutData;
 </script>
 
 <div class="grid-container app-layout">
@@ -15,9 +17,8 @@
 	<section>
 		<h1>The River Sings</h1>
 		<p>
-			{about.music.text}
+			{data.about.text}
 		</p>
-		<!-- <div class="gradient-point-up"></div> -->
 		<slot></slot>
 	</section>
 </div>
@@ -35,31 +36,6 @@
 		margin-block: var(--size-7);
 	}
 	/* CLASSES */
-	/* .grid-container {
-		display: grid;
-	}
-	.sidenav a {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		transform: rotate(-90deg);
-		transition: color 0.3s ease;
-		height: 100%;
-		font-weight: var(--font-weight-5);
-		font-size: var(--font-size-1);
-		letter-spacing: var(--font-letterspacing-2);
-		text-decoration: none;
-		text-transform: uppercase;
-    }
-    .sidenav {
-      display: grid;
-      position: sticky;
-      top: 0;
-      grid-column: 1;
-      padding: var(--size-3);
-      height: var(--size-14);
-      color: #818181;
-      } */
 	.grid-container {
 		display: flex;
 		flex-direction: column;
@@ -70,7 +46,6 @@
 		transition:
 			color 0.3s ease,
 			transform 0.3s ease;
-		/* margin-inline: var(--size-2); */
 		background: var(--gray-10);
 		padding: var(--size-4);
 		text-decoration: none;
@@ -89,29 +64,4 @@
 	.current {
 		color: var(--link);
 	}
-	/* .gradient-point-up {
-		-webkit-mask: var(--mask-edge-drip-bottom);
-		mask: var(--mask-edge-drip-bottom);
-		border-radius: var(--radius-round);
-		background-image: var(--gradient-2), var(--noise-3);
-		height: var(--size-9);
-	} */
-
-	/* MEDIA QUERIES */
-	/* @media (max-width: 1440px) {
-		.grid-container {
-			display: flex;
-			flex-direction: column;
-		}
-		.sidenav a {
-			transform: unset;
-			margin-inline: var(--size-2);
-		}
-		.sidenav {
-			display: flex;
-			margin: unset;
-			padding: unset;
-			height: unset;
-		}
-	} */
 </style>
