@@ -11,7 +11,7 @@ export const load: PageServerLoad = async () => {
 		});
 
 		if (!about) {
-			return { about: { text: 'Checkout the latest tracks' } };
+			return { about: { isShowing: false, text: '' } };
 		}
 
 		return { about };

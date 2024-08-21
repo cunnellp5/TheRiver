@@ -5,6 +5,7 @@
 	import type { LayoutData } from './$types';
 
 	export let data: LayoutData;
+	const { about } = data;
 </script>
 
 <div class="grid-container app-layout">
@@ -16,9 +17,11 @@
 
 	<section>
 		<h1>The River Sings</h1>
-		<p>
-			{data.about.text}
-		</p>
+		{#if about.isShowing}
+			<p>
+				{about.text}
+			</p>
+		{/if}
 		<slot></slot>
 	</section>
 </div>

@@ -12,6 +12,7 @@
 </td>
 
 <style>
+	/* ELEMENTS */
 	td {
 		padding: var(--size-3);
 		text-align: left;
@@ -19,6 +20,9 @@
 			padding-right: 0;
 		}
 	}
+
+	/* CLASSES */
+	/* general */
 	.full-width {
 		width: 100%;
 	}
@@ -29,5 +33,12 @@
 	.end {
 		display: flex;
 		justify-content: end;
+	}
+	/* Admin contact table */
+	.fixed-width {
+		width: var(--size-content-1);
+	}
+	.keyText {
+		color: var(--text-2);
 	}
 </style>

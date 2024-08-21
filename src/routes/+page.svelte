@@ -4,7 +4,7 @@
 	import { onMount } from 'svelte';
 	import { CldImage } from 'svelte-cloudinary';
 	// import Card from '$lib/components/ui/Card.svelte';
-	import Socials from './components/footer/Socials.svelte';
+	import Socials from '$lib/components/ui/Socials.svelte';
 	import * as GenericCard from '$lib/components/ui/shadcn/card';
 	import TestVideo from './components/TestVideo.svelte';
 	import TheRiver from './components/TheRiver.svelte';
@@ -12,7 +12,7 @@
 
 	export let data;
 
-	const { videoURL, articles } = data;
+	const { videoURL, articles, about } = data;
 
 	let isPlaying = true;
 
@@ -66,47 +66,16 @@
 	<div class="about">
 		<h2>About</h2>
 		<p>
-			Welcome to The River, where beauty meets creativity. I’m a beauty expert, singer, and creator
-			passionate about helping you embrace your unique style. Whether it's through my beauty
-			services, music, or custom merch, I'm here to inspire and empower. Explore my world, connect,
-			and discover the art of being your true self.
+			{about?.text}
 		</p>
-		<!-- <p>
-			Welcome to The River, where <a href="/services">beauty</a>, music, and creativity flow
-			together. I'm not just a beauty expert—I'm an artist, a singer, and a creator with a passion
-			for expressing the essence of who we are. Whether I'm crafting the perfect look, writing a new
-			song, or designing unique <a href="/shop">merch</a>, my goal is to inspire and empower you to
-			embrace your own unique style and spirit.
-		</p>
-		<p>
-			At The River, beauty isn't just skin deep. It's an experience that starts with self-love and
-			radiates outward. My services are tailored to bring out your natural glow, while my <a
-				href="/music">music</a>
-			and <a href="/music/video">videos</a> are crafted to uplift and move you. Each piece of
-			<a href="/shop">merch</a> is designed with care, reflecting the same creativity and passion that
-			I pour into everything I do.
-		</p>
-		<p>
-			This is more than just a brand—it's a journey. Join me on the <a href="/blog">blog</a>, where
-			I share tips, stories, and inspiration. Whether you're here for a beauty transformation, a new
-			soundtrack, or just to connect, The River is a place where you can be your authentic self.
-		</p> -->
 		<p>Let’s flow together.</p>
 		<div class="socials">
 			<Socials />
 		</div>
 	</div>
 	<Marquee />
-	<section class="articlesRoot">
+	<section>
 		{#each articles as article, i}
-			<!-- <Card
-					articleImage={article.img}
-					articleTitle={article.articleTitle}
-					description={article.description}
-					link={article.link}
-					author={article.author}>
-				</Card> -->
-
 			<GenericCard.Root class={i % 2 === 0 ? 'option1' : 'option2'}>
 				<a href={article.link} target="_blank" class="articleLink">
 					<div class="app-layout articleWrapper">
@@ -126,7 +95,6 @@
 								alt={article.articleTitle}
 								crop="fill" />
 						</GenericCard.Content>
-						<!-- <GenericCard.Footer></GenericCard.Footer> -->
 					</div>
 				</a>
 			</GenericCard.Root>
@@ -142,9 +110,6 @@
 
 <style>
 	/* ELEMENTS */
-	/* a { */
-	/* color: var(--sand-2); */
-	/* } */
 	video {
 		width: 100%;
 		height: 100%;
