@@ -25,9 +25,9 @@
 </script>
 
 <div class="titleWrapper">
-	<!-- <a href="/blog"> -->
-	<h1 class="jumbo">River Blog</h1>
-	<!-- </a> -->
+	<a href="/blog">
+		<h1 class="jumbo">River Blog</h1>
+	</a>
 </div>
 <main>
 	<div class="posts-wrapper">
