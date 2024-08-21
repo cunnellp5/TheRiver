@@ -5,7 +5,7 @@
 	import { fly } from 'svelte/transition';
 	import { page } from '$app/stores';
 	import { browser } from '$app/environment';
-	import ToggleTheme from './footer/ToggleTheme.svelte';
+	import ToggleTheme from '$lib/components/ui/ToggleTheme.svelte';
 
 	export let isSignedIn = false;
 

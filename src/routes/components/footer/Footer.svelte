@@ -1,6 +1,6 @@
 <script lang="ts">
-	import ToggleTheme from './ToggleTheme.svelte';
-	import Socials from './Socials.svelte';
+	import ToggleTheme from '$lib/components/ui/ToggleTheme.svelte';
+	import Socials from '$lib/components/ui/Socials.svelte';
 	import socialLinks from '$lib/data/socialLinks';
 </script>
 
