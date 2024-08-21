@@ -1,7 +1,8 @@
 /* gradient headers */
 h1,
 h2,
-h3 {
+h3,
+h6 {
 	background: var(--gradient-1) fixed;
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;

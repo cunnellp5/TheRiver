@@ -58,7 +58,7 @@
 {:else}
 	<Table.Cell>
 		<div class="content">
-			<span>
+			<span class:visible={isShowing} class:hidden={!isShowing}>
 				{isShowing ? 'Visible' : 'Hidden'}
 			</span>
 			<span>
@@ -91,5 +91,11 @@
 	.buttons-wrapper {
 		display: flex;
 		gap: var(--size-3);
+	}
+	.visible {
+		color: var(--green-5);
+	}
+	.hidden {
+		color: var(--red-5);
 	}
 </style>
