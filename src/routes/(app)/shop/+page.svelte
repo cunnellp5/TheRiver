@@ -1,10 +1,9 @@
 <script lang="ts">
-	import market from '$lib/data/json/market.json';
 	import * as Card from '$lib/components/ui/shadcn/card';
 
 	export let data;
 
-	const { feed } = data;
+	const { feed, url, text } = data;
 
 	// function safeHTML(html: string) {
 	// 	const element = document.createElement('div');
@@ -15,16 +14,16 @@
 
 <main class="app-layout">
 	<section>
-		<a target="_blank" href={market.url}>
+		<a target="_blank" href={url}>
 			<h1>THE RIVER MARKET</h1>
 		</a>
-		<a class="animation" target="_blank" href={market.url}> {market.text} </a>
+		<a class="animation" target="_blank" href={url}> {text} </a>
 	</section>
 	<div class="grid-container">
 		<div id="items" class="items">
 			{#each feed as item}
 				<a href={item.guid} target="_blank">
-					<Card.Root>
+					<Card.Root class="unset">
 						<Card.Header>
 							<Card.Title>
 								<div class="title">
@@ -54,69 +53,89 @@
 		margin-block: var(--size-7);
 		padding-block: var(--size-9);
 	}
+	section {
+		display: flex;
+		flex-direction: column;
+		/* align-items: center; */
+		& .animation {
+			justify-self: unset;
+		}
+	}
 	h1 {
 		transform: rotate(2deg);
 		margin-block: var(--size-7);
 	}
 	a:hover {
 		text-decoration: none;
+		& .unset {
+			box-shadow: var(--shadow-3);
+			background: var(--surface-4);
+			color: var(--text-1);
+		}
 	}
 
 	/* CLASSES */
 	.card-content-description {
-		overflow: hidden;
-		word-break: break-all;
 		& p.image {
 			display: flex;
 			justify-content: center;
 		}
 		& img {
 			transition: transform 0.5s ease;
+			border-radius: unset;
 			width: var(--size-content-2);
-			height: var(--size-content-2);
-			object-fit: scale-down;
+			height: var(--size-content-1);
+			object-fit: cover;
 		}
 		& p.description {
-			transition: opacity 0.5s ease;
-			margin-block: var(--size-2);
-			color: var(--text-2);
-			font-size: var(--font-size-1);
+			display: none;
+			/* transition: opacity 0.5s ease; */
+			/* color: var(--text-2); */
+			/* font-size: var(--font-size-1); */
 		}
 		& p.price {
-			transition: opacity 0.5s ease;
-			margin-block: var(--size-2);
-			font-size: var(--font-size-1);
+			display: none;
+			/* transition: opacity 0.5s ease; */
+			/* margin-block: var(--size-2); */
+			/* font-size: var(--font-size-1); */
 		}
 	}
 	.title {
-		font-size: var(--font-size-4);
+		width: var(--size-13);
+		overflow: hidden;
+		font-size: var(--font-size-2);
+		text-align: center;
+		text-overflow: ellipsis;
+		white-space: nowrap;
 	}
 	.card-content-description:hover {
 		& img {
-			transform: scale(1.5);
+			transform: scale(1.1);
 		}
 		& p.description,
 		p.price {
 			opacity: 0;
 		}
 	}
-	.animation {
+	/* .animation {
 		display: flex;
 		justify-content: center;
 		animation: var(--animation-float);
 		animation-duration: infinite;
 		animation-timing-function: var(--ease-elastic-in-out-3);
 		margin-block: var(--size-4);
-	}
+	} */
 	.grid-container {
-		display: grid;
+		/* display: grid; */
 		margin-block: var(--size-7);
+		width: 100%;
 	}
 	.items {
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(4, 1fr);
 		/* grid-auto-rows: minmax(100px, auto); */
-		gap: var(--size-7);
+		/* gap: var(--size-4); */
+		/* width: 100%; */
 	}
 
 	/* MEDIA QUERIES */

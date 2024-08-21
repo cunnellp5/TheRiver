@@ -5,6 +5,7 @@
 	import { fly } from 'svelte/transition';
 	import { page } from '$app/stores';
 	import { browser } from '$app/environment';
+	import ToggleTheme from '$lib/components/ui/ToggleTheme.svelte';
 
 	export let isSignedIn = false;
 
@@ -74,13 +75,13 @@
 		</li>
 
 		<li class:current={isShop} aria-current={isShop}>
-			<a href="/shop"> Market </a>
+			<a href="/shop"> Shop </a>
 		</li>
 
 		<li class="border-left"></li>
 
 		<li class:current={includesPosts} aria-current={includesPosts}>
-			<a href="/posts"> Posts </a>
+			<a href="/blog"> Blog </a>
 		</li>
 		<li class:current={isContact} aria-current={isContact}>
 			<a href="/contact"> Contact </a>
@@ -102,6 +103,8 @@
 				<a href="/login"> Login </a>
 			</li>
 		{/if}
+		<li class="border-left"></li>
+		<ToggleTheme />
 	</ul>
 </nav>
 
@@ -115,16 +118,12 @@
 <!-- {/if} -->
 
 <style>
+	/* ELEMENTS */
 	nav {
 		position: relative;
 		align-items: center;
-		backdrop-filter: blur(
-			2px
-		); /* unsure if i want this style in the header or blur the entire background */
-		padding-inline: var(--size-4); /* unsure if i want this style or blur the entire background */
 		padding-block: var(--size-2);
 	}
-
 	a {
 		transition: color 0.3s ease;
 		height: 100%;
@@ -136,12 +135,12 @@
 		text-transform: uppercase;
 	}
 
+	/* CLASSES */
 	.logout-button {
 		box-shadow: none;
 		font-size: var(--font-size-0);
 		text-transform: uppercase;
 	}
-
 	.links {
 		& * {
 			-webkit-transition: all 0.35s ease;
@@ -213,7 +212,7 @@
 		height: var(--size-5);
 	}
 
-	.homepageText {
+	/* .homepageText {
 		& a,
 		.logout-button {
 			color: var(--gray-1);
@@ -221,7 +220,7 @@
 		& .border-left {
 			border-left: 1px solid var(--border-light);
 		}
-	}
+	} */
 
 	.logout-button {
 		background: inherit;

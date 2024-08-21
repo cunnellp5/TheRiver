@@ -9,6 +9,7 @@ import serviceHairColorData from './seedData/serviceHairColorData';
 import serviceHairAddOnData from './seedData/serviceHairAddOnData';
 import serviceNewClientData from './seedData/serviceNewClientData';
 import serviceNailData from './seedData/serviceNailData';
+import aboutData from './seedData/aboutData';
 
 const db = new PrismaClient();
 
@@ -34,6 +35,7 @@ async function main() {
 		await db.serviceCategory.deleteMany();
 		await db.user.deleteMany();
 		await db.post.deleteMany();
+		await db.about.deleteMany();
 
 		// FETCH POSTS FROM API
 		const posts = await getPosts();
@@ -123,6 +125,11 @@ async function main() {
 		// ARTICLES SEEDS
 		await db.article.createMany({
 			data: articlesData
+		});
+
+		// About SEEDS
+		await db.about.createMany({
+			data: aboutData
 		});
 	});
 }

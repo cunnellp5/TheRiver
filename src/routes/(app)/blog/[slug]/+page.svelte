@@ -89,7 +89,7 @@
 	<div class="prevNext-wrapper">
 		{#if post}
 			{#if previous}
-				<a class="prevNext" href="/posts/{previous.slug}">
+				<a class="prevNext" href="/blog/{previous.slug}">
 					<ChevronLeft size={12} />
 					Previous
 				</a>
@@ -100,7 +100,7 @@
 				</span>
 			{/if}
 			{#if next}
-				<a class="prevNext" href="/posts/{next.slug}">
+				<a class="prevNext" href="/blog/{next.slug}">
 					Next
 					<ChevronRight size={12} />
 				</a>

@@ -57,20 +57,20 @@
 				<Table.Caption>A list of visible videos.</Table.Caption>
 				<Table.Header>
 					<Table.Row>
+						<Table.Head>Position</Table.Head>
 						<Table.Head>VideoId</Table.Head>
 						<Table.Head>Title</Table.Head>
 						<Table.Head>Description</Table.Head>
-						<Table.Head>Position</Table.Head>
 						<Table.Head>Thumbnail</Table.Head>
 					</Table.Row>
 				</Table.Header>
 				<Table.Body>
 					{#each videos as { videoId, title, description, position, thumbnail, createdAt }}
 						<Table.Row>
+							<Table.Cell>{position}</Table.Cell>
 							<Table.Cell>{videoId}</Table.Cell>
 							<Table.Cell>{title}</Table.Cell>
 							<Table.Cell>{description}</Table.Cell>
-							<Table.Cell>{position}</Table.Cell>
 							<Table.Cell>{thumbnail}</Table.Cell>
 							<Table.Cell>{formatDate(createdAt)}</Table.Cell>
 						</Table.Row>

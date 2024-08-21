@@ -2,9 +2,14 @@
 	import { fly } from 'svelte/transition';
 	import Circle from 'lucide-svelte/icons/circle';
 	import { theme, toggleTheme } from '$lib/stores/theme';
+	import type { HTMLAttributes } from 'svelte/elements';
+
+	type $$Props = HTMLAttributes<HTMLDivElement>;
+	let className: $$Props['class'] = '';
+	export { className as class };
 </script>
 
-<button on:click={toggleTheme} aria-label="Toggle Theme">
+<button on:click={toggleTheme} aria-label="Toggle Theme" class={className}>
 	{#if $theme === 'dark'}
 		<div in:fly={{ y: 10 }}>
 			<Circle fill="#E6E4C3" />

@@ -16,6 +16,7 @@
 			<Card.Title>Existing bookings</Card.Title>
 			<Card.Description>View currently booked appointments</Card.Description>
 		</Card.Header>
+		<Card.Footer>🚧 Under Construction</Card.Footer>
 	</Card.Root>
 </div>
 

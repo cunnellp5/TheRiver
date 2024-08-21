@@ -42,12 +42,7 @@
 <main class="app-layout">
 	<section class="top">
 		<h1 style:transform={`translate3d(${scroll / 10}px, 0, 0)`}>THE RIVER BEAUTY</h1>
-		<p
-			style:transform={(`translate3d(-${scroll / 20}px, ${scroll / 5}px, 0)`,
-			`rotate(${scroll / 18}deg)`)}>
-			<!-- style:letter-spacing={`${scroll / 25}px`} -->
-			Denver based
-		</p>
+		<p>Denver based</p>
 		<div class="cutoutImg" style:transform={`translate3d(-${scroll / 20}px, ${scroll / 5}px, 0)`}>
 			<CldImage
 				height="1000"
@@ -64,6 +59,10 @@
 
 		<!-- <div class="page-indicator">1</div> -->
 	</section>
+	<p class="about">
+		Beauty isn't just skin deep. It's an experience that starts with self-love and radiates outward.
+		My services are tailored to bring out your natural glow.
+	</p>
 	<!-- {#each Object.entries(remappedServices) as [category, listOfServices]}
 		<section class="service-table">
 			<div>
@@ -72,17 +71,19 @@
 			</div>
 		</section>
 	{/each} -->
-	{#each Object.entries(services) as [category, data]}
+</main>
+<main>
+	{#each Object.entries(services) as [category, data], id}
+		<span class="stupid" id={category}></span>
 		<section class="tables">
 			<Table.Root>
 				<Table.Caption>{data[0].category.description}</Table.Caption>
 				<Table.Header>
 					<Table.Row>
 						<div class="table-row-header">
-							<h5>
+							<h6>
 								{category.toUpperCase()}
-							</h5>
-							<small>{data.length} ct</small>
+							</h6>
 						</div>
 					</Table.Row>
 				</Table.Header>
@@ -104,12 +105,12 @@
 					{/each}
 				</Table.Body>
 			</Table.Root>
-			<hr />
+			<!-- <hr /> -->
 		</section>
 	{/each}
 
 	{#if selectedServices.size > 0}
-		<aside class="surface-3">
+		<aside class="surface-3 aside-left">
 			<h4>Selected service{selectedServices.size > 1 ? 's' : ''}</h4>
 			<ul>
 				{#each Array.from(selectedServices) as serviceId}
@@ -118,7 +119,22 @@
 			</ul>
 		</aside>
 	{/if}
-	<form method="POST" use:enhance>
+	<aside class="aside-right surface-3">
+		<h4>Categories</h4>
+		<ul>
+			{#each Object.entries(services) as [category, data]}
+				<a href={`#${category}`}>
+					<li>{category}</li>
+				</a>
+			{/each}
+		</ul>
+	</aside>
+	<div class="fakeform">
+		<a href="https://lazwicky.glossgenius.com/services" target="_blank">
+			<button class="primary"> Book Now </button>
+		</a>
+	</div>
+	<!-- <form method="POST" use:enhance>
 		<input
 			name="selectedServices"
 			id="selectedServices"
@@ -130,7 +146,7 @@
 			class="primary">
 			{selectedServices.size === 0 ? 'Pick a service' : 'BOOK NOW'} ({selectedServices.size})
 		</button>
-	</form>
+	</form> -->
 </main>
 
 <style>
@@ -148,20 +164,7 @@
 		width: 100%;
 		font-weight: var(--font-weight-8);
 	}
-	form {
-		position: sticky;
-		bottom: var(--size-7);
-		align-self: center;
-		width: var(--size-content-2);
-	}
-	aside {
-		position: sticky;
-		bottom: var(--size-7);
-		box-shadow: var(--shadow-3);
-		border-radius: var(--radius-2);
-		padding: var(--size-4);
-		width: max-content;
-	}
+
 	/* CLASSES */
 	/* .page-indicator {
 		display: flex;
@@ -175,10 +178,47 @@
 		height: var(--size-7);
 		color: var(--link);
 	} */
+	.aside-left {
+		position: sticky;
+		bottom: var(--size-7);
+		box-shadow: var(--shadow-3);
+		border-radius: var(--radius-2);
+		padding: var(--size-4);
+		width: max-content;
+	}
+	/* Your existing styles */
+	.aside-right {
+		position: sticky;
+		bottom: 70%;
+		left: 70%;
+		box-shadow: var(--shadow-3);
+		border-radius: var(--radius-2);
+		padding: var(--size-4);
+		width: max-content;
+	}
+	.about {
+		/* width: 100%; */
+		display: flex;
+		justify-content: center;
+		margin: 0 auto;
+		margin-block-end: var(--size-12);
+		color: var(--text-2);
+		/* font-family: sans-serif; */
+		text-align: center;
+	}
+	.fakeform {
+		position: sticky;
+		bottom: var(--size-7);
+		align-self: center;
+		width: var(--size-content-2);
+	}
 	.tables {
 		align-items: center;
 		align-self: center;
 		width: var(--size-content-3);
+		& tr {
+			font-size: var(--font-size-1);
+		}
 	}
 	.cutoutImg {
 		position: absolute;
@@ -213,16 +253,19 @@
 		gap: var(--size-3);
 	}
 	/* KEEPING BELOW FOR REFERENCE */
-	.service-table {
+	/* .service-table {
 		display: flex;
 		flex-direction: column;
 		justify-content: start;
 		align-items: center;
-		/* margin-block: var(--size-4); */
-		/* width: 100%; */
 		min-height: 30vh;
 	}
 	.service-table h2 {
 		align-self: flex-start;
+	} */
+	.stupid {
+		/* border: 1px solid red; */
+		/* display: none; */
+		height: var(--size-10);
 	}
 </style>

@@ -3,7 +3,6 @@
 	import Card from '$lib/components/ui/Card.svelte';
 	import * as GenericCard from '$lib/components/ui/shadcn/card';
 	import Pencil from 'lucide-svelte/icons/pencil';
-	import Plus from 'lucide-svelte/icons/plus';
 	import Trash from 'lucide-svelte/icons/trash';
 	import { enhance } from '$app/forms';
 

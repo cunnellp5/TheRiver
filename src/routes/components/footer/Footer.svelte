@@ -1,62 +1,116 @@
 <script lang="ts">
-	import ToggleTheme from './ToggleTheme.svelte';
-	import Socials from './Socials.svelte';
+	import ToggleTheme from '$lib/components/ui/ToggleTheme.svelte';
+	import Socials from '$lib/components/ui/Socials.svelte';
+	import socialLinks from '$lib/data/socialLinks';
 </script>
 
 <footer>
 	<!-- row 1 col 1 -->
-	<div class="footer-first"></div>
-
-	<!-- row 1 col 2 -->
-	<div class="footer-middle">
-		<Socials />
-	</div>
-
-	<!-- row 1 col 3 -->
-	<div class="toggler">
-		<ToggleTheme />
-	</div>
-
-	<!-- row 2 col 1 -->
-	<div class="footer-second"></div>
-
-	<!-- row 2 col 2 -->
-	<div class="footer-middle-second">
-		<div class="toggler-pt-2">
-			<div class="footer-second">
-				<p>Socials</p>
-				<li>facebook.com/theriversings</li>
-				<li>instagram.com/the.river.sings/</li>
-				<li>tiktok.com/@theriversings</li>
-				<li>x.com/the_river_sings</li>
-				<br />
-				<p>Stream</p>
-				<li>youtube.com/c/TheRiverSings</li>
-				<li>soundcloud.com/theriversings</li>
-				<li>open.spotify.com/artist/5zNnchh2RwfMl1iCs8JRPV</li>
-				<br />
-				<p>Extended Plays [EP]</p>
-				<li>distrokid.com/hyperfollow/theriver2/vaguely-relatable-ep</li>
-			</div>
-
-			<br />
-			<br />
-			<p>Merch</p>
-			<li>etsy.com/shop/MadeByTheRiverBed</li>
-
-			<br />
-
-			<p>Ca$h app</p>
-			<li>cash.app/$theriversings</li>
-
-			<br />
-			<p>LinkTree</p>
-			<li>linktr.ee/theriversings</li>
+	<div class="footer-first">
+		<div class="link-wrapper">
+			<p class="listHeader">Socials</p>
+			<a href={socialLinks.facebook} target="_blank">
+				<li>Facebook</li>
+			</a>
+			<a href={socialLinks.instagram} target="_blank">
+				<li>Instagram</li>
+			</a>
+			<a href={socialLinks.tiktok} target="_blank">
+				<li>TikTok</li>
+			</a>
+			<a href={socialLinks.x} target="_blank">
+				<li>Twitter</li>
+			</a>
 		</div>
 	</div>
 
-	<!-- row 2 col 3 -->
-	<div class="toggler-pt-2"></div>
+	<!-- row 1 col 2 -->
+	<div>
+		<div class="link-wrapper">
+			<p class="listHeader">Stream</p>
+			<a href={socialLinks.youtube} target="_blank">
+				<li>Youtube</li>
+			</a>
+			<a href={socialLinks.soundCloud} target="_blank">
+				<li>SoundCloud</li>
+			</a>
+			<a href={socialLinks.spotify} target="_blank">
+				<li>Spotify</li>
+			</a>
+			<a href={socialLinks.distrokid.vaguelyRelatable} target="_blank">
+				<li>Vaguely Relatable [EP]</li>
+			</a>
+		</div>
+	</div>
+	<!-- row 1 col 4 -->
+	<div>
+		<div class="link-wrapper">
+			<p class="listHeader">Links</p>
+			<a href={socialLinks.cashApp} target="_blank">
+				<li>Ca$h app</li>
+			</a>
+			<a href={socialLinks.linkTree} target="_blank">
+				<li>LinkTree</li>
+			</a>
+		</div>
+	</div>
+	<!-- row 1 col 3 -->
+	<div>
+		<div class="link-wrapper">
+			<p class="listHeader">Merch</p>
+			<a href={socialLinks.etsy} target="_blank">
+				<li>Etsy</li>
+			</a>
+		</div>
+	</div>
+
+	<!-- row 1 col 5 -->
+	<div>
+		<div class="link-wrapper">
+			<p class="listHeader">Info</p>
+			<p class="address">123 address St</p>
+			<p class="address">Denver, CO</p>
+		</div>
+	</div>
+
+	<!-- row 1 col6 -->
+	<div class="toggler">
+		<form method="POST">
+			<p class="listHeader">Subscribe to the newsletter</p>
+			<div class="newsletter-form">
+				<label for="email">Get the latest updates on new products and upcoming sales</label>
+				<div class="buttonWrapper">
+					<input type="email" name="email" placeholder="Your email address" />
+					<button class="primary" title="Send email">Subscribe</button>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<!-- row 1 col6 -->
+	<!-- <div class="toggler"></div> -->
+
+	<!-- row 2 col 1 -->
+	<!-- <div class="toggler"> -->
+	<!-- <Socials /> -->
+	<!-- <ToggleTheme /> -->
+	<!-- </div> -->
+	<!-- row 2 col 1 -->
+	<!-- <div class="footer-second"></div> -->
+
+	<!-- row 2 col 2 -->
+	<!-- <div class="footer-middle-second">
+		<div class="toggler-pt-2"></div>
+	</div> -->
+
+	<!-- row 3?? -->
+	<div class="fullRow copywrite">
+		&copy;
+		<span class="year">
+			{new Date().getFullYear()}
+		</span>
+		The River
+	</div>
 </footer>
 
 <style>
@@ -64,88 +118,106 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		gap: var(--size-7);
+		gap: var(--size-4);
 		margin-block: var(--size-10);
-		border-top: 1px solid var(--border);
-		padding-block: var(--size-7);
+		/* border-top: 1px solid var(--border); */
+		/* padding-block: var(--size-7); */
 	}
 	div {
 		display: flex;
-		align-items: center;
+		/* align-items: center; */
 	}
 	p {
-		margin-block-end: var(--size-1);
+		margin-inline-end: var(--size-2);
 		color: var(--gray-5);
 		font-size: var(--font-size-0);
 	}
-	li {
-		transition: transform 0.3s ease;
-		transition: text-shadow 0.3s ease;
-		margin-inline: var(--size-1);
+	a {
+		transition: color 0.1s ease;
+		/* margin-inline: var(--size-1); */
 		color: var(--gray-7);
 		font-size: var(--font-size-0);
 		line-height: var(--size-4);
 		list-style: none;
 	}
-	li:hover {
+	a:hover {
 		display: inline-block;
-		transform: scale(1.2);
 		cursor: pointer;
-		color: var(--gray-9);
-		text-shadow:
-			0 0 10px #fff,
-			0 0 20px #fff,
-			0 0 30px #fff,
-			0 0 40px #ff00de;
+		color: var(--link);
+		text-decoration: none;
 	}
-	/* hr {
-		margin-block: var(--size-7);
-	} */
-
-	.footer-first {
-		justify-content: center;
+	input {
+		width: 15vw;
+		color: var(--grey-6);
+		font-size: var(--font-size-0);
 	}
-	.footer-second {
+	button,
+	label {
+		font-size: var(--font-size-0);
+	}
+	label {
+		color: var(--gray-8);
+	}
+	.address {
+		color: var(--text-2);
+	}
+	.listHeader {
+		margin-block-end: var(--size-2);
+		font-weight: var(--font-weight-2);
+		font-size: var(--font-size-0);
+		text-transform: uppercase;
+	}
+	.link-wrapper {
 		display: flex;
 		flex-direction: column;
-		align-items: start;
+	}
+	.footer-first {
+		flex-direction: row;
+		gap: var(--size-4);
 	}
 
 	.toggler {
-		justify-content: center;
+		align-items: start;
 	}
-	.toggler-pt-2 {
-		display: flex;
-		flex-direction: column;
-		/* justify-content: end; */
-		align-items: end;
+	.fullRow {
+		grid-row-start: 4;
+		grid-column-start: 1;
+		grid-column-end: 8;
 	}
 
-	.footer-middle {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
+	.copywrite {
+		color: var(--gray-8);
+		font-size: var(--font-size-0);
+		font-family: 'Courier New', Courier, monospace;
 	}
-	.footer-middle-second {
+
+	.year {
+		margin-inline: var(--size-1);
+	}
+
+	.newsletter-form {
 		display: flex;
 		flex-direction: column;
-		justify-content: end;
-		align-items: center;
-		/* box-shadow: var(--shadow-6); */
-		border-right: 1px dashed var(--link);
-		/* border-left: 1px dashed var(--link); */
-		padding-inline: var(--size-3);
-		padding-block: var(--size-7);
+		gap: var(--size-3);
+	}
+
+	.buttonWrapper {
+		display: flex;
+		gap: var(--size-3);
 	}
 
 	@media (min-width: 768px) {
 		footer {
 			display: grid;
-			grid-template-columns: 1fr 1fr 1fr;
+			/* grid-template-columns: 20% 20% 20% 20% 20%; */
+			/* grid-template-rows: 20% 20% 20% 20% 20%; */
+			/* display: grid; */
+			grid-template-rows: auto; /* Define two rows */
+			grid-template-columns: 1fr 1fr 1fr 1fr 1fr 4fr;
 			flex-direction: row;
 			justify-content: space-between;
-			border-top: 1px solid var(--border);
-			padding-block: var(--size-7);
+			/* border-top: 1px solid var(--border); */
+			/* padding-block: var(--size-7); */
 		}
 		.toggler {
 			justify-content: end;

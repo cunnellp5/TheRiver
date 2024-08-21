@@ -1,5 +1,11 @@
 <script lang="ts">
 	import * as Card from '$lib/components/ui/shadcn/card';
+	import * as Table from '$lib/components/ui/shadcn/table';
+	import AdminBusinessInfoRow from './AdminBusinessInfoRow.svelte';
+
+	export let data;
+
+	$: ({ business } = data);
 </script>
 
 <div class="adminIntroCardWrapper">
@@ -8,18 +14,21 @@
 			<Card.Title>Welcome</Card.Title>
 			<Card.Description>Update all content on your website</Card.Description>
 		</Card.Header>
-		<Card.Content>
-			<p>👈 Use the side menu to find what you want to change</p>
-			<p>
-				🗒️ Each section is divided by page and each page has its own section for the related content
-			</p>
-		</Card.Content>
+		<Card.Content></Card.Content>
 	</Card.Root>
 </div>
-
-<style>
-	p {
-		margin-block: var(--size-2);
-		font-size: var(--font-size-1);
-	}
-</style>
+<div class="adminIntroCardWrapper">
+	<Table.Root>
+		<Table.Caption>Contact information</Table.Caption>
+		<Table.Header>
+			<Table.Row>The River LLC</Table.Row>
+		</Table.Header>
+		<Table.Body>
+			{#if business}
+				{#each Object.entries(business) as [key, value]}
+					<AdminBusinessInfoRow {key} {value} id={business.id} />
+				{/each}
+			{/if}
+		</Table.Body>
+	</Table.Root>
+</div>

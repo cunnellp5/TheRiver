@@ -7,6 +7,7 @@ export const load: PageServerLoad = async () => {
 	// TODO fetch url from cloudinary figure out media
 	const videoURL = env.VIDEO_URL;
 	let articles = null;
+	let about;
 
 	if (!videoURL) {
 		error(404, 'Video not found');
@@ -18,5 +19,13 @@ export const load: PageServerLoad = async () => {
 		return error(500, 'Internal Server Error');
 	}
 
-	return { videoURL, articles };
+	try {
+		about = await db.about.findFirst({
+			where: { name: 'home' }
+		});
+	} catch (err) {
+		return error(500, 'Internal Server Error');
+	}
+
+	return { videoURL, articles, about };
 };

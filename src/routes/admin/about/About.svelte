@@ -6,15 +6,15 @@
 	export let title;
 	export let about;
 	export let isShowing: boolean;
+	export let id;
 
 	let isEditing = false;
-	let targetElement: HTMLInputElement;
 
-	function toggleEditOn(event: Event): void {
+	function toggleEditOn(): void {
 		isEditing = true;
 	}
 
-	function toggleEditOff(event: Event): void {
+	function toggleEditOff(): void {
 		isEditing = false;
 	}
 
@@ -28,7 +28,7 @@
 </Table.Cell>
 {#if isEditing}
 	<Table.Cell class="full-width">
-		<form class="content" method="POST" data-sveltekit-noscroll use:enhance>
+		<form class="content" method="POST" data-sveltekit-noscroll use:enhance={() => toggleEditOff()}>
 			<fieldset>
 				<legend>Change visibility</legend>
 
@@ -48,6 +48,7 @@
 			<div class="buttons-wrapper">
 				<input type="hidden" name="title" value={title} />
 				<input type="hidden" name="url" value={url} />
+				<input type="hidden" name="id" value={id} />
 
 				<button class="create-button" type="submit">Save</button>
 				<button class="delete-button" on:click={toggleEditOff}>Nvm</button>
@@ -57,7 +58,7 @@
 {:else}
 	<Table.Cell>
 		<div class="content">
-			<span>
+			<span class:visible={isShowing} class:hidden={!isShowing}>
 				{isShowing ? 'Visible' : 'Hidden'}
 			</span>
 			<span>
@@ -90,5 +91,11 @@
 	.buttons-wrapper {
 		display: flex;
 		gap: var(--size-3);
+	}
+	.visible {
+		color: var(--green-5);
+	}
+	.hidden {
+		color: var(--red-5);
 	}
 </style>

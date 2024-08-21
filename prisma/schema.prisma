@@ -35,17 +35,6 @@ enum BookingStatus {
   PENDING
 }
 
-enum EnumCategory {
-  BLOG
-  CASHAPP
-  EP
-  LINKTREE
-  MERCH
-  MUSIC
-  OTHER
-  SOCIALS
-}
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -158,15 +147,12 @@ model TimeSlot {
 }
 
 model SocialLinks {
-  id        Int          @id @default(autoincrement())
-  createdAt DateTime     @default(now())
-  updatedAt DateTime     @updatedAt
-  order     Int          @default(autoincrement())
-  title     String
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  order     Int      @default(autoincrement())
+  name      String
   url       String
-  category  EnumCategory
-  svg       String?
-  icon      String?
 }
 
 model BlackoutDay {
@@ -196,4 +182,29 @@ model YoutubeVideo {
   thumbnail   String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+}
+
+model About {
+  id        Int      @id @default(autoincrement())
+  isShowing Boolean
+  name      String
+  text      String
+  url       String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model BusinessInfo {
+  id        Int      @id @default(autoincrement())
+  name      String?
+  address   String?
+  city      String?
+  state     String?
+  zip       String?
+  phone     String?
+  email     String?
+  merchUrl  String?
+  merchText String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

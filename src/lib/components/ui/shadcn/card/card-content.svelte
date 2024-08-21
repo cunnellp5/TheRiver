@@ -17,4 +17,8 @@
 		padding-inline: var(--size-6);
 		padding-block-end: var(--size-6);
 	}
+
+	.noPadding {
+		padding: unset;
+	}
 </style>

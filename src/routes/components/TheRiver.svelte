@@ -81,10 +81,10 @@
 <style>
 	.homePage {
 		fill: var(--stone-3);
+		width: 100%;
 	}
-	/* 
-	#R,
-	#R2 {
-		fill: var(--indigo-1);
+
+	/* .homePage {
+		fill: var(--sand-2);
 	} */
 </style>

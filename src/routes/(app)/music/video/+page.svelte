@@ -5,9 +5,7 @@
 	import * as Carousel from '$lib/components/ui/shadcn/carousel';
 
 	export let data;
-
 	const { videos } = data;
-
 	// const YOUTUBE_BASE_EMBED_URL = 'https://www.youtube.com/embed/';
 </script>
 
@@ -59,7 +57,6 @@
 	/* CLASSES */
 	.carousel-wrapper {
 		margin-block: var(--size-4);
-		/* border: 1px solid red; */
 		padding-block: var(--size-4);
 	}
 	.carousel-button-wrapper {
@@ -69,31 +66,4 @@
 		margin-inline-end: var(--size-2);
 		margin-block: var(--size-4);
 	}
-	/* CLASSES */
-	/* .w-full { */
-	/* display: flex; */
-	/* justify-content: center; */
-	/* width: 100%; */
-	/* max-width: var(--size-content-2); */
-	/* } */
-	/* .grid-container {
-		margin-block: var(--size-7);
-	}
-	.videos {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		grid-auto-rows: minmax(200px, auto);
-		gap: var(--size-7);
-	}
-
-	@media (max-width: 1440px) {
-		.videos {
-			grid-template-columns: repeat(2, 1fr);
-		}
-	}
-	@media (max-width: 768px) {
-		.videos {
-			grid-template-columns: repeat(1, 1fr);
-		}
-	} */
 </style>

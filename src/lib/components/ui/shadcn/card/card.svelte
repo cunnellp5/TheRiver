@@ -20,4 +20,40 @@
 		background: var(--surface-2);
 		color: var(--text-1);
 	}
+
+	.unset {
+		box-shadow: unset;
+		border: unset;
+		border-radius: unset;
+		background: unset;
+		color: unset;
+	}
+	.option1 {
+		box-shadow: unset;
+		border: unset;
+		border-radius: unset;
+		background: var(--surface-4);
+		height: var(--size-content-3);
+		color: var(--text-1);
+		& > a > div {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+		}
+	}
+	.option2 {
+		box-shadow: unset;
+		border: unset;
+		border-radius: unset;
+		background: unset;
+		height: var(--size-content-3);
+		color: var(--text-1);
+		& > a > div {
+			display: flex;
+			flex-direction: row-reverse;
+			justify-content: space-between;
+			align-items: center;
+		}
+	}
 </style>

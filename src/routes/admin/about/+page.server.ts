@@ -1,15 +1,24 @@
+import { error, fail } from '@sveltejs/kit';
 import type { Actions } from '@sveltejs/kit';
-import fs from 'fs';
-import path from 'path';
-import about from '$lib/data/json/about.json';
+import db from '$lib/server/database';
+import type { PageServerLoad } from './$types';
 
-interface AboutData {
-	[key: string]: {
-		text: string;
-		isShowing: boolean;
-		url: string | null;
-	};
-}
+export const load: PageServerLoad = async (event) => {
+	if (!event.locals.session || !event.locals.user) {
+		return error(404, 'Not found');
+	}
+
+	try {
+		const about = await db.about.findMany({
+			orderBy: {
+				name: 'asc'
+			}
+		});
+		return { about };
+	} catch (err) {
+		return error(500, 'Internal Server Error');
+	}
+};
 
 export const actions: Actions = {
 	default: async ({ request }) => {
@@ -19,27 +28,28 @@ export const actions: Actions = {
 		const inputTitle = formData.get('title') as string;
 		const isShowing = (formData.get('isShowing') as string) === 'true';
 		const url = formData.get('url') as string;
+		const id = formData.get('id') as string;
 
-		// Define the path to the file
-		const filePath = path.join(process.cwd(), './src/lib/data/json/about.json');
-
-		// Create the data object to be written
-		(about as AboutData)[inputTitle.toLowerCase()] = {
-			text: inputAbout,
-			isShowing: isShowing,
-			url
-		};
-		const data = JSON.parse(JSON.stringify(about));
-
-		// Write the data to the file
-		fs.writeFile(filePath, JSON.stringify(data, null, 2), 'utf8', (err) => {
-			if (err) {
-				// SHOW ERROR ON THE PAGE
-				console.error('Error writing file:', err);
-			} else {
-				// SHOW SOME TOAST
-				console.log('File has been saved.');
-			}
-		});
+		try {
+			await db.about.update({
+				where: {
+					id: Number(id)
+				},
+				data: {
+					text: inputAbout,
+					name: inputTitle,
+					isShowing,
+					url
+				}
+			});
+			return {
+				message: 'About updated'
+			};
+		} catch (err) {
+			// log the error with some logger (sentry.io?)
+			return fail(500, {
+				message: 'An error occurred while updating an about section'
+			});
+		}
 	}
 };

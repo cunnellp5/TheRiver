@@ -8,7 +8,7 @@
 	export let createdAt: Date;
 	export let slug: string;
 	export let description: string;
-	export let link: string = `/posts/${slug}`;
+	export let link: string = `/blog/${slug}`;
 
 	$: selectedHighlight = $page.url.pathname.includes(slug);
 </script>
@@ -17,7 +17,7 @@
 	<div
 		class="card surface-4"
 		class:selected={selectedHighlight}
-		class:unselected={!selectedHighlight && $page.url.pathname.includes('/posts/')}>
+		class:unselected={!selectedHighlight && $page.url.pathname.includes('/blog/')}>
 		<div>
 			<span>
 				<slot name="published"></slot>

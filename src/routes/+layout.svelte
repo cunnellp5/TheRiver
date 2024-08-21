@@ -17,8 +17,11 @@
 <Toasts />
 
 <div>
-	<div class="app-layout">
-		<Header isSignedIn={data.isSignedIn} />
+	<!-- This is weirdly nested, but i really wanted a full width blur background -->
+	<div class="blur-bar">
+		<div class="app-layout">
+			<Header isSignedIn={data.isSignedIn} />
+		</div>
 	</div>
 
 	<!-- TODO move transitions to a new layout so admin portal looks better when navigating -->
@@ -56,4 +59,11 @@
 			padding-inline: 0;
 		}
 	} */
+	.blur-bar {
+		position: sticky; /* Make the nav sticky */
+		top: 0;
+		z-index: 1000;
+		/* backdrop-filter: blur(6px); */
+		background: var(--background);
+	}
 </style>

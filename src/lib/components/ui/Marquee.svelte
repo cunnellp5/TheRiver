@@ -1,57 +1,66 @@
 <!-- TODO add this to homepage after breaking out of the layout styles so this can be full width rather than being constrained by the layout style width -->
 <div class="marquee marquee-hover-pause">
 	<div class="marquee_group">
-		<span>THE RIVER SINGS&nbsp;</span>
-		<span>THE RIVER SPEAKS&nbsp;</span>
-		<span>THE RIVER CREATES&nbsp;</span>
+		<span class="font1">THE RIVER</span>
+		<span>THE RIVER</span>
+		<span class="font1">THE RIVER</span>
+		<span>THE RIVER</span>
+		<span class="font1">THE RIVER</span>
+		<span>THE RIVER</span>
 	</div>
 	<div class="marquee_group" aria-hidden="true">
-		<span>THE RIVER SINGS&nbsp;</span>
-		<span>THE RIVER SPEAKS&nbsp;</span>
-		<span>THE RIVER CREATES&nbsp;</span>
+		<span class="font1">THE RIVER</span>
+		<span>THE RIVER</span>
+		<span class="font1">THE RIVER</span>
+		<span>THE RIVER</span>
+		<span class="font1">THE RIVER</span>
+		<span>THE RIVER</span>
 	</div>
 </div>
 
 <style>
+	@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
 	.marquee {
 		display: flex;
-		padding-top: 11rem;
-		padding-bottom: 12rem;
-		height: 40vh;
+		background: var(--surface-1);
+		/* padding-top: 11rem; */
+		/* padding-bottom: 12rem; */
+		/* height: 40vh; */
 		overflow: hidden;
 		user-select: none;
 	}
-
 	.marquee:hover {
-		-webkit-text-stroke: 1.5px #fff;
+		-webkit-text-stroke: 1.5px var(--link);
 		-webkit-text-fill-color: transparent;
 		color: transparent;
 		-webkit-font-smoothing: antialiased;
 	}
-
 	.marquee_group {
 		display: flex;
 		flex-shrink: 0;
-		justify-content: space-between;
-		align-items: center;
-		gap: 0.2rem;
-		animation: scroll 15s linear infinite;
+		/* justify-content: space-between; */
+		/* align-items: center; */
+		animation: scroll 45s linear infinite;
 		min-width: 100%;
 	}
-
 	.marquee_group span {
-		color: white;
-		font-weight: 800;
-		font-size: 7vw;
-		font-family: 'Syne', sansserif !important;
+		color: var(--link);
+		font-weight: var(--font-weight-8);
+		font-size: var(--size-10);
+		font-family: 'Syne', sansserif;
 		white-space: nowrap;
 	}
-
 	.marquee-hover-pause:hover .marquee_group {
 		animation-play-state: paused;
-		cursor:
+		/* cursor:
 			url('https://fav.farm/🎙️') 15 0,
-			auto;
+			auto; */
+	}
+	.marquee_group span.font1 {
+		margin-inline: var(--size-4);
+		font-family: 'Lobster', sansserif;
+		/* text-transform: lowercase; */
 	}
 
 	@keyframes scroll {

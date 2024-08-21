@@ -1,9 +1,11 @@
 <script lang="ts">
 	import * as Card from '$lib/components/ui/shadcn/card';
 	import * as Table from '$lib/components/ui/shadcn/table';
-	import about from '$lib/data/json/about.json';
-	import { enhance } from '$app/forms';
 	import About from './About.svelte';
+
+	export let data;
+
+	$: ({ about } = data);
 </script>
 
 <div class="adminIntroCardWrapper">
@@ -23,9 +25,14 @@
 		<Table.Row>About table</Table.Row>
 	</Table.Header>
 	<Table.Body>
-		{#each Object.entries(about) as [key, value]}
+		{#each about as value}
 			<Table.Row>
-				<About url={value.url} title={key} about={value.text} isShowing={value.isShowing}></About>
+				<About
+					url={value.url}
+					title={value.name}
+					about={value.text}
+					isShowing={value.isShowing}
+					id={value.id}></About>
 			</Table.Row>
 		{/each}
 	</Table.Body>
