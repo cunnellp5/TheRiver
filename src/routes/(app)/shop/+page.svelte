@@ -1,10 +1,9 @@
 <script lang="ts">
-	import market from '$lib/data/json/market.json';
 	import * as Card from '$lib/components/ui/shadcn/card';
 
 	export let data;
 
-	const { feed } = data;
+	const { feed, url, text } = data;
 
 	// function safeHTML(html: string) {
 	// 	const element = document.createElement('div');
@@ -15,10 +14,10 @@
 
 <main class="app-layout">
 	<section>
-		<a target="_blank" href={market.url}>
+		<a target="_blank" href={url}>
 			<h1>THE RIVER MARKET</h1>
 		</a>
-		<a class="animation" target="_blank" href={market.url}> {market.text} </a>
+		<a class="animation" target="_blank" href={url}> {text} </a>
 	</section>
 	<div class="grid-container">
 		<div id="items" class="items">

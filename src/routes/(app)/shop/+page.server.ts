@@ -1,7 +1,12 @@
 import { DOMParser } from 'xmldom';
 import type { PageServerLoad } from './$types';
+import db from '$lib/server/database';
+import { error } from '@sveltejs/kit';
 
 export const load: PageServerLoad = async (event) => {
+	let url;
+	let text;
+
 	const response = await event.fetch('https://www.etsy.com/shop/TheRiverDesign/rss');
 	const xmlText = await response.text();
 
@@ -18,7 +23,17 @@ export const load: PageServerLoad = async (event) => {
 		pubDate: item.getElementsByTagName('pubDate')[0]?.textContent
 	}));
 
+	try {
+		const business = await db.businessInfo.findFirst();
+		url = business?.merchUrl;
+		text = business?.merchText;
+	} catch (err) {
+		return error(500, 'Internal Server Error');
+	}
+
 	return {
-		feed: data
+		feed: data,
+		url,
+		text
 	};
 };
