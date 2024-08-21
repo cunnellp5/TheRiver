@@ -1,6 +1,7 @@
 <script lang="ts">
 	import * as Card from '$lib/components/ui/shadcn/card';
 	import * as Table from '$lib/components/ui/shadcn/table';
+	import AdminBusinessInfoRow from './AdminBusinessInfoRow.svelte';
 
 	export let data;
 
@@ -25,60 +26,9 @@
 		<Table.Body>
 			{#if business}
 				{#each Object.entries(business) as [key, value]}
-					<Table.Row>
-						{#if key !== 'id' && key !== 'createdAt' && key !== 'updatedAt'}
-							<Table.Cell>{key.toUpperCase()}</Table.Cell>
-							<Table.Cell>{value}</Table.Cell>
-							<div class="button-wrapper">
-								<button class="update-button">edit</button>
-							</div>
-						{/if}
-					</Table.Row>
+					<AdminBusinessInfoRow {key} {value} id={business.id} />
 				{/each}
 			{/if}
-			<!-- <Table.Row>
-				<Table.Cell>Name</Table.Cell>
-				<Table.Cell>{business?.name || 'no name'}</Table.Cell>
-			</Table.Row>
-			<Table.Row>
-				<Table.Cell>Address</Table.Cell>
-				<Table.Cell>{business?.address || 'no address'}</Table.Cell>
-			</Table.Row>
-			<Table.Row>
-				<Table.Cell>City</Table.Cell>
-				<Table.Cell>{business?.city || 'no city'}</Table.Cell>
-			</Table.Row>
-			<Table.Row>
-				<Table.Cell>State</Table.Cell>
-				<Table.Cell>{business?.state || 'no state'}</Table.Cell>
-			</Table.Row>
-			<Table.Row>
-				<Table.Cell>Zip</Table.Cell>
-				<Table.Cell>{business?.zip || 'no zip'}</Table.Cell>
-			</Table.Row>
-			<Table.Row>
-				<Table.Cell>Phone</Table.Cell>
-				<Table.Cell>{business?.phone || 'no phone'}</Table.Cell>
-			</Table.Row>
-			<Table.Row>
-				<Table.Cell>Email</Table.Cell>
-				<Table.Cell>{business?.email || 'no email'}</Table.Cell>
-			</Table.Row> -->
 		</Table.Body>
 	</Table.Root>
 </div>
-
-<style>
-	p {
-		margin-block: var(--size-2);
-		font-size: var(--font-size-1);
-	}
-	.button-wrapper {
-		display: flex;
-		align-content: center;
-		justify-content: center;
-	}
-	.update-button {
-		height: 100%;
-	}
-</style>
