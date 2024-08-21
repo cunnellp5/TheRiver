@@ -29,10 +29,11 @@
 		color: unset;
 	}
 	.option1 {
+		box-shadow: unset;
 		border: unset;
 		border-radius: unset;
 		background: var(--surface-4);
-		height: 60vh;
+		height: var(--size-content-3);
 		color: var(--text-1);
 		& > a > div {
 			display: flex;
@@ -42,10 +43,11 @@
 		}
 	}
 	.option2 {
+		box-shadow: unset;
 		border: unset;
 		border-radius: unset;
 		background: unset;
-		height: 60vh;
+		height: var(--size-content-3);
 		color: var(--text-1);
 		& > a > div {
 			display: flex;
