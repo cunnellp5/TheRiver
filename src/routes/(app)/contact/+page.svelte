@@ -78,9 +78,6 @@
 		background-color: var(--surface-4);
 		padding: var(--size-9);
 	}
-	h1 {
-		text-transform: uppercase;
-	}
 	p {
 		letter-spacing: var(--font-letterspacing-3);
 	}

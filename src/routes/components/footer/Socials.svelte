@@ -10,11 +10,11 @@
 </script>
 
 <ul>
-	<li class="logo-link">
+	<!-- <li class="logo-link">
 		<a href="/">
 			<LogoR />
 		</a>
-	</li>
+	</li> -->
 	<a class="socials" href={socialLinks.facebook} target="_blank">
 		<li><Facebook /></li>
 	</a>
@@ -24,21 +24,21 @@
 	<a class="socials" href={socialLinks.instagram} target="_blank">
 		<li><Instagram /></li>
 	</a>
-	<a class="socials" href={socialLinks.linkTree} target="_blank">
-		<li><LinkTree /></li>
-	</a>
 	<a class="socials" href={socialLinks.spotify} target="_blank">
 		<li><Spotify /></li>
 	</a>
 	<a class="socials" href={socialLinks.etsy} target="_blank">
 		<li><Etsy /></li>
 	</a>
+	<a class="socials" href={socialLinks.linkTree} target="_blank">
+		<li><LinkTree /></li>
+	</a>
 </ul>
 
 <style>
 	ul {
 		display: flex;
-		flex-direction: column;
+		flex-direction: row;
 		/* flex-wrap: wrap; */
 		padding-inline: 0;
 		/* width: 100%; */
@@ -51,6 +51,7 @@
 		align-items: center;
 		margin-inline: var(--size-1);
 		border: 0px solid var(--gray-9);
+		aspect-ratio: 1 / 1;
 		width: var(--size-8);
 	}
 

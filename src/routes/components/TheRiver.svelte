@@ -84,7 +84,7 @@
 		width: 100%;
 	}
 
-	.homePage {
+	/* .homePage {
 		fill: var(--sand-2);
-	}
+	} */
 </style>
