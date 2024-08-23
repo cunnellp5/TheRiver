@@ -311,3 +311,11 @@ and use the full width for artistic banners */
 	color: var(--on-crud-text);
 	font-weight: var(--font-weight-7);
 }
+
+.rmButtonStyles {
+	margin: unset;
+	box-shadow: unset;
+	border: unset;
+	background-color: unset;
+	padding: unset;
+}
