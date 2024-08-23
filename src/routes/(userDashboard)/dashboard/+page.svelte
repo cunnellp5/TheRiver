@@ -4,8 +4,14 @@
 	import Users from 'lucide-svelte/icons/users';
 	import market from '$lib/data/json/market.json';
 	import DashboardUserRow from './DashboardUserRow.svelte';
+	import X from 'lucide-svelte/icons/x';
 
 	export let data;
+	export let form;
+
+	function resetForm() {
+		form = null;
+	}
 </script>
 
 <section class="app-layout">
@@ -25,6 +31,14 @@
 				<div class="adminIntroCardWrapper">
 					<Table.Root>
 						<Table.Body>
+							{#if form?.status !== 200 && form?.message}
+								<div class="buttonWrapper">
+									<p class="error-message">{form?.message}</p>
+									<button class="rmButtonStyles" on:click={resetForm} aria-label="Reset Form">
+										<X />
+									</button>
+								</div>
+							{/if}
 							{#each Object.entries(data.user) as [key, value]}
 								{#if key !== 'id'}
 									<DashboardUserRow {key} {value} id={data.user.id} />
@@ -104,5 +118,15 @@
 		justify-content: center;
 		margin: 0 auto;
 		width: 50%;
+	}
+	.error-message {
+		color: var(--red-7);
+		font-size: var(--font-size-0);
+	}
+	.buttonWrapper {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: var(--size-2);
 	}
 </style>
