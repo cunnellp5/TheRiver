@@ -1,6 +1,9 @@
-import { error, redirect, type Actions } from '@sveltejs/kit';
+import { error, fail, redirect, type Actions } from '@sveltejs/kit';
 import db from '$lib/server/database';
 import type { PageServerLoad } from './$types';
+import { emailValidation } from '$lib/utils/Valibot/EmailSchema';
+import { parse, ValiError } from 'valibot';
+import { type EmailSchema } from '$lib/utils/Valibot/EmailSchema';
 
 export const load: PageServerLoad = async (event) => {
 	// IF NOT LOGGED IN, REDIRECT TO LOGIN
@@ -43,9 +46,40 @@ export const actions: Actions = {
 		const formData = await request.formData();
 		const id = formData.get('id') as string;
 		const key = formData.get('key') as string;
-		const value = formData.get('value') as string;
+		let value = formData.get('value') as string | boolean;
 
-		console.log({ id, key, value }, 'inside server');
+		if (key === 'isSubscribed') {
+			value = value === 'true';
+		}
+
+		// CHECK DB IF EMAIL EXISTS
+		if (key === 'email') {
+			// validate email
+			try {
+				parse(emailValidation, value);
+			} catch (err) {
+				console.log('FUUUUCK YouuU');
+				const errors = err as ValiError<typeof EmailSchema>;
+				return fail(400, {
+					message: errors.message
+				});
+			}
+
+			const user = await db.user.findUnique({
+				where: { email: value.toString() }
+			});
+
+			// No change email is the same
+			// This should never be hit, but leaving for extra safety
+			if (user?.email === value) {
+				return { status: 200, message: 'No change' };
+			}
+
+			// Email already exists
+			if (user) {
+				return fail(400, { message: 'That email is already used' });
+			}
+		}
 
 		try {
 			await db.user.update({
@@ -53,7 +87,7 @@ export const actions: Actions = {
 				data: { [key]: value }
 			});
 
-			return { status: 200 };
+			return { status: 200, message: `${key} updated!` };
 		} catch (err) {
 			return error(500, 'Internal server error');
 		}
