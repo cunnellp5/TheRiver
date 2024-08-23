@@ -3,19 +3,21 @@
 	import Pencil from 'lucide-svelte/icons/pencil';
 	import Save from 'lucide-svelte/icons/save';
 	import X from 'lucide-svelte/icons/x';
-	import { enhance } from '$app/forms';
+	import { applyAction, enhance } from '$app/forms';
 	import { tick } from 'svelte';
+	import DashboardUserInput from './DashboardUserInput.svelte';
+	import { addToast } from '$lib/stores/toast';
 
+	type UserValue = string | boolean | number | Date | null;
+
+	export let value: UserValue;
 	export let key;
-	export let value: string;
 	export let id;
-
 	let isEditing = false;
 	let inputElement: HTMLInputElement;
 
 	function editing() {
 		isEditing = true;
-
 		tick().then(() => {
 			if (inputElement) {
 				inputElement.focus();
@@ -27,9 +29,15 @@
 		isEditing = false;
 	}
 
-	console.log({ key, value, id });
+	function cellValue({ value, key }: { value: UserValue; key: string }) {
+		if (key === 'isSubscribed') {
+			return value === true ? 'Subscribed' : 'Not subscribed';
+		}
+		return value;
+	}
 </script>
 
+<!-- TODO USER EMAIL MODAL -->
 <Table.Row>
 	{#if isEditing}
 		<Table.Cell>
@@ -38,16 +46,34 @@
 			</div>
 		</Table.Cell>
 		<Table.Cell>
-			<form method="POST" action="?/updateUser" use:enhance={stopEditing}>
+			<form
+				method="POST"
+				action="?/updateUser"
+				use:enhance={async ({ formElement, formData, action, cancel, submitter }) => {
+					if (formData.get('value') === value) {
+						stopEditing();
+						applyAction({ type: 'success', status: 200 });
+						cancel();
+					}
+					return async ({ result, update }) => {
+						if (result.status === 200) {
+							stopEditing();
+							update();
+							addToast({
+								message: `Updated ${key}`,
+								type: 'success',
+								dismissible: true,
+								timeout: 5000
+							});
+						} else {
+							update();
+						}
+					};
+				}}>
 				<input type="hidden" name="id" value={id} />
 				<input type="hidden" name="key" value={key} />
 
-				<input
-					type="text"
-					name="value"
-					bind:value
-					bind:this={inputElement}
-					class="fixed-width-input" />
+				<DashboardUserInput {key} {value} />
 
 				<div class="button-wrapper">
 					<button class="update-button" type="submit"> <Save /> </button>
@@ -56,7 +82,7 @@
 			</form>
 		</Table.Cell>
 	{:else}
-		<Table.Cell>{value}</Table.Cell>
+		<Table.Cell>{cellValue({ value, key })}</Table.Cell>
 		<Table.Cell>
 			<div class="button-wrapper">
 				<button class="editor" on:click={editing}>
