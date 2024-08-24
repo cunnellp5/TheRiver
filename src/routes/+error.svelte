@@ -6,23 +6,23 @@
 	{#if $page.status === 404}
 		<h1>The River</h1>
 		<section>
-			<a href="/shop">
-				<h3>Merch</h3>
+			<a href="/">
+				<p>Home</p>
 			</a>
 			<a href="/music">
-				<h2>&nbsp;&nbsp;Music</h2>
+				<p>Music</p>
 			</a>
 			<a href="/services">
-				<h4>Book now</h4>
+				<p>Services</p>
+			</a>
+			<a href="/shop">
+				<p>Merch</p>
 			</a>
 			<a href="/blog">
-				<h5>&nbsp;&nbsp;&nbsp;Blog</h5>
+				<p>Blog</p>
 			</a>
 			<a href="/contact">
-				<h5>&nbsp;&nbsp;&nbsp;&nbsp;Contact</h5>
-			</a>
-			<a href="/">
-				<h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Home</h5>
+				<p>Contact</p>
 			</a>
 		</section>
 	{:else if $page.status === 500}
