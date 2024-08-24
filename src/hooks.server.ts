@@ -39,9 +39,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 		(!event.locals.session && event.route.id?.includes('/admin')) ||
 		(event.locals.session && !event.locals.user.isAdmin && event.route.id?.includes('/admin'))
 	) {
-		console.log('amigettinghere?');
 		error(404, 'Not Found');
-		// redirect(302, '/');
 	}
 
 	return resolve(event);
