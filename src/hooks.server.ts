@@ -37,7 +37,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 
 	if (
 		(!event.locals.session && event.route.id?.includes('/admin')) ||
-		(event.locals.session && !event.locals.user.isAdmin && event.route.id?.includes('/admin'))
+		(event.locals.session && !event.locals.user?.isAdmin && event.route.id?.includes('/admin'))
 	) {
 		error(404, 'Not Found');
 	}
