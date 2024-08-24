@@ -8,7 +8,7 @@ import { type EmailSchema } from '$lib/utils/Valibot/EmailSchema';
 export const load: PageServerLoad = async (event) => {
 	// IF NOT LOGGED IN, REDIRECT TO LOGIN
 	if (!event.locals.session || !event.locals.user) {
-		return redirect(302, '/');
+		return error(404, 'Not Found');
 	}
 
 	try {
