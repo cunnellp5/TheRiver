@@ -1,59 +1,69 @@
-<!-- <!doctype html>
+<!doctype html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Error Page</title>
+		<meta charset="utf-8" />
+		<title>The River Error</title>
+		<!-- <title>%sveltekit.error.message%</title> -->
 		<style>
 			html {
-				background-color: rgb(19, 18, 18);
-				color: rgb(165, 162, 162);
+				margin: 0;
+				background-color: #333;
+				padding: 0;
+				color: #f9f3ee;
+				font-family:
+					system-ui,
+					-apple-system,
+					BlinkMacSystemFont,
+					'Segoe UI',
+					Roboto,
+					'Open Sans',
+					'Helvetica Neue',
+					sans-serif;
 			}
-			li {
-				cursor: pointer;
-				border: 1px solid #000;
-				border-radius: 5px;
-				background-color: #3a7a65;
-				padding: 0.5rem;
-				list-style: none;
-				text-align: center;
-			}
-			a {
-				text-decoration: none;
-			}
-			section {
-				display: flex;
-				flex-direction: column;
-				justify-content: space-evenly;
-				gap: 1rem;
-			}
-			main {
+			body {
 				display: flex;
 				flex-direction: column;
 				justify-content: center;
 				align-items: center;
 				height: 100vh;
 			}
+			a {
+				color: #f4f4f4;
+				font-weight: 100;
+				font-size: 12px;
+				list-style: none;
+				text-decoration: none;
+				text-transform: uppercase;
+			}
+			a:hover {
+				color: #4bc1c3;
+			}
+			p {
+				color: #97a7aa;
+			}
+			.headerWrapper,
+			section {
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				align-items: center;
+				gap: 2rem;
+			}
+			span {
+				color: #4b4949;
+				font-size: 24px;
+			}
 		</style>
 	</head>
 	<body>
-		<main>
-			<h1>Something weird happened...</h1>
-			<h2>THE RIVER</h2>
+		<div class="headerWrapper">
+			<h1>The River</h1>
+			<span>|</span>
+			<p>Its ok, even rivers have their days.</p>
+		</div>
+		<!-- <p>Status: %sveltekit.status%</p> -->
+		<!-- <p>Message: %sveltekit.error.message%</p> -->
 
-		</main>
-	</body>
-</html> -->
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<title>%sveltekit.error.message%</title>
-	</head>
-	<body>
-		<h1>Shit, getting here is kind of hard, will you please tell us what happened?</h1>
-		<p>Status: %sveltekit.status%</p>
-		<p>Message: %sveltekit.error.message%</p>
 		<section>
 			<a href="/">
 				<li>Home</li>
@@ -65,7 +75,7 @@
 				<li>Merch</li>
 			</a>
 			<a href="/services">
-				<li>Book a service</li>
+				<li>Services</li>
 			</a>
 			<a href="/blog">
 				<li>Blog</li>
