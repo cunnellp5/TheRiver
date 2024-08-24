@@ -1,0 +1,78 @@
+<!-- <!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Error Page</title>
+		<style>
+			html {
+				background-color: rgb(19, 18, 18);
+				color: rgb(165, 162, 162);
+			}
+			li {
+				cursor: pointer;
+				border: 1px solid #000;
+				border-radius: 5px;
+				background-color: #3a7a65;
+				padding: 0.5rem;
+				list-style: none;
+				text-align: center;
+			}
+			a {
+				text-decoration: none;
+			}
+			section {
+				display: flex;
+				flex-direction: column;
+				justify-content: space-evenly;
+				gap: 1rem;
+			}
+			main {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				height: 100vh;
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<h1>Something weird happened...</h1>
+			<h2>THE RIVER</h2>
+
+		</main>
+	</body>
+</html> -->
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>%sveltekit.error.message%</title>
+	</head>
+	<body>
+		<h1>Shit, getting here is kind of hard, will you please tell us what happened?</h1>
+		<p>Status: %sveltekit.status%</p>
+		<p>Message: %sveltekit.error.message%</p>
+		<section>
+			<a href="/">
+				<li>Home</li>
+			</a>
+			<a href="/music">
+				<li>Music</li>
+			</a>
+			<a href="/shop">
+				<li>Merch</li>
+			</a>
+			<a href="/services">
+				<li>Book a service</li>
+			</a>
+			<a href="/blog">
+				<li>Blog</li>
+			</a>
+			<a href="/contact">
+				<li>Contact</li>
+			</a>
+		</section>
+	</body>
+</html>
