@@ -1,5 +1,5 @@
 // import { sequence } from '@sveltejs/kit/hooks';
-import { redirect } from '@sveltejs/kit';
+import { error, redirect } from '@sveltejs/kit';
 import { lucia } from '$lib/server/auth';
 import type { Handle } from '@sveltejs/kit';
 
@@ -35,12 +35,13 @@ export const handle: Handle = async ({ event, resolve }) => {
 	event.locals.user = user;
 	event.locals.session = session;
 
-	// guards the admin portal
 	if (
 		(!event.locals.session && event.route.id?.includes('/admin')) ||
 		(event.locals.session && !event.locals.user.isAdmin && event.route.id?.includes('/admin'))
 	) {
-		redirect(302, '/');
+		console.log('amigettinghere?');
+		error(404, 'Not Found');
+		// redirect(302, '/');
 	}
 
 	return resolve(event);
