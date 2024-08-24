@@ -8,16 +8,9 @@
 	import ToggleTheme from '$lib/components/ui/ToggleTheme.svelte';
 
 	export let isSignedIn = false;
-
+	export let user;
 	let showAuthLinks = false;
-
 	let visible = false;
-
-	// const toggleAuthMenu = (event: MouseEvent) => {
-	// 	event.preventDefault();
-	// 	event.stopPropagation();
-	// 	showAuthLinks = !showAuthLinks;
-	// };
 
 	if (browser) {
 		window.addEventListener('click', () => {
@@ -55,13 +48,17 @@
 		<ul class="links" class:homepageText={isHomePage}>
 			<li></li>
 
-			<li class:current={includesAdmin} aria-current={includesAdmin}>
-				<a href="/admin"> Admin </a>
-			</li>
+			{#if user && user.isAdmin}
+				<li class:current={includesAdmin} aria-current={includesAdmin}>
+					<a href="/admin"> Admin </a>
+				</li>
+			{/if}
 
-			<li class:current={isDashboard} aria-current={isDashboard}>
-				<a href="/dashboard"> Dashboard </a>
-			</li>
+			{#if isSignedIn && user}
+				<li class:current={isDashboard} aria-current={isDashboard}>
+					<a href="/dashboard"> Dashboard </a>
+				</li>
+			{/if}
 		</ul>
 	</div>
 
@@ -96,8 +93,8 @@
 				</li>
 			</form>
 		{:else}
-			<li class:current={isSignup}>
-				<a href="/signup"> Signup </a>
+			<li class:current={isSignup} class="signup">
+				<a href="/signup"> Sign up </a>
 			</li>
 			<li class:current={isLogin}>
 				<a href="/login"> Login </a>
@@ -212,19 +209,13 @@
 		height: var(--size-5);
 	}
 
-	/* .homepageText {
-		& a,
-		.logout-button {
-			color: var(--gray-1);
-		}
-		& .border-left {
-			border-left: 1px solid var(--border-light);
-		}
-	} */
-
 	.logout-button {
 		background: inherit;
 		padding: 0;
+	}
+
+	.signup > a {
+		color: var(--link);
 	}
 
 	@media (min-width: 768px) {
