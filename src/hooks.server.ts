@@ -35,12 +35,13 @@ export const handle: Handle = async ({ event, resolve }) => {
 	event.locals.user = user;
 	event.locals.session = session;
 
-	if (
-		(!event.locals.session && event.route.id?.includes('/admin')) ||
-		(event.locals.session && !event.locals.user?.isAdmin && event.route.id?.includes('/admin'))
-	) {
-		error(404, 'Not Found');
-	}
+	// if (
+	// 	(!event.locals.session && event.route.id?.includes('/admin')) ||
+	// 	(event.locals.session && !event.locals.user?.isAdmin && event.route.id?.includes('/admin'))
+	// ) {
+	// 	// error(404, 'Not Found');
+	// 	return resolve(event.locals);
+	// }
 
 	return resolve(event);
 };
