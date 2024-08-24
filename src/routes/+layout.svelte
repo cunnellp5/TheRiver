@@ -9,7 +9,7 @@
 	import type { PageData } from './$types';
 	import Header from './components/Header.svelte';
 	import PageTransition from './components/Transition.svelte';
-	import Footer from './components/footer/Footer.svelte';
+	import Footer from './components/Footer.svelte';
 
 	export let data: PageData;
 </script>
@@ -20,7 +20,7 @@
 	<!-- This is weirdly nested, but i really wanted a full width blur background -->
 	<div class="blur-bar">
 		<div class="app-layout">
-			<Header isSignedIn={data.isSignedIn} />
+			<Header isSignedIn={data.isSignedIn} user={data.user} />
 		</div>
 	</div>
 

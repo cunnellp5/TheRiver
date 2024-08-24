@@ -11,8 +11,8 @@
 	type UserValue = string | boolean | number | Date | null;
 
 	export let value: UserValue;
-	export let key;
-	export let id;
+	export let key: string;
+	export let id: string;
 	let isEditing = false;
 	let inputElement: HTMLInputElement;
 

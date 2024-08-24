@@ -2,8 +2,8 @@ import db from '$lib/server/database';
 import { error, type Actions } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
-export const load: PageServerLoad = async (event) => {
-	if (!event.locals.session || !event.locals.user) {
+export const load: PageServerLoad = async ({ locals }: { locals: App.Locals }) => {
+	if (!locals.session || !locals.user || !locals.user.isAdmin) {
 		return error(404, 'Not found');
 	}
 

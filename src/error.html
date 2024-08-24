@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>The River Error</title>
+		<!-- <title>%sveltekit.error.message%</title> -->
+		<style>
+			html {
+				margin: 0;
+				background-color: #333;
+				padding: 0;
+				color: #f9f3ee;
+				font-family:
+					system-ui,
+					-apple-system,
+					BlinkMacSystemFont,
+					'Segoe UI',
+					Roboto,
+					'Open Sans',
+					'Helvetica Neue',
+					sans-serif;
+			}
+			body {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				height: 100vh;
+			}
+			a {
+				color: #f4f4f4;
+				font-weight: 100;
+				font-size: 12px;
+				list-style: none;
+				text-decoration: none;
+				text-transform: uppercase;
+			}
+			a:hover {
+				color: #4bc1c3;
+			}
+			p {
+				color: #97a7aa;
+			}
+			.headerWrapper,
+			section {
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				align-items: center;
+				gap: 2rem;
+			}
+			span {
+				color: #4b4949;
+				font-size: 24px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="headerWrapper">
+			<h1>The River</h1>
+			<span>|</span>
+			<p>Its ok, even rivers have their days.</p>
+		</div>
+		<!-- <p>Status: %sveltekit.status%</p> -->
+		<!-- <p>Message: %sveltekit.error.message%</p> -->
+
+		<section>
+			<a href="/">
+				<li>Home</li>
+			</a>
+			<a href="/music">
+				<li>Music</li>
+			</a>
+			<a href="/shop">
+				<li>Merch</li>
+			</a>
+			<a href="/services">
+				<li>Services</li>
+			</a>
+			<a href="/blog">
+				<li>Blog</li>
+			</a>
+			<a href="/contact">
+				<li>Contact</li>
+			</a>
+		</section>
+	</body>
+</html>
