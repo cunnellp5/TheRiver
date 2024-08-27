@@ -2,7 +2,8 @@
 	import Check from 'lucide-svelte/icons/check';
 	import Copy from 'lucide-svelte/icons/copy';
 	import Send from 'lucide-svelte/icons/send';
-	import MailCheck from 'lucide-svelte/icons/mail-check';
+	import MapPin from 'lucide-svelte/icons/map-pin';
+	import Socials from '$lib/components/ui/Socials.svelte';
 
 	const email = 'theriverrunsfast@gmail.com';
 	let copied = false;
@@ -19,33 +20,52 @@
 
 <div class="app-layout">
 	<h1>The River</h1>
-	<p>Denver, CO</p>
+	<!-- <p>Denver, CO</p> -->
 	<div class="main-page-wrapper">
 		<!-- TODO put this video in cloudinary -->
-		<video autoplay muted loop playsinline class="background-video">
+		<!-- <video autoplay muted loop playsinline class="background-video">
 			<source src="water.mp4" type="video/mp4" />
 			Your browser does not support HTML5 video.
-		</video>
+		</video> -->
 		<section>
-			<div>
-				<!-- <h3>Hmu</h3> -->
-				<p class="email-wrapper">
-					theriverrunsfast@gmail.com
-					<!-- svelte-ignore a11y-click-events-have-key-events -->
-					<!-- svelte-ignore a11y-no-static-element-interactions -->
-					<span class="copy" on:click={copyEmail} title="Copy email to clipboard">
-						{#if copied}
-							<Check size="24" />
-						{:else}
-							<Copy size="24" />
-						{/if}
-					</span>
-					<a href="mailto:{email}">
-						<div title="Send email">
-							<Send size="24" />
-						</div>
+			<div class="contact">
+				<p class="label">Address</p>
+				<div class="addy">
+					<a
+						target="_blank"
+						href="https://www.google.com/maps/place/30+W+Bayaud+Ave,+Denver,+CO+80223/@39.7145613,-104.9886223,17z/data=!3m1!4b1!4m6!3m5!1s0x876c7f1ef7cf41b7:0xbb0e344a69581183!8m2!3d39.7145613!4d-104.9886223!16s%2Fg%2F11c22m8nd0?entry=ttu&g_ep=EgoyMDI0MDgyMy4wIKXMDSoASAFQAw%3D%3D">
+						<MapPin />
 					</a>
-				</p>
+					<div>
+						<p class="address1">30 W Bayaud Ave</p>
+						<p class="address2">Denver, CO 80223</p>
+					</div>
+				</div>
+			</div>
+			<div class="contact">
+				<p class="label">Email</p>
+				<!-- svelte-ignore a11y-click-events-have-key-events -->
+				<!-- svelte-ignore a11y-no-static-element-interactions -->
+				<div class="emailAddy">
+					<p>theriverrunsfast@gmail.com</p>
+					<div class="emailAddyButtons">
+						<button class="copy" on:click={copyEmail} title="Copy email to clipboard">
+							{#if copied}
+								<Check size="24" />
+							{:else}
+								<Copy size="24" />
+							{/if}
+						</button>
+						<a href="mailto:{email}">
+							<button title="Send email">
+								<Send size="24" />
+							</button>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="socials">
+				<Socials></Socials>
 			</div>
 		</section>
 	</div>
@@ -59,24 +79,16 @@
 		font-size: var(--size-15);
 		user-select: none;
 	}
-	h2,
-	h3 {
-		margin-block: var(--size-2);
-	}
-	label {
-		color: var(--text-2);
-	}
 	section {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		gap: var(--size-8);
 		/* animation: animateBorderRadius 21s infinite linear; */
 		margin: 0 auto;
 		box-shadow: var(--shadow-5);
 		border-radius: var(--radius-2);
 		background-color: var(--surface-4);
-		padding: var(--size-9);
+		padding: var(--size-8);
 	}
 	p {
 		letter-spacing: var(--font-letterspacing-3);
@@ -88,24 +100,10 @@
 		border-radius: var(--radius-blob-1);
 		user-select: none;
 	}
-	button {
-		width: 100%;
-		/* margin-block: var(--size-2); */
-	}
 
 	/* CLASSES */
 	.copy {
 		cursor: pointer;
-	}
-	.email-wrapper {
-		display: flex;
-		gap: var(--size-2);
-	}
-	.buttons-wrapper {
-		display: flex;
-		flex-direction: column;
-		gap: var(--size-4);
-		margin-block-start: var(--size-2);
 	}
 	.main-page-wrapper {
 		display: flex;
@@ -124,14 +122,39 @@
 		height: 100%;
 		object-fit: cover;
 	}
-	.newsletter-form {
-		display: flex;
-		flex-direction: column;
-		gap: var(--size-2);
-		margin-block-start: var(--size-2);
-	}
 	.app-layout {
 		margin-block: var(--size-9);
+	}
+
+	.addy {
+		display: flex;
+		gap: var(--size-4);
+	}
+	.emailAddyButtons {
+		display: flex;
+		gap: var(--size-4);
+		margin-block-start: var(--size-2);
+	}
+
+	.address2 {
+		color: var(--gray-6);
+		font-size: var(--font-size-1);
+	}
+	/* .me4 { */
+	/* margin-inline-end: var(--size-4); */
+	/* } */
+	.socials {
+		align-self: center;
+		margin-block-start: var(--size-9);
+		/* border-top: 1px solid var(--link); */
+	}
+	.label {
+		color: var(--gray-7);
+		text-transform: uppercase;
+	}
+
+	.contact {
+		margin-block-end: var(--size-8);
 	}
 
 	/* ANIMATIONS */
