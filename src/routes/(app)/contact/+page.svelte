@@ -59,7 +59,7 @@
 				</div>
 			</div>
 			<hr />
-			<div class="socials">
+			<div>
 				<Socials></Socials>
 			</div>
 		</section>
@@ -92,9 +92,6 @@
 		margin: unset;
 	}
 	/* CLASSES */
-	.copy {
-		cursor: pointer;
-	}
 	.main-page-wrapper {
 		display: flex;
 		position: relative;
@@ -118,10 +115,8 @@
 		color: var(--gray-6);
 		font-size: var(--font-size-1);
 	}
-	.socials {
-		align-self: center;
-	}
 	.label {
+		margin-block-end: var(--size-3);
 		color: var(--gray-7);
 		text-transform: uppercase;
 	}
