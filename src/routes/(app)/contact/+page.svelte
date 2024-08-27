@@ -19,7 +19,6 @@
 </script>
 
 <div class="app-layout">
-	<h1>The River</h1>
 	<div class="main-page-wrapper">
 		<section>
 			<div class="contact">
@@ -68,19 +67,13 @@
 
 <style>
 	/* ELEMENTS */
-	h1 {
-		position: absolute;
-		z-index: -1;
-		font-size: var(--size-15);
-		user-select: none;
-	}
 	section {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		gap: var(--size-9);
 		margin: 0 auto;
-		box-shadow: var(--shadow-5);
+		box-shadow: var(--shadow-3);
 		border-radius: var(--radius-2);
 		background-color: var(--surface-4);
 		padding: var(--size-8);
@@ -94,10 +87,6 @@
 	/* CLASSES */
 	.main-page-wrapper {
 		display: flex;
-		position: relative;
-		justify-content: center;
-		align-items: center;
-		height: 100vh;
 	}
 	.app-layout {
 		margin-block: var(--size-9);
