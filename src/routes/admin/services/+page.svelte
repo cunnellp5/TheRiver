@@ -5,7 +5,6 @@
 	export let data;
 
 	const { services } = data;
-	console.log(services, 'fuuu');
 </script>
 
 <div class="adminIntroCardWrapper">

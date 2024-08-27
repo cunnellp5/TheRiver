@@ -58,7 +58,6 @@ export const actions: Actions = {
 			try {
 				parse(emailValidation, value);
 			} catch (err) {
-				console.log('FUUUUCK YouuU');
 				const errors = err as ValiError<typeof EmailSchema>;
 				return fail(400, {
 					message: errors.message
