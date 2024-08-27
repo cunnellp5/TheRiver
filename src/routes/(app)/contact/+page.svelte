@@ -64,6 +64,7 @@
 					</div>
 				</div>
 			</div>
+			<hr />
 			<div class="socials">
 				<Socials></Socials>
 			</div>
@@ -83,6 +84,7 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
+		gap: var(--size-9);
 		/* animation: animateBorderRadius 21s infinite linear; */
 		margin: 0 auto;
 		box-shadow: var(--shadow-5);
@@ -92,6 +94,9 @@
 	}
 	p {
 		letter-spacing: var(--font-letterspacing-3);
+	}
+	hr {
+		margin: unset;
 	}
 	video {
 		z-index: -3 !important;
@@ -145,16 +150,12 @@
 	/* } */
 	.socials {
 		align-self: center;
-		margin-block-start: var(--size-9);
+		/* margin-block-start: var(--size-9); */
 		/* border-top: 1px solid var(--link); */
 	}
 	.label {
 		color: var(--gray-7);
 		text-transform: uppercase;
-	}
-
-	.contact {
-		margin-block-end: var(--size-8);
 	}
 
 	/* ANIMATIONS */
