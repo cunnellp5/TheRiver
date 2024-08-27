@@ -1,7 +1,6 @@
 <script lang="ts">
 	// import Table from '$lib/components/ui/Table.svelte';
 	import * as Table from '$lib/components/ui/shadcn/table';
-	import { CldImage } from 'svelte-cloudinary';
 	import { enhance } from '$app/forms';
 
 	export let data;
@@ -44,12 +43,8 @@
 		<h1 style:transform={`translate3d(${scroll / 10}px, 0, 0)`}>THE RIVER BEAUTY</h1>
 		<p>Denver based</p>
 		<div class="cutoutImg" style:transform={`translate3d(-${scroll / 20}px, ${scroll / 5}px, 0)`}>
-			<CldImage
-				height="1000"
-				width="600"
-				sizes="100vw"
-				crop="pad"
-				src={'/TheRiver/alexisCutout'}
+			<img
+				src="https://res.cloudinary.com/dswpu3qez/image/upload/f_auto/q_auto/v1714083850/TheRiver/alexisCutout.png"
 				alt="alexis cutout" />
 			<!-- <img
 				style:transform={`translate3d(-${scroll / 10}px, ${scroll / 5}px, 0)`}
