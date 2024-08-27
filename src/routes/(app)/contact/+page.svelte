@@ -20,13 +20,7 @@
 
 <div class="app-layout">
 	<h1>The River</h1>
-	<!-- <p>Denver, CO</p> -->
 	<div class="main-page-wrapper">
-		<!-- TODO put this video in cloudinary -->
-		<!-- <video autoplay muted loop playsinline class="background-video">
-			<source src="water.mp4" type="video/mp4" />
-			Your browser does not support HTML5 video.
-		</video> -->
 		<section>
 			<div class="contact">
 				<p class="label">Address</p>
@@ -85,7 +79,6 @@
 		flex-direction: column;
 		justify-content: center;
 		gap: var(--size-9);
-		/* animation: animateBorderRadius 21s infinite linear; */
 		margin: 0 auto;
 		box-shadow: var(--shadow-5);
 		border-radius: var(--radius-2);
@@ -98,14 +91,6 @@
 	hr {
 		margin: unset;
 	}
-	video {
-		z-index: -3 !important;
-		animation: animateBorderRadius 24s infinite linear;
-		box-shadow: var(--shadow-1);
-		border-radius: var(--radius-blob-1);
-		user-select: none;
-	}
-
 	/* CLASSES */
 	.copy {
 		cursor: pointer;
@@ -117,20 +102,9 @@
 		align-items: center;
 		height: 100vh;
 	}
-	.background-video {
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		z-index: -1;
-		min-width: var(--size-content-3);
-		height: 100%;
-		object-fit: cover;
-	}
 	.app-layout {
 		margin-block: var(--size-9);
 	}
-
 	.addy {
 		display: flex;
 		gap: var(--size-4);
@@ -140,43 +114,15 @@
 		gap: var(--size-4);
 		margin-block-start: var(--size-2);
 	}
-
 	.address2 {
 		color: var(--gray-6);
 		font-size: var(--font-size-1);
 	}
-	/* .me4 { */
-	/* margin-inline-end: var(--size-4); */
-	/* } */
 	.socials {
 		align-self: center;
-		/* margin-block-start: var(--size-9); */
-		/* border-top: 1px solid var(--link); */
 	}
 	.label {
 		color: var(--gray-7);
 		text-transform: uppercase;
-	}
-
-	/* ANIMATIONS */
-	@keyframes animateBorderRadius {
-		0% {
-			border-radius: var(--radius-blob-1);
-		}
-		20% {
-			border-radius: var(--radius-blob-2);
-		}
-		40% {
-			border-radius: var(--radius-blob-3);
-		}
-		60% {
-			border-radius: var(--radius-blob-4);
-		}
-		80% {
-			border-radius: var(--radius-blob-5);
-		}
-		100% {
-			border-radius: var(--radius-blob-1);
-		}
 	}
 </style>
