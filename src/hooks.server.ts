@@ -35,13 +35,22 @@ export const handle: Handle = async ({ event, resolve }) => {
 	event.locals.user = user;
 	event.locals.session = session;
 
-	// if (
-	// 	(!event.locals.session && event.route.id?.includes('/admin')) ||
-	// 	(event.locals.session && !event.locals.user?.isAdmin && event.route.id?.includes('/admin'))
-	// ) {
-	// 	// error(404, 'Not Found');
-	// 	return resolve(event.locals);
-	// }
+	if (
+		(!event.locals.session && event.route.id?.includes('/admin')) ||
+		(event.locals.session && !event.locals.user?.isAdmin && event.route.id?.includes('/admin'))
+	) {
+		error(404, 'Not Found');
+		// return resolve(event.locals);
+	}
+
+	// generic user logged in and navigates to login page
+	if (event.locals.session && event.route.id?.includes('/login')) {
+		redirect(302, '/');
+	}
+	// generic user logged in and navigates to signup page
+	if (event.locals.session && event.route.id?.includes('/signup')) {
+		redirect(302, '/');
+	}
 
 	return resolve(event);
 };
