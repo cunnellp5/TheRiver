@@ -13,6 +13,7 @@
 	class={`data-[state=selected]:bg-muted border-b transition-colors ${className}`}
 	{...$$restProps}
 	on:click
+	on:dblclick
 	on:keydown>
 	<slot />
 </tr>
