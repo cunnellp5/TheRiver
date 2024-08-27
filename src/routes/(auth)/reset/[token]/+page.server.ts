@@ -58,7 +58,7 @@ export const load: PageServerLoad = async (event) => {
 // redirect to login!
 
 export const actions: Actions = {
-	default: async ({ cookies, request }) => {
+	default: async ({ cookies, request, locals }) => {
 		const formData = await request.formData();
 
 		const email = formData.get('email') as string;
@@ -100,6 +100,16 @@ export const actions: Actions = {
 
 		if (!existingUser) {
 			return redirect(302, '/reset');
+		}
+
+		// Invalidate/delete old session if user is logged in
+		if (locals.session) {
+			await lucia.invalidateSession(locals.session.id);
+			const sessionCookie = lucia.createBlankSessionCookie();
+			cookies.set(sessionCookie.name, sessionCookie.value, {
+				path: '.',
+				...sessionCookie.attributes
+			});
 		}
 
 		// Atomically update user and delete reset password session

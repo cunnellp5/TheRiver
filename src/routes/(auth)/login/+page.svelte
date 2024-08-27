@@ -25,11 +25,13 @@
 		<form
 			method="post"
 			use:enhance={({ cancel }) =>
-				async ({ update }) =>
+				async ({ update, result }) =>
 					update()
-						.then(() =>
-							addToast({ message: 'Logged in!', type: 'info', dismissible: true, timeout: 5000 })
-						)
+						.then(() => {
+							if (result.status === 302) {
+								addToast({ message: 'Logged in!', type: 'info', dismissible: true, timeout: 5000 });
+							}
+						})
 						.catch(() => {
 							cancel();
 						})}>
