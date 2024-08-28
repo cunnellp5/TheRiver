@@ -45,8 +45,15 @@
 								{/if}
 							{/each}
 							<Table.Row>
-								<Table.Cell>
-									<a href="/reset" class="pw-reset"> Reset Password </a>
+								<Table.Cell colspan={2}>
+									<a href="/reset" class="center"> Reset Password </a>
+								</Table.Cell>
+							</Table.Row>
+							<Table.Row>
+								<Table.Cell colspan={2}>
+									<div class="center">
+										<button class="delete-button"> Delete Account </button>
+									</div>
 								</Table.Cell>
 							</Table.Row>
 						</Table.Body>
@@ -128,5 +135,11 @@
 		flex-direction: row;
 		align-items: center;
 		gap: var(--size-2);
+	}
+	.center {
+		display: flex;
+		justify-content: center;
+		/* gap: var(--size-3); */
+		/* width: 100%; */
 	}
 </style>
