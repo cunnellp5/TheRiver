@@ -30,7 +30,7 @@
 			<div id="video-tint"></div>
 		</div>
 
-		<div role="img" aria-label={isPlaying ? 'Play video' : 'Pause video'} id="image-container">
+		<div role="img" id="image-container">
 			{#if visible}
 				<TheRiver />
 			{/if}
