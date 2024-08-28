@@ -4,7 +4,7 @@
 	import { enhance } from '$app/forms';
 
 	export let data;
-	const { services } = data;
+	const { services, about } = data;
 	let selectedServices = new Set();
 	let selectedServicesInput: string;
 	let scroll: number;
@@ -54,10 +54,11 @@
 
 		<!-- <div class="page-indicator">1</div> -->
 	</section>
-	<p class="about">
-		Beauty isn't just skin deep. It's an experience that starts with self-love and radiates outward.
-		My services are tailored to bring out your natural glow.
-	</p>
+	{#if about?.isShowing}
+		<p class="about">
+			{about?.text}
+		</p>
+	{/if}
 	<!-- {#each Object.entries(remappedServices) as [category, listOfServices]}
 		<section class="service-table">
 			<div>
