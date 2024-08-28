@@ -13,7 +13,7 @@
 				height="300"
 				scrolling="no"
 				frameborder="no"
-				allow="autoplay">
+				loading="lazy">
 			</iframe>
 		{/each}
 	</div>
