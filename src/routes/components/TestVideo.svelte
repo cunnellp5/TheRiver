@@ -43,7 +43,19 @@
 		height: 100vh;
 	}
 
-	.gallery > img,
+	.gallery > img {
+		filter: grayscale(80%);
+		transition: 0.7s linear;
+		transition-delay: var(--transition-delay-2);
+		transition-timing-function: cubic-bezier(0.14, 0.8, 0.3, 1);
+		cursor: pointer;
+		width: 0;
+		min-width: 100%;
+		height: 0;
+		min-height: 100%;
+		object-fit: cover;
+	}
+
 	.gallery img:hover {
 		filter: grayscale(0);
 		width: calc(100vh * var(--f) / var(--n));
