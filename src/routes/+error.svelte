@@ -2,7 +2,9 @@
 	import Seo from '$lib/components/SEO.svelte';
 </script>
 
-<Seo title={'The River | Error page'} description={'Error page'} />
+<Seo
+	title={'Error - Something Went Wrong'}
+	description={'Oops! Something went wrong. Please try again later or contact support if the issue persists.'} />
 
 <main class="app-layout hype">
 	<h1>The River</h1>
