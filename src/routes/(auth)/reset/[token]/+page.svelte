@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Check from 'lucide-svelte/icons/check';
 	import { enhance } from '$app/forms';
+	import Seo from '$lib/components/SEO.svelte';
 
 	export let data;
 
@@ -19,6 +20,10 @@
 	// 	isFirstNameValid &&
 	// 	isLastNameValid;
 </script>
+
+<Seo
+	title={'Reset Your Password - Secure Form Access'}
+	description={'Use this secure form to reset your password. Enter your new password to regain access to your account. This page is accessible with a temporary link for your security.'} />
 
 <main>
 	<section>
