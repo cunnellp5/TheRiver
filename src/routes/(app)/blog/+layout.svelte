@@ -15,11 +15,11 @@
 		showElement = true;
 
 		// Check if the block has been executed before
-		const hasExecutedBlogInit = getItemWithExpiry('hasExecutedBlogInit');
-		if (!hasExecutedBlogInit && data.posts) {
+		// const hasExecutedBlogInit = getItemWithExpiry('hasExecutedBlogInit');
+		if (data.posts) {
 			goto(`/blog/${data.posts[0].slug}`);
 			// Set the flag in local storage with a TTL of 1 hour
-			setItemWithExpiry('hasExecutedBlogInit', true, 3600000); // 1 hour in milliseconds
+			// setItemWithExpiry('hasExecutedBlogInit', true, 3600000); // 1 hour in milliseconds
 		}
 	});
 
