@@ -1,18 +1,69 @@
 <script lang="ts">
 	import * as Card from '$lib/components/ui/shadcn/card';
 	import * as Table from '$lib/components/ui/shadcn/table';
+	import Modal from '$lib/components/ui/Modal.svelte';
 	import Users from 'lucide-svelte/icons/users';
 	import market from '$lib/data/json/market.json';
 	import DashboardUserRow from './DashboardUserRow.svelte';
 	import X from 'lucide-svelte/icons/x';
+	import ArrowRight from 'lucide-svelte/icons/arrow-right';
+	import { addToast } from '$lib/stores/toast';
+	import { enhance } from '$app/forms';
 
 	export let data;
 	export let form;
+	let showModal = false;
+	let emailInput = '';
 
 	function resetForm() {
 		form = null;
 	}
+
+	$: disabledDelete = emailInput !== data.user.email;
 </script>
+
+<Modal bind:showModal overrideButtons={true}>
+	<h2 slot="header">
+		Delete this account
+		<br />
+		<small>{data.user.firstName}, are you sure?</small>
+	</h2>
+	<section class="modalBody">
+		<div>
+			<p>Once you delete your account, there is no going back. Please be certain.</p>
+		</div>
+
+		<form
+			id="deleteForm"
+			action="?/deleteAccount"
+			method="POST"
+			use:enhance={() => {
+				showModal = false;
+				addToast({
+					message: 'Account deleted',
+					type: 'success'
+				});
+			}}>
+			<label for="typedEmail">Email</label>
+			<input
+				type="text"
+				name="typedEmail"
+				bind:value={emailInput}
+				placeholder="Type email to unlock" />
+			<input type="hidden" name="id" value={data.user.id} />
+			<input type="hidden" name="userEmail" value={data.user.email} />
+		</form>
+	</section>
+	<div slot="buttons" class="buttonWrapper">
+		<button
+			form="deleteForm"
+			type="submit"
+			class:delete-button={!disabledDelete}
+			class:diabledDelete={disabledDelete}
+			disabled={disabledDelete}>Permanently Delete</button>
+		<button type="button" on:click={() => (showModal = false)}>Close</button>
+	</div>
+</Modal>
 
 <section class="app-layout">
 	<div class="top-user-card">
@@ -33,7 +84,7 @@
 						<Table.Body>
 							{#if form?.status !== 200 && form?.message}
 								<div class="buttonWrapper">
-									<p class="error-message">{form?.message}</p>
+									<p class="errorMessage">{form?.message}</p>
 									<button class="rmButtonStyles" on:click={resetForm} aria-label="Reset Form">
 										<X />
 									</button>
@@ -44,14 +95,10 @@
 									<DashboardUserRow {key} {value} id={data.user.id} />
 								{/if}
 							{/each}
-							<Table.Row>
-								<Table.Cell>
-									<a href="/reset" class="pw-reset"> Reset Password </a>
-								</Table.Cell>
-							</Table.Row>
 						</Table.Body>
 					</Table.Root>
 				</div>
+				<!-- <Card.Footer>Settings</Card.Footer> -->
 			</Card.Content>
 		</Card.Root>
 	</div>
@@ -59,56 +106,142 @@
 	<div class="cardsWrapper">
 		<Card.Root>
 			<Card.Header>
-				<Card.Title>Services</Card.Title>
-				<Card.Description>Nails</Card.Description>
-				<Card.Description>Hair</Card.Description>
+				<Card.Title>Navigation</Card.Title>
+				<Card.Description>Explore the site!</Card.Description>
+				<!-- <Card.Description>Hair</Card.Description> -->
 			</Card.Header>
-			<Card.Footer>
-				<a href="/services">
-					<button class="primary">View all services</button>
-				</a>
-			</Card.Footer>
+			<Card.Content>
+				<ul>
+					<a href="/music">
+						<li>
+							<ArrowRight size={12} />
+							Beats
+						</li>
+					</a>
+					<a href="/services">
+						<li>
+							<ArrowRight size={12} />
+							Services
+						</li>
+					</a>
+					<a href={market.url} target="_blank">
+						<li>
+							<ArrowRight size={12} />
+							Etsy
+						</li>
+					</a>
+					<a href="/blog">
+						<li>
+							<ArrowRight size={12} />
+							Blog
+						</li>
+					</a>
+					<a href="/contact">
+						<li>
+							<ArrowRight size={12} />
+							Contact
+						</li>
+					</a>
+				</ul>
+			</Card.Content>
 		</Card.Root>
 
 		<Card.Root>
 			<Card.Header>
-				<Card.Title>Merch</Card.Title>
-				<Card.Description>Handmade jewelry</Card.Description>
-				<Card.Description>Custom clothes</Card.Description>
+				<Card.Title>Danger Zone</Card.Title>
+				<!-- <Card.Description>Handmade jewelry</Card.Description> -->
+				<!-- <Card.Description>Custom clothes</Card.Description> -->
 			</Card.Header>
-			<Card.Footer>
-				<a href={market.url} target="_blank">
-					<button class="secondary"> Etsy store </button>
-				</a>
-			</Card.Footer>
-		</Card.Root>
-
-		<Card.Root>
-			<Card.Header>
-				<Card.Title>Music</Card.Title>
-				<Card.Description>Videos</Card.Description>
-				<Card.Description>Tracks</Card.Description>
-				<Card.Description>Stems to download</Card.Description>
-			</Card.Header>
-			<Card.Footer>
-				<a href="/music">
-					<button class="primary"> Beats </button>
-				</a>
-			</Card.Footer>
+			<Card.Content>
+				<Table.Root>
+					<Table.Body>
+						<Table.Row>
+							<Table.Cell>
+								<p class="text2">Reset password</p>
+								<span> Sends a reset password link to your email </span>
+							</Table.Cell>
+							<Table.Cell>
+								<a href="/reset" class="center">
+									<button class="update-button"> Reset Password </button>
+								</a>
+							</Table.Cell>
+						</Table.Row>
+						<Table.Row>
+							<Table.Cell>
+								<p class="text2">Delete account</p>
+								<span> Once you delete your account, there is no going back. </span>
+							</Table.Cell>
+							<Table.Cell>
+								<div class="center">
+									<button class="delete-button" on:click={() => (showModal = true)}>
+										Delete Account
+									</button>
+								</div>
+							</Table.Cell>
+						</Table.Row>
+					</Table.Body>
+				</Table.Root>
+			</Card.Content>
+			<Card.Content></Card.Content>
+			<Card.Footer></Card.Footer>
 		</Card.Root>
 	</div>
 </section>
 
 <style>
+	/* ELEMENTS */
+	li {
+		display: flex;
+		gap: var(--size-2);
+		margin-block: var(--size-2);
+	}
+	a {
+		position: relative;
+		color: var(--text-2);
+		text-decoration: none;
+	}
+
+	ul a::after {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		transform: scaleX(0);
+		transform-origin: bottom right;
+		transition: transform 0.25s ease-out;
+		background-color: var(--link);
+		width: 100%;
+		height: 1px;
+		content: '';
+	}
+	ul a:hover {
+		color: var(--link);
+	}
+
+	ul a:hover::after {
+		transform: scaleX(1);
+		transform-origin: bottom left;
+	}
+	form {
+		display: flex;
+		flex-direction: column;
+		gap: var(--size-2);
+		& label {
+			color: var(--text-2);
+			font-size: var(--font-size-0);
+		}
+	}
+	/* CLASSES */
 	.headWrapper {
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
 	}
 	.cardsWrapper {
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+		display: flex;
+		flex-direction: column;
 		gap: var(--size-3);
+		margin: 0 auto;
+		width: 50%;
 	}
 	.top-user-card {
 		margin-block: var(--size-7);
@@ -119,14 +252,41 @@
 		margin: 0 auto;
 		width: 50%;
 	}
-	.error-message {
-		color: var(--red-7);
-		font-size: var(--font-size-0);
-	}
 	.buttonWrapper {
 		display: flex;
 		flex-direction: row;
 		align-items: center;
 		gap: var(--size-2);
+	}
+	.center {
+		display: flex;
+		justify-content: center;
+	}
+	.text2 {
+		color: var(--text-2);
+	}
+	.modalBody {
+		display: flex;
+		flex-direction: column;
+		gap: var(--size-7);
+	}
+	.diabledDelete {
+		opacity: 0.5;
+	}
+	@media (max-width: 1440px) {
+		.adminIntroCardWrapper {
+			width: 70%;
+		}
+		.cardsWrapper {
+			width: 70%;
+		}
+	}
+	@media (max-width: 768px) {
+		.adminIntroCardWrapper {
+			width: 100%;
+		}
+		.cardsWrapper {
+			width: 100%;
+		}
 	}
 </style>

@@ -4,6 +4,8 @@
 	import { quintOut } from 'svelte/easing';
 	import BlogCard from '$lib/components/ui/BlogCard.svelte';
 	import type { PageData } from './$types';
+	import { goto } from '$app/navigation';
+	import { setItemWithExpiry, getItemWithExpiry } from '$lib/utils/localSorage';
 
 	export let data: PageData;
 	let showElement = false;
@@ -11,6 +13,14 @@
 
 	onMount(() => {
 		showElement = true;
+
+		// Check if the block has been executed before
+		// const hasExecutedBlogInit = getItemWithExpiry('hasExecutedBlogInit');
+		if (data.posts) {
+			goto(`/blog/${data.posts[0].slug}`);
+			// Set the flag in local storage with a TTL of 1 hour
+			// setItemWithExpiry('hasExecutedBlogInit', true, 3600000); // 1 hour in milliseconds
+		}
 	});
 
 	let filteredPosts = data.posts;

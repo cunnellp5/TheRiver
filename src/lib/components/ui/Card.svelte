@@ -1,7 +1,6 @@
 <script lang="ts">
 	import SkeletonImg from '$lib/components/ui/skeletons/SkeletonImg.svelte';
 	import SkeletonText from '$lib/components/ui/skeletons/SkeletonText.svelte';
-	import { CldImage } from 'svelte-cloudinary';
 
 	export let articleImage;
 	export let articleTitle;
@@ -16,7 +15,7 @@
 			<div class="imageContainer">
 				{#if articleImage}
 					<div class="imgWrapper">
-						<CldImage height="600" width="600" crop="thumb" src={articleImage} alt={articleTitle} />
+						<img height="600px" width="600px" src={articleImage} alt={articleTitle} />
 					</div>
 					<p class="overlayTitle">{articleTitle}</p>
 				{:else}

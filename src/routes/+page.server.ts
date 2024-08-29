@@ -1,10 +1,10 @@
-import { error } from '@sveltejs/kit';
-import db from '$lib/server/database';
 import { env } from '$env/dynamic/private';
+import db from '$lib/server/database';
+import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async () => {
-	// TODO fetch url from cloudinary figure out media
+	// TODO store urls in db - cdn can be public, but make sure the modifiers are on the urls
 	const videoURL = env.VIDEO_URL;
 	let articles = null;
 	let about;

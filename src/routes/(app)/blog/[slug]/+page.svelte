@@ -117,10 +117,6 @@
 <style>
 	/* ELEMENTS */
 	h1 {
-		background: var(--gradient-7) fixed;
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
 		line-height: var(--font-lineheight-0);
 	}
 	date {

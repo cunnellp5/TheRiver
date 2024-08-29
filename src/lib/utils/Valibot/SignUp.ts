@@ -14,7 +14,6 @@ export const SignUpSchema = object({
 		string('Your last name must be a string.'),
 		nonEmpty('Please enter your last name.')
 	),
-	isSubscribed: boolean('Your subscription must be a boolean.'),
 	confirm: confirmValidation // TODO test this
 });
 

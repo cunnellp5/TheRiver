@@ -46,10 +46,6 @@
 <style>
 	/* ELEMENTS */
 	h5 {
-		background: var(--gradient-24) fixed;
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
 		& a {
 			color: var(--text-2);
 		}

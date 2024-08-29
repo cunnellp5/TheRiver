@@ -1,6 +1,27 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	export let data;
 	const { tracks } = data;
+
+	onMount(() => {
+		const iframes = document.querySelectorAll('iframe');
+		const immediateLoadCount = 6; // Number of iframes to load immediately
+
+		iframes.forEach((iframe, index) => {
+			if (index < immediateLoadCount) {
+				// Load the first few iframes immediately
+				iframe.src = iframe.getAttribute('data-src') ?? '';
+			} else {
+				// Set a timeout for the rest
+				setTimeout(
+					() => {
+						iframe.src = iframe.getAttribute('data-src') ?? '';
+					},
+					(index - immediateLoadCount) * 250
+				); // Adjust the delay as needed
+			}
+		});
+	});
 </script>
 
 <div class="grid-container">
@@ -8,12 +29,12 @@
 		{#each tracks as track}
 			<iframe
 				title={track.title}
-				src={track.url}
+				data-src={track.url}
 				width="100%"
 				height="300"
 				scrolling="no"
 				frameborder="no"
-				allow="autoplay">
+				loading="lazy">
 			</iframe>
 		{/each}
 	</div>

@@ -1,24 +1,38 @@
 import db from '$lib/server/database';
-import { error, redirect } from '@sveltejs/kit';
+import { error, redirect, type Actions } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 import { servicesMapper } from '$lib/utils/servicesMapper';
 
 export const load: PageServerLoad = async () => {
+	let remappedServices;
+	let about;
+
 	try {
 		const services = await db.service.findMany({
 			include: {
 				category: true
 			}
 		});
-
 		if (!services) return error(404, 'No services found');
-
-		const remappedServices = servicesMapper(services);
-
-		return { services: remappedServices };
+		remappedServices = servicesMapper(services);
 	} catch (err) {
 		return error(500, err.message);
 	}
+
+	try {
+		about = await db.about.findFirst({
+			where: {
+				name: 'services'
+			}
+		});
+	} catch (err) {
+		return error(500, err.message);
+	}
+
+	return {
+		services: remappedServices,
+		about
+	};
 };
 
 export const actions: Actions = {

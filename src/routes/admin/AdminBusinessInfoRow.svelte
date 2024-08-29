@@ -40,7 +40,7 @@
 		</Table.Cell>
 	</Table.Row>
 {:else}
-	<Table.Row on:click={editing}>
+	<Table.Row on:dblclick={editing}>
 		{#if key !== 'id' && key !== 'createdAt' && key !== 'updatedAt'}
 			<Table.Cell class="fixed-width keyText">{key}</Table.Cell>
 			<Table.Cell class="fixed-width">{value}</Table.Cell>

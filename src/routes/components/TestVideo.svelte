@@ -1,21 +1,20 @@
 <main>
 	<article class="gallery">
 		<img
-			src="https://assets.codepen.io/1506195/unsplash-music-0.avif"
-			alt="guitar player at concert" />
-		<img src="https://assets.codepen.io/1506195/unsplash-music-1.avif" alt="duo singing" />
-		<img src="https://assets.codepen.io/1506195/unsplash-music-2.avif" alt="crowd cheering" />
-		<img src="https://assets.codepen.io/1506195/unsplash-music-3.avif" alt="singer performing" />
-		<iframe
-			width="560"
-			height="315"
-			src="https://www.youtube-nocookie.com/embed/oWPTJSC0qJU?si=BDXlYQ5voEemMnhN&amp;controls=0"
-			title="YouTube video player"
-			frameborder="0"
-			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;"
-			referrerpolicy="strict-origin-when-cross-origin"
-			allowfullscreen>
-		</iframe>
+			src="https://res.cloudinary.com/dswpu3qez/image/upload/f_auto/q_auto:eco/v1724876043/TheRiver/AlexisWater1_ji0grg.jpg"
+			alt="Water model" />
+		<img
+			src="https://res.cloudinary.com/dswpu3qez/image/upload/f_auto/q_auto:eco/v1724876038/TheRiver/alexismodel1_va2axz.jpg"
+			alt="fifth element model" />
+		<img
+			src="https://res.cloudinary.com/dswpu3qez/image/upload/f_auto/q_auto:eco/v1724874425/TheRiver/alexis_blue_h6x97p.jpg"
+			alt="holding comb model" />
+		<img
+			src="https://res.cloudinary.com/dswpu3qez/image/upload/f_auto/q_auto:eco/v1724876041/TheRiver/alexisSing_mmyxg6.jpg"
+			alt="singing blue background" />
+		<img
+			src="https://res.cloudinary.com/dswpu3qez/image/upload/f_auto/q_auto:eco/v1724875569/TheRiver/alexisArticle2_iqx8vk.webp"
+			alt="sitting on yellow floor" />
 	</article>
 </main>
 
@@ -44,8 +43,7 @@
 		height: 100vh;
 	}
 
-	.gallery > img,
-	.gallery > iframe {
+	.gallery > img {
 		filter: grayscale(80%);
 		transition: 0.7s linear;
 		transition-delay: var(--transition-delay-2);
@@ -58,8 +56,7 @@
 		object-fit: cover;
 	}
 
-	.gallery img:hover,
-	.gallery iframe:hover {
+	.gallery img:hover {
 		filter: grayscale(0);
 		width: calc(100vh * var(--f) / var(--n));
 		height: calc(100vw * var(--f) / var(--m));
@@ -70,8 +67,7 @@
 			grid-template-columns: auto;
 		}
 
-		.gallery > img,
-		.gallery > iframe {
+		.gallery > img {
 			grid-column: auto / span 4;
 		}
 	}

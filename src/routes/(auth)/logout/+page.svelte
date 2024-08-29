@@ -9,6 +9,7 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		height: 100vh;
+		gap: var(--size-7);
+		height: 70vh;
 	}
 </style>

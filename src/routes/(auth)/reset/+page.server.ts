@@ -35,7 +35,11 @@ export const actions: Actions = {
 			});
 
 			if (!user) {
-				return fail(400, { message: 'no user found' });
+				return {
+					status: 200,
+					message: 'Your request was sent to the provided address.',
+					success: true
+				};
 			}
 		} catch (error) {
 			return fail(400, { message: 'something happened when finding user' });

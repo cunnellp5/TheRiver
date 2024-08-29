@@ -5,6 +5,7 @@ import { PasswordSchema } from '$lib/utils/Valibot/PassSchema';
 import { Argon2id } from 'oslo/password';
 import { lucia } from '$lib/server/auth';
 import type { PageServerLoad } from './$types';
+import { logout } from '$lib/server/controllers/logout';
 
 export const load: PageServerLoad = async (event) => {
 	const { token } = event.params;
@@ -58,7 +59,7 @@ export const load: PageServerLoad = async (event) => {
 // redirect to login!
 
 export const actions: Actions = {
-	default: async ({ cookies, request }) => {
+	default: async ({ cookies, request, locals }) => {
 		const formData = await request.formData();
 
 		const email = formData.get('email') as string;
@@ -100,6 +101,11 @@ export const actions: Actions = {
 
 		if (!existingUser) {
 			return redirect(302, '/reset');
+		}
+
+		// Invalidate/delete old session if user is logged in
+		if (locals.session) {
+			await logout({ locals, cookies });
 		}
 
 		// Atomically update user and delete reset password session

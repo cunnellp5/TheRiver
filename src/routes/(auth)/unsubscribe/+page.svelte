@@ -1,7 +1,7 @@
 <section>
 	<h1>Unsubscribe</h1>
 
-	<form action="POST">
+	<form method="POST">
 		<div>
 			<label for="email">Email:</label>
 			<input type="email" name="email" id="email" placeholder="your@email.com" required />

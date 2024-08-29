@@ -100,7 +100,8 @@
 				data-sveltekit-noscroll>
 				Categories
 			</a>
-			<a
+			<!-- TEMPORARILY HIDDEN -->
+			<!-- <a
 				class="indented"
 				class:current={$page.url.pathname.includes('/admin/services/booking')}
 				href="/admin/services/booking"
@@ -113,7 +114,7 @@
 				href="/admin/services/time-slots"
 				data-sveltekit-noscroll>
 				Schedule
-			</a>
+			</a> -->
 
 			<hr />
 

@@ -1,9 +1,6 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
-	// import LogoWhite from '$lib/components/svgs/logos/LogoWhite.svelte';
 	import { onMount } from 'svelte';
-	import { CldImage } from 'svelte-cloudinary';
-	// import Card from '$lib/components/ui/Card.svelte';
 	import Socials from '$lib/components/ui/Socials.svelte';
 	import * as GenericCard from '$lib/components/ui/shadcn/card';
 	import TestVideo from './components/TestVideo.svelte';
@@ -11,31 +8,13 @@
 	import Marquee from '$lib/components/ui/Marquee.svelte';
 
 	export let data;
-
 	const { videoURL, articles, about } = data;
 
 	let isPlaying = true;
-
 	let visible = false;
-
-	let videoElement: HTMLVideoElement;
-
-	function playVideo() {
-		videoElement.play();
-		isPlaying = true;
-	}
-
-	function pauseVideo() {
-		videoElement.pause();
-		isPlaying = false;
-	}
 
 	onMount(() => {
 		visible = true;
-
-		// window.addEventListener('scroll', () => {
-		// 	videoElement.style.objectPosition = `0px ${window.pageYOffset * 0.5}px`;
-		// });
 	});
 </script>
 
@@ -43,8 +22,8 @@
 <main>
 	<div class="img-video-overlay-wrapper">
 		<div id="video-background">
-			{#if visible}
-				<video in:fade={{ duration: 800, delay: 600 }} autoplay loop muted bind:this={videoElement}>
+			{#if visible && videoURL}
+				<video in:fade={{ duration: 800, delay: 600 }} autoplay loop muted>
 					<source src={videoURL} type="video/mp4" />
 					<track kind="captions" srclang="en" label="English" />
 				</video>
@@ -52,14 +31,9 @@
 			<div id="video-tint"></div>
 		</div>
 
-		<!-- on:mouseenter={playVideo}
-		on:mouseleave={pauseVideo} -->
-		<div role="img" aria-label={isPlaying ? 'Play video' : 'Pause video'} id="image-container">
-			<!-- <LogoWhite isHomePage={true} /> -->
+		<div role="img" id="image-container">
 			{#if visible}
-				<!-- <div class="app-layout"> -->
 				<TheRiver />
-				<!-- </div> -->
 			{/if}
 		</div>
 	</div>
@@ -88,12 +62,12 @@
 							</GenericCard.Description>
 						</GenericCard.Header>
 						<GenericCard.Content class="noPadding">
-							<CldImage
+							<img
+								class="crop"
 								height="600px"
 								width="600px"
 								src={article.img}
-								alt={article.articleTitle}
-								crop="fill" />
+								alt={article.articleTitle} />
 						</GenericCard.Content>
 					</div>
 				</a>

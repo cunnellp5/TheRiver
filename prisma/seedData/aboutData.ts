@@ -1,7 +1,7 @@
 export default [
 	{
 		name: 'home',
-		text: 'Welcome to the home page',
+		text: "Welcome to The River, where beauty meets creativity. I’m a beauty expert, singer, and creator passionate about helping you embrace your unique style. Whether it's through my beauty services, music, or custom merch, I'm here to inspire and empower. Explore my world, connect, and discover the art of being your true self.",
 		isShowing: true,
 		url: '/'
 	},
@@ -13,7 +13,7 @@ export default [
 	},
 	{
 		name: 'services',
-		text: 'Welcome to the services page',
+		text: "Beauty isn't just skin deep. It's an experience that starts with self-love and radiates outward. My services are tailored to bring out your natural glow.",
 		isShowing: true,
 		url: '/services'
 	},

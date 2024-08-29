@@ -19,9 +19,8 @@
 					update()
 						.then(() => {
 							addToast({
-								message:
-									'An email should should be arriving shortly. Feel free to close this window',
-								type: 'info',
+								message: 'Your request was sent to the provided address',
+								type: 'success',
 								dismissible: true
 							});
 							loading = false;
@@ -59,21 +58,16 @@
 	form {
 		display: flex;
 		flex-direction: column;
+		gap: var(--size-4);
 		padding-block-start: var(--size-7);
 	}
-
 	input {
-		margin: 0.5rem;
-		padding: 0.5rem;
+		padding: var(--size-2);
 	}
-
-	button {
-		margin: 0.5rem;
-		padding: 0.5rem;
-	}
-
 	p {
-		margin-block: var(--size-7);
+		margin-block: var(--size-2);
+		color: var(--link);
+		font-size: var(--font-size-0);
 		text-align: center;
 	}
 </style>
