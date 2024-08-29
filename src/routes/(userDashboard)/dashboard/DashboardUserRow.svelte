@@ -35,6 +35,20 @@
 		}
 		return value;
 	}
+
+	function getToastMessage(key: string) {
+		if (key === 'isSubscribed') {
+			return 'Updated subscription';
+		}
+		return `Updated ${key}`;
+	}
+
+	const keyMapper: { [key: string]: string } = {
+		firstName: 'First Name',
+		lastName: 'Last Name',
+		email: 'Email',
+		isSubscribed: 'Subscription'
+	};
 </script>
 
 <!-- TODO USER EMAIL MODAL -->
@@ -42,7 +56,7 @@
 	{#if isEditing}
 		<Table.Cell>
 			<div class="keyColor">
-				{key}
+				{keyMapper[key]}
 			</div>
 		</Table.Cell>
 		<Table.Cell>
@@ -60,7 +74,7 @@
 							stopEditing();
 							update();
 							addToast({
-								message: `Updated ${key}`,
+								message: getToastMessage(key),
 								type: 'success',
 								dismissible: true,
 								timeout: 5000
