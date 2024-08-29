@@ -64,7 +64,7 @@
 				method="POST"
 				action="?/updateUser"
 				use:enhance={async ({ formElement, formData, action, cancel, submitter }) => {
-					if (formData.get('value') === value) {
+					if (formData.get('value') === value?.toString()) {
 						stopEditing();
 						applyAction({ type: 'success', status: 200 });
 						cancel();
