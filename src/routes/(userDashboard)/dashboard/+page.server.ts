@@ -1,10 +1,9 @@
 import { error, fail, redirect, type Actions } from '@sveltejs/kit';
 import db from '$lib/server/database';
 import type { PageServerLoad } from './$types';
-import { emailValidation } from '$lib/utils/Valibot/EmailSchema';
+import { logout } from '$lib/server/controllers/logout';
 import { parse, ValiError } from 'valibot';
-import { type EmailSchema } from '$lib/utils/Valibot/EmailSchema';
-import { logout } from '$lib/server/logout';
+import { EmailSchema } from '$lib/utils/Valibot/EmailSchema';
 
 export const load: PageServerLoad = async (event) => {
 	// IF NOT LOGGED IN, REDIRECT TO LOGIN
@@ -22,7 +21,7 @@ export const load: PageServerLoad = async (event) => {
 				firstName: true,
 				lastName: true,
 				email: true,
-				isSubscribed: true
+				Newsletter: true
 			}
 		});
 
@@ -31,7 +30,15 @@ export const load: PageServerLoad = async (event) => {
 			return redirect(302, '/');
 		}
 
-		return { user };
+		return {
+			user: {
+				id: user.id,
+				firstName: user.firstName,
+				lastName: user.lastName,
+				email: user.email,
+				isSubscribed: user?.Newsletter ? true : false
+			}
+		};
 	} catch (err) {
 		return error(500, 'Something went wrong');
 	}
@@ -39,7 +46,7 @@ export const load: PageServerLoad = async (event) => {
 
 export const actions: Actions = {
 	updateUser: async ({ request, locals }) => {
-		// IF NOT LOGGED IN, RETURN 404
+		// IF NOT LOGGED IN, ERROR
 		if (!locals.session || !locals.user) {
 			return error(404, 'Not found');
 		}
@@ -49,15 +56,11 @@ export const actions: Actions = {
 		const key = formData.get('key') as string;
 		let value = formData.get('value') as string | boolean;
 
-		if (key === 'isSubscribed') {
-			value = value === 'true';
-		}
-
 		// CHECK DB IF EMAIL EXISTS
 		if (key === 'email') {
 			// validate email
 			try {
-				parse(emailValidation, value);
+				parse(EmailSchema, { email: value });
 			} catch (err) {
 				const errors = err as ValiError<typeof EmailSchema>;
 				return fail(400, {
@@ -65,13 +68,50 @@ export const actions: Actions = {
 				});
 			}
 
-			const user = await db.user.findUnique({
-				where: { email: value.toString() }
-			});
+			let user;
+			try {
+				user = await db.user.findUnique({
+					where: { email: value.toString() }
+				});
+			} catch (err) {
+				console.error('Error finding user:', err);
+				return error(500, 'Internal server error');
+			}
 
 			if (user) {
 				return fail(400, { message: 'Email is unavailable' });
 			}
+		}
+
+		if (key === 'isSubscribed') {
+			// CONSIDER AN ATOMIC TRANSACTION BETWIXT THE USER AND THE NEWSLETTER TABLES
+			// coerce to boolean
+			value = value === 'true';
+
+			// we have the user id so we can go ahead and create a newsletter record here
+			// take email from storage since the user is logged in
+			if (value) {
+				try {
+					await db.newsletter.create({
+						data: { email: locals.user.email, userId: id }
+					});
+				} catch (err) {
+					console.error('Error creating newsletter:', err);
+					return error(500, 'Internal server error');
+				}
+			} else {
+				// otherwise lets always clean up the newsletter if the value is false for isSubscribed keys
+				try {
+					await db.newsletter.delete({
+						where: { email: locals.user.email }
+					});
+				} catch (err) {
+					console.error('Error deleting newsletter:', err);
+					return error(500, 'Internal server error');
+				}
+			}
+			// return because theres nothing to update on user side
+			return { status: 200, message: `${key} updated!` };
 		}
 
 		try {
@@ -82,6 +122,7 @@ export const actions: Actions = {
 
 			return { status: 200, message: `${key} updated!` };
 		} catch (err) {
+			console.error('Error updating user:', err);
 			return error(500, 'Internal server error');
 		}
 	},
@@ -110,6 +151,7 @@ export const actions: Actions = {
 
 			await logout({ locals, cookies });
 		} catch (err) {
+			console.error('Error deleting user:', err);
 			return error(500, 'Internal server error');
 		}
 		return redirect(302, '/');
