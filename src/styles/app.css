@@ -299,7 +299,7 @@ and use the full width for artistic banners */
 .create-button {
 	background-color: var(--surface-4);
 	color: var(--create);
-	font-weight: var(--font-weight-7);
+	/* font-weight: var(--font-weight-7); */
 }
 .create-button:hover {
 	background-color: var(--create);
@@ -308,7 +308,7 @@ and use the full width for artistic banners */
 .update-button {
 	background-color: var(--surface-4);
 	color: var(--update);
-	font-weight: var(--font-weight-7);
+	/* font-weight: var(--font-weight-7); */
 }
 .update-button:hover {
 	background-color: var(--update);
@@ -317,7 +317,7 @@ and use the full width for artistic banners */
 .delete-button {
 	background-color: var(--surface-4);
 	color: var(--delete);
-	font-weight: var(--font-weight-7);
+	/* font-weight: var(--font-weight-7); */
 }
 
 .delete-button:hover {
