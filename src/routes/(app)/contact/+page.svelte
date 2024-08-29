@@ -27,7 +27,7 @@
 		<section>
 			<div class="contact">
 				<p class="label">Address</p>
-				<div class="addy">
+				<div class="addy indent">
 					<a
 						target="_blank"
 						href="https://www.google.com/maps/place/30+W+Bayaud+Ave,+Denver,+CO+80223/@39.7145613,-104.9886223,17z/data=!3m1!4b1!4m6!3m5!1s0x876c7f1ef7cf41b7:0xbb0e344a69581183!8m2!3d39.7145613!4d-104.9886223!16s%2Fg%2F11c22m8nd0?entry=ttu&g_ep=EgoyMDI0MDgyMy4wIKXMDSoASAFQAw%3D%3D">
@@ -45,7 +45,7 @@
 				<p class="label">Email</p>
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
 				<!-- svelte-ignore a11y-no-static-element-interactions -->
-				<div class="emailAddy">
+				<div class="emailAddy indent">
 					<p>theriverrunsfast@gmail.com</p>
 					<div class="emailAddyButtons">
 						<button class="copy" on:click={copyEmail} title="Copy email to clipboard">
@@ -58,7 +58,7 @@
 						</button>
 						<a href="mailto:{email}">
 							<button title="Send email">
-								<Send /> Send
+								<Send /> Email
 							</button>
 						</a>
 					</div>
@@ -100,37 +100,33 @@
 		display: flex;
 		gap: var(--size-4);
 	}
+
+	.indent {
+		margin-inline-start: var(--size-4);
+	}
 	.emailAddyButtons {
 		display: flex;
-		flex-direction: column;
 		gap: var(--size-4);
 		margin-block-start: var(--size-4);
-		font-size: var(--font-size-0);
-		& button {
-			width: 100%;
-		}
+		font-size: var(--font-size-1);
 	}
 	.address2 {
 		color: var(--gray-6);
-		font-size: var(--font-size-1);
+		font-size: var(--font-size-0);
 	}
 	.label {
 		margin-block-end: var(--size-3);
-		color: var(--gray-7);
+		color: var(--gray-5);
+		letter-spacing: var(--font-letterspacing-5);
+		text-decoration: underline;
+		text-decoration-color: var(--gray-7);
 		text-transform: uppercase;
 	}
-	/* WAVES */
 	.flex {
 		display: flex;
 	}
-	.col {
-		flex-direction: column;
-	}
-
 	.content {
-		position: relative;
 		padding-block: var(--size-4);
 		height: var(--size-content-1);
-		text-align: center;
 	}
 </style>
