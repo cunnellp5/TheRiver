@@ -1,13 +1,20 @@
 <script lang="ts">
-	import ToggleTheme from '$lib/components/ui/ToggleTheme.svelte';
-	import Socials from '$lib/components/ui/Socials.svelte';
+	import { enhance } from '$app/forms';
 	import socialLinks from '$lib/data/socialLinks';
+	import { addToast } from '$lib/stores/toast';
+
+	let emailInput = '';
+
+	let showError = false;
+	let errorMessage = '';
+
+	$: disabled = emailInput.length === 0;
 </script>
 
 <footer>
 	<!-- row 1 col 1 -->
 	<div class="footer-first">
-		<div class="link-wrapper">
+		<div class="colWrapper">
 			<p class="listHeader">Socials</p>
 			<a href={socialLinks.facebook} target="_blank">
 				<li>Facebook</li>
@@ -26,7 +33,7 @@
 
 	<!-- row 1 col 2 -->
 	<div>
-		<div class="link-wrapper">
+		<div class="colWrapper">
 			<p class="listHeader">Stream</p>
 			<a href={socialLinks.youtube} target="_blank">
 				<li>Youtube</li>
@@ -44,7 +51,7 @@
 	</div>
 	<!-- row 1 col 4 -->
 	<div>
-		<div class="link-wrapper">
+		<div class="colWrapper">
 			<p class="listHeader">Links</p>
 			<a href={socialLinks.cashApp} target="_blank">
 				<li>Ca$h app</li>
@@ -56,7 +63,7 @@
 	</div>
 	<!-- row 1 col 3 -->
 	<div>
-		<div class="link-wrapper">
+		<div class="colWrapper">
 			<p class="listHeader">Merch</p>
 			<a href={socialLinks.etsy} target="_blank">
 				<li>Etsy</li>
@@ -66,7 +73,7 @@
 
 	<!-- row 1 col 5 -->
 	<div>
-		<div class="link-wrapper">
+		<div class="colWrapper">
 			<p class="listHeader">Info</p>
 			<p class="address">123 address St</p>
 			<p class="address">Denver, CO</p>
@@ -75,14 +82,47 @@
 
 	<!-- row 1 col6 -->
 	<div class="toggler">
-		<form method="POST">
+		<form
+			method="POST"
+			action="/newsLetter"
+			use:enhance={async ({ formElement, formData, action, cancel, submitter }) => {
+				// if (formData.get('emnail') === value) {
+				// 	stopEditing();
+				// 	applyAction({ type: 'success', status: 200 });
+				// 	cancel();
+				// }
+				return async ({ result, update }) => {
+					console.log(result, 'hlo');
+					if (result.status === 200) {
+						showError = false;
+						update();
+						addToast({
+							message: 'Subscribed to the newsletter',
+							type: 'success',
+							dismissible: true,
+							timeout: 5000
+						});
+					} else {
+						showError = true;
+						errorMessage = result?.data?.message || 'An error occurred';
+						update();
+					}
+				};
+			}}>
 			<p class="listHeader">Subscribe to the newsletter</p>
 			<div class="newsletter-form">
 				<label for="email">Get the latest updates on new products and upcoming sales</label>
 				<div class="buttonWrapper">
-					<input type="email" name="email" placeholder="Your email address" />
-					<button class="primary" title="Send email">Subscribe</button>
+					<input
+						type="email"
+						name="email"
+						placeholder="Your email address"
+						bind:value={emailInput} />
+					<button class:disabled class="primary" type="submit" {disabled}> Subscribe </button>
 				</div>
+				{#if showError}
+					<span class="errorMessage">{errorMessage}</span>
+				{/if}
 			</div>
 		</form>
 	</div>
@@ -120,12 +160,9 @@
 		justify-content: center;
 		gap: var(--size-4);
 		margin-block: var(--size-10);
-		/* border-top: 1px solid var(--border); */
-		/* padding-block: var(--size-7); */
 	}
 	div {
 		display: flex;
-		/* align-items: center; */
 	}
 	p {
 		margin-inline-end: var(--size-2);
@@ -134,7 +171,6 @@
 	}
 	a {
 		transition: color 0.1s ease;
-		/* margin-inline: var(--size-1); */
 		color: var(--gray-7);
 		font-size: var(--font-size-0);
 		line-height: var(--size-4);
@@ -167,7 +203,7 @@
 		font-size: var(--font-size-0);
 		text-transform: uppercase;
 	}
-	.link-wrapper {
+	.colWrapper {
 		display: flex;
 		flex-direction: column;
 	}
@@ -206,18 +242,17 @@
 		gap: var(--size-3);
 	}
 
+	.disabled {
+		opacity: 0.7;
+	}
+
 	@media (min-width: 768px) {
 		footer {
 			display: grid;
-			/* grid-template-columns: 20% 20% 20% 20% 20%; */
-			/* grid-template-rows: 20% 20% 20% 20% 20%; */
-			/* display: grid; */
 			grid-template-rows: auto; /* Define two rows */
 			grid-template-columns: 1fr 1fr 1fr 1fr 1fr 4fr;
 			flex-direction: row;
 			justify-content: space-between;
-			/* border-top: 1px solid var(--border); */
-			/* padding-block: var(--size-7); */
 		}
 		.toggler {
 			justify-content: end;
@@ -225,8 +260,5 @@
 		.footer-first {
 			justify-content: start;
 		}
-		/* .logo-svg {
-			width: var(--size-11);
-		} */
 	}
 </style>
