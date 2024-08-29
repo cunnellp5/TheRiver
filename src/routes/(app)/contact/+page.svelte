@@ -120,8 +120,8 @@
 		font-size: var(--font-size-0);
 	}
 	.label {
-		margin-block-end: var(--size-3);
-		color: var(--gray-5);
+		margin-block: var(--size-6);
+		color: var(--gray-6);
 		letter-spacing: var(--font-letterspacing-5);
 		text-decoration: underline;
 		text-decoration-color: var(--gray-7);
