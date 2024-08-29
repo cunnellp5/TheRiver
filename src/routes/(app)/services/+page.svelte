@@ -1,7 +1,8 @@
 <script lang="ts">
+	import Seo from '$lib/components/SEO.svelte';
 	// import Table from '$lib/components/ui/Table.svelte';
 	import * as Table from '$lib/components/ui/shadcn/table';
-	import { enhance } from '$app/forms';
+	// import { enhance } from '$app/forms';
 
 	export let data;
 	const { services, about } = data;
@@ -9,15 +10,15 @@
 	let selectedServicesInput: string;
 	let scroll: number;
 
-	function setSelected(event) {
-		if (selectedServices.has(event.detail.id)) {
-			selectedServices.delete(event.detail.id);
-			selectedServices = selectedServices;
-			return;
-		}
-		selectedServices = selectedServices.add(event.detail.id);
-		selectedServicesInput = [...selectedServices].join(',');
-	}
+	// function setSelected(event) {
+	// 	if (selectedServices.has(event.detail.id)) {
+	// 		selectedServices.delete(event.detail.id);
+	// 		selectedServices = selectedServices;
+	// 		return;
+	// 	}
+	// 	selectedServices = selectedServices.add(event.detail.id);
+	// 	selectedServicesInput = [...selectedServices].join(',');
+	// }
 
 	// TODO table mapper function?
 	// const remappedServices = services.reduce((acc, service) => {
@@ -35,6 +36,10 @@
 	// 	return acc;
 	// }, {});
 </script>
+
+<Seo
+	title={'Beauty Services by The River - Expert Hair & Nails | Alexis'}
+	description={'Transform your look with The River’s expert beauty services. From flawless makeup to rejuvenating skincare, embrace your beauty with a touch of artistry and care.'} />
 
 <svelte:window bind:scrollY={scroll} />
 
@@ -105,7 +110,7 @@
 		</section>
 	{/each}
 
-	{#if selectedServices.size > 0}
+	<!-- {#if selectedServices.size > 0}
 		<aside class="surface-3 aside-left">
 			<h4>Selected service{selectedServices.size > 1 ? 's' : ''}</h4>
 			<ul>
@@ -114,7 +119,7 @@
 				{/each}
 			</ul>
 		</aside>
-	{/if}
+	{/if} -->
 	<aside class="aside-right surface-3">
 		<h4>Categories</h4>
 		<ul>
