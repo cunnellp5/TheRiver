@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { page } from '$app/stores';
+	import Seo from '$lib/components/SEO.svelte';
 	export let data;
 	const { tracks } = data;
 
@@ -23,6 +25,11 @@
 		});
 	});
 </script>
+
+<Seo
+	title={'Listen to the Latest Tracks by The River | Alexis'}
+	description={"Dive into the soul of The River's music. Listen to her latest tracks, watch mesmerizing music videos, and experience the artistry that flows through every note."}
+	url={$page.url.host} />
 
 <div class="grid-container">
 	<div id="tracks" class="tracks">
