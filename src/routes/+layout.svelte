@@ -7,9 +7,9 @@
 	import 'open-props/style';
 	import '../styles/app.css';
 	import type { PageData } from './$types';
+	import Footer from './components/Footer.svelte';
 	import Header from './components/Header.svelte';
 	import PageTransition from './components/Transition.svelte';
-	import Footer from './components/Footer.svelte';
 
 	export let data: PageData;
 </script>
@@ -25,7 +25,6 @@
 	</div>
 
 	<!-- TODO move transitions to a new layout so admin portal looks better when navigating -->
-	<!-- TODO remove padding and width restrictions at this level to allow for custom full width pages -->
 	<PageTransition>
 		<slot />
 	</PageTransition>
