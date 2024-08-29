@@ -1,7 +1,8 @@
 <script lang="ts">
-	import CircleAlert from 'lucide-svelte/icons/circle-alert';
-	import { addToast } from '$lib/stores/toast';
 	import { enhance } from '$app/forms';
+	import Seo from '$lib/components/SEO.svelte';
+	import { addToast } from '$lib/stores/toast';
+	import CircleAlert from 'lucide-svelte/icons/circle-alert';
 
 	export let form;
 
@@ -10,6 +11,10 @@
 
 	$: isFormValid = email.includes('@') && password.length >= 6;
 </script>
+
+<Seo
+	title={'Login - Access Your Account'}
+	description={'Log in to your account to access your profile and settings. Enter your credentials to get started.'} />
 
 <main>
 	<section class="hero">
