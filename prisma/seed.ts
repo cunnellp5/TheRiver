@@ -110,17 +110,17 @@ async function main() {
 				isAdmin: true
 			}
 		});
-
-		// DUMMY TIME SLOT
-		// await db.timeSlot.create({
-		// 	data: {
-		// 		startTime: new Date('2024-07-07T13:00:00Z'),
-		// 		endTime: new Date('2024-07-07T14:00:00Z'),
-		// 		day: new Date('2024-07-07T19:00:00.000Z'),
-		// 		available: true,
-		// 		serviceId: 1
-		// 	}
-		// });
+		const hashedPassword2 = await new Argon2id().hash('changeMePlease');
+		await db.user.create({
+			data: {
+				email: 'theriverrunsfast@gmail.com',
+				firstName: 'Alexis',
+				lastName: 'Coose',
+				isSubscribed: true,
+				hashedPassword: hashedPassword2,
+				isAdmin: true
+			}
+		});
 
 		// ARTICLES SEEDS
 		await db.article.createMany({
