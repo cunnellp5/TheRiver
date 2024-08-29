@@ -1,19 +1,69 @@
 <script lang="ts">
 	import * as Card from '$lib/components/ui/shadcn/card';
 	import * as Table from '$lib/components/ui/shadcn/table';
+	import Modal from '$lib/components/ui/Modal.svelte';
 	import Users from 'lucide-svelte/icons/users';
 	import market from '$lib/data/json/market.json';
 	import DashboardUserRow from './DashboardUserRow.svelte';
 	import X from 'lucide-svelte/icons/x';
 	import ArrowRight from 'lucide-svelte/icons/arrow-right';
+	import { addToast } from '$lib/stores/toast';
+	import { enhance } from '$app/forms';
 
 	export let data;
 	export let form;
+	let showModal = false;
+	let emailInput = '';
 
 	function resetForm() {
 		form = null;
 	}
+
+	$: disabledDelete = emailInput !== data.user.email;
 </script>
+
+<Modal bind:showModal overrideButtons={true}>
+	<h2 slot="header">
+		Delete this account
+		<br />
+		<small>{data.user.firstName}, are you sure?</small>
+	</h2>
+	<section class="modalBody">
+		<div>
+			<p>Once you delete your account, there is no going back. Please be certain.</p>
+		</div>
+
+		<form
+			id="deleteForm"
+			action="?/deleteAccount"
+			method="POST"
+			use:enhance={() => {
+				showModal = false;
+				addToast({
+					message: 'Account deleted',
+					type: 'success'
+				});
+			}}>
+			<label for="typedEmail">Email</label>
+			<input
+				type="text"
+				name="typedEmail"
+				bind:value={emailInput}
+				placeholder="Type email to unlock" />
+			<input type="hidden" name="id" value={data.user.id} />
+			<input type="hidden" name="userEmail" value={data.user.email} />
+		</form>
+	</section>
+	<div slot="buttons" class="buttonWrapper">
+		<button
+			form="deleteForm"
+			type="submit"
+			class:delete-button={!disabledDelete}
+			class:diabledDelete={disabledDelete}
+			disabled={disabledDelete}>Permanently Delete</button>
+		<button type="button" on:click={() => (showModal = false)}>Close</button>
+	</div>
+</Modal>
 
 <section class="app-layout">
 	<div class="top-user-card">
@@ -108,7 +158,7 @@
 						<Table.Row>
 							<Table.Cell>
 								<p class="text2">Reset password</p>
-								<span> This cannot be undone. </span>
+								<span> Sends a reset password link to your email </span>
 							</Table.Cell>
 							<Table.Cell>
 								<a href="/reset" class="center">
@@ -118,12 +168,14 @@
 						</Table.Row>
 						<Table.Row>
 							<Table.Cell>
-								<p class="text2">Account Deletion</p>
-								<span> This is permanent. </span>
+								<p class="text2">Delete account</p>
+								<span> Once you delete your account, there is no going back. </span>
 							</Table.Cell>
 							<Table.Cell>
 								<div class="center">
-									<button class="delete-button"> Delete Account </button>
+									<button class="delete-button" on:click={() => (showModal = true)}>
+										Delete Account
+									</button>
 								</div>
 							</Table.Cell>
 						</Table.Row>
@@ -169,6 +221,15 @@
 		transform: scaleX(1);
 		transform-origin: bottom left;
 	}
+	form {
+		display: flex;
+		flex-direction: column;
+		gap: var(--size-2);
+		& label {
+			color: var(--text-2);
+			font-size: var(--font-size-0);
+		}
+	}
 	/* CLASSES */
 	.headWrapper {
 		display: flex;
@@ -180,7 +241,7 @@
 		flex-direction: column;
 		gap: var(--size-3);
 		margin: 0 auto;
-		width: 70%;
+		width: 50%;
 	}
 	.top-user-card {
 		margin-block: var(--size-7);
@@ -189,7 +250,7 @@
 		display: flex;
 		justify-content: center;
 		margin: 0 auto;
-		width: 70%;
+		width: 50%;
 	}
 	.error-message {
 		color: var(--red-7);
@@ -199,7 +260,7 @@
 		display: flex;
 		flex-direction: row;
 		align-items: center;
-		gap: var(--size-2);
+		gap: var(--size-3);
 	}
 	.center {
 		display: flex;
@@ -207,6 +268,14 @@
 	}
 	.text2 {
 		color: var(--text-2);
+	}
+	.modalBody {
+		display: flex;
+		flex-direction: column;
+		gap: var(--size-7);
+	}
+	.diabledDelete {
+		opacity: 0.5;
 	}
 	@media (max-width: 768px) {
 		.adminIntroCardWrapper {
