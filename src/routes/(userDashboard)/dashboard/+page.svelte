@@ -273,6 +273,14 @@
 	.diabledDelete {
 		opacity: 0.5;
 	}
+	@media (max-width: 1440px) {
+		.adminIntroCardWrapper {
+			width: 70%;
+		}
+		.cardsWrapper {
+			width: 70%;
+		}
+	}
 	@media (max-width: 768px) {
 		.adminIntroCardWrapper {
 			width: 100%;
