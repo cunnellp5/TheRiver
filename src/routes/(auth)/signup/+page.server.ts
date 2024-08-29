@@ -78,27 +78,37 @@ export const actions: Actions = {
 					email: email?.toString() || '',
 					firstName: firstName?.toString() || '',
 					lastName: lastName?.toString() || '',
-					isSubscribed: Boolean(isSubscribed) || false,
 					hashedPassword
 				}
 			});
 
-			// inner set
+			// if user check isSubscribed create record in newsletter
+			if (Boolean(isSubscribed)) {
+				try {
+					await db.newsletter.create({
+						data: { email }
+					});
+				} catch (err) {
+					console.error('Error creating newsletter subscription:', err);
+					return error(500, 'Internal Server Error');
+				}
+			}
+
+			// innerset
 			try {
 				const session = await lucia.createSession(newUser.id, {});
-
 				const sessionCookie = lucia.createSessionCookie(session.id);
-
 				cookies.set(sessionCookie.name, sessionCookie.value, {
 					path: '.',
 					...sessionCookie.attributes
 				});
-				// DO i need to do anything here?
-			} catch {
+			} catch (err) {
+				console.error('Error creating session:', err);
 				return error(500, { message: 'Failed to create session' });
 			}
 			// or do anything here?
-		} catch {
+		} catch (err) {
+			console.error('Error creating user:', err);
 			return error(500, { message: 'Failed to create user' });
 		}
 
