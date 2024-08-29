@@ -105,7 +105,6 @@ async function main() {
 				email: 'test@example.com',
 				firstName: 'philly',
 				lastName: 'phil',
-				isSubscribed: true,
 				hashedPassword,
 				isAdmin: true
 			}
@@ -116,7 +115,6 @@ async function main() {
 				email: 'theriverrunsfast@gmail.com',
 				firstName: 'Alexis',
 				lastName: 'Coose',
-				isSubscribed: true,
 				hashedPassword: hashedPassword2,
 				isAdmin: true
 			}

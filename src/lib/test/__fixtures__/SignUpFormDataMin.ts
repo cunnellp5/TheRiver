@@ -4,7 +4,6 @@ export default [
 	// 	password: 'o',
 	// 	firstName: 'Test',
 	// 	lastName: 'User',
-	// 	isSubscribed: 'true',
 	// 	confirm: 'o'
 	// },
 
@@ -13,7 +12,6 @@ export default [
 		password: 'password',
 		firstName: 'Test',
 		lastName: 'o',
-		isSubscribed: 'true',
 		confirm: 'password'
 	}
 ];

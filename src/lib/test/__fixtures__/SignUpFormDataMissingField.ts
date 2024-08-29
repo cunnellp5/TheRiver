@@ -4,7 +4,6 @@ export default [
 		password: 'password',
 		firstName: 'Test',
 		lastName: 'User',
-		isSubscribed: 'true',
 		confirm: 'password'
 	},
 	{
@@ -12,7 +11,6 @@ export default [
 		password: null,
 		firstName: 'Test',
 		lastName: 'User',
-		isSubscribed: 'true',
 		confirm: 'password'
 	},
 	{
@@ -20,7 +18,6 @@ export default [
 		password: 'password',
 		firstName: null,
 		lastName: 'User',
-		isSubscribed: 'true',
 		confirm: 'password'
 	},
 	{
@@ -28,7 +25,6 @@ export default [
 		password: 'password',
 		firstName: 'Test',
 		lastName: null,
-		isSubscribed: 'true',
 		confirm: 'password'
 	},
 	{
@@ -36,7 +32,6 @@ export default [
 		password: 'password',
 		firstName: 'Test',
 		lastName: 'User',
-		isSubscribed: null,
 		confirm: 'password'
 	},
 	{
@@ -44,7 +39,6 @@ export default [
 		password: 'password',
 		firstName: 'Test',
 		lastName: 'User',
-		isSubscribed: 'true',
 		confirm: null
 	}
 ];
