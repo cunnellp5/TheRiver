@@ -9,7 +9,11 @@
 
 	let dialog: HTMLDialogElement;
 
-	$: if (dialog && showModal === true) dialog.showModal();
+	$: if (dialog && showModal === true) {
+		dialog.showModal();
+	} else if (dialog && showModal === false) {
+		dialog.close();
+	}
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events a11y-no-noninteractive-element-interactions -->
@@ -26,7 +30,12 @@
 		<hr />
 		<slot />
 		<hr />
-		<button on:click={() => dialog.close()}>{buttonText}</button>
+		{#if overrideButtons}
+			<slot name="buttons" />
+		{/if}
+		{#if !overrideButtons}
+			<button on:click={() => dialog.close()}>Close</button>
+		{/if}
 	</div>
 </dialog>
 
