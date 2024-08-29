@@ -1,15 +1,17 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import * as config from '$lib/config';
+	import { page } from '$app/stores';
 
 	export let title: string;
 	export let description: string;
-	export let url: string;
+
+	let url: string;
 
 	onMount(() => {
 		title = title || config.title;
 		description = description || config.description;
-		url = url || config.url;
+		url = $page.url.href || config.url;
 	});
 </script>
 
