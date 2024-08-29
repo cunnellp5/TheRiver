@@ -82,9 +82,10 @@
 
 	<!-- row 1 col6 -->
 	<div class="toggler">
+		<!-- on:submit|preventDefault={subscribe} -->
 		<form
 			method="POST"
-			action="/newsLetter"
+			action="api/newsLetter?/subscribe"
 			use:enhance={async ({ formElement, formData, action, cancel, submitter }) => {
 				return async ({ result, update }) => {
 					console.log(result, 'hlo');
