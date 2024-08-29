@@ -53,11 +53,12 @@ export const actions: Actions = {
 
 		// Check db for existing email
 		try {
-			await db.user.findUnique({
+			const user = await db.user.findUnique({
 				where: { email: email.toString() }
 			});
+			if (user) return fail(400, { message: 'Email is unavailable' });
 		} catch (err) {
-			return fail(400, { message: 'That email is already used' });
+			return fail(500, { message: 'Something unexpected occured' });
 		}
 
 		let hashedPassword = null;
