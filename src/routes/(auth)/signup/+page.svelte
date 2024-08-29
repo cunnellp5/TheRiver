@@ -42,6 +42,7 @@
 		<p class="under-hero">Create an account to book services with <strong>Alexis</strong></p>
 
 		{#if form?.message}
+			<!-- TODO check to ssee if .errorMessage looks better -->
 			<p class="error-message"><CircleAlert />{form.message}</p>
 		{/if}
 
