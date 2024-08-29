@@ -19,6 +19,7 @@
 		<p class="under-hero">Login to book or view appointments</p>
 
 		{#if form?.message}
+			<!-- TODO check to ssee if .errorMessage looks better -->
 			<p class="error-message"><CircleAlert />{form.message}</p>
 		{/if}
 

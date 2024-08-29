@@ -5,7 +5,7 @@ import { PasswordSchema } from '$lib/utils/Valibot/PassSchema';
 import { Argon2id } from 'oslo/password';
 import { lucia } from '$lib/server/auth';
 import type { PageServerLoad } from './$types';
-import { logout } from '$lib/server/logout';
+import { logout } from '$lib/server/controllers/logout';
 
 export const load: PageServerLoad = async (event) => {
 	const { token } = event.params;

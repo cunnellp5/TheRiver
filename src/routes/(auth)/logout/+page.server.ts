@@ -1,7 +1,6 @@
-import { lucia } from '$lib/server/auth';
 import { fail, redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
-import { logout } from '$lib/server/logout';
+import { logout } from '$lib/server/controllers/logout';
 
 export const actions: Actions = {
 	default: async ({ locals, cookies }) => {
