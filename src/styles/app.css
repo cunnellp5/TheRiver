@@ -297,19 +297,32 @@ and use the full width for artistic banners */
 
 /* CRUD BUTTONS CLASSES */
 .create-button {
+	background-color: var(--surface-4);
+	color: var(--create);
+	font-weight: var(--font-weight-7);
+}
+.create-button:hover {
 	background-color: var(--create);
 	color: var(--on-crud-text);
-	font-weight: var(--font-weight-7);
 }
 .update-button {
-	background-color: var(--update);
-	color: var(--on-crud-text);
+	background-color: var(--surface-4);
+	color: var(--update);
 	font-weight: var(--font-weight-7);
 }
+.update-button:hover {
+	background-color: var(--update);
+	color: var(--on-crud-text);
+}
 .delete-button {
+	background-color: var(--surface-4);
+	color: var(--delete);
+	font-weight: var(--font-weight-7);
+}
+
+.delete-button:hover {
 	background-color: var(--delete);
 	color: var(--on-crud-text);
-	font-weight: var(--font-weight-7);
 }
 
 .rmButtonStyles {
