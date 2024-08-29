@@ -6,7 +6,7 @@ import { parse, ValiError } from 'valibot';
 import { EmailSchema } from '$lib/utils/Valibot/EmailSchema';
 
 export const load: PageServerLoad = async (event) => {
-	// IF NOT LOGGED IN, REDIRECT TO LOGIN
+	// IF NOT LOGGED IN, SHOW ERR PAGE LIKE ALL OTHER ROUTES THAT DONT EXIST
 	if (!event.locals.session || !event.locals.user) {
 		return error(404, 'Not Found');
 	}
@@ -27,7 +27,7 @@ export const load: PageServerLoad = async (event) => {
 
 		// IF NO USER FOUND IN DB, REDIRECT TO LOGIN
 		if (!user) {
-			return redirect(302, '/');
+			return redirect(302, '/login');
 		}
 
 		return {
@@ -40,6 +40,7 @@ export const load: PageServerLoad = async (event) => {
 			}
 		};
 	} catch (err) {
+		console.error('Error finding user:', err);
 		return error(500, 'Something went wrong');
 	}
 };
