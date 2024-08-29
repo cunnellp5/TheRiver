@@ -1,9 +1,10 @@
 <script lang="ts">
+	import Seo from '$lib/components/SEO.svelte';
+	import Socials from '$lib/components/ui/Socials.svelte';
 	import Check from 'lucide-svelte/icons/check';
 	import Copy from 'lucide-svelte/icons/copy';
-	import Send from 'lucide-svelte/icons/send';
 	import MapPin from 'lucide-svelte/icons/map-pin';
-	import Socials from '$lib/components/ui/Socials.svelte';
+	import Send from 'lucide-svelte/icons/send';
 	import TheRiver from '../../components/TheRiver.svelte';
 
 	const email = 'theriverrunsfast@gmail.com';
@@ -18,6 +19,10 @@
 		}, 800); // Reset after 2 seconds
 	}
 </script>
+
+<Seo
+	title={'Get in Touch with The River - Contact Us'}
+	description={"Have questions or want to collaborate? Reach out to The River through our contact page. We're here to help and connect with you."} />
 
 <div class="app-layout col">
 	<div class="content flex">
