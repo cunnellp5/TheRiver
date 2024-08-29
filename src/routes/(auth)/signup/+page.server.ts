@@ -23,15 +23,7 @@ export const actions: Actions = {
 		const isSubscribed = formData.get('isSubscribed') as string;
 		const confirm = formData.get('confirm') as string;
 
-		if (
-			!email ||
-			!password ||
-			!firstName ||
-			!lastName ||
-			!isSubscribed ||
-			!confirm ||
-			confirm !== password
-		)
+		if (!email || !password || !firstName || !lastName || !confirm || confirm !== password)
 			return fail(400, { message: 'Please fill out all fields' });
 
 		// validates with valibot
@@ -86,7 +78,7 @@ export const actions: Actions = {
 			if (Boolean(isSubscribed)) {
 				try {
 					await db.newsletter.create({
-						data: { email }
+						data: { email, userId: newUser.id }
 					});
 				} catch (err) {
 					console.error('Error creating newsletter subscription:', err);

@@ -31,6 +31,7 @@
 	<section class="modalBody">
 		<div>
 			<p>Once you delete your account, there is no going back. Please be certain.</p>
+			<p class="subText">You will be removed from the newsletter, if you signed up</p>
 		</div>
 
 		<form
@@ -272,6 +273,11 @@
 	}
 	.diabledDelete {
 		opacity: 0.5;
+	}
+	.subText {
+		margin-block-start: var(--size-2);
+		color: var(--text-2);
+		font-size: var(--font-size-0);
 	}
 	@media (max-width: 1440px) {
 		.adminIntroCardWrapper {
