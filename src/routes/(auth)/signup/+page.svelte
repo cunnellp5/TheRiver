@@ -72,7 +72,7 @@
 
 				<label for="confirm">Confirm Password</label>
 				<input
-					class:invalid={!passwordValidCheck}
+					class:invalid={!isConfirmPasswordValid && confirmPassword.length > 0}
 					class:valid={passwordValidCheck}
 					bind:value={confirmPassword}
 					type="password"
