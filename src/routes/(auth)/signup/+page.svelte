@@ -1,7 +1,8 @@
 <script lang="ts">
-	import CircleAlert from 'lucide-svelte/icons/circle-alert';
-	import Check from 'lucide-svelte/icons/check';
 	import { enhance } from '$app/forms';
+	import Seo from '$lib/components/SEO.svelte';
+	import Check from 'lucide-svelte/icons/check';
+	import CircleAlert from 'lucide-svelte/icons/circle-alert';
 
 	export let form;
 
@@ -33,6 +34,10 @@
 
 	$: passwordValidCheck = isConfirmPasswordValid && confirmPassword.length > 0;
 </script>
+
+<Seo
+	title={'Sign Up - Join Us Today'}
+	description={'Create a new account to start enjoying our services. Sign up now to join our community and access exclusive features.'} />
 
 <main>
 	<section class="hero">
