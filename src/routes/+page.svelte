@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { page } from '$app/stores';
 	import Seo from '$lib/components/SEO.svelte';
 	import Marquee from '$lib/components/ui/Marquee.svelte';
 	import Socials from '$lib/components/ui/Socials.svelte';
@@ -22,8 +21,7 @@
 
 <Seo
 	title={'Music, Beauty Services, Blog & Fashion - The River | Alexis'}
-	description={'Discover The River: A multifaceted artist offering music, beauty services, fashion, and more. Explore her latest tracks, music videos, blog, and unique handmade jewelry and clothing.'}
-	url={$page.url.host} />
+	description={'Discover The River: A multifaceted artist offering music, beauty services, fashion, and more. Explore her latest tracks, music videos, blog, and unique handmade jewelry and clothing.'} />
 
 <main>
 	<div class="img-video-overlay-wrapper">

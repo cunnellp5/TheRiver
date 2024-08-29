@@ -1,11 +1,8 @@
 <script lang="ts">
 	import Seo from '$lib/components/SEO.svelte';
-	import { page } from '$app/stores';
-
-	console.log($page.url.host);
 </script>
 
-<Seo title={'The River | Error page'} description={'Error page'} url={$page.url.host} />
+<Seo title={'The River | Error page'} description={'Error page'} />
 
 <main class="app-layout hype">
 	<h1>The River</h1>
