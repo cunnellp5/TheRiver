@@ -84,7 +84,7 @@
 						<Table.Body>
 							{#if form?.status !== 200 && form?.message}
 								<div class="buttonWrapper">
-									<p class="error-message">{form?.message}</p>
+									<p class="errorMessage">{form?.message}</p>
 									<button class="rmButtonStyles" on:click={resetForm} aria-label="Reset Form">
 										<X />
 									</button>
@@ -252,15 +252,11 @@
 		margin: 0 auto;
 		width: 50%;
 	}
-	.error-message {
-		color: var(--red-7);
-		font-size: var(--font-size-0);
-	}
 	.buttonWrapper {
 		display: flex;
 		flex-direction: row;
 		align-items: center;
-		gap: var(--size-3);
+		gap: var(--size-2);
 	}
 	.center {
 		display: flex;

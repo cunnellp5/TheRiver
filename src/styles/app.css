@@ -332,3 +332,9 @@ and use the full width for artistic banners */
 	background-color: unset;
 	padding: unset;
 }
+
+.errorMessage {
+	margin-inline-start: var(--size-2);
+	color: var(--red-7);
+	font-size: var(--font-size-0);
+}
