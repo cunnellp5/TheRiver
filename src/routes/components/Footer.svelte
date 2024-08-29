@@ -86,11 +86,6 @@
 			method="POST"
 			action="/newsLetter"
 			use:enhance={async ({ formElement, formData, action, cancel, submitter }) => {
-				// if (formData.get('emnail') === value) {
-				// 	stopEditing();
-				// 	applyAction({ type: 'success', status: 200 });
-				// 	cancel();
-				// }
 				return async ({ result, update }) => {
 					console.log(result, 'hlo');
 					if (result.status === 200) {
