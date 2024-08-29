@@ -4,6 +4,7 @@ import type { PageServerLoad } from './$types';
 import { emailValidation } from '$lib/utils/Valibot/EmailSchema';
 import { parse, ValiError } from 'valibot';
 import { type EmailSchema } from '$lib/utils/Valibot/EmailSchema';
+import { logout } from '$lib/server/logout';
 
 export const load: PageServerLoad = async (event) => {
 	// IF NOT LOGGED IN, REDIRECT TO LOGIN
@@ -68,15 +69,8 @@ export const actions: Actions = {
 				where: { email: value.toString() }
 			});
 
-			// No change email is the same
-			// This should never be hit, but leaving for extra safety
-			if (user?.email === value) {
-				return { status: 200, message: 'No change' };
-			}
-
-			// Email already exists
 			if (user) {
-				return fail(400, { message: 'That email is already used' });
+				return fail(400, { message: 'Email is unavailable' });
 			}
 		}
 
@@ -90,5 +84,34 @@ export const actions: Actions = {
 		} catch (err) {
 			return error(500, 'Internal server error');
 		}
+	},
+	deleteAccount: async ({ request, locals, cookies }) => {
+		if (!locals.session || !locals.user) {
+			return error(404, 'Not found');
+		}
+
+		const formData = await request.formData();
+		const id = formData.get('id') as string;
+		const userEmail = formData.get('userEmail') as string;
+		const typedEmail = formData.get('typedEmail') as string;
+
+		if (userEmail !== typedEmail) {
+			return fail(400, { message: 'Emails do not match' });
+		}
+
+		try {
+			const user = await db.user.delete({
+				where: { id }
+			});
+
+			if (!user) {
+				return fail(400, { message: 'User not found' });
+			}
+
+			await logout({ locals, cookies });
+		} catch (err) {
+			return error(500, 'Internal server error');
+		}
+		return redirect(302, '/');
 	}
 };
