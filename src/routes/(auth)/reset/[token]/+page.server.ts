@@ -5,6 +5,7 @@ import { PasswordSchema } from '$lib/utils/Valibot/PassSchema';
 import { Argon2id } from 'oslo/password';
 import { lucia } from '$lib/server/auth';
 import type { PageServerLoad } from './$types';
+import { logout } from '$lib/server/logout';
 
 export const load: PageServerLoad = async (event) => {
 	const { token } = event.params;
@@ -104,12 +105,7 @@ export const actions: Actions = {
 
 		// Invalidate/delete old session if user is logged in
 		if (locals.session) {
-			await lucia.invalidateSession(locals.session.id);
-			const sessionCookie = lucia.createBlankSessionCookie();
-			cookies.set(sessionCookie.name, sessionCookie.value, {
-				path: '.',
-				...sessionCookie.attributes
-			});
+			await logout({ locals, cookies });
 		}
 
 		// Atomically update user and delete reset password session
