@@ -1,7 +1,7 @@
 import db from '$lib/server/database';
 import { error } from '@sveltejs/kit';
-import type { PageServerLoad } from './$types';
 import { servicesMapper } from '$lib/utils/servicesMapper';
+import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async (event) => {
 	if (!event.locals.session || !event.locals.user) {

@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
 	import Seo from '$lib/components/SEO.svelte';
 	import { addToast } from '$lib/stores/toast';
 	import CircleAlert from 'lucide-svelte/icons/circle-alert';
+	import { enhance } from '$app/forms';
 
 	export let form;
 

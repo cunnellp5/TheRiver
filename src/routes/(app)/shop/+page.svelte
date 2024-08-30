@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Seo from '$lib/components/SEO.svelte';
+
 	export let data;
 
 	const { url, text } = data;

@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
 	import * as Table from '$lib/components/ui/shadcn/table';
 	import Pencil from 'lucide-svelte/icons/pencil';
+	import { enhance } from '$app/forms';
 
 	export let key: string;
 	export let value: string | number | Date | null;

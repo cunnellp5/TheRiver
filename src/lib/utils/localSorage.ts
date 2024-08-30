@@ -1,8 +1,8 @@
 // Function to set item in local storage with expiration time
-export function setItemWithExpiry(key: string, value: any, ttl: number): void {
+export function setItemWithExpiry(key: string, value: unknown, ttl: number): void {
 	const now = new Date();
 	const item = {
-		value: value,
+		value,
 		expiry: now.getTime() + ttl
 	};
 	localStorage.setItem(key, JSON.stringify(item));

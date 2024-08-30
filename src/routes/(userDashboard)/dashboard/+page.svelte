@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
 	import Seo from '$lib/components/SEO.svelte';
 	import Modal from '$lib/components/ui/Modal.svelte';
 	import * as Card from '$lib/components/ui/shadcn/card';
@@ -9,6 +8,7 @@
 	import ArrowRight from 'lucide-svelte/icons/arrow-right';
 	import Users from 'lucide-svelte/icons/users';
 	import X from 'lucide-svelte/icons/x';
+	import { enhance } from '$app/forms';
 	import DashboardUserRow from './DashboardUserRow.svelte';
 
 	export let data;

@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
 	import socialLinks from '$lib/data/socialLinks';
 	import { addToast } from '$lib/stores/toast';
+	import { enhance } from '$app/forms';
 
 	let emailInput = '';
 
@@ -95,9 +95,8 @@
 		<form
 			method="POST"
 			action="api/newsLetter?/subscribe"
-			use:enhance={async ({ formElement, formData, action, cancel, submitter }) => {
-				return async ({ result, update }) => {
-					console.log(result, 'hlo');
+			use:enhance={async ({ formElement, formData, action, cancel, submitter }) =>
+				async ({ result, update }) => {
 					if (result.status === 200) {
 						showError = false;
 						update();
@@ -112,8 +111,7 @@
 						errorMessage = result?.data?.message || 'An error occurred';
 						update();
 					}
-				};
-			}}>
+				}}>
 			<p class="listHeader">Subscribe to the newsletter</p>
 			<div class="newsletter-form">
 				<label for="email">Get the latest updates on new products and upcoming sales</label>

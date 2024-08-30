@@ -11,7 +11,7 @@
 	export let data;
 	const { videoURL, articles, about } = data;
 
-	let isPlaying = true;
+	// const isPlaying = true;
 	let visible = false;
 
 	onMount(() => {

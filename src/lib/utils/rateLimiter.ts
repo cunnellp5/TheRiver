@@ -1,6 +1,8 @@
 export class RateLimiter {
 	private requests: Map<string, { count: number; lastRequest: number }>;
+
 	private limit: number;
+
 	private windowMs: number;
 
 	constructor(limit: number, windowMs: number) {

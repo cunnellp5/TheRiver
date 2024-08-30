@@ -20,7 +20,7 @@ export const actions: Actions = {
 		const password = formData.get('password') as string;
 		const firstName = formData.get('firstName') as string;
 		const lastName = formData.get('lastName') as string;
-		const isSubscribed = formData.get('isSubscribed') as string;
+		const isSubscribed = (formData.get('isSubscribed') as string) === 'on';
 		const confirm = formData.get('confirm') as string;
 
 		if (!email || !password || !firstName || !lastName || !confirm || confirm !== password)
@@ -33,7 +33,7 @@ export const actions: Actions = {
 				password,
 				firstName,
 				lastName,
-				isSubscribed: isSubscribed === 'on',
+				isSubscribed,
 				confirm
 			}) as SignUpValidator;
 		} catch (err) {
@@ -75,7 +75,7 @@ export const actions: Actions = {
 			});
 
 			// if user check isSubscribed create record in newsletter
-			if (Boolean(isSubscribed)) {
+			if (isSubscribed) {
 				try {
 					await db.newsletter.create({
 						data: { email, userId: newUser.id }

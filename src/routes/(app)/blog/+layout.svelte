@@ -5,7 +5,7 @@
 	import BlogCard from '$lib/components/ui/BlogCard.svelte';
 	import type { PageData } from './$types';
 	import { goto } from '$app/navigation';
-	import { setItemWithExpiry, getItemWithExpiry } from '$lib/utils/localSorage';
+	// import { setItemWithExpiry, getItemWithExpiry } from '$lib/utils/localSorage';
 
 	export let data: PageData;
 	let showElement = false;

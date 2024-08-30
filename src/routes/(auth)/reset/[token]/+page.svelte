@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Check from 'lucide-svelte/icons/check';
-	import { enhance } from '$app/forms';
 	import Seo from '$lib/components/SEO.svelte';
+	import { enhance } from '$app/forms';
 
 	export let data;
 

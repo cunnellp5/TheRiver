@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { browser } from '$app/environment';
-	import { page } from '$app/stores';
 	import Seo from '$lib/components/SEO.svelte';
 	import Badge from '$lib/components/ui/Badge.svelte';
 	import { QuillConfigReadonly, quillContentInit } from '$lib/utils/QuillConfig';
@@ -10,6 +8,8 @@
 	import type Quill from 'quill';
 	import { onMount } from 'svelte';
 	import { fade, slide } from 'svelte/transition';
+	import { page } from '$app/stores';
+	import { browser } from '$app/environment';
 	import type { PageData } from './$types';
 
 	export let data: PageData;

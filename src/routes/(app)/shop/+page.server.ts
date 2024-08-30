@@ -1,9 +1,9 @@
-import type { PageServerLoad } from './$types';
 import db from '$lib/server/database';
 import { error } from '@sveltejs/kit';
+import type { PageServerLoad } from './$types';
 
 // TODO Use the etsy api instead of rss feed
-export const load: PageServerLoad = async (event) => {
+export const load: PageServerLoad = async () => {
 	let url;
 	let text;
 

@@ -36,7 +36,7 @@ export const load: PageServerLoad = async (event) => {
 				firstName: user.firstName,
 				lastName: user.lastName,
 				email: user.email,
-				isSubscribed: user?.Newsletter ? true : false
+				isSubscribed: !!user?.Newsletter
 			}
 		};
 	} catch (err) {

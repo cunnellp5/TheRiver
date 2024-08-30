@@ -3,10 +3,10 @@
 	import Pencil from 'lucide-svelte/icons/pencil';
 	import Save from 'lucide-svelte/icons/save';
 	import X from 'lucide-svelte/icons/x';
-	import { applyAction, enhance } from '$app/forms';
 	import { tick } from 'svelte';
-	import DashboardUserInput from './DashboardUserInput.svelte';
 	import { addToast } from '$lib/stores/toast';
+	import { applyAction, enhance } from '$app/forms';
+	import DashboardUserInput from './DashboardUserInput.svelte';
 
 	type UserValue = string | boolean | number | Date | null;
 

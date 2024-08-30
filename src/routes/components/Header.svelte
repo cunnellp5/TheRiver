@@ -1,11 +1,11 @@
 <script lang="ts">
 	import LogoR from '$lib/components/svgs/logos/LogoR2.svelte';
+	import ToggleTheme from '$lib/components/ui/ToggleTheme.svelte';
 	import Waves from 'lucide-svelte/icons/waves';
 	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
 	import { page } from '$app/stores';
 	import { browser } from '$app/environment';
-	import ToggleTheme from '$lib/components/ui/ToggleTheme.svelte';
 
 	export let isSignedIn = false;
 	export let user;

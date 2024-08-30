@@ -5,8 +5,8 @@
 
 	export let data;
 	const { services, about } = data;
-	let selectedServices = new Set();
-	let selectedServicesInput: string;
+	// const selectedServices = new Set();
+	// let selectedServicesInput: string;
 	let scroll: number;
 
 	// function setSelected(event) {
@@ -73,7 +73,7 @@
 	{/each} -->
 </main>
 <main>
-	{#each Object.entries(services) as [category, data], id}
+	{#each Object.entries(services) as [category, data]}
 		<span class="stupid" id={category}></span>
 		<section class="tables">
 			<Table.Root>
@@ -122,7 +122,7 @@
 	<aside class="aside-right surface-3">
 		<h4>Categories</h4>
 		<ul>
-			{#each Object.entries(services) as [category, data]}
+			{#each Object.entries(services) as [category]}
 				<a href={`#${category}`}>
 					<li>{category}</li>
 				</a>
