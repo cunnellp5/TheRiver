@@ -19,8 +19,11 @@
 			<a href={socialLinks.facebook} target="_blank">
 				<li>Facebook</li>
 			</a>
-			<a href={socialLinks.instagram} target="_blank">
-				<li>Instagram</li>
+			<a href={socialLinks.instagramSing} target="_blank">
+				<li>Instagram [Music]</li>
+			</a>
+			<a href={socialLinks.instagramBeauty} target="_blank">
+				<li>Instagram [Beauty]</li>
 			</a>
 			<a href={socialLinks.tiktok} target="_blank">
 				<li>TikTok</li>
@@ -75,8 +78,14 @@
 	<div>
 		<div class="colWrapper">
 			<p class="listHeader">Info</p>
-			<p class="address">123 address St</p>
+			<!-- svelte-ignore a11y-label-has-associated-control -->
+			<label>Address</label>
+			<p class="address">30 W Bayaud Ave</p>
 			<p class="address">Denver, CO</p>
+			<br />
+			<!-- svelte-ignore a11y-label-has-associated-control -->
+			<label>Email</label>
+			<p class="address">theriverrunsfast@gmail.com</p>
 		</div>
 	</div>
 
@@ -145,7 +154,7 @@
 		<span class="year">
 			{new Date().getFullYear()}
 		</span>
-		The River
+		TheRiver
 	</div>
 </footer>
 
@@ -218,7 +227,7 @@
 	}
 
 	.copywrite {
-		color: var(--gray-8);
+		color: var(--gray-7);
 		font-size: var(--font-size-0);
 		font-family: 'Courier New', Courier, monospace;
 	}
