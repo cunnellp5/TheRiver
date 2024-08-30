@@ -31,47 +31,55 @@
 	<div class="flex">
 		<section>
 			<div class="contact">
-				<p class="label">Address</p>
+				<h5>
+					<p class="label">Address</p>
+				</h5>
 				<div class="addy indent">
 					<a
 						target="_blank"
 						href="https://www.google.com/maps/place/30+W+Bayaud+Ave,+Denver,+CO+80223/@39.7145613,-104.9886223,17z/data=!3m1!4b1!4m6!3m5!1s0x876c7f1ef7cf41b7:0xbb0e344a69581183!8m2!3d39.7145613!4d-104.9886223!16s%2Fg%2F11c22m8nd0?entry=ttu&g_ep=EgoyMDI0MDgyMy4wIKXMDSoASAFQAw%3D%3D">
-						<button>
+						<button class="addressWrapper">
 							<MapPin />
+							<div class="address">
+								<p class="address1">30 W Bayaud Ave</p>
+								<p class="address2">Denver, CO 80223</p>
+							</div>
 						</button>
 					</a>
-					<div>
-						<p class="address1">30 W Bayaud Ave</p>
-						<p class="address2">Denver, CO 80223</p>
-					</div>
 				</div>
 			</div>
 			<div class="contact">
-				<p class="label">Email</p>
+				<h5>
+					<p class="label">Email</p>
+				</h5>
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
 				<!-- svelte-ignore a11y-no-static-element-interactions -->
 				<div class="emailAddy indent">
-					<p>theriverrunsfast@gmail.com</p>
 					<div class="emailAddyButtons">
 						<button class="copy" on:click={copyEmail} title="Copy email to clipboard">
 							{#if copied}
 								<Check />
 								Copied to clipboard
 							{:else}
-								<Copy /> Copy
+								<Copy />
+								theriverrunsfast@gmail.com
 							{/if}
 						</button>
 						<a href="mailto:{email}">
 							<button title="Send email">
-								<Send /> Email
+								<Send />
 							</button>
 						</a>
 					</div>
 				</div>
 			</div>
-			<hr />
 			<div>
-				<Socials></Socials>
+				<h5>
+					<p class="label">Links</p>
+				</h5>
+				<div class="indent">
+					<Socials></Socials>
+				</div>
 			</div>
 		</section>
 	</div>
@@ -97,8 +105,8 @@
 	p {
 		letter-spacing: var(--font-letterspacing-3);
 	}
-	hr {
-		margin: unset;
+	a:hover {
+		text-decoration: none;
 	}
 	/* CLASSES */
 	.addy {
@@ -111,24 +119,35 @@
 	}
 	.emailAddyButtons {
 		display: flex;
+		flex-direction: column;
 		gap: var(--size-4);
 		margin-block-start: var(--size-4);
 		font-size: var(--font-size-1);
+		& button {
+			width: 100%;
+		}
 	}
 	.address2 {
 		color: var(--gray-6);
 		font-size: var(--font-size-0);
 	}
 	.label {
-		margin-block: var(--size-6);
-		color: var(--gray-6);
-		letter-spacing: var(--font-letterspacing-5);
-		text-decoration: underline;
-		text-decoration-color: var(--gray-7);
+		margin-block: var(--size-3);
+		font-weight: var(--font-weight-2);
+		letter-spacing: var(--font-letterspacing-4);
 		text-transform: uppercase;
 	}
 	.flex {
 		display: flex;
+	}
+	.address {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+	}
+	.addressWrapper {
+		display: flex;
+		gap: var(--size-4);
 	}
 	.content {
 		padding-block: var(--size-4);
