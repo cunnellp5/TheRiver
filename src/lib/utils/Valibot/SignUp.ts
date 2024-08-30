@@ -1,5 +1,5 @@
 import type { InferOutput } from 'valibot';
-import { boolean, nonEmpty, object, string, pipe } from 'valibot';
+import { nonEmpty, object, string, pipe } from 'valibot';
 import { emailValidation } from './EmailSchema';
 import { confirmValidation, passwordValidation } from './PassSchema';
 

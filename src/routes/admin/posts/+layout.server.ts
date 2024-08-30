@@ -4,6 +4,10 @@ import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ locals }: { locals: App.Locals }) => {
+	if (!locals.session || !locals.user) {
+		return error(404, 'Not found');
+	}
+
 	try {
 		const posts: Post[] = await db.post.findMany({
 			orderBy: [{ updatedAt: 'desc' }, { createdAt: 'desc' }]

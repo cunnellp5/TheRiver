@@ -7,7 +7,7 @@
 	export let data;
 	let showModal = false;
 	const { services } = data;
-	const totalDuration = services.reduce((acc, service) => acc + service.duration, 0);
+	const totalDuration = services.reduce((acc, service) => acc + service?.duration, 0);
 
 	onMount(() => {
 		if (services.length === 1) {

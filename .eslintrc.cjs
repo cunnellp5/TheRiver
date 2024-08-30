@@ -15,7 +15,7 @@ module.exports = {
 		sourceType: 'module',
 		ecmaVersion: 2020,
 		extraFileExtensions: ['.svelte']
-		// project: './tsconfig.json' // this trips up the service-worker and the no unused imports for $app/forms. leaving here for a reminder
+		// project: './tsconfig.json' // this trips up the service-worker and the no unused imports for $app/forms. leaving here for a reminder: need to enable this for
 	},
 	env: {
 		browser: true,

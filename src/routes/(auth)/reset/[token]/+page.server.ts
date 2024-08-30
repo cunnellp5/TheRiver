@@ -4,8 +4,8 @@ import { ValiError, parse } from 'valibot';
 import { PasswordSchema } from '$lib/utils/Valibot/PassSchema';
 import { Argon2id } from 'oslo/password';
 import { lucia } from '$lib/server/auth';
-import type { PageServerLoad } from './$types';
 import { logout } from '$lib/server/controllers/logout';
+import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async (event) => {
 	const { token } = event.params;
@@ -49,7 +49,7 @@ export const load: PageServerLoad = async (event) => {
 	};
 };
 
-// TODO:
+// Instructions
 // create an action to submit form data
 // check if the token is valid
 // check if the password is valid
@@ -59,6 +59,7 @@ export const load: PageServerLoad = async (event) => {
 // redirect to login!
 
 export const actions: Actions = {
+	// eslint-disable-next-line consistent-return
 	default: async ({ cookies, request, locals }) => {
 		const formData = await request.formData();
 

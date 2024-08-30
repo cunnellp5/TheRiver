@@ -2,8 +2,8 @@ import { lucia } from '$lib/server/auth';
 import { fail, redirect } from '@sveltejs/kit';
 import { Argon2id } from 'oslo/password';
 import db from '$lib/server/database';
-import type { Actions } from './$types';
 import { RateLimiter } from '$lib/utils/rateLimiter';
+import type { Actions } from './$types';
 
 const rateLimiter = new RateLimiter(5, 300000); // 5 requests per 5 minutes
 

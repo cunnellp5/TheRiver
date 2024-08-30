@@ -1,23 +1,23 @@
 <script lang="ts">
-	// import Table from '$lib/components/ui/Table.svelte';
+	import Seo from '$lib/components/SEO.svelte';
 	import * as Table from '$lib/components/ui/shadcn/table';
-	import { enhance } from '$app/forms';
+	// import { enhance } from '$app/forms';
 
 	export let data;
 	const { services, about } = data;
-	let selectedServices = new Set();
-	let selectedServicesInput: string;
+	// const selectedServices = new Set();
+	// let selectedServicesInput: string;
 	let scroll: number;
 
-	function setSelected(event) {
-		if (selectedServices.has(event.detail.id)) {
-			selectedServices.delete(event.detail.id);
-			selectedServices = selectedServices;
-			return;
-		}
-		selectedServices = selectedServices.add(event.detail.id);
-		selectedServicesInput = [...selectedServices].join(',');
-	}
+	// function setSelected(event) {
+	// 	if (selectedServices.has(event.detail.id)) {
+	// 		selectedServices.delete(event.detail.id);
+	// 		selectedServices = selectedServices;
+	// 		return;
+	// 	}
+	// 	selectedServices = selectedServices.add(event.detail.id);
+	// 	selectedServicesInput = [...selectedServices].join(',');
+	// }
 
 	// TODO table mapper function?
 	// const remappedServices = services.reduce((acc, service) => {
@@ -35,6 +35,10 @@
 	// 	return acc;
 	// }, {});
 </script>
+
+<Seo
+	title={'Beauty Services by The River - Expert Hair & Nails | Alexis'}
+	description={'Transform your look with The River’s expert beauty services. From flawless makeup to rejuvenating skincare, embrace your beauty with a touch of artistry and care.'} />
 
 <svelte:window bind:scrollY={scroll} />
 
@@ -69,7 +73,7 @@
 	{/each} -->
 </main>
 <main>
-	{#each Object.entries(services) as [category, data], id}
+	{#each Object.entries(services) as [category, data]}
 		<span class="stupid" id={category}></span>
 		<section class="tables">
 			<Table.Root>
@@ -105,7 +109,7 @@
 		</section>
 	{/each}
 
-	{#if selectedServices.size > 0}
+	<!-- {#if selectedServices.size > 0}
 		<aside class="surface-3 aside-left">
 			<h4>Selected service{selectedServices.size > 1 ? 's' : ''}</h4>
 			<ul>
@@ -114,11 +118,11 @@
 				{/each}
 			</ul>
 		</aside>
-	{/if}
+	{/if} -->
 	<aside class="aside-right surface-3">
 		<h4>Categories</h4>
 		<ul>
-			{#each Object.entries(services) as [category, data]}
+			{#each Object.entries(services) as [category]}
 				<a href={`#${category}`}>
 					<li>{category}</li>
 				</a>
@@ -174,14 +178,14 @@
 		height: var(--size-7);
 		color: var(--link);
 	} */
-	.aside-left {
+	/* .aside-left {
 		position: sticky;
 		bottom: var(--size-7);
 		box-shadow: var(--shadow-3);
 		border-radius: var(--radius-2);
 		padding: var(--size-4);
 		width: max-content;
-	}
+	} */
 	/* Your existing styles */
 	.aside-right {
 		position: sticky;

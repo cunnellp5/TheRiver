@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Seo from '$lib/components/SEO.svelte';
 	import * as Card from '$lib/components/ui/shadcn/card';
 	import * as Table from '$lib/components/ui/shadcn/table';
 	import AdminBusinessInfoRow from './AdminBusinessInfoRow.svelte';
@@ -7,6 +8,10 @@
 
 	$: ({ business } = data);
 </script>
+
+<Seo
+	title={'Admin Dashboard - Manage Your Site'}
+	description={'Access the admin dashboard to manage site settings, user accounts, and content. Control and oversee your site’s operations efficiently.'} />
 
 <div class="adminIntroCardWrapper">
 	<Card.Root>

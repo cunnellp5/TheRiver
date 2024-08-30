@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
 	import socialLinks from '$lib/data/socialLinks';
 	import { addToast } from '$lib/stores/toast';
+	import { enhance } from '$app/forms';
 
 	let emailInput = '';
 
@@ -19,8 +19,11 @@
 			<a href={socialLinks.facebook} target="_blank">
 				<li>Facebook</li>
 			</a>
-			<a href={socialLinks.instagram} target="_blank">
-				<li>Instagram</li>
+			<a href={socialLinks.instagramSing} target="_blank">
+				<li>Instagram [Music]</li>
+			</a>
+			<a href={socialLinks.instagramBeauty} target="_blank">
+				<li>Instagram [Beauty]</li>
 			</a>
 			<a href={socialLinks.tiktok} target="_blank">
 				<li>TikTok</li>
@@ -75,8 +78,14 @@
 	<div>
 		<div class="colWrapper">
 			<p class="listHeader">Info</p>
-			<p class="address">123 address St</p>
+			<!-- svelte-ignore a11y-label-has-associated-control -->
+			<label>Address</label>
+			<p class="address">30 W Bayaud Ave</p>
 			<p class="address">Denver, CO</p>
+			<br />
+			<!-- svelte-ignore a11y-label-has-associated-control -->
+			<label>Email</label>
+			<p class="address">theriverrunsfast@gmail.com</p>
 		</div>
 	</div>
 
@@ -86,9 +95,8 @@
 		<form
 			method="POST"
 			action="api/newsLetter?/subscribe"
-			use:enhance={async ({ formElement, formData, action, cancel, submitter }) => {
-				return async ({ result, update }) => {
-					console.log(result, 'hlo');
+			use:enhance={async ({ formElement, formData, action, cancel, submitter }) =>
+				async ({ result, update }) => {
 					if (result.status === 200) {
 						showError = false;
 						update();
@@ -103,8 +111,7 @@
 						errorMessage = result?.data?.message || 'An error occurred';
 						update();
 					}
-				};
-			}}>
+				}}>
 			<p class="listHeader">Subscribe to the newsletter</p>
 			<div class="newsletter-form">
 				<label for="email">Get the latest updates on new products and upcoming sales</label>
@@ -145,7 +152,7 @@
 		<span class="year">
 			{new Date().getFullYear()}
 		</span>
-		The River
+		TheRiver
 	</div>
 </footer>
 
@@ -218,7 +225,7 @@
 	}
 
 	.copywrite {
-		color: var(--gray-8);
+		color: var(--gray-7);
 		font-size: var(--font-size-0);
 		font-family: 'Courier New', Courier, monospace;
 	}

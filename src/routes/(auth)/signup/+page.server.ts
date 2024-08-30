@@ -20,18 +20,10 @@ export const actions: Actions = {
 		const password = formData.get('password') as string;
 		const firstName = formData.get('firstName') as string;
 		const lastName = formData.get('lastName') as string;
-		const isSubscribed = formData.get('isSubscribed') as string;
+		const isSubscribed = (formData.get('isSubscribed') as string) === 'on';
 		const confirm = formData.get('confirm') as string;
 
-		if (
-			!email ||
-			!password ||
-			!firstName ||
-			!lastName ||
-			!isSubscribed ||
-			!confirm ||
-			confirm !== password
-		)
+		if (!email || !password || !firstName || !lastName || !confirm || confirm !== password)
 			return fail(400, { message: 'Please fill out all fields' });
 
 		// validates with valibot
@@ -41,7 +33,7 @@ export const actions: Actions = {
 				password,
 				firstName,
 				lastName,
-				isSubscribed: isSubscribed === 'on',
+				isSubscribed,
 				confirm
 			}) as SignUpValidator;
 		} catch (err) {
@@ -78,27 +70,37 @@ export const actions: Actions = {
 					email: email?.toString() || '',
 					firstName: firstName?.toString() || '',
 					lastName: lastName?.toString() || '',
-					isSubscribed: Boolean(isSubscribed) || false,
 					hashedPassword
 				}
 			});
 
-			// inner set
+			// if user check isSubscribed create record in newsletter
+			if (isSubscribed) {
+				try {
+					await db.newsletter.create({
+						data: { email, userId: newUser.id }
+					});
+				} catch (err) {
+					console.error('Error creating newsletter subscription:', err);
+					return error(500, 'Internal Server Error');
+				}
+			}
+
+			// innerset
 			try {
 				const session = await lucia.createSession(newUser.id, {});
-
 				const sessionCookie = lucia.createSessionCookie(session.id);
-
 				cookies.set(sessionCookie.name, sessionCookie.value, {
 					path: '.',
 					...sessionCookie.attributes
 				});
-				// DO i need to do anything here?
-			} catch {
+			} catch (err) {
+				console.error('Error creating session:', err);
 				return error(500, { message: 'Failed to create session' });
 			}
 			// or do anything here?
-		} catch {
+		} catch (err) {
+			console.error('Error creating user:', err);
 			return error(500, { message: 'Failed to create user' });
 		}
 

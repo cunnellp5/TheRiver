@@ -1,16 +1,17 @@
 <script lang="ts">
-	import { fade } from 'svelte/transition';
-	import { onMount } from 'svelte';
+	import Seo from '$lib/components/SEO.svelte';
+	import Marquee from '$lib/components/ui/Marquee.svelte';
 	import Socials from '$lib/components/ui/Socials.svelte';
 	import * as GenericCard from '$lib/components/ui/shadcn/card';
+	import { onMount } from 'svelte';
+	import { fade } from 'svelte/transition';
 	import TestVideo from './components/TestVideo.svelte';
 	import TheRiver from './components/TheRiver.svelte';
-	import Marquee from '$lib/components/ui/Marquee.svelte';
 
 	export let data;
 	const { videoURL, articles, about } = data;
 
-	let isPlaying = true;
+	// const isPlaying = true;
 	let visible = false;
 
 	onMount(() => {
@@ -18,7 +19,10 @@
 	});
 </script>
 
-<title>The River</title>
+<Seo
+	title={'Music, Beauty Services, Blog & Fashion - The River | Alexis'}
+	description={'Discover The River: A multifaceted artist offering music, beauty services, fashion, and more. Explore her latest tracks, music videos, blog, and unique handmade jewelry and clothing.'} />
+
 <main>
 	<div class="img-video-overlay-wrapper">
 		<div id="video-background">
@@ -37,7 +41,7 @@
 			{/if}
 		</div>
 	</div>
-	<div class="about">
+	<div class="about app-layout">
 		<h2>About</h2>
 		<p>
 			{about?.text}

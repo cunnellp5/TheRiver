@@ -1,12 +1,12 @@
-import { error, fail, redirect, type Actions } from '@sveltejs/kit';
-import db from '$lib/server/database';
-import type { PageServerLoad } from './$types';
 import { logout } from '$lib/server/controllers/logout';
-import { parse, ValiError } from 'valibot';
+import db from '$lib/server/database';
 import { EmailSchema } from '$lib/utils/Valibot/EmailSchema';
+import { error, fail, redirect, type Actions } from '@sveltejs/kit';
+import { parse, ValiError } from 'valibot';
+import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async (event) => {
-	// IF NOT LOGGED IN, REDIRECT TO LOGIN
+	// IF NOT LOGGED IN, SHOW ERR PAGE LIKE ALL OTHER ROUTES THAT DONT EXIST
 	if (!event.locals.session || !event.locals.user) {
 		return error(404, 'Not Found');
 	}
@@ -27,7 +27,7 @@ export const load: PageServerLoad = async (event) => {
 
 		// IF NO USER FOUND IN DB, REDIRECT TO LOGIN
 		if (!user) {
-			return redirect(302, '/');
+			return redirect(302, '/login');
 		}
 
 		return {
@@ -36,10 +36,11 @@ export const load: PageServerLoad = async (event) => {
 				firstName: user.firstName,
 				lastName: user.lastName,
 				email: user.email,
-				isSubscribed: user?.Newsletter ? true : false
+				isSubscribed: !!user?.Newsletter
 			}
 		};
 	} catch (err) {
+		console.error('Error finding user:', err);
 		return error(500, 'Something went wrong');
 	}
 };

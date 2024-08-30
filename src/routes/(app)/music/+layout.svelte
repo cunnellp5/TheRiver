@@ -49,7 +49,7 @@
 		transition:
 			color 0.3s ease,
 			transform 0.3s ease;
-		background: var(--gray-10);
+		background: var(--surface-2);
 		padding: var(--size-4);
 		text-decoration: none;
 		text-transform: uppercase;
@@ -57,7 +57,7 @@
 	.sidenav {
 		display: flex;
 		position: sticky;
-		top: 0;
+		top: var(--size-9);
 		margin: unset;
 	}
 	a:hover {

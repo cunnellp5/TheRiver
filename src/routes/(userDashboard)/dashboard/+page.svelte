@@ -1,14 +1,15 @@
 <script lang="ts">
+	import Seo from '$lib/components/SEO.svelte';
+	import Modal from '$lib/components/ui/Modal.svelte';
 	import * as Card from '$lib/components/ui/shadcn/card';
 	import * as Table from '$lib/components/ui/shadcn/table';
-	import Modal from '$lib/components/ui/Modal.svelte';
-	import Users from 'lucide-svelte/icons/users';
 	import market from '$lib/data/json/market.json';
-	import DashboardUserRow from './DashboardUserRow.svelte';
-	import X from 'lucide-svelte/icons/x';
-	import ArrowRight from 'lucide-svelte/icons/arrow-right';
 	import { addToast } from '$lib/stores/toast';
+	import ArrowRight from 'lucide-svelte/icons/arrow-right';
+	import Users from 'lucide-svelte/icons/users';
+	import X from 'lucide-svelte/icons/x';
 	import { enhance } from '$app/forms';
+	import DashboardUserRow from './DashboardUserRow.svelte';
 
 	export let data;
 	export let form;
@@ -22,6 +23,10 @@
 	$: disabledDelete = emailInput !== data.user.email;
 </script>
 
+<Seo
+	title={'Your Dashboard - Manage Your Profile and Settings'}
+	description={'Access your personal dashboard to manage your profile, settings, and preferences. Stay organized and control your account efficiently.'} />
+
 <Modal bind:showModal overrideButtons={true}>
 	<h2 slot="header">
 		Delete this account
@@ -31,6 +36,7 @@
 	<section class="modalBody">
 		<div>
 			<p>Once you delete your account, there is no going back. Please be certain.</p>
+			<p class="subText">You will be removed from the newsletter, if you signed up</p>
 		</div>
 
 		<form
@@ -272,6 +278,11 @@
 	}
 	.diabledDelete {
 		opacity: 0.5;
+	}
+	.subText {
+		margin-block-start: var(--size-2);
+		color: var(--text-2);
+		font-size: var(--font-size-0);
 	}
 	@media (max-width: 1440px) {
 		.adminIntroCardWrapper {

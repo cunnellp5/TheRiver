@@ -1,15 +1,16 @@
 <script lang="ts">
-	import { fade, slide } from 'svelte/transition';
+	import Seo from '$lib/components/SEO.svelte';
+	import Badge from '$lib/components/ui/Badge.svelte';
 	import { QuillConfigReadonly, quillContentInit } from '$lib/utils/QuillConfig';
 	import formatDate from '$lib/utils/formatDate';
+	import ChevronLeft from 'lucide-svelte/icons/chevron-left';
+	import ChevronRight from 'lucide-svelte/icons/chevron-right';
 	import type Quill from 'quill';
 	import { onMount } from 'svelte';
-	import Badge from '$lib/components/ui/Badge.svelte';
-	import ChevronRight from 'lucide-svelte/icons/chevron-right';
-	import ChevronLeft from 'lucide-svelte/icons/chevron-left';
+	import { fade, slide } from 'svelte/transition';
 	import { page } from '$app/stores';
-	import type { PageData } from './$types';
 	import { browser } from '$app/environment';
+	import type { PageData } from './$types';
 
 	export let data: PageData;
 	let quill: Quill | null;
@@ -50,6 +51,10 @@
 		setQuillData();
 	});
 </script>
+
+<Seo
+	title={`${post ? post.title : 'Blog'} - By The River`}
+	description={`${post ? post.description : 'Explore The River’s blog for insights on music, beauty, and fashion. Discover expert tips, trends, and stories that inspire creativity and style."'}`} />
 
 <section>
 	<div

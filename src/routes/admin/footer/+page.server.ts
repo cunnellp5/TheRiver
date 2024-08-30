@@ -2,7 +2,11 @@ import { fail, redirect, error } from '@sveltejs/kit';
 import db from '$lib/server/database';
 import type { PageServerLoad, Actions } from './$types';
 
-export const load: PageServerLoad = async ({ fetch }) => {
+export const load: PageServerLoad = async ({ fetch, locals }) => {
+	if (!locals.session || !locals.user) {
+		return error(404, 'Not found');
+	}
+
 	const response = await fetch('/api/socialLinks');
 
 	if (response.status === 404) {
@@ -32,13 +36,12 @@ export const actions: Actions = {
 
 		const link = await db.socialLinks.create({
 			data: {
-				title,
 				url: url?.toString() || ''
 			}
 		});
 
 		return {
-			message: `Link to ${link.title} created`,
+			message: `Link created`,
 			socialLink: link
 		};
 	},

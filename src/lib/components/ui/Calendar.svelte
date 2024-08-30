@@ -251,10 +251,10 @@
 		color: hsl(var(--green-4-hsl) / 100%);
 	}
 
-	.date.other {
-		/* opacity: 0.5; */
+	/* .date.other {
+		opacity: 0.5;
 		background: hsl(var(--stone-9-hsl) / 30%);
-	}
+	} */
 
 	.weekend {
 		background-color: inherit;

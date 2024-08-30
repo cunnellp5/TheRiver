@@ -1,4 +1,5 @@
 <script>
+	import Seo from '$lib/components/SEO.svelte';
 	import { addToast } from '$lib/stores/toast';
 	import { enhance } from '$app/forms';
 
@@ -6,6 +7,10 @@
 
 	let loading = false;
 </script>
+
+<Seo
+	title={'Reset Password - Secure Your Account'}
+	description={'Reset your password to regain access to your account. Follow the instructions to create a new, secure password and keep your account safe.'} />
 
 <main>
 	<section>

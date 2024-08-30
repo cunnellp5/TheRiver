@@ -1,6 +1,13 @@
 import db from '$lib/server/database';
-import { fail } from '@sveltejs/kit';
-import type { Actions } from './$types';
+import { error, fail } from '@sveltejs/kit';
+import type { Actions, PageServerLoad } from './$types';
+
+// eslint-disable-next-line consistent-return
+export const load: PageServerLoad = async ({ locals }) => {
+	if (!locals.session || !locals.user) {
+		return error(404, 'Not found');
+	}
+};
 
 // TODO investigate why i have to duplicate this logic
 export const actions: Actions = {

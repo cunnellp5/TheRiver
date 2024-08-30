@@ -3,10 +3,10 @@
 	import Pencil from 'lucide-svelte/icons/pencil';
 	import Save from 'lucide-svelte/icons/save';
 	import X from 'lucide-svelte/icons/x';
-	import { applyAction, enhance } from '$app/forms';
 	import { tick } from 'svelte';
-	import DashboardUserInput from './DashboardUserInput.svelte';
 	import { addToast } from '$lib/stores/toast';
+	import { applyAction, enhance } from '$app/forms';
+	import DashboardUserInput from './DashboardUserInput.svelte';
 
 	type UserValue = string | boolean | number | Date | null;
 
@@ -90,7 +90,7 @@
 				<DashboardUserInput {key} {value} />
 
 				<div class="button-wrapper">
-					<button class="update-button" type="submit"> <Save /> </button>
+					<button class="create-button" type="submit"> <Save /> </button>
 					<button class="delete-button" type="button" on:click={stopEditing}> <X /> </button>
 				</div>
 			</form>
@@ -99,7 +99,7 @@
 		<Table.Cell>{cellValue({ value, key })}</Table.Cell>
 		<Table.Cell>
 			<div class="button-wrapper">
-				<button class="editor" on:click={editing}>
+				<button class="update-button" on:click={editing}>
 					<Pencil />
 				</button>
 			</div>

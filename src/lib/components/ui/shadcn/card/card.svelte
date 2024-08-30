@@ -3,7 +3,7 @@
 
 	type $$Props = HTMLAttributes<HTMLDivElement>;
 
-	let className: $$Props['class'] = undefined;
+	let className: $$Props['class'] = '';
 
 	export { className as class };
 </script>
