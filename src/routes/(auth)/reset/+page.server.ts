@@ -77,7 +77,7 @@ export const actions: Actions = {
 					}
 				});
 			} catch (error) {
-				console.log('error UPDATING reset password session', error);
+				console.error('Error updating reset password session', error);
 			}
 		} else {
 			// create session
@@ -90,7 +90,7 @@ export const actions: Actions = {
 					}
 				});
 			} catch (error) {
-				console.log('error creating reset password session', error);
+				console.error('Error creating reset password session', error);
 			}
 		}
 
@@ -106,7 +106,7 @@ export const actions: Actions = {
 			await db.resetPasswordSession.delete({
 				where: { token: hexHash }
 			});
-			console.log(error, 'something funny happened when sending email');
+			console.error(error, 'Error sending email');
 		}
 
 		return {
