@@ -23,7 +23,6 @@
 			<th>firstName</th>
 			<th>lastName</th>
 			<th>isAdmin</th>
-			<th>isSubscribed</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -34,7 +33,6 @@
 				<td>{user.firstName}</td>
 				<td>{user.lastName}</td>
 				<td class:admin={user.isAdmin} class:defaultUser={!user.isAdmin}>{user.isAdmin}</td>
-				<td>{user.isSubscribed}</td>
 			</tr>
 		{/each}
 	</tbody>
@@ -55,9 +53,9 @@
 	}
 
 	.defaultUser {
-		background-color: var(--create);
+		color: var(--create);
 	}
 	.admin {
-		background-color: var(--delete);
+		color: var(--delete);
 	}
 </style>
