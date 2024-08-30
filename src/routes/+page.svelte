@@ -41,7 +41,7 @@
 			{/if}
 		</div>
 	</div>
-	<div class="about">
+	<div class="about app-layout">
 		<h2>About</h2>
 		<p>
 			{about?.text}
