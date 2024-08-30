@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import Seo from '$lib/components/SEO.svelte';
+
 	export let data;
 	const { tracks } = data;
 

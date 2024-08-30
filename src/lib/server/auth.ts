@@ -20,7 +20,7 @@ export const lucia = new Lucia(adapter, {
 		}
 	},
 	getUserAttributes: (user) => {
-		let userData = {
+		const userData = {
 			isAdmin: user.isAdmin,
 			firstName: user.firstName,
 			lastName: user.lastName,
