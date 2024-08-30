@@ -90,7 +90,7 @@
 				<DashboardUserInput {key} {value} />
 
 				<div class="button-wrapper">
-					<button class="update-button" type="submit"> <Save /> </button>
+					<button class="create-button" type="submit"> <Save /> </button>
 					<button class="delete-button" type="button" on:click={stopEditing}> <X /> </button>
 				</div>
 			</form>
@@ -99,7 +99,7 @@
 		<Table.Cell>{cellValue({ value, key })}</Table.Cell>
 		<Table.Cell>
 			<div class="button-wrapper">
-				<button class="editor" on:click={editing}>
+				<button class="update-button" on:click={editing}>
 					<Pencil />
 				</button>
 			</div>
