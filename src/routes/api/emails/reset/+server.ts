@@ -29,7 +29,8 @@ const transporter = nodemailer.createTransport({
 // };
 
 export const POST: RequestHandler = async ({ request }): Promise<Response> => {
-	let email, token;
+	let email: string;
+	let token;
 
 	try {
 		({ email, token } = await request.json());
@@ -38,8 +39,8 @@ export const POST: RequestHandler = async ({ request }): Promise<Response> => {
 	}
 
 	const options = {
-		from: 'TheRiverSings - Alexis', // TODO figure this out later
-		to: 'philip.cunnell@colorado.edu', // TODO this should be the 'email' but hardcoding for testing
+		from: 'The River', // TODO figure this out later
+		to: email, // TODO this should be the 'email' but hardcoding for testing
 		subject:
 			'Sent from TheRiver website - This is the password reset email. Click the link to reset your password.',
 		html: render({
