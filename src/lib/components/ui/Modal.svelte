@@ -3,7 +3,7 @@
 
 	export let showModal: boolean;
 	export let overrideButtons: boolean = false;
-	export let buttonText: string = 'Close';
+	// export let buttonText: string = 'Close';
 
 	const dispatch = createEventDispatcher();
 

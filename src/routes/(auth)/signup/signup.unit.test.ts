@@ -1,10 +1,10 @@
-import { describe, it, expect, vi, afterEach, test } from 'vitest';
-import CookiesMock from '$lib/test/mocks/CookiesMock';
-import RequestMock from '$lib/test/mocks/RequestMock';
-import MockedEvent from '$lib/test/mocks/EventMock';
 import SignUpFormDataMissingField from '$lib/test/__fixtures__/SignUpFormDataMissingField';
-import FormDataMock from '$lib/test/mocks/FormDataMock';
 import SignUpFormDataStrings from '$lib/test/__fixtures__/SignUpFormDataStrings';
+import CookiesMock from '$lib/test/mocks/CookiesMock';
+import MockedEvent from '$lib/test/mocks/EventMock';
+import FormDataMock from '$lib/test/mocks/FormDataMock';
+import RequestMock from '$lib/test/mocks/RequestMock';
+import { afterEach, describe, expect, it, test, vi } from 'vitest';
 import { actions } from './+page.server';
 
 type MockObject = {

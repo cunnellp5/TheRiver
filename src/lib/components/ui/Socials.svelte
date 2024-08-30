@@ -5,8 +5,8 @@
 	import LinkTree from '$lib/components/svgs/socials/LinkTree.svelte';
 	import Spotify from '$lib/components/svgs/socials/Spotify.svelte';
 	import Youtube from '$lib/components/svgs/socials/Youtube.svelte';
-	import LogoR from '$lib/components/svgs/logos/LogoR2.svelte';
 	import socialLinks from '$lib/data/socialLinks';
+	// import LogoR from '$lib/components/svgs/logos/LogoR2.svelte';
 </script>
 
 <ul>
@@ -21,7 +21,7 @@
 	<a class="socials" href={socialLinks.youtube} target="_blank">
 		<li><Youtube /></li>
 	</a>
-	<a class="socials" href={socialLinks.instagram} target="_blank">
+	<a class="socials" href={socialLinks.instagramSing} target="_blank">
 		<li><Instagram /></li>
 	</a>
 	<a class="socials" href={socialLinks.spotify} target="_blank">
@@ -59,11 +59,10 @@
 		cursor: pointer;
 	}
 
-	.logo-link {
+	/* .logo-link {
 		border: none;
 		width: var(--size-8);
 		& path {
-			/* fill: var(--indigo-4); */
 			transition: fill 0.9s ease;
 		}
 		& #border {
@@ -80,7 +79,7 @@
 		& #border {
 			opacity: 1;
 		}
-	}
+	} */
 
 	/* social links */
 	.socials {
@@ -96,9 +95,9 @@
 		border: 3px solid var(--link);
 	}
 
-	@media (max-width: 600px) {
+	/* @media (max-width: 600px) {
 		.logo-link {
 			font-size: 20%;
 		}
-	}
+	} */
 </style>

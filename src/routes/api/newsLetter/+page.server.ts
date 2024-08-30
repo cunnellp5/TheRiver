@@ -1,9 +1,9 @@
 import db from '$lib/server/database';
+import { RateLimiter } from '$lib/utils/rateLimiter';
 import { EmailSchema } from '$lib/utils/Valibot/EmailSchema';
 import { error, fail, type ActionFailure } from '@sveltejs/kit';
 import { ValiError, parse } from 'valibot';
 import type { Actions } from './$types';
-import { RateLimiter } from '$lib/utils/rateLimiter';
 
 const rateLimiter = new RateLimiter(5, 60000); // 5 requests per minute
 

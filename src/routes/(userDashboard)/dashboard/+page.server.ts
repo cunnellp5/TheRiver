@@ -1,9 +1,9 @@
-import { error, fail, redirect, type Actions } from '@sveltejs/kit';
-import db from '$lib/server/database';
-import type { PageServerLoad } from './$types';
 import { logout } from '$lib/server/controllers/logout';
-import { parse, ValiError } from 'valibot';
+import db from '$lib/server/database';
 import { EmailSchema } from '$lib/utils/Valibot/EmailSchema';
+import { error, fail, redirect, type Actions } from '@sveltejs/kit';
+import { parse, ValiError } from 'valibot';
+import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async (event) => {
 	// IF NOT LOGGED IN, SHOW ERR PAGE LIKE ALL OTHER ROUTES THAT DONT EXIST

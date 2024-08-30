@@ -1,6 +1,5 @@
 <script lang="ts">
 	import Seo from '$lib/components/SEO.svelte';
-	// import Table from '$lib/components/ui/Table.svelte';
 	import * as Table from '$lib/components/ui/shadcn/table';
 	// import { enhance } from '$app/forms';
 
@@ -179,14 +178,14 @@
 		height: var(--size-7);
 		color: var(--link);
 	} */
-	.aside-left {
+	/* .aside-left {
 		position: sticky;
 		bottom: var(--size-7);
 		box-shadow: var(--shadow-3);
 		border-radius: var(--radius-2);
 		padding: var(--size-4);
 		width: max-content;
-	}
+	} */
 	/* Your existing styles */
 	.aside-right {
 		position: sticky;
