@@ -1,5 +1,5 @@
 // import { sequence } from '@sveltejs/kit/hooks';
-import { error, redirect } from '@sveltejs/kit';
+import { redirect } from '@sveltejs/kit';
 import { lucia } from '$lib/server/auth';
 import type { Handle } from '@sveltejs/kit';
 

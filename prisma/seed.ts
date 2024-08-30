@@ -1,4 +1,4 @@
-import { PrismaClient, type Service } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
 import { Argon2id } from 'oslo/password';
 import slugify from '$lib/utils/slugify';
 
@@ -28,7 +28,7 @@ async function getPosts() {
 }
 
 async function main() {
-	await db.$transaction(async (db) => {
+	await db.$transaction(async () => {
 		// DELETE ALL DATA
 		await db.article.deleteMany();
 		await db.service.deleteMany();
