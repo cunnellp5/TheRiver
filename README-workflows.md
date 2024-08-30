@@ -100,6 +100,7 @@
 - is 15 min chunks better or 30min chunks
 - how far out could vacations get set
 - for overlapping services: consider the display time wouldnt reflect the working time (hair coloring for 2 hours example):
+
   - consider types, could we schedule two 'hair colors' back to back (should ask her how some of the services work exactly)
 
 - do we need a buffer time (client side)
