@@ -12,8 +12,6 @@
 	function handleClose() {
 		dispatch('handleClose');
 	}
-
-	$: console.log(show, 'wtfffff');
 </script>
 
 <Sheet bind:showModal={show} overrideButtons={true} on:close={handleClose}>
