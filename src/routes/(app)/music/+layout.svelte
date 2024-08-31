@@ -57,7 +57,9 @@
 	.sidenav {
 		display: flex;
 		position: sticky;
+		/* top: 0; */
 		top: var(--size-9);
+		z-index: var(--layer-1);
 		margin: unset;
 	}
 	a:hover {
