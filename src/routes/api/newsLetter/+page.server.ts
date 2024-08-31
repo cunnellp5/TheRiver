@@ -17,7 +17,7 @@ type NewsLetterAction = Promise<
 >;
 
 export const actions: Actions = {
-	subscribe: async ({ request }): NewsLetterAction => {
+	subscribe: async ({ request, fetch }): NewsLetterAction => {
 		const formData = await request.formData();
 		const email = formData.get('email') as string;
 
@@ -91,6 +91,20 @@ export const actions: Actions = {
 			} catch (err) {
 				console.error('Error creating newsletter subscription:', err);
 				return error(500, 'Internal Server Error');
+			}
+			// we know there was no user in the system,
+			// so send welcome email only when there was no newsletter record found,
+			// so this should be a first timer without an account
+			try {
+				await fetch('emails/welcome', {
+					method: 'POST',
+					body: JSON.stringify({ subject: 'Subscribed to Newsletter' }),
+					headers: {
+						'Content-Type': 'application/json'
+					}
+				});
+			} catch (error) {
+				console.error(error, 'Error sending email');
 			}
 		}
 
