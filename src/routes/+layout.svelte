@@ -1,4 +1,5 @@
 <script lang="ts">
+	import VanishingHeader from './components/VanishingHeader.svelte';
 	import Toasts from '$lib/components/ui/Toasts.svelte';
 	import 'open-props/buttons';
 	import 'open-props/colors-hsl';
@@ -18,11 +19,13 @@
 
 <div>
 	<!-- This is weirdly nested, but i really wanted a full width blur background -->
-	<div class="blur-bar">
+	<VanishingHeader duration="300ms" offset={50} tolerance={5}>
+		<!-- <div class="blur-bar"> -->
 		<div class="app-layout">
 			<Header isSignedIn={data.isSignedIn} user={data.user} />
 		</div>
-	</div>
+		<!-- </div> -->
+	</VanishingHeader>
 
 	<!-- TODO move transitions to a new layout so admin portal looks better when navigating -->
 	<PageTransition>
@@ -58,11 +61,11 @@
 			padding-inline: 0;
 		}
 	} */
-	.blur-bar {
-		position: sticky; /* Make the nav sticky */
-		top: 0;
-		z-index: 1000;
-		/* backdrop-filter: blur(6px); */
-		background: var(--background);
-	}
+	/* .blur-bar { */
+	/* position: sticky; */
+	/* top: 0; */
+	/* z-index: 1000; */
+
+	/* backdrop-filter: blur(6px); */
+	/* } */
 </style>
