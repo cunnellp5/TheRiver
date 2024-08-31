@@ -38,9 +38,11 @@
 
 			{#if loading}
 				<button disabled={loading}> loading... </button>
+			{:else if form && form.success}
+				<button disabled> Submitted! </button>
 			{:else}
-				<button type="submit" disabled={loading}>
-					{form && form.success ? 'Submitted!' : 'Request Password Reset'}
+				<button type="submit" disabled={loading} class="update-button">
+					Request Password Reset
 				</button>
 			{/if}
 		</form>
