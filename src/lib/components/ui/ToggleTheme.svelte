@@ -23,6 +23,7 @@
 
 <style>
 	button {
+		flex-shrink: 0;
 		box-shadow: none;
 		border: none;
 		background: none;
