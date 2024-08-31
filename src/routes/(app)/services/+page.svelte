@@ -44,9 +44,12 @@
 
 <main class="app-layout">
 	<section class="top">
-		<h1 style:transform={`translate3d(${scroll / 10}px, 0, 0)`}>THE RIVER BEAUTY</h1>
+		<!-- style:transform={`translate3d(${scroll / 10}px, 0, 0)`} -->
+		<h1 class="overflow-hidden">THE RIVER BEAUTY</h1>
 		<p>Denver based</p>
-		<div class="cutoutImg" style:transform={`translate3d(-${scroll / 20}px, ${scroll / 5}px, 0)`}>
+		<div
+			class="cutoutImg overflow-hidden"
+			style:transform={`translate3d(-${scroll / 20}px, ${scroll / 5}px, 0)`}>
 			<img
 				src="https://res.cloudinary.com/dswpu3qez/image/upload/f_auto/q_auto/v1714083850/TheRiver/alexisCutout.png"
 				alt="alexis cutout" />
@@ -72,7 +75,7 @@
 		</section>
 	{/each} -->
 </main>
-<main>
+<main class="app-layout">
 	{#each Object.entries(services) as [category, data]}
 		<span class="stupid" id={category}></span>
 		<section class="tables">
@@ -190,7 +193,7 @@
 	.aside-right {
 		position: sticky;
 		bottom: 70%;
-		left: 70%;
+		left: 100%;
 		box-shadow: var(--shadow-3);
 		border-radius: var(--radius-2);
 		padding: var(--size-4);
@@ -210,7 +213,7 @@
 		position: sticky;
 		bottom: var(--size-7);
 		align-self: center;
-		width: var(--size-content-2);
+		width: var(--size-content-1);
 	}
 	.tables {
 		align-items: center;
@@ -267,5 +270,26 @@
 		/* border: 1px solid red; */
 		/* display: none; */
 		height: var(--size-10);
+	}
+
+	@media (max-width: 768px) {
+		/* .page-indicator {
+			display: none;
+		} */
+		.top {
+			height: 30vh;
+		}
+		.tables {
+			width: 100%;
+		}
+		.fakeform {
+			width: 100%;
+		}
+		/* .service-table {
+			min-height: 20vh;
+		} */
+		.aside-right {
+			bottom: var(--size-10);
+		}
 	}
 </style>
