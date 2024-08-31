@@ -298,7 +298,7 @@ and use the full width for artistic banners */
 /* CRUD BUTTONS CLASSES */
 .create-button {
 	background-color: var(--surface-4);
-	color: var(--create);
+	color: var(--link);
 	/* font-weight: var(--font-weight-7); */
 }
 .create-button:hover {
