@@ -49,7 +49,8 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		margin-inline: var(--size-1);
+		/* gap: var(--size-2); */
+		margin-inline: var(--size-2);
 		border: 0px solid var(--gray-9);
 		aspect-ratio: 1 / 1;
 		width: var(--size-8);
@@ -95,9 +96,12 @@
 		border: 3px solid var(--link);
 	}
 
-	/* @media (max-width: 600px) {
-		.logo-link {
+	@media (max-width: 768px) {
+		/* .logo-link {
 			font-size: 20%;
+		} */
+		a {
+			width: 100%;
 		}
-	} */
+	}
 </style>
