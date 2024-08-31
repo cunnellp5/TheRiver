@@ -1,6 +1,6 @@
 import { error, json, type RequestHandler } from '@sveltejs/kit';
 import { render } from 'svelte-email';
-import Hello from '$lib/emails/Hello.svelte';
+import Reset from '$lib/emails/Reset.svelte';
 import nodemailer from 'nodemailer';
 import { env } from '$env/dynamic/private';
 
@@ -12,41 +12,25 @@ const transporter = nodemailer.createTransport({
 		user: env.GMAIL_USER,
 		pass: env.GMAIL_PASS
 	}
-	// host: 'smtp.ethereal.email',
-	// port: 587,
-	// secure: false,
-	// auth: {
-	// 	user: 'my_user',
-	// 	pass: 'my_password'
-	// }
 });
 
-// const options = {
-// 	from: 'TheRiverSiings',
-// 	to: 'philip.cunnell@colorado.edu',
-// 	subject: 'hello world',
-// 	html: emailHtml
-// };
-
 export const POST: RequestHandler = async ({ request }): Promise<Response> => {
-	let email: string;
 	let token;
 
 	try {
-		({ email, token } = await request.json());
-	} catch (error) {
-		return { status: 400, body: 'Invalid request body' };
+		({ token } = await request.json());
+	} catch (err) {
+		console.error('Error parsing request body:', err);
+		return error(500, err.message);
 	}
 
 	const options = {
-		from: 'The River', // TODO figure this out later
-		to: email, // TODO this should be the 'email' but hardcoding for testing
-		subject:
-			'Sent from TheRiver website - This is the password reset email. Click the link to reset your password.',
+		from: 'theriverrunsfast@gmail.com', // TODO figure this out later
+		to: 'philip.cunnell@colorado.edu', // TODO this should be the 'email' but hardcoding for testing
+		subject: 'The River - Password Reset Request',
 		html: render({
-			template: Hello,
+			template: Reset,
 			props: {
-				name: 'Svelte worlf odf ppoo',
 				token
 			}
 		})
