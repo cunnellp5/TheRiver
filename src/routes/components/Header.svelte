@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { fly } from 'svelte/transition';
+	// import { fly } from 'svelte/transition';
 	import { browser } from '$app/environment';
 	import NavDesktop from './NavDesktop.svelte';
 	import NavMobile from './NavMobile.svelte';
@@ -28,11 +28,10 @@
 
 <NavSheet {user} {isSignedIn} show={showSheet} on:handleClose={() => (showSheet = false)} />
 
-<!-- {#if visible} -->
-<nav class="nav-desktop" in:fly={{ duration: 500, y: -400, delay: 500 }}>
+<!-- in:fly={{ duration: 500, y: -400, delay: 500 }} -->
+<nav class="nav-desktop">
 	<NavDesktop {user} {isSignedIn}></NavDesktop>
 </nav>
-
 <nav class="nav-mobile">
 	<NavMobile on:openSheet={() => (showSheet = true)}></NavMobile>
 </nav>
@@ -42,7 +41,7 @@
 <style>
 	/* ELEMENTS */
 	nav {
-		position: relative;
+		/* position: relative; */
 		align-items: center;
 		padding-block: var(--size-2);
 	}
@@ -50,7 +49,6 @@
 	/* CLASSES */
 	.nav-desktop {
 		display: none;
-		/* min-height: var(--size-9); */
 	}
 
 	.nav-mobile {
@@ -60,8 +58,8 @@
 
 	@media (min-width: 768px) {
 		nav {
-			display: flex;
-			flex-direction: row;
+			/* display: flex; */
+			/* flex-direction: row; */
 			justify-content: space-between;
 		}
 

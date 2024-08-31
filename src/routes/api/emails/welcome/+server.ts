@@ -1,6 +1,6 @@
 import { error, json, type RequestHandler } from '@sveltejs/kit';
 import { render } from 'svelte-email';
-import Reset from '$lib/emails/Reset.svelte';
+import Welcome from '$lib/emails/Welcome.svelte';
 import nodemailer from 'nodemailer';
 import { env } from '$env/dynamic/private';
 
@@ -15,23 +15,16 @@ const transporter = nodemailer.createTransport({
 });
 
 export const POST: RequestHandler = async ({ request }): Promise<Response> => {
-	let token;
-
-	try {
-		({ token } = await request.json());
-	} catch (err) {
-		console.error('Error parsing request body:', err);
-		return error(500, err.message);
-	}
+	const { subject } = await request.json();
 
 	const options = {
 		from: 'theriverrunsfast@gmail.com', // TODO figure this out later
 		to: 'philip.cunnell@colorado.edu', // TODO this should be the 'email' but hardcoding for testing
-		subject: 'The River - Password Reset Request',
+		subject,
 		html: render({
-			template: Reset,
+			template: Welcome,
 			props: {
-				token
+				// token
 			}
 		})
 	};

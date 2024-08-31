@@ -13,7 +13,7 @@ export const load: PageServerLoad = async (event) => {
 };
 // TODO https://www.prisma.io/docs/orm/prisma-client/queries/custom-validation
 export const actions: Actions = {
-	default: async ({ cookies, request }) => {
+	default: async ({ cookies, request, fetch }) => {
 		const formData = await request.formData();
 
 		const email = formData.get('email') as string;
@@ -61,6 +61,16 @@ export const actions: Actions = {
 			return error(500, { message: 'Something unexpected occured' });
 		}
 
+		let newsLetterSubscription;
+		try {
+			newsLetterSubscription = await db.newsletter.findUnique({
+				where: { email: email.toString() }
+			});
+		} catch (err) {
+			// Do nothing, really
+			console.error('Error finding newsletter subscription:', err);
+		}
+
 		let newUser = null;
 
 		try {
@@ -75,7 +85,7 @@ export const actions: Actions = {
 			});
 
 			// if user check isSubscribed create record in newsletter
-			if (isSubscribed) {
+			if (isSubscribed && !newsLetterSubscription) {
 				try {
 					await db.newsletter.create({
 						data: { email, userId: newUser.id }
@@ -102,6 +112,24 @@ export const actions: Actions = {
 		} catch (err) {
 			console.error('Error creating user:', err);
 			return error(500, { message: 'Failed to create user' });
+		}
+
+		// TODO query for newsLetter, if isSubscribed, dont send another welcome email
+		// User created, token set, time to send welcome email!
+
+		// But only send an email if we never found a subscription
+		if (!newsLetterSubscription) {
+			try {
+				await fetch('api/emails/welcome', {
+					method: 'POST',
+					body: JSON.stringify({ subject: 'Welcome to The River!' }),
+					headers: {
+						'Content-Type': 'application/json'
+					}
+				});
+			} catch (error) {
+				console.error(error, 'Error sending email');
+			}
 		}
 
 		return redirect(302, '/dashboard');

@@ -94,6 +94,7 @@ export const actions: Actions = {
 			}
 		}
 
+		// send reset email
 		try {
 			await fetch('api/emails/reset', {
 				method: 'POST',

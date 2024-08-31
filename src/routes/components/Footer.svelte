@@ -81,7 +81,7 @@
 			<!-- svelte-ignore a11y-label-has-associated-control -->
 			<label>Address</label>
 			<p class="address">30 W Bayaud Ave</p>
-			<p class="address">Denver, CO</p>
+			<p class="address">Denver, CO 80223</p>
 			<br />
 			<!-- svelte-ignore a11y-label-has-associated-control -->
 			<label>Email</label>

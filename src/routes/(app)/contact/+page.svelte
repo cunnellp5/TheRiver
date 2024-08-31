@@ -78,7 +78,7 @@
 					<p class="label">Links</p>
 				</h5>
 				<div class="indent">
-					<Socials></Socials>
+					<Socials />
 				</div>
 			</div>
 		</section>

@@ -11,6 +11,7 @@
 	let firstName = '';
 	let lastName = '';
 	let password = '';
+	let loading = false;
 
 	$: isConfirmPasswordValid = password === confirmPassword;
 	$: isEmailValid = email.includes('@');
@@ -111,7 +112,7 @@
 
 			<div class="button-list">
 				<button type="submit" class="primary" disabled={!isFormValid} class:disabled={!isFormValid}>
-					Signup
+					{loading ? 'Loading...' : 'Signup'}
 				</button>
 				<hr />
 				<a href="/login"> Already a member? Sign in here. </a>

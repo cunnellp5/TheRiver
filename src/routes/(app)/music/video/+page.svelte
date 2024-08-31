@@ -53,11 +53,18 @@
 		pointer-events: none;
 	}
 	label {
+		transition: color 0.3s ease;
 		color: var(--text-2);
 		font-size: var(--font-size-1);
 	}
 	a {
 		text-align: center;
+	}
+	a:hover {
+		text-decoration: none;
+		& label {
+			color: var(--link);
+		}
 	}
 
 	/* CLASSES */
