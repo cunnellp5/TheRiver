@@ -12,6 +12,21 @@ export const load: PageServerLoad = async (event) => {
 	if (event.locals.session) redirect(302, '/login');
 };
 // TODO https://www.prisma.io/docs/orm/prisma-client/queries/custom-validation
+
+/* 
+what does default do?
+	1. extracts form data
+	2. basic validation 
+	3. schema emailValidation
+	4. check for existing user 
+	5. hash password 
+	6. check for existing newsletter subscription 
+	7. create user
+	8. create newsletter subscription 
+	9. create session 
+	10. send welcome email
+	11. redirect to dashboard
+*/
 export const actions: Actions = {
 	default: async ({ cookies, request, fetch }) => {
 		const formData = await request.formData();
@@ -84,7 +99,7 @@ export const actions: Actions = {
 				}
 			});
 
-			// if user check isSubscribed create record in newsletter
+			// if user check isSubscribed AND has not already subscribed, create record in newsletter
 			if (isSubscribed && !newsLetterSubscription) {
 				try {
 					await db.newsletter.create({
