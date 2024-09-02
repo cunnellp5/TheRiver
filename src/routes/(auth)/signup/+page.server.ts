@@ -7,23 +7,37 @@ import { ValiError, parse } from 'valibot';
 import type { SignUpValidator } from '$lib/utils/Valibot/SignUp';
 
 import type { Actions, PageServerLoad } from './$types';
+import type { Newsletter } from '@prisma/client';
 
 export const load: PageServerLoad = async (event) => {
 	if (event.locals.session) redirect(302, '/login');
 };
-// TODO https://www.prisma.io/docs/orm/prisma-client/queries/custom-validation
 
 /* 
-what does default do?
+Might be worth adding even more validations, but could be overkill:
+	https://www.prisma.io/docs/orm/prisma-client/queries/custom-validation
+
+Default action:
+	-- set up / check client side info --	
+	
 	1. extracts form data
 	2. basic validation 
 	3. schema emailValidation
+	
+	-- check server side info --
+	
 	4. check for existing user 
-	5. hash password 
-	6. check for existing newsletter subscription 
+	5. check for existing newsletter subscription 
+	
+	-- write operations --
+	
+	6. hash password (step needed for create user, hash() returns a promise)
 	7. create user
-	8. create newsletter subscription 
-	9. create session 
+	8. create newsletter subscription
+	9. create session
+
+	-- email / redirection --
+
 	10. send welcome email
 	11. redirect to dashboard
 */
@@ -31,13 +45,15 @@ export const actions: Actions = {
 	default: async ({ cookies, request, fetch }) => {
 		const formData = await request.formData();
 
-		const email = formData.get('email') as string;
-		const password = formData.get('password') as string;
-		const firstName = formData.get('firstName') as string;
-		const lastName = formData.get('lastName') as string;
-		const isSubscribed = (formData.get('isSubscribed') as string) === 'on';
-		const confirm = formData.get('confirm') as string;
+		// pulls out the data I need
+		const email = formData.get('email')?.toString() || '';
+		const password = formData.get('password')?.toString() || '';
+		const firstName = formData.get('firstName')?.toString() || '';
+		const lastName = formData.get('lastName')?.toString() || '';
+		const isSubscribed = formData.get('isSubscribed')?.toString() === 'on';
+		const confirm = formData.get('confirm')?.toString() || '';
 
+		// This is unnecessary
 		if (!email || !password || !firstName || !lastName || !confirm || confirm !== password)
 			return fail(400, { message: 'Please fill out all fields' });
 
@@ -61,78 +77,77 @@ export const actions: Actions = {
 		// Check db for existing email
 		try {
 			const user = await db.user.findUnique({
-				where: { email: email.toString() }
+				where: { email: email }
 			});
 			if (user) return fail(400, { message: 'Email is unavailable' });
 		} catch (err) {
 			return fail(500, { message: 'Something unexpected occured' });
 		}
 
-		let hashedPassword = null;
-
-		try {
-			hashedPassword = await new Argon2id().hash(password);
-		} catch (err) {
-			return error(500, { message: 'Something unexpected occured' });
-		}
-
-		let newsLetterSubscription;
-		try {
-			newsLetterSubscription = await db.newsletter.findUnique({
-				where: { email: email.toString() }
-			});
-		} catch (err) {
-			// Do nothing, really
-			console.error('Error finding newsletter subscription:', err);
-		}
-
+		// Begin setting up for write transactions
 		let newUser = null;
+		let newsLetterSubscription: Newsletter | null = null;
 
+		// TODO maybe run a check earlier for the newsLetter,
+		// and ask the user if they would want to continuse to subscribe or cancel it,
+		// for now, not asking the user and just associating the user with the subscription or deleting it
 		try {
-			// insert new user
-			newUser = await db.user.create({
-				data: {
-					email: email?.toString() || '',
-					firstName: firstName?.toString() || '',
-					lastName: lastName?.toString() || '',
-					hashedPassword
-				}
-			});
+			await db.$transaction(async () => {
+				// Generate hash
+				const hashedPassword = await new Argon2id().hash(password);
 
-			// if user check isSubscribed AND has not already subscribed, create record in newsletter
-			if (isSubscribed && !newsLetterSubscription) {
-				try {
-					await db.newsletter.create({
-						data: { email, userId: newUser.id }
+				// Create user
+				newUser = await db.user.create({
+					data: {
+						email: email,
+						firstName: firstName,
+						lastName: lastName,
+						hashedPassword
+					}
+				});
+
+				// Find subscription
+				newsLetterSubscription = await db.newsletter.findUnique({
+					where: { email: email }
+				});
+
+				// Handle newsletter subscription based on user's choice
+				if (isSubscribed) {
+					if (newsLetterSubscription) {
+						// User is subscribed and already has a subscription, update the userId
+						await db.newsletter.update({
+							where: { email },
+							data: { userId: newUser.id }
+						});
+					} else {
+						// User is subscribed but does not have a subscription, create a new one
+						await db.newsletter.create({
+							data: { email, userId: newUser.id }
+						});
+					}
+				} else if (newsLetterSubscription) {
+					// User is not subscribed but has an existing subscription, delete it
+					await db.newsletter.delete({
+						where: { email }
 					});
-				} catch (err) {
-					console.error('Error creating newsletter subscription:', err);
-					return error(500, 'Internal Server Error');
 				}
-			}
 
-			// innerset
-			try {
+				// Set token/session
 				const session = await lucia.createSession(newUser.id, {});
 				const sessionCookie = lucia.createSessionCookie(session.id);
 				cookies.set(sessionCookie.name, sessionCookie.value, {
 					path: '.',
 					...sessionCookie.attributes
 				});
-			} catch (err) {
-				console.error('Error creating session:', err);
-				return error(500, { message: 'Failed to create session' });
-			}
-			// or do anything here?
+			});
 		} catch (err) {
-			console.error('Error creating user:', err);
-			return error(500, { message: 'Failed to create user' });
+			console.error('Error during transaction:', err);
+			return error(500, { message: 'Internal Server Error' });
 		}
 
-		// TODO query for newsLetter, if isSubscribed, dont send another welcome email
 		// User created, token set, time to send welcome email!
-
-		// But only send an email if we never found a subscription
+		// Only send an email if we never found a subscription
+		// (if they subscribed they would have recieved a very similar welcome email)
 		if (!newsLetterSubscription) {
 			try {
 				await fetch('api/emails/welcome', {
@@ -143,10 +158,12 @@ export const actions: Actions = {
 					}
 				});
 			} catch (error) {
+				// Do nothing if email fails, user is still created, but report it
 				console.error(error, 'Error sending email');
 			}
 		}
 
+		// Finally, send user to a dashboard
 		return redirect(302, '/dashboard');
 	}
 };
