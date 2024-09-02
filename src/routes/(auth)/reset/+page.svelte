@@ -3,6 +3,7 @@
 	import { addToast } from '$lib/stores/toast';
 	import { enhance } from '$app/forms';
 	import Check from 'lucide-svelte/icons/check';
+	import { icons, LoaderCircle } from 'lucide-svelte';
 
 	// export let form;
 
@@ -34,6 +35,7 @@
 								addToast({
 									message: 'Your request was sent to the provided address',
 									type: 'message',
+									iconType: 'check',
 									dismissible: true,
 									timeout: 5000
 								});
@@ -53,9 +55,14 @@
 					disabled={disabledInputs} />
 
 				{#if loading}
-					<button disabled={loading}> loading... </button>
+					<button disabled={loading}>
+						<div class="spinner">
+							<LoaderCircle />
+						</div>
+						Loading
+					</button>
 				{:else}
-					<button type="submit" disabled={loading} class="update-button"> Send Request</button>
+					<button type="submit" disabled={loading} class="update-button">Send Request</button>
 				{/if}
 			</form>
 		{/if}
