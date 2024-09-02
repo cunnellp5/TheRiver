@@ -63,8 +63,3 @@ hr {
 	padding: var(--size-2);
 	font-size: var(--font-size-1);
 }
-
-.disabled {
-	opacity: 0.5;
-	cursor: not-allowed;
-}

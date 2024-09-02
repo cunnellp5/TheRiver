@@ -324,6 +324,13 @@ and use the full width for artistic banners */
 	background-color: var(--update);
 	color: var(--on-crud-text);
 }
+.update-button:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+	box-shadow: none;
+	background-color: var(--surface-4);
+	color: var(--update);
+}
 .delete-button {
 	background-color: var(--surface-4);
 	color: var(--delete);
