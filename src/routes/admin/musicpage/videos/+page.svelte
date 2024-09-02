@@ -1,8 +1,9 @@
 <script>
-	import * as Table from '$lib/components/ui/shadcn/table';
-	import * as Card from '$lib/components/ui/shadcn/card';
-	import formatDate from '$lib/utils/formatDate';
 	import { enhance } from '$app/forms';
+	import * as Card from '$lib/components/ui/shadcn/card';
+	import * as Table from '$lib/components/ui/shadcn/table';
+	import formatDate from '$lib/utils/formatDate';
+	import { LoaderCircle } from 'lucide-svelte';
 
 	export let data;
 
@@ -82,7 +83,10 @@
 </div>
 
 {#if loading}
-	<div class="loader">Loading...</div>
+	<div class="spinner">
+		<LoaderCircle />
+	</div>
+	Loading
 {/if}
 
 <style>
