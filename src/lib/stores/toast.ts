@@ -6,6 +6,7 @@ type Toast = {
 	type?: string;
 	dismissible?: boolean;
 	timeout?: number;
+	iconType?: string;
 };
 
 export const toasts = writable<Toast[]>([]);
@@ -22,7 +23,7 @@ export const addToast = (toast: Toast) => {
 	// Setup some sensible defaults for a toast.
 	const defaults = {
 		id,
-		type: 'info',
+		type: 'message',
 		dismissible: true,
 		timeout: 3000
 	};
