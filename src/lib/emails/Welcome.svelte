@@ -199,7 +199,7 @@
 				<Link href={socialLinks.linkTree} style={link}>LinkTree</Link>
 			</Text>
 			<Hr style={hr} />
-			<Text style={address}>The River, Inc.,</Text>
+			<Text style={address}>The River</Text>
 			<Text style={address}>30 W Bayaud Ave</Text>
 			<Text style={address}>Denver, CO 80223</Text>
 			<!-- <Link href="https://airbnb.com" style={reportLink}>Report unsafe behavior</Link> -->

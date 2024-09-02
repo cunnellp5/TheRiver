@@ -166,7 +166,7 @@
 				<Link href={socialLinks.youtube} style={link}>Music Videos</Link>
 			</Text>
 			<Hr style={hr} />
-			<Text style={footer}>The River, Inc.,</Text>
+			<Text style={footer}>The River</Text>
 			<Text style={address}>30 W Bayaud Ave Denver,</Text>
 			<Text style={address}>CO 80223</Text>
 			<!-- <Link href="https://airbnb.com" style={reportLink}>Report unsafe behavior</Link> -->
