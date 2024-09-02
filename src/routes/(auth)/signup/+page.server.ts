@@ -147,7 +147,7 @@ export const actions: Actions = {
 
 		// User created, token set, time to send welcome email!
 		// Only send an email if we never found a subscription
-		// (if they subscribed they would have recieved a very similar welcome email)
+		// (if they subscribed they would have recieved a similar welcome email)
 		if (!newsLetterSubscription) {
 			try {
 				await fetch('api/emails/welcome', {
