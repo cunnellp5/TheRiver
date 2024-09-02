@@ -4,6 +4,7 @@
 	import { enhance } from '$app/forms';
 	import { addToast } from '$lib/stores/toast';
 	import { goto } from '$app/navigation';
+	import { LoaderCircle } from 'lucide-svelte';
 
 	export let data;
 
@@ -11,6 +12,7 @@
 
 	let confirmPassword = '';
 	let password = '';
+	let loading = false;
 
 	$: isConfirmPasswordValid = password === confirmPassword;
 	$: isPasswordValid = password.length >= 6;
@@ -34,16 +36,19 @@
 		<form
 			method="POST"
 			use:enhance={async ({ formElement, formData, action, cancel, submitter }) => {
+				loading = true;
 				return async ({ result, update }) => {
 					if (result.status === 200) {
 						addToast({
 							message: 'Password updated',
 							type: 'message',
+							iconType: 'check',
 							dismissible: true,
 							timeout: 5000
 						});
 						await goto('/dashboard');
 					}
+					loading = false;
 					update();
 				};
 			}}>
@@ -94,7 +99,19 @@
 
 			<input type="hidden" name="email" id="email" value={email} />
 
-			<button class="update-button" type="submit">Reset</button>
+			{#if loading}
+				<button disabled={loading}>
+					<div class="spinner">
+						<LoaderCircle />
+					</div>
+					Loading
+				</button>
+			{:else}
+				<button
+					class="update-button"
+					disabled={!isConfirmPasswordValid || !isPasswordValid}
+					type="submit">Reset</button>
+			{/if}
 		</form>
 	</section>
 </main>
