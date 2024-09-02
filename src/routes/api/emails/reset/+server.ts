@@ -27,7 +27,7 @@ export const POST: RequestHandler = async ({ request }): Promise<Response> => {
 	const options = {
 		from: 'theriverrunsfast@gmail.com', // TODO figure this out later
 		to: 'philip.cunnell@colorado.edu', // TODO this should be the 'email' but hardcoding for testing
-		subject: 'The River - Password Reset Request',
+		subject: 'Password Reset Request - The River',
 		html: render({
 			template: Reset,
 			props: {
