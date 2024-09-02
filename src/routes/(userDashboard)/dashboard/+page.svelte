@@ -15,6 +15,7 @@
 	export let form;
 	let showModal = false;
 	let emailInput = '';
+	let loading = false;
 
 	function resetForm() {
 		form = null;
@@ -43,12 +44,21 @@
 			id="deleteForm"
 			action="?/deleteAccount"
 			method="POST"
-			use:enhance={() => {
-				showModal = false;
-				addToast({
-					message: 'Account deleted',
-					type: 'success'
-				});
+			use:enhance={async () => {
+				loading = true;
+				return async ({ result, update }) => {
+					if (result.status === 302) {
+						addToast({
+							message: 'Account deleted',
+							type: 'message',
+							dismissible: true,
+							timeout: 5000,
+							iconType: 'warning'
+						});
+					}
+					showModal = false;
+					update();
+				};
 			}}>
 			<label for="typedEmail">Email</label>
 			<input
