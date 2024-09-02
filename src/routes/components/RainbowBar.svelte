@@ -16,6 +16,17 @@
 		border-radius: 3px;
 		background: linear-gradient(
 			90deg,
+			var(--life) 0%,
+			var(--healing) 15%,
+			var(--sunlight) 30%,
+			var(--nature) 50%,
+			var(--serenity) 65%,
+			var(--spirit) 80%,
+			var(--life) 100%
+		);
+		/* 
+				background: linear-gradient(
+			90deg,
 			red 0%,
 			yellow 15%,
 			lime 30%,
@@ -24,6 +35,7 @@
 			magenta 80%,
 			red 100%
 		);
+		*/
 		background-size: 200%;
 		width: 100%;
 		height: 2px;

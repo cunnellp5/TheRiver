@@ -163,8 +163,8 @@
 					<Table.Body>
 						<Table.Row>
 							<Table.Cell>
-								<p class="text2">Reset password</p>
-								<span> Sends a reset password link to your email </span>
+								<p>Reset password</p>
+								<span class="text2"> Sends a reset password link to your email </span>
 							</Table.Cell>
 							<Table.Cell>
 								<a href="/reset" class="center">
@@ -174,8 +174,8 @@
 						</Table.Row>
 						<Table.Row>
 							<Table.Cell>
-								<p class="text2">Delete account</p>
-								<span> Once you delete your account, there is no going back. </span>
+								<p>Delete account</p>
+								<span class="text2"> Once you delete your account, there is no going back. </span>
 							</Table.Cell>
 							<Table.Cell>
 								<div class="center">

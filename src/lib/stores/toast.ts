@@ -1,7 +1,7 @@
 import { writable } from 'svelte/store';
 
 type Toast = {
-	id: number;
+	id?: number;
 	message?: string;
 	type?: string;
 	dismissible?: boolean;

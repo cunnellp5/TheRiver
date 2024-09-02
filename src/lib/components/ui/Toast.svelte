@@ -36,13 +36,14 @@
 <style lang="postcss">
 	article {
 		display: flex;
+		justify-content: space-between;
 		align-items: center;
 		margin: 0 auto 0.5rem auto;
 		border-radius: 0.2rem;
 		padding-inline: var(--size-2);
 		padding-block: var(--size-4);
-		width: var(--size-14);
-		color: var(--stone-1);
+		min-width: var(--size-14);
+		/* color: var(--stone-1); */
 	}
 	.error {
 		background: IndianRed;
@@ -53,17 +54,20 @@
 	.info {
 		background: var(--cyan-7);
 	}
+	.message {
+		background: var(--surface-4);
+	}
 	.text {
 		margin-left: 1rem;
 		user-select: none;
 	}
 	button {
-		margin: 0 0 0 auto;
+		margin-inline: var(--size-3);
 		box-shadow: none;
 		border: 0 none;
 		background: transparent;
 		padding: 0;
-		color: var(--stone-1);
+		/* color: var(--stone-1); */
 		font-size: 1rem;
 		line-height: 1;
 	}

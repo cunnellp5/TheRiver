@@ -8,6 +8,7 @@ import type { SignUpValidator } from '$lib/utils/Valibot/SignUp';
 
 import type { Actions, PageServerLoad } from './$types';
 import type { Newsletter } from '@prisma/client';
+import { login } from '$lib/server/controllers/login';
 
 export const load: PageServerLoad = async (event) => {
 	if (event.locals.session) redirect(302, '/login');
@@ -133,12 +134,7 @@ export const actions: Actions = {
 				}
 
 				// Set token/session
-				const session = await lucia.createSession(newUser.id, {});
-				const sessionCookie = lucia.createSessionCookie(session.id);
-				cookies.set(sessionCookie.name, sessionCookie.value, {
-					path: '.',
-					...sessionCookie.attributes
-				});
+				await login({ userId: newUser.id, cookies });
 			});
 		} catch (err) {
 			console.error('Error during transaction:', err);
@@ -152,7 +148,7 @@ export const actions: Actions = {
 			try {
 				await fetch('api/emails/welcome', {
 					method: 'POST',
-					body: JSON.stringify({ subject: 'Welcome to The River!' }),
+					body: JSON.stringify({ subject: 'Welcome! - The River' }),
 					headers: {
 						'Content-Type': 'application/json'
 					}

@@ -1,6 +1,14 @@
 @import './mainElements.css';
 
 html {
+	/* RAINBOW */
+	--life: #fc7f7e;
+	--healing: #ffc680;
+	--sunlight: #fff780;
+	--nature: #74e896;
+	--serenity: #809dff;
+	--spirit: #dd77ed;
+
 	/* font */
 	/* --font-sans: 'Roboto', sans-serif;
 	--font-mono: 'Roboto', monospace; */

@@ -102,7 +102,7 @@
 						update();
 						addToast({
 							message: 'Subscribed to the newsletter',
-							type: 'success',
+							type: 'message',
 							dismissible: true,
 							timeout: 5000
 						});
