@@ -1,15 +1,17 @@
+import slugify from '$lib/utils/slugify';
 import { PrismaClient } from '@prisma/client';
 import { Argon2id } from 'oslo/password';
-import slugify from '$lib/utils/slugify';
 
-import articlesData from './seedData/articlesData';
-import serviceCategories from './seedData/serviceCategories';
-import serviceHairCutData from './seedData/serviceHairCutData';
-import serviceHairColorData from './seedData/serviceHairColorData';
-import serviceHairAddOnData from './seedData/serviceHairAddOnData';
-import serviceNewClientData from './seedData/serviceNewClientData';
-import serviceNailData from './seedData/serviceNailData';
 import aboutData from './seedData/aboutData';
+import articlesData from './seedData/articlesData';
+import contactData from './seedData/contactData';
+import serviceCategories from './seedData/serviceCategories';
+import serviceHairAddOnData from './seedData/serviceHairAddOnData';
+import serviceHairColorData from './seedData/serviceHairColorData';
+import serviceHairCutData from './seedData/serviceHairCutData';
+import serviceNailData from './seedData/serviceNailData';
+import serviceNewClientData from './seedData/serviceNewClientData';
+import youtubeData from './seedData/youtubeData';
 
 const db = new PrismaClient();
 
@@ -109,16 +111,6 @@ async function main() {
 				isAdmin: true
 			}
 		});
-		const hashedPassword2 = await new Argon2id().hash('changeMePlease');
-		await db.user.create({
-			data: {
-				email: 'theriverrunsfast@gmail.com',
-				firstName: 'Alexis',
-				lastName: 'Coose',
-				hashedPassword: hashedPassword2,
-				isAdmin: true
-			}
-		});
 
 		// ARTICLES SEEDS
 		await db.article.createMany({
@@ -128,6 +120,15 @@ async function main() {
 		// About SEEDS
 		await db.about.createMany({
 			data: aboutData
+		});
+
+		// YOUTUBE SEEDS
+		await db.youtubeVideo.createMany({
+			data: youtubeData
+		});
+		// YOUTUBE SEEDS
+		await db.businessInfo.createMany({
+			data: contactData
 		});
 	});
 }
