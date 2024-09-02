@@ -2,6 +2,8 @@
 	import Check from 'lucide-svelte/icons/check';
 	import Seo from '$lib/components/SEO.svelte';
 	import { enhance } from '$app/forms';
+	import { addToast } from '$lib/stores/toast';
+	import { goto } from '$app/navigation';
 
 	export let data;
 
@@ -29,7 +31,22 @@
 	<section>
 		<h1>RESET PASSWORD</h1>
 
-		<form method="POST" use:enhance>
+		<form
+			method="POST"
+			use:enhance={async ({ formElement, formData, action, cancel, submitter }) => {
+				return async ({ result, update }) => {
+					if (result.status === 200) {
+						addToast({
+							message: 'Password updated',
+							type: 'message',
+							dismissible: true,
+							timeout: 5000
+						});
+						await goto('/dashboard');
+					}
+					update();
+				};
+			}}>
 			<p>{email}</p>
 			<div
 				class="passwords"
@@ -77,35 +94,33 @@
 
 			<input type="hidden" name="email" id="email" value={email} />
 
-			<button type="submit">Reset</button>
+			<button class="update-button" type="submit">Reset</button>
 		</form>
 	</section>
 </main>
 
 <style>
+	/* ELEMENTS */
 	main {
 		display: flex;
 		justify-content: center;
 		margin-block-start: var(--size-10);
 	}
-
 	form {
 		display: flex;
 		flex-direction: column;
-		gap: var(--size-1);
+		gap: var(--size-7);
 		margin-block-start: var(--size-10);
 	}
-
 	input {
 		border: 1px solid var(--border);
 	}
-
 	label {
 		margin-block: var(--size-1);
 		color: var(--link);
 		font-size: var(--font-size-0);
 	}
-
+	/* CLASSES */
 	.passwords {
 		display: flex;
 		flex-direction: column;
@@ -117,23 +132,18 @@
 			margin-block: var(--size-2);
 		}
 	}
-
 	.invalidPasswords {
 		border-left-color: var(--red-7);
 	}
-
 	.validPasswords {
 		border-left-color: var(--green-7);
 	}
-
 	.invalid {
 		border-color: var(--red-7);
 	}
-
 	.valid {
 		border-color: var(--green-7);
 	}
-
 	.help-text {
 		display: flex;
 		flex-direction: column;
@@ -141,12 +151,11 @@
 		color: var(--gray-6);
 		font-size: var(--font-size-0);
 	}
-
 	.checker {
 		display: flex;
 		gap: var(--size-1);
 	}
-
+	/* IDs */
 	#pw-label {
 		margin-top: 0;
 	}
