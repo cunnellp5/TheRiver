@@ -2,10 +2,12 @@
 	import Seo from '$lib/components/SEO.svelte';
 	import { addToast } from '$lib/stores/toast';
 	import { enhance } from '$app/forms';
+	import Check from 'lucide-svelte/icons/check';
 
-	export let form;
+	// export let form;
 
 	let loading = false;
+	let disabledInputs = false;
 </script>
 
 <Seo
@@ -14,46 +16,57 @@
 
 <main>
 	<section>
-		<h1>REQUEST RESET</h1>
-		<form
-			method="POST"
-			id="password-reset-request-form"
-			use:enhance={({ cancel }) => {
-				loading = true;
-				return async ({ update }) =>
-					update()
-						.then(() => {
-							addToast({
-								message: 'Your request was sent to the provided address',
-								type: 'success',
-								dismissible: true
+		<h1>Reset Password</h1>
+		<p>You will be sent a link to reset your password. Enter your email below.</p>
+		{#if disabledInputs}
+			<div class="submitted">
+				<Check />&nbsp;Submitted!
+			</div>
+		{:else}
+			<form
+				method="POST"
+				id="password-reset-request-form"
+				use:enhance={({ cancel }) => {
+					loading = true;
+					return async ({ update }) =>
+						update()
+							.then(() => {
+								addToast({
+									message: 'Your request was sent to the provided address',
+									type: 'message',
+									dismissible: true,
+									timeout: 5000
+								});
+								loading = false;
+								disabledInputs = true;
+							})
+							.catch(() => {
+								cancel();
 							});
-							loading = false;
-						})
-						.catch(() => {
-							cancel();
-						});
-			}}>
-			<input name="email" type="email" id="email" placeholder="Enter your email" required />
+				}}>
+				<input
+					name="email"
+					type="email"
+					id="email"
+					placeholder="Enter your email"
+					required
+					disabled={disabledInputs} />
 
-			{#if loading}
-				<button disabled={loading}> loading... </button>
-			{:else if form && form.success}
-				<button disabled> Submitted! </button>
-			{:else}
-				<button type="submit" disabled={loading} class="update-button">
-					Request Password Reset
-				</button>
-			{/if}
-		</form>
-
-		{#if form && form.message}
-			<p>{form.message}</p>
+				{#if loading}
+					<button disabled={loading}> loading... </button>
+				{:else}
+					<button type="submit" disabled={loading} class="update-button"> Send Request</button>
+				{/if}
+			</form>
 		{/if}
 	</section>
 </main>
 
 <style>
+	h1 {
+		margin-block: var(--size-7);
+		text-align: center;
+	}
 	main {
 		display: flex;
 		/* flex-direction: column; */
@@ -73,8 +86,13 @@
 	}
 	p {
 		margin-block: var(--size-2);
-		color: var(--link);
+		color: var(--text-2);
 		font-size: var(--font-size-0);
 		text-align: center;
+	}
+	.submitted {
+		display: flex;
+		justify-content: center;
+		margin-block: var(--size-7);
 	}
 </style>
