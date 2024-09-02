@@ -7,6 +7,7 @@
 
 	let showError = false;
 	let errorMessage = '';
+	let loading = false;
 
 	$: disabled = emailInput.length === 0;
 </script>
@@ -95,23 +96,26 @@
 		<form
 			method="POST"
 			action="api/newsLetter?/subscribe"
-			use:enhance={async ({ formElement, formData, action, cancel, submitter }) =>
-				async ({ result, update }) => {
+			use:enhance={async ({ formElement, formData, action, cancel, submitter }) => {
+				loading = true;
+				return async ({ result, update }) => {
 					if (result.status === 200) {
 						showError = false;
-						update();
 						addToast({
 							message: 'Subscribed to the newsletter',
 							type: 'message',
+							iconType: 'check',
 							dismissible: true,
 							timeout: 5000
 						});
 					} else {
 						showError = true;
 						errorMessage = result?.data?.message || 'An error occurred';
-						update();
 					}
-				}}>
+					update();
+					loading = false;
+				};
+			}}>
 			<p class="listHeader">Subscribe to the newsletter</p>
 			<div class="newsletter-form">
 				<label for="email">Get the latest updates on new products and upcoming sales</label>
