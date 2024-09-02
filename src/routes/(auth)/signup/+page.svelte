@@ -58,17 +58,17 @@
 			method="POST"
 			use:enhance={async () => {
 				loading = true;
-				async ({ result, update }) => {
-					if (result.status === 400) {
-						loading = false;
-					} else if (result.status === 302) {
+				return async ({ result, update }) => {
+					if (result.status === 302) {
 						addToast({
 							message: 'Account created successfully',
 							type: 'message',
+							iconType: 'check',
 							dismissible: true,
 							timeout: 5000
 						});
 					}
+					loading = false;
 					update();
 				};
 			}}>
