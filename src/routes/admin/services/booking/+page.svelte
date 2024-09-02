@@ -48,7 +48,14 @@
 <button on:click={() => (showModal = true)}> show modal </button>
 
 <button
-	on:click={() => addToast({ message: 'hello', type: 'info', dismissible: true, timeout: 5000 })}>
+	on:click={() =>
+		addToast({
+			message: 'hello',
+			type: 'message',
+			dismissible: true,
+			timeout: 5000,
+			iconType: 'warning'
+		})}>
 	Add toast
 </button>
 <div class="clanedar-wrapper">

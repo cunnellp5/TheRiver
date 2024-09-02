@@ -12,7 +12,13 @@
 	const STROKE_WIDTH = 1.2;
 
 	function showToast() {
-		addToast({ message: 'Article deleted', type: 'info', dismissible: true, timeout: 5000 });
+		addToast({
+			message: 'Article deleted',
+			type: 'message',
+			iconType: 'warning',
+			dismissible: true,
+			timeout: 5000
+		});
 	}
 
 	$: articles = data.articles;
