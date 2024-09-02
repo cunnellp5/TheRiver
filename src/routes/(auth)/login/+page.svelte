@@ -1,13 +1,16 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
+	import { goto } from '$app/navigation';
 	import Seo from '$lib/components/SEO.svelte';
 	import { addToast } from '$lib/stores/toast';
+	import { LoaderCircle } from 'lucide-svelte';
 	import CircleAlert from 'lucide-svelte/icons/circle-alert';
-	import { enhance } from '$app/forms';
 
 	export let form;
 
 	let email = '';
 	let password = '';
+	let loading = false;
 
 	$: isFormValid = email.includes('@') && password.length >= 6;
 </script>
@@ -30,22 +33,30 @@
 
 		<form
 			method="post"
-			use:enhance={({ cancel }) =>
-				async ({ update, result }) =>
-					update()
-						.then(() => {
-							if (result.status === 302) {
-								addToast({
-									message: 'Logged in!',
-									type: 'message',
-									dismissible: true,
-									timeout: 5000
-								});
-							}
-						})
-						.catch(() => {
-							cancel();
-						})}>
+			use:enhance={async () => {
+				loading = true;
+				return async ({ result, update }) => {
+					if (result.status === 302) {
+						addToast({
+							message: 'Logged in!',
+							type: 'message',
+							dismissible: true,
+							timeout: 5000,
+							iconType: 'check'
+						});
+					} else {
+						addToast({
+							message: 'An error occurred',
+							type: 'message',
+							dismissible: true,
+							timeout: 5000,
+							iconType: 'warning'
+						});
+					}
+					loading = false;
+					update();
+				};
+			}}>
 			<div class="email-wrapper">
 				<label for="email">Email</label>
 				<input bind:value={email} type="email" name="email" id="email" required />
@@ -58,8 +69,15 @@
 			<input bind:value={password} type="password" name="password" id="password" required />
 
 			<div class="button-list">
-				<button disabled={!isFormValid} class:disabled={!isFormValid} class="primary" type="submit">
-					Login
+				<button disabled={!isFormValid || loading} class="primary" type="submit">
+					{#if loading}
+						<div class="spinner">
+							<LoaderCircle />
+						</div>
+						Loading
+					{:else}
+						Login
+					{/if}
 				</button>
 				<hr />
 				<a href="/signup"> Don't have an account? Sign up here. </a>
