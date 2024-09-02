@@ -2,6 +2,7 @@
 	import socialLinks from '$lib/data/socialLinks';
 	import { addToast } from '$lib/stores/toast';
 	import { enhance } from '$app/forms';
+	import LoaderCircle from 'lucide-svelte/icons/loader-circle';
 
 	let emailInput = '';
 
@@ -102,7 +103,7 @@
 					if (result.status === 200) {
 						showError = false;
 						addToast({
-							message: 'Subscribed to the newsletter',
+							message: 'Subscribed to newsletter',
 							type: 'message',
 							iconType: 'check',
 							dismissible: true,
@@ -125,7 +126,16 @@
 						name="email"
 						placeholder="Your email address"
 						bind:value={emailInput} />
-					<button class:disabled class="primary" type="submit" {disabled}> Subscribe </button>
+					{#if loading}
+						<button disabled>
+							<div class="spinner">
+								<LoaderCircle size={14} />
+							</div>
+							Loading
+						</button>
+					{:else}
+						<button class:disabled class="primary" type="submit" {disabled}> Subscribe </button>
+					{/if}
 				</div>
 				{#if showError}
 					<span class="errorMessage">{errorMessage}</span>
