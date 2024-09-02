@@ -6,6 +6,7 @@ import { Argon2id } from 'oslo/password';
 import { lucia } from '$lib/server/auth';
 import { logout } from '$lib/server/controllers/logout';
 import type { PageServerLoad } from './$types';
+import { login } from '$lib/server/controllers/login';
 
 export const load: PageServerLoad = async (event) => {
 	const { token } = event.params;
@@ -122,19 +123,14 @@ export const actions: Actions = {
 			]);
 			// set session and log user in
 			try {
-				const session = await lucia.createSession(existingUser.id, {});
-				const sessionCookie = lucia.createSessionCookie(session.id);
-				cookies.set(sessionCookie.name, sessionCookie.value, {
-					path: '.',
-					...sessionCookie.attributes
-				});
-			} catch (errorair) {
+				await login({ userId: existingUser.id, cookies });
+			} catch (err) {
 				error(500, { message: 'Failed to create session' });
 			}
 		} catch {
 			error(500, { message: 'Failed to update user' });
 		}
 
-		redirect(302, '/dashboard');
+		return { status: 200, redirect: '/dashboard', message: 'Password updated' };
 	}
 };

@@ -4,14 +4,15 @@ import { Argon2id } from 'oslo/password';
 import db from '$lib/server/database';
 import { RateLimiter } from '$lib/utils/rateLimiter';
 import type { Actions } from './$types';
+import { login } from '$lib/server/controllers/login';
 
 const rateLimiter = new RateLimiter(5, 300000); // 5 requests per 5 minutes
 
 const ERROR_MESSAGE = 'Invalid credentials';
 
 export const actions: Actions = {
-	default: async (event) => {
-		const formData = await event.request.formData();
+	default: async ({ request, cookies }) => {
+		const formData = await request.formData();
 		const email = formData.get('email') as string;
 		const password = formData.get('password') as string;
 
@@ -52,14 +53,7 @@ export const actions: Actions = {
 			});
 		}
 
-		const session = await lucia.createSession(existingUser.id, {});
-
-		const sessionCookie = lucia.createSessionCookie(session.id);
-
-		event.cookies.set(sessionCookie.name, sessionCookie.value, {
-			path: '.',
-			...sessionCookie.attributes
-		});
+		await login({ userId: existingUser.id, cookies: cookies });
 
 		return redirect(302, '/dashboard');
 	}
