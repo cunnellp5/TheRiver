@@ -230,7 +230,7 @@ tbody > tr:hover {
 .primary {
 	/* background: var(--teal-3); */
 	/* background-color: hsl(var(--teal-4-hsl) / 50%); */
-	background-color: hsl(var(--lime-2-hsl) / 950%);
+	background-color: hsl(var(--lime-2-hsl) / 95%);
 	color: var(--gray-9);
 }
 
@@ -238,13 +238,15 @@ tbody > tr:hover {
 	background-color: hsl(var(--lime-3-hsl) / 100%);
 }
 
+.primary:disabled {
+	cursor: not-allowed;
+	box-shadow: none;
+	background-color: hsl(var(--lime-2-hsl) / 50%);
+}
+
 .secondary {
 	background-color: hsl(var(--teal-2-hsl) / 95%);
 	color: var(--gray-9);
-}
-
-.disabled {
-	opacity: 0.5;
 }
 
 /* UTILITIES TIED TO CUSTOM COMPONENTS */
@@ -345,4 +347,8 @@ and use the full width for artistic banners */
 	margin-inline-start: var(--size-2);
 	color: var(--red-7);
 	font-size: var(--font-size-0);
+}
+
+.spinner {
+	animation: var(--animation-spin);
 }

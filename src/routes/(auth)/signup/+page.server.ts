@@ -1,4 +1,3 @@
-import { lucia } from '$lib/server/auth';
 import db from '$lib/server/database';
 import { SignUpSchema } from '$lib/utils/Valibot/SignUp';
 import { error, fail, redirect } from '@sveltejs/kit';
@@ -82,7 +81,7 @@ export const actions: Actions = {
 			});
 			if (user) return fail(400, { message: 'Email is unavailable' });
 		} catch (err) {
-			return fail(500, { message: 'Something unexpected occured' });
+			return error(500, { message: 'Something unexpected occured' });
 		}
 
 		// Begin setting up for write transactions
