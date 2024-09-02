@@ -67,7 +67,7 @@
 						</button>
 						<a href="mailto:{email}">
 							<button title="Send email">
-								<Send />
+								<Send /> Send
 							</button>
 						</a>
 					</div>
@@ -89,7 +89,7 @@
 	/* ELEMENTS */
 	button {
 		background-color: transparent;
-		color: var(--link);
+		/* color: var(--link); */
 	}
 	section {
 		display: flex;
@@ -132,9 +132,7 @@
 		font-size: var(--font-size-0);
 	}
 	.label {
-		margin-block: var(--size-3);
-		font-weight: var(--font-weight-2);
-		letter-spacing: var(--font-letterspacing-4);
+		margin-block: var(--size-4);
 		text-transform: uppercase;
 	}
 	.flex {
