@@ -128,6 +128,8 @@ export const actions: Actions = {
 		}
 	},
 	deleteAccount: async ({ request, locals, cookies }) => {
+		// Might be worth seeing if we can delete a newsletter record if there is one using the email
+
 		if (!locals.session || !locals.user) {
 			return error(404, 'Not found');
 		}
@@ -142,6 +144,12 @@ export const actions: Actions = {
 		}
 
 		try {
+			// Attempt to delete the newsletter record if it exists
+			await db.newsletter.delete({
+				where: { email: locals.user.email }
+			});
+
+			// Delete the user record
 			const user = await db.user.delete({
 				where: { id }
 			});
@@ -150,6 +158,7 @@ export const actions: Actions = {
 				return fail(400, { message: 'User not found' });
 			}
 
+			// Log out the user
 			await logout({ locals, cookies });
 		} catch (err) {
 			console.error('Error deleting user:', err);
