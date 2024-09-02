@@ -1,28 +1,38 @@
-<script>
+<script lang="ts">
 	import { createEventDispatcher } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import X from 'lucide-svelte/icons/x';
 	// import SuccessIcon from './SuccessIcon.svelte';
-	// import ErrorIcon from './ErrorIcon.svelte';
+	import CircleAlert from 'lucide-svelte/icons/circle-alert';
+	import CircleCheck from 'lucide-svelte/icons/circle-check';
 	// import InfoIcon from './InfoIcon.svelte';
 	// import CloseIcon from './CloseIcon.svelte';
 
 	const dispatch = createEventDispatcher();
 
-	export let type = 'error';
+	export let iconType: string;
+	export let type = 'message';
 	export let dismissible = true;
+
+	console.log({ iconType, dismissible }, 'iconType');
 </script>
 
 <article class={type} role="alert" transition:fade>
 	<!-- {#if type === 'success'} -->
 	<!-- <SuccessIcon width="1.1em" /> -->
 	<!-- {:else if type === 'error'} -->
-	<!-- <ErrorIcon width="1.1em" /> -->
 	<!-- {:else} -->
 	<!-- <InfoIcon width="1.1em" /> -->
 	<!-- {/if} -->
+	<!-- {#if type === 'warning'} -->
+	<!-- {/if} -->
 
 	<div class="text">
+		{#if iconType === 'warning'}
+			<CircleAlert color="#ff6c6c" />
+		{:else if iconType === 'check'}
+			<CircleCheck color="#6cffa6" />
+		{/if}
 		<slot />
 	</div>
 
@@ -58,6 +68,8 @@
 		background: var(--surface-4);
 	}
 	.text {
+		display: flex;
+		gap: var(--size-2);
 		margin-left: 1rem;
 		user-select: none;
 	}
