@@ -3,6 +3,8 @@
 	import Check from 'lucide-svelte/icons/check';
 	import CircleAlert from 'lucide-svelte/icons/circle-alert';
 	import { enhance } from '$app/forms';
+	import { addToast } from '$lib/stores/toast';
+	import LoaderCircle from 'lucide-svelte/icons/loader-circle';
 
 	export let form;
 
@@ -19,7 +21,7 @@
 	$: isLastNameValid = lastName.length > 0;
 	$: isPasswordValid = password.length >= 6;
 
-	$: isFormValid =
+	$: valid =
 		isEmailValid &&
 		isPasswordValid &&
 		isConfirmPasswordValid &&
@@ -52,7 +54,24 @@
 			<p class="error-message"><CircleAlert />{form.message}</p>
 		{/if}
 
-		<form method="POST" use:enhance>
+		<form
+			method="POST"
+			use:enhance={async () => {
+				loading = true;
+				async ({ result, update }) => {
+					if (result.status === 400) {
+						loading = false;
+					} else if (result.status === 302) {
+						addToast({
+							message: 'Account created successfully',
+							type: 'message',
+							dismissible: true,
+							timeout: 5000
+						});
+					}
+					update();
+				};
+			}}>
 			<label for="firstName">First name</label>
 			<input bind:value={firstName} name="firstName" id="firstName" required />
 
@@ -111,8 +130,15 @@
 			</div>
 
 			<div class="button-list">
-				<button type="submit" class="primary" disabled={!isFormValid} class:disabled={!isFormValid}>
-					{loading ? 'Loading...' : 'Signup'}
+				<button type="submit" class="primary" disabled={loading}>
+					{#if loading}
+						<div class="spinner">
+							<LoaderCircle />
+						</div>
+						Loading
+					{:else}
+						Signup
+					{/if}
 				</button>
 				<hr />
 				<a href="/login"> Already a member? Sign in here. </a>
@@ -123,19 +149,17 @@
 
 <style>
 	@import url('../auth.css');
-
+	/* ELEMENTS */
 	main {
 		flex-direction: row;
 	}
-
+	/* CLASSES */
 	.under-hero {
 		font-size: var(--font-size-1);
 	}
-
 	.middle-hr {
 		margin-block: var(--size-3);
 	}
-
 	.checkbox-wrapper {
 		display: flex;
 		flex-direction: row-reverse;
@@ -145,7 +169,6 @@
 			margin-inline: var(--size-3);
 		}
 	}
-
 	.passwords {
 		display: flex;
 		flex-direction: column;
@@ -157,23 +180,18 @@
 			margin-block: var(--size-2);
 		}
 	}
-
 	.invalidPasswords {
 		border-left-color: var(--red-7);
 	}
-
 	.validPasswords {
 		border-left-color: var(--green-7);
 	}
-
 	.invalid {
 		border-color: var(--red-7);
 	}
-
 	.valid {
 		border-color: var(--green-7);
 	}
-
 	.help-text {
 		display: flex;
 		flex-direction: column;
@@ -181,12 +199,11 @@
 		color: var(--gray-6);
 		font-size: var(--font-size-0);
 	}
-
 	.checker {
 		display: flex;
 		gap: var(--size-1);
 	}
-
+	/* ID */
 	#pw-label {
 		margin-top: 0;
 	}
