@@ -162,7 +162,6 @@
 		justify-content: center;
 		align-items: center;
 		z-index: 2; /* Ensure it is above the video */
-		backdrop-filter: blur(1px);
 		width: 100%;
 		height: 90%;
 	}
@@ -173,7 +172,7 @@
 		z-index: 1; /* Ensure it is above the video but below the text */
 		background: rgba(0, 0, 0, 0.5); /* Optional: Add a tint over the video */
 		width: 100%;
-		height: 100%;
+		height: calc(100% + 1px);
 	}
 	@media (max-width: 768px) {
 		.articleWrapper {
