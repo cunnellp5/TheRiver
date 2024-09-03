@@ -33,7 +33,7 @@
 		border: unset;
 		border-radius: unset;
 		background: var(--surface-4);
-		height: var(--size-content-3);
+		height: 100%;
 		color: var(--text-1);
 		& > a > div {
 			display: flex;
@@ -47,7 +47,7 @@
 		border: unset;
 		border-radius: unset;
 		background: unset;
-		height: var(--size-content-3);
+		height: 100%;
 		color: var(--text-1);
 		& > a > div {
 			display: flex;

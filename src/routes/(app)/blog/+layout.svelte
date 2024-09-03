@@ -34,12 +34,12 @@
 	}
 </script>
 
-<div class="titleWrapper">
+<div class="titleWrapper app-layout">
 	<a href="/blog">
 		<h1 class="jumbo">River Blog</h1>
 	</a>
 </div>
-<main>
+<main class="app-layout">
 	<div class="posts-wrapper">
 		<div class="list-of-posts">
 			<nav class="posts-search">
@@ -75,7 +75,6 @@
 				{/if}
 			</section>
 		</div>
-
 		<slot />
 	</div>
 </main>
@@ -90,7 +89,7 @@
 		overflow: scroll;
 		& li {
 			margin-inline: var(--size-4);
-			margin-block: var(--size-4);
+			margin-block: var(--size-8);
 		}
 	}
 	main {
@@ -102,15 +101,19 @@
 	}
 
 	/* CLASSES */
+	.list-of-posts {
+		margin-block: var(--size-10);
+	}
 	.jumbo {
-		font-size: var(--size-12);
+		margin-block: var(--size-10);
+		/* font-size: var(--size-12); */
 		line-height: var(--font-lineheight-00);
 		font-family: var(--font-serif);
 		text-transform: uppercase;
 	}
 	.titleWrapper {
 		display: flex;
-		justify-content: center;
+		/* justify-content: center; */
 		margin-block: var(--size-7);
 		width: 100%;
 		user-select: none;

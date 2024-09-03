@@ -139,7 +139,7 @@
 	.section {
 		box-shadow: var(--shadow-1);
 		border-radius: var(--radius-2);
-		padding: var(--size-7);
+		padding: var(--size-3);
 		height: fit-content;
 	}
 	.headerAction {
@@ -151,7 +151,8 @@
 	}
 	.reader-wrapper {
 		width: 100%;
-		letter-spacing: var(--font-letterspacing-1);
+		font-weight: var(--font-weight-2);
+		letter-spacing: var(--font-letterspacing-3);
 		& *,
 		& *::before,
 		& *::placeholder {
@@ -182,5 +183,10 @@
 	}
 	.error-border {
 		border: 1px solid var(--error-text);
+	}
+	@media (max-width: 768px) {
+		h1 {
+			font-size: var(--font-size-5);
+		}
 	}
 </style>

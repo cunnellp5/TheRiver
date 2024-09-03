@@ -78,10 +78,12 @@
 			</GenericCard.Root>
 		{/each}
 	</section>
-	<div class="beauty">
-		<h2>Beauty Appointments</h2>
+	<div class="beauty app-layout">
+		<h2 class="centerText">Beauty Appointments</h2>
 		<p>Schedule your appointment today.</p>
-		<button class="primary">Book</button>
+		<a href="https://lazwicky.glossgenius.com/services" target="_blank">
+			<button class="primary">Book</button>
+		</a>
 	</div>
 	<TestVideo />
 </main>
@@ -130,6 +132,9 @@
 	.socials {
 		margin-block-start: var(--size-4);
 	}
+	.centerText {
+		text-align: center;
+	}
 	/* IDS */
 	#video-background {
 		position: relative;
@@ -155,5 +160,15 @@
 		background: rgba(0, 0, 0, 0.5); /* Optional: Add a tint over the video */
 		width: 100%;
 		height: 100%;
+	}
+	@media (max-width: 768px) {
+		.articleWrapper {
+			display: flex;
+			flex-direction: column !important;
+			padding-block-end: var(--size-9);
+		}
+		#image-container {
+			height: 70%;
+		}
 	}
 </style>

@@ -229,6 +229,7 @@
 		left: 0;
 		z-index: -1;
 		clip-path: polygon(0 0, 100% 0, 100% 75%, 0% 100%);
+		transition: opacity 2.5s;
 	}
 	.top {
 		display: flex;
@@ -290,6 +291,9 @@
 		} */
 		.aside-right {
 			bottom: var(--size-10);
+		}
+		.cutoutImg {
+			opacity: 0.1;
 		}
 	}
 </style>

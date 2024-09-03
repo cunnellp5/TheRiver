@@ -56,7 +56,6 @@
 	}
 	p {
 		color: var(--text-1);
-		line-height: var(--font-lineheight-0);
 	}
 	aside {
 		display: flex;
@@ -74,12 +73,12 @@
 		border: 1px solid var(--surface-4);
 		border-radius: var(--radius-2);
 		padding: var(--size-4);
-		min-width: var(--size-content-2);
 	}
 	.description {
 		margin-block: var(--size-4);
+		font-weight: var(--font-weight-2);
 		font-size: var(--font-size-1);
-		letter-spacing: var(--font-letterspacing-1);
+		letter-spacing: var(--font-letterspacing-3);
 	}
 	.blogLink {
 		display: flex;
@@ -95,5 +94,11 @@
 	}
 	.unselected {
 		opacity: 0.5;
+	}
+
+	@media (max-width: 768px) {
+		.description {
+			font-size: var(--font-size-0);
+		}
 	}
 </style>

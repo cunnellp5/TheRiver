@@ -59,10 +59,10 @@
 						<button class="copy" on:click={copyEmail} title="Copy email to clipboard">
 							{#if copied}
 								<Check />
-								Copied to clipboard
+								<p>Copied to clipboard</p>
 							{:else}
 								<Copy />
-								theriverrunsfast@gmail.com
+								<p class="text">theriverrunsfast@gmail.com</p>
 							{/if}
 						</button>
 						<a href="mailto:{email}">
@@ -113,7 +113,9 @@
 		display: flex;
 		gap: var(--size-4);
 	}
-
+	.col {
+		font-size: var(--font-size-0);
+	}
 	.indent {
 		margin-inline-start: var(--size-4);
 	}
@@ -150,5 +152,13 @@
 	.content {
 		padding-block: var(--size-4);
 		height: var(--size-content-1);
+	}
+
+	@media (max-width: 768px) {
+		.text {
+			text-wrap: break-word;
+			word-break: break-word; /* Ensures words break at the edge of the container */
+			overflow-wrap: break-word; /* Allows breaking within words to prevent overflow */
+		}
 	}
 </style>

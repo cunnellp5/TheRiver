@@ -69,6 +69,11 @@
 
 		.gallery > img {
 			grid-column: auto / span 4;
+			object-position: center 25%; /* Move the center of the image down */
+		}
+
+		.gallery img:hover {
+			height: calc(100vw * var(--f) * 4 / var(--m));
 		}
 	}
 </style>
