@@ -25,7 +25,7 @@
 </script>
 
 <Seo
-	title={'Your Dashboard - Manage Your Profile and Settings'}
+	title={'Dashboard - Manage Your Profile and Settings'}
 	description={'Access your personal dashboard to manage your profile, settings, and preferences. Stay organized and control your account efficiently.'} />
 
 <Modal bind:showModal overrideButtons={true}>
@@ -172,26 +172,32 @@
 				<Table.Root>
 					<Table.Body>
 						<Table.Row>
-							<Table.Cell>
-								<p>Reset password</p>
-								<span class="text2"> Sends a reset password link to your email </span>
-							</Table.Cell>
-							<Table.Cell>
-								<a href="/reset" class="center">
-									<button class="update-button"> Reset Password </button>
-								</a>
+							<Table.Cell colspan={2}>
+								<div class="dangerRow">
+									<div>
+										<p>Reset password</p>
+										<span class="text2"> Sends a reset password link to your email </span>
+									</div>
+									<a href="/reset" class="center">
+										<button class="update-button"> Reset Password </button>
+									</a>
+								</div>
 							</Table.Cell>
 						</Table.Row>
 						<Table.Row>
-							<Table.Cell>
-								<p>Delete account</p>
-								<span class="text2"> Once you delete your account, there is no going back. </span>
-							</Table.Cell>
-							<Table.Cell>
-								<div class="center">
-									<button class="delete-button" on:click={() => (showModal = true)}>
-										Delete Account
-									</button>
+							<Table.Cell colspan={2}>
+								<div class="dangerRow">
+									<div>
+										<p>Delete account</p>
+										<span class="text2">
+											Once you delete your account, there is no going back.
+										</span>
+									</div>
+									<div class="center">
+										<button class="delete-button" on:click={() => (showModal = true)}>
+											Delete Account
+										</button>
+									</div>
 								</div>
 							</Table.Cell>
 						</Table.Row>
@@ -294,6 +300,14 @@
 		color: var(--text-2);
 		font-size: var(--font-size-0);
 	}
+	.dangerRow {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		gap: var(--size-3);
+	}
+
 	@media (max-width: 1440px) {
 		.adminIntroCardWrapper {
 			width: 70%;
@@ -307,6 +321,16 @@
 			width: 100%;
 		}
 		.cardsWrapper {
+			width: 100%;
+		}
+		.dangerRow {
+			display: flex;
+			flex-direction: column;
+			align-items: start;
+		}
+		.delete-button,
+		.update-button,
+		.center {
 			width: 100%;
 		}
 	}

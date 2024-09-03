@@ -47,12 +47,10 @@
 <!-- TODO USER EMAIL MODAL -->
 <Table.Row>
 	{#if isEditing}
-		<Table.Cell>
-			<div class="keyColor">
+		<Table.Cell colspan={2}>
+			<p class="keyColor">
 				{keyMapper[key]}
-			</div>
-		</Table.Cell>
-		<Table.Cell>
+			</p>
 			<form
 				method="POST"
 				action="?/updateUser"
@@ -81,21 +79,27 @@
 				<input type="hidden" name="id" value={id} />
 				<input type="hidden" name="key" value={key} />
 
-				<DashboardUserInput {key} {value} />
+				<p>
+					<DashboardUserInput {key} {value} />
+				</p>
 
-				<div class="button-wrapper">
+				<div class="buttonWrapper">
 					<button class="create-button" type="submit"> <Save /> </button>
 					<button class="delete-button" type="button" on:click={stopEditing}> <X /> </button>
 				</div>
 			</form>
 		</Table.Cell>
 	{:else}
-		<Table.Cell>{cellValue({ value, key })}</Table.Cell>
-		<Table.Cell>
-			<div class="button-wrapper">
-				<button class="update-button" on:click={editing}>
-					<Pencil />
-				</button>
+		<Table.Cell colspan={2}>
+			<div class="dashInputWrapper">
+				<p>
+					{cellValue({ value, key })}
+				</p>
+				<div class="buttonWrapper">
+					<button class="update-button" on:click={editing}>
+						<Pencil />
+					</button>
+				</div>
 			</div>
 		</Table.Cell>
 	{/if}
@@ -105,18 +109,41 @@
 	form {
 		display: flex;
 		justify-content: space-between;
+		gap: var(--size-3);
 		box-sizing: border-box;
 		width: 100%;
 	}
 
-	.button-wrapper {
+	.buttonWrapper {
 		display: flex;
-		justify-content: end;
+		flex-shrink: 0;
 		gap: var(--size-3);
+	}
+	.dashInputWrapper {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
 		width: 100%;
 	}
-
 	.keyColor {
 		color: var(--link);
+	}
+
+	@media (max-width: 768px) {
+		.update-button {
+			width: 100%;
+		}
+		.dashInputWrapper {
+			flex-direction: column;
+			gap: var(--size-3);
+		}
+		form {
+			flex-direction: column;
+			gap: var(--size-3);
+		}
+		.create-button,
+		.delete-button {
+			width: 50%;
+		}
 	}
 </style>
