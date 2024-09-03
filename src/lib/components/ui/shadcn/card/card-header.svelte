@@ -22,4 +22,10 @@
 	.noPadding {
 		padding: unset;
 	}
+
+	@media (max-width: 768px) {
+		.mobilePad {
+			padding-inline: unset;
+		}
+	}
 </style>
