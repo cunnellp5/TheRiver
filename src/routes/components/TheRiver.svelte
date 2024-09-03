@@ -11,7 +11,7 @@
 	version="1.1"
 	id="svg1"
 	xmlns="http://www.w3.org/2000/svg"
-	class="shadow homePage app-layout">
+	class="shadow homePage">
 	<g id="layer1" transform="translate(38.893751,-126.47083)">
 		<g id="g6" transform="matrix(0.26458333,0,0,0.26458333,-150.01875,50.270833)">
 			<!-- T -->

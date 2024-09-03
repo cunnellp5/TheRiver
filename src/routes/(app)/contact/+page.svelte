@@ -97,10 +97,7 @@
 		gap: var(--size-9);
 		z-index: 1;
 		margin: 0 auto;
-		/* box-shadow: var(--shadow-3); */
 		border-radius: var(--radius-2);
-		/* background-color: var(--surface-4); */
-		padding: var(--size-8);
 	}
 	p {
 		letter-spacing: var(--font-letterspacing-3);
