@@ -1,1 +1,1 @@
-<a href="localhost:5173/opt-out"> opt out of newsletters here </a>
+<a href="https://the-river-five.vercel.app/opt-out"> opt out of newsletters here </a>
