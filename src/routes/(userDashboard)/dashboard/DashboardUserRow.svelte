@@ -75,7 +75,8 @@
 							update();
 							addToast({
 								message: getToastMessage(key),
-								type: 'success',
+								type: 'message',
+								iconType: 'check',
 								dismissible: true,
 								timeout: 5000
 							});
