@@ -36,13 +36,6 @@
 		return value;
 	}
 
-	// function getToastMessage(key: string) {
-	// 	if (key === 'isSubscribed') {
-	// 		return 'Updated subscription';
-	// 	}
-	// 	return `Updated ${key}`;
-	// }
-
 	const keyMapper: { [key: string]: string } = {
 		firstName: 'First Name',
 		lastName: 'Last Name',
