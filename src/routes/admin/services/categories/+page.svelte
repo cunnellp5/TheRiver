@@ -4,7 +4,6 @@
 
 	export let data;
 	const { categories } = data;
-	console.log(categories, 'cat');
 </script>
 
 <div class="adminIntroCardWrapper">

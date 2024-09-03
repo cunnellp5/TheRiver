@@ -13,8 +13,6 @@
 	export let iconType: string;
 	export let type = 'message';
 	export let dismissible = true;
-
-	console.log({ iconType, dismissible }, 'iconType');
 </script>
 
 <article class={type} role="alert" transition:fade>
