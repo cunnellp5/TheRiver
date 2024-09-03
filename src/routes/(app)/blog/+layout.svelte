@@ -36,7 +36,7 @@
 
 <div class="titleWrapper app-layout">
 	<a href="/blog">
-		<h1 class="jumbo">River Blog</h1>
+		<h1 class="jumbo">The River Talks</h1>
 	</a>
 </div>
 <main class="app-layout">
@@ -106,9 +106,6 @@
 	}
 	.jumbo {
 		margin-block: var(--size-10);
-		/* font-size: var(--size-12); */
-		line-height: var(--font-lineheight-00);
-		font-family: var(--font-serif);
 		text-transform: uppercase;
 	}
 	.titleWrapper {
@@ -129,6 +126,7 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+		gap: var(--size-3);
 	}
 
 	/* MEDIA QUERIES */
