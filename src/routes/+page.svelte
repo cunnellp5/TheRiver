@@ -39,6 +39,17 @@
 			{#if visible}
 				<TheRiver />
 			{/if}
+			<div class="imgContainerMobileButtons">
+				<a href="/music">
+					<button class="update-button">Music</button>
+				</a>
+				<a href="/services">
+					<button class="update-button">Services</button>
+				</a>
+				<a href="https://www.etsy.com/shop/TheRiverDesign" target="_blank">
+					<button class="update-button">Merch</button>
+				</a>
+			</div>
 		</div>
 	</div>
 	<div class="about app-layout">
@@ -57,7 +68,7 @@
 			<GenericCard.Root class={i % 2 === 0 ? 'option1' : 'option2'}>
 				<a href={article.link} target="_blank" class="articleLink">
 					<div class="app-layout articleWrapper">
-						<GenericCard.Header>
+						<GenericCard.Header class="mobilePad">
 							<GenericCard.Title>
 								{article.articleTitle}
 							</GenericCard.Title>
@@ -79,7 +90,7 @@
 		{/each}
 	</section>
 	<div class="beauty app-layout">
-		<h2 class="centerText">Beauty Appointments</h2>
+		<h2 class="centerText">Appointments</h2>
 		<p>Schedule your appointment today.</p>
 		<a href="https://lazwicky.glossgenius.com/services" target="_blank">
 			<button class="primary">Book</button>
@@ -103,7 +114,6 @@
 		align-items: center;
 		gap: var(--size-5);
 		margin-block: var(--size-content-1);
-		/* text-align: center; */
 		& p {
 			font-weight: var(--font-weight-2);
 			line-height: var(--font-lineheight-4);
@@ -135,6 +145,9 @@
 	.centerText {
 		text-align: center;
 	}
+	.imgContainerMobileButtons {
+		display: none;
+	}
 	/* IDS */
 	#video-background {
 		position: relative;
@@ -145,12 +158,13 @@
 		position: absolute;
 		top: 0;
 		left: 0;
+		flex-direction: column;
 		justify-content: center;
 		align-items: center;
 		z-index: 2; /* Ensure it is above the video */
 		backdrop-filter: blur(1px);
 		width: 100%;
-		height: 100%;
+		height: 90%;
 	}
 	#video-tint {
 		position: absolute;
@@ -168,7 +182,19 @@
 			padding-block-end: var(--size-9);
 		}
 		#image-container {
-			height: 70%;
+			gap: var(--size-7);
+			height: 100%;
+		}
+		.img-video-overlay-wrapper {
+			height: 35vh;
+		}
+		.about,
+		.beauty {
+			margin-block: var(--size-9);
+		}
+		.imgContainerMobileButtons {
+			display: flex;
+			gap: var(--size-5);
 		}
 	}
 </style>
