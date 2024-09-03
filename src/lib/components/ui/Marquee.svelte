@@ -1,4 +1,3 @@
-<!-- TODO add this to homepage after breaking out of the layout styles so this can be full width rather than being constrained by the layout style width -->
 <div class="marquee marquee-hover-pause">
 	<div class="marquee_group">
 		<span class="font1">THE RIVER</span>
@@ -24,9 +23,6 @@
 	.marquee {
 		display: flex;
 		background: var(--surface-1);
-		/* padding-top: 11rem; */
-		/* padding-bottom: 12rem; */
-		/* height: 40vh; */
 		overflow: hidden;
 		user-select: none;
 	}
@@ -39,8 +35,6 @@
 	.marquee_group {
 		display: flex;
 		flex-shrink: 0;
-		/* justify-content: space-between; */
-		/* align-items: center; */
 		animation: scroll 45s linear infinite;
 		min-width: 100%;
 	}
@@ -53,14 +47,10 @@
 	}
 	.marquee-hover-pause:hover .marquee_group {
 		animation-play-state: paused;
-		/* cursor:
-			url('https://fav.farm/🎙️') 15 0,
-			auto; */
 	}
 	.marquee_group span.font1 {
 		margin-inline: var(--size-4);
 		font-family: 'Lobster', sansserif;
-		/* text-transform: lowercase; */
 	}
 
 	@keyframes scroll {
@@ -68,8 +58,13 @@
 			transform: translateX(0);
 		}
 		100% {
-			/* transform: translateX(calc(-100% - 2rem)); */
 			transform: translateX(-100%);
+		}
+	}
+
+	@media (max-width: 768px) {
+		.marquee_group span {
+			font-size: var(--size-8);
 		}
 	}
 </style>
