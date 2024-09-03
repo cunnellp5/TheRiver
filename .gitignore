@@ -11,6 +11,8 @@ node_modules
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 
+.vercel
+
 # extras?
 prisma/dev.sqlite
 *.sqlite-journal
