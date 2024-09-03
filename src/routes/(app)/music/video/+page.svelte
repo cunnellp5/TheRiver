@@ -40,6 +40,18 @@
 		</div>
 	</Carousel.Root>
 </div>
+<div class="small-screen">
+	{#each videos as video, i (i)}
+		<!-- svelte-ignore a11y-missing-attribute -->
+		<a
+			class="is-snapped-anchor"
+			target="_blank"
+			href={'https://www.youtube.com/watch?v=' + video.videoId}>
+			<img src={video.thumbnail} alt={video.title} class="thumbnail" />
+			<label for="img">{video.title}</label>
+		</a>
+	{/each}
+</div>
 
 <style>
 	/* ELEMENTS */
@@ -78,5 +90,21 @@
 		gap: var(--size-4);
 		margin-inline-end: var(--size-2);
 		margin-block: var(--size-4);
+	}
+	.small-screen {
+		display: none;
+	}
+
+	@media (max-width: 768px) {
+		.small-screen {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(var(--size-content-4), 1fr));
+			gap: var(--size-4);
+			margin-block: var(--size-4);
+			padding-inline: var(--size-4);
+		}
+		.carousel-wrapper {
+			display: none;
+		}
 	}
 </style>

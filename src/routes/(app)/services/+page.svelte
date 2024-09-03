@@ -8,6 +8,7 @@
 	// const selectedServices = new Set();
 	// let selectedServicesInput: string;
 	let scroll: number;
+	let activeIndex: number | null = null;
 
 	// function setSelected(event) {
 	// 	if (selectedServices.has(event.detail.id)) {
@@ -93,7 +94,11 @@
 				<Table.Body>
 					{#each data as service}
 						<Table.Row>
-							<Table.Cell>{service.name}</Table.Cell>
+							<Table.Cell>
+								<p class="serviceName">
+									{service.name}
+								</p>
+							</Table.Cell>
 							<Table.Cell>
 								<div class="price-duration">
 									<span class="price">
@@ -122,13 +127,17 @@
 			</ul>
 		</aside>
 	{/if} -->
-	<aside class="aside-right surface-3">
-		<h4>Categories</h4>
-		<ul>
-			{#each Object.entries(services) as [category]}
-				<a href={`#${category}`}>
-					<li>{category}</li>
-				</a>
+	<aside class="aside-right">
+		<!-- <h4 class="categoryTitle">Categories</h4> -->
+		<ul class="dots">
+			{#each Object.entries(services) as [category], index}
+				<!-- svelte-ignore a11y-click-events-have-key-events -->
+				<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+				<li class:active={index === activeIndex} on:click={() => (activeIndex = index)}>
+					<a href={`#${category}`}>
+						{category}
+					</a>
+				</li>
 			{/each}
 		</ul>
 	</aside>
@@ -168,6 +177,10 @@
 		font-weight: var(--font-weight-8);
 	}
 
+	.serviceName {
+		font-size: var(--font-size-1);
+	}
+
 	/* CLASSES */
 	/* .page-indicator {
 		display: flex;
@@ -194,9 +207,10 @@
 		position: sticky;
 		bottom: 70%;
 		left: 100%;
-		box-shadow: var(--shadow-3);
-		border-radius: var(--radius-2);
-		padding: var(--size-4);
+		/* transform: rotate(90deg); */
+		/* box-shadow: var(--shadow-3); */
+		/* border-radius: var(--radius-2); */
+		/* padding: var(--size-3); */
 		width: max-content;
 	}
 	.about {
@@ -273,6 +287,71 @@
 		height: var(--size-10);
 	}
 
+	/* DOT STYLES */
+	.dots {
+		display: flex;
+		/* position: relative; */
+		flex-direction: column;
+		gap: var(--size-5);
+		/* cursor: default; */
+		/* margin: 0; */
+		/* padding: 0; */
+		/* list-style: none; */
+
+		& .active {
+			& a {
+				-webkit-transform: scale3d(1.3, 1.3, 1.3);
+				transform: scale3d(1.3, 1.3, 1.3);
+
+				&:after {
+					height: 100%;
+				}
+			}
+		}
+
+		& li {
+			display: block;
+			position: relative;
+			float: left;
+			cursor: pointer;
+			margin: 0 16px;
+			width: 20px;
+			height: 20px;
+
+			& a {
+				position: absolute;
+				top: 0;
+				left: 0;
+				-webkit-transform: scale3d(1, 1, 1);
+				transform: scale3d(1, 1, 1);
+				-webkit-transition: all 0.3s ease;
+				transition: all 0.3s ease;
+				cursor: pointer;
+				outline: none;
+				box-shadow: inset 0 0 0 2px white;
+				border-radius: 50%;
+				background-color: transparent;
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+				text-indent: -999em;
+
+				&:after {
+					position: absolute;
+					bottom: 0;
+					left: 0;
+					-webkit-transition: height 0.3s ease;
+					transition: height 0.3s ease;
+					box-shadow: 0 0 1px #fff;
+					background-color: #fff;
+					width: 100%;
+					height: 0;
+					content: '';
+				}
+			}
+		}
+	}
+
 	@media (max-width: 768px) {
 		/* .page-indicator {
 			display: none;
@@ -289,11 +368,23 @@
 		/* .service-table {
 			min-height: 20vh;
 		} */
-		.aside-right {
-			bottom: var(--size-10);
-		}
+		/* .aside-right { */
+		/* bottom: var(--size-10); */
+		/* } */
 		.cutoutImg {
 			opacity: 0.1;
+		}
+
+		.dots {
+			position: absolute;
+			right: -40px;
+		}
+
+		.serviceName {
+			font-size: var(--font-size-0);
+			text-wrap: break-word;
+			word-break: break-word; /* Ensures words break at the edge of the container */
+			overflow-wrap: break-word; /* Allows breaking within words to prevent overflow */
 		}
 	}
 </style>
