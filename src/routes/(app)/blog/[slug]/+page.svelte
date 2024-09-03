@@ -94,7 +94,7 @@
 	<div class="prevNext-wrapper">
 		{#if post}
 			{#if previous}
-				<a class="prevNext" href="/blog/{previous.slug}">
+				<a class="prevNext" href="/blog/{previous.slug}" data-sveltekit-noscroll>
 					<ChevronLeft size={12} />
 					Previous
 				</a>
@@ -105,7 +105,7 @@
 				</span>
 			{/if}
 			{#if next}
-				<a class="prevNext" href="/blog/{next.slug}">
+				<a class="prevNext" href="/blog/{next.slug}" data-sveltekit-noscroll>
 					Next
 					<ChevronRight size={12} />
 				</a>
