@@ -14,7 +14,8 @@
 		"lintall:fix": "eslint --ext .js,.cjs,.ts,.svelte . --fix",
 		"format": "prettier --write .",
 		"db:reset": "npx prisma migrate reset",
-		"db:restart": "npx prisma migrate dev --name init && npx prisma db seed"
+		"db:restart": "npx prisma migrate dev --name init && npx prisma db seed",
+		"git-push:sync": "git push && git push git@github.com:cunnellp5/TheRiver.git main"
 	},
 	"devDependencies": {
 		"@event-calendar/core": "^3.0.1",
