@@ -24,4 +24,15 @@
 	h6 {
 		margin-block: var(--size-4);
 	}
+
+	@media (max-width: 768px) {
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			font-size: var(--font-size-4);
+		}
+	}
 </style>
