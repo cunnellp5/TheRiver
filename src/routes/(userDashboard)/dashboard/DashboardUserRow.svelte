@@ -36,12 +36,12 @@
 		return value;
 	}
 
-	function getToastMessage(key: string) {
-		if (key === 'isSubscribed') {
-			return 'Updated subscription';
-		}
-		return `Updated ${key}`;
-	}
+	// function getToastMessage(key: string) {
+	// 	if (key === 'isSubscribed') {
+	// 		return 'Updated subscription';
+	// 	}
+	// 	return `Updated ${key}`;
+	// }
 
 	const keyMapper: { [key: string]: string } = {
 		firstName: 'First Name',
@@ -74,7 +74,7 @@
 							stopEditing();
 							update();
 							addToast({
-								message: getToastMessage(key),
+								message: `Updated ${keyMapper[key]}`,
 								type: 'message',
 								iconType: 'check',
 								dismissible: true,

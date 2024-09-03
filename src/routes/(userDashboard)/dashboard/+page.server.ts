@@ -128,8 +128,6 @@ export const actions: Actions = {
 		}
 	},
 	deleteAccount: async ({ request, locals, cookies }) => {
-		// Might be worth seeing if we can delete a newsletter record if there is one using the email
-
 		if (!locals.session || !locals.user) {
 			return error(404, 'Not found');
 		}
@@ -164,6 +162,7 @@ export const actions: Actions = {
 			console.error('Error deleting user:', err);
 			return error(500, 'Internal server error');
 		}
+
 		return redirect(302, '/');
 	}
 };

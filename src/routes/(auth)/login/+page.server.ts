@@ -16,11 +16,13 @@ export const actions: Actions = {
 		const password = formData.get('password') as string;
 
 		if (rateLimiter.isRateLimited(email)) {
+			console.error('Rate limited login attempt');
 			return fail(429, { message: 'Too Many Requests' });
 		}
 
 		// TODO use zod validation
 		if (typeof email !== 'string' || email.length < 3) {
+			console.error('Invalid email');
 			return fail(400, {
 				message: ERROR_MESSAGE
 			});
@@ -28,6 +30,7 @@ export const actions: Actions = {
 
 		// validate password
 		if (typeof password !== 'string' || password.length < 6 || password.length > 255) {
+			console.error('Invalid password');
 			return fail(400, {
 				message: ERROR_MESSAGE
 			});
@@ -39,6 +42,7 @@ export const actions: Actions = {
 		});
 
 		if (!existingUser) {
+			console.error('User not found');
 			return fail(400, {
 				message: ERROR_MESSAGE
 			});
@@ -47,6 +51,7 @@ export const actions: Actions = {
 		const validPassword = await new Argon2id().verify(existingUser.hashedPassword, password);
 
 		if (!validPassword) {
+			console.error('Invalid password');
 			return fail(400, {
 				message: ERROR_MESSAGE
 			});
