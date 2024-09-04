@@ -133,7 +133,10 @@
 			{#each Object.entries(services) as [category], index}
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
 				<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
-				<li class:active={index === activeIndex} on:click={() => (activeIndex = index)}>
+				<li
+					class:active={index === activeIndex}
+					on:click={() => (activeIndex = index)}
+					title={category}>
 					<a href={`#${category}`}>
 						{category}
 					</a>
@@ -314,7 +317,7 @@
 			position: relative;
 			float: left;
 			cursor: pointer;
-			margin: 0 16px;
+			margin-inline: var(--size-3);
 			width: 20px;
 			height: 20px;
 
@@ -328,7 +331,7 @@
 				transition: all 0.3s ease;
 				cursor: pointer;
 				outline: none;
-				box-shadow: inset 0 0 0 2px white;
+				box-shadow: inset 0 0 0 2px var(--link);
 				border-radius: 50%;
 				background-color: transparent;
 				width: 100%;
@@ -342,8 +345,8 @@
 					left: 0;
 					-webkit-transition: height 0.3s ease;
 					transition: height 0.3s ease;
-					box-shadow: 0 0 1px #fff;
-					background-color: #fff;
+					box-shadow: 0 0 1px var(--link);
+					background-color: var(--link);
 					width: 100%;
 					height: 0;
 					content: '';
@@ -386,5 +389,30 @@
 			word-break: break-word; /* Ensures words break at the edge of the container */
 			overflow-wrap: break-word; /* Allows breaking within words to prevent overflow */
 		}
+	}
+
+	[title] {
+		position: relative;
+	}
+
+	[title]:after {
+		position: absolute;
+		right: 150%;
+		bottom: 0%;
+		opacity: 0;
+		-webkit-transition: opacity 0.1s ease-in-out;
+		transition: opacity 0.1s ease-in-out;
+		border-radius: var(--radius-round);
+		background-color: var(--surface-3);
+		padding-inline: var(--size-2);
+		width: max-content;
+		content: attr(title);
+		color: var(--text-2);
+		font-size: var(--font-size-0);
+		text-transform: uppercase;
+	}
+
+	[title]:hover:after {
+		opacity: 1;
 	}
 </style>
