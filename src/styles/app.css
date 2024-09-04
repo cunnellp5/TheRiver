@@ -359,3 +359,9 @@ and use the full width for artistic banners */
 .spinner {
 	animation: var(--animation-spin);
 }
+
+.breaker {
+	text-wrap: break-word;
+	word-break: break-word;
+	overflow-wrap: break-word;
+}

@@ -46,7 +46,7 @@ const headers: Handle = async ({ event, resolve }) => {
 	// );
 
 	// Controls how much referrer information is included with requests.
-	response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+	response.headers.set('Referrer-Policy', 'same-origin');
 
 	// Controls which features and APIs can be used in the browser.
 	response.headers.set('Permissions-Policy', 'geolocation=(self), microphone=()');
