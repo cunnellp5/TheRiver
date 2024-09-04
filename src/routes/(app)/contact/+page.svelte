@@ -62,7 +62,7 @@
 								<p>Copied to clipboard</p>
 							{:else}
 								<Copy />
-								<p class="text">theriverrunsfast@gmail.com</p>
+								<p class="text">the&#8203;river&#8203;runs&#8203;fast&#8203;@gmail&#8203;.com</p>
 							{/if}
 						</button>
 						<a href="mailto:{email}">
