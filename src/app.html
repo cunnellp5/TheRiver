@@ -6,7 +6,7 @@
 		<!-- TODO add fallback ico version of svg -->
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		%sveltekit.head%
-		<script type="module">
+		<script type="module" nonce="%sveltekit.nonce%">
 			const theme = localStorage.getItem('color-scheme');
 
 			theme

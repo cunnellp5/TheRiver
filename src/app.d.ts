@@ -6,7 +6,9 @@ declare global {
 		// interface Error {}
 		interface Locals {
 			user: User | null;
+			// safeGetSession: () => Promise<{ session: Session | null; user: User | null }>;
 			session: Session | null;
+			nonce: string;
 		}
 		// interface PageData {}
 		// interface PageState {}
