@@ -6,15 +6,9 @@
 	import Spotify from '$lib/components/svgs/socials/Spotify.svelte';
 	import Youtube from '$lib/components/svgs/socials/Youtube.svelte';
 	import socialLinks from '$lib/data/socialLinks';
-	// import LogoR from '$lib/components/svgs/logos/LogoR2.svelte';
 </script>
 
 <ul>
-	<!-- <li class="logo-link">
-		<a href="/">
-			<LogoR />
-		</a>
-	</li> -->
 	<a class="socials" href={socialLinks.facebook} target="_blank">
 		<li><Facebook /></li>
 	</a>
@@ -39,52 +33,26 @@
 	ul {
 		display: flex;
 		flex-direction: row;
-		/* flex-wrap: wrap; */
+		flex-wrap: wrap;
 		padding-inline: 0;
-		/* width: 100%; */
-		/* list-style: none; */
 	}
 
 	a {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		/* gap: var(--size-2); */
 		margin-inline: var(--size-2);
 		border: 0px solid var(--gray-9);
 		aspect-ratio: 1 / 1;
-		width: var(--size-8);
+		min-width: var(--size-8);
 	}
 
 	a:hover {
 		cursor: pointer;
 	}
 
-	/* .logo-link {
-		border: none;
-		width: var(--size-8);
-		& path {
-			transition: fill 0.9s ease;
-		}
-		& #border {
-			opacity: 0;
-			transition: opacity 0.9s ease;
-		}
-	}
-
-	.logo-link:hover {
-		& path {
-			fill: var(--link);
-			border: 0.1px solid var(--link);
-		}
-		& #border {
-			opacity: 1;
-		}
-	} */
-
 	/* social links */
 	.socials {
-		/* background-color: var(--stone-10); */
 		fill: var(--socials-2);
 		transition:
 			fill 0.9s ease,
@@ -97,11 +65,8 @@
 	}
 
 	@media (max-width: 768px) {
-		/* .logo-link {
-			font-size: 20%;
-		} */
 		a {
-			width: 100%;
+			flex-basis: calc(33% - var(--size-2) * 3);
 		}
 	}
 </style>
