@@ -15,11 +15,11 @@ const transporter = nodemailer.createTransport({
 });
 
 export const POST: RequestHandler = async ({ request }): Promise<Response> => {
-	const { subject } = await request.json();
+	const { subject, email } = await request.json();
 
 	const options = {
-		from: 'theriverrunsfast@gmail.com', // TODO figure this out later
-		to: 'philip.cunnell@colorado.edu', // TODO this should be the 'email' but hardcoding for testing
+		from: env.GMAIL_USER, // TODO figure this out later
+		to: email, // TODO this should be the 'email' but hardcoding for testing
 		subject,
 		html: render({
 			template: Welcome,

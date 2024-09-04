@@ -90,7 +90,7 @@
 		{/each}
 	</section>
 	<div class="beauty app-layout">
-		<h2 class="centerText">Appointments</h2>
+		<h2 class="centerText">Appoint&#8203;ments</h2>
 		<p>Schedule your appointment today.</p>
 		<a href="https://lazwicky.glossgenius.com/services" target="_blank">
 			<button class="primary">Book</button>
@@ -185,7 +185,7 @@
 			height: 100%;
 		}
 		.img-video-overlay-wrapper {
-			height: 35vh;
+			height: 65vh;
 		}
 		.about,
 		.beauty {
@@ -193,7 +193,13 @@
 		}
 		.imgContainerMobileButtons {
 			display: flex;
+			flex-direction: column;
 			gap: var(--size-5);
+		}
+		.imgContainerMobileButtons,
+		.imgContainerMobileButtons > a > button,
+		.imgContainerMobileButtons > a {
+			width: var(--size-content-1);
 		}
 	}
 </style>

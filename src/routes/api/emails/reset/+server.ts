@@ -16,17 +16,18 @@ const transporter = nodemailer.createTransport({
 
 export const POST: RequestHandler = async ({ request }): Promise<Response> => {
 	let token;
+	let email;
 
 	try {
-		({ token } = await request.json());
+		({ token, email } = await request.json());
 	} catch (err) {
 		console.error('Error parsing request body:', err);
 		return error(500, err.message);
 	}
 
 	const options = {
-		from: 'theriverrunsfast@gmail.com', // TODO figure this out later
-		to: 'philip.cunnell@colorado.edu', // TODO this should be the 'email' but hardcoding for testing
+		from: env.GMAIL_USER, // TODO figure this out later
+		to: email,
 		subject: 'Password Reset Request - The River',
 		html: render({
 			template: Reset,
