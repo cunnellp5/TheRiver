@@ -30,7 +30,13 @@ export const POST: RequestHandler = async ({ request }): Promise<Response> => {
 	};
 
 	try {
-		await transporter.sendMail(options);
+		await transporter.sendMail(options, (error, info) => {
+			if (error) {
+				console.error('❌ Error:', error.message);
+			} else {
+				console.log('✅ Email sent:', info.response);
+			}
+		});
 	} catch (err: unknown | Error) {
 		error(500, (err as Error).message);
 	}
