@@ -82,13 +82,6 @@
 			<p class="listHeader">Information</p>
 			<!-- svelte-ignore a11y-label-has-associated-control -->
 			<div class="info">
-				<label>Address</label>
-				<p class="address">The River Studios</p>
-				<p class="address">30 W Bayaud Ave</p>
-				<p class="address">Denver, CO 80223</p>
-			</div>
-			<!-- svelte-ignore a11y-label-has-associated-control -->
-			<div class="info">
 				<label>Email</label>
 				<p class="address">theriverrunsfast@gmail.com</p>
 			</div>
@@ -96,6 +89,13 @@
 			<div class="info">
 				<label>Phone</label>
 				<p class="address">(720) 282-1202</p>
+			</div>
+			<div class="info">
+				<!-- svelte-ignore a11y-label-has-associated-control -->
+				<label>Address</label>
+				<p class="address">The River Studios</p>
+				<p class="address">30 W Bayaud Ave</p>
+				<p class="address">Denver, CO 80223</p>
 			</div>
 		</div>
 	</div>
