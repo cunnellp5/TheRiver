@@ -22,10 +22,10 @@
 				<li>Facebook</li>
 			</a>
 			<a href={socialLinks.instagramSing} target="_blank">
-				<li>Instagram [Music]</li>
+				<li>Insta[Sing]</li>
 			</a>
 			<a href={socialLinks.instagramBeauty} target="_blank">
-				<li>Instagram [Beauty]</li>
+				<li>Insta[Beauty]</li>
 			</a>
 			<a href={socialLinks.tiktok} target="_blank">
 				<li>TikTok</li>
@@ -79,15 +79,24 @@
 	<!-- row 1 col 5 -->
 	<div>
 		<div class="colWrapper">
-			<p class="listHeader">Info</p>
+			<p class="listHeader">Information</p>
 			<!-- svelte-ignore a11y-label-has-associated-control -->
-			<label>Address</label>
-			<p class="address">30 W Bayaud Ave</p>
-			<p class="address">Denver, CO 80223</p>
-			<br />
+			<div class="info">
+				<label>Address</label>
+				<p class="address">The River Studios</p>
+				<p class="address">30 W Bayaud Ave</p>
+				<p class="address">Denver, CO 80223</p>
+			</div>
 			<!-- svelte-ignore a11y-label-has-associated-control -->
-			<label>Email</label>
-			<p class="address">theriverrunsfast@gmail.com</p>
+			<div class="info">
+				<label>Email</label>
+				<p class="address">theriverrunsfast@gmail.com</p>
+			</div>
+			<!-- svelte-ignore a11y-label-has-associated-control -->
+			<div class="info">
+				<label>Phone</label>
+				<p class="address">(720) 282-1202</p>
+			</div>
 		</div>
 	</div>
 
@@ -118,13 +127,14 @@
 				};
 			}}>
 			<p class="listHeader">Subscribe to the newsletter</p>
-			<div class="newsletter-form">
-				<label for="email">Get the latest updates on new products and upcoming sales</label>
+			<div class="newsletter-form breaker">
+				<label for="email" class="newsletter-form__email-label"
+					>Get the latest updates on new products and upcoming sales</label>
 				<div class="buttonWrapper">
 					<input
 						type="email"
 						name="email"
-						placeholder="Your email address"
+						placeholder="Enter Email Address"
 						bind:value={emailInput} />
 					{#if loading}
 						<button disabled>
@@ -161,21 +171,31 @@
 	</div> -->
 
 	<!-- row 3?? -->
-	<div class="fullRow copywrite">
-		&copy;
-		<span class="year">
-			{new Date().getFullYear()}
-		</span>
-		TheRiver
+	<!-- <div class="fullRow"></div> -->
+	<div class="fullRow">
+		<div class="copywrite">
+			<span>&copy;</span>
+			<span>{new Date().getFullYear()}</span>
+			<span>TheRiver</span>
+		</div>
+		<div class="endPages">
+			<div class="divider"></div>
+			<a href="/privacy-policy">Privacy</a>
+			<div class="divider"></div>
+			<a href="/terms-of-use">Terms</a>
+			<div class="divider"></div>
+			<a href="/humans.txt">Humans.txt</a>
+		</div>
 	</div>
 </footer>
 
 <style>
+	/* ELEMENTS */
 	footer {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		gap: var(--size-4);
+		gap: var(--size-8);
 		margin-block: var(--size-10);
 	}
 	div {
@@ -188,9 +208,9 @@
 	}
 	a {
 		transition: color 0.1s ease;
-		color: var(--gray-7);
+		color: var(--stone-7);
+		font-weight: var(--font-weight-2);
 		font-size: var(--font-size-0);
-		line-height: var(--size-4);
 		list-style: none;
 	}
 	a:hover {
@@ -210,16 +230,25 @@
 	label {
 		color: var(--gray-8);
 	}
+	/* CLASSES */
 	.address {
 		color: var(--text-2);
+		font-weight: var(--font-weight-4);
+		font-family: sans-serif;
 	}
 	.listHeader {
-		margin-block-end: var(--size-2);
-		font-weight: var(--font-weight-2);
+		font-weight: var(--font-weight-8);
 		font-size: var(--font-size-0);
+		text-decoration: underline;
+		text-decoration-color: var(--link);
 		text-transform: uppercase;
 	}
 	.colWrapper {
+		display: flex;
+		flex-direction: column;
+		gap: var(--size-2);
+	}
+	.info {
 		display: flex;
 		flex-direction: column;
 	}
@@ -227,54 +256,65 @@
 		flex-direction: row;
 		gap: var(--size-4);
 	}
-
 	.toggler {
 		align-items: start;
 	}
 	.fullRow {
-		grid-row-start: 4;
 		grid-column-start: 1;
 		grid-column-end: 8;
 	}
-
-	.copywrite {
+	.fullRow,
+	.endPages {
+		display: flex;
+		flex-direction: column;
+		gap: var(--size-1);
+	}
+	.copywrite,
+	.endPages {
 		color: var(--gray-7);
 		font-size: var(--font-size-0);
 		font-family: 'Courier New', Courier, monospace;
 	}
-
-	.year {
-		margin-inline: var(--size-1);
+	.copywrite {
+		display: flex;
+		gap: var(--size-1);
 	}
-
 	.newsletter-form {
 		display: flex;
 		flex-direction: column;
-		gap: var(--size-3);
+		margin-block-start: var(--size-2);
 	}
-
 	.buttonWrapper {
 		flex-direction: column;
 		gap: var(--size-3);
 	}
-
 	.disabled {
 		opacity: 0.7;
 	}
-
+	.divider {
+		top: 50%;
+		margin-inline: var(--size-2);
+		border-left: 1px solid var(--border);
+	}
+	/* MEDIA */
 	@media (min-width: 768px) {
 		footer {
 			display: grid;
-			grid-template-rows: auto; /* Define two rows */
+			grid-template-rows: auto;
 			grid-template-columns: 1fr 1fr 1fr 1fr 1fr 4fr;
 			flex-direction: row;
 			justify-content: space-between;
+			gap: var(--size-4);
 		}
 		.toggler {
 			justify-content: end;
 		}
 		.footer-first {
 			justify-content: start;
+		}
+		.fullRow,
+		.endPages {
+			flex-direction: row;
 		}
 	}
 </style>
