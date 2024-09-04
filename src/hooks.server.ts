@@ -2,7 +2,7 @@ import { sequence } from '@sveltejs/kit/hooks';
 import { redirect } from '@sveltejs/kit';
 import { lucia } from '$lib/server/auth';
 import type { Handle } from '@sveltejs/kit';
-import { createHash } from 'crypto';
+// import { createHash } from 'crypto';
 
 function generateNonce() {
 	return crypto.randomUUID();
@@ -46,7 +46,7 @@ const headers: Handle = async ({ event, resolve }) => {
 	// );
 
 	// Controls how much referrer information is included with requests.
-	response.headers.set('Referrer-Policy', 'no-referrer');
+	response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
 
 	// Controls which features and APIs can be used in the browser.
 	response.headers.set('Permissions-Policy', 'geolocation=(self), microphone=()');
