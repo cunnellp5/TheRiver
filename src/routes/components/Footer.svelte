@@ -200,7 +200,6 @@
 		text-decoration: none;
 	}
 	input {
-		width: 15vw;
 		color: var(--grey-6);
 		font-size: var(--font-size-0);
 	}
@@ -255,7 +254,7 @@
 	}
 
 	.buttonWrapper {
-		display: flex;
+		flex-direction: column;
 		gap: var(--size-3);
 	}
 

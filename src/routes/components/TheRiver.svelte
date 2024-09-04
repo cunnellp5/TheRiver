@@ -82,6 +82,8 @@
 	.homePage {
 		fill: var(--stone-3);
 		width: 100%;
+		/* backdrop-filter: blur(1px);  */
+		/* -webkit-backdrop-filter: blur(1px);  */
 	}
 
 	/* .homePage {
