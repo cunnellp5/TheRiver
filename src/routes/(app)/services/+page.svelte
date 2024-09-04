@@ -217,7 +217,6 @@
 		width: max-content;
 	}
 	.about {
-		/* width: 100%; */
 		display: flex;
 		justify-content: center;
 		margin: 0 auto;

@@ -44,7 +44,7 @@ export const actions: Actions = {
 				include: { Newsletter: true }
 			});
 		} catch (err) {
-			console.error('Error creating newsletter subscription:', err);
+			console.error('Error finding user:', err);
 			return error(500, 'Internal Server Error');
 		}
 
