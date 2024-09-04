@@ -1,15 +1,65 @@
+<script lang="ts">
+	import { addToast } from '$lib/stores/toast';
+	import { enhance } from '$app/forms';
+	import { LoaderCircle } from 'lucide-svelte';
+
+	let emailInput = '';
+	let loading = false;
+	let errorMessage = '';
+
+	$: disabled = emailInput.length === 0;
+</script>
+
 <section class="app-layout">
 	<section class="breaker">
 		<h1>Un&#8203;sub&#8203;scribe</h1>
 		<p>Enter your email to unsubscribe from The River's newsletter</p>
 	</section>
 
-	<form method="POST" class="column">
+	<form
+		method="POST"
+		class="column"
+		use:enhance={async ({}) => {
+			loading = true;
+			return async ({ result, update }) => {
+				if (result.status === 302) {
+					addToast({
+						message: 'Unsubscribed',
+						type: 'message',
+						iconType: 'warning',
+						dismissible: true,
+						timeout: 5000
+					});
+				} else {
+					errorMessage = result?.data?.message || 'An error occurred';
+				}
+				update();
+				loading = false;
+			};
+		}}>
 		<div class="column">
 			<label for="email">Email</label>
-			<input type="email" name="email" id="email" placeholder="Enter email" required />
+			<input
+				bind:value={emailInput}
+				type="email"
+				name="email"
+				id="email"
+				placeholder="Enter email"
+				required />
+			{#if errorMessage}
+				<span class="errorMessage">errorMessage</span>
+			{/if}
 		</div>
-		<button class="delete-button" type="submit">Un&#8203;sub&#8203;scribe</button>
+		{#if loading}
+			<button disabled={loading}>
+				<div class="spinner">
+					<LoaderCircle />
+				</div>
+				Loading
+			</button>
+		{:else}
+			<button class="delete-button" type="submit" {disabled}>Un&#8203;sub&#8203;scribe</button>
+		{/if}
 	</form>
 </section>
 

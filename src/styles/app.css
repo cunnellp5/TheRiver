@@ -336,7 +336,13 @@ and use the full width for artistic banners */
 	color: var(--delete);
 	/* font-weight: var(--font-weight-7); */
 }
-
+.delete-button:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+	box-shadow: none;
+	background-color: var(--surface-4);
+	color: var(--delete);
+}
 .delete-button:hover {
 	background-color: var(--delete);
 	color: var(--on-crud-text);
