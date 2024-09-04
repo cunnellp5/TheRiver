@@ -1,0 +1,46 @@
+,-.----.     ,---,                ,---,.,-.----.    
+\    /  \ ,`--.' |       ,---.  ,'  .' |\    /  \   
+;   :    \|   :  :      /__./|,---.'   |;   :    \  
+|   | .\ ::   |  ' ,---.;  ; ||   |   .'|   | .\ :  
+.   : |: ||   :  |/___/ \  | |:   :  |-,.   : |: |  
+|   |  \ :'   '  ;\   ;  \ ' |:   |  ;/||   |  \ :  
+|   : .  /|   |  | \   \  \: ||   :   .'|   : .  /  
+;   | |  \'   :  ;  ;   \  ' .|   |  |-,;   | |  \  
+|   | ;\  \   |  '   \   \   ''   :  ;/||   | ;\  \ 
+:   ' | \.'   :  |    \   `  ;|   |    \:   ' | \.' 
+:   : :-' ;   |.'      :   \ ||   :   .':   : :-'   
+|   |.'   '---'         '---" |   | ,'  |   |.'     
+`---'                         `----'    `---'       
+                                                   
+
+__________________________
+
+TEAM
+
+    Developer, 
+    Designer, 
+    Maintainer: Philip Cunnell
+
+    GitHub: cunnellp5
+    Location: Denver, CO, USA
+
+
+THANKS
+
+    Special thanks to all the open-source contributors and libraries.
+
+
+SITE
+
+    First Deployed 2024-09-2
+    Last update: 2024-09
+    Standards: HTML5, CSS3, JavaScript
+    Components: SvelteKit
+    Software: Visual Studio Code, Git
+
+
+CONTACT
+
+    Email: philip.cunnell@colorado.edu
+    LinkedIn: https://www.linkedin.com/in/philip-cunnell
+    website: https://philcunnell.dev

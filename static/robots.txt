@@ -1,6 +1,16 @@
+# robots.txt for The River's Website
+
 User-agent: *
 Allow: /
 
-TODO: adding dummy sitemap here, fix the url
+User-agent: BadBot
+Disallow: /
 
-Sitemap: https://www.yourwebsite.com/sitemap.xml
+Crawl-delay: 5
+
+Disallow: /admin/
+Disallow: /api/
+Disallow: /components/
+Disallow: /dashboard/
+
+Sitemap: https://the-river-five.vercel.app/sitemap.xml
