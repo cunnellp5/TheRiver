@@ -8,13 +8,26 @@ const config = {
 	preprocess: vitePreprocess(),
 
 	kit: {
+		adapter: adapter(),
+		csp: {
+			mode: 'nonce',
+			directives: {
+				'default-src': ['self'], // Fallback for other directives
+				'script-src': ['self'], // Allow scripts from self and inline scripts with nonce
+				'style-src': ['self', 'https://fonts.googleapis.com', 'unsafe-inline'], // Allow styles from self and Google Fonts
+				'img-src': ['self', 'https://res.cloudinary.com'], // Allow images from self and Cloudinary
+				'font-src': ['self', 'https://fonts.gstatic.com'], // Allow fonts from self and Google Fonts
+				'connect-src': ['self'], // Allow connections to self
+				'frame-src': ['none'], // Disallow iframes
+				'media-src': ['self', 'https://res.cloudinary.com'], // Allow media from self and Cloudinary
+				'object-src': ['none'], // Disallow plugins
+				'base-uri': ['self'], // Restrict base URI to self
+				'form-action': ['self'] // Restrict form actions to self
+			}
+		},
 		alias: {
 			$lib: './src/lib*'
-		},
-		// adapter-auto only supports some environments, see https://kit.svelte.dev/docs/adapter-auto for a list.
-		// If your environment is not supported or you settled on a specific environment, switch out the adapter.
-		// See https://kit.svelte.dev/docs/adapters for more information about adapters.
-		adapter: adapter()
+		}
 	},
 
 	test: {
