@@ -1,14 +1,49 @@
-// import { sequence } from '@sveltejs/kit/hooks';
+import { sequence } from '@sveltejs/kit/hooks';
 import { redirect } from '@sveltejs/kit';
 import { lucia } from '$lib/server/auth';
 import type { Handle } from '@sveltejs/kit';
 
-export const handle: Handle = async ({ event, resolve }) => {
-	// this is how i cache something on a cdn
-	// event.setHeaders({
-	// 	'Cache-Control': 'public, max-age=60, s-maxage=60'
-	// });
+function generateNonce() {
+	return crypto.randomUUID();
+}
 
+const headers: Handle = async ({ event, resolve }) => {
+	const nonce = generateNonce();
+	event.locals.nonce = nonce;
+
+	const response = await resolve(event);
+
+	// Set global headers
+	// response.headers.set(
+	// 	'Content-Security-Policy',
+	// 	`default-src 'self'; script-src 'self' 'nonce-${nonce}'; style-src 'self'; img-src 'self' https://res.cloudinary.com;`
+	// );
+
+	// Enforces secure (HTTP over SSL/TLS) connections to the server for 2 years (63072000 seconds) and includes all subdomains. The 'preload' directive allows the site to be included in browsers' HSTS preload lists.
+	response.headers.set('Strict-Transport-Security', 'max-age=63072000; includeSubDomains; preload');
+
+	// Prevents the browser from MIME-sniffing a response away from the declared content-type. This helps to reduce the risk of drive-by downloads and helps to prevent XSS attacks.
+	response.headers.set('X-Content-Type-Options', 'nosniff');
+
+	// Prevents the page from being displayed in a frame or iframe, protecting against clickjacking attacks.
+	response.headers.set('X-Frame-Options', 'DENY');
+
+	// Enables the Cross-Site Scripting (XSS) filter built into most browsers. If a potential XSS attack is detected, the browser will prevent rendering of the page.
+	response.headers.set('X-XSS-Protection', '1; mode=block');
+
+	// Instructs the browser to not send the Referer header in requests. This helps to protect user privacy by not leaking the URL of the referring page.
+	response.headers.set('Referrer-Policy', 'no-referrer');
+
+	// Instructs browsers and CDNs on how to cache the response:
+	// 'public' - Indicates that the response may be cached by any cache, even if it is normally non-cacheable.
+	// 'max-age=86400' - Specifies that the response is considered fresh for 86400 seconds (24 hours) for browsers.
+	// 's-maxage=86400' - Specifies that the response is considered fresh for 86400 seconds (24 hours) for shared caches (e.g., CDNs), overriding the 'max-age' directive for these caches.
+	response.headers.set('Cache-Control', 'public, max-age=86400, s-maxage=86400');
+
+	return response;
+};
+
+const app: Handle = async ({ event, resolve }) => {
 	const sessionId = event.cookies.get(lucia.sessionCookieName);
 
 	if (!sessionId) {
@@ -40,6 +75,10 @@ export const handle: Handle = async ({ event, resolve }) => {
 	event.locals.user = user;
 	event.locals.session = session;
 
+	return resolve(event);
+};
+
+const authGuard: Handle = async ({ event, resolve }) => {
 	// BELOW RUNS BEFORE THE ADMIN ROUTE LOADS AND FALLS BACK TO ROOT OF APPLICATION
 	// TECHNICALLY DOING THIS WILL CLUE YOU INTO THE FACT THE ROUTE EXISTS
 	// if (
@@ -57,11 +96,10 @@ export const handle: Handle = async ({ event, resolve }) => {
 	if (event.locals.session && event.route.id?.includes('/signup')) {
 		redirect(302, '/');
 	}
-
 	return resolve(event);
 };
 
-// export const handle = sequence(authHandle);
-
 // TODO add rate limiting to any CREATE/UPDATE pages
 // TODO cache all 'readonly' pages
+
+export const handle: Handle = sequence(headers, app, authGuard);
