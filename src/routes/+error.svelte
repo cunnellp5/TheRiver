@@ -42,4 +42,25 @@
 		font-size: var(--size-3);
 		line-height: var(--font-lineheight-5);
 	}
+
+	@media (max-width: 1024px) {
+		.hype > h1 {
+			font-size: var(--size-12);
+		}
+		section {
+			position: relative;
+		}
+	}
+
+	@media (max-width: 768px) {
+		.hype > h1 {
+			font-size: var(--size-10);
+		}
+		section {
+			position: relative;
+		}
+		main {
+			height: 70vh;
+		}
+	}
 </style>
