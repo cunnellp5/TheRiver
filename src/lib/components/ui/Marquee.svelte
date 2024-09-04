@@ -18,8 +18,6 @@
 </div>
 
 <style>
-	@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
-
 	.marquee {
 		display: flex;
 		background: var(--surface-1);
