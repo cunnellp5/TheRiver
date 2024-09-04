@@ -93,7 +93,10 @@
 		<h2 class="centerText">Appoint&#8203;ments</h2>
 		<p>Schedule your appointment today.</p>
 		<a href="https://lazwicky.glossgenius.com/services" target="_blank">
-			<button class="primary">Book</button>
+			<button class="primary">Hair w. Alexis</button>
+		</a>
+		<a href="https://the-river-sings.square.site/" target="_blank">
+			<button class="primary">Nails</button>
 		</a>
 	</div>
 	<TestVideo />
@@ -118,6 +121,9 @@
 			font-weight: var(--font-weight-2);
 			line-height: var(--font-lineheight-4);
 			font-family: 'Roboto', sans-serif;
+		}
+		& button {
+			min-width: var(--size-content-1);
 		}
 	}
 	.img-video-overlay-wrapper {

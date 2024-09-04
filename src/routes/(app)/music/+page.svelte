@@ -1,9 +1,11 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import Seo from '$lib/components/SEO.svelte';
+	import tracks from './TRACKS';
 
-	export let data;
-	const { tracks } = data;
+	// export let data;
+	// const { tracks } = data;
+	// let iframi esLoaded = false; // State to track if iframes have been loaded
 
 	onMount(() => {
 		const iframes = document.querySelectorAll('iframe');
