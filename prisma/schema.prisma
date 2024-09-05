@@ -70,7 +70,7 @@ model ResetPasswordSession {
   id        Int      @id @default(autoincrement())
   token     String   @unique
   expiresAt DateTime
-  user      User     @relation(fields: userId, references: id)
+  user      User     @relation(fields: userId, references: id, onDelete: Cascade)
   userId    String   @unique @db.Uuid
 }
 
