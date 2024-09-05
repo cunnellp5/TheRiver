@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import ChevronRight from 'lucide-svelte/icons/chevron-right';
 	import Ear from 'lucide-svelte/icons/ear';
 	import Download from 'lucide-svelte/icons/download';

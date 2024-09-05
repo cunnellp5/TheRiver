@@ -1,7 +1,7 @@
-<script>
-	let isOpen = true;
+<script lang="ts">
+	let isOpen: boolean = true;
 
-	function toggle() {
+	function toggle(): void {
 		isOpen = !isOpen;
 	}
 </script>

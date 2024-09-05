@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import RainbowBar from './RainbowBar.svelte';
 
 	export let duration = '300ms';
@@ -31,7 +31,7 @@
 		return deriveClass(y, dy);
 	}
 
-	function setTransitionDuration(node) {
+	function setTransitionDuration(node: HTMLDivElement) {
 		node.style.transitionDuration = duration;
 	}
 

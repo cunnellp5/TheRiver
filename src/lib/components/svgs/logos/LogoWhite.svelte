@@ -1,5 +1,5 @@
-<script>
-	export let isHomePage = false;
+<script lang="ts">
+	export let isHomePage: boolean = false;
 </script>
 
 <svg

@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { enhance } from '$app/forms';
 	import * as Card from '$lib/components/ui/shadcn/card';
 	import * as Table from '$lib/components/ui/shadcn/table';

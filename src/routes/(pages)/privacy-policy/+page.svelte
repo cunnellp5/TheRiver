@@ -1,7 +1,3 @@
-<script>
-	// Add any necessary script here
-</script>
-
 <article class="container policy">
 	<h1>Privacy Policy</h1>
 

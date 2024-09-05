@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import Seo from '$lib/components/SEO.svelte';
 	import { addToast } from '$lib/stores/toast';
 	import { enhance } from '$app/forms';
@@ -7,8 +7,8 @@
 
 	// export let form;
 
-	let loading = false;
-	let disabledInputs = false;
+	let loading: boolean = false;
+	let disabledInputs: boolean = false;
 </script>
 
 <Seo
