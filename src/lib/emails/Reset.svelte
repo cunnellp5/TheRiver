@@ -24,7 +24,7 @@
 
 			<Text style={unsubscribe}>Expires in 24 hours</Text>
 
-			<Button pY={19} style={button} href="https://the-river-five.vercel.app/reset/{token}">
+			<Button pY={19} style={button} href="https://theriversings.com/reset/{token}">
 				Reset Password
 			</Button>
 

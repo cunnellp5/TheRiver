@@ -13,4 +13,4 @@ Disallow: /api/
 Disallow: /components/
 Disallow: /dashboard/
 
-Sitemap: https://the-river-five.vercel.app/sitemap.xml
+Sitemap: https://theriversings.com/sitemap.xml

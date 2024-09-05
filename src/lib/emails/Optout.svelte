@@ -1,1 +1,1 @@
-<a href="https://the-river-five.vercel.app/opt-out"> opt out of newsletters here </a>
+<a href="https://theriversings.com/opt-out"> opt out of newsletters here </a>

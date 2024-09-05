@@ -1,1 +1,1 @@
-export const WEBSITE_URL = 'https://the-river-five.vercel.app';
+export const WEBSITE_URL = 'https://theriversings.com';
