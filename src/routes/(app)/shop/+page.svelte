@@ -1,14 +1,15 @@
 <script lang="ts">
 	import Seo from '$lib/components/SEO.svelte';
 
-	export let data;
+	// export let data;
 
-	const { url, text } = data;
+	const url = 'https://www.etsy.com/shop/TheRiverDesign';
+	const text = '@TheRiverDesigns';
 </script>
 
 <Seo
 	title={'Shop Unique Handmade Jewelry & Clothing by The River | Etsy Store'}
-	description={'Shop The River’s exclusive collection of handmade jewelry and clothing. Each piece is a unique expression of style, crafted with passion and designed to make a statement.'} />
+	description={"Shop The River's exclusive collection of handmade jewelry and clothing. Each piece is a unique expression of style, crafted with passion and designed to make a statement."} />
 
 <main class="app-layout">
 	<section>

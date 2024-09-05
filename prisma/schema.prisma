@@ -203,8 +203,6 @@ model BusinessInfo {
   zip       String?
   phone     String?
   email     String?
-  merchUrl  String?
-  merchText String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
