@@ -142,11 +142,6 @@ export const actions: Actions = {
 		}
 
 		try {
-			// Attempt to delete the newsletter record if it exists
-			await db.newsletter.delete({
-				where: { email: locals.user.email }
-			});
-
 			// Delete the user record
 			const user = await db.user.delete({
 				where: { id }
@@ -158,11 +153,12 @@ export const actions: Actions = {
 
 			// Log out the user
 			await logout({ locals, cookies });
+
+			// return redirect(302, '/');
 		} catch (err) {
-			console.error('Error deleting user:', err);
+			console.error('Error deleting account:', err);
 			return error(500, 'Internal server error');
 		}
-
 		return redirect(302, '/');
 	}
 };

@@ -100,18 +100,6 @@ async function main() {
 		// 	data: servicesData
 		// });
 
-		// BEGIN CREATEING SEED USER
-		const hashedPassword = await new Argon2id().hash('12345678');
-		await db.user.create({
-			data: {
-				email: 'test@example.com',
-				firstName: 'philly',
-				lastName: 'phil',
-				hashedPassword,
-				isAdmin: true
-			}
-		});
-
 		// ARTICLES SEEDS
 		await db.article.createMany({
 			data: articlesData
