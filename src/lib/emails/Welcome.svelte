@@ -16,7 +16,7 @@
 	import EmailImg from './components/EmailImg.svelte';
 
 	export let reviewText =
-		"Thank you for signing up to explore The River's artistry. Whether you're here for her music, beauty tips, or unique fashion, we're excited to have you with us.";
+		"Thanks for joining us on The River's creative journey. Whether you're here for the music, beauty vibes, or one-of-a-kind fashion, we're stoked to have you along for the ride.";
 
 	const previewText = "Welcome to The River's world! We're excited to have you with us.";
 </script>
@@ -37,8 +37,8 @@
 			<Text style={{ ...paragraph, ...bold }}>Here's a glimpse of what you can dive into:</Text>
 
 			<Text style={paragraph}>
-				🎶 <Link style={bold} href={WEBSITE_URL + '/music'}>Music & Videos</Link>: Listen to the
-				latest tracks, watch mesmerizing music videos, and explore exclusive stems.
+				🎶 <Link style={bold} href={WEBSITE_URL + '/music'}>Music & Videos</Link>: Stream the latest
+				tracks, get lost in the visuals, and grab exclusive stems.
 			</Text>
 
 			<Text style={paragraph}>
@@ -47,8 +47,8 @@
 			</Text>
 
 			<Text style={paragraph}>
-				👗 <Link style={bold} href={WEBSITE_URL + '/shop'}>Fashion & Jewelry</Link>: Shop our unique
-				collections of handmade clothes and jewelry on Etsy.
+				👗 <Link style={bold} href={WEBSITE_URL + '/shop'}>Fashion & Jewelry</Link>: Browse our
+				collection of handmade threads and jewelry on Etsy.
 			</Text>
 
 			<Text style={paragraph}>

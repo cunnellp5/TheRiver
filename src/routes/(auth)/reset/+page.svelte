@@ -3,7 +3,7 @@
 	import { addToast } from '$lib/stores/toast';
 	import { enhance } from '$app/forms';
 	import Check from 'lucide-svelte/icons/check';
-	import { icons, LoaderCircle } from 'lucide-svelte';
+	import { LoaderCircle } from 'lucide-svelte';
 
 	// export let form;
 
