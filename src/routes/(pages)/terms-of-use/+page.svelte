@@ -76,6 +76,26 @@
 </article>
 
 <style>
+	/* ELEMENTS */
+	h1 {
+		margin-block: var(--size-10);
+		text-align: center;
+	}
+	h2 {
+		font-size: var(--size-6);
+	}
+	p {
+		margin-bottom: var(--size-8);
+		line-height: 1.6;
+	}
+	ul {
+		margin-bottom: var(--size-3);
+		padding-left: var(--size-3);
+	}
+	ul li {
+		margin-bottom: var(--size-5);
+	}
+	/* CLASSSES */
 	.policy {
 		padding: var(--size-4);
 		color: var(--text-1);
@@ -88,20 +108,5 @@
 		margin: 0 auto;
 		padding: var(--size-6);
 		max-width: 800px;
-	}
-	h1 {
-		margin-block: var(--size-10);
-		text-align: center;
-	}
-	p {
-		margin-bottom: var(--size-8);
-		line-height: 1.6;
-	}
-	ul {
-		margin-bottom: var(--size-3);
-		padding-left: var(--size-3);
-	}
-	ul li {
-		margin-bottom: var(--size-5);
 	}
 </style>

@@ -93,7 +93,7 @@
 			<div class="info">
 				<!-- svelte-ignore a11y-label-has-associated-control -->
 				<label>Address</label>
-				<p class="address">The River Studios</p>
+				<p class="address">The River</p>
 				<p class="address">30 W Bayaud Ave</p>
 				<p class="address">Denver, CO 80223</p>
 			</div>
