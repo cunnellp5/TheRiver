@@ -11,36 +11,23 @@
 :   : :-' ;   |.'      :   \ ||   :   .':   : :-'   
 |   |.'   '---'         '---" |   | ,'  |   |.'     
 `---'                         `----'    `---'       
-                                                   
-
 __________________________
 
-TEAM
+[TEAM]
 
-    Developer, 
-    Designer, 
-    Maintainer: Philip Cunnell
+Philip Cunnell
+Denver, CO
 
-    GitHub: cunnellp5
-    Location: Denver, CO, USA
+[SITE]
 
+Deployed: 2024-09-2
+Updated: Frequently!
+Standards: HTML5, CSS3, JS
+Components: SvelteKit
+Software: VS-Code, Git
 
-THANKS
+[CONTACT]
 
-    Special thanks to all the open-source contributors and libraries.
-
-
-SITE
-
-    First Deployed 2024-09-2
-    Last update: 2024-09
-    Standards: HTML5, CSS3, JavaScript
-    Components: SvelteKit
-    Software: Visual Studio Code, Git
-
-
-CONTACT
-
-    Email: philip.cunnell@colorado.edu
-    LinkedIn: https://www.linkedin.com/in/philip-cunnell
-    website: https://philcunnell.dev
+Email: philip.cunnell@colorado.edu
+LinkedIn: @philip-cunnell
+GitHub: @cunnellp5

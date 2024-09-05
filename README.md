@@ -1,76 +1,47 @@
-# The River
+# The River Sings
 
-> An singluar place to contain E-commerce, blog, booking services, and an artist showcase for music including videos and audio
+Welcome to the official repository for **The River Sings** website. This project showcases the work of The River, a multifaceted artist involved in music, beauty services, fashion, and more.
 
-## Sections:
+## Project Overview
 
-### 1. Music
+The River Sings is a personal website designed to highlight:
 
-- View and download stems
-- View recent video uploads to youtube
-- View new up and coming music
+- Music (tracks, music videos, stems)
+- Beauty services
+- Fashion (clothing and jewelry via Etsy)
+- Blog posts and articles about The River's journey
 
-### 2. Booking service
+The site is built using **SvelteKit** and is hosted on **Vercel**.
 
-- Users can sign up for an offered service [GUEST || CREATE ACCOUNT]
-- Users can view a scheduled appointment on a calendar
-- Users should get email notifications/reminders
+## Table of Contents
 
-- food for thought: https://appointly-demo.myshopify.com/
+- [Live Website](https://theriversings.com)
+- [Features](#features)
+- [Technologies](#technologies)
 
-### 3. Merch
+## Live Website
 
-- Users can buy merchandise (https://www.youtube.com/watch?v=7mUGqExgPdQ)
+You can visit the live website at: [The River Sings](https://theriversings.com)
 
-### 4. Blog
+## Features
 
-- Users can view blog posts
-- Users can search blogs
+- **Homepage** with a custom video of a river as the background
+- **Music** section featuring tracks, music videos, and downloadable stems
+- **Beauty Services** section to book appointments
+- **Etsy Store** integration for custom clothing and jewelry
+- **Blog** featuring articles and updates from The River
+- **Contact Form** for inquiries
+- Responsive design to ensure smooth browsing on any device
 
-### 5. CMS
+## Technologies
 
-- CRUD contents of website
-- Notes on users who use services
+This project is built using:
 
-### 6. Users
+- [SvelteKit](https://kit.svelte.dev/) - a modern, fast, and flexible framework
+- [Vercel](https://vercel.com/) - for hosting and deployment
+- [Open Props](https://open-props.style/) - for styling the UI
+- [NodeMailer](https://nodemailer.com/smtp/customauth/) - for contact form handling
 
-- Users can be a guest
-- Users can see history of purchases
-- Users can see history of services
-- Users can sign up for newsletter
+## Thanks
 
----
-
-## Technology
-
-#### Language
-
-- JavaScript
-- TypeScript
-
-#### Meta Framework
-
-- Sveltekit
-- Prisma ORM
-
-#### DB
-
-- PostgreSQL
-
-#### Tools
-
-- prettier
-- eslint
-- typescript
-- lucide icons
-- open-props css
-- cloudinary (for media)
-- lucia (auth)
-- Quill (blog WYSIWYG)
-
-#### APIs:
-
-- youtube
-- soundcloud
-- spotify
-- <del>stripe<del> consider using shopify 'starter' its $5/mo less set up
+Thank you for visiting The River Sings!
