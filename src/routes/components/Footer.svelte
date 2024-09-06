@@ -239,8 +239,8 @@
 	.listHeader {
 		font-weight: var(--font-weight-8);
 		font-size: var(--font-size-0);
-		text-decoration: underline;
-		text-decoration-color: var(--link);
+		text-decoration: dotted underline;
+		text-decoration-color: hsl(var(--teal-2-hsl) / 50%);
 		text-transform: uppercase;
 	}
 	.colWrapper {
@@ -271,7 +271,6 @@
 	}
 	.copywrite,
 	.endPages {
-		color: var(--gray-7);
 		font-size: var(--font-size-0);
 		font-family: 'Courier New', Courier, monospace;
 	}

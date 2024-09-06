@@ -70,14 +70,15 @@
 <style>
 	/* ELEMENTS */
 	h1 {
-		margin-block: var(--size-10);
-		text-align: center;
+		margin-top: var(--size-10);
+		margin-bottom: var(--size-5);
 	}
 	h2 {
-		font-size: var(--size-6);
+		font-size: var(--size-5);
 	}
 	p {
-		margin-bottom: var(--size-8);
+		margin-bottom: var(--size-4);
+		margin-left: var(--size-5);
 		line-height: 1.6;
 	}
 	ul {
@@ -86,6 +87,7 @@
 	}
 	ul li {
 		margin-bottom: var(--size-5);
+		margin-left: var(--size-7);
 	}
 	/* CLASSSES */
 	.policy {
