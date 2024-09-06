@@ -47,8 +47,9 @@
 			</Text>
 
 			<Text style={paragraph}>
-				👗 <Link style={bold} href={WEBSITE_URL + '/shop'}>Fashion & Jewelry</Link>: Browse our
-				collection of handmade threads and jewelry on Etsy.
+				👗 <Link style={bold} href="https://www.etsy.com/shop/TheRiverDesign"
+					>Fashion & Jewelry</Link
+				>: Browse our collection of handmade threads and jewelry on Etsy.
 			</Text>
 
 			<Text style={paragraph}>
