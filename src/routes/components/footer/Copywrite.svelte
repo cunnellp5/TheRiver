@@ -27,6 +27,8 @@
 	.fullRow {
 		grid-column-start: 1;
 		grid-column-end: 8;
+		align-items: end;
+		margin-block-start: var(--size-5);
 	}
 	.fullRow,
 	.endPages {

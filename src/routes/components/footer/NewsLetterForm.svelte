@@ -78,9 +78,8 @@
 	}
 	/* CLASSES */
 	.listHeader {
+		color: hsl(var(--teal-2-hsl) / 50%);
 		font-weight: var(--font-weight-8);
-		text-decoration: dotted underline;
-		text-decoration-color: hsl(var(--teal-2-hsl) / 50%);
 		text-transform: uppercase;
 	}
 	.newsletter-form {

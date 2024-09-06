@@ -5,7 +5,6 @@
 </script>
 
 <footer>
-	<!-- row 1 col 1 -->
 	<div class="linksWrapper">
 		<p class="listHeader">Socials</p>
 		<a href={socialLinks.facebook} target="_blank">
@@ -24,8 +23,6 @@
 			<li>Twitter</li>
 		</a>
 	</div>
-
-	<!-- row 1 col 2 -->
 	<div class="linksWrapper">
 		<p class="listHeader">Stream</p>
 		<a href={socialLinks.youtube} target="_blank">
@@ -41,9 +38,12 @@
 			<li>Vaguely Relatable [EP]</li>
 		</a>
 	</div>
-	<!-- row 1 col 4 -->
 	<div class="linksWrapper">
-		<p class="listHeader">Links</p>
+		<p class="listHeader">Merch</p>
+		<a href={socialLinks.etsy} target="_blank">
+			<li>Etsy</li>
+		</a>
+		<p class="listHeader marginTop">Links</p>
 		<a href={socialLinks.cashApp} target="_blank">
 			<li>Ca$h app</li>
 		</a>
@@ -51,18 +51,7 @@
 			<li>LinkTree</li>
 		</a>
 	</div>
-	<!-- row 1 col 3 -->
-	<div>
-		<div class="linksWrapper">
-			<p class="listHeader">Merch</p>
-			<a href={socialLinks.etsy} target="_blank">
-				<li>Etsy</li>
-			</a>
-		</div>
-	</div>
-
-	<!-- row 1 col 5 -->
-	<div class="linksWrapper">
+	<div class="linksWrapper address">
 		<p class="listHeader">Contact</p>
 		<div>
 			<p class="addressBorder">theriverrunsfast@gmail.com</p>
@@ -72,7 +61,7 @@
 		</div>
 		<div>
 			<p>30 W Bayaud Ave</p>
-			<p class="addressBorder">Denver, CO 80223</p>
+			<p>Denver, CO 80223</p>
 		</div>
 	</div>
 
@@ -91,10 +80,6 @@
 		gap: var(--size-8);
 		margin-block: var(--size-content-1);
 	}
-	p {
-		margin-inline-end: var(--size-2);
-		color: var(--gray-5);
-	}
 	a {
 		transition: color 0.1s ease;
 		color: var(--stone-7);
@@ -106,13 +91,16 @@
 		text-decoration: none;
 	}
 	/* CLASSES */
+	.marginTop {
+		margin-block-start: var(--size-4);
+	}
 	.addressBorder {
+		margin-bottom: var(--size-2);
 		border-bottom: 1px solid var(--border);
 	}
 	.listHeader {
+		color: hsl(var(--teal-2-hsl) / 50%);
 		font-weight: var(--font-weight-8);
-		text-decoration: dotted underline;
-		text-decoration-color: hsl(var(--teal-2-hsl) / 50%);
 		text-transform: uppercase;
 	}
 	.linksWrapper {
@@ -125,7 +113,7 @@
 		footer {
 			display: grid;
 			grid-template-rows: auto;
-			justify-content: space-evenly;
+			justify-content: space-between;
 			gap: var(--size-4);
 		}
 	}
