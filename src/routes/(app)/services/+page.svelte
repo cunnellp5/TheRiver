@@ -39,7 +39,7 @@
 
 <Seo
 	title={'Beauty Services by The River - Expert Hair & Nails | Alexis'}
-	description={'Transform your look with The River’s expert beauty services. From flawless makeup to rejuvenating skincare, embrace your beauty with a touch of artistry and care.'} />
+	description={"Transform your look with The River's expert beauty services. From flawless makeup to rejuvenating skincare, embrace your beauty with a touch of artistry and care."} />
 
 <svelte:window bind:scrollY={scroll} />
 
