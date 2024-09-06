@@ -19,7 +19,6 @@
 		});
 	}
 
-	// TODO only really want to animate this once, ever
 	onMount(() => {
 		visible = true;
 	});
@@ -38,8 +37,6 @@
 	$: isSignup = $page.url.pathname === '/signup';
 </script>
 
-<!-- {#if visible} -->
-
 <div class:showingSheet>
 	<a class="logo-link" href="/">
 		<LogoR />
@@ -50,13 +47,11 @@
 		class:showingSheet
 		class:showingSheetTopSeparator={showingSheet}>
 		<li></li>
-
 		{#if user && user.isAdmin}
 			<li class:current={includesAdmin} aria-current={includesAdmin}>
 				<a href="/admin"> Admin </a>
 			</li>
 		{/if}
-
 		{#if isSignedIn && user}
 			<li class:current={isDashboard} aria-current={isDashboard}>
 				<a href="/dashboard"> Dashboard </a>
@@ -64,7 +59,6 @@
 		{/if}
 	</ul>
 </div>
-
 <ul class="links" class:homepageText={isHomePage} class:showingSheet>
 	{#if showingSheet}
 		<li class:borderBottom={showingSheet}></li>
@@ -72,26 +66,20 @@
 	<li class:current={includesMusic} aria-current={includesMusic}>
 		<a href="/music"> Music </a>
 	</li>
-
 	<li class:current={includesService} aria-current={includesService}>
 		<a href="/services"> services </a>
 	</li>
-
 	<li class:current={isShop} aria-current={isShop}>
-		<a href="/shop"> Shop </a>
+		<a href="https://www.etsy.com/shop/TheRiverDesign" target="_blank" rel="noopener"> Merch </a>
 	</li>
-
 	<li class:border-left={!showingSheet} class:borderBottom={showingSheet}></li>
-
 	<li class:current={includesPosts} aria-current={includesPosts}>
 		<a href="/blog"> Blog </a>
 	</li>
 	<li class:current={isContact} aria-current={isContact}>
 		<a href="/contact"> Contact </a>
 	</li>
-
 	<li class:border-left={!showingSheet} class:borderBottom={showingSheet}></li>
-
 	{#if isSignedIn}
 		<form class="logout-wrapper" id="logoutForm" method="POST" action="/logout">
 			<li class:current={isLogout} class:homepageText={isHomePage}>
@@ -121,6 +109,14 @@
 		letter-spacing: var(--font-letterspacing-2);
 		text-decoration: none;
 		text-transform: uppercase;
+	}
+	a.logo-link {
+		display: flex;
+		width: var(--size-8);
+	}
+	div {
+		display: flex;
+		align-items: center;
 	}
 	/* CLASSES */
 	.logout-button {
@@ -173,39 +169,17 @@
 		bottom: 0;
 		opacity: 1;
 	}
-
-	a.logo-link {
-		display: flex;
-		width: var(--size-8);
-	}
-
-	div {
-		display: flex;
-		align-items: center;
-	}
-
 	.border-left {
 		border-left: 1px solid var(--border);
 		height: var(--size-5);
 	}
-
 	.logout-button {
 		background: inherit;
 		padding: 0;
 	}
-
 	.signup > a {
 		color: var(--link);
 	}
-
-	@media (min-width: 768px) {
-		.links {
-			display: flex;
-			align-items: center;
-			gap: var(--size-5);
-		}
-	}
-
 	/* MOBILE SHEET CLASSES */
 	.showingSheet {
 		display: flex;
@@ -224,6 +198,13 @@
 	.borderBottom {
 		border-bottom: 1px solid var(--border);
 		width: 35%;
-		/* height: var(--size-5); */
+	}
+	/* QUERIES */
+	@media (min-width: 768px) {
+		.links {
+			display: flex;
+			align-items: center;
+			gap: var(--size-5);
+		}
 	}
 </style>

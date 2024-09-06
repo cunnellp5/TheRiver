@@ -9,23 +9,20 @@
 	let y = 0;
 	let lastY = 0;
 
-	function deriveClass(y, dy) {
+	function deriveClass(y: number, dy: number) {
 		if (y < offset) {
 			return 'show';
 		}
-
 		if (Math.abs(dy) <= tolerance) {
 			return headerClass;
 		}
-
 		if (dy > 0) {
 			return 'show';
 		}
-
 		return 'hide';
 	}
 
-	function updateClass(y) {
+	function updateClass(y: number) {
 		const dy = lastY - y;
 		lastY = y;
 		return deriveClass(y, dy);
@@ -43,6 +40,7 @@
 <div use:setTransitionDuration class={headerClass}>
 	<RainbowBar />
 </div>
+
 <div use:setTransitionDuration class={headerClass}>
 	<slot />
 </div>

@@ -1,6 +1,5 @@
 <script lang="ts">
 	import LogoR from '$lib/components/svgs/logos/LogoR2.svelte';
-	// import Sheet from '$lib/components/ui/Sheet.svelte';
 	import Waves from 'lucide-svelte/icons/waves';
 	import { createEventDispatcher } from 'svelte';
 
