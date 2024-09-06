@@ -10,7 +10,7 @@
 </script>
 
 <div class="card">
-	<a href={link} target="_blank">
+	<a href={link} target="_blank" rel="noopener">
 		<figure>
 			<div class="imageContainer">
 				{#if articleImage}

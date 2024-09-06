@@ -145,7 +145,7 @@
 		</ul>
 	</aside>
 	<div class="fakeform">
-		<a href="https://lazwicky.glossgenius.com/services" target="_blank">
+		<a href="https://lazwicky.glossgenius.com/services" target="_blank" rel="noopener">
 			<button class="primary"> Book Now </button>
 		</a>
 	</div>

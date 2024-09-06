@@ -1,10 +1,5 @@
 <script lang="ts">
 	import Seo from '$lib/components/SEO.svelte';
-
-	// export let data;
-
-	const url = 'https://www.etsy.com/shop/TheRiverDesign';
-	const text = '@TheRiverDesigns';
 </script>
 
 <Seo
@@ -13,10 +8,16 @@
 
 <main class="app-layout">
 	<section>
-		<a target="_blank" href={url}>
+		<a target="_blank" href="https://www.etsy.com/shop/TheRiverDesign" rel="noopener">
 			<h1>THE RIVER MARKET</h1>
 		</a>
-		<a class="animation" target="_blank" href={url}> {text} </a>
+		<a
+			class="animation"
+			target="_blank"
+			href="https://www.etsy.com/shop/TheRiverDesign"
+			rel="noopener">
+			@TheRiverDesigns
+		</a>
 	</section>
 </main>
 

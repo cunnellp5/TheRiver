@@ -46,7 +46,7 @@
 				<a href="/services">
 					<button class="update-button">Services</button>
 				</a>
-				<a href="https://www.etsy.com/shop/TheRiverDesign" target="_blank">
+				<a href="https://www.etsy.com/shop/TheRiverDesign" target="_blank" rel="noopener">
 					<button class="update-button">Merch</button>
 				</a>
 			</div>
@@ -66,7 +66,7 @@
 	<section>
 		{#each articles as article, i}
 			<GenericCard.Root class={i % 2 === 0 ? 'option1' : 'option2'}>
-				<a href={article.link} target="_blank" class="articleLink">
+				<a href={article.link} target="_blank" class="articleLink" rel="noopener">
 					<div class="app-layout articleWrapper">
 						<GenericCard.Header class="mobilePad">
 							<GenericCard.Title>
@@ -92,10 +92,10 @@
 	<div class="beauty app-layout">
 		<h2 class="centerText">Appoint&#8203;ments</h2>
 		<p>Schedule your appointment today.</p>
-		<a href="https://lazwicky.glossgenius.com/services" target="_blank">
+		<a href="https://lazwicky.glossgenius.com/services" target="_blank" rel="noopener">
 			<button class="primary">Hair w. Alexis</button>
 		</a>
-		<a href="https://the-river-sings.square.site/" target="_blank">
+		<a href="https://the-river-sings.square.site/" target="_blank" rel="noopener">
 			<button class="primary">Nails</button>
 		</a>
 	</div>

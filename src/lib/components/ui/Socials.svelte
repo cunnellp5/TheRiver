@@ -9,22 +9,22 @@
 </script>
 
 <ul>
-	<a class="socials" href={socialLinks.facebook} target="_blank">
+	<a class="socials" href={socialLinks.facebook} target="_blank" rel="noopener">
 		<li><Facebook /></li>
 	</a>
-	<a class="socials" href={socialLinks.youtube} target="_blank">
+	<a class="socials" href={socialLinks.youtube} target="_blank" rel="noopener">
 		<li><Youtube /></li>
 	</a>
-	<a class="socials" href={socialLinks.instagramSing} target="_blank">
+	<a class="socials" href={socialLinks.instagramSing} target="_blank" rel="noopener">
 		<li><Instagram /></li>
 	</a>
-	<a class="socials" href={socialLinks.spotify} target="_blank">
+	<a class="socials" href={socialLinks.spotify} target="_blank" rel="noopener">
 		<li><Spotify /></li>
 	</a>
-	<a class="socials" href={socialLinks.etsy} target="_blank">
+	<a class="socials" href={socialLinks.etsy} target="_blank" rel="noopener">
 		<li><Etsy /></li>
 	</a>
-	<a class="socials" href={socialLinks.linkTree} target="_blank">
+	<a class="socials" href={socialLinks.linkTree} target="_blank" rel="noopener">
 		<li><LinkTree /></li>
 	</a>
 </ul>

@@ -184,7 +184,7 @@
 			<div class="divider"></div>
 			<a href="/terms-of-use">Terms</a>
 			<div class="divider"></div>
-			<a href="/humans.txt">Humans.txt</a>
+			<a href="https://www.theriversings.com/humans.txt">Humans.txt</a>
 		</div>
 	</div>
 </footer>

@@ -33,7 +33,7 @@
 			<span>{row.file}</span>
 			<span>
 				<div class="table-actions">
-					<a target="_blank" href={row.earLink}><Ear /></a>
+					<a target="_blank" href={row.earLink} rel="noopener"><Ear /></a>
 					<a href={row.downloadLink}><Download /></a>
 				</div>
 			</span>

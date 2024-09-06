@@ -21,7 +21,7 @@
 			{#each videos as video, i (i)}
 				<Carousel.Item>
 					<!-- svelte-ignore a11y-missing-attribute -->
-					<a class="is-snapped-anchor" target="_blank" data-id={video.videoId}>
+					<a class="is-snapped-anchor" target="_blank" data-id={video.videoId} rel="noopener">
 						<Card.Root>
 							<Card.Content>
 								<img src={video.thumbnail} alt={video.title} class="thumbnail" />
@@ -46,6 +46,7 @@
 		<a
 			class="is-snapped-anchor"
 			target="_blank"
+			rel="noopener"
 			href={'https://www.youtube.com/watch?v=' + video.videoId}>
 			<img src={video.thumbnail} alt={video.title} class="thumbnail" />
 			<label for="img">{video.title}</label>
