@@ -92,7 +92,7 @@
 	}
 	/* CLASSES */
 	.marginTop {
-		margin-block-start: var(--size-4);
+		margin-block-start: var(--size-8);
 	}
 	.addressBorder {
 		margin-bottom: var(--size-2);
@@ -115,6 +115,9 @@
 			grid-template-rows: auto;
 			justify-content: space-between;
 			gap: var(--size-4);
+		}
+		.marginTop {
+			margin-block-start: var(--size-4);
 		}
 	}
 </style>

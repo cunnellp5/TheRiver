@@ -30,13 +30,13 @@
 </ul>
 
 <style>
+	/* ELEMENTS */
 	ul {
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
 		padding-inline: 0;
 	}
-
 	a {
 		display: flex;
 		justify-content: center;
@@ -46,24 +46,22 @@
 		aspect-ratio: 1 / 1;
 		min-width: var(--size-8);
 	}
-
 	a:hover {
 		cursor: pointer;
 	}
-
+	/* CLASSES */
 	/* social links */
 	.socials {
 		fill: var(--socials-2);
 		transition:
-			fill 0.9s ease,
-			border 0.6s ease;
+			fill 0.2s ease,
+			border 0.2s ease;
 	}
-
 	.socials:hover {
 		fill: var(--link);
 		border: 3px solid var(--link);
 	}
-
+	/* QUERIES */
 	@media (max-width: 768px) {
 		a {
 			flex-basis: calc(33% - var(--size-2) * 3);
