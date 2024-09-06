@@ -5,8 +5,8 @@
 	import * as GenericCard from '$lib/components/ui/shadcn/card';
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import TestVideo from './components/TestVideo.svelte';
-	import TheRiver from './components/TheRiver.svelte';
+	import HomeGallery from './components/body/HomeGallery.svelte';
+	import TheRiver from '$lib/components/svgs/logos/TheRiver.svelte';
 	import ServiceButtons from '$lib/components/ui/button/ServiceButtons.svelte';
 
 	export let data;
@@ -95,7 +95,7 @@
 			<button class="primary">Etsy</button>
 		</a>
 	</div>
-	<TestVideo />
+	<HomeGallery />
 </main>
 
 <style>

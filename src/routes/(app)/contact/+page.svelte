@@ -5,7 +5,7 @@
 	import Copy from 'lucide-svelte/icons/copy';
 	import MapPin from 'lucide-svelte/icons/map-pin';
 	import Send from 'lucide-svelte/icons/send';
-	import TheRiver from '../../components/TheRiver.svelte';
+	import TheRiver from '$lib/components/svgs/logos/TheRiver.svelte';
 
 	const email = 'theriverrunsfast@gmail.com';
 	let copied = false;

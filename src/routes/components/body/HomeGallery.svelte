@@ -19,30 +19,28 @@
 </main>
 
 <style>
+	/* ELEMENTS */
 	main {
 		display: grid;
 		place-items: center;
 		margin: 0;
 		min-height: 100vh;
 	}
-
 	img {
 		border-radius: 0;
 	}
-
+	/* CLASSES */
 	.gallery {
 		--n: 1; /* number of rows*/
 		--m: 5; /* number of columns */
 		--g: 0px; /* control the gap */
 		--f: 0.8; /* control the scale factor */
-
 		display: grid;
 		grid-template-columns: repeat(var(--m), auto);
 		gap: var(--g);
 		width: 100%;
 		height: 100vh;
 	}
-
 	.gallery > img {
 		filter: grayscale(80%);
 		transition: 0.7s linear;
@@ -55,23 +53,20 @@
 		min-height: 100%;
 		object-fit: cover;
 	}
-
 	.gallery img:hover {
 		filter: grayscale(0);
 		width: calc(100vh * var(--f) / var(--n));
 		height: calc(100vw * var(--f) / var(--m));
 	}
-
+	/* QUERIES */
 	@media (max-width: 768px) {
 		.gallery {
 			grid-template-columns: auto;
 		}
-
 		.gallery > img {
 			grid-column: auto / span 4;
 			object-position: center 25%; /* Move the center of the image down */
 		}
-
 		.gallery img:hover {
 			height: calc(100vw * var(--f) * 4 / var(--m));
 		}

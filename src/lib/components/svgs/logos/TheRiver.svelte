@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { draw, fade, fly } from 'svelte/transition';
-	// import LogoWhite from '$lib/components/svgs/logos/LogoWhite.svelte';
 	import { backOut } from 'svelte/easing';
 </script>
 
