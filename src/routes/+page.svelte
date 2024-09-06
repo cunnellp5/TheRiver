@@ -7,6 +7,7 @@
 	import { fade } from 'svelte/transition';
 	import TestVideo from './components/TestVideo.svelte';
 	import TheRiver from './components/TheRiver.svelte';
+	import ServiceButtons from '$lib/components/ui/button/ServiceButtons.svelte';
 
 	export let data;
 	const { videoURL, articles, about } = data;
@@ -38,18 +39,12 @@
 		<div role="img" id="image-container">
 			{#if visible}
 				<TheRiver />
+				<div class="beauty-cta">
+					<!-- <h2 class="centerText">Appoint&#8203;ments</h2> -->
+					<p>Schedule your appointment today.</p>
+					<ServiceButtons />
+				</div>
 			{/if}
-			<div class="imgContainerMobileButtons">
-				<a href="/music">
-					<button class="update-button">Music</button>
-				</a>
-				<a href="/services">
-					<button class="update-button">Services</button>
-				</a>
-				<a href="https://www.etsy.com/shop/TheRiverDesign" target="_blank" rel="noopener">
-					<button class="update-button">Merch</button>
-				</a>
-			</div>
 		</div>
 	</div>
 	<div class="about app-layout">
@@ -57,7 +52,7 @@
 		<p>
 			{about?.text}
 		</p>
-		<p>Let’s flow together.</p>
+		<p>Let's flow together.</p>
 		<div class="socials">
 			<Socials />
 		</div>
@@ -90,13 +85,14 @@
 		{/each}
 	</section>
 	<div class="beauty app-layout">
-		<h2 class="centerText">Appoint&#8203;ments</h2>
-		<p>Schedule your appointment today.</p>
-		<a href="https://lazwicky.glossgenius.com/services" target="_blank" rel="noopener">
-			<button class="primary">Hair w. Alexis</button>
-		</a>
-		<a href="https://the-river-sings.square.site/" target="_blank" rel="noopener">
-			<button class="primary">Nails</button>
+		<h2 class="centerText">Merch</h2>
+		<p>Get you some.</p>
+		<a
+			class="hairLink"
+			href="https://www.etsy.com/shop/TheRiverDesign"
+			target="_blank"
+			rel="noopener">
+			<button class="primary">Etsy</button>
 		</a>
 	</div>
 	<TestVideo />
@@ -117,6 +113,23 @@
 		align-items: center;
 		gap: var(--size-5);
 		margin-block: var(--size-content-1);
+		& p {
+			font-weight: var(--font-weight-2);
+			line-height: var(--font-lineheight-4);
+			font-family: 'Roboto', sans-serif;
+		}
+		& button {
+			min-width: var(--size-content-1);
+		}
+	}
+	.beauty-cta {
+		display: flex;
+		align-items: center;
+		gap: var(--size-5);
+		backdrop-filter: blur(var(--size-4));
+		margin-block-start: var(--size-7);
+		border-radius: var(--radius-3);
+		padding: var(--size-4);
 		& p {
 			font-weight: var(--font-weight-2);
 			line-height: var(--font-lineheight-4);
@@ -150,9 +163,6 @@
 	}
 	.centerText {
 		text-align: center;
-	}
-	.imgContainerMobileButtons {
-		display: none;
 	}
 	/* IDS */
 	#video-background {
@@ -197,15 +207,8 @@
 		.beauty {
 			margin-block: var(--size-9);
 		}
-		.imgContainerMobileButtons {
-			display: flex;
+		.beauty-cta {
 			flex-direction: column;
-			gap: var(--size-5);
-		}
-		.imgContainerMobileButtons,
-		.imgContainerMobileButtons > a > button,
-		.imgContainerMobileButtons > a {
-			width: var(--size-content-1);
 		}
 	}
 </style>

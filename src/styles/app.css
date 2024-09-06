@@ -230,12 +230,22 @@ tbody > tr:hover {
 .primary {
 	/* background: var(--teal-3); */
 	/* background-color: hsl(var(--teal-4-hsl) / 50%); */
-	background-color: hsl(var(--lime-2-hsl) / 95%);
+	background-color: hsl(var(--lime-2-hsl) / 100%);
 	color: var(--gray-9);
+}
+.primary-rev {
+	/* background: var(--teal-3); */
+	/* background-color: hsl(var(--teal-4-hsl) / 50%); */
+	background-color: var(--gray-9);
+	color: hsl(var(--lime-2-hsl) / 95%);
+}
+.primary-rev:hover {
+	background-color: hsl(var(--gray-9-hsl) / 60%);
+	/* color: var(--gray-9); */
 }
 
 .primary:hover {
-	background-color: hsl(var(--lime-3-hsl) / 100%);
+	background-color: hsl(var(--lime-3-hsl) / 80%);
 }
 
 .primary:disabled {
