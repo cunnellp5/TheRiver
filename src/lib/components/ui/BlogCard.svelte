@@ -46,6 +46,18 @@
 <style>
 	/* ELEMENTS */
 	h5 {
+		background: unset;
+		-webkit-background-clip: unset;
+		-webkit-text-fill-color: unset;
+		background-clip: unset;
+		color: var(--text-1);
+		font-style: normal;
+		/* font-weight: 400; */
+		font-size: var(--font-size-5);
+		line-height: 1;
+		font-family: 'Perfectly Nineties Semibold';
+		letter-spacing: 0em;
+		text-align: left;
 		& a {
 			color: var(--text-2);
 		}

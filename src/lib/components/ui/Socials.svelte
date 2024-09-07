@@ -6,27 +6,25 @@
 	import Spotify from '$lib/components/svgs/socials/Spotify.svelte';
 	import Youtube from '$lib/components/svgs/socials/Youtube.svelte';
 	import socialLinks from '$lib/data/socialLinks';
+
+	let components = [
+		{ name: 'Facebook', SVGComponent: Facebook, link: socialLinks.facebook },
+		{ name: 'Youtube', SVGComponent: Youtube, link: socialLinks.youtube },
+		{ name: 'Instagram', SVGComponent: Instagram, link: socialLinks.instagramSing },
+		{ name: 'Spotify', SVGComponent: Spotify, link: socialLinks.spotify },
+		{ name: 'Etsy', SVGComponent: Etsy, link: socialLinks.etsy },
+		{ name: 'LinkTree', SVGComponent: LinkTree, link: socialLinks.linkTree }
+	];
 </script>
 
 <ul>
-	<a class="socials" href={socialLinks.facebook} target="_blank" rel="noopener">
-		<li><Facebook /></li>
-	</a>
-	<a class="socials" href={socialLinks.youtube} target="_blank" rel="noopener">
-		<li><Youtube /></li>
-	</a>
-	<a class="socials" href={socialLinks.instagramSing} target="_blank" rel="noopener">
-		<li><Instagram /></li>
-	</a>
-	<a class="socials" href={socialLinks.spotify} target="_blank" rel="noopener">
-		<li><Spotify /></li>
-	</a>
-	<a class="socials" href={socialLinks.etsy} target="_blank" rel="noopener">
-		<li><Etsy /></li>
-	</a>
-	<a class="socials" href={socialLinks.linkTree} target="_blank" rel="noopener">
-		<li><LinkTree /></li>
-	</a>
+	{#each components as { name, SVGComponent, link }}
+		<a class="socials" href={link} target="_blank" rel="noopener">
+			<li>
+				<SVGComponent />
+			</li>
+		</a>
+	{/each}
 </ul>
 
 <style>
@@ -50,7 +48,6 @@
 		cursor: pointer;
 	}
 	/* CLASSES */
-	/* social links */
 	.socials {
 		fill: var(--socials-2);
 		transition:
@@ -65,6 +62,7 @@
 	@media (max-width: 768px) {
 		a {
 			flex-basis: calc(33% - var(--size-2) * 3);
+			min-width: var(--size-7);
 		}
 	}
 </style>
