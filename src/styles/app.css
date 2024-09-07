@@ -381,3 +381,15 @@ and use the full width for artistic banners */
 	word-break: break-word;
 	overflow-wrap: break-word;
 }
+.descriptionHeader {
+	/* color: rgba(39, 39, 39, 1); */
+	font-style: normal;
+	font-variant: small-caps;
+	font-weight: var(--font-weight-4);
+	font-size: var(--size-10);
+	line-height: 1;
+	font-family: 'Atyp BL Display Medium';
+	letter-spacing: 0em;
+	text-align: center;
+	text-transform: none;
+}

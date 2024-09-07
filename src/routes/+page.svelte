@@ -48,11 +48,11 @@
 		</div>
 	</div>
 	<div class="about app-layout">
-		<h2>About</h2>
+		<h2 class="descriptionHeader">Music Art Hair Nails</h2>
 		<p>
 			{about?.text}
 		</p>
-		<p>Let's flow together.</p>
+		<p>Let's <span class="lobster">flow</span> together.</p>
 		<div class="socials">
 			<Socials />
 		</div>
@@ -85,8 +85,8 @@
 		{/each}
 	</section>
 	<div class="beauty app-layout">
-		<h2 class="centerText">Merch</h2>
-		<p>Get you some.</p>
+		<h2 class="descriptionHeader">Merch</h2>
+		<p>Get some.</p>
 		<a
 			class="hairLink"
 			href="https://www.etsy.com/shop/TheRiverDesign"
@@ -106,6 +106,11 @@
 		object-fit: cover; /* Ensure the video covers the entire area */
 	}
 	/* CLASSES */
+	.lobster {
+		color: var(--link);
+		font-family: 'Lobster', cursive;
+	}
+
 	.about,
 	.beauty {
 		display: flex;
@@ -114,9 +119,16 @@
 		gap: var(--size-5);
 		margin-block: var(--size-content-1);
 		& p {
-			font-weight: var(--font-weight-2);
+			font-style: normal;
+			font-weight: 400;
+			/* font-weight: var(--font-weight-2); */
+			font-size: var(--font-size-3);
+			/* font-size: 18px; */
 			line-height: var(--font-lineheight-4);
-			font-family: 'Roboto', sans-serif;
+			font-family: 'Ambit Light';
+			/* letter-spacing: 0em; */
+			text-align: center;
+			text-transform: none;
 		}
 		& button {
 			min-width: var(--size-content-1);
@@ -160,9 +172,6 @@
 	}
 	.socials {
 		margin-block-start: var(--size-4);
-	}
-	.centerText {
-		text-align: center;
 	}
 	/* IDS */
 	#video-background {

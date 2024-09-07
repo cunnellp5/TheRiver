@@ -1,7 +1,7 @@
 export default [
 	{
 		name: 'home',
-		text: "Welcome to The River, where beauty meets creativity. I’m a beauty expert, singer, and creator passionate about helping you embrace your unique style. Whether it's through my beauty services, music, or custom merch, I'm here to inspire and empower. Explore my world, connect, and discover the art of being your true self.",
+		text: "Welcome to The River, where beauty meets creativity. I'm a beauty expert, singer, and creator passionate about helping you embrace your unique style. Whether it's through my beauty services, music, or custom merch, I'm here to inspire and empower. Explore my world, connect, and discover the art of being your true self.",
 		isShowing: true,
 		url: '/'
 	},
