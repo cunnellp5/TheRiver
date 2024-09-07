@@ -36,7 +36,7 @@
 
 <div class="titleWrapper app-layout">
 	<a href="/blog">
-		<h1 class="jumbo">The River Talks</h1>
+		<h1 class="jumbo">The River Blogs</h1>
 	</a>
 </div>
 <main class="app-layout">
@@ -92,10 +92,6 @@
 			margin-block: var(--size-8);
 		}
 	}
-	main {
-		display: flex;
-		justify-content: center;
-	}
 	a {
 		text-decoration: none;
 	}
@@ -105,18 +101,30 @@
 		margin-block: var(--size-10);
 	}
 	.jumbo {
-		margin-block: var(--size-10);
+		background: unset;
+		-webkit-background-clip: unset;
+		-webkit-text-fill-color: unset;
+		background-clip: unset;
+		color: var(--link);
+		font-style: normal;
+		font-weight: var(--font-weight-4);
+		font-size: var(--font-size-8);
+		line-height: 1;
+		font-family: 'Atyp BL Display Medium', monospace;
+		letter-spacing: 0em;
 		text-transform: uppercase;
 	}
 	.titleWrapper {
 		display: flex;
-		/* justify-content: center; */
-		margin-block: var(--size-7);
+		justify-content: center;
+		align-items: center;
 		width: 100%;
+		height: var(--size-content-2);
 		user-select: none;
 	}
 	.posts-wrapper {
 		display: flex;
+		justify-content: center;
 	}
 	.posts-count {
 		color: var(--text-2);

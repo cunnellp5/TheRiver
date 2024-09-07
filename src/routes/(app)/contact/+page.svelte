@@ -34,12 +34,12 @@
 				<h5>
 					<p class="label">Address</p>
 				</h5>
-				<div class="addy indent">
+				<div class="addy">
 					<a
 						target="_blank"
 						href="https://www.google.com/maps/place/30+W+Bayaud+Ave,+Denver,+CO+80223/@39.7145613,-104.9886223,17z/data=!3m1!4b1!4m6!3m5!1s0x876c7f1ef7cf41b7:0xbb0e344a69581183!8m2!3d39.7145613!4d-104.9886223!16s%2Fg%2F11c22m8nd0?entry=ttu&g_ep=EgoyMDI0MDgyMy4wIKXMDSoASAFQAw%3D%3D"
 						rel="noopener">
-						<button class="addressWrapper">
+						<button>
 							<MapPin />
 							<div class="address">
 								<p class="address1">30 W Bayaud Ave</p>
@@ -55,7 +55,7 @@
 				</h5>
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
 				<!-- svelte-ignore a11y-no-static-element-interactions -->
-				<div class="emailAddy indent">
+				<div class="emailAddy">
 					<div class="emailAddyButtons">
 						<button class="copy" on:click={copyEmail} title="Copy email to clipboard">
 							{#if copied}
@@ -78,7 +78,7 @@
 				<h5>
 					<p class="label">Links</p>
 				</h5>
-				<div class="indent">
+				<div class="">
 					<Socials />
 				</div>
 			</div>
@@ -89,8 +89,7 @@
 <style>
 	/* ELEMENTS */
 	button {
-		background-color: transparent;
-		/* color: var(--link); */
+		width: 100%;
 	}
 	section {
 		display: flex;
@@ -99,6 +98,7 @@
 		z-index: 1;
 		margin: 0 auto;
 		border-radius: var(--radius-2);
+		text-align: center;
 	}
 	p {
 		letter-spacing: var(--font-letterspacing-3);
@@ -107,16 +107,6 @@
 		text-decoration: none;
 	}
 	/* CLASSES */
-	.addy {
-		display: flex;
-		gap: var(--size-4);
-	}
-	.col {
-		font-size: var(--font-size-0);
-	}
-	.indent {
-		margin-inline-start: var(--size-4);
-	}
 	.emailAddyButtons {
 		display: flex;
 		flex-direction: column;
@@ -133,7 +123,15 @@
 	}
 	.label {
 		margin-block: var(--size-4);
-		text-transform: uppercase;
+
+		font-style: normal;
+		font-variant: small-caps;
+		font-weight: var(--font-weight-4);
+		font-size: var(--font-size-6);
+		line-height: 1;
+		font-family: 'Atyp BL Display Medium';
+		letter-spacing: 0em;
+		/* text-transform: uppercase; */
 	}
 	.flex {
 		display: flex;
@@ -143,12 +141,12 @@
 		flex-direction: column;
 		align-items: flex-start;
 	}
-	.addressWrapper {
+	/* .addressWrapper {
 		display: flex;
 		gap: var(--size-4);
-	}
+	} */
 	.content {
-		padding-block: var(--size-4);
+		margin-block: var(--size-8);
 		height: var(--size-content-1);
 	}
 

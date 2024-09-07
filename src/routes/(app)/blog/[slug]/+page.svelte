@@ -99,7 +99,7 @@
 					Previous
 				</a>
 			{:else}
-				<span>
+				<span class="prevNext">
 					<ChevronLeft size={12} />
 					Previous
 				</span>
@@ -122,7 +122,18 @@
 <style>
 	/* ELEMENTS */
 	h1 {
-		line-height: var(--font-lineheight-0);
+		/* line-height: var(--font-lineheight-0); */
+		background: unset;
+		-webkit-background-clip: unset;
+		-webkit-text-fill-color: unset;
+		background-clip: unset;
+		color: var(--text-1);
+		font-style: normal;
+		/* font-weight: 400; */
+		font-size: var(--font-size-8);
+		line-height: 1;
+		font-family: 'Perfectly Nineties Semibold';
+		letter-spacing: 0em;
 	}
 	date {
 		color: var(--gray-7);
@@ -171,22 +182,19 @@
 		position: sticky;
 		top: 0;
 		justify-content: space-between;
-	}
-	.blog-content-wrapper {
-		display: flex;
-	}
-	.prevNext {
-		display: flex;
 		opacity: 0.7;
 		margin-block: var(--size-2);
 		font-size: var(--font-size-0);
+	}
+	.blog-content-wrapper {
+		display: flex;
 	}
 	.error-border {
 		border: 1px solid var(--error-text);
 	}
 	@media (max-width: 768px) {
 		h1 {
-			font-size: var(--font-size-5);
+			font-size: var(--font-size-6);
 		}
 	}
 </style>
