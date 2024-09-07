@@ -14,10 +14,10 @@
 <style>
 	p {
 		color: var(--text-2);
-		font-size: var(--font-size-0);
-	}
-
-	.bigger-text {
-		font-size: var(--font-size-1);
+		font-style: normal;
+		font-weight: var(--font-weight-4);
+		font-size: var(--font-size-3);
+		font-family: 'Ambit Regular';
+		letter-spacing: 0em;
 	}
 </style>

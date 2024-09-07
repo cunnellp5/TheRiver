@@ -64,10 +64,10 @@
 				<a href={article.link} target="_blank" class="articleLink" rel="noopener">
 					<div class="app-layout articleWrapper">
 						<GenericCard.Header class="mobilePad">
-							<GenericCard.Title>
+							<GenericCard.Title class="funText">
 								{article.articleTitle}
 							</GenericCard.Title>
-							<GenericCard.Description class="bigger-text">
+							<GenericCard.Description>
 								{article.description}
 							</GenericCard.Description>
 						</GenericCard.Header>

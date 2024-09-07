@@ -22,7 +22,23 @@
 	h4,
 	h5,
 	h6 {
-		margin-block: var(--size-4);
+		margin-block: var(--size-6);
+		/* max-width: var(--size-content-1); */
+	}
+
+	.funText {
+		background: unset;
+		-webkit-background-clip: unset;
+		-webkit-text-fill-color: unset;
+		background-clip: unset;
+
+		color: var(--text-1);
+		font-style: normal;
+		font-weight: var(--font-weight-4);
+		font-size: var(--font-size-8);
+		line-height: 1;
+		font-family: 'Atyp BL Display Medium';
+		letter-spacing: 0em;
 	}
 
 	@media (max-width: 768px) {
