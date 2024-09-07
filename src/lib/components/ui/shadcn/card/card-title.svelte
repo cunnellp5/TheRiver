@@ -50,5 +50,8 @@
 		h6 {
 			font-size: var(--font-size-4);
 		}
+		.funText {
+			font-size: var(--font-size-6);
+		}
 	}
 </style>

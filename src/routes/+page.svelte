@@ -219,5 +219,8 @@
 		.beauty-cta {
 			flex-direction: column;
 		}
+		.descriptionHeader {
+			font-size: var(--size-9);
+		}
 	}
 </style>
