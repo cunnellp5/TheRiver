@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Seo from '$lib/components/SEO.svelte';
+	import ServiceButtons from '$lib/components/ui/button/ServiceButtons.svelte';
 	import * as Table from '$lib/components/ui/shadcn/table';
 	// import { enhance } from '$app/forms';
 
@@ -43,31 +44,28 @@
 
 <svelte:window bind:scrollY={scroll} />
 
+<div class="cutoutImg" style:transform={`translate3d(0, ${scroll / 5}px, 0)`}>
+	<svg width="0" height="0">
+		<defs>
+			<clipPath id="waveClip" clipPathUnits="objectBoundingBox">
+				<path d="M0,0 H1 V0.85 C0.75,1 0.25,0.85 0,1 Z" />
+			</clipPath>
+		</defs>
+	</svg>
+	<img
+		src="https://res.cloudinary.com/dswpu3qez/image/upload/f_auto/q_auto/v1714083850/TheRiver/alexisCutout.png"
+		alt="alexis cutout" />
+</div>
+
 <main class="app-layout">
 	<section class="top">
-		<!-- style:transform={`translate3d(${scroll / 10}px, 0, 0)`} -->
-		<h1 class="overflow-hidden">THE RIVER BEAUTY</h1>
-		<p>Denver based</p>
-		<div class="cutoutImg overflow-hidden" style:transform={`translate3d(0, ${scroll / 5}px, 0)`}>
-			<svg width="0" height="0">
-				<defs>
-					<clipPath id="waveClip" clipPathUnits="objectBoundingBox">
-						<path d="M0,0 H1 V0.85 C0.75,1 0.25,0.85 0,1 Z" />
-					</clipPath>
-				</defs>
-			</svg>
-			<img
-				src="https://res.cloudinary.com/dswpu3qez/image/upload/f_auto/q_auto/v1714083850/TheRiver/alexisCutout.png"
-				alt="alexis cutout" />
-		</div>
-
-		<!-- <div class="page-indicator">1</div> -->
+		<h1>The River Beauty</h1>
+		{#if about?.isShowing}
+			<p class="about">
+				{about?.text}
+			</p>
+		{/if}
 	</section>
-	{#if about?.isShowing}
-		<p class="about">
-			{about?.text}
-		</p>
-	{/if}
 	<!-- {#each Object.entries(remappedServices) as [category, listOfServices]}
 		<section class="service-table">
 			<div>
@@ -146,9 +144,12 @@
 		</ul>
 	</aside>
 	<div class="fakeform">
-		<a href="https://lazwicky.glossgenius.com/services" target="_blank" rel="noopener">
-			<button class="primary"> Book Now </button>
-		</a>
+		<div class="serviceButtons">
+			<ServiceButtons />
+		</div>
+		<!-- <a href="https://lazwicky.glossgenius.com/services" target="_blank" rel="noopener"> -->
+		<!-- <button class="primary"> Book Now </button> -->
+		<!-- </a> -->
 	</div>
 	<!-- <form method="POST" use:enhance>
 		<input
@@ -181,11 +182,31 @@
 		font-weight: var(--font-weight-8);
 	}
 
-	.serviceName {
-		font-size: var(--font-size-2);
+	h1 {
+		background: unset;
+		-webkit-background-clip: unset;
+		-webkit-text-fill-color: unset;
+		background-clip: unset;
+
+		color: var(--text-2);
+		font-style: normal;
+		font-variant: small-caps;
+		/* font-weight: var(--font-weight-6); */
+		font-size: var(--font-size-8);
+		line-height: 1;
+		font-family: 'Atyp BL Display Medium';
+		letter-spacing: 0em;
 	}
 
 	/* CLASSES */
+	.serviceName {
+		font-size: var(--font-size-2);
+	}
+	.serviceButtons {
+		display: flex;
+		flex-direction: row;
+		gap: var(--size-3);
+	}
 	/* .page-indicator {
 		display: flex;
 		position: fixed;
@@ -218,11 +239,10 @@
 		width: max-content;
 	}
 	.about {
-		display: flex;
-		justify-content: center;
-		margin: 0 auto;
-		margin-block-end: var(--size-12);
+		/* margin: 0 auto; */
+		/* margin-block-end: var(--size-12); */
 		color: var(--text-2);
+		font-family: 'Ambit Light';
 		/* font-family: sans-serif; */
 		text-align: center;
 	}
@@ -230,7 +250,7 @@
 		position: sticky;
 		bottom: var(--size-7);
 		align-self: center;
-		width: var(--size-content-1);
+		/* width: var(--size-content-1); */
 	}
 	.tables {
 		align-items: center;
@@ -254,9 +274,9 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		align-items: end;
-		width: 100%;
-		height: 40vh;
+		align-items: center;
+		gap: var(--size-4);
+		height: var(--size-content-2);
 	}
 	.price-duration {
 		display: flex;
@@ -393,10 +413,10 @@
 		}
 	}
 
+	/* FOR THE DOTS */
 	[title] {
 		position: relative;
 	}
-
 	[title]:after {
 		position: absolute;
 		right: 150%;
@@ -413,7 +433,6 @@
 		font-size: var(--font-size-0);
 		text-transform: uppercase;
 	}
-
 	[title]:hover:after {
 		opacity: 1;
 	}
