@@ -48,16 +48,17 @@
 		<!-- style:transform={`translate3d(${scroll / 10}px, 0, 0)`} -->
 		<h1 class="overflow-hidden">THE RIVER BEAUTY</h1>
 		<p>Denver based</p>
-		<div
-			class="cutoutImg overflow-hidden"
-			style:transform={`translate3d(-${scroll / 20}px, ${scroll / 5}px, 0)`}>
+		<div class="cutoutImg overflow-hidden" style:transform={`translate3d(0, ${scroll / 5}px, 0)`}>
+			<svg width="0" height="0">
+				<defs>
+					<clipPath id="waveClip" clipPathUnits="objectBoundingBox">
+						<path d="M0,0 H1 V0.85 C0.75,1 0.25,0.85 0,1 Z" />
+					</clipPath>
+				</defs>
+			</svg>
 			<img
 				src="https://res.cloudinary.com/dswpu3qez/image/upload/f_auto/q_auto/v1714083850/TheRiver/alexisCutout.png"
 				alt="alexis cutout" />
-			<!-- <img
-				style:transform={`translate3d(-${scroll / 10}px, ${scroll / 5}px, 0)`}
-				src="https://res.cloudinary.com/dswpu3qez/image/upload/v1714083850/TheRiver/alexisArt_fr62uy.png"
-				alt="" /> -->
 		</div>
 
 		<!-- <div class="page-indicator">1</div> -->
@@ -181,7 +182,7 @@
 	}
 
 	.serviceName {
-		font-size: var(--font-size-1);
+		font-size: var(--font-size-2);
 	}
 
 	/* CLASSES */
@@ -241,10 +242,12 @@
 	}
 	.cutoutImg {
 		position: absolute;
-		top: var(--size-8);
+		top: var(--size-9);
 		left: 0;
 		z-index: -1;
-		clip-path: polygon(0 0, 100% 0, 100% 75%, 0% 100%);
+		/* clip-path: polygon(0 0, 100% 0, 100% 75%, 0% 100%); */
+		clip-path: url(#waveClip);
+
 		transition: opacity 2.5s;
 	}
 	.top {
@@ -261,10 +264,10 @@
 	}
 	.time {
 		color: var(--text-2);
-		font-size: var(--font-size-00);
+		font-size: var(--font-size-0);
 	}
 	.price {
-		font-size: var(--font-size-0);
+		font-size: var(--font-size-1);
 	}
 	.table-row-header {
 		display: flex;
