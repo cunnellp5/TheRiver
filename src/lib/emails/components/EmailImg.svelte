@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { WEBSITE_URL } from '$lib/data/WEBSITE_URL';
-	import { Img, Link } from 'svelte-email';
-
+	import Link from './ui/Link.svelte';
+	import Img from './ui/Img.svelte';
 	import { logoImage } from '../emailStyles';
 </script>
 

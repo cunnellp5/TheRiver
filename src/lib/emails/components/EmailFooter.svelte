@@ -1,8 +1,24 @@
 <script lang="ts">
 	import { WEBSITE_URL } from '$lib/data/WEBSITE_URL';
 	import socialLinks from '$lib/data/socialLinks';
-	import { Hr, Link, Text } from 'svelte-email';
-	import { hr, paragraph, link, address, unsubscribe } from '../emailStyles';
+	import { hr, paragraph, link, fontFamily } from '../emailStyles';
+	import Text from './ui/Text.svelte';
+	import Link from './ui/Link.svelte';
+	import Hr from './ui/Hr.svelte';
+
+	const unsubscribe = {
+		fontFamily,
+		// color: '#9ca299',
+		fontSize: '10px',
+		margin: 'unset'
+	};
+	const address = {
+		fontFamily,
+		color: '#9ca299',
+		fontSize: '12px',
+		margin: '0',
+		lineHeight: '16px'
+	};
 </script>
 
 <Hr style={hr} />
@@ -29,7 +45,5 @@
 <Text style={address}>30 W Bayaud Ave</Text>
 <Text style={address}>Denver, CO 80223</Text>
 <Text>
-	<Link
-		href={WEBSITE_URL + '/unsubscribe'}
-		style={{ ...unsubscribe, display: 'flex', justifyContent: 'end' }}>Unsubscribe</Link>
+	<Link href={WEBSITE_URL + '/unsubscribe'} style={{ ...unsubscribe }}>Unsubscribe</Link>
 </Text>
