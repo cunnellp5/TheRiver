@@ -2,6 +2,7 @@ import { sequence } from '@sveltejs/kit/hooks';
 import { redirect } from '@sveltejs/kit';
 import { lucia } from '$lib/server/auth';
 import type { Handle } from '@sveltejs/kit';
+import { RateLimiterMemory, RateLimiterRes } from 'rate-limiter-flexible';
 // import { createHash } from 'crypto';
 
 function generateNonce() {
@@ -12,6 +13,63 @@ function generateNonce() {
 // function generateETag(content: string): string {
 // 	return createHash('sha1').update(content).digest('hex');
 // }
+
+function setRateLimiterHeaders(
+	response: Response,
+	options: RateLimiterMemory,
+	rateLimiterRes: RateLimiterRes,
+	appendText: string = ''
+) {
+	response.headers.set(
+		'Retry-After' + appendText,
+		JSON.stringify(rateLimiterRes.msBeforeNext / 1000)
+	);
+	response.headers.set('X-RateLimit-Limit' + appendText, JSON.stringify(options.points));
+	response.headers.set(
+		'X-RateLimit-Remaining' + appendText,
+		rateLimiterRes.remainingPoints.toString()
+	);
+	response.headers.set(
+		'X-RateLimit-Reset' + appendText,
+		new Date(Date.now() + rateLimiterRes.msBeforeNext).toString()
+	);
+}
+
+// Rate limiter configuration
+const rateLimiter = new RateLimiterMemory({
+	points: 6,
+	duration: 1
+});
+const errorRateLimiter = new RateLimiterMemory({
+	points: 5,
+	duration: 60
+});
+
+const rateLimiterMiddleware: Handle = async ({ event, resolve }) => {
+	const ip = event.getClientAddress();
+
+	try {
+		const rateLimiterRes = await rateLimiter.consume(ip, 1);
+		const response = await resolve(event);
+
+		// Check if the response is an error page
+		if (response.status >= 400) {
+			try {
+				const errRateLimiterRes = await errorRateLimiter.consume(ip, 1);
+				setRateLimiterHeaders(response, errorRateLimiter, errRateLimiterRes, '-Error');
+			} catch {
+				return new Response('Too Many Requests', { status: 429 });
+			}
+		}
+
+		// Rate Limiter headers
+		setRateLimiterHeaders(response, rateLimiter, rateLimiterRes);
+
+		return response;
+	} catch {
+		return new Response('Too Many Requests', { status: 429 });
+	}
+};
 
 const headers: Handle = async ({ event, resolve }) => {
 	const nonce = generateNonce();
@@ -135,4 +193,4 @@ const authGuard: Handle = async ({ event, resolve }) => {
 // TODO add rate limiting to any CREATE/UPDATE pages
 // TODO cache all 'readonly' pages
 
-export const handle: Handle = sequence(headers, app, authGuard);
+export const handle: Handle = sequence(rateLimiterMiddleware, headers, app, authGuard);

@@ -4,7 +4,7 @@ import { string, minLength, object, pipe, nonEmpty } from 'valibot';
 export const passwordValidation = pipe(
 	string('Your password must be a string.'),
 	nonEmpty('Please enter your password.'),
-	minLength(8, 'Your password must have 8 characters or more.')
+	minLength(6, 'Your password must have 6 characters or more.')
 );
 
 export const confirmValidation = pipe(
