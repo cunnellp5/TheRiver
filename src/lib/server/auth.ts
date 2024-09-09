@@ -1,6 +1,6 @@
 import { PrismaAdapter } from '@lucia-auth/adapter-prisma';
 import { Lucia } from 'lucia';
-import { dev } from '$app/environment';
+// import { dev } from '$app/environment';
 
 import db from './database';
 
@@ -16,7 +16,7 @@ interface DtatbaseUserAttributes {
 export const lucia = new Lucia(adapter, {
 	sessionCookie: {
 		attributes: {
-			secure: !dev
+			secure: true
 		}
 	},
 	getUserAttributes: (user) => {
