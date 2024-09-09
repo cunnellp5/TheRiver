@@ -147,7 +147,7 @@ export const actions: Actions = {
 			try {
 				await fetch('api/emails/welcome', {
 					method: 'POST',
-					body: JSON.stringify({ subject: 'Welcome! - The River' }),
+					body: JSON.stringify({ subject: 'Thanks for Signing up - The River', email: email }),
 					headers: {
 						'Content-Type': 'application/json'
 					}
