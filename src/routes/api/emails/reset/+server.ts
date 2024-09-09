@@ -1,18 +1,8 @@
-import { error, json, type RequestHandler } from '@sveltejs/kit';
-import { render } from 'svelte-email';
-import Reset from '$lib/emails/Reset.svelte';
-import nodemailer from 'nodemailer';
 import { env } from '$env/dynamic/private';
-
-const transporter = nodemailer.createTransport({
-	host: 'smtp.gmail.com', // hostname
-	secureConnection: false, // TLS requires secureConnection to be false
-	port: 587, // port for secure SMTP
-	auth: {
-		user: env.GMAIL_USER,
-		pass: env.GMAIL_PASS
-	}
-});
+import Reset from '$lib/emails/templates/Reset.svelte';
+import transporter from '$lib/utils/transporter';
+import { error, json, type RequestHandler } from '@sveltejs/kit';
+import { render } from '../render';
 
 export const POST: RequestHandler = async ({ request }): Promise<Response> => {
 	let token;
@@ -26,7 +16,7 @@ export const POST: RequestHandler = async ({ request }): Promise<Response> => {
 	}
 
 	const options = {
-		from: env.GMAIL_USER, // TODO figure this out later
+		from: env.EMAIL_USER,
 		to: email,
 		subject: 'Password Reset Request - The River',
 		html: render({

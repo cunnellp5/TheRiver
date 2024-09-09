@@ -65,13 +65,14 @@ export const actions: Actions = {
 			// and they are NOT subscribed, we can assume the newsletter
 			// table should be updated
 
-			// save a cyclte to the newsletter table by early returning here
+			// save a cycle to the newsletter table by early returning here
 			return { type: 'success', status: 200 };
 		}
 
 		// if we dont have a user:
 		// what if someone keeps submitting the same email that hasnt signedup
 		// check subscriptions
+
 		let newsletter;
 		try {
 			newsletter = await db.newsletter.findUnique({
@@ -98,7 +99,7 @@ export const actions: Actions = {
 			try {
 				await fetch('emails/welcome', {
 					method: 'POST',
-					body: JSON.stringify({ subject: 'Newsletter Subscription - The River' }),
+					body: JSON.stringify({ subject: 'Newsletter Subscription - The River', email: email }),
 					headers: {
 						'Content-Type': 'application/json'
 					}

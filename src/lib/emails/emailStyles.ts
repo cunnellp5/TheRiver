@@ -1,11 +1,8 @@
-const fontFamily =
+export const fontFamily =
 	'-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif';
 
-export const main = {
-	backgroundColor: '#ffffff'
-};
-
 export const container = {
+	backgroundColor: '#ffffff',
 	margin: '0 auto',
 	padding: '20px 0 48px',
 	width: '580px'
@@ -99,13 +96,6 @@ export const fullWidth = {
 	textAlign: 'center' as const,
 	display: 'block',
 	width: '100%'
-};
-export const address = {
-	fontFamily,
-	color: '#9ca299',
-	fontSize: '12px',
-	margin: '0',
-	lineHeight: '16px'
 };
 
 export const bold = {
