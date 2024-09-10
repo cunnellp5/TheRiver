@@ -99,7 +99,8 @@
 		border-bottom: 1px solid var(--border);
 	}
 	.listHeader {
-		color: hsl(var(--teal-2-hsl) / 50%);
+		color: var(--link2);
+		/* color: hsl(var(--teal-2-hsl) / 100%); */
 		font-weight: var(--font-weight-8);
 		text-transform: uppercase;
 	}

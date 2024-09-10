@@ -23,19 +23,25 @@
 	<meta property="og:description" content={description} />
 	<meta property="og:url" content={url} />
 
-	<meta property="og:image" content="URL of the image" />
+	<meta
+		property="og:image"
+		content="https://res.cloudinary.com/dswpu3qez/image/upload/v1724876045/TheRiver/hoursArticle_dzx2l6.webp" />
 
 	<meta property="og:type" content="website" />
 	<meta property="og:site_name" content="The River" />
 	<meta property="og:locale" content="en_US" />
 
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content="The River - Official Site" />
+	<meta property="twitter:site" content="@the_river_sings" />
+	<meta property="twitter:creator" content="@the_river_sings" />
+	<meta property="twitter:title" content="The River Sings" />
 	<meta
-		name="twitter:description"
+		property="twitter:description"
 		content="Discover The River's music, beauty services, and fashion collections. Dive into her creative world today." />
-	<meta name="twitter:image" content="URL of the image" />
-	<!-- <meta name="twitter:url" content="URL of the shared link" /> -->
-	<meta name="twitter:site" content="@the_river_sings" />
-	<meta name="twitter:creator" content="@the_river_sings" />
+	<meta
+		property="twitter:image"
+		content="https://res.cloudinary.com/dswpu3qez/image/upload/v1724876045/TheRiver/hoursArticle_dzx2l6.webp" />
+	<meta property="twitter:card" content="summary_large_image" />
+
+	<!-- <meta property="description" content="Search engine description" /> -->
+	<!-- <meta property="og:image" content="Link preview image URL"> -->
 </svelte:head>

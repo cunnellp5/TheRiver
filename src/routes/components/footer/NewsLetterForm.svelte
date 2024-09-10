@@ -40,8 +40,9 @@
 	}}>
 	<p class="listHeader">Subscribe to the newsletter</p>
 	<div class="newsletter-form breaker">
-		<label for="email" class="newsletter-form__email-label"
-			>Get the latest updates on new products and upcoming sales</label>
+		<label for="email" class="newsletter-form__email-label">
+			Get the latest updates on new products and upcoming sales
+		</label>
 		<div class="buttonWrapper">
 			<input type="email" name="email" placeholder="Enter Email Address" bind:value={emailInput} />
 			{#if loading}
@@ -78,13 +79,15 @@
 	}
 	/* CLASSES */
 	.listHeader {
-		color: hsl(var(--teal-2-hsl) / 50%);
+		color: var(--link2);
+		/* color: hsl(var(--teal-2-hsl) / 50%); */
 		font-weight: var(--font-weight-8);
 		text-transform: uppercase;
 	}
 	.newsletter-form {
 		display: flex;
 		flex-direction: column;
+		gap: var(--size-1);
 		margin-block-start: var(--size-2);
 	}
 	.buttonWrapper {
