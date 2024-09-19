@@ -143,6 +143,7 @@
 		border-radius: var(--radius-3);
 		padding: var(--size-4);
 		& p {
+			color: var(--gray-3);
 			font-weight: var(--font-weight-2);
 			line-height: var(--font-lineheight-4);
 			font-family: 'Roboto', sans-serif;
