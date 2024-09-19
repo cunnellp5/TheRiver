@@ -3,8 +3,7 @@
 	const SPOTIFY_BODY_LANGUAGE_LINK =
 		'https://open.spotify.com/track/5OyLCwJBSmzd9eQ4DXQloR?si=323a53b406b24af6';
 	const BODY_LANGUAGE_IMG =
-		'https://res.cloudinary.com/dswpu3qez/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/body_language_ubbir4.jpg';
-
+		'https://res.cloudinary.com/dswpu3qez/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/emails/body_language_cover.webp';
 	const HOURS_ARTICLE =
 		'https://ratingsgamemusic.com/2022/01/08/the-river-delivers-angry-verses-on-hours/';
 	const HOURS_IMG =
@@ -12,10 +11,10 @@
 
 	const VAGUELY_RELATABLE_EP = 'https://open.spotify.com/album/7ebwm8jySweIyTwBjvLjNY';
 	const VAGUELY_RELATABLE_IMG =
-		'https://res.cloudinary.com/dswpu3qez/image/upload/w_1000,ar_1:1,c_fill,g_auto/vaguely_relatable_k2cbm1.jpg';
+		'https://res.cloudinary.com/dswpu3qez/image/upload/w_1000,ar_1:1,c_fill,g_auto/emails/vaguely_relatable.webp';
 
 	const JACKET_IMG =
-		'https://res.cloudinary.com/dswpu3qez/image/upload/w_1000,ar_1:1,c_auto,e_art:hokusai/theRiverJacket_kbhsyd.jpg';
+		'https://res.cloudinary.com/dswpu3qez/image/upload/w_1000,ar_1:1,c_auto,e_art:hokusai/emails/jean_jacket.webp';
 </script>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation">
@@ -111,7 +110,7 @@
 																							class=""
 																							width="327"
 																							height="auto"
-																							alt=""
+																							alt="Body language cover art"
 																							style="display: block; outline: 0; line-height: 100%; -ms-interpolation-mode: bicubic; width:100%; height: auto; border: 0;" />
 																					</a>
 																				</td>
@@ -317,7 +316,7 @@
 																							class=""
 																							width="327"
 																							height="auto"
-																							alt=""
+																							alt="hours cover art"
 																							style="display: block; outline: 0; line-height: 100%; -ms-interpolation-mode: bicubic; width:100%; height: auto; border: 0;" />
 																					</a>
 																				</td>
@@ -553,7 +552,7 @@
 																							class=""
 																							width="327"
 																							height="auto"
-																							alt=""
+																							alt="jean jacket"
 																							style="display: block; outline: 0; line-height: 100%; -ms-interpolation-mode: bicubic; width:100%; height: auto; border: 0;" />
 																					</a>
 																				</td>
@@ -758,7 +757,7 @@
 																							class=""
 																							width="327"
 																							height="auto"
-																							alt=""
+																							alt="Vaguely relatable ep cover art"
 																							style="display: block; outline: 0; line-height: 100%; -ms-interpolation-mode: bicubic; width:100%; height: auto; border: 0;" />
 																					</a>
 																				</td>
