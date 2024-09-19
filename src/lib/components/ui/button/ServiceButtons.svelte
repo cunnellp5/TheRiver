@@ -12,6 +12,7 @@
 			0 0px var(--surface-3),
 			0 0 0 var(--_highlight-size) var(--_highlight);
 		background-color: unset;
+		min-width: var(--size-content-1);
 		color: var(--gray-2);
 	}
 	button.hair {

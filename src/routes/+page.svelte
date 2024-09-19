@@ -121,12 +121,9 @@
 		& p {
 			font-style: normal;
 			font-weight: 400;
-			/* font-weight: var(--font-weight-2); */
 			font-size: var(--font-size-3);
-			/* font-size: 18px; */
 			line-height: var(--font-lineheight-4);
 			font-family: 'Ambit Light';
-			/* letter-spacing: 0em; */
 			text-align: center;
 			text-transform: none;
 		}
@@ -137,9 +134,9 @@
 	.beauty-cta {
 		display: flex;
 		align-items: center;
-		gap: var(--size-5);
+		gap: var(--size-4);
 		backdrop-filter: blur(var(--size-4));
-		margin-block-start: var(--size-7);
+		margin-block-start: var(--size-4);
 		border-radius: var(--radius-3);
 		padding: var(--size-4);
 		& p {
@@ -147,9 +144,6 @@
 			font-weight: var(--font-weight-2);
 			line-height: var(--font-lineheight-4);
 			font-family: 'Roboto', sans-serif;
-		}
-		& button {
-			min-width: var(--size-content-1);
 		}
 	}
 	.img-video-overlay-wrapper {
