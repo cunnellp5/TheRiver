@@ -11,26 +11,22 @@
 	onMount(() => {
 		title = title || config.title;
 		description = description || config.description;
-		url = $page.url.href || config.url;
+		url = $page.url.href || 'https://theriversings.com';
 	});
 </script>
 
 <svelte:head>
 	<title>{title}</title>
 	<meta name="description" content={description} />
-
 	<meta property="og:title" content={title} />
 	<meta property="og:description" content={description} />
 	<meta property="og:url" content={url} />
-
 	<meta
 		property="og:image"
 		content="https://res.cloudinary.com/dswpu3qez/image/upload/v1724876045/TheRiver/hoursArticle_dzx2l6.webp" />
-
 	<meta property="og:type" content="website" />
 	<meta property="og:site_name" content="The River" />
 	<meta property="og:locale" content="en_US" />
-
 	<meta property="twitter:site" content="@the_river_sings" />
 	<meta property="twitter:creator" content="@the_river_sings" />
 	<meta property="twitter:title" content="The River Sings" />
@@ -41,7 +37,4 @@
 		property="twitter:image"
 		content="https://res.cloudinary.com/dswpu3qez/image/upload/v1724876045/TheRiver/hoursArticle_dzx2l6.webp" />
 	<meta property="twitter:card" content="summary_large_image" />
-
-	<!-- <meta property="description" content="Search engine description" /> -->
-	<!-- <meta property="og:image" content="Link preview image URL"> -->
 </svelte:head>
