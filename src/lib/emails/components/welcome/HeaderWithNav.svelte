@@ -3,7 +3,7 @@
 	import socialLinks from '$lib/data/socialLinks';
 	import { WEBSITE_URL } from '$lib/data/WEBSITE_URL';
 	const layerdImg =
-		'https://res.cloudinary.com/dswpu3qez/image/upload/v1725912498/image1-2_gia8k0.png';
+		'https://res.cloudinary.com/dswpu3qez/image/upload/emails/three_layers_stacked.webp';
 </script>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation">
@@ -601,7 +601,7 @@
 											class=""
 											width="327"
 											height="auto"
-											alt=""
+											alt="layered three piece header art"
 											style="display: block; outline: 0; line-height: 100%; -ms-interpolation-mode: bicubic; width:100%; height: auto; border: 0;" />
 									</a>
 								</td>
