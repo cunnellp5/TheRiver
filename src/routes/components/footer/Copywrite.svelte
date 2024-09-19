@@ -9,8 +9,6 @@
 		<a href="/privacy-policy">Privacy</a>
 		<div class="divider"></div>
 		<a href="/terms-of-use">Terms</a>
-		<div class="divider"></div>
-		<a href="https://www.theriversings.com/humans.txt">Humans.txt</a>
 	</div>
 </div>
 

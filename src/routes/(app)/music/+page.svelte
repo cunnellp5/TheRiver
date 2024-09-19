@@ -31,7 +31,8 @@
 <Seo
 	title={'Listen to the Latest Tracks by The River | Alexis'}
 	description={"Dive into the soul of The River's music. Listen to her latest tracks, watch mesmerizing music videos, and experience the artistry that flows through every note."} />
-
+<!-- card stacking effect tut -->
+<!-- https://codyhouse.co/tutorials/how-stacking-cards -->
 <div class="grid-container">
 	<div id="tracks" class="tracks">
 		{#each tracks as track}
