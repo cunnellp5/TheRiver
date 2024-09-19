@@ -68,7 +68,7 @@
 					<div>
 						<hgroup>
 							<div class="headerAction">
-								<h1 id={post.slug}>{post.title}</h1>
+								<h1 class="headingReset" id={post.slug}>{post.title}</h1>
 							</div>
 							<date>{formatDate(new Date(post.createdAt))}</date>
 							<div class="tags">
@@ -123,10 +123,6 @@
 	/* ELEMENTS */
 	h1 {
 		/* line-height: var(--font-lineheight-0); */
-		background: unset;
-		-webkit-background-clip: unset;
-		-webkit-text-fill-color: unset;
-		background-clip: unset;
 		color: var(--text-1);
 		font-style: normal;
 		/* font-weight: 400; */

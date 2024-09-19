@@ -36,7 +36,7 @@
 
 <div class="titleWrapper app-layout">
 	<a href="/blog">
-		<h1 class="jumbo">The River Blogs</h1>
+		<h1 class="jumbo headingReset">The River Blogs</h1>
 	</a>
 </div>
 <main class="app-layout">
@@ -101,10 +101,6 @@
 		margin-block: var(--size-10);
 	}
 	.jumbo {
-		background: unset;
-		-webkit-background-clip: unset;
-		-webkit-text-fill-color: unset;
-		background-clip: unset;
 		color: var(--link);
 		font-style: normal;
 		font-weight: var(--font-weight-4);

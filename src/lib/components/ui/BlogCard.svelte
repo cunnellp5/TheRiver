@@ -22,7 +22,7 @@
 			<span>
 				<slot name="published"></slot>
 			</span>
-			<h5>
+			<h5 class="headingReset">
 				{title}
 			</h5>
 			<date>{formatDate(new Date(createdAt))}</date>
@@ -46,10 +46,6 @@
 <style>
 	/* ELEMENTS */
 	h5 {
-		background: unset;
-		-webkit-background-clip: unset;
-		-webkit-text-fill-color: unset;
-		background-clip: unset;
 		color: var(--text-1);
 		font-style: normal;
 		/* font-weight: 400; */

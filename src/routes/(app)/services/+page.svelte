@@ -59,7 +59,7 @@
 
 <main class="app-layout">
 	<section class="top">
-		<h1>The River Beauty</h1>
+		<h1 class="headingReset">The River Beauty</h1>
 		{#if about?.isShowing}
 			<p class="about">
 				{about?.text}
@@ -175,19 +175,14 @@
 		line-height: var(--font-lineheight-4);
 		letter-spacing: var(--font-letterspacing-3);
 	}
-	button {
+	/* button {
 		align-self: end;
 		margin: 0 auto;
 		width: 100%;
 		font-weight: var(--font-weight-8);
-	}
+	} */
 
 	h1 {
-		background: unset;
-		-webkit-background-clip: unset;
-		-webkit-text-fill-color: unset;
-		background-clip: unset;
-
 		color: var(--text-2);
 		font-style: normal;
 		font-variant: small-caps;
