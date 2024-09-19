@@ -87,7 +87,7 @@
 	}
 	.carousel-button-wrapper {
 		display: flex;
-		justify-content: end;
+		justify-content: center;
 		gap: var(--size-4);
 		margin-inline-end: var(--size-2);
 		margin-block: var(--size-4);
