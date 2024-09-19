@@ -12,6 +12,3 @@
 	<Top />
 	<Bottom />
 </main>
-
-<style>
-</style>
