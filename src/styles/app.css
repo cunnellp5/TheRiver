@@ -1,6 +1,8 @@
 @import './mainElements.css';
 
 html {
+	--nav-height: 63.63px;
+	--height-with-nav: calc(100% - var(--nav-height));
 	/* RAINBOW */
 	--life: #fc7f7e;
 	--healing: #ffc680;
