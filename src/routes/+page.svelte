@@ -39,9 +39,7 @@
 		<div role="img" id="image-container">
 			{#if visible}
 				<TheRiver />
-				<div class="beauty-cta">
-					<!-- <h2 class="centerText">Appoint&#8203;ments</h2> -->
-					<p>Schedule your appointment today.</p>
+				<div class="beauty-cta tab-radius">
 					<ServiceButtons />
 				</div>
 			{/if}
@@ -133,23 +131,19 @@
 	}
 	.beauty-cta {
 		display: flex;
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		flex-direction: column;
 		align-items: center;
-		gap: var(--size-4);
-		backdrop-filter: blur(var(--size-4));
-		margin-block-start: var(--size-4);
-		border-radius: var(--radius-3);
-		padding: var(--size-4);
-		& p {
-			color: var(--gray-3);
-			font-weight: var(--font-weight-2);
-			line-height: var(--font-lineheight-4);
-			font-family: 'Roboto', sans-serif;
-		}
+		gap: var(--size-2);
+		margin: var(--size-2);
+		font-variant: small-caps;
 	}
 	.img-video-overlay-wrapper {
 		position: relative;
 		z-index: 1;
-		height: 100vh;
+		height: calc(100vh - var(--nav-height));
 	}
 	.articleLink {
 		text-decoration: none;
@@ -183,7 +177,7 @@
 		align-items: center;
 		z-index: 2; /* Ensure it is above the video */
 		width: 100%;
-		height: 90%;
+		height: 100%;
 	}
 	#video-tint {
 		position: absolute;
@@ -212,6 +206,7 @@
 			margin-block: var(--size-9);
 		}
 		.beauty-cta {
+			position: unset;
 			flex-direction: column;
 		}
 		.descriptionHeader {
