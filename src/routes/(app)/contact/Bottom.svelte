@@ -117,18 +117,14 @@
 	}
 	.serviceButtons {
 		display: flex;
-		gap: var(--size-4);
+		flex-direction: column;
+		gap: var(--size-2);
 	}
 
 	@media (max-width: 768px) {
 		.bottom-sections {
 			grid-template-rows: 1fr 1fr 1fr;
 			grid-template-columns: 1fr;
-		}
-	}
-	@media (max-width: 1440px) {
-		.serviceButtons {
-			flex-direction: column;
 		}
 	}
 </style>
