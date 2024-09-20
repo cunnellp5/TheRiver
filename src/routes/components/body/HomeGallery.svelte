@@ -1,19 +1,19 @@
 <main>
 	<article class="gallery">
 		<img
-			src="https://res.cloudinary.com/dswpu3qez/image/upload/f_auto/q_auto:eco/v1724876043/TheRiver/AlexisWater1_ji0grg.jpg"
+			src="https://res.cloudinary.com/dswpu3qez/image/upload/f_auto/q_auto:eco/TheRiver/AlexisWater1_ji0grg.webp"
 			alt="Water model" />
 		<img
-			src="https://res.cloudinary.com/dswpu3qez/image/upload/f_auto/q_auto:eco/v1724876038/TheRiver/alexismodel1_va2axz.jpg"
+			src="https://res.cloudinary.com/dswpu3qez/image/upload/f_auto/q_auto:eco/TheRiver/alexismodel1_va2axz.webp"
 			alt="fifth element model" />
 		<img
-			src="https://res.cloudinary.com/dswpu3qez/image/upload/f_auto/q_auto:eco/v1724874425/TheRiver/alexis_blue_h6x97p.jpg"
+			src="https://res.cloudinary.com/dswpu3qez/image/upload/f_auto/q_auto:eco/TheRiver/alexis_blue_h6x97p.webp"
 			alt="holding comb model" />
 		<img
-			src="https://res.cloudinary.com/dswpu3qez/image/upload/f_auto/q_auto:eco/v1724876041/TheRiver/alexisSing_mmyxg6.jpg"
+			src="https://res.cloudinary.com/dswpu3qez/image/upload/f_auto/q_auto:eco/TheRiver/alexisSing_mmyxg6.webp"
 			alt="singing blue background" />
 		<img
-			src="https://res.cloudinary.com/dswpu3qez/image/upload/f_auto/q_auto:eco/v1724875569/TheRiver/alexisArticle2_iqx8vk.webp"
+			src="https://res.cloudinary.com/dswpu3qez/image/upload/f_auto/q_auto:eco/TheRiver/alexisArticle2_iqx8vk.webp"
 			alt="sitting on yellow floor" />
 	</article>
 </main>
