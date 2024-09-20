@@ -12,7 +12,7 @@ export default [
 		author: 'TAYO ODUTOLA',
 		description:
 			"On Hours: The production here is sublime and crisp as each instrument stands out with clarity while The River's commanding vocals cut through the mix with ease.",
-		img: 'https://res.cloudinary.com/dswpu3qez/image/upload/c_fill,g_auto,w_600,h_600/f_auto/v1724876040/TheRiver/alexismodel3_oszybs.jpg',
+		img: 'https://res.cloudinary.com/dswpu3qez/image/upload/c_fill,g_auto,w_600,h_600/f_auto/v1724876040/TheRiver/alexismodel3_oszybs.webp',
 		link: 'https://earmilk.com/2022/01/10/the-rivers-hours-digs-deep-into-the-dynamics-of-failed-relationships/'
 	},
 	{
