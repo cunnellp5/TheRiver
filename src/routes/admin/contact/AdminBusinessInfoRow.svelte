@@ -40,13 +40,15 @@
 		</Table.Cell>
 	</Table.Row>
 {:else}
-	<Table.Row on:dblclick={editing}>
+	<Table.Row>
 		{#if key !== 'id' && key !== 'createdAt' && key !== 'updatedAt'}
 			<Table.Cell class="fixed-width keyText">{key}</Table.Cell>
-			<Table.Cell class="fixed-width">{value}</Table.Cell>
+			<Table.Cell class="fixed-width" on:dblclick={editing}>{value}</Table.Cell>
 			<Table.Cell class="fixed-width">
 				<div class="button-wrapper">
-					<Pencil size={16} />
+					<button on:click={editing}>
+						<Pencil size={16} />
+					</button>
 				</div>
 			</Table.Cell>
 		{/if}
