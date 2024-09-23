@@ -214,3 +214,12 @@ model Newsletter {
   userId    String?  @unique @db.Uuid
   createdAt DateTime @default(now())
 }
+
+model TrackPreview {
+  id        Int      @id @default(autoincrement())
+  url       String
+  title     String
+  order     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
