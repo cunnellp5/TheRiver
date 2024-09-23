@@ -2,7 +2,6 @@
 	import MapPin from 'lucide-svelte/icons/map-pin';
 	import AtSign from 'lucide-svelte/icons/at-sign';
 	import Phone from 'lucide-svelte/icons/phone';
-	import MicVocal from 'lucide-svelte/icons/mic-vocal';
 	import { emailWithBreaks, phoneNumber, address } from '$lib/config';
 	import ServiceButtons from '$lib/components/ui/button/ServiceButtons.svelte';
 
@@ -50,8 +49,7 @@
 		<div class="info-wrapper">
 			<h2 class="headingReset">Book</h2>
 			<div class="row">
-				<MicVocal size="16" />
-				<p>Email to book a show!</p>
+				<p>Email to book for music/collab.</p>
 			</div>
 			<div class="serviceButtons">
 				<ServiceButtons />

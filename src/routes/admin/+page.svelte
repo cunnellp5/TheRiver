@@ -311,6 +311,8 @@
 	<li>Sveltekit - Meta framework [Typescript]</li>
 	<li>Prisma - ORM wrapper for db queries</li>
 	<li>PostgreSQL - The database language</li>
+</ol>
+<ol>
 	<span>Other tools</span>
 	<li>lucia - auth</li>
 	<li>oslo - auth utilities like encryption</li>
@@ -319,6 +321,16 @@
 	<li>prettier - code consistency</li>
 	<li>eslint - code rules</li>
 	<li>lucide - icons</li>
+</ol>
+<ol>
+	<span>Secrets</span>
+	<li>
+		<a href="/sitemap.xml" target="_blank" rel="noopener noreferrer">/sitemap.xml</a> - for seo
+	</li>
+	<li>
+		<a href="/humans.txt" target="_blank" rel="noopener noreferrer">/humans.txt</a> - dev credit
+	</li>
+	<li>Right click, inspect, click on console tab, 😎</li>
 </ol>
 
 <style>
