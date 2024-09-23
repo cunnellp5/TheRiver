@@ -1,8 +1,8 @@
 import { error } from '@sveltejs/kit';
 import db from '$lib/server/database';
-import type { PageServerLoad } from './$types';
+import type { LayoutServerLoad } from './$types';
 
-export const load: PageServerLoad = async () => {
+export const load: LayoutServerLoad = async () => {
 	try {
 		const about = await db.about.findFirst({
 			where: {

@@ -1,9 +1,9 @@
 import db from '$lib/server/database';
 import type { Post } from '@prisma/client';
 import { error } from '@sveltejs/kit';
-import type { PageServerLoad } from '../../$types';
+import type { LayoutServerLoad } from '../../$types';
 
-export const load: PageServerLoad = async () => {
+export const load: LayoutServerLoad = async () => {
 	// TODO move this to an api endpoint to run filtering from the client??
 	try {
 		const posts: Post[] = await db.post.findMany({
