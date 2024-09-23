@@ -7,7 +7,7 @@
 	export { className as class };
 </script>
 
-<td on:dblclick class={`${className}`} {...$$restProps} on:click on:keydown>
+<td class={`${className}`} {...$$restProps} on:dblclick on:click on:keydown>
 	<slot />
 </td>
 
