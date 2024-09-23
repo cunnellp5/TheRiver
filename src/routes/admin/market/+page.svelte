@@ -1,6 +1,5 @@
 <script lang="ts">
 	import * as Card from '$lib/components/ui/shadcn/card';
-	import market from '$lib/data/json/market.json';
 
 	export let data;
 	const { business } = data;
@@ -18,7 +17,7 @@
 			</Card.Description>
 		</Card.Header>
 		<Card.Content>
-			<span>Current Link</span>
+			<!-- <span>Current Link</span>
 			<p>
 				<a href={business?.merchUrl}>
 					{business?.merchUrl}
@@ -28,7 +27,7 @@
 			<span>Display text</span>
 			<p>
 				{business?.merchText}
-			</p>
+			</p> -->
 		</Card.Content>
 	</Card.Root>
 </div>
@@ -38,10 +37,10 @@
 		display: flex;
 		flex-direction: column;
 	}
-	p {
+	/* p {
 		color: var(--link);
 	}
 	span {
 		color: var(--text-2);
-	}
+	} */
 </style>
