@@ -20,7 +20,7 @@
 	</a>
 </header>
 
-<main class="app-layout">
+<main>
 	<aside>
 		<nav class="sidenav">
 			<div class="dropLabel">Main</div>
@@ -118,14 +118,14 @@
 
 			<hr />
 
-			<div class="dropLabel">Market</div>
+			<!-- <div class="dropLabel">Market</div>
 			<a
 				class:current={$page.url.pathname.includes('/admin/market')}
 				class="indented"
 				href="/admin/market"
 				data-sveltekit-noscroll>
 				Info
-			</a>
+			</a> -->
 
 			<hr />
 
@@ -163,6 +163,7 @@
 	main {
 		display: grid;
 		grid-template-columns: var(--size-12) 1fr;
+		padding-inline: var(--size-7);
 	}
 	header {
 		display: flex;
