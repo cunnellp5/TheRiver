@@ -12,5 +12,10 @@
 	on:keydown={handleKeyDown}
 	{...$$restProps}>
 	<ArrowLeft class="h-4 w-4" />
-	<span class="sr-only">Previous slide</span>
 </button>
+
+<style>
+	button {
+		min-width: var(--size-10);
+	}
+</style>
