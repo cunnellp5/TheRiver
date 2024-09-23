@@ -5,6 +5,7 @@
 
 	export let isSignedIn = false;
 	export let user;
+
 	let showSheet = false;
 </script>
 

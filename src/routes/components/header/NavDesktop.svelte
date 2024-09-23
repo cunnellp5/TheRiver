@@ -4,10 +4,13 @@
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import { browser } from '$app/environment';
+	import { enhance } from '$app/forms';
+	import { addToast } from '$lib/stores/toast';
 
 	export let showingSheet: boolean = false;
 	export let isSignedIn: boolean;
 	export let user;
+
 	let showAuthLinks = false;
 	let visible = false;
 
@@ -81,7 +84,27 @@
 	</li>
 	<li class:border-left={!showingSheet} class:borderBottom={showingSheet}></li>
 	{#if isSignedIn}
-		<form class="logout-wrapper" id="logoutForm" method="POST" action="/logout">
+		<form
+			class="logout-wrapper"
+			id="logoutForm"
+			method="POST"
+			action="/logout"
+			use:enhance={async ({ formElement, formData, action, cancel, submitter }) => {
+				return async ({ result, update }) => {
+					if (result.status === 302) {
+						update();
+						addToast({
+							message: `Logged out.`,
+							type: 'message',
+							iconType: 'check',
+							dismissible: true,
+							timeout: 5000
+						});
+					} else {
+						update();
+					}
+				};
+			}}>
 			<li class:current={isLogout} class:homepageText={isHomePage}>
 				<button class="logout-button" type="submit">Logout</button>
 			</li>
