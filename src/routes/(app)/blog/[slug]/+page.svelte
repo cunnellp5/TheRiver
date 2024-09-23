@@ -98,7 +98,7 @@
 					<ChevronLeft size={12} />
 					Previous
 				</a>
-			{:else}
+			{:else if data.posts.length > 1}
 				<span class="prevNext">
 					<ChevronLeft size={12} />
 					Previous
@@ -109,7 +109,7 @@
 					Next
 					<ChevronRight size={12} />
 				</a>
-			{:else}
+			{:else if data.posts.length > 1}
 				<span class="prevNext">
 					Next
 					<ChevronRight size={12} />

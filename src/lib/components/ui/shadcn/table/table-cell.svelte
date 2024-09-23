@@ -20,9 +20,7 @@
 			padding-right: 0;
 		}
 	}
-
 	/* CLASSES */
-	/* general */
 	.full-width {
 		width: 100%;
 	}
