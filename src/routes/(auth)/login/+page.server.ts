@@ -6,6 +6,7 @@ import type { Actions, PageServerLoad } from './$types';
 import { login } from '$lib/server/controllers/login';
 
 const rateLimiter = new RateLimiter(5, 60000); // 5 requests per 1 minute
+
 export const load: PageServerLoad = async (event) => {
 	if (event.locals.session) redirect(302, '/');
 };
