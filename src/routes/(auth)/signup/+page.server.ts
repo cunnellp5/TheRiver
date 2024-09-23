@@ -10,7 +10,7 @@ import type { Newsletter } from '@prisma/client';
 import { login } from '$lib/server/controllers/login';
 
 export const load: PageServerLoad = async (event) => {
-	if (event.locals.session) redirect(302, '/login');
+	if (event.locals.session) redirect(302, '/');
 };
 
 /* 

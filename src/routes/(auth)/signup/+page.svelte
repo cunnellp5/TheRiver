@@ -150,9 +150,6 @@
 <style>
 	@import url('../auth.css');
 	/* ELEMENTS */
-	main {
-		flex-direction: row;
-	}
 	/* CLASSES */
 	.under-hero {
 		font-size: var(--font-size-1);

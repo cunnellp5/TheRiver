@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
-	import { goto } from '$app/navigation';
 	import Seo from '$lib/components/SEO.svelte';
 	import { addToast } from '$lib/stores/toast';
 	import { LoaderCircle } from 'lucide-svelte';

@@ -2,10 +2,13 @@ import { fail, redirect } from '@sveltejs/kit';
 import { Argon2id } from 'oslo/password';
 import db from '$lib/server/database';
 import { RateLimiter } from '$lib/utils/rateLimiter';
-import type { Actions } from './$types';
+import type { Actions, PageServerLoad } from './$types';
 import { login } from '$lib/server/controllers/login';
 
-const rateLimiter = new RateLimiter(5, 300000); // 5 requests per 5 minutes
+const rateLimiter = new RateLimiter(5, 60000); // 5 requests per 1 minute
+export const load: PageServerLoad = async (event) => {
+	if (event.locals.session) redirect(302, '/');
+};
 
 const ERROR_MESSAGE = 'Invalid credentials';
 
