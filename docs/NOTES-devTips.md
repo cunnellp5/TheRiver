@@ -24,7 +24,6 @@
 
 ## Ideas
 
-- Main nav links should be [MUSIC, SERVICES, MERCH] then [BLOG, CONTACT]
 - Cloudinary OGImage for SEO
 - Figure out how to implement dynamic svgs/icons that should come from a DB for the social links
 
@@ -56,16 +55,6 @@ https://littlesnippets.net/blog/some-css-menu-inspiration-using-animated-lines
 <!-- delay navigation to load media -->
 
 https://www.youtube.com/watch?v=8OmsVZuuQMc
-
-## CSS:
-
-Order properties applying outside the box model, moving inward to intrinsic changes.
-
-Positioning
-Visibility
-Box model
-Dimensions
-Text
 
 ### Random
 
