@@ -1,9 +1,16 @@
+<script lang="ts">
+	let scroll: number;
+</script>
+
+<svelte:window bind:scrollY={scroll} />
+
 <section class="main-image">
-	<h1 class="overlay-text headingReset">Let's Have a Talk</h1>
+	<h1 class="overlay-text headingReset" style:top={`${50 + scroll / 35}%`}>Let's Have a Talk</h1>
 	<img
 		src="https://res.cloudinary.com/dswpu3qez/image/upload/ar_16:9,c_fill,g_auto,w_1920/v1726747635/The_River_izwv3d.webp"
 		alt="Main"
-		class="main-image__img" />
+		class="main-image__img"
+		style:object-position={`center ${scroll / 45}%`} />
 </section>
 
 <style>
@@ -28,7 +35,7 @@
 		width: 100%;
 		height: 100%;
 		object-fit: cover; /* Ensures the image covers the container without shrinking */
-		object-position: center 10%; /* Centers the image within the container */
+		/* object-position: center 10%; Centers the image within the container */
 	}
 	.overlay-text {
 		position: absolute;

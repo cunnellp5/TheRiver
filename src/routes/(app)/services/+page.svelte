@@ -113,6 +113,7 @@
 	/* MEDIA */
 	@media (max-width: 768px) {
 		.top {
+			background-size: unset;
 			height: 30vh;
 		}
 		.serviceButtons {
