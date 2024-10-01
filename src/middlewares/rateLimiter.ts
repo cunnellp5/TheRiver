@@ -24,12 +24,12 @@ function setRateLimiterHeaders(
 
 // Rate limiter configuration
 const rateLimiterMemory = new RateLimiterMemory({
-	points: 6,
+	points: 12,
 	duration: 1
 });
 
 const errorRateLimiter = new RateLimiterMemory({
-	points: 5,
+	points: 10,
 	duration: 60
 });
 

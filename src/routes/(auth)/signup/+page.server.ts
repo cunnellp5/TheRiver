@@ -9,10 +9,6 @@ import type { Actions, PageServerLoad } from './$types';
 import type { Newsletter } from '@prisma/client';
 import { login } from '$lib/server/controllers/login';
 
-export const load: PageServerLoad = async (event) => {
-	if (event.locals.session) redirect(302, '/');
-};
-
 /* 
 Might be worth adding even more validations, but could be overkill:
 	https://www.prisma.io/docs/orm/prisma-client/queries/custom-validation
