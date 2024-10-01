@@ -18,7 +18,7 @@
 	title={'Login - Access Your Account'}
 	description={'Log in to your account to access your profile and settings. Enter your credentials to get started.'} />
 
-<main>
+<main data-sveltekit-reload>
 	<section class="hero">
 		<h1 class="hero-message">
 			<div>Login</div>

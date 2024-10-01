@@ -42,7 +42,7 @@
 	title={'Sign Up - Join Us Today'}
 	description={'Create a new account to start enjoying our services. Sign up now to join our community and access exclusive features.'} />
 
-<main>
+<main data-sveltekit-reload>
 	<section class="hero">
 		<h1 class="hero-message">
 			<div>Signup</div>
