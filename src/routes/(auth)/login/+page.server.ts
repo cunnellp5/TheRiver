@@ -1,11 +1,8 @@
 import { fail, redirect } from '@sveltejs/kit';
 import { Argon2id } from 'oslo/password';
 import db from '$lib/server/database';
-import { RateLimiter } from '$lib/utils/rateLimiter';
-import type { Actions, PageServerLoad } from './$types';
+import type { Actions } from './$types';
 import { login } from '$lib/server/controllers/login';
-
-const rateLimiter = new RateLimiter(5, 60000); // 5 requests per 1 minute
 
 const ERROR_MESSAGE = 'Invalid credentials';
 
@@ -14,11 +11,6 @@ export const actions: Actions = {
 		const formData = await request.formData();
 		const email = formData.get('email') as string;
 		const password = formData.get('password') as string;
-
-		if (rateLimiter.isRateLimited(email)) {
-			console.error('Rate limited login attempt');
-			return fail(429, { message: 'Too Many Requests' });
-		}
 
 		// TODO use zod validation
 		if (typeof email !== 'string' || email.length < 3) {

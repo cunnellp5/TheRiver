@@ -1,11 +1,8 @@
 import db from '$lib/server/database';
-import { RateLimiter } from '$lib/utils/rateLimiter';
 import { EmailSchema } from '$lib/utils/Valibot/EmailSchema';
-import { error, fail, redirect, type ActionFailure } from '@sveltejs/kit';
+import { error, fail, redirect } from '@sveltejs/kit';
 import { ValiError, parse } from 'valibot';
 import type { Actions } from './$types';
-
-const rateLimiter = new RateLimiter(5, 60000); // 5 requests per minute
 
 // TODO send an email to the user with a token to confirm their unsubscription choice,
 // for now just rm the record if it exists
@@ -13,10 +10,6 @@ export const actions: Actions = {
 	default: async ({ request }) => {
 		const formData = await request.formData();
 		const email = formData.get('email') as string;
-
-		if (rateLimiter.isRateLimited(email)) {
-			return fail(429, { message: 'Too Many Requests' });
-		}
 
 		try {
 			await parse(EmailSchema, { email });
