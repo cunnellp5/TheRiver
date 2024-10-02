@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
 	import Seo from '$lib/components/SEO.svelte';
 </script>
 
@@ -63,4 +63,4 @@
 			grid-template-columns: repeat(1, 1fr);
 		}
 	} */
-</style>
+</style> -->

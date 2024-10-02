@@ -10,6 +10,9 @@
 	import ServiceButtons from '$lib/components/ui/button/ServiceButtons.svelte';
 
 	export let data;
+
+	// let scroll: number;
+
 	const { videoURL, articles, about } = data;
 
 	// const isPlaying = true;
@@ -20,10 +23,12 @@
 	});
 </script>
 
+<!-- <svelte:window bind:scrollY={scroll} /> -->
+
 <Seo
 	title={'Music, Beauty Services, Blog & Fashion - The River | Alexis'}
 	description={'Discover The River: A multifaceted artist offering music, beauty services, fashion, and more. Explore her latest tracks, music videos, blog, and unique handmade jewelry and clothing.'} />
-
+<!-- style:transform={`translateY(${scroll}px)`} -->
 <main>
 	<div class="img-video-overlay-wrapper">
 		<div id="video-background">
@@ -47,9 +52,6 @@
 	</div>
 	<div class="about app-layout">
 		<h2 class="descriptionHeader">Music Art Hair Nails</h2>
-		<p>
-			{about?.text}
-		</p>
 		<p>Let's <span class="lobster">flow</span> together.</p>
 		<div class="socials">
 			<Socials />

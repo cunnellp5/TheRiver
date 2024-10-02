@@ -330,7 +330,6 @@
 	<li>
 		<a href="/humans.txt" target="_blank" rel="noopener noreferrer">/humans.txt</a> - dev credit
 	</li>
-	<li>Right click, inspect, click on console tab, 😎</li>
 </ol>
 
 <style>

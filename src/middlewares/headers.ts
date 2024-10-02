@@ -54,7 +54,7 @@ export const headers: Handle = async ({ event, resolve }) => {
 	);
 
 	// Controls which features and APIs can be used in the browser (similar to Permissions-Policy).
-	response.headers.set('Feature-Policy', "geolocation 'self'; microphone 'none'");
+	response.headers.set('Permissions-Policy', 'geolocation=(self), microphone=()');
 
 	// Performance Headers
 

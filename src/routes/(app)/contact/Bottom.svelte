@@ -25,7 +25,7 @@
 			href="https://www.google.com/maps/place/30+W+Bayaud+Ave,+Denver,+CO+80223/@39.7145613,-104.9911972,17z/data=!3m1!4b1!4m6!3m5!1s0x876c7f1ef7cf41b7:0xbb0e344a69581183!8m2!3d39.7145613!4d-104.9886223!16s%2Fg%2F11c22m8nd0?entry=ttu&g_ep=EgoyMDI0MDkxNi4wIKXMDSoASAFQAw%3D%3D"
 			target="_blank"
 			rel="noopener noreferrer">
-			<img src="./darkMap.webp" alt="dark theme map" class="map__img" />
+			<img src="./images/darkMap.webp" alt="dark theme map" class="map__img" />
 		</a>
 	</figure>
 	<figure class="section contact">
