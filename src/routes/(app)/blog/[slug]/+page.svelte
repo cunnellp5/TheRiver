@@ -7,7 +7,6 @@
 	import ChevronRight from 'lucide-svelte/icons/chevron-right';
 	import type Quill from 'quill';
 	import { onMount } from 'svelte';
-	import { fade, slide } from 'svelte/transition';
 	import { page } from '$app/stores';
 	import { browser } from '$app/environment';
 	import type { PageData } from './$types';
@@ -57,34 +56,26 @@
 	description={`${post ? post.description : 'Explore The River’s blog for insights on music, beauty, and fashion. Discover expert tips, trends, and stories that inspire creativity and style."'}`} />
 
 <section>
-	<div
-		in:slide={{ duration: 500, axis: 'x' }}
-		out:slide={{ duration: 200, axis: 'x' }}
-		class="section surface-4"
-		class:error-border={!post}>
+	<div class="section surface-4" class:error-border={!post}>
 		{#key post}
-			<div in:fade={{ duration: 1400 }} class="blog-content-wrapper">
+			<div class="blog-content-wrapper">
 				{#if post}
-					<div>
-						<hgroup>
-							<div class="headerAction">
-								<h1 class="headingReset" id={post.slug}>{post.title}</h1>
-							</div>
-							<date>{formatDate(new Date(post.createdAt))}</date>
-							<div class="tags">
-								{#each post.tags as tag}
-									<Badge {tag} />
-								{/each}
-							</div>
-						</hgroup>
-						{#if quillError}
-							<p>{quillError}</p>
-						{:else}
-							<div class="reader-wrapper">
-								<div bind:this={reader} />
-							</div>
-						{/if}
-					</div>
+					<hgroup>
+						<h1 class="headingReset" id={post.slug}>{post.title}</h1>
+						<date>{formatDate(new Date(post.createdAt))}</date>
+						<div class="tags">
+							{#each post.tags as tag}
+								<Badge {tag} />
+							{/each}
+						</div>
+					</hgroup>
+					{#if quillError}
+						<p>{quillError}</p>
+					{:else}
+						<div class="reader-wrapper">
+							<div bind:this={reader} />
+						</div>
+					{/if}
 				{:else}
 					<p>Post not found</p>
 				{/if}
@@ -121,57 +112,71 @@
 
 <style>
 	/* ELEMENTS */
+	section {
+		display: flex;
+		flex-direction: column;
+		margin-block-start: var(--size-content-1);
+	}
 	h1 {
-		/* line-height: var(--font-lineheight-0); */
+		margin: 0 auto;
 		color: var(--text-1);
-		font-style: normal;
-		/* font-weight: 400; */
-		font-size: var(--font-size-8);
-		line-height: 1;
+		font-size: var(--size-fluid-4);
+		line-height: var(--font-lineheight-0);
 		font-family: 'Perfectly Nineties Semibold';
-		letter-spacing: 0em;
 	}
 	date {
 		color: var(--gray-7);
 		font-size: var(--font-size-0);
 	}
 	hgroup {
-		margin-block-end: var(--size-6);
+		margin-block: var(--size-fluid-5);
+		text-align: center;
 	}
 
 	/* CLASSES */
-	.tags {
-		margin-block-start: var(--size-4);
-	}
 	.section {
+		margin: 0 auto;
 		box-shadow: var(--shadow-1);
 		border-radius: var(--radius-2);
-		padding: var(--size-3);
+		padding: var(--size-9);
 		height: fit-content;
 	}
-	.headerAction {
-		display: flex;
-		align-items: center;
-		& button {
-			margin-inline-start: var(--size-2);
-		}
-	}
 	.reader-wrapper {
-		width: 100%;
-		font-weight: var(--font-weight-2);
-		letter-spacing: var(--font-letterspacing-3);
+		margin: 0 auto;
+		& p {
+			font-weight: var(--font-weight-2);
+			font-size: var(--font-size-2);
+		}
 		& *,
 		& *::before,
 		& *::placeholder {
 			color: var(--text-1);
+			line-height: var(--font-lineheight-4);
 		}
 		& blockquote {
 			padding-inline: var(--size-4);
 		}
+		& img {
+			width: 100%;
+			height: var(--size-fluid-10);
+			object-fit: none;
+			object-position: center;
+		}
+		& h1 {
+			margin-block: var(--size-2);
+			background: unset;
+			-webkit-background-clip: unset;
+			font-size: var(--size-fluid-3);
+			-webkit-text-fill-color: unset;
+			background-clip: unset;
+		}
 	}
 	.prevNext-wrapper {
 		display: flex;
+		position: sticky;
+		bottom: 0;
 		justify-content: space-between;
+		margin-inline: var(--size-15);
 	}
 	.prevNext {
 		display: flex;
@@ -184,13 +189,9 @@
 	}
 	.blog-content-wrapper {
 		display: flex;
+		flex-direction: column;
 	}
 	.error-border {
 		border: 1px solid var(--error-text);
-	}
-	@media (max-width: 768px) {
-		h1 {
-			font-size: var(--font-size-6);
-		}
 	}
 </style>

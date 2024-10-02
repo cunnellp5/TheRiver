@@ -76,6 +76,7 @@
 
 	/* CLASSES */
 	.card {
+		gap: var(--size-2);
 		margin: 0 auto;
 		box-shadow: var(--shadow-1);
 		border: 1px solid var(--surface-4);
@@ -89,11 +90,7 @@
 		letter-spacing: var(--font-letterspacing-3);
 	}
 	.blogLink {
-		display: flex;
-		justify-content: end;
-		gap: var(--size-1);
-		margin-block: var(--size-2);
-		width: 100%;
+		display: contents;
 	}
 	.selected {
 		display: inline-block;

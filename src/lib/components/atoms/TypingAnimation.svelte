@@ -33,12 +33,12 @@
 		box-shadow: var(--shadow-3);
 		border-radius: var(--radius-2);
 		background-color: var(--sand-1);
-		padding: var(--size-4);
+		padding: var(--size-3);
 		color: var(--stone-10);
 		font-style: normal;
-		font-weight: var(--font-weight-4);
-		font-size: var(--font-size-8);
-		line-height: 1;
+		font-weight: var(--font-weight-9);
+		font-size: var(--font-size-fluid-3);
+		line-height: var(--font-lineheight-1);
 		font-family: 'Atyp BL Display Medium', monospace;
 		letter-spacing: 0em;
 		text-transform: uppercase;
