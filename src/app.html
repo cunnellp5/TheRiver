@@ -2,18 +2,38 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
+
 		<!-- claim pinterest -->
 		<meta name="p:domain_verify" content="886daefb26dfb75edcd76e14931b7b9b" />
 
-		<link rel="icon" type="image/svg+xml" href="%sveltekit.assets%/Logo-R2.svg" />
+		<!-- favicons -->
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="%sveltekit.assets%/favicons/apple-touch-icon.png" />
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="%sveltekit.assets%/favicons/favicon-32x32.png" />
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="16x16"
+			href="%sveltekit.assets%/favicons/favicon-16x16.png" />
+		<link rel="manifest" href="%sveltekit.assets%/favicons/site.webmanifest" />
+		<link
+			rel="mask-icon"
+			href="%sveltekit.assets%/favicons/safari-pinned-tab.svg"
+			color="#1d2523" />
+		<meta name="msapplication-TileColor" content="#00aba9" />
+		<meta name="theme-color" content="#1d2523" />
 
-		<!-- begin font -->
+		<!-- fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet" />
-		<!-- end font -->
 
-		<!-- TODO add fallback ico version of svg -->
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		%sveltekit.head%
 		<script type="module" nonce="%sveltekit.nonce%">
@@ -22,21 +42,6 @@
 			theme
 				? document.documentElement.setAttribute('color-scheme', theme)
 				: localStorage.setItem('color-scheme', 'dark');
-			console.log(`
-,-.----.     ,---,                ,---,.,-.----.    
-\\    /  \\ ,\`--.' |       ,---.  ,'  .' |\\    /  \\   
-;   :    \\|   :  :      /__./|,---.'   |;   :    \\  
-|   | .\\ ::   |  ' ,---.;  ; ||   |   .'|   | .\\ :  
-.   : |: ||   :  |/___/ \\  | |:   :  |-,.   : |: |  
-|   |  \\ :'   '  ;\\   ;  \\ ' |:   |  ;/||   |  \\ :  
-|   : .  /|   |  | \\   \\  \\: ||   :   .'|   : .  /  
-;   | |  \\'   :  ;  ;   \\  ' .|   |  |-,;   | |  \\  
-|   | ;\\  \\   |  '   \\   \\   ''   :  ;/||   | ;\\  \\ 
-:   ' | \\.'   :  |    \\   \`  ;|   |    \\:   ' | \\.' 
-:   : :-' ;   |.'      :   \\ ||   :   .':   : :-'   
-|   |.'   '---'         '---" |   | ,'  |   |.'     
-\`---'                         \`----'    \`---'       
-  `);
 		</script>
 	</head>
 	<body data-sveltekit-preload-data="hover">
