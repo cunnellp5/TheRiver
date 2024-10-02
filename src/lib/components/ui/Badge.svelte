@@ -4,9 +4,9 @@
 </script>
 
 {#if prefix}
-	<span class="badge surface-3">{tag}</span>
+	<span class="badge">{tag}</span>
 {:else}
-	<span class="badge surface-3">
+	<span class="badge">
 		{tag}
 		<slot></slot>
 	</span>
@@ -14,14 +14,15 @@
 
 <style>
 	.badge {
-		margin-inline-end: var(--size-1);
-		border-radius: var(--radius-2);
-		padding-inline: var(--size-2);
-		padding-block: var(--size-1);
-		color: hsl(var(--gray-6-hsl));
-		font-size: var(--font-size-0);
-		letter-spacing: var(--font-letterspacing-1);
-		/* background: var(--border); */
+		border-radius: var(--radius-3);
+		background-color: hsl(var(--teal-2-hsl) / 80%);
+		padding-inline: var(--size-3);
+		padding-block: var(--size-0);
+		color: var(--teal-10);
+		font-weight: var(--font-weight-5);
+		font-size: var(--font-size-1);
 		text-shadow: none;
+		text-transform: capitalize;
+		white-space: nowrap;
 	}
 </style>
