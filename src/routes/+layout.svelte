@@ -11,8 +11,21 @@
 	import Header from './components/header/Header.svelte';
 	import VanishingHeader from './components/header/VanishingHeader.svelte';
 	import PageTransition from './components/body/PageTransition.svelte';
+	import { onNavigate } from '$app/navigation';
 
 	export let data: PageData;
+
+	// Use view transitions if available
+	onNavigate((navigation) => {
+		if (!document.startViewTransition) return;
+
+		return new Promise((resolve) => {
+			document.startViewTransition(async () => {
+				resolve();
+				await navigation.complete;
+			});
+		});
+	});
 </script>
 
 <Toasts />
