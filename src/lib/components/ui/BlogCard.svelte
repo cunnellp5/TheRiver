@@ -9,37 +9,31 @@
 	export let slug: string;
 	export let description: string;
 	export let link: string = `/blog/${slug}`;
-
-	$: selectedHighlight = $page.url.pathname.includes(slug);
 </script>
 
-<a class="blogLink" href={link} data-sveltekit-noscroll>
-	<div
-		class="card surface-4"
-		class:selected={selectedHighlight}
-		class:unselected={!selectedHighlight && $page.url.pathname.includes('/blog/')}>
-		<div>
-			<span>
-				<slot name="published"></slot>
-			</span>
-			<h5 class="headingReset">
-				{title}
-			</h5>
-			<date>{formatDate(new Date(createdAt))}</date>
+<a class="blogLink" href={slug === 'void' ? 'javascript:void(0)' : link} data-sveltekit-noscroll>
+	<slot name="published"></slot>
+
+	<h5 class="headingReset title">
+		{title}
+	</h5>
+
+	<date>{formatDate(new Date(createdAt))}</date>
+
+	<p class="description">
+		{description}
+	</p>
+
+	<aside>
+		<div class="badges">
+			{#each tags as tag}
+				<Badge {tag} />
+			{/each}
 		</div>
-		<p class="description">
-			{description}
-		</p>
-		<aside>
-			<div class="badges">
-				{#each tags as tag}
-					<Badge {tag} />
-				{/each}
-			</div>
-		</aside>
-		<div>
-			<slot class="buttons" name="buttons"></slot>
-		</div>
+	</aside>
+
+	<div>
+		<slot class="buttons" name="buttons"></slot>
 	</div>
 </a>
 
@@ -47,13 +41,8 @@
 	/* ELEMENTS */
 	h5 {
 		color: var(--text-1);
-		font-style: normal;
-		/* font-weight: 400; */
 		font-size: var(--font-size-5);
-		line-height: 1;
 		font-family: 'Perfectly Nineties Semibold';
-		letter-spacing: 0em;
-		text-align: left;
 		& a {
 			color: var(--text-2);
 		}
@@ -75,13 +64,11 @@
 	}
 
 	/* CLASSES */
-	.card {
+	.badges {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
 		gap: var(--size-2);
-		margin: 0 auto;
-		box-shadow: var(--shadow-1);
-		border: 1px solid var(--surface-4);
-		border-radius: var(--radius-2);
-		padding: var(--size-4);
 	}
 	.description {
 		margin-block: var(--size-4);
@@ -90,17 +77,8 @@
 		letter-spacing: var(--font-letterspacing-3);
 	}
 	.blogLink {
-		display: contents;
+		display: block;
 	}
-	.selected {
-		display: inline-block;
-		opacity: 1;
-		border: 1px solid var(--link);
-	}
-	.unselected {
-		opacity: 0.5;
-	}
-
 	@media (max-width: 768px) {
 		.description {
 			font-size: var(--font-size-0);

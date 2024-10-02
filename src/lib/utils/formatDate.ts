@@ -1,5 +1,5 @@
 export default function formatDate(date: Date) {
 	return new Intl.DateTimeFormat('en-US', {
-		dateStyle: 'long'
+		dateStyle: 'medium'
 	}).format(date);
 }

@@ -1,4 +1,3 @@
-<!-- DUMMY PAGE BECAUSE IM USING THE LAYOUT -->
 <script lang="ts">
 	import Seo from '$lib/components/SEO.svelte';
 	import BlogCard from '$lib/components/ui/BlogCard.svelte';
@@ -25,51 +24,56 @@
 
 <Hero />
 
-<div class="posts-wrapper app-layout">
-	<div class="list-of-posts">
-		<nav class="posts-search">
-			<input type="search" bind:value={search} placeholder="Search posts..." />
-			<p class="posts-count">
-				{filteredPosts.length} post{filteredPosts.length > 1 ? 's' : ''}
-			</p>
-		</nav>
-		<section>
-			{#if filteredPosts.length > 0}
-				<ul>
-					{#each filteredPosts as { createdAt, description, slug, tags, title }}
-						<li>
-							<BlogCard {title} {tags} {createdAt} {slug} {description} />
-						</li>
-					{/each}
-				</ul>
-			{:else}
-				<ul>
-					<li>
-						<BlogCard
-							title={'No Posts'}
-							tags={[]}
-							createdAt={new Date()}
-							slug={'no-posts'}
-							description={''} />
-					</li>
-				</ul>
-			{/if}
-		</section>
-	</div>
+<div class="posts-wrapper app-layout list-of-posts">
+	<nav class="posts-search">
+		<input type="search" bind:value={search} placeholder="Search posts..." />
+		<p class="posts-count">
+			{filteredPosts.length} post{filteredPosts.length > 1 ? 's' : ''}
+		</p>
+	</nav>
+	<section>
+		{#if filteredPosts.length > 0}
+			<ul class="grid-container">
+				{#each filteredPosts as { createdAt, description, slug, tags, title }}
+					<div class="cardWrapper grid-item">
+						<BlogCard {title} {tags} {createdAt} {slug} {description} />
+					</div>
+				{/each}
+			</ul>
+		{:else}
+			<ul>
+				<li>
+					<BlogCard
+						title={'No Posts'}
+						tags={[]}
+						createdAt={new Date()}
+						slug={'void'}
+						description={''} />
+				</li>
+			</ul>
+		{/if}
+	</section>
 </div>
 
 <style>
+	/* ELEMENTS */
 	nav {
-		border-bottom: 1px solid var(--stone-11);
 		padding-block: var(--size-4);
 	}
-	ul {
-		& li {
-			margin-inline: var(--size-4);
-			margin-block: var(--size-4);
-		}
-	}
 	/* CLASSES */
+	.grid-container {
+		display: grid;
+		grid-template-columns: repeat(6, 1fr);
+		gap: var(--size-3);
+	}
+	.grid-container > .grid-item {
+		grid-column: span 6;
+	}
+	.grid-item {
+		border-radius: var(--radius-2);
+		background-color: var(--surface-4);
+		padding: var(--size-4);
+	}
 	.list-of-posts {
 		margin-block: var(--size-8);
 	}
@@ -81,12 +85,48 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		gap: var(--size-3);
 	}
+	.cardWrapper {
+		transition: box-shadow 0.3s ease-in-out; /* Add transition for box-shadow */
+	}
+	.cardWrapper:nth-child(1n):hover {
+		box-shadow: 0px 0px var(--size-9) calc(-1 * var(--size-7)) var(--life);
+	}
+	.cardWrapper:nth-child(2n):hover {
+		box-shadow: 0px 0px var(--size-9) calc(-1 * var(--size-7)) var(--healing);
+	}
+	.cardWrapper:nth-child(3n):hover {
+		box-shadow: 0px 0px var(--size-9) calc(-1 * var(--size-7)) var(--sunlight);
+	}
+	.cardWrapper:nth-child(4n):hover {
+		box-shadow: 0px 0px var(--size-9) calc(-1 * var(--size-7)) var(--nature);
+	}
+	.cardWrapper:nth-child(5n):hover {
+		box-shadow: 0px 0px var(--size-9) calc(-1 * var(--size-7)) var(--serenity);
+	}
+	.cardWrapper:nth-child(6n):hover {
+		box-shadow: 0px 0px var(--size-9) calc(-1 * var(--size-7)) var(--spirit);
+	}
+
 	/* MEDIA QUERIES */
-	@media (max-width: 768px) {
-		.posts-wrapper {
-			flex-direction: column-reverse;
+	@media (min-width: 768px) {
+		/* Select every 6 elements, starting from position 1, and make it take up 6 columns */
+		.grid-container > .grid-item:nth-child(6n + 1) {
+			grid-column: span 6;
+		}
+		/* Select every 6 elements, starting from position 2, and make it take up 3 columns */
+		.grid-container > .grid-item:nth-child(6n + 2) {
+			grid-column: span 3;
+		}
+		/* Select every 6 elements, starting from position 3, and make it take up 3 columns */
+		.grid-container > .grid-item:nth-child(6n + 3) {
+			grid-column: span 3;
+		}
+		/* Select every 6 elements, starting from position 4, 5, and 6, and make them take up 2 columns each */
+		.grid-container > .grid-item:nth-child(6n + 4),
+		.grid-container > .grid-item:nth-child(6n + 5),
+		.grid-container > .grid-item:nth-child(6n + 6) {
+			grid-column: span 2;
 		}
 	}
 </style>
