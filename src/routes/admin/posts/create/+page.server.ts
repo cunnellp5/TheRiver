@@ -37,6 +37,8 @@ export const actions: Actions = {
 
 		const slugified = slugify(title.toString());
 
+		const slicedDescription = description ? `${description.slice(0, 100)}...` : '';
+
 		try {
 			await db.post.create({
 				data: {
@@ -49,7 +51,7 @@ export const actions: Actions = {
 								.map((tag: string) => tag.trim())
 						: [],
 					slug: slugified,
-					description: description ? description.toString() : '',
+					description: slicedDescription,
 					published: !!published
 				}
 			});
