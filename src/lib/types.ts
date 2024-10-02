@@ -12,3 +12,15 @@ export type SparkleType = {
 	size: number;
 	style: any;
 };
+
+export type BlogPost = {
+	id: number;
+	createdAt: Date;
+	updatedAt: Date;
+	title: string;
+	content: string;
+	description: string;
+	slug: string;
+	published: boolean;
+	tags: string[];
+};

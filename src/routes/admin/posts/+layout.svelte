@@ -89,7 +89,7 @@
 						<ul>
 							{#each filteredPosts as { createdAt, description, slug, tags, title, published }}
 								{#if showElement}
-									<li>
+									<li class="card surface-4">
 										<BlogCard
 											link={`/admin/posts/${slug}`}
 											{title}
@@ -144,8 +144,8 @@
 		padding: var(--size-4);
 	}
 	ul {
-		height: 90vh;
-		overflow: scroll;
+		/* height: 90vh; */
+		/* overflow: scroll; */
 		& li {
 			margin-inline: var(--size-4);
 			margin-block: var(--size-4);
@@ -194,15 +194,28 @@
 	}
 	.isPublished {
 		margin-block: var(--size-2);
+		margin-block-end: var(--size-8);
 		font-size: var(--font-size-0);
 		text-align: center;
 	}
 	.published {
-		border: 1px dashed var(--green-4);
+		box-shadow: 0px var(--size-4) var(--size-15) var(--green-4);
+		border: 1px solid var(--green-4);
+		border-radius: var(--radius-3);
 		color: var(--green-4);
 	}
 	.unpublished {
-		border: 1px dashed var(--yellow-4);
+		box-shadow: 0px var(--size-4) var(--size-15) var(--yellow-4);
+		border: 1px solid var(--yellow-4);
+		border-radius: var(--radius-3);
 		color: var(--yellow-4);
+	}
+	.card {
+		/* gap: var(--size-2); */
+		margin-block: var(--size-6);
+		/* box-shadow: var(--shadow-1); */
+		border: 1px solid var(--surface-4);
+		border-radius: var(--radius-2);
+		padding: var(--size-4);
 	}
 </style>
