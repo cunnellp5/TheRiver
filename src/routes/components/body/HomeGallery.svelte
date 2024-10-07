@@ -1,18 +1,23 @@
 <main>
 	<article class="gallery">
 		<img
+			loading="lazy"
 			src="https://res.cloudinary.com/dswpu3qez/image/upload/f_auto/q_auto:eco/TheRiver/AlexisWater1_ji0grg.webp"
 			alt="Water model" />
 		<img
+			loading="lazy"
 			src="https://res.cloudinary.com/dswpu3qez/image/upload/f_auto/q_auto:eco/TheRiver/alexismodel1_va2axz.webp"
 			alt="fifth element model" />
 		<img
+			loading="lazy"
 			src="https://res.cloudinary.com/dswpu3qez/image/upload/f_auto/q_auto:eco/TheRiver/alexis_blue_h6x97p.webp"
 			alt="holding comb model" />
 		<img
+			loading="lazy"
 			src="https://res.cloudinary.com/dswpu3qez/image/upload/f_auto/q_auto:eco/TheRiver/alexisSing_mmyxg6.webp"
 			alt="singing blue background" />
 		<img
+			loading="lazy"
 			src="https://res.cloudinary.com/dswpu3qez/image/upload/f_auto/q_auto:eco/TheRiver/alexisArticle2_iqx8vk.webp"
 			alt="sitting on yellow floor" />
 	</article>

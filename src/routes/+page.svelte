@@ -76,6 +76,7 @@
 								class="crop"
 								height="600px"
 								width="600px"
+								loading="lazy"
 								src={article.img}
 								alt={article.articleTitle} />
 						</GenericCard.Content>
