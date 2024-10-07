@@ -6,20 +6,32 @@
 
 	let displayText = '';
 	let i = 0;
-	let typingEffect: ReturnType<typeof setInterval>;
+	let startTime: number;
+	let animationFrameId: number;
 
-	onMount(() => {
-		typingEffect = setInterval(() => {
+	function typeCharacter(timestamp: number) {
+		if (!startTime) startTime = timestamp;
+		const elapsed = timestamp - startTime;
+
+		if (elapsed >= duration) {
 			if (i < text.length) {
 				displayText = text.substring(0, i + 1);
-				i = i + 1;
+				i++;
+				startTime = timestamp; // Reset start time for the next character
 			} else {
-				clearInterval(typingEffect);
+				cancelAnimationFrame(animationFrameId);
+				return;
 			}
-		}, duration);
+		}
+
+		animationFrameId = requestAnimationFrame(typeCharacter);
+	}
+
+	onMount(() => {
+		animationFrameId = requestAnimationFrame(typeCharacter);
 
 		return () => {
-			clearInterval(typingEffect);
+			cancelAnimationFrame(animationFrameId);
 		};
 	});
 </script>
@@ -30,9 +42,10 @@
 
 <style>
 	.jumbo {
+		/* background-color: var(--sand-1); */
+		backdrop-filter: blur(15px);
 		box-shadow: var(--shadow-3);
 		border-radius: var(--radius-2);
-		background-color: var(--sand-1);
 		padding: var(--size-3);
 		color: var(--stone-10);
 		font-style: normal;
@@ -42,17 +55,5 @@
 		font-family: 'Atyp BL Display Medium', monospace;
 		letter-spacing: 0em;
 		text-transform: uppercase;
-	}
-
-	@keyframes rainbow {
-		0% {
-			background-position: 0% 50%;
-		}
-		50% {
-			background-position: 100% 50%;
-		}
-		100% {
-			background-position: 0% 50%;
-		}
 	}
 </style>
