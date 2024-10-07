@@ -3,15 +3,11 @@
 	import Seo from '$lib/components/SEO.svelte';
 	import tracks from './TRACKS';
 
-	// export let data;
-	// const { tracks } = data;
-	// let iframi esLoaded = false; // State to track if iframes have been loaded
-
 	onMount(() => {
 		const iframes = document.querySelectorAll('iframe');
-		const immediateLoadCount = 6; // Number of iframes to load immediately
+		const immediateLoadCount = 1; // Number of iframes to load immediately
 
-		iframes.forEach((iframe, index) => {
+		const loadIframe = (iframe: HTMLIFrameElement, index: number) => {
 			if (index < immediateLoadCount) {
 				// Load the first few iframes immediately
 				iframe.src = iframe.getAttribute('data-src') ?? '';
@@ -21,10 +17,22 @@
 					() => {
 						iframe.src = iframe.getAttribute('data-src') ?? '';
 					},
-					(index - immediateLoadCount) * 250
+					(index - immediateLoadCount) * 350
 				); // Adjust the delay as needed
 			}
-		});
+		};
+
+		const loadIframesInChunks = (iframes: NodeListOf<HTMLIFrameElement>, startIndex: number) => {
+			const chunkSize = 1; // Number of iframes to load per chunk
+			for (let i = startIndex; i < startIndex + chunkSize && i < iframes.length; i++) {
+				loadIframe(iframes[i], i);
+			}
+			if (startIndex + chunkSize < iframes.length) {
+				requestAnimationFrame(() => loadIframesInChunks(iframes, startIndex + chunkSize));
+			}
+		};
+
+		loadIframesInChunks(iframes, 0);
 	});
 </script>
 
