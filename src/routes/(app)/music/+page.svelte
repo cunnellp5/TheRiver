@@ -69,7 +69,7 @@
 	/* CLASSES */
 	.grid-container {
 		display: grid;
-		margin-block: var(--size-7);
+		/* margin-block: var(--size-7); */
 	}
 	.tracks {
 		display: grid;

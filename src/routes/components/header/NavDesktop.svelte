@@ -6,6 +6,7 @@
 	import { browser } from '$app/environment';
 	import { enhance } from '$app/forms';
 	import { addToast } from '$lib/stores/toast';
+	import NavButton from '$lib/components/ui/button/NavButton.svelte';
 
 	export let showingSheet: boolean = false;
 	export let isSignedIn: boolean;
@@ -27,13 +28,13 @@
 	});
 
 	$: includesAdmin = $page.url.pathname.includes('/admin');
-	$: includesPosts = $page.url.pathname.includes('/posts');
+	$: includesBlog = $page.url.pathname.includes('/blog');
 	$: includesService = $page.url.pathname.includes('/services');
 	$: includesMusic = $page.url.pathname.includes('/music');
 
 	$: isContact = $page.url.pathname === '/contact';
 	$: isDashboard = $page.url.pathname === '/dashboard';
-	$: isHomePage = $page.url.pathname === '/';
+	// $: isHomePage = $page.url.pathname === '/';
 	$: isLogin = $page.url.pathname === '/login';
 	$: isLogout = $page.url.pathname === '/logout';
 	$: isShop = $page.url.pathname === '/shop';
@@ -44,44 +45,50 @@
 	<a class="logo-link" href="/">
 		<LogoR />
 	</a>
-	<ul
-		class="links"
-		class:homepageText={isHomePage}
-		class:showingSheet
-		class:showingSheetTopSeparator={showingSheet}>
+	<ul class="links" class:showingSheet class:showingSheetTopSeparator={showingSheet}>
 		<li></li>
 		{#if user && user.isAdmin}
-			<li class:current={includesAdmin} aria-current={includesAdmin}>
+			<!-- <li class:current={includesAdmin} aria-current={includesAdmin}>
 				<a href="/admin"> Admin </a>
-			</li>
+			</li> -->
+			<NavButton route="/admin" display="Admin" active={includesAdmin} />
 		{/if}
 		{#if isSignedIn && user}
-			<li class:current={isDashboard} aria-current={isDashboard}>
+			<!-- <li class:current={isDashboard} aria-current={isDashboard}>
 				<a href="/dashboard"> Dashboard </a>
-			</li>
+			</li> -->
+			<NavButton route="/dashboard" display="Dashboard" active={isDashboard} />
 		{/if}
 	</ul>
 </div>
-<ul class="links" class:homepageText={isHomePage} class:showingSheet>
+<ul class="links" class:showingSheet>
 	{#if showingSheet}
 		<li class:borderBottom={showingSheet}></li>
 	{/if}
-	<li class:current={includesMusic} aria-current={includesMusic}>
+	<!-- <li class:current={includesMusic} aria-current={includesMusic}>
 		<a href="/music"> Music </a>
-	</li>
-	<li class:current={includesService} aria-current={includesService}>
+	</li> -->
+	<NavButton route="/music" display="Music" active={includesMusic} />
+
+	<!-- <li class:current={includesService} aria-current={includesService}>
 		<a href="/services"> services </a>
-	</li>
+	</li> -->
+	<NavButton route="/services" display="services" active={includesService} />
+
 	<li class:current={isShop} aria-current={isShop}>
 		<a href="https://www.etsy.com/shop/TheRiverDesign" target="_blank" rel="noopener"> Merch </a>
 	</li>
 	<li class:border-left={!showingSheet} class:borderBottom={showingSheet}></li>
-	<li class:current={includesPosts} aria-current={includesPosts}>
+
+	<!-- <li class:current={includesBlog} aria-current={includesBlog}>
 		<a href="/blog"> Blog </a>
-	</li>
-	<li class:current={isContact} aria-current={isContact}>
+	</li> -->
+	<NavButton route="/blog" display="Blog" active={includesBlog} />
+	<!-- <li class:current={isContact} aria-current={isContact}>
 		<a href="/contact"> Contact </a>
-	</li>
+	</li> -->
+	<NavButton route="/contact" display="Contact" active={isContact} />
+
 	<li class:border-left={!showingSheet} class:borderBottom={showingSheet}></li>
 	{#if isSignedIn}
 		<form
@@ -105,7 +112,7 @@
 					}
 				};
 			}}>
-			<li class:current={isLogout} class:homepageText={isHomePage}>
+			<li class:current={isLogout}>
 				<button class="logout-button" type="submit">Logout</button>
 			</li>
 		</form>

@@ -64,3 +64,78 @@ export default [
 		title: 'Nonchalant 6lack (Cover by River)'
 	}
 ];
+
+// <script lang="ts">
+// 	import TypingAnimation from '$lib/components/atoms/TypingAnimation.svelte';
+// 	import _ from 'lodash';
+
+// 	let scroll: number;
+
+// 	// Throttled function to update the style
+// 	const updatePosition = _.throttle((scrolling) => {
+// 		if (typeof document !== 'undefined') {
+// 			const img = document.querySelector('#hero-image');
+// 			if (img) {
+// 				(img as HTMLElement).style.objectPosition = `center ${40 + scrolling / 45}%`;
+// 			}
+// 		}
+// 	}, 50); // Adjust the throttle delay as needed
+
+// 	// Reactive statement to call the throttled function
+// 	$: {
+// 		if (typeof window !== 'undefined') {
+// 			updatePosition(scroll);
+// 		}
+// 	}
+// </script>
+
+// <svelte:window bind:scrollY={scroll} />
+
+// <div class="app-layout">
+// 	<div class="image-container">
+// 		<!-- style:object-position={`center ${40 + scroll / 45}%`} -->
+// 		<img
+// 			id="hero-image"
+// 			src="https://res.cloudinary.com/dswpu3qez/image/upload/q_auto/v1727811530/backgrounds/modelingChairOffCenter2_lcf3i0.webp"
+// 			alt="looking in the mirror" />
+// 	</div>
+
+// 	<div class="titleWrapper app-layout">
+// 		<a href="/blog">
+// 			<TypingAnimation text="The River Blogs." />
+// 		</a>
+// 	</div>
+// </div>
+
+// <style>
+// 	/* ELEMENTS */
+// 	a {
+// 		text-decoration: none;
+// 	}
+// 	/* CLASSES */
+// 	.app-layout {
+// 		position: relative;
+// 	}
+// 	.titleWrapper {
+// 		display: flex;
+// 		justify-content: center;
+// 		align-items: center;
+// 		width: 100%;
+// 		height: var(--size-content-2);
+// 		user-select: none;
+// 	}
+// 	.image-container {
+// 		position: absolute;
+// 		z-index: -1;
+// 		width: 100%;
+// 		height: var(--size-content-2);
+// 		overflow: hidden;
+// 	}
+// 	.image-container img {
+// 		border-radius: unset;
+// 		padding-inline: var(--size-7);
+// 		width: 100%;
+// 		height: 100%;
+// 		object-fit: cover;
+// 	}
+// </style>
