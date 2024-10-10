@@ -6,6 +6,8 @@
 	import type { LayoutData } from './$types';
 	import Hero from './Hero.svelte';
 	import { ShowHideScroll } from '$lib/utils/classes/ShowHideScroll';
+	import Featured from './Featured.svelte';
+	import Marquee from '$lib/components/ui/Marquee.svelte';
 
 	export let data: LayoutData;
 	const { about } = data;
@@ -27,6 +29,10 @@
 
 <main class="grid-container">
 	<Hero />
+
+	<Marquee display={'NEW RELEASE - Out The Mud -'} />
+
+	<Featured />
 	<!-- {#if about.isShowing}
 		<p>
 			{about.text}
@@ -34,7 +40,6 @@
 	{/if} -->
 
 	<section class="music-content app-layout">
-		<!-- class:show={headerClass === 'show'} class:hide={headerClass === 'hide'} -->
 		<div
 			class={`links ${CssScrollToggler.updateClass(scroll)}`}
 			use:CssScrollToggler.setTransitionDuration>
