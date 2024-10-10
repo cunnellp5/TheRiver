@@ -1,89 +1,50 @@
+<script lang="ts">
+	import { onMount } from 'svelte';
+	import TRACKS_FEATURED from './TRACKS_FEATURED';
+	import { IFrameLoader } from '$lib/utils/classes/IFrameLoader';
+
+	onMount(() => {
+		const iframes = document.querySelectorAll('iframe');
+		new IFrameLoader().loadIframesInChunks(iframes, 0);
+	});
+</script>
+
 <section class="app-layout">
 	<div class="title">
 		<h2>Out The Mud</h2>
 		<time datetime="2024-10-08">Oct 08 2024</time>
 	</div>
 	<div class="tracksGrid">
-		<div>
-			<iframe
-				title="out the mud track 1"
-				width="100%"
-				height="400"
-				scrolling="no"
-				frameborder="no"
-				allow="autoplay"
-				src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1929051230&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&visual=true">
-			</iframe>
-			<div
-				style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
-				<a
-					href="https://soundcloud.com/theriversings"
-					title="THE RIVER"
-					target="_blank"
-					style="color: #cccccc; text-decoration: none;">THE RIVER</a>
-				·
-				<a
-					href="https://soundcloud.com/theriversings/best-for-me-out-the-mud-volume-1-track-1"
-					title="&quot;Best for Me&quot; Out the Mud Volume 1 Track 1"
-					target="_blank"
-					style="color: #cccccc; text-decoration: none;"
-					>&quot;Best for Me&quot; Out the Mud Volume 1 Track 1</a>
+		{#each TRACKS_FEATURED as track}
+			<div>
+				<iframe
+					title="out the mud track 1"
+					width={track.width}
+					height={track.height}
+					scrolling="no"
+					frameborder="no"
+					allow="autoplay"
+					loading="lazy"
+					data-src={track.iframeUrl}>
+				</iframe>
+				<div
+					style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
+					<a
+						href="https://soundcloud.com/theriversings"
+						title="THE RIVER"
+						target="_blank"
+						style="color: #cccccc; text-decoration: none;">THE RIVER</a>
+					·
+					<a
+						href={track.soundCloudUrl}
+						title={track.title}
+						target="_blank"
+						style="color: #cccccc; text-decoration: none;">
+						{@html track.title}
+					</a>
+				</div>
 			</div>
-		</div>
-
-		<div>
-			<iframe
-				title="out the mud track 2"
-				width="100%"
-				height="166"
-				scrolling="no"
-				frameborder="no"
-				allow="autoplay"
-				src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1929045803&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"
-			></iframe>
-			<div
-				style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
-				<a
-					href="https://soundcloud.com/theriversings"
-					title="THE RIVER"
-					target="_blank"
-					style="color: #cccccc; text-decoration: none;">THE RIVER</a>
-				·
-				<a
-					href="https://soundcloud.com/theriversings/fall-release-date-100724"
-					title="&quot;Fall&quot; Out the Mud Volume 1 Track 2"
-					target="_blank"
-					style="color: #cccccc; text-decoration: none;"
-					>&quot;Fall&quot; Out the Mud Volume 1 Track 2</a>
-			</div>
-		</div>
-
-		<div>
-			<iframe
-				title="out the mud track 3"
-				width="100%"
-				height="166"
-				scrolling="no"
-				frameborder="no"
-				allow="autoplay"
-				src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1826468196&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"
-			></iframe>
-			<div
-				style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
-				<a
-					href="https://soundcloud.com/theriversings"
-					title="THE RIVER"
-					target="_blank"
-					style="color: #cccccc; text-decoration: none;">THE RIVER</a>
-				·
-				<a
-					href="https://soundcloud.com/theriversings/reasons"
-					title="&quot;Reasons&quot; Out the Mud Volume 1 Track 3"
-					target="_blank"
-					style="color: #cccccc; text-decoration: none;"
-					>&quot;Reasons&quot; Out the Mud Volume 1 Track 3</a>
-			</div>
-		</div>
+		{/each}
 	</div>
 
 	<div class="social-links">
