@@ -18,5 +18,6 @@
 		display: flex;
 		flex-direction: column;
 		gap: var(--size-7);
+		width: 100%;
 	}
 </style>

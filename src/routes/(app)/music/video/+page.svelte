@@ -14,4 +14,5 @@
 	title={'Watch Exclusive Music Videos by The River | Alexis'}
 	description={"Explore The River's captivating music videos. Watch her latest visual masterpieces and experience the fusion of music and artistry."} />
 
+<!-- Why separate this at all? -->
 <VideoCarousel {videos} />

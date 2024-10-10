@@ -15,7 +15,37 @@
 
 	let scroll: number;
 
+	let duration = '300ms';
+	let offset = 50;
+	let tolerance = 5;
+	let headerClass = 'show';
+	let lastY = 0;
+
+	function deriveClass(y: number, dy: number) {
+		if (y < offset) {
+			return 'show';
+		}
+		if (Math.abs(dy) <= tolerance) {
+			return headerClass;
+		}
+		if (dy > 0) {
+			return 'show';
+		}
+		return 'hide';
+	}
+
+	function updateClass(y: number) {
+		const dy = lastY - y;
+		lastY = y;
+		return deriveClass(y, dy);
+	}
+
+	function setTransitionDuration(node: HTMLDivElement) {
+		node.style.transitionDuration = duration;
+	}
+
 	$: {
+		headerClass = updateClass(scroll);
 		includesTracks = $page.url.pathname === '/music';
 		includesStems = $page.url.pathname === '/music/video';
 		includesVideos = $page.url.pathname === '/music/stems';
@@ -33,19 +63,12 @@
 	{/if} -->
 
 	<section class="music-content app-layout">
-		<nav class="links">
-			<NavButton route="/music" display="tracks" active={includesTracks} borderStyle="horizontal" />
-			<NavButton
-				route="/music/video"
-				display="videos"
-				active={includesStems}
-				borderStyle="horizontal" />
-			<NavButton
-				route="/music/stems"
-				display="stems"
-				active={includesVideos}
-				borderStyle="horizontal" />
-		</nav>
+		<!-- class:show={headerClass === 'show'} class:hide={headerClass === 'hide'} -->
+		<div class={`links ${headerClass}`} use:setTransitionDuration>
+			<NavButton route="/music" display="tracks" active={includesTracks} />
+			<NavButton route="/music/video" display="videos" active={includesStems} />
+			<NavButton route="/music/stems" display="stems" active={includesVideos} />
+		</div>
 		<slot></slot>
 	</section>
 </main>
@@ -55,26 +78,35 @@
 	.links {
 		display: flex;
 		position: sticky;
-		top: calc(var(--nav-height) + var(--size-3));
-		flex-direction: column;
 		align-self: start; /* Ensure it aligns to the start of the container */
-		justify-self: start;
-		gap: var(--size-3);
-		border-radius: var(--radius-2);
-		background-color: var(--sand-10);
+		gap: var(--size-4);
+		z-index: var(--layer-important);
+		backdrop-filter: blur(20px);
+		margin-bottom: var(--size-4);
+		border-bottom: 1px solid var(--stone-11);
+		/* border-radius: var(--radius-2); */
 		padding: var(--size-5);
 		color: var(--stone-4);
 		list-style: none;
 	}
 	.music-content {
-		display: grid;
-		grid-template-columns: 1fr 9fr;
 		width: 100%;
 	}
 	.grid-container {
 		display: flex;
 		flex-direction: column;
 		width: 100%;
+	}
+
+	.show {
+		/* position: sticky; */
+		top: calc(var(--nav-height));
+		/* transform: translateY(0%); */
+	}
+	.hide {
+		/* transform: translateY(100%); */
+		top: 2px;
+		/* position: sticky; */
 	}
 
 	@keyframes moveGradient {

@@ -74,13 +74,13 @@
 		/* Animation bumps up the z-index, to make sure it’s on top */
 		@keyframes adjust-z-index {
 			0% {
-				z-index: 1;
+				z-index: var(--layer-1);
 			}
 			50% {
-				z-index: 100; /* When at the center, be on top */
+				z-index: var(--layer-4); /* When at the center, be on top */
 			}
 			100% {
-				z-index: 1;
+				z-index: var(--layer-1);
 			}
 		}
 
@@ -118,7 +118,7 @@
 
 			/* Make the 3D stuff work… */
 			perspective: 40em;
-			z-index: 1;
+			z-index: var(--layer-1);
 			will-change: z-index;
 
 			/* pointer-events: none; */
@@ -180,7 +180,6 @@
 		}
 
 		.cards {
-			outline: 1px solid #333;
 			border-radius: var(--radius-1);
 			background: rgba(0 0 0 / 0.5);
 			width: 100%;
