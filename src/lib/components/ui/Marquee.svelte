@@ -1,19 +1,23 @@
+<script lang="ts">
+	export let display: string = 'THE RIVER';
+</script>
+
 <div class="marquee marquee-hover-pause">
 	<div class="marquee_group">
-		<span class="font1">THE RIVER</span>
-		<span>THE RIVER</span>
-		<span class="font1">THE RIVER</span>
-		<span>THE RIVER</span>
-		<span class="font1">THE RIVER</span>
-		<span>THE RIVER</span>
+		<span class="font1">{display}</span>
+		<span>{display}</span>
+		<span class="font1">{display}</span>
+		<span>{display}</span>
+		<span class="font1">{display}</span>
+		<span>{display}</span>
 	</div>
 	<div class="marquee_group" aria-hidden="true">
-		<span class="font1">THE RIVER</span>
-		<span>THE RIVER</span>
-		<span class="font1">THE RIVER</span>
-		<span>THE RIVER</span>
-		<span class="font1">THE RIVER</span>
-		<span>THE RIVER</span>
+		<span class="font1">{display}</span>
+		<span>{display}</span>
+		<span class="font1">{display}</span>
+		<span>{display}</span>
+		<span class="font1">{display}</span>
+		<span>{display}</span>
 	</div>
 </div>
 
@@ -33,7 +37,7 @@
 	.marquee_group {
 		display: flex;
 		flex-shrink: 0;
-		animation: scroll 45s linear infinite;
+		animation: scroll 85s linear infinite;
 		min-width: 100%;
 	}
 	.marquee_group span {
