@@ -1,47 +1,18 @@
 <script lang="ts">
 	import RainbowBar from './RainbowBar.svelte';
+	import { ShowHideScroll } from '$lib/utils/classes/ShowHideScroll';
 
-	export let duration = '300ms';
-	export let offset = 0;
-	export let tolerance = 0;
-
-	let headerClass = 'show';
-	let y = 0;
-	let lastY = 0;
-
-	function deriveClass(y: number, dy: number) {
-		if (y < offset) {
-			return 'show';
-		}
-		if (Math.abs(dy) <= tolerance) {
-			return headerClass;
-		}
-		if (dy > 0) {
-			return 'show';
-		}
-		return 'hide';
-	}
-
-	function updateClass(y: number) {
-		const dy = lastY - y;
-		lastY = y;
-		return deriveClass(y, dy);
-	}
-
-	function setTransitionDuration(node: HTMLDivElement) {
-		node.style.transitionDuration = duration;
-	}
-
-	$: headerClass = updateClass(y);
+	const CssScrollToggler = new ShowHideScroll();
+	let scroll = 0;
 </script>
 
-<svelte:window bind:scrollY={y} />
+<svelte:window bind:scrollY={scroll} />
 
-<div use:setTransitionDuration class={headerClass}>
+<div use:CssScrollToggler.setTransitionDuration class={CssScrollToggler.updateClass(scroll)}>
 	<RainbowBar />
 </div>
 
-<div use:setTransitionDuration class={headerClass}>
+<div use:CssScrollToggler.setTransitionDuration class={CssScrollToggler.updateClass(scroll)}>
 	<slot />
 </div>
 

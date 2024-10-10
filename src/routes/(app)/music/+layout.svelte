@@ -10,13 +10,11 @@
 	export let data: LayoutData;
 	const { about } = data;
 
+	const CssScrollToggler = new ShowHideScroll();
+	let scroll: number;
 	let includesTracks: boolean;
 	let includesStems: boolean;
 	let includesVideos: boolean;
-
-	let scroll: number;
-
-	const CssScrollToggler = new ShowHideScroll();
 
 	$: {
 		includesTracks = $page.url.pathname === '/music';

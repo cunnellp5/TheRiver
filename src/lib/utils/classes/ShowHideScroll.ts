@@ -15,6 +15,8 @@
 	* No need to use reactive statement, since our scroll is updating the class directly
 	* setTransitionDuration is a Svelte action that sets the transition duration of the element
 	* customize your .show and .hide classes to toggle between the two classes
+	* 
+	* future: could refactor to optionally change the two classes we want to toggle based on scroll direction
 */
 
 export class ShowHideScroll {
