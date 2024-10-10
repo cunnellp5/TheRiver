@@ -1,7 +1,7 @@
 export class IFrameLoader {
-	immediateLoadCount = 1; // Number of iframes to load immediately
+	immediateLoadCount = 0; // Number of iframes to load immediately
 	chunkSize = 1; // Number of iframes to load per chunk
-	delay = 350; // Delay between loading iframes in a chunk
+	delay = 500; // Delay between loading iframes in a chunk
 
 	loadIframe = (iframe: HTMLIFrameElement, index: number) => {
 		if (index < this.immediateLoadCount) {

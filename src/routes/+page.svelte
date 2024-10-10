@@ -57,7 +57,9 @@
 			<Socials />
 		</div>
 	</div>
-	<Marquee />
+	<a href="/music" class="marquee">
+		<Marquee display={'NEW RELEASE - Out The Mud -'} />
+	</a>
 	<section>
 		{#each articles as article, i}
 			<GenericCard.Root class={i % 2 === 0 ? 'option1' : 'option2'}>
@@ -107,11 +109,13 @@
 		object-fit: cover; /* Ensure the video covers the entire area */
 	}
 	/* CLASSES */
+	.marquee:hover {
+		text-decoration: none;
+	}
 	.lobster {
 		color: var(--link);
 		font-family: 'Lobster', cursive;
 	}
-
 	.about,
 	.beauty {
 		display: flex;

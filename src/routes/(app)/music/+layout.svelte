@@ -30,8 +30,6 @@
 <main class="grid-container">
 	<Hero />
 
-	<Marquee display={'NEW RELEASE - Out The Mud -'} />
-
 	<Featured />
 	<!-- {#if about.isShowing}
 		<p>
