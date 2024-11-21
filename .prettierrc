@@ -11,6 +11,10 @@
 		{
 			"files": "*.svelte",
 			"options": { "parser": "svelte" }
+		},
+		{
+			"files": "*.ts",
+			"options": { "parser": "babel-ts" }
 		}
 	]
 }
