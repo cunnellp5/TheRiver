@@ -3,22 +3,26 @@
 	import TRACKS_FEATURED from './TRACKS_FEATURED';
 	import { IFrameLoader } from '$lib/utils/classes/IFrameLoader';
 
+	let iframeLoader: IFrameLoader = new IFrameLoader();
+	let iframes: NodeListOf<HTMLIFrameElement>;
+
 	onMount(() => {
-		const iframes = document.querySelectorAll('iframe');
-		new IFrameLoader().loadIframesInChunks(iframes, 0);
+		iframes = document.querySelectorAll('.tracks-featured') as NodeListOf<HTMLIFrameElement>;
+		iframeLoader.loadIframesInChunks(iframes, 0);
 	});
 </script>
 
 <section class="app-layout">
 	<div class="title">
-		<h2>Out The Mud</h2>
+		<h2>Out The Mud Vol 2</h2>
 		<time datetime="2024-10-08">Oct 08 2024</time>
 	</div>
 	<div class="tracksGrid">
 		{#each TRACKS_FEATURED as track}
 			<div>
 				<iframe
-					title="out the mud track 1"
+					class="tracks-featured"
+					title={track.title}
 					width={track.width}
 					height={track.height}
 					scrolling="no"
@@ -49,16 +53,16 @@
 
 	<div class="social-links">
 		<a
-			href="https://distrokid.com/hyperfollow/theriver2/out-the-mud-volume-1"
+			href="https://distrokid.com/hyperfollow/theriver2/out-the-mud-volume-2"
 			target="_blank"
 			rel="noopener">
 			<button class="create-button"> Distrokid </button>
 		</a>
-		<a href="https://open.spotify.com/album/2Yul2PrAV82Wuz12OFQq5o" target="_blank" rel="noopener">
+		<a href="https://open.spotify.com/album/46TmH8hxWDYdl28vTSXmEC" target="_blank" rel="noopener">
 			<button class="create-button"> Spotify </button>
 		</a>
 		<a
-			href="https://www.youtube.com/watch?v=J4uGlJrJK4k&list=OLAK5uy_mtKwMq4QfzLVQLmFp4vGa3WOCm2ZVxYQE"
+			href="https://www.youtube.com/watch?v=z-OJ9WmDnDE&list=OLAK5uy_kopLOOpL784D1d8KLy-G2gjm9Nkdc7bzY"
 			target="_blank"
 			rel="noopener">
 			<button class="create-button"> YouTube </button>
@@ -85,7 +89,7 @@
 		gap: var(--size-7);
 	}
 	.tracksGrid div:first-child {
-		grid-row: span 2;
+		grid-row: span 3;
 	}
 	@media (max-width: 768px) {
 		.tracksGrid {
