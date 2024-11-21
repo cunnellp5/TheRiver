@@ -12,7 +12,6 @@ export const POST: RequestHandler = async ({ request }): Promise<Response> => {
 		from: env.EMAIL_USER,
 		to: email,
 		html: render({ template: Welcome as unknown as typeof SvelteComponent })
-		// html: render({ template: Welcome })
 	};
 
 	try {
