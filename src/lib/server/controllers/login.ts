@@ -1,17 +1,15 @@
-import { lucia } from '$lib/server/auth';
-import type { Cookies } from '@sveltejs/kit';
+import { generateSessionToken, createSession, setSessionTokenCookie } from '$lib/server/auth';
+import type { RequestEvent } from '@sveltejs/kit';
 
 export async function login({
 	userId,
-	cookies
+	event
 }: {
-	userId: string;
-	cookies: Cookies;
+	userId: number;
+	event: RequestEvent;
 }): Promise<void> {
-	const session = await lucia.createSession(userId, {});
-	const sessionCookie = lucia.createSessionCookie(session.id);
-	cookies.set(sessionCookie.name, sessionCookie.value, {
-		path: '.',
-		...sessionCookie.attributes
-	});
+	const token = generateSessionToken();
+	const session = await createSession(token, userId);
+
+	const sessionCookie = setSessionTokenCookie(event, token, session.expiresAt);
 }
