@@ -18,12 +18,13 @@
 		'Password reset link - Expires in 24 hours - click the button to reset your password';
 </script>
 
-<html lang="en">
-	<head>
-		<title>Reset Email</title>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<meta name="description" content="Reset Email link for The River" />
-	</head>
+<svelte:head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	<meta name="description" content="Reset Email link for The River" />
+	<title>Reset Password</title>
+</svelte:head>
+
+<main>
 	<Preview preview={previewText} />
 	<Section>
 		<Container style={container}>
@@ -40,4 +41,4 @@
 			<EmailFooter />
 		</Container>
 	</Section>
-</html>
+</main>
