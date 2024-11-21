@@ -1,4 +1,5 @@
 import { env } from '$env/dynamic/private';
+import type { SvelteComponent } from 'svelte';
 import Welcome from '$lib/emails/templates/Welcome.svelte';
 import transporter from '$lib/utils/transporter';
 import { error, json, type RequestHandler } from '@sveltejs/kit';
@@ -10,8 +11,8 @@ export const POST: RequestHandler = async ({ request }): Promise<Response> => {
 	const options = {
 		from: env.EMAIL_USER,
 		to: email,
-		subject,
-		html: render({ template: Welcome })
+		html: render({ template: Welcome as unknown as typeof SvelteComponent })
+		// html: render({ template: Welcome })
 	};
 
 	try {

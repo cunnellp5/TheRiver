@@ -1,4 +1,5 @@
 import type { ComponentProps, ComponentType, SvelteComponent } from 'svelte';
+import { render as svelteRender } from 'svelte/server';
 import doctype from './doctype';
 
 export const render = <Component extends SvelteComponent>({
@@ -6,15 +7,16 @@ export const render = <Component extends SvelteComponent>({
 	props,
 	options
 }: {
-	template: ComponentType<Component>;
-	props?: ComponentProps<Component>;
+	template: ComponentType;
+	props?: ComponentProps;
 	options?: {
 		plainText?: boolean;
 		pretty?: boolean;
 	};
 }) => {
 	// @ts-ignore
-	const { html } = template.render(props);
+	// const { html } = template.render(props);
+	const { html } = svelteRender(template, { props });
 	// if (options?.plainText) {
 	// 	return renderAsPlainText(html);
 	// }
