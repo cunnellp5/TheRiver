@@ -60,8 +60,8 @@ export const load: PageServerLoad = async (event) => {
 
 export const actions: Actions = {
 	// eslint-disable-next-line consistent-return
-	default: async ({ cookies, request, locals }) => {
-		const formData = await request.formData();
+	default: async (event) => {
+		const formData = await event.request.formData();
 
 		const email = formData.get('email') as string;
 		const password = formData.get('password') as string;
@@ -105,8 +105,8 @@ export const actions: Actions = {
 		}
 
 		// Invalidate/delete old session if user is logged in
-		if (locals.session) {
-			await logout({ locals, cookies });
+		if (event.locals.session) {
+			await logout(event);
 		}
 
 		// Atomically update user and delete reset password session
@@ -122,7 +122,7 @@ export const actions: Actions = {
 			]);
 			// set session and log user in
 			try {
-				await login({ userId: existingUser.id, cookies });
+				await login({ userId: existingUser.id, event });
 			} catch (err) {
 				error(500, { message: 'Failed to create session' });
 			}

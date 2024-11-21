@@ -5,7 +5,7 @@ import { Argon2id } from 'oslo/password';
 import { ValiError, parse } from 'valibot';
 import type { SignUpValidator } from '$lib/utils/Valibot/SignUp';
 
-import type { Actions, PageServerLoad } from './$types';
+import type { Actions } from './$types';
 import type { Newsletter } from '@prisma/client';
 import { login } from '$lib/server/controllers/login';
 
@@ -38,8 +38,8 @@ Default action:
 	11. redirect to dashboard
 */
 export const actions: Actions = {
-	default: async ({ cookies, request, fetch }) => {
-		const formData = await request.formData();
+	default: async (event) => {
+		const formData = await event.request.formData();
 
 		// pulls out the data I need
 		const email = formData.get('email')?.toString() || '';
@@ -129,7 +129,7 @@ export const actions: Actions = {
 				}
 
 				// Set token/session
-				await login({ userId: newUser.id, cookies });
+				await login({ userId: newUser.id, event });
 			});
 		} catch (err) {
 			console.error('Error during transaction:', err);
@@ -141,7 +141,7 @@ export const actions: Actions = {
 		// (if they subscribed they would have recieved a similar welcome email)
 		if (!newsLetterSubscription) {
 			try {
-				await fetch('api/emails/welcome', {
+				await event.fetch('api/emails/welcome', {
 					method: 'POST',
 					body: JSON.stringify({ subject: 'Thanks for Signing up - The River', email: email }),
 					headers: {

@@ -4,11 +4,12 @@ import { EmailSchema } from '$lib/utils/Valibot/EmailSchema';
 import { error, fail, redirect, type Actions } from '@sveltejs/kit';
 import { parse, ValiError } from 'valibot';
 import type { PageServerLoad } from './$types';
+import { invalidate } from '$app/navigation';
 
 export const load: PageServerLoad = async (event) => {
 	// IF NOT LOGGED IN, SHOW ERR PAGE LIKE ALL OTHER ROUTES THAT DONT EXIST
-	if (!event.locals.session || !event.locals.user) {
-		return error(404, 'Not Found');
+	if (event.locals.session === null || event.locals.user === null) {
+		return error(401, 'Not Found');
 	}
 
 	try {
@@ -53,7 +54,7 @@ export const actions: Actions = {
 		}
 
 		const formData = await request.formData();
-		const id = formData.get('id') as string;
+		const id = formData.get('id') as unknown as number;
 		const key = formData.get('key') as string;
 		let value = formData.get('value') as string | boolean;
 
@@ -127,13 +128,13 @@ export const actions: Actions = {
 			return error(500, 'Internal server error');
 		}
 	},
-	deleteAccount: async ({ request, locals, cookies }) => {
-		if (!locals.session || !locals.user) {
+	deleteAccount: async (event) => {
+		if (event.locals.session === null || event.locals.user === null) {
 			return error(404, 'Not found');
 		}
 
-		const formData = await request.formData();
-		const id = formData.get('id') as string;
+		const formData = await event.request.formData();
+		const id = formData.get('id') as unknown as number;
 		const userEmail = formData.get('userEmail') as string;
 		const typedEmail = formData.get('typedEmail') as string;
 
@@ -152,7 +153,7 @@ export const actions: Actions = {
 			}
 
 			// Log out the user
-			await logout({ locals, cookies });
+			await logout(event);
 
 			// return redirect(302, '/');
 		} catch (err) {

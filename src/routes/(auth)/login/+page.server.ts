@@ -1,14 +1,14 @@
 import { fail, redirect } from '@sveltejs/kit';
 import { Argon2id } from 'oslo/password';
 import db from '$lib/server/database';
-import type { Actions } from './$types';
+import type { Actions, RequestEvent } from './$types';
 import { login } from '$lib/server/controllers/login';
 
 const ERROR_MESSAGE = 'Invalid credentials';
 
 export const actions: Actions = {
-	default: async ({ request, cookies }) => {
-		const formData = await request.formData();
+	default: async (event: RequestEvent) => {
+		const formData = await event.request.formData();
 		const email = formData.get('email') as string;
 		const password = formData.get('password') as string;
 
@@ -49,7 +49,7 @@ export const actions: Actions = {
 			});
 		}
 
-		await login({ userId: existingUser.id, cookies: cookies });
+		await login({ event, userId: existingUser.id });
 
 		return redirect(302, '/dashboard');
 	}
