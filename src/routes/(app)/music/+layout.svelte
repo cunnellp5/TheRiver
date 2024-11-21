@@ -28,6 +28,13 @@
 <svelte:window bind:scrollY={scroll} />
 
 <main class="grid-container">
+	<div
+		class={`links ${CssScrollToggler.updateClass(scroll)}`}
+		use:CssScrollToggler.setTransitionDuration>
+		<NavButton route="/music" display="tracks" active={includesTracks} />
+		<NavButton route="/music/video" display="videos" active={includesStems} />
+		<NavButton route="/music/stems" display="stems" active={includesVideos} />
+	</div>
 	<Hero />
 
 	<Featured />
@@ -38,13 +45,6 @@
 	{/if} -->
 
 	<section class="music-content app-layout">
-		<div
-			class={`links ${CssScrollToggler.updateClass(scroll)}`}
-			use:CssScrollToggler.setTransitionDuration>
-			<NavButton route="/music" display="tracks" active={includesTracks} />
-			<NavButton route="/music/video" display="videos" active={includesStems} />
-			<NavButton route="/music/stems" display="stems" active={includesVideos} />
-		</div>
 		<slot></slot>
 	</section>
 </main>
@@ -54,13 +54,15 @@
 	.links {
 		display: flex;
 		position: sticky;
+		justify-content: center;
 		align-self: start; /* Ensure it aligns to the start of the container */
 		gap: var(--size-4);
 		z-index: var(--layer-important);
 		backdrop-filter: blur(20px);
 		margin-bottom: var(--size-4);
-		border-bottom: 1px solid var(--stone-11);
+		/* border-bottom: 1px solid var(--stone-11); */
 		padding: var(--size-5);
+		width: 100%;
 		color: var(--stone-4);
 		list-style: none;
 	}
