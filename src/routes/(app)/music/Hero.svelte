@@ -9,7 +9,7 @@
 		<h1 class="headingReset">The River Sings</h1>
 	</div>
 	<img
-		src="https://res.cloudinary.com/dswpu3qez/image/upload/c_fill,g_auto/v1728513945/backgrounds/outtheMudcollage_ca2zam.webp"
+		src="https://res.cloudinary.com/dswpu3qez/image/upload/c_fill,g_auto/v1732155330/backgrounds/feature-collage-2_laljnw.webp"
 		class="main-image__img"
 		alt="The River tracks collage"
 		style:object-position={`center ${40 + scroll / 35}%`} />
