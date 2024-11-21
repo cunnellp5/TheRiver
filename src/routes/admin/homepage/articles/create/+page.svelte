@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import Card from '$lib/components/ui/Card.svelte';
 	import { addToast } from '$lib/stores/toast';
 	import { enhance } from '$app/forms';
@@ -18,22 +20,18 @@
 		};
 	};
 
-	export let form: ActionData & ArticleForm; // This isn't ideal and i dont like how redundant this is, but TS isnt recognizing the inferred nested ActionData types below, and If i just go with the explicitly typed form object, it causes issues with the form object in the script tag
+	interface Props {
+		form: ActionData & ArticleForm; // This isn't ideal and i dont like how redundant this is, but TS isnt recognizing the inferred nested ActionData types below, and If i just go with the explicitly typed form object, it causes issues with the form object in the script tag
+	}
+
+	let { form = $bindable() }: Props = $props();
 
 	function showToast(msg: string, type: string) {
 		addToast({ message: msg, type, dismissible: true, timeout: 5000 });
 	}
 
-	$: article = {
-		articleTitle: '',
-		author: '',
-		description: '',
-		img: '',
-		link: ''
-	};
-
-	$: if (form?.success) {
-		// Reset article fields
+	let article;
+	run(() => {
 		article = {
 			articleTitle: '',
 			author: '',
@@ -41,17 +39,32 @@
 			img: '',
 			link: ''
 		};
+	});
 
-		// Show success toast
-		showToast(form.message, 'success');
+	run(() => {
+		if (form?.success) {
+			// Reset article fields
+			article = {
+				articleTitle: '',
+				author: '',
+				description: '',
+				img: '',
+				link: ''
+			};
 
-		// Reset the form object (if i dont this was causing issues)
-		form = { ...form, success: undefined, message: '' };
-	}
+			// Show success toast
+			showToast(form.message, 'success');
 
-	$: if (form?.dbError) {
-		showToast(form.message, 'error');
-	}
+			// Reset the form object (if i dont this was causing issues)
+			form = { ...form, success: undefined, message: '' };
+		}
+	});
+
+	run(() => {
+		if (form?.dbError) {
+			showToast(form.message, 'error');
+		}
+	});
 </script>
 
 <h2>Add article:</h2>
@@ -95,7 +108,7 @@
 				class:error={form?.fail && form?.error?.description}
 				id="description"
 				name="description"
-				bind:value={article.description} />
+				bind:value={article.description}></textarea>
 			<p class="error-text">
 				{#if form?.error?.description}
 					{form?.error?.description[0]}

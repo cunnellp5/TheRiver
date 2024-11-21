@@ -1,3 +1,4 @@
+<!-- @migration-task Error while migrating Svelte code: `<tr>` is invalid inside `<table>` -->
 <!-- inspired by https://designmodo.com/email-templates/ -->
 <script lang="ts">
 	import Preview from '$lib/emails/components/ui/Preview.svelte';

@@ -3,12 +3,18 @@
 
 	type $$Props = HTMLAttributes<HTMLParagraphElement>;
 
-	let className: $$Props['class'] = '';
-	export { className as class };
+	interface Props {
+		class?: $$Props['class'];
+		children?: import('svelte').Snippet;
+		[key: string]: any
+	}
+
+	let { class: className = '', children, ...rest }: Props = $props();
+	
 </script>
 
-<p class={className} {...$$restProps}>
-	<slot />
+<p class={className} {...rest}>
+	{@render children?.()}
 </p>
 
 <style>

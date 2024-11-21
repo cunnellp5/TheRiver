@@ -5,7 +5,12 @@
 
 	const random = (min: number, max: number) => Math.floor(Math.random() * (max - min)) + min;
 
-	export let color: 'default' | 'primary' | 'secondary' = 'default';
+	interface Props {
+		color?: 'default' | 'primary' | 'secondary';
+		children?: import('svelte').Snippet;
+	}
+
+	let { color = 'default', children }: Props = $props();
 
 	const generateSparkle = (): SparkleType => {
 		return {
@@ -26,7 +31,7 @@
 		};
 	};
 
-	let sparkles: SparkleType[] = [];
+	let sparkles: SparkleType[] = $state([]);
 	let sparklesInterval: ReturnType<typeof setInterval>;
 
 	onMount(() => {
@@ -58,7 +63,7 @@
 		<Sparkle color={sparkle.color} size={`${sparkle.size}`} style={sparkle.style} />
 	{/each}
 	<span class="slot-wrapper">
-		<slot />
+		{@render children?.()}
 	</span>
 </div>
 

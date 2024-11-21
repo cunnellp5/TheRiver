@@ -1,5 +1,9 @@
 <script lang="ts">
-	export let crumbs: { name: string; link: string }[] = [];
+	interface Props {
+		crumbs?: { name: string; link: string }[];
+	}
+
+	let { crumbs = [] }: Props = $props();
 </script>
 
 {#each crumbs as { name, link }, index (link)}

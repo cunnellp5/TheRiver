@@ -1,29 +1,38 @@
 <script lang="ts">
+	import { createBubbler } from 'svelte/legacy';
+
+	const bubble = createBubbler();
 	import type { HTMLAttributes } from 'svelte/elements';
 
 	type $$Props = HTMLAttributes<HTMLTableRowElement> & {
 		'data-state'?: unknown;
 	};
 
-	let className: $$Props['class'] = '';
-	export { className as class };
+	interface Props {
+		class?: $$Props['class'];
+		children?: import('svelte').Snippet;
+		[key: string]: any
+	}
+
+	let { class: className = '', children, ...rest }: Props = $props();
+	
 </script>
 
 <tr
 	class={`data-[state=selected]:bg-muted border-b transition-colors ${className}`}
-	{...$$restProps}
-	on:click
-	on:dblclick
-	on:keydown>
-	<slot />
+	{...rest}
+	onclick={bubble('click')}
+	ondblclick={bubble('dblclick')}
+	onkeydown={bubble('keydown')}>
+	{@render children?.()}
 </tr>
 
 <style>
-	:where(tbody tr):hover {
+	:where(:global(tbody tr)):hover {
 		cursor: pointer;
 	}
 
-	/* :where(tbody tr):hover {
+	/* :where(:global(tbody tr)):hover {
 		background-color: hsl(var(--stone-2-hsl) / 0.2);
 	} */
 

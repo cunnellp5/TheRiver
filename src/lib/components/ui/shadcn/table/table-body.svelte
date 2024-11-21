@@ -3,12 +3,18 @@
 
 	type $$Props = HTMLAttributes<HTMLTableSectionElement>;
 
-	let className: $$Props['class'] = '';
-	export { className as class };
+	interface Props {
+		class?: $$Props['class'];
+		children?: import('svelte').Snippet;
+		[key: string]: any
+	}
+
+	let { class: className = '', children, ...rest }: Props = $props();
+	
 </script>
 
-<tbody class={`${className}`} {...$$restProps}>
-	<slot />
+<tbody class={`${className}`} {...rest}>
+	{@render children?.()}
 </tbody>
 
 <style>

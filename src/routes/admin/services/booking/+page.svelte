@@ -7,7 +7,7 @@
 	import Modal from '$lib/components/ui/Modal.svelte';
 
 	const today = new Date();
-	let showModal = false;
+	let showModal = $state(false);
 </script>
 
 <div class="adminIntroCardWrapper">
@@ -21,10 +21,12 @@
 </div>
 
 <Modal bind:showModal>
-	<h2 slot="header">
-		modal
-		<small><em>adjective</em> mod·al \ˈmō-dəl\</small>
-	</h2>
+	{#snippet header()}
+		<h2 >
+			modal
+			<small><em>adjective</em> mod·al \ˈmō-dəl\</small>
+		</h2>
+	{/snippet}
 
 	<ol class="definition-list">
 		<li>of or relating to modality in logic</li>
@@ -45,10 +47,10 @@
 </Modal>
 <!-- <button on:click={updateOptions}>Change slot duration</button> -->
 <!-- <button on:click={invokeMethod}>Refetch events</button> -->
-<button on:click={() => (showModal = true)}> show modal </button>
+<button onclick={() => (showModal = true)}> show modal </button>
 
 <button
-	on:click={() =>
+	onclick={() =>
 		addToast({
 			message: 'hello',
 			type: 'message',

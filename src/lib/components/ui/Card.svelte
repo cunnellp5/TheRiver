@@ -2,11 +2,14 @@
 	import SkeletonImg from '$lib/components/ui/skeletons/SkeletonImg.svelte';
 	import SkeletonText from '$lib/components/ui/skeletons/SkeletonText.svelte';
 
-	export let articleImage;
-	export let articleTitle;
-	export let author;
-	export let link;
-	export let description;
+	let {
+		articleImage,
+		articleTitle,
+		author,
+		link,
+		description,
+		buttons
+	} = $props();
 </script>
 
 <div class="card">
@@ -41,7 +44,7 @@
 			</div>
 		</div>
 		<div>
-			<slot class="buttons" name="buttons"></slot>
+			{@render buttons?.({ class: "buttons", })}
 		</div>
 	</a>
 </div>

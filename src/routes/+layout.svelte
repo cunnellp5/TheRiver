@@ -13,7 +13,12 @@
 	import PageTransition from './components/body/PageTransition.svelte';
 	import { onNavigate } from '$app/navigation';
 
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+		children?: import('svelte').Snippet;
+	}
+
+	let { data, children }: Props = $props();
 
 	// Use view transitions if available
 	onNavigate((navigation) => {
@@ -31,14 +36,18 @@
 <Toasts />
 
 <div>
-	<VanishingHeader duration="300ms" offset={50} tolerance={5}>
+	<!-- removed props, since the class ShowHideScroll manages the 'state' -->
+	<!-- duration="300ms"  -->
+	<!-- offset={50} 
+	tolerance={5} -->
+	<VanishingHeader >
 		<div class="app-layout">
 			<Header isSignedIn={data.isSignedIn} user={data.user} />
 		</div>
 	</VanishingHeader>
 
 	<PageTransition>
-		<slot />
+		{@render children?.()}
 	</PageTransition>
 
 	<div class="app-layout">

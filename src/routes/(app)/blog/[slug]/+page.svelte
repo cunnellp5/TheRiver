@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import { page } from '$app/stores';
 	import Seo from '$lib/components/SEO.svelte';
 	import type { BlogPost } from '$lib/types';
@@ -7,23 +9,27 @@
 	import Header from './Header.svelte';
 	import NextPrev from './NextPrev.svelte';
 
-	export let data: PageData;
-	let index: number;
-	let next: BlogPost;
-	let previous: BlogPost;
+	interface Props {
+		data: PageData;
+	}
+
+	let { data }: Props = $props();
+	let index: number = $state();
+	let next: BlogPost = $state();
+	let previous: BlogPost = $state();
 
 	function findPost(slug: string): BlogPost | undefined {
 		return data.posts.find((p) => p.slug === slug) || undefined;
 	}
 
-	let post: BlogPost | undefined = findPost($page.params.slug); // initial post
+	let post: BlogPost | undefined = $state(findPost($page.params.slug)); // initial post
 
-	$: {
+	run(() => {
 		post = findPost($page.params.slug); // updates page with selected post data
 		index = data.posts.findIndex((p) => p.slug === $page.params.slug);
 		next = data.posts[index - 1];
 		previous = data.posts[index + 1];
-	}
+	});
 </script>
 
 <Seo

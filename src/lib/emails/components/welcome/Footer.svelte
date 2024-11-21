@@ -1,3 +1,4 @@
+<!-- @migration-task Error while migrating Svelte code: `<tr>` is invalid inside `<table>` -->
 <script lang="ts">
 	import ThumbnailLogoWhiteTransparentBG from '$lib/data/ThumbnailLogoWhiteTransparentBG';
 	import { WEBSITE_URL } from '$lib/data/WEBSITE_URL';

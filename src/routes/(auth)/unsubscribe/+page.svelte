@@ -3,11 +3,11 @@
 	import { enhance } from '$app/forms';
 	import { LoaderCircle } from 'lucide-svelte';
 
-	let emailInput = '';
-	let loading = false;
-	let errorMessage = '';
+	let emailInput = $state('');
+	let loading = $state(false);
+	let errorMessage = $state('');
 
-	$: disabled = emailInput.length === 0;
+	let disabled = $derived(emailInput.length === 0);
 </script>
 
 <section class="app-layout">

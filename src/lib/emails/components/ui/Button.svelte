@@ -1,11 +1,25 @@
 <script lang="ts">
 	import styleToString from '$lib/utils/styleToString';
 
-	export let href = '';
-	export let style = {};
-	export let pX = 0;
-	export let pY = 0;
-	export let target = '_blank';
+	interface Props {
+		href?: string;
+		style?: any;
+		pX?: number;
+		pY?: number;
+		target?: string;
+		children?: import('svelte').Snippet;
+		[key: string]: any
+	}
+
+	let {
+		href = '',
+		style = {},
+		pX = 0,
+		pY = 0,
+		target = '_blank',
+		children,
+		...rest
+	}: Props = $props();
 
 	const pxToPt = (px: string) => (isNaN(Number(px)) ? null : (parseInt(px, 10) * 3) / 4);
 
@@ -41,12 +55,12 @@
 	};
 </script>
 
-<a {...$$restProps} {href} {target} style={styleToString(buttonStyle({ ...style, pX, pY }))}>
+<a {...rest} {href} {target} style={styleToString(buttonStyle({ ...style, pX, pY }))}>
 	<span>
 		{@html `<!--[if mso]><i style="letter-spacing: ${pX}px;mso-font-width:-100%;mso-text-raise:${textRaise}" hidden>&nbsp;</i><![endif]-->`}
 	</span>
 	<span style={styleToString(buttonTextStyle({ ...style, pX, pY }))}>
-		<slot />
+		{@render children?.()}
 	</span>
 	<span>
 		{@html `<!--[if mso]><i style="letter-spacing: ${pX}px;mso-font-width:-100%" hidden>&nbsp;</i><![endif]-->`}

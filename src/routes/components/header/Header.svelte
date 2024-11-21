@@ -3,10 +3,14 @@
 	import NavMobile from './NavMobile.svelte';
 	import NavSheet from './NavSheet.svelte';
 
-	export let isSignedIn = false;
-	export let user;
+	interface Props {
+		isSignedIn?: boolean;
+		user: any;
+	}
 
-	let showSheet = false;
+	let { isSignedIn = false, user }: Props = $props();
+
+	let showSheet = $state(false);
 </script>
 
 <!--

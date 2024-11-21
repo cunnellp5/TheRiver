@@ -3,9 +3,9 @@
 	import * as Table from '$lib/components/ui/shadcn/table';
 	import About from './About.svelte';
 
-	export let data;
+	let { data } = $props();
 
-	$: ({ about } = data);
+	let { about } = $derived(data);
 </script>
 
 <div class="adminIntroCardWrapper">

@@ -1,11 +1,16 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
 	import { page } from '$app/stores';
+	interface Props {
+		children?: import('svelte').Snippet;
+	}
+
+	let { children }: Props = $props();
 </script>
 
 {#key $page.url.pathname.split('/')[1]}
 	<div class="transition" in:fade>
-		<slot />
+		{@render children?.()}
 	</div>
 {/key}
 

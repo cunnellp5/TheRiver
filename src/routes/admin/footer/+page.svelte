@@ -2,12 +2,16 @@
 	import { enhance } from '$app/forms';
 	import type { PageData } from './$types';
 
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
 
-	let title = '';
-	let url = '';
+	let { data }: Props = $props();
 
-	let isCreatingSocialLink = false;
+	let title = $state('');
+	let url = $state('');
+
+	let isCreatingSocialLink = $state(false);
 </script>
 
 <h2>Footer links</h2>
@@ -19,7 +23,7 @@
 		<span class="table-title">File</span>
 		<span>
 			<button
-				on:click={() => {
+				onclick={() => {
 					isCreatingSocialLink = !isCreatingSocialLink;
 					return isCreatingSocialLink;
 				}}>

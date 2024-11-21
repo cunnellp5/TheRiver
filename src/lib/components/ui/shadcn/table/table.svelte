@@ -1,12 +1,18 @@
 <script lang="ts">
 	import type { HTMLTableAttributes } from 'svelte/elements';
 
-	export let captionLocation = 'bottom';
 
 	type $$Props = HTMLTableAttributes;
 
-	let className: $$Props['class'] = '';
-	export { className as class };
+	interface Props {
+		captionLocation?: string;
+		class?: $$Props['class'];
+		children?: import('svelte').Snippet;
+		[key: string]: any
+	}
+
+	let { captionLocation = 'bottom', class: className = '', children, ...rest }: Props = $props();
+	
 </script>
 
 <div class="relative w-full overflow-auto">
@@ -14,8 +20,8 @@
 		class:caption-bottom={captionLocation === 'bottom'}
 		class:caption-top={captionLocation === 'top'}
 		class={`w-full text-sm ${className}`}
-		{...$$restProps}>
-		<slot />
+		{...rest}>
+		{@render children?.()}
 	</table>
 </div>
 
@@ -25,17 +31,17 @@
 		border-radius: unset;
 		border-collapse: collapse;
 		background-color: unset;
-		& :where(table:not(:has(tfoot)) tr:last-child td:first-child),
-		:where(table:not(:has(tfoot)) tr:last-child td:last-child),
-		:where(table thead tr:first-child th:first-child),
-		:where(table thead tr:first-child th:last-child) {
+		& :where(:global(table:not(:has(tfoot)) tr:last-child td:first-child)),
+		:where(:global(table:not(:has(tfoot)) tr:last-child td:last-child)),
+		:where(:global(table thead tr:first-child th:first-child)),
+		:where(:global(table thead tr:first-child th:last-child)) {
 			border-radius: unset;
 		}
 		& td {
 			background-color: unset;
 		}
-		& :where(tr:not(:last-child)),
-		:where(table thead tr:first-child) {
+		& :where(:global(tr:not(:last-child))),
+		:where(:global(table thead tr:first-child)) {
 			border-bottom: 1px solid var(--stone-8);
 		}
 	}

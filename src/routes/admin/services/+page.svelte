@@ -2,7 +2,7 @@
 	import * as Card from '$lib/components/ui/shadcn/card';
 	import * as Table from '$lib/components/ui/shadcn/table';
 
-	export let data;
+	let { data } = $props();
 
 	const { services } = data;
 </script>

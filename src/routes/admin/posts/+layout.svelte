@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import * as Card from '$lib/components/ui/shadcn/card';
 	import BlogCard from '$lib/components/ui/BlogCard.svelte';
 	import { onMount } from 'svelte';
@@ -7,9 +9,14 @@
 	import { page } from '$app/stores';
 	import type { PageData } from './$types';
 
-	export let data: PageData;
-	let showElement = false;
-	let search = '';
+	interface Props {
+		data: PageData;
+		children?: import('svelte').Snippet;
+	}
+
+	let { data, children }: Props = $props();
+	let showElement = $state(false);
+	let search = $state('');
 	const STROKE_WIDTH = 1.2;
 
 	onMount(() => {
@@ -17,15 +24,15 @@
 	});
 
 	const isPostsHome = $page.url.pathname === '/posts';
-	let filteredPosts = data.posts;
+	let filteredPosts = $state(data.posts);
 
-	$: {
+	run(() => {
 		filteredPosts = data.posts.filter(
 			(post) =>
 				post.title.toLowerCase().includes(search.toLowerCase()) ||
 				post.description.toLowerCase().includes(search.toLowerCase())
 		);
-	}
+	});
 
 	function showAllPosts() {
 		filteredPosts = data.posts;
@@ -74,13 +81,13 @@
 					</div>
 					<div class="filter-buttons">
 						<a href="/admin/posts" data-sveltekit-noscroll>
-							<button on:click={showAllPosts}>all</button>
+							<button onclick={showAllPosts}>all</button>
 						</a>
 						<a href="/admin/posts" data-sveltekit-noscroll>
-							<button on:click={showPublishedPosts(true)}>published</button>
+							<button onclick={showPublishedPosts(true)}>published</button>
 						</a>
 						<a href="/admin/posts" data-sveltekit-noscroll>
-							<button on:click={showPublishedPosts(false)}>draft</button>
+							<button onclick={showPublishedPosts(false)}>draft</button>
 						</a>
 					</div>
 				</nav>
@@ -97,19 +104,23 @@
 											{createdAt}
 											{slug}
 											{description}>
-											<div
-												class="isPublished"
-												slot="published"
-												class:published
-												class:unpublished={!published}>
-												{published ? 'Published' : 'Draft'}
-											</div>
-											<div class="buttons" slot="buttons">
-												<a href={`/admin/posts/${slug}/edit`} data-sveltekit-noscroll>
-													<button class="update-button">
-														<Pencil strokeWidth={STROKE_WIDTH} />Edit</button>
-												</a>
-											</div>
+											{#snippet published()}
+																						<div
+													class="isPublished"
+													
+													class:published
+													class:unpublished={!published}>
+													{published ? 'Published' : 'Draft'}
+												</div>
+											{/snippet}
+											{#snippet buttons()}
+																						<div class="buttons" >
+													<a href={`/admin/posts/${slug}/edit`} data-sveltekit-noscroll>
+														<button class="update-button">
+															<Pencil strokeWidth={STROKE_WIDTH} />Edit</button>
+													</a>
+												</div>
+											{/snippet}
 										</BlogCard>
 									</li>
 								{/if}
@@ -131,7 +142,7 @@
 			</div>
 
 			<div>
-				<slot />
+				{@render children?.()}
 			</div>
 		</div>
 	</section>

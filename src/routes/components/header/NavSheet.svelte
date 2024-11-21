@@ -3,9 +3,13 @@
 	import { createEventDispatcher } from 'svelte';
 	import NavDesktop from './NavDesktop.svelte';
 
-	export let show: boolean;
-	export let user;
-	export let isSignedIn: boolean;
+	interface Props {
+		show: boolean;
+		user: any;
+		isSignedIn: boolean;
+	}
+
+	let { show = $bindable(), user, isSignedIn }: Props = $props();
 
 	const dispatch = createEventDispatcher();
 
@@ -17,9 +21,11 @@
 <Sheet bind:showModal={show} overrideButtons={true} on:close={handleClose}>
 	<!-- <h2 slot="header">The River</h2> -->
 	<NavDesktop {user} {isSignedIn} showingSheet={true} />
-	<div slot="buttons" class="buttons">
-		<button on:click={handleClose}>Close</button>
-	</div>
+	{#snippet buttons()}
+		<div  class="buttons">
+			<button onclick={handleClose}>Close</button>
+		</div>
+	{/snippet}
 </Sheet>
 
 <style>

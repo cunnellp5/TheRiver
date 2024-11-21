@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import { QuillConfigReadonly, quillContentInit } from '$lib/utils/QuillConfig';
 	import formatDate from '$lib/utils/formatDate';
 	import type Quill from 'quill';
@@ -9,16 +11,20 @@
 	import EditDeleteActions from '../components/EditDeleteActions.svelte';
 	import { browser } from '$app/environment';
 
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
+
+	let { data }: Props = $props();
 	let quill: Quill | null;
-	let reader: string | HTMLElement;
-	let quillError = '';
+	let reader: string | HTMLElement = $state();
+	let quillError = $state('');
 
 	function findPost(slug: string) {
 		return data.posts.find((p) => p.slug === slug) || undefined;
 	}
 
-	let post = findPost($page.params.slug); // initial post
+	let post = $state(findPost($page.params.slug)); // initial post
 
 	async function setQuillData() {
 		if (!browser) return;
@@ -37,10 +43,10 @@
 		}
 	}
 
-	$: {
+	run(() => {
 		post = findPost($page.params.slug);
 		setQuillData();
-	}
+	});
 
 	onMount(async () => {
 		setQuillData();
@@ -62,7 +68,7 @@
 		</hgroup>
 
 		<div class="reader-wrapper">
-			<div bind:this={reader} />
+			<div bind:this={reader}></div>
 		</div>
 		<div class="btnWrapper">
 			<EditDeleteActions slug={post?.slug || $page.params.slug} redirect={true} />

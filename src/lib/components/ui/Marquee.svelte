@@ -1,5 +1,9 @@
 <script lang="ts">
-	export let display: string = 'THE RIVER';
+	interface Props {
+		display?: string;
+	}
+
+	let { display = 'THE RIVER' }: Props = $props();
 </script>
 
 <div class="marquee marquee-hover-pause">

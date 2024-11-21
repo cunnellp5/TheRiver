@@ -6,36 +6,36 @@
 	import { addToast } from '$lib/stores/toast';
 	import LoaderCircle from 'lucide-svelte/icons/loader-circle';
 
-	export let form;
+	let { form } = $props();
 
-	let confirmPassword = '';
-	let email = '';
-	let firstName = '';
-	let lastName = '';
-	let password = '';
-	let loading = false;
+	let confirmPassword = $state('');
+	let email = $state('');
+	let firstName = $state('');
+	let lastName = $state('');
+	let password = $state('');
+	let loading = $state(false);
 
-	$: isConfirmPasswordValid = password === confirmPassword;
-	$: isEmailValid = email.includes('@');
-	$: isFirstNameValid = firstName.length > 0;
-	$: isLastNameValid = lastName.length > 0;
-	$: isPasswordValid = password.length >= 6;
+	let isConfirmPasswordValid = $derived(password === confirmPassword);
+	let isEmailValid = $derived(email.includes('@'));
+	let isFirstNameValid = $derived(firstName.length > 0);
+	let isLastNameValid = $derived(lastName.length > 0);
+	let isPasswordValid = $derived(password.length >= 6);
 
-	$: valid =
-		isEmailValid &&
-		isPasswordValid &&
-		isConfirmPasswordValid &&
-		isFirstNameValid &&
-		isLastNameValid;
+	let valid = $derived(
+		isEmailValid && isPasswordValid && isConfirmPasswordValid && isFirstNameValid && isLastNameValid
+	);
 
 	// below are all derived
-	$: invalidPasswordsCheck =
+	let invalidPasswordsCheck = $derived(
 		(!isConfirmPasswordValid && confirmPassword.length > 0) ||
-		(!isPasswordValid && password.length > 0 && confirmPassword.length > 0);
+			(!isPasswordValid && password.length > 0 && confirmPassword.length > 0)
+	);
 
-	$: validPasswordsCheck = isConfirmPasswordValid && confirmPassword.length > 0 && isPasswordValid;
+	let validPasswordsCheck = $derived(
+		isConfirmPasswordValid && confirmPassword.length > 0 && isPasswordValid
+	);
 
-	$: passwordValidCheck = isConfirmPasswordValid && confirmPassword.length > 0;
+	let passwordValidCheck = $derived(isConfirmPasswordValid && confirmPassword.length > 0);
 </script>
 
 <Seo

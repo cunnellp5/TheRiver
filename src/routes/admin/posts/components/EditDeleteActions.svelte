@@ -4,8 +4,12 @@
 	import { enhance } from '$app/forms';
 	import { goto } from '$app/navigation';
 
-	export let slug: string;
-	export let redirect: boolean = false;
+	interface Props {
+		slug: string;
+		redirect?: boolean;
+	}
+
+	let { slug, redirect = false }: Props = $props();
 </script>
 
 <a href="/admin/posts/{slug}/edit" data-sveltekit-noscroll>

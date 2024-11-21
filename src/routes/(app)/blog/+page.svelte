@@ -1,21 +1,27 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import Seo from '$lib/components/SEO.svelte';
 	import BlogCard from '$lib/components/ui/BlogCard.svelte';
 	import type { PageData } from './$types';
 	import Hero from './Hero.svelte';
 
-	export let data: PageData;
+	interface Props {
+		data: PageData;
+	}
 
-	let search = '';
-	let filteredPosts = data.posts;
+	let { data }: Props = $props();
 
-	$: {
+	let search = $state('');
+	let filteredPosts = $state(data.posts);
+
+	run(() => {
 		filteredPosts = data.posts.filter(
 			(post) =>
 				post.title.toLowerCase().includes(search.toLowerCase()) ||
 				post.description.toLowerCase().includes(search.toLowerCase())
 		);
-	}
+	});
 </script>
 
 <Seo

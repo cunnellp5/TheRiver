@@ -1,9 +1,14 @@
 <script lang="ts">
 	import RainbowBar from './RainbowBar.svelte';
 	import { ShowHideScroll } from '$lib/utils/classes/ShowHideScroll';
+	interface Props {
+		children?: import('svelte').Snippet;
+	}
+
+	let { children }: Props = $props();
 
 	const CssScrollToggler = new ShowHideScroll();
-	let scroll = 0;
+	let scroll = $state(0);
 </script>
 
 <svelte:window bind:scrollY={scroll} />
@@ -13,7 +18,7 @@
 </div>
 
 <div use:CssScrollToggler.setTransitionDuration class={CssScrollToggler.updateClass(scroll)}>
-	<slot />
+	{@render children?.()}
 </div>
 
 <style>

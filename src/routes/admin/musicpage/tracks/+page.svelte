@@ -2,7 +2,7 @@
 	import * as Table from '$lib/components/ui/shadcn/table';
 	import * as Card from '$lib/components/ui/shadcn/card';
 
-	export let data;
+	let { data } = $props();
 	const { tracks } = data;
 </script>
 

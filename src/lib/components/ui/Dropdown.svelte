@@ -1,24 +1,30 @@
 <script lang="ts">
-	let isOpen: boolean = true;
+	interface Props {
+		label?: import('svelte').Snippet;
+		children?: import('svelte').Snippet;
+	}
+
+	let { label, children }: Props = $props();
+	let isOpen: boolean = $state(true);
 
 	function toggle(): void {
 		isOpen = !isOpen;
 	}
 </script>
 
-<!-- svelte-ignore a11y-no-static-element-interactions -->
-<!-- svelte-ignore a11y-missing-attribute -->
-<!-- svelte-ignore a11y-click-events-have-key-events -->
-<a class="dropdown" on:click={toggle}>
+<!-- svelte-ignore a11y_no_static_element_interactions -->
+<!-- svelte-ignore a11y_missing_attribute -->
+<!-- svelte-ignore a11y_click_events_have_key_events -->
+<a class="dropdown" onclick={toggle}>
 	<div class="parent-menu">
 		<div class="arrow">{isOpen ? '▼' : '►'}</div>
-		<slot name="label"></slot>
+		{@render label?.()}
 	</div>
 </a>
 
 {#if isOpen}
 	<div class="child-menu">
-		<slot></slot>
+		{@render children?.()}
 	</div>
 {/if}
 

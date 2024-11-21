@@ -5,11 +5,11 @@
 	import formatDate from '$lib/utils/formatDate';
 	import { LoaderCircle } from 'lucide-svelte';
 
-	export let data;
+	let { data } = $props();
 
-	let loading = false;
+	let loading = $state(false);
 
-	$: ({ videos } = data);
+	let { videos } = $derived(data);
 </script>
 
 <div class="adminIntroCardWrapper">

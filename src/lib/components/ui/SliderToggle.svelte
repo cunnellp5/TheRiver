@@ -18,9 +18,13 @@
 
 	import { createEventDispatcher } from 'svelte';
 
-	export let checked = false;
-	export let id: string;
-	export let name: string;
+	interface Props {
+		checked?: boolean;
+		id: string;
+		name: string;
+	}
+
+	let { checked = $bindable(false), id, name }: Props = $props();
 
 	const dispatch = createEventDispatcher();
 
@@ -31,7 +35,7 @@
 </script>
 
 <label class="switch">
-	<input {id} {name} type="checkbox" bind:checked on:change={toggle} />
+	<input {id} {name} type="checkbox" bind:checked onchange={toggle} />
 	<span class="slider round"></span>
 </label>
 

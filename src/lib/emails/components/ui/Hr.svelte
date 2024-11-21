@@ -1,6 +1,6 @@
 <script lang="ts">
 	import styleToString from '$lib/utils/styleToString';
-	export let style = {};
+	let { style = {}, ...rest } = $props();
 	const styleDefault = {
 		width: '100%',
 		border: 'none',
@@ -9,4 +9,4 @@
 	};
 </script>
 
-<hr style={styleToString(styleDefault)} {...$$restProps} />
+<hr style={styleToString(styleDefault)} {...rest} />

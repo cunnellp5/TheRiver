@@ -1,17 +1,26 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import BreadCrumb from '$lib/components/ui/BreadCrumb.svelte';
 	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
-
-	let crumbs: { name: string; link: string }[] = [];
-
-	$: if (browser) {
-		const pathnames = $page.url.pathname.split('/').filter(Boolean);
-		crumbs = pathnames.map((name, index, arr) => ({
-			name: name.charAt(0).toUpperCase() + name.slice(1),
-			link: `/${arr.slice(0, index + 1).join('/')}`
-		}));
+	interface Props {
+		children?: import('svelte').Snippet;
 	}
+
+	let { children }: Props = $props();
+
+	let crumbs: { name: string; link: string }[] = $state([]);
+
+	run(() => {
+		if (browser) {
+			const pathnames = $page.url.pathname.split('/').filter(Boolean);
+			crumbs = pathnames.map((name, index, arr) => ({
+				name: name.charAt(0).toUpperCase() + name.slice(1),
+				link: `/${arr.slice(0, index + 1).join('/')}`
+			}));
+		}
+	});
 </script>
 
 <header>
@@ -154,7 +163,7 @@
 		<div class="crumb">
 			<BreadCrumb {crumbs}></BreadCrumb>
 		</div>
-		<slot />
+		{@render children?.()}
 	</article>
 </main>
 

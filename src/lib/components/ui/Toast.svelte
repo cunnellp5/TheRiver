@@ -10,9 +10,19 @@
 
 	const dispatch = createEventDispatcher();
 
-	export let iconType: string;
-	export let type = 'message';
-	export let dismissible = true;
+	interface Props {
+		iconType: string;
+		type?: string;
+		dismissible?: boolean;
+		children?: import('svelte').Snippet;
+	}
+
+	let {
+		iconType,
+		type = 'message',
+		dismissible = true,
+		children
+	}: Props = $props();
 </script>
 
 <article class={type} role="alert" transition:fade>
@@ -31,11 +41,11 @@
 		{:else if iconType === 'check'}
 			<CircleCheck color="#6cffa6" />
 		{/if}
-		<slot />
+		{@render children?.()}
 	</div>
 
 	{#if dismissible}
-		<button class="close" on:click={() => dispatch('dismiss')}>
+		<button class="close" onclick={() => dispatch('dismiss')}>
 			<X />
 		</button>
 	{/if}

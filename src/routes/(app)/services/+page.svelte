@@ -5,9 +5,9 @@
 	import ScrollDots from './components/ScrollDots.svelte';
 	import ServiceTable from './components/ServiceTable.svelte';
 
-	export let data;
+	let { data } = $props();
 	const { services, about } = data;
-	let scroll: number;
+	let scroll: number = $state();
 </script>
 
 <Seo

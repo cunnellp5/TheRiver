@@ -1,7 +1,12 @@
 <script lang="ts">
 	import styleToString from '$lib/utils/styleToString';
 
-	export let preview = '';
+	interface Props {
+		preview?: string;
+		[key: string]: any
+	}
+
+	let { preview = '', ...rest }: Props = $props();
 
 	const renderWhiteSpace = (text: string) => {
 		const whiteSpaceCodes = '\xA0\u200C\u200B\u200D\u200E\u200F\uFEFF';
@@ -19,7 +24,7 @@
 		maxHeight: 0,
 		maxWidth: 0
 	})}
-	{...$$restProps}>
+	{...rest}>
 	{preview}
 	<div>
 		{renderWhiteSpace(preview)}

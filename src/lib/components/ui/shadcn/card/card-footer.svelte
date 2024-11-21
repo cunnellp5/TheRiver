@@ -3,12 +3,18 @@
 
 	type $$Props = HTMLAttributes<HTMLDivElement>;
 
-	let className: $$Props['class'] = '';
-	export { className as class };
+	interface Props {
+		class?: $$Props['class'];
+		children?: import('svelte').Snippet;
+		[key: string]: any
+	}
+
+	let { class: className = '', children, ...rest }: Props = $props();
+	
 </script>
 
-<div class={className} {...$$restProps}>
-	<slot />
+<div class={className} {...rest}>
+	{@render children?.()}
 </div>
 
 <style>

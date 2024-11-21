@@ -1,6 +1,11 @@
 <script lang="ts">
-	export let tag: string;
-	export let prefix: string | null = null;
+	interface Props {
+		tag: string;
+		prefix?: string | null;
+		children?: import('svelte').Snippet;
+	}
+
+	let { tag, prefix = null, children }: Props = $props();
 </script>
 
 {#if prefix}
@@ -8,7 +13,7 @@
 {:else}
 	<span class="badge">
 		{tag}
-		<slot></slot>
+		{@render children?.()}
 	</span>
 {/if}
 

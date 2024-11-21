@@ -1,13 +1,26 @@
 <script lang="ts">
 	import styleToString from '$lib/utils/styleToString';
 
-	export let style = {};
-	let className: string | undefined = undefined;
-	export { className as class };
-	export let alt = '';
-	export let src = '';
-	export let width = '0';
-	export let height = '0';
+	
+	interface Props {
+		style?: any;
+		class?: string | undefined;
+		alt?: string;
+		src?: string;
+		width?: string;
+		height?: string;
+		[key: string]: any
+	}
+
+	let {
+		style = {},
+		class: className = undefined,
+		alt = '',
+		src = '',
+		width = '0',
+		height = '0',
+		...rest
+	}: Props = $props();
 
 	const styleDefault = {
 		display: 'block',
@@ -24,5 +37,5 @@
 	{width}
 	{height}
 	style={styleToString(styleDefault)}
-	{...$$restProps}
+	{...rest}
 	class={className} />

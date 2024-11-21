@@ -1,10 +1,14 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 
-	export let text: string = '';
-	export let duration: number = 200;
+	interface Props {
+		text?: string;
+		duration?: number;
+	}
 
-	let displayText = '';
+	let { text = '', duration = 200 }: Props = $props();
+
+	let displayText = $state('');
 	let i = 0;
 	let startTime: number;
 	let animationFrameId: number;

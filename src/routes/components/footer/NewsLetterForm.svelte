@@ -3,10 +3,10 @@
 	import { enhance } from '$app/forms';
 	import LoaderCircle from 'lucide-svelte/icons/loader-circle';
 
-	let emailInput = '';
-	let showError = false;
-	let errorMessage = '';
-	let loading = false;
+	let emailInput = $state('');
+	let showError = $state(false);
+	let errorMessage = $state('');
+	let loading = $state(false);
 
 	function formSuccess() {
 		showError = false;
@@ -19,7 +19,7 @@
 		});
 	}
 
-	$: disabled = emailInput.length === 0;
+	let disabled = $derived(emailInput.length === 0);
 </script>
 
 <form

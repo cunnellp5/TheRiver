@@ -6,16 +6,16 @@
 	import { goto } from '$app/navigation';
 	import { LoaderCircle } from 'lucide-svelte';
 
-	export let data;
+	let { data } = $props();
 
 	const { email } = data;
 
-	let confirmPassword = '';
-	let password = '';
-	let loading = false;
+	let confirmPassword = $state('');
+	let password = $state('');
+	let loading = $state(false);
 
-	$: isConfirmPasswordValid = password === confirmPassword;
-	$: isPasswordValid = password.length >= 6;
+	let isConfirmPasswordValid = $derived(password === confirmPassword);
+	let isPasswordValid = $derived(password.length >= 6);
 
 	// $: isFormValid =
 	// 	isEmailValid &&

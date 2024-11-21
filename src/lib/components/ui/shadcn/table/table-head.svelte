@@ -3,12 +3,18 @@
 
 	type $$Props = HTMLThAttributes;
 
-	let className: $$Props['class'] = '';
-	export { className as class };
+	interface Props {
+		class?: $$Props['class'];
+		children?: import('svelte').Snippet;
+		[key: string]: any
+	}
+
+	let { class: className = '', children, ...rest }: Props = $props();
+	
 </script>
 
-<th class={`${className}`} {...$$restProps}>
-	<slot />
+<th class={`${className}`} {...rest}>
+	{@render children?.()}
 </th>
 
 <style>

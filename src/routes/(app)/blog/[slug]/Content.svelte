@@ -1,14 +1,20 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import { QuillConfigReadonly, quillContentInit } from '$lib/utils/QuillConfig';
 	import type Quill from 'quill';
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
 	import type { Post } from '@prisma/client';
 
-	export let post: Post;
+	interface Props {
+		post: Post;
+	}
+
+	let { post }: Props = $props();
 	let quill: Quill | null;
-	let reader: string | HTMLElement;
-	let quillError = '';
+	let reader: string | HTMLElement = $state();
+	let quillError = $state('');
 
 	async function setQuillData() {
 		if (!browser) return;
@@ -26,9 +32,9 @@
 		}
 	}
 
-	$: {
+	run(() => {
 		setQuillData();
-	}
+	});
 
 	onMount(() => {
 		setQuillData();
@@ -39,7 +45,7 @@
 	{#if quillError}
 		<p>{quillError}</p>
 	{:else}
-		<div class="quill-content" bind:this={reader} />
+		<div class="quill-content" bind:this={reader}></div>
 	{/if}
 </section>
 

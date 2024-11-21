@@ -3,16 +3,31 @@
 	import formatDate from '$lib/utils/formatDate';
 	import { page } from '$app/stores';
 
-	export let title: string;
-	export let tags: string[];
-	export let createdAt: Date;
-	export let slug: string;
-	export let description: string;
-	export let link: string = `/blog/${slug}`;
+	interface Props {
+		title: string;
+		tags: string[];
+		createdAt: Date;
+		slug: string;
+		description: string;
+		link?: string;
+		published?: import('svelte').Snippet;
+		buttons?: import('svelte').Snippet<[any]>;
+	}
+
+	let {
+		title,
+		tags,
+		createdAt,
+		slug,
+		description,
+		link = `/blog/${slug}`,
+		published,
+		buttons
+	}: Props = $props();
 </script>
 
 <a class="blogLink" href={slug === 'void' ? 'javascript:void(0)' : link} data-sveltekit-noscroll>
-	<slot name="published"></slot>
+	{@render published?.()}
 
 	<h5 class="headingReset title">
 		{title}
@@ -33,7 +48,7 @@
 	</aside>
 
 	<div>
-		<slot class="buttons" name="buttons"></slot>
+		{@render buttons?.({ class: "buttons", })}
 	</div>
 </a>
 

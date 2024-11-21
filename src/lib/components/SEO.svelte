@@ -3,10 +3,12 @@
 	import * as config from '$lib/config';
 	import { page } from '$app/stores';
 
-	export let title: string;
-	export let description: string;
-
-	let url: string;
+	interface Props {
+		title: string;
+		description: string;
+	}
+	let { title = $bindable(), description = $bindable() }: Props = $props();
+	let url: string | undefined = $state();
 
 	onMount(() => {
 		title = title || config.title;

@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { preventDefault } from 'svelte/legacy';
+
 	import SliderToggle from '$lib/components/ui/SliderToggle.svelte';
 	import { onMount } from 'svelte';
 	import { QuillConfig, quillContentInit } from '$lib/utils/QuillConfig';
@@ -8,12 +10,23 @@
 	import { enhance } from '$app/forms';
 	import 'quill/dist/quill.snow.css';
 
-	// PROPS / form data
-	export let title: string = '';
-	export let content: string = '';
-	export let description: string = '';
-	export let tagInput: string[] = [];
-	export let published: boolean = false;
+	
+	interface Props {
+		// PROPS / form data
+		title?: string;
+		content?: string;
+		description?: string;
+		tagInput?: string[];
+		published?: boolean;
+	}
+
+	let {
+		title = $bindable(''),
+		content = $bindable(''),
+		description = $bindable(''),
+		tagInput = $bindable([]),
+		published = $bindable(false)
+	}: Props = $props();
 
 	const initialData = {
 		title,
@@ -24,7 +37,7 @@
 	};
 
 	// CONFIG
-	let editor: string | HTMLElement;
+	let editor: string | HTMLElement = $state();
 	let quill: Quill;
 
 	onMount(async () => {
@@ -98,18 +111,18 @@
 				bind:value={title}
 				spellcheck
 				placeholder="Add title here..."
-				rows="3" />
+				rows="3"></textarea>
 		</h1>
 		<div class="tags">
 			<label for="tags">🔖 Tags</label>
 			<div class="inputWrapper">
 				<input type="hidden" id="tagInput" name="tagInput" bind:value={tagInput} />
-				<input class="marginalize" type="text" placeholder="Add tags" on:keydown={handleKeyDown} />
+				<input class="marginalize" type="text" placeholder="Add tags" onkeydown={handleKeyDown} />
 			</div>
 			<div class="badgesWrapper">
 				{#each tagInput as tag}
 					<Badge {tag}>
-						<button class="deleteBadge" on:click|preventDefault={() => handleRemoveTag(tag)}>
+						<button class="deleteBadge" onclick={preventDefault(() => handleRemoveTag(tag))}>
 							X
 						</button>
 					</Badge>
@@ -131,10 +144,10 @@
 		<button
 			type="reset"
 			id="resetForm"
-			on:click|preventDefault={() => {
+			onclick={preventDefault(() => {
 				// eslint-disable-next-line no-alert, no-restricted-globals
 				if (confirm('Are you sure you want to reset the form?')) resetForm();
-			}}>
+			})}>
 			Reset to Initial Data
 		</button>
 	</div>

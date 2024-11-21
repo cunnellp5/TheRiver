@@ -8,9 +8,13 @@
 	import { addToast } from '$lib/stores/toast';
 	import NavButton from '$lib/components/ui/button/NavButton.svelte';
 
-	export let showingSheet: boolean = false;
-	export let isSignedIn: boolean;
-	export let user;
+	interface Props {
+		showingSheet?: boolean;
+		isSignedIn: boolean;
+		user: any;
+	}
+
+	let { showingSheet = false, isSignedIn, user }: Props = $props();
 
 	let showAuthLinks = false;
 	let visible = false;
@@ -27,18 +31,18 @@
 		visible = true;
 	});
 
-	$: includesAdmin = $page.url.pathname.includes('/admin');
-	$: includesBlog = $page.url.pathname.includes('/blog');
-	$: includesService = $page.url.pathname.includes('/services');
-	$: includesMusic = $page.url.pathname.includes('/music');
+	let includesAdmin = $derived($page.url.pathname.includes('/admin'));
+	let includesBlog = $derived($page.url.pathname.includes('/blog'));
+	let includesService = $derived($page.url.pathname.includes('/services'));
+	let includesMusic = $derived($page.url.pathname.includes('/music'));
 
-	$: isContact = $page.url.pathname === '/contact';
-	$: isDashboard = $page.url.pathname === '/dashboard';
+	let isContact = $derived($page.url.pathname === '/contact');
+	let isDashboard = $derived($page.url.pathname === '/dashboard');
 	// $: isHomePage = $page.url.pathname === '/';
-	$: isLogin = $page.url.pathname === '/login';
-	$: isLogout = $page.url.pathname === '/logout';
-	$: isShop = $page.url.pathname === '/shop';
-	$: isSignup = $page.url.pathname === '/signup';
+	let isLogin = $derived($page.url.pathname === '/login');
+	let isLogout = $derived($page.url.pathname === '/logout');
+	let isShop = $derived($page.url.pathname === '/shop');
+	let isSignup = $derived($page.url.pathname === '/signup');
 </script>
 
 <div class:showingSheet>

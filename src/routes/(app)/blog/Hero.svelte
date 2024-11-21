@@ -1,6 +1,6 @@
 <script lang="ts">
 	import TypingAnimation from '$lib/components/atoms/TypingAnimation.svelte';
-	let scroll: number;
+	let scroll: number = $state();
 </script>
 
 <svelte:window bind:scrollY={scroll} />

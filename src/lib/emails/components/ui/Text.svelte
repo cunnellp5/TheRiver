@@ -1,7 +1,7 @@
 <script lang="ts">
 	import styleToString from '$lib/utils/styleToString';
 
-	export let style = {};
+	let { style = {}, children, ...rest } = $props();
 
 	const styleDefault = {
 		fontSize: '14px',
@@ -11,6 +11,6 @@
 	};
 </script>
 
-<p style={styleToString(styleDefault)} {...$$restProps}>
-	<slot />
+<p style={styleToString(styleDefault)} {...rest}>
+	{@render children?.()}
 </p>

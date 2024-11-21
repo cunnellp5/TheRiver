@@ -1,8 +1,20 @@
-<script>
+<script lang="ts">
 	import styleToString from '$lib/utils/styleToString';
-	export let style = {};
-	export let target = '_blank';
-	export let href = '';
+	interface Props {
+		style?: any;
+		target?: string;
+		href?: string;
+		children?: import('svelte').Snippet;
+		[key: string]: any
+	}
+
+	let {
+		style = {},
+		target = '_blank',
+		href = '',
+		children,
+		...rest
+	}: Props = $props();
 
 	const styleDefault = {
 		color: '#067df7',
@@ -11,6 +23,6 @@
 	};
 </script>
 
-<a {...$$restProps} {href} {target} style={styleToString(styleDefault)}>
-	<slot />
+<a {...rest} {href} {target} style={styleToString(styleDefault)}>
+	{@render children?.()}
 </a>

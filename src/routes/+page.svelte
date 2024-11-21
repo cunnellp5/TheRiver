@@ -9,14 +9,14 @@
 	import TheRiver from '$lib/components/svgs/logos/TheRiver.svelte';
 	import ServiceButtons from '$lib/components/ui/button/ServiceButtons.svelte';
 
-	export let data;
+	let { data } = $props();
 
 	// let scroll: number;
 
 	const { videoURL, articles, about } = data;
 
 	// const isPlaying = true;
-	let visible = false;
+	let visible = $state(false);
 
 	// const syncPointer = ({ x, y }: { x: number; y: number }) => {
 	// 	document.documentElement.style.setProperty('--x', x.toFixed(2));
@@ -351,14 +351,14 @@
 	[data-glow] [data-glow] {
 		border: none;
 	}
-	[data-glow] :is(a, button) {
+	[data-glow] :is(:global(a, button)) {
 		border: var(--border-size) solid transparent;
 		border-radius: calc(var(--radius) * 1px);
 	}
-	[data-glow] :is(a, button) [data-glow] {
+	[data-glow] :is(:global(a, button)) [data-glow] {
 		background: none;
 	}
-	[data-glow] :is(a, button) [data-glow]::before {
+	[data-glow] :is(:global(a, button)) [data-glow]::before {
 		inset: calc(var(--border-size) * -1);
 		border-width: calc(var(--border-size) * 1);
 	} */

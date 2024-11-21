@@ -3,9 +3,9 @@
 	import * as Table from '$lib/components/ui/shadcn/table';
 	import AdminBusinessInfoRow from './AdminBusinessInfoRow.svelte';
 
-	export let data;
+	let { data } = $props();
 
-	$: ({ business } = data);
+	let { business } = $derived(data);
 </script>
 
 <div class="adminIntroCardWrapper">

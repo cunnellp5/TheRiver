@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
 
-	export let videos;
+	let { videos } = $props();
 
-	let slider: HTMLElement;
+	let slider: HTMLElement = $state();
 	let isDown = false;
 	let startX: number;
 	let scrollLeft: number;

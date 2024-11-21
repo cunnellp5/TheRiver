@@ -1,8 +1,17 @@
 <script lang="ts">
-	export let active: boolean = false;
-	export let route: string = '';
-	export let display: string = '';
-	export let borderStyle: 'horizontal' | 'vertical' = 'vertical'; // New prop
+	interface Props {
+		active?: boolean;
+		route?: string;
+		display?: string;
+		borderStyle?: 'horizontal' | 'vertical'; // New prop
+	}
+
+	let {
+		active = false,
+		route = '',
+		display = '',
+		borderStyle = 'vertical'
+	}: Props = $props();
 </script>
 
 <li class:current={active} aria-current={active}>

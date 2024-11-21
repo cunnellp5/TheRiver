@@ -4,8 +4,8 @@
 	import Calendar from 'lucide-svelte/icons/calendar';
 	import { onMount } from 'svelte';
 
-	export let data;
-	let showModal = false;
+	let { data } = $props();
+	let showModal = $state(false);
 	const { services } = data;
 	const totalDuration = services.reduce((acc, service) => acc + service?.duration, 0);
 
@@ -23,7 +23,9 @@
 </script>
 
 <Modal bind:showModal overrideButtons={true}>
-	<h2 slot="header">Choose booking style</h2>
+	{#snippet header()}
+		<h2 >Choose booking style</h2>
+	{/snippet}
 	<ol class="definition-list">
 		{#each services as service, i}
 			<div class="service-wrapper">
@@ -43,10 +45,12 @@
 			<em><small>min</small></em>
 		</li>
 	</ol>
-	<div slot="buttons" class="buttons">
-		<button on:click={toggleModal}>Combine services into one session</button>
-		<button>Book separately</button>
-	</div>
+	{#snippet buttons()}
+		<div  class="buttons">
+			<button onclick={toggleModal}>Combine services into one session</button>
+			<button>Book separately</button>
+		</div>
+	{/snippet}
 </Modal>
 
 <h2><Calendar size="36" /> <span>Choose a day and time</span></h2>

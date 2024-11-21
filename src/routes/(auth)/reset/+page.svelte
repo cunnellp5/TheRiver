@@ -7,8 +7,8 @@
 
 	// export let form;
 
-	let loading: boolean = false;
-	let disabledInputs: boolean = false;
+	let loading: boolean = $state(false);
+	let disabledInputs: boolean = $state(false);
 </script>
 
 <Seo

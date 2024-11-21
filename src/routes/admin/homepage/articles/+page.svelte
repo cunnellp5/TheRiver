@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import { addToast } from '$lib/stores/toast';
 	import Card from '$lib/components/ui/Card.svelte';
 	import * as GenericCard from '$lib/components/ui/shadcn/card';
@@ -6,8 +8,7 @@
 	import Trash from 'lucide-svelte/icons/trash';
 	import { enhance } from '$app/forms';
 
-	export let data;
-	export let form;
+	let { data, form } = $props();
 
 	const STROKE_WIDTH = 1.2;
 
@@ -21,10 +22,12 @@
 		});
 	}
 
-	$: articles = data.articles;
-	$: if (form?.deleteSuccess) {
-		showToast();
-	}
+	let articles = $derived(data.articles);
+	run(() => {
+		if (form?.deleteSuccess) {
+			showToast();
+		}
+	});
 </script>
 
 <div class="adminIntroCardWrapper">
@@ -54,24 +57,26 @@
 			articleTitle={article.articleTitle}
 			description={article.description}
 			link={article.link}>
-			<div class="buttons" slot="buttons">
-				<a href={`/admin/homepage/articles/${article.id}/edit`}>
-					<button class="update-button"><Pencil strokeWidth={STROKE_WIDTH} />Edit</button>
-				</a>
-				<form
-					method="POST"
-					action="?/deleteArticle"
-					use:enhance={({ cancel }) => {
-						// eslint-disable-next-line no-alert, no-restricted-globals
-						if (confirm('Are you sure you want to delete this article?')) {
-							return async ({ update }) => update();
-						}
-						return cancel();
-					}}>
-					<input type="hidden" name="articleId" id="articleId" value={article.id} />
-					<button class="delete-button"><Trash strokeWidth={STROKE_WIDTH} />Delete</button>
-				</form>
-			</div>
+			{#snippet buttons()}
+						<div class="buttons" >
+					<a href={`/admin/homepage/articles/${article.id}/edit`}>
+						<button class="update-button"><Pencil strokeWidth={STROKE_WIDTH} />Edit</button>
+					</a>
+					<form
+						method="POST"
+						action="?/deleteArticle"
+						use:enhance={({ cancel }) => {
+							// eslint-disable-next-line no-alert, no-restricted-globals
+							if (confirm('Are you sure you want to delete this article?')) {
+								return async ({ update }) => update();
+							}
+							return cancel();
+						}}>
+						<input type="hidden" name="articleId" id="articleId" value={article.id} />
+						<button class="delete-button"><Trash strokeWidth={STROKE_WIDTH} />Delete</button>
+					</form>
+				</div>
+					{/snippet}
 		</Card>
 	{/each}
 </section>

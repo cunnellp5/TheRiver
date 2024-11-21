@@ -1,6 +1,10 @@
 <script lang="ts">
-	export let short = false;
-	export let title = false;
+	interface Props {
+		short?: boolean;
+		title?: boolean;
+	}
+
+	let { short = false, title = false }: Props = $props();
 </script>
 
 <div

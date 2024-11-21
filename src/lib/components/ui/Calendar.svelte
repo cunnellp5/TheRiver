@@ -1,18 +1,31 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import calendarize from 'calendarize';
 	// import Arrow from './Arrow.svelte';
 	import ArrowRight from 'lucide-svelte/icons/arrow-right';
 	import ArrowLeft from 'lucide-svelte/icons/arrow-left';
 	import formatHours from '$lib/utils/formatHours';
 
-	export let year = new Date().getFullYear();
-	export let month = new Date().getMonth();
-	export let offset = 0; // Sun
-	export let today: Date = new Date();
-	export let timeSlots = [];
 
-	export let labels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-	export let months = [
+	interface Props {
+		year?: any;
+		month?: any;
+		offset?: number; // Sun
+		today?: Date;
+		timeSlots?: any;
+		labels?: any;
+		months?: any;
+	}
+
+	let {
+		year = $bindable(new Date().getFullYear()),
+		month = $bindable(new Date().getMonth()),
+		offset = 0,
+		today = new Date(),
+		timeSlots = [],
+		labels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+		months = [
 		'Jan',
 		'Feb',
 		'Mar',
@@ -25,17 +38,18 @@
 		'Oct',
 		'Nov',
 		'Dec'
-	];
+	]
+	}: Props = $props();
 
 	// $: today_month = today && today.getMonth();
 	// $: today_year = today && today.getFullYear();
 	// $: today_day = today && today.getDate();
 
 	let prev = calendarize(new Date(year, month - 1), offset);
-	let current = calendarize(new Date(year, month), offset);
+	let current = $state(calendarize(new Date(year, month), offset));
 	let next = calendarize(new Date(year, month + 1), offset);
 
-	let selectedDate = null;
+	let selectedDate = $state(null);
 
 	function selectDate(date) {
 		selectedDate = date;
@@ -106,8 +120,8 @@
 		selectedDate = now.getDate();
 	}
 
-	let timeSlotsByDate = {};
-	$: {
+	let timeSlotsByDate = $state({});
+	run(() => {
 		timeSlotsByDate = timeSlots?.reduce((acc, slot) => {
 			const dateStr = slot.day.toISOString().split('T')[0]; // Get the date part of the ISO string
 			if (!acc[dateStr]) {
@@ -116,24 +130,24 @@
 			acc[dateStr].push(slot);
 			return acc;
 		}, {});
-	}
+	});
 </script>
 
-<button on:click={goToToday}>today</button>
+<button onclick={goToToday}>today</button>
 
 {selectedDate}
 
 <div class="surface-4 calendar-wrapper">
 	<header>
-		<!-- svelte-ignore a11y-click-events-have-key-events -->
-		<!-- svelte-ignore a11y-no-static-element-interactions -->
-		<div on:click={toPrev}>
+		<!-- svelte-ignore a11y_click_events_have_key_events -->
+		<!-- svelte-ignore a11y_no_static_element_interactions -->
+		<div onclick={toPrev}>
 			<ArrowLeft />
 		</div>
 		<h4>{months[month]} {year}</h4>
-		<!-- svelte-ignore a11y-click-events-have-key-events -->
-		<!-- svelte-ignore a11y-no-static-element-interactions -->
-		<div on:click={toNext}>
+		<!-- svelte-ignore a11y_click_events_have_key_events -->
+		<!-- svelte-ignore a11y_no_static_element_interactions -->
+		<div onclick={toNext}>
 			<ArrowRight />
 		</div>
 	</header>
@@ -148,8 +162,8 @@
 			{#if current[idxw]}
 				{#each { length: 7 } as d, idxd (idxd)}
 					{#if current[idxw][idxd] !== 0}
-						<!-- svelte-ignore a11y-no-static-element-interactions -->
-						<!-- svelte-ignore a11y-click-events-have-key-events -->
+						<!-- svelte-ignore a11y_no_static_element_interactions -->
+						<!-- svelte-ignore a11y_click_events_have_key_events -->
 						<span
 							class="date"
 							class:before-today={isBeforeToday(current[idxw][idxd])}
@@ -160,7 +174,7 @@
 								getWeek(new Date(year, month, current[idxw][idxd])),
 								year
 							)}
-							on:click={() => selectDate(current[idxw][idxd])}>
+							onclick={() => selectDate(current[idxw][idxd])}>
 							<p>{current[idxw][idxd]}</p>
 							<!-- Add time slots for this date -->
 							{#if timeSlotsByDate[new Date(year, month, current[idxw][idxd])

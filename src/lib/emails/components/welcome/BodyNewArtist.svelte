@@ -1,3 +1,4 @@
+<!-- @migration-task Error while migrating Svelte code: `<tr>` is invalid inside `<table>` -->
 <table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation">
 	<tr>
 		<td class="pc-w620-spacing-0-0-0-0" style="padding: 0px 0px 0px 0px;">

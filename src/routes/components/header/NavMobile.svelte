@@ -13,7 +13,7 @@
 <a href="/" class="logo-link header__nav__a">
 	<LogoR />
 </a>
-<button on:click={handleClick}>
+<button onclick={handleClick}>
 	<Waves />
 </button>
 

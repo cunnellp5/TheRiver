@@ -3,10 +3,19 @@
 	import ChevronRight from 'lucide-svelte/icons/chevron-right';
 	import type { BlogPost } from '$lib/types';
 
-	export let next: BlogPost | undefined;
-	export let previous: BlogPost | undefined;
-	export let pointRight: boolean = false;
-	export let pointLeft: boolean = false;
+	interface Props {
+		next: BlogPost | undefined;
+		previous: BlogPost | undefined;
+		pointRight?: boolean;
+		pointLeft?: boolean;
+	}
+
+	let {
+		next,
+		previous,
+		pointRight = false,
+		pointLeft = false
+	}: Props = $props();
 </script>
 
 <aside class="prevNext-wrapper">

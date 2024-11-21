@@ -3,12 +3,18 @@
 
 	type $$Props = HTMLAttributes<HTMLTableCaptionElement>;
 
-	let className: $$Props['class'] = '';
-	export { className as class };
+	interface Props {
+		class?: $$Props['class'];
+		children?: import('svelte').Snippet;
+		[key: string]: any
+	}
+
+	let { class: className = '', children, ...rest }: Props = $props();
+	
 </script>
 
-<caption class={`${className}`} {...$$restProps}>
-	<slot />
+<caption class={`${className}`} {...rest}>
+	{@render children?.()}
 </caption>
 
 <style>

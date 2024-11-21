@@ -6,13 +6,19 @@
 		tag?: HeadingLevel;
 	};
 
-	let className: $$Props['class'] = '';
-	export let tag: $$Props['tag'] = 'h3';
-	export { className as class };
+	interface Props {
+		class?: $$Props['class'];
+		tag?: $$Props['tag'];
+		children?: import('svelte').Snippet;
+		[key: string]: any
+	}
+
+	let { class: className = '', tag = 'h3', children, ...rest }: Props = $props();
+	
 </script>
 
-<svelte:element this={tag} class={className} {...$$restProps}>
-	<slot />
+<svelte:element this={tag} class={className} {...rest}>
+	{@render children?.()}
 </svelte:element>
 
 <style>

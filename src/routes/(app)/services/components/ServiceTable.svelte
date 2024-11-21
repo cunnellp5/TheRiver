@@ -1,8 +1,7 @@
 <script lang="ts">
 	import * as Table from '$lib/components/ui/shadcn/table';
 
-	export let category;
-	export let data;
+	let { category, data } = $props();
 </script>
 
 <span class="stupid" id={category}></span>

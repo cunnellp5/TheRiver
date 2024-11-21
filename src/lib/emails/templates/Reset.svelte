@@ -9,7 +9,11 @@
 	import Section from '../components/ui/Section.svelte';
 	import Text from '../components/ui/Text.svelte';
 
-	export let token = null;
+	interface Props {
+		token?: any;
+	}
+
+	let { token = null }: Props = $props();
 	const previewText =
 		'Password reset link - Expires in 24 hours - click the button to reset your password';
 </script>

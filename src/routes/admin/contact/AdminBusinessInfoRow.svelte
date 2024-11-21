@@ -3,11 +3,15 @@
 	import Pencil from 'lucide-svelte/icons/pencil';
 	import { enhance } from '$app/forms';
 
-	export let key: string;
-	export let value: string | number | Date | null;
-	export let id: number;
+	interface Props {
+		key: string;
+		value: string | number | Date | null;
+		id: number;
+	}
 
-	let isEditing = false;
+	let { key, value = $bindable(), id }: Props = $props();
+
+	let isEditing = $state(false);
 
 	function editing() {
 		isEditing = true;
@@ -35,7 +39,7 @@
 		<Table.Cell>
 			<div class="button-wrapper">
 				<button form="updateForm" type="submit" class="update-button">Update</button>
-				<button type="button" class="delete-button" on:click={stopEditing}>X</button>
+				<button type="button" class="delete-button" onclick={stopEditing}>X</button>
 			</div>
 		</Table.Cell>
 	</Table.Row>
@@ -46,7 +50,7 @@
 			<Table.Cell class="fixed-width" on:dblclick={editing}>{value}</Table.Cell>
 			<Table.Cell class="fixed-width">
 				<div class="button-wrapper">
-					<button on:click={editing}>
+					<button onclick={editing}>
 						<Pencil size={16} />
 					</button>
 				</div>

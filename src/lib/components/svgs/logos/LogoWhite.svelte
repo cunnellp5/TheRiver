@@ -1,5 +1,9 @@
 <script lang="ts">
-	export let isHomePage: boolean = false;
+	interface Props {
+		isHomePage?: boolean;
+	}
+
+	let { isHomePage = false }: Props = $props();
 </script>
 
 <svg

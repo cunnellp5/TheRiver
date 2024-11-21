@@ -11,17 +11,16 @@
 	import { enhance } from '$app/forms';
 	import DashboardUserRow from './DashboardUserRow.svelte';
 
-	export let data;
-	export let form;
-	let showModal = false;
-	let emailInput = '';
-	let loading = false;
+	let { data, form = $bindable() } = $props();
+	let showModal = $state(false);
+	let emailInput = $state('');
+	let loading = $state(false);
 
 	function resetForm() {
 		form = null;
 	}
 
-	$: disabledDelete = emailInput !== data.user.email;
+	let disabledDelete = $derived(emailInput !== data.user.email);
 </script>
 
 <Seo
@@ -29,11 +28,13 @@
 	description={'Access your personal dashboard to manage your profile, settings, and preferences. Stay organized and control your account efficiently.'} />
 
 <Modal bind:showModal overrideButtons={true}>
-	<h2 slot="header">
-		Delete this account
-		<br />
-		<small>{data.user.firstName}, are you sure?</small>
-	</h2>
+	{#snippet header()}
+		<h2 >
+			Delete this account
+			<br />
+			<small>{data.user.firstName}, are you sure?</small>
+		</h2>
+	{/snippet}
 	<section class="modalBody">
 		<div>
 			<p>Once you delete your account, there is no going back. Please be certain.</p>
@@ -70,15 +71,17 @@
 			<input type="hidden" name="userEmail" value={data.user.email} />
 		</form>
 	</section>
-	<div slot="buttons" class="buttonWrapper">
-		<button
-			form="deleteForm"
-			type="submit"
-			class:delete-button={!disabledDelete}
-			class:diabledDelete={disabledDelete}
-			disabled={disabledDelete}>Permanently Delete</button>
-		<button type="button" on:click={() => (showModal = false)}>Close</button>
-	</div>
+	{#snippet buttons()}
+		<div  class="buttonWrapper">
+			<button
+				form="deleteForm"
+				type="submit"
+				class:delete-button={!disabledDelete}
+				class:diabledDelete={disabledDelete}
+				disabled={disabledDelete}>Permanently Delete</button>
+			<button type="button" onclick={() => (showModal = false)}>Close</button>
+		</div>
+	{/snippet}
 </Modal>
 
 <section class="app-layout">
@@ -101,7 +104,7 @@
 							{#if form?.status !== 200 && form?.message}
 								<div class="buttonWrapper">
 									<p class="errorMessage">{form?.message}</p>
-									<button class="rmButtonStyles" on:click={resetForm} aria-label="Reset Form">
+									<button class="rmButtonStyles" onclick={resetForm} aria-label="Reset Form">
 										<X />
 									</button>
 								</div>
@@ -194,7 +197,7 @@
 										</span>
 									</div>
 									<div class="center">
-										<button class="delete-button" on:click={() => (showModal = true)}>
+										<button class="delete-button" onclick={() => (showModal = true)}>
 											Delete Account
 										</button>
 									</div>

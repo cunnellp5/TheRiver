@@ -1,14 +1,23 @@
 <script lang="ts">
+	import { createBubbler } from 'svelte/legacy';
+
+	const bubble = createBubbler();
 	import type { HTMLTdAttributes } from 'svelte/elements';
 
 	type $$Props = HTMLTdAttributes;
 
-	let className: $$Props['class'] = '';
-	export { className as class };
+	interface Props {
+		class?: $$Props['class'];
+		children?: import('svelte').Snippet;
+		[key: string]: any
+	}
+
+	let { class: className = '', children, ...rest }: Props = $props();
+	
 </script>
 
-<td class={`${className}`} {...$$restProps} on:dblclick on:click on:keydown>
-	<slot />
+<td class={`${className}`} {...rest} ondblclick={bubble('dblclick')} onclick={bubble('click')} onkeydown={bubble('keydown')}>
+	{@render children?.()}
 </td>
 
 <style>
@@ -16,7 +25,7 @@
 	td {
 		padding: var(--size-3);
 		text-align: left;
-		&:has([role='checkbox']) {
+		&:has(:global([role='checkbox'])) {
 			padding-right: 0;
 		}
 	}

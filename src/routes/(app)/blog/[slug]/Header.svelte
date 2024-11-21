@@ -3,7 +3,11 @@
 	import formatDate from '$lib/utils/formatDate';
 	import type { BlogPost } from '$lib/types';
 
-	export let post: BlogPost;
+	interface Props {
+		post: BlogPost;
+	}
+
+	let { post }: Props = $props();
 </script>
 
 <section class="hero">

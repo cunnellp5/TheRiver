@@ -12,19 +12,19 @@
 	import { enhance } from '$app/forms';
 	import { configOptions, convertTimeSlots } from './calendarConfig';
 
-	export let data;
+	let { data } = $props();
 
 	const { timeSlots } = data;
 
-	let eventStart: string = '';
-	let eventEnd: string = '';
-	let eventTitle: string = 'NEW';
-	let allEvents: Event[] = [];
+	let eventStart: string = $state('');
+	let eventEnd: string = $state('');
+	let eventTitle: string = $state('NEW');
+	let allEvents: Event[] = $state([]);
 	let eventInfo: { startStr: string; endStr: string };
-	let showModal = false;
-	let showEvent = false;
-	let eventDisplay: Event;
-	let ec: Calendar;
+	let showModal = $state(false);
+	let showEvent = $state(false);
+	let eventDisplay: Event = $state();
+	let ec: Calendar = $state();
 
 	const reset = () => {
 		eventStart = '';
@@ -120,7 +120,9 @@
 
 <!-- elements that are hidden/absolutely positioned -->
 <Modal bind:showModal on:close={handleClose} buttonText="Save">
-	<h2 slot="header">Schedule</h2>
+	{#snippet header()}
+		<h2 >Schedule</h2>
+	{/snippet}
 
 	<div class="form-group">
 		<label for="eventTitle">Title</label>
@@ -169,7 +171,7 @@
 				<p>{eventDisplay.start}</p>
 				<p>{eventDisplay.end}</p>
 				<button
-					on:click={() => {
+					onclick={() => {
 						showEvent = false;
 					}}>close</button>
 				<button>delete</button>

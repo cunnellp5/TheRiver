@@ -4,7 +4,7 @@
 	// carousel: https://www.shadcn-svelte.com/docs/components/carousel
 	import VideoCarousel from './VideoCarousel.svelte';
 
-	export let data;
+	let { data } = $props();
 	const { videos } = data;
 	// const YOUTUBE_BASE_EMBED_URL = 'https://www.youtube.com/embed/';
 </script>

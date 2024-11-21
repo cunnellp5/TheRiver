@@ -4,8 +4,12 @@
 	import 'quill/dist/quill.snow.css';
 	import type { ActionData, PageData } from './$types';
 
-	export let form: ActionData;
-	export let data: PageData;
+	interface Props {
+		form: ActionData;
+		data: PageData;
+	}
+
+	let { form, data }: Props = $props();
 
 	const post = data.posts.find((p) => p.slug === $page.params.slug);
 

@@ -1,14 +1,26 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import * as Table from '$lib/components/ui/shadcn/table';
 	import { enhance } from '$app/forms';
 
-	export let url;
-	export let title;
-	export let about;
-	export let isShowing: boolean;
-	export let id;
+	interface Props {
+		url: any;
+		title: any;
+		about: any;
+		isShowing: boolean;
+		id: any;
+	}
 
-	let isEditing = false;
+	let {
+		url,
+		title,
+		about,
+		isShowing,
+		id
+	}: Props = $props();
+
+	let isEditing = $state(false);
 
 	function toggleEditOn(): void {
 		isEditing = true;
@@ -18,7 +30,10 @@
 		isEditing = false;
 	}
 
-	$: showing = isShowing ? 'true' : 'false';
+	let showing;
+	run(() => {
+		showing = isShowing ? 'true' : 'false';
+	});
 </script>
 
 <Table.Cell>
@@ -43,7 +58,7 @@
 				</div>
 			</fieldset>
 
-			<textarea name="about" cols="80" rows="3" value={about} />
+			<textarea name="about" cols="80" rows="3" value={about}></textarea>
 
 			<div class="buttons-wrapper">
 				<input type="hidden" name="title" value={title} />
@@ -51,7 +66,7 @@
 				<input type="hidden" name="id" value={id} />
 
 				<button class="create-button" type="submit">Save</button>
-				<button class="delete-button" on:click={toggleEditOff}>Nvm</button>
+				<button class="delete-button" onclick={toggleEditOff}>Nvm</button>
 			</div>
 		</form>
 	</Table.Cell>
@@ -67,7 +82,7 @@
 		</div>
 	</Table.Cell>
 	<Table.Cell class="end">
-		<button class="update-button" on:click={toggleEditOn}>edit</button>
+		<button class="update-button" onclick={toggleEditOn}>edit</button>
 	</Table.Cell>
 {/if}
 

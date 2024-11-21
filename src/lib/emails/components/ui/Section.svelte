@@ -1,7 +1,7 @@
 <script lang="ts">
 	import styleToString from '$lib/utils/styleToString';
 
-	export let style = {};
+	let { style = {}, children, ...rest } = $props();
 
 	const styleDefaultTable = {
 		width: '100%',
@@ -22,10 +22,10 @@
 	cellPadding={0}
 	cellSpacing={0}
 	role="presentation"
-	{...$$restProps}>
+	{...rest}>
 	<tbody>
 		<tr style={styleToString(styleDefaultTr)}>
-			<slot />
+			{@render children?.()}
 		</tr>
 	</tbody>
 </table>

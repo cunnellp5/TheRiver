@@ -1,5 +1,5 @@
 <script lang="ts">
-	let scroll: number;
+	let scroll: number = $state();
 </script>
 
 <svelte:window bind:scrollY={scroll} />

@@ -5,11 +5,15 @@
 	import type { HTMLAttributes } from 'svelte/elements';
 
 	type $$Props = HTMLAttributes<HTMLDivElement>;
-	let className: $$Props['class'] = '';
-	export { className as class };
+	interface Props {
+		class?: $$Props['class'];
+	}
+
+	let { class: className = '' }: Props = $props();
+	
 </script>
 
-<button on:click={toggleTheme} aria-label="Toggle Theme" class={className}>
+<button onclick={toggleTheme} aria-label="Toggle Theme" class={className}>
 	{#if $theme === 'dark'}
 		<div in:fly={{ y: 10 }}>
 			<Circle fill="#E6E4C3" />

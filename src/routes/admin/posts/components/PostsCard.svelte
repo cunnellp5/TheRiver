@@ -3,13 +3,27 @@
 	import formatDate from '$lib/utils/formatDate';
 	import SquareArrowOurUpRight from 'lucide-svelte/icons/square-arrow-out-up-right';
 
-	export let title: string;
-	export let tags: string[];
-	export let createdAt: Date;
-	export let slug: string;
-	export let description: string;
-	export let allowSlot: boolean = false;
-	export let link: string = `/posts/${slug}`;
+	interface Props {
+		title: string;
+		tags: string[];
+		createdAt: Date;
+		slug: string;
+		description: string;
+		allowSlot?: boolean;
+		link?: string;
+		children?: import('svelte').Snippet;
+	}
+
+	let {
+		title,
+		tags,
+		createdAt,
+		slug,
+		description,
+		allowSlot = false,
+		link = `/posts/${slug}`,
+		children
+	}: Props = $props();
 </script>
 
 <div class="card surface-4">
@@ -34,7 +48,7 @@
 		Read more
 	</a>
 	{#if allowSlot}
-		<slot />
+		{@render children?.()}
 	{/if}
 </div>
 

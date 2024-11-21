@@ -3,12 +3,16 @@
 
 	type UserValue = string | boolean | number | Date | null;
 
-	export let value: UserValue;
-	export let key;
+	interface Props {
+		value: UserValue;
+		key: any;
+	}
 
-	let inputElement: HTMLInputElement;
-	let optionText1: string;
-	let optionText2: string;
+	let { value = $bindable(), key }: Props = $props();
+
+	let inputElement: HTMLInputElement = $state();
+	let optionText1: string = $state();
+	let optionText2: string = $state();
 
 	onMount(() => {
 		if (key === 'isSubscribed') {

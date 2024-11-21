@@ -10,10 +10,14 @@
 
 	type UserValue = string | boolean | number | Date | null;
 
-	export let value: UserValue;
-	export let key: string;
-	export let id: string;
-	let isEditing = false;
+	interface Props {
+		value: UserValue;
+		key: string;
+		id: string;
+	}
+
+	let { value, key, id }: Props = $props();
+	let isEditing = $state(false);
 	let inputElement: HTMLInputElement;
 
 	function editing() {
@@ -85,7 +89,7 @@
 
 				<div class="buttonWrapper">
 					<button class="create-button" type="submit"> <Save /> </button>
-					<button class="delete-button" type="button" on:click={stopEditing}> <X /> </button>
+					<button class="delete-button" type="button" onclick={stopEditing}> <X /> </button>
 				</div>
 			</form>
 		</Table.Cell>
@@ -96,7 +100,7 @@
 					{cellValue({ value, key })}
 				</p>
 				<div class="buttonWrapper">
-					<button class="update-button" on:click={editing}>
+					<button class="update-button" onclick={editing}>
 						<Pencil />
 					</button>
 				</div>

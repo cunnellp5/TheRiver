@@ -1,17 +1,19 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import { onMount } from 'svelte';
 	import Seo from '$lib/components/SEO.svelte';
 
-	export let data;
+	let { data } = $props();
 	const { pages } = data;
 
-	let disabledNext = false;
-	let disabledPrevious = true;
-	let currentPage = 0;
-	$: {
+	let disabledNext = $state(false);
+	let disabledPrevious = $state(true);
+	let currentPage = $state(0);
+	run(() => {
 		disabledNext = currentPage === pages.length - 1;
 		disabledPrevious = currentPage === 0;
-	}
+	});
 </script>
 
 <Seo
@@ -35,13 +37,13 @@
 	{currentPage + 1} / {pages.length}
 	<div class="buttonWrapper">
 		<button
-			on:click={() => (currentPage = currentPage - 1)}
+			onclick={() => (currentPage = currentPage - 1)}
 			disabled={disabledPrevious}
 			class:disabled={disabledPrevious}>
 			Previous
 		</button>
 		<button
-			on:click={() => (currentPage = currentPage + 1)}
+			onclick={() => (currentPage = currentPage + 1)}
 			class:disabled={disabledNext}
 			disabled={disabledNext}>
 			Next

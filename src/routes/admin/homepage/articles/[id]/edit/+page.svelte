@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import Card from '$lib/components/ui/Card.svelte';
 	import { addToast } from '$lib/stores/toast';
 	import { enhance } from '$app/forms';
@@ -18,8 +20,12 @@
 		};
 	};
 
-	export let data;
-	export let form: ActionData & ArticleForm; // This isn't ideal and i dont like how redundant this is, but TS isnt recognizing the inferred nested ActionData types below, and If i just go with the explicitly typed form object, it causes issues with the form object in the script tag
+	interface Props {
+		data: any;
+		form: ActionData & ArticleForm; // This isn't ideal and i dont like how redundant this is, but TS isnt recognizing the inferred nested ActionData types below, and If i just go with the explicitly typed form object, it causes issues with the form object in the script tag
+	}
+
+	let { data, form = $bindable() }: Props = $props();
 
 	const { article } = data; // by pulling a reference to the data obj, we can use that to init the form fields and then use the data obj to refresh with the latest data
 
@@ -27,30 +33,35 @@
 		addToast({ message: msg, type, dismissible: true, timeout: 5000 });
 	}
 
-	$: articlePreview = {
-		author: article.author,
-		img: article.img,
-		title: article.articleTitle,
-		description: article.description,
-		link: article.link
-	};
-
-	$: if (form?.success) {
-		// Reset article fields with latest data
+	let articlePreview;
+	run(() => {
 		articlePreview = {
-			author: data.article.author,
-			img: data.article.img,
-			title: data.article.articleTitle,
-			description: data.article.description,
-			link: data.article.link
+			author: article.author,
+			img: article.img,
+			title: article.articleTitle,
+			description: article.description,
+			link: article.link
 		};
+	});
 
-		// Show success toast
-		showToast(form.message, 'success');
+	run(() => {
+		if (form?.success) {
+			// Reset article fields with latest data
+			articlePreview = {
+				author: data.article.author,
+				img: data.article.img,
+				title: data.article.articleTitle,
+				description: data.article.description,
+				link: data.article.link
+			};
 
-		// Reset the form object (if i dont this was causing issues)
-		form = { ...form, success: undefined, message: '' };
-	}
+			// Show success toast
+			showToast(form.message, 'success');
+
+			// Reset the form object (if i dont this was causing issues)
+			form = { ...form, success: undefined, message: '' };
+		}
+	});
 
 	function resetForm() {
 		// eslint-disable-next-line no-alert, no-restricted-globals
@@ -65,12 +76,12 @@
 		}
 	}
 
-	$: disabled =
-		article.articleTitle === articlePreview.title &&
+	let disabled =
+		$derived(article.articleTitle === articlePreview.title &&
 		article.author === articlePreview.author &&
 		article.description === articlePreview.description &&
 		article.img === articlePreview.img &&
-		article.link === articlePreview.link;
+		article.link === articlePreview.link);
 </script>
 
 <div class="form-and-preview">
@@ -112,7 +123,7 @@
 				name="description"
 				id="description"
 				bind:value={articlePreview.description}
-				rows="4" />
+				rows="4"></textarea>
 			<p class="error-text">
 				{#if form?.error?.description}
 					{form?.error?.description[0]}
@@ -151,7 +162,7 @@
 		</div>
 
 		<div class="button-group">
-			<button class="reset-article-button" type="button" on:click={resetForm}> Reset Form </button>
+			<button class="reset-article-button" type="button" onclick={resetForm}> Reset Form </button>
 			<button class:disabled {disabled} class="update-article-button">Update</button>
 		</div>
 	</form>

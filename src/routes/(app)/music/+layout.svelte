@@ -1,6 +1,8 @@
 <!-- leaving below just in case i dont want to scroll on nav -->
 <!-- data-sveltekit-noscroll -->
 <script lang="ts">
+	import { run } from 'svelte/legacy';
+
 	import { page } from '$app/stores';
 	import NavButton from '$lib/components/ui/button/NavButton.svelte';
 	import type { LayoutData } from './$types';
@@ -9,20 +11,25 @@
 	import Featured from './Featured.svelte';
 	import Marquee from '$lib/components/ui/Marquee.svelte';
 
-	export let data: LayoutData;
+	interface Props {
+		data: LayoutData;
+		children?: import('svelte').Snippet;
+	}
+
+	let { data, children }: Props = $props();
 	const { about } = data;
 
 	const CssScrollToggler = new ShowHideScroll();
-	let scroll: number;
-	let includesTracks: boolean;
-	let includesStems: boolean;
-	let includesVideos: boolean;
+	let scroll: number = $state();
+	let includesTracks: boolean = $state();
+	let includesStems: boolean = $state();
+	let includesVideos: boolean = $state();
 
-	$: {
+	run(() => {
 		includesTracks = $page.url.pathname === '/music';
 		includesStems = $page.url.pathname === '/music/video';
 		includesVideos = $page.url.pathname === '/music/stems';
-	}
+	});
 </script>
 
 <svelte:window bind:scrollY={scroll} />
@@ -45,7 +52,7 @@
 	{/if} -->
 
 	<section class="music-content app-layout">
-		<slot></slot>
+		{@render children?.()}
 	</section>
 </main>
 

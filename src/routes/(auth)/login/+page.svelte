@@ -5,13 +5,13 @@
 	import { LoaderCircle } from 'lucide-svelte';
 	import CircleAlert from 'lucide-svelte/icons/circle-alert';
 
-	export let form;
+	let { form } = $props();
 
-	let email = '';
-	let password = '';
-	let loading = false;
+	let email = $state('');
+	let password = $state('');
+	let loading = $state(false);
 
-	$: isFormValid = email.includes('@') && password.length >= 6;
+	let isFormValid = $derived(email.includes('@') && password.length >= 6);
 </script>
 
 <Seo
