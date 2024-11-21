@@ -41,12 +41,6 @@
 		background: var(--surface-4);
 		height: 100%;
 		color: var(--text-1);
-		& > a > div {
-			display: flex;
-			flex-direction: row;
-			justify-content: space-between;
-			align-items: center;
-		}
 	}
 	.option2 {
 		box-shadow: unset;
@@ -55,11 +49,5 @@
 		background: unset;
 		height: 100%;
 		color: var(--text-1);
-		& > a > div {
-			display: flex;
-			flex-direction: row-reverse;
-			justify-content: space-between;
-			align-items: center;
-		}
 	}
 </style>

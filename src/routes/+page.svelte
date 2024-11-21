@@ -85,7 +85,11 @@
 		{#each articles as article, i}
 			<GenericCard.Root class={i % 2 === 0 ? 'option1' : 'option2'}>
 				<a href={article.link} target="_blank" class="articleLink" rel="noopener">
-					<div class="app-layout articleWrapper">
+					<div
+						class="app-layout articleWrapper"
+						style="display: flex; flex-direction: {i % 2 === 0
+							? 'row'
+							: 'row-reverse'}; justify-content: space-between; align-items: center;">
 						<GenericCard.Header class="mobilePad">
 							<GenericCard.Title class="funText">
 								{article.articleTitle}
