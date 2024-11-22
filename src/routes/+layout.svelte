@@ -10,7 +10,6 @@
 	import Footer from './components/footer/Footer.svelte';
 	import Header from './components/header/Header.svelte';
 	import VanishingHeader from './components/header/VanishingHeader.svelte';
-	import PageTransition from './components/body/PageTransition.svelte';
 	import { onNavigate } from '$app/navigation';
 
 	interface Props {
@@ -46,9 +45,7 @@
 		</div>
 	</VanishingHeader>
 
-	<PageTransition>
 		{@render children?.()}
-	</PageTransition>
 
 	<div class="app-layout">
 		<Footer />

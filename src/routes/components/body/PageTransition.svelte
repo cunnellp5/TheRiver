@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { fade } from 'svelte/transition';
+	import { quintOut } from 'svelte/easing';
 	import { page } from '$app/stores';
 	interface Props {
 		children?: import('svelte').Snippet;
@@ -9,7 +9,7 @@
 </script>
 
 {#key $page.url.pathname.split('/')[1]}
-	<div class="transition" in:fade>
+	<div class="transition">
 		{@render children?.()}
 	</div>
 {/key}
