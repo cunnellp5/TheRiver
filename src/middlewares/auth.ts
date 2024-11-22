@@ -16,7 +16,7 @@ export const auth: Handle = async ({ event, resolve }) => {
 		return resolve(event);
 	}
 
-	const { session, user } = await memoizedValidateSessionToken(token);
+	const { session, user } = await memoizedValidateSessionToken(token, 3600);
 
 	if (session !== null) {
 		setSessionTokenCookie(event, token, session.expiresAt);
