@@ -16,7 +16,8 @@ const config = {
 				'script-src': [
 					'self',
 					'https://va.vercel-scripts.com/v1/script.debug.js',
-					'https://va.vercel-scripts.com/v1/speed-insights/script.debug.js'
+					'https://va.vercel-scripts.com/v1/speed-insights/script.debug.js',
+					'https://vercel.live/_next-live/feedback/feedback.js'
 				], // Allow scripts from self and inline scripts with nonce
 				'style-src': ['self', 'https://fonts.googleapis.com', 'unsafe-inline'], // Allow styles from self and Google Fonts
 				'img-src': ['self', 'https://res.cloudinary.com', 'https://i.ytimg.com/'], // Allow images from self and Cloudinary
