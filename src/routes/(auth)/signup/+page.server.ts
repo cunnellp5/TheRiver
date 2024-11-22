@@ -141,7 +141,7 @@ export const actions: Actions = {
 		// (if they subscribed they would have recieved a similar welcome email)
 		if (!newsLetterSubscription) {
 			try {
-				await event.fetch('api/emails/welcome', {
+				event.fetch('api/emails/welcome', {
 					method: 'POST',
 					body: JSON.stringify({ subject: 'Thanks for Signing up - The River', email: email }),
 					headers: {

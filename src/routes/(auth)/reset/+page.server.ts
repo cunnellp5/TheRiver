@@ -96,7 +96,7 @@ export const actions: Actions = {
 
 		// send reset email
 		try {
-			await fetch('api/emails/reset', {
+			fetch('api/emails/reset', {
 				method: 'POST',
 				body: JSON.stringify({ email, token: hexHash }),
 				headers: {

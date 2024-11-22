@@ -9,7 +9,8 @@ export async function login({
 	event: RequestEvent;
 }): Promise<void> {
 	const token = generateSessionToken();
+
 	const session = await createSession(token, userId);
 
-	const sessionCookie = setSessionTokenCookie(event, token, session.expiresAt);
+	setSessionTokenCookie(event, token, session.expiresAt);
 }
