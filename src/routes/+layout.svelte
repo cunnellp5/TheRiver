@@ -39,13 +39,13 @@
 	<!-- duration="300ms"  -->
 	<!-- offset={50} 
 	tolerance={5} -->
-	<VanishingHeader >
+	<VanishingHeader>
 		<div class="app-layout">
 			<Header isSignedIn={data.isSignedIn} user={data.user} />
 		</div>
 	</VanishingHeader>
 
-		{@render children?.()}
+	{@render children?.()}
 
 	<div class="app-layout">
 		<Footer />
