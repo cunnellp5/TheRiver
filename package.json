@@ -61,6 +61,7 @@
 		"@oslojs/crypto": "^1.0.1",
 		"@oslojs/encoding": "^1.1.0",
 		"@prisma/client": "^5.12.1",
+		"@vercel/analytics": "^1.4.1",
 		"@vercel/speed-insights": "^1.1.0",
 		"calendarize": "^1.1.1",
 		"cloudinary": "^2.2.0",
