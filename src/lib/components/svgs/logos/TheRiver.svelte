@@ -15,14 +15,14 @@
 		<g id="g6" transform="matrix(0.26458333,0,0,0.26458333,-150.01875,50.270833)">
 			<!-- T -->
 			<polygon
-				in:fly={{ duration: 700, x: -400, easing: backOut }}
+				in:fly={{ duration: 250, x: -400, easing: backOut }}
 				class="shadow homePage"
 				points="655.8,362 655.9,361 547.5,361 544.2,392 544.3,392 544.2,393 577.9,393 559.2,570 559.3,570 559.2,571 601,571 619.7,393 652.8,393 655.9,362 "
 				id="T" />
 			<!-- HE -->
 			<polygon
 				in:fly={{
-					duration: 700,
+					duration: 250,
 					x: -400,
 					delay: 140,
 					easing: backOut
@@ -32,43 +32,43 @@
 				id="HE" />
 			<!-- R -->
 			<path
-				in:fly={{ duration: 700, x: 400 }}
+				in:fly={{ duration: 250, x: 400 }}
 				class="shadow homePage"
 				d="m 953,467 h 33.3 l 30.7,103 h 19.4 L 1004,463.2 c 19.4,-4 29.1,-20.4 29.1,-49.3 0,-17.3 -4,-30.5 -12,-39.4 -8,-9 -21.3,-13.5 -39.9,-13.5 H 934 v 209 h 19 z m 0,-91 h 27.7 c 12.7,0 21.4,2.9 26.1,8.9 4.7,6 7.1,15.7 7.1,29.1 0,13.6 -2.5,23.5 -7.4,29.7 -5,6.2 -13.8,9.3 -26.4,9.3 H 953 Z"
 				id="R" />
 			<!-- I -->
 			<polygon
-				in:fly={{ duration: 700, x: 400, delay: 70 }}
+				in:fly={{ duration: 250, x: 400, delay: 20 }}
 				class="shadow homePage"
 				points="1097.3,362 1077.7,362 1055.9,571 1075.5,571 "
 				id="I" />
 			<!-- V -->
 			<polygon
-				in:fly={{ duration: 700, x: 400, delay: 140 }}
+				in:fly={{ duration: 250, x: 400, delay: 40 }}
 				class="shadow homePage"
 				points="1225.5,361 1206.9,361 1169.7,534.1 1130.2,361 1111.4,361 1160.4,570 1178.3,570 "
 				id="V" />
 			<!-- E -->
 			<polygon
-				in:fly={{ duration: 700, x: 400, delay: 210 }}
+				in:fly={{ duration: 250, x: 400, delay: 60 }}
 				class="shadow homePage"
 				points="1325,361 1250,361 1250,570 1326,570 1326,556 1270,556 1270,469 1315,469 1315,455 1270,455 1270,376 1325,376 "
 				id="E" />
 			<!-- R -->
 			<path
-				in:fly={{ duration: 700, x: 400, delay: 280 }}
+				in:fly={{ duration: 250, x: 400, delay: 80 }}
 				class="shadow homePage"
 				d="m 1372.5,570 30.7,-103 h 32.8 v 103 h 20 V 361 h -47.8 c -18.6,0 -31.9,4.5 -39.9,13.5 -8,9 -12,22.1 -12,39.5 0,28.9 9.7,45.2 29.1,49.2 L 1353.1,570 Z M 1383,443.7 c -5,-6.2 -7.4,-16.1 -7.4,-29.7 0,-13.5 2.4,-23.1 7.1,-29.1 4.7,-6 13.4,-8.9 26.1,-8.9 h 27.3 v 77 h -26.7 c -12.7,0 -21.5,-3.1 -26.4,-9.3 z"
 				id="R2" />
 			<!-- OUTLINE -->
+			<!-- in:draw={{ duration: 800 }} -->
 			<path
-				in:draw={{ duration: 1400 }}
 				style="stroke:#ffffff; fill: none"
 				class="shadow homePage"
 				d="M 420,288 V 644 H 1580 V 288 Z M 1560,624 H 440 V 308 h 1120 z"
 				id="OUTLINE" />
+			<!-- in:fade={{ duration: 500 }} -->
 			<path
-				in:fade={{ duration: 1400, delay: 700 }}
 				style="stroke:#ffffff;"
 				class="shadow homePage"
 				d="M 420,288 V 644 H 1580 V 288 Z M 1560,624 H 440 V 308 h 1120 z"
