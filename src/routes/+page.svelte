@@ -40,13 +40,20 @@
 
 <Seo
 	title={'Music, Beauty Services, Blog & Fashion - The River | Alexis'}
-	description={'Discover The River: A multifaceted artist offering music, beauty services, fashion, and more. Explore her latest tracks, music videos, blog, and unique handmade jewelry and clothing.'} />
+	description={'Discover The River: A multifaceted artist offering music, beauty services, fashion, and more. Explore her latest tracks, music videos, blog, and unique handmade jewelry and clothing.'}
+></Seo>
 <!-- style:transform={`translateY(${scroll}px)`} -->
 <main>
 	<div class="img-video-overlay-wrapper">
 		<div id="video-background">
 			{#if visible && videoURL}
-				<video in:fade={{ duration: 800, delay: 600 }} autoplay loop muted>
+				<video
+					in:fade={{ duration: 800, delay: 600 }}
+					autoplay
+					loop
+					muted
+					loading="eager"
+					fetchpriority="high">
 					<source src={videoURL} type="video/mp4" />
 					<track kind="captions" srclang="en" label="English" />
 				</video>
