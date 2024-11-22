@@ -47,7 +47,8 @@
 	<div class="img-video-overlay-wrapper">
 		<div id="video-background">
 			{#if visible && videoURL}
-				<video in:fade={{ duration: 400 }} autoplay loop muted>
+				<!-- in:fade={{ duration: 400 }} -->
+				<video autoplay loop muted>
 					<source src={videoURL} type="video/mp4" />
 					<track kind="captions" srclang="en" label="English" />
 				</video>

@@ -46,7 +46,7 @@
 </script>
 
 <div class:showingSheet>
-	<a class="logo-link" href="/">
+	<a class="logo-link" href="/" aria-label="Home button logo img">
 		<LogoR />
 	</a>
 	<ul class="links" class:showingSheet class:showingSheetTopSeparator={showingSheet}>

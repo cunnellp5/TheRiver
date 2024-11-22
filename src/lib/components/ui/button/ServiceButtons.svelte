@@ -26,13 +26,13 @@
 		font-weight: var(--font-weight-6);
 	}
 	button.hair {
-		background-color: var(--jungle-2);
+		background-color: var(--jungle-0);
 		color: var(--gray-7);
 	}
 	button.nails {
-		background-color: var(--brown-8);
+		background-color: var(--brown-12);
 	}
 	span {
-		color: var(--brown-8);
+		color: var(--brown-12);
 	}
 </style>
