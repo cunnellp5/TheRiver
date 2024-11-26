@@ -20,10 +20,10 @@
 	const { about } = data;
 
 	const CssScrollToggler = new ShowHideScroll();
-	let scroll: number = $state();
-	let includesTracks: boolean = $state();
-	let includesStems: boolean = $state();
-	let includesVideos: boolean = $state();
+	let scroll: number = $state(0);
+	let includesTracks: boolean = $state(false);
+	let includesStems: boolean = $state(false);
+	let includesVideos: boolean = $state(false);
 
 	run(() => {
 		includesTracks = $page.url.pathname === '/music';

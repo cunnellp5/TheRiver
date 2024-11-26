@@ -14,9 +14,9 @@
 	}
 
 	let { data }: Props = $props();
-	let index: number = $state();
-	let next: BlogPost = $state();
-	let previous: BlogPost = $state();
+	let index: number = $state(0);
+	let next: BlogPost | undefined = $state(undefined);
+	let previous: BlogPost | undefined = $state(undefined);
 
 	function findPost(slug: string): BlogPost | undefined {
 		return data.posts.find((p) => p.slug === slug) || undefined;

@@ -47,6 +47,11 @@
 			sans-serif;
 	}
 
+	.noPad {
+		margin: unset;
+		padding: unset;
+	}
+
 	.funText {
 		background: unset;
 		-webkit-background-clip: unset;

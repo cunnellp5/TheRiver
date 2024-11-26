@@ -1,7 +1,5 @@
 <script lang="ts">
 	import * as GenericCard from '$lib/components/ui/shadcn/card';
-	import { onMount } from 'svelte';
-
 	let { articles } = $props();
 </script>
 

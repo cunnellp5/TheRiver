@@ -31,7 +31,7 @@
 								${service.price}.00
 							</span>
 							<span class="time">
-								{service.duration} min
+								{service.duration ? service.duration + 'min' : ''}
 							</span>
 						</div>
 					</Table.Cell>

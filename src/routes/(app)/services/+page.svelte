@@ -7,7 +7,7 @@
 
 	let { data } = $props();
 	const { services, about } = data;
-	let scroll: number = $state();
+	let scroll: number = $state(0);
 </script>
 
 <Seo
