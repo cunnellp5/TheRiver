@@ -314,7 +314,6 @@
 </ol>
 <ol>
 	<span>Other tools</span>
-	<li>lucia - auth</li>
 	<li>oslo - auth utilities like encryption</li>
 	<li>quill - renders blog</li>
 	<li>valibot - validates user input</li>

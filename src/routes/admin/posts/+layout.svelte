@@ -94,7 +94,7 @@
 				<section>
 					{#if filteredPosts.length > 0}
 						<ul>
-							{#each filteredPosts as { createdAt, description, slug, tags, title, published }}
+							{#each filteredPosts as { createdAt, description, slug, tags, title, published: isPublished }}
 								{#if showElement}
 									<li class="card surface-4">
 										<BlogCard
@@ -105,16 +105,12 @@
 											{slug}
 											{description}>
 											{#snippet published()}
-																						<div
-													class="isPublished"
-													
-													class:published
-													class:unpublished={!published}>
-													{published ? 'Published' : 'Draft'}
+												<div class="isPublished" class:isPublished class:unpublished={!isPublished}>
+													{isPublished ? 'Published' : 'Draft'}
 												</div>
 											{/snippet}
 											{#snippet buttons()}
-																						<div class="buttons" >
+												<div class="buttons">
 													<a href={`/admin/posts/${slug}/edit`} data-sveltekit-noscroll>
 														<button class="update-button">
 															<Pencil strokeWidth={STROKE_WIDTH} />Edit</button>
@@ -209,7 +205,7 @@
 		font-size: var(--font-size-0);
 		text-align: center;
 	}
-	.published {
+	.isPublished {
 		box-shadow: 0px var(--size-4) var(--size-15) var(--green-4);
 		border: 1px solid var(--green-4);
 		border-radius: var(--radius-3);

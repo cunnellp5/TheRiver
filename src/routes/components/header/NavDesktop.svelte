@@ -80,6 +80,7 @@
 	<NavButton route="/services" display="services" active={includesService} />
 
 	<li class:current={isShop} aria-current={isShop}>
+		<!-- <a href="/merch" rel="noopener"> Merch </a> -->
 		<a href="https://www.etsy.com/shop/TheRiverDesign" target="_blank" rel="noopener"> Merch </a>
 	</li>
 	<li class:border-left={!showingSheet} class:borderBottom={showingSheet}></li>
@@ -93,7 +94,7 @@
 	</li> -->
 	<NavButton route="/contact" display="Contact" active={isContact} />
 
-	<li class:border-left={!showingSheet} class:borderBottom={showingSheet}></li>
+	<!-- <li class:border-left={!showingSheet} class:borderBottom={showingSheet}></li>
 	{#if isSignedIn}
 		<form
 			class="logout-wrapper"
@@ -128,7 +129,7 @@
 			<a href="/login"> Login </a>
 		</li>
 	{/if}
-	<li class:border-left={!showingSheet} class:borderBottom={showingSheet}></li>
+	<li class:border-left={!showingSheet} class:borderBottom={showingSheet}></li> -->
 	<ToggleTheme />
 </ul>
 
