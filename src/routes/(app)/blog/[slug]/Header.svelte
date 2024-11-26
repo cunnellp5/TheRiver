@@ -11,7 +11,7 @@
 </script>
 
 <section class="hero">
-	<h1 class="headingReset" id={post.slug}>{post.title}</h1>
+	<h1 id={post.slug}>{post.title}</h1>
 
 	<div class="meta">
 		<img

@@ -30,7 +30,7 @@
 	</figure>
 	<figure class="section contact">
 		<div class="info-wrapper">
-			<h2 class="headingReset">Contact</h2>
+			<h2>Contact</h2>
 			<div class="contact-item">
 				<Phone size="16" />
 				<p>{phoneNumber}</p>
@@ -47,7 +47,7 @@
 	</figure>
 	<figure class="section newsletter">
 		<div class="info-wrapper">
-			<h2 class="headingReset">Book</h2>
+			<h2>Book</h2>
 			<div class="row">
 				<p>Email to book for music/collab.</p>
 			</div>

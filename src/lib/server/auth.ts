@@ -40,11 +40,19 @@
 // 		DatabaseUserAttributes: DtatbaseUserAttributes;
 // 	}
 // }
+
+// DOCS: https://lucia-auth.com/sessions/basic-api/prisma
 import type { RequestEvent } from '@sveltejs/kit';
 import db from './database';
 import { encodeBase32LowerCaseNoPadding, encodeHexLowerCase } from '@oslojs/encoding';
 import { sha256 } from '@oslojs/crypto/sha2';
 import type { User, Session } from '@prisma/client';
+
+// const sessionDuration = 1000 * 60 * 60 * 24 * 30; // 30 days in milliseconds
+// const sessionDurationEarlyExpirationCheck = 1000 * 60 * 60 * 24 * 15; // 15 days in milliseconds
+
+const sessionDuration = 1000 * 60 * 60 * 24; // 1 days in milliseconds
+const sessionDurationEarlyExpirationCheck = 1000 * 60 * 60 * 12; // .5 days in milliseconds
 
 export type SessionValidationResult =
 	| { session: Session; user: User }
@@ -62,7 +70,7 @@ export async function createSession(token: string, userId: number): Promise<Sess
 	const session: Session = {
 		id: sessionId,
 		userId,
-		expiresAt: new Date(Date.now() + 1000 * 60 * 60 * 24 * 30)
+		expiresAt: new Date(Date.now() + sessionDuration)
 	};
 	await db.session.create({
 		data: session
@@ -88,8 +96,8 @@ export async function validateSessionToken(token: string): Promise<SessionValida
 		await db.session.delete({ where: { id: sessionId } });
 		return { session: null, user: null };
 	}
-	if (Date.now() >= session.expiresAt.getTime() - 1000 * 60 * 60 * 24 * 15) {
-		session.expiresAt = new Date(Date.now() + 1000 * 60 * 60 * 24 * 30);
+	if (Date.now() >= session.expiresAt.getTime() - sessionDurationEarlyExpirationCheck) {
+		session.expiresAt = new Date(Date.now() + sessionDuration);
 		await db.session.update({
 			where: {
 				id: session.id

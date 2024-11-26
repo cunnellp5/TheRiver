@@ -1,9 +1,5 @@
 /* gradient headers */
-h1,
-h2,
-h3,
-h5,
-h6 {
+.gradientHeaders {
 	background: var(--gradient-1) fixed;
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
@@ -64,9 +60,9 @@ li {
 	padding-inline-start: 0;
 }
 
-.headingReset {
+/* .headingReset {
 	background: unset;
 	-webkit-background-clip: unset;
 	-webkit-text-fill-color: unset;
 	background-clip: unset;
-}
+} */

@@ -9,20 +9,25 @@
 	interface Props {
 		class?: $$Props['class'];
 		children?: import('svelte').Snippet;
-		[key: string]: any
+		[key: string]: any;
 	}
 
 	let { class: className = '', children, ...rest }: Props = $props();
-	
 </script>
 
-<td class={`${className}`} {...rest} ondblclick={bubble('dblclick')} onclick={bubble('click')} onkeydown={bubble('keydown')}>
+<td
+	class={`${className}`}
+	{...rest}
+	ondblclick={bubble('dblclick')}
+	onclick={bubble('click')}
+	onkeydown={bubble('keydown')}>
 	{@render children?.()}
 </td>
 
 <style>
 	/* ELEMENTS */
 	td {
+		background-color: var(--background-1);
 		padding: var(--size-3);
 		text-align: left;
 		&:has(:global([role='checkbox'])) {

@@ -66,7 +66,7 @@
 		</div>
 	</div>
 	<div class="about app-layout">
-		<h2 class="descriptionHeader">Music Art Hair Nails</h2>
+		<h2 class="descriptionHeader gradientHeaders">Music Art Hair Nails</h2>
 		<p>Let's <span class="lobster">flow</span> together.</p>
 		<div class="socials">
 			<Socials />
@@ -115,7 +115,7 @@
 		{/each}
 	</section>
 	<div class="beauty app-layout">
-		<h2 class="descriptionHeader">Merch</h2>
+		<h2 class="descriptionHeader gradientHeaders">Merch</h2>
 		<p>Get some.</p>
 		<a
 			class="hairLink"

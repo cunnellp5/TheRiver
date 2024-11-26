@@ -13,7 +13,7 @@
 	interface Props {
 		value: UserValue;
 		key: string;
-		id: string;
+		id: number;
 	}
 
 	let { value, key, id }: Props = $props();

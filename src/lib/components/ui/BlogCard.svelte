@@ -29,7 +29,7 @@
 <a class="blogLink" href={slug === 'void' ? 'javascript:void(0)' : link} data-sveltekit-noscroll>
 	{@render published?.()}
 
-	<h5 class="headingReset title">
+	<h5 class="title">
 		{title}
 	</h5>
 
@@ -48,7 +48,7 @@
 	</aside>
 
 	<div>
-		{@render buttons?.({ class: "buttons", })}
+		{@render buttons?.({ class: 'buttons' })}
 	</div>
 </a>
 

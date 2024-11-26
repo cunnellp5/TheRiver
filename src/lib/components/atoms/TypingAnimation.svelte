@@ -40,7 +40,7 @@
 	});
 </script>
 
-<h1 class="jumbo headingReset">
+<h1 class="jumbo">
 	{displayText}
 </h1>
 

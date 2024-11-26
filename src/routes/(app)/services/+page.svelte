@@ -22,7 +22,7 @@
 
 <main>
 	<section class="top" style:background-position={`center ${scroll / 55}%`}>
-		<h1 class="headingReset">The River Beauty</h1>
+		<h1>The River Beauty</h1>
 		{#if about?.isShowing}
 			<p class="about">
 				{about?.text}

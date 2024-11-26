@@ -14,13 +14,12 @@ export const load: PageServerLoad = async (event) => {
 
 	try {
 		foundToken = await db.resetPasswordSession.findFirst({
-			where: { token, expiresAt: { gt: new Date() } }
+			where: { token }
 		});
 	} catch (err) {
 		// TODO if an actual error, should consider doing something more helpful here
 		redirect(302, '/reset');
 	}
-
 	// cannot redirect inside try catch!
 	// if one doesnt exist or its stale, redirect
 	if (!foundToken) {
@@ -101,7 +100,7 @@ export const actions: Actions = {
 		}
 
 		if (!existingUser) {
-			return redirect(302, '/reset');
+			// return redirect(302, '/reset');
 		}
 
 		// Invalidate/delete old session if user is logged in
