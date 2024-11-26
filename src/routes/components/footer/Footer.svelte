@@ -5,7 +5,7 @@
 	import { address, emailWithBreaks, phoneNumber } from '$lib/config';
 </script>
 
-<footer>
+<footer class="app-layout">
 	<div class="linksWrapper">
 		<p class="listHeader">Socials</p>
 		<a href={socialLinks.facebook} target="_blank">

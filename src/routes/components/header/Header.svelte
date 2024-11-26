@@ -17,15 +17,17 @@
  NavSheet shows the NavDesktop links in a modified modal for mobile devices
  NavMobile just shows the hamburger icon for mobile devices
 -->
-<NavSheet {user} {isSignedIn} show={showSheet} on:handleClose={() => (showSheet = false)} />
+<section class="app-layout">
+	<NavSheet {user} {isSignedIn} show={showSheet} on:handleClose={() => (showSheet = false)} />
 
-<nav class="nav-desktop">
-	<NavDesktop {user} {isSignedIn}></NavDesktop>
-</nav>
+	<nav class="nav-desktop">
+		<NavDesktop {user} {isSignedIn}></NavDesktop>
+	</nav>
 
-<nav class="nav-mobile">
-	<NavMobile on:openSheet={() => (showSheet = true)}></NavMobile>
-</nav>
+	<nav class="nav-mobile">
+		<NavMobile on:openSheet={() => (showSheet = true)}></NavMobile>
+	</nav>
+</section>
 
 <style>
 	/* ELEMENTS */

@@ -4,9 +4,9 @@
 </script>
 
 <svg
-	width="306.91666mm"
-	height="94.191666mm"
-	viewBox="0 0 306.91666 94.191666"
+	width="306mm"
+	height="94mm"
+	viewBox="0 0 306 94"
 	version="1.1"
 	id="svg1"
 	xmlns="http://www.w3.org/2000/svg"
@@ -62,14 +62,14 @@
 				id="R2" />
 			<!-- OUTLINE -->
 			<!-- in:draw={{ duration: 800 }} -->
+			<!-- style="stroke:#ffffff; fill: none" -->
 			<path
-				style="stroke:#ffffff; fill: none"
 				class="shadow homePage"
 				d="M 420,288 V 644 H 1580 V 288 Z M 1560,624 H 440 V 308 h 1120 z"
 				id="OUTLINE" />
 			<!-- in:fade={{ duration: 500 }} -->
+			<!-- style="stroke:#ffffff;" -->
 			<path
-				style="stroke:#ffffff;"
 				class="shadow homePage"
 				d="M 420,288 V 644 H 1580 V 288 Z M 1560,624 H 440 V 308 h 1120 z"
 				id="OUTLINE" />
@@ -79,6 +79,7 @@
 
 <style>
 	.homePage {
+		/* fill: var(--stone-9); */
 		fill: var(--stone-3);
 		width: 100%;
 		/* backdrop-filter: blur(1px);  */

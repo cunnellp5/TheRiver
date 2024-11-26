@@ -46,7 +46,7 @@
 		width: 100%;
 		height: 100vh;
 	}
-	.gallery > img {
+	.gallery img {
 		filter: grayscale(80%);
 		transition: 0.7s linear;
 		transition-delay: var(--transition-delay-2);
@@ -68,7 +68,7 @@
 		.gallery {
 			grid-template-columns: auto;
 		}
-		.gallery > img {
+		.gallery img {
 			grid-column: auto / span 4;
 			object-position: center 25%; /* Move the center of the image down */
 		}

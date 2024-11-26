@@ -1,6 +1,6 @@
 <svg
-	width="80.196014mm"
-	height="79.575706mm"
+	width="80mm"
+	height="80mm"
 	viewBox="0 0 80.196016 79.575707"
 	version="1.1"
 	id="svg1"
@@ -26,7 +26,6 @@
 	.fill-color {
 		fill: var(--text-1);
 	}
-
 	svg:hover {
 		fill: var(--socials-2);
 	}

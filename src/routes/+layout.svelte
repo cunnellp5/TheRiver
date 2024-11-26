@@ -35,19 +35,11 @@
 <Toasts />
 
 <div>
-	<!-- removed props, since the class ShowHideScroll manages the 'state' -->
-	<!-- duration="300ms"  -->
-	<!-- offset={50} 
-	tolerance={5} -->
 	<VanishingHeader>
-		<div class="app-layout">
-			<Header isSignedIn={data.isSignedIn} user={data.user} />
-		</div>
+		<Header isSignedIn={data.isSignedIn} user={data.user} />
 	</VanishingHeader>
 
 	{@render children?.()}
 
-	<div class="app-layout">
-		<Footer />
-	</div>
+	<Footer />
 </div>
