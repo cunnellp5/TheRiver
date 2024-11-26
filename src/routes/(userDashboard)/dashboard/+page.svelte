@@ -29,7 +29,7 @@
 
 <Modal bind:showModal overrideButtons={true}>
 	{#snippet header()}
-		<h2 >
+		<h2>
 			Delete this account
 			<br />
 			<small>{data.user.firstName}, are you sure?</small>
@@ -72,7 +72,7 @@
 		</form>
 	</section>
 	{#snippet buttons()}
-		<div  class="buttonWrapper">
+		<div class="buttonWrapper">
 			<button
 				form="deleteForm"
 				type="submit"
@@ -126,8 +126,6 @@
 		<Card.Root>
 			<Card.Header>
 				<Card.Title>Navigation</Card.Title>
-				<Card.Description>Explore the site!</Card.Description>
-				<!-- <Card.Description>Hair</Card.Description> -->
 			</Card.Header>
 			<Card.Content>
 				<ul>
