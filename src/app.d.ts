@@ -64,10 +64,18 @@ declare global {
 			textColor: string;
 			extendedProps: object;
 		}
-
 		interface Content {
 			html: string;
 			domNodes: HTMLElement[];
+		}
+		interface Product {
+			id: string;
+			name: string;
+			price: number;
+		}
+		interface CartItem {
+			id: string;
+			quantity: number;
 		}
 	}
 }
