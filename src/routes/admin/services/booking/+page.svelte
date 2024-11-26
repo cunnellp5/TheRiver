@@ -1,8 +1,6 @@
-<script lang="ts">
+<!-- <script lang="ts">
 	import * as Card from '$lib/components/ui/shadcn/card';
 	import Calendar from '$lib/components/ui/Calendar.svelte';
-	// import Calendar from '@event-calendar/core';
-	// import TimeGrid from '@event-calendar/time-grid';
 	import { addToast } from '$lib/stores/toast';
 	import Modal from '$lib/components/ui/Modal.svelte';
 
@@ -22,7 +20,7 @@
 
 <Modal bind:showModal>
 	{#snippet header()}
-		<h2 >
+		<h2>
 			modal
 			<small><em>adjective</em> mod·al \ˈmō-dəl\</small>
 		</h2>
@@ -45,8 +43,6 @@
 
 	<a href="https://www.merriam-webster.com/dictionary/modal">merriam-webster.com</a>
 </Modal>
-<!-- <button on:click={updateOptions}>Change slot duration</button> -->
-<!-- <button on:click={invokeMethod}>Refetch events</button> -->
 <button onclick={() => (showModal = true)}> show modal </button>
 
 <button
@@ -65,11 +61,4 @@
 </div>
 
 <style>
-	/* .surface-4 {
-	box-shadow: var(--shadow-1);
-		padding: var(--size-4);
-	} */
-	/* .clanedar-wrapper {
-		height: var(--size-12);
-	} */
-</style>
+</style> -->

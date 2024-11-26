@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
 	import Modal from '$lib/components/ui/Modal.svelte';
 	import CalendarComponent from '$lib/components/ui/Calendar.svelte';
 	import Calendar from 'lucide-svelte/icons/calendar';
@@ -119,4 +119,4 @@
 		margin-left: var(--size-2);
 		font-weight: 500;
 	}
-</style>
+</style> -->

@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
 	import { run } from 'svelte/legacy';
 
 	import calendarize from 'calendarize';
@@ -6,7 +6,6 @@
 	import ArrowRight from 'lucide-svelte/icons/arrow-right';
 	import ArrowLeft from 'lucide-svelte/icons/arrow-left';
 	import formatHours from '$lib/utils/formatHours';
-
 
 	interface Props {
 		year?: any;
@@ -25,20 +24,7 @@
 		today = new Date(),
 		timeSlots = [],
 		labels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-		months = [
-		'Jan',
-		'Feb',
-		'Mar',
-		'Apr',
-		'May',
-		'Jun',
-		'July',
-		'Aug',
-		'Sep',
-		'Oct',
-		'Nov',
-		'Dec'
-	]
+		months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 	}: Props = $props();
 
 	// $: today_month = today && today.getMonth();
@@ -139,20 +125,14 @@
 
 <div class="surface-4 calendar-wrapper">
 	<header>
-		<!-- svelte-ignore a11y_click_events_have_key_events -->
-		<!-- svelte-ignore a11y_no_static_element_interactions -->
 		<div onclick={toPrev}>
 			<ArrowLeft />
 		</div>
 		<h4>{months[month]} {year}</h4>
-		<!-- svelte-ignore a11y_click_events_have_key_events -->
-		<!-- svelte-ignore a11y_no_static_element_interactions -->
 		<div onclick={toNext}>
 			<ArrowRight />
 		</div>
 	</header>
-
-	<!-- class:weekend={isWeekend(current[idxw][idxd])} -->
 
 	<div class="month">
 		{#each labels as txt, idx (txt)}
@@ -162,8 +142,6 @@
 			{#if current[idxw]}
 				{#each { length: 7 } as d, idxd (idxd)}
 					{#if current[idxw][idxd] !== 0}
-						<!-- svelte-ignore a11y_no_static_element_interactions -->
-						<!-- svelte-ignore a11y_click_events_have_key_events -->
 						<span
 							class="date"
 							class:before-today={isBeforeToday(current[idxw][idxd])}
@@ -176,7 +154,6 @@
 							)}
 							onclick={() => selectDate(current[idxw][idxd])}>
 							<p>{current[idxw][idxd]}</p>
-							<!-- Add time slots for this date -->
 							{#if timeSlotsByDate[new Date(year, month, current[idxw][idxd])
 									.toISOString()
 									.split('T')[0]]}
@@ -187,11 +164,7 @@
 								{/each}
 							{/if}
 						</span>
-					{:else if idxw < 1}
-						<span><!-- EMPTY ON PURPOSE --></span>
-					{:else}
-						<span><!-- EMPTY ON PURPOSE --></span>
-					{/if}
+					{:else if idxw < 1}{:else}{/if}
 				{/each}
 			{/if}
 		{/each}
@@ -296,4 +269,4 @@
 		background: hsl(var(--indigo-3-hsl) / 20%);
 		color: var(--pink-3);
 	}
-</style>
+</style> -->

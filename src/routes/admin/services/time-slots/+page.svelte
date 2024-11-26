@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
 	import * as Card from '$lib/components/ui/shadcn/card';
 	import Modal from '$lib/components/ui/Modal.svelte';
 	import { theme } from '$lib/stores/theme';
@@ -118,10 +118,9 @@
 	};
 </script>
 
-<!-- elements that are hidden/absolutely positioned -->
 <Modal bind:showModal on:close={handleClose} buttonText="Save">
 	{#snippet header()}
-		<h2 >Schedule</h2>
+		<h2>Schedule</h2>
 	{/snippet}
 
 	<div class="form-group">
@@ -145,7 +144,6 @@
 	</div>
 </Modal>
 
-<!-- Actual struture of the page -->
 <div class="adminIntroCardWrapper">
 	<Card.Root>
 		<Card.Header>
@@ -185,9 +183,6 @@
 	<button type="submit">Save</button>
 </form>
 
-<!-- TODO put the form down here with a save button that then collects all the time-slots from the calendar -->
-<!-- deleting https://github.com/vkurko/calendar/discussions/91 -->
-
 <style>
 	.calendar-wrapper {
 		max-width: 70vw;
@@ -218,4 +213,4 @@
 		height: 240px;
 		color: var(--stone-6);
 	}
-</style>
+</style> -->
