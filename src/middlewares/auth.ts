@@ -10,6 +10,7 @@ const memoizedValidateSessionToken = memoize(validateSessionToken);
 
 export const auth: Handle = async ({ event, resolve }) => {
 	const token = event.cookies.get('session') ?? null;
+
 	if (token === null) {
 		event.locals.user = null;
 		event.locals.session = null;
