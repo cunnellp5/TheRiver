@@ -61,7 +61,7 @@
 		color: var(--text-1);
 		font-style: normal;
 		font-weight: var(--font-weight-4);
-		font-size: var(--font-size-8);
+		font-size: var(--font-size-5);
 		line-height: 1;
 		font-family: 'Atyp BL Display Medium';
 		letter-spacing: 0em;

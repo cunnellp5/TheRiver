@@ -1,4 +1,4 @@
-// localhost: /api/stripeCheckout
+// localhost:5173/api/goDaddyCheckout
 
 // POST /stripeCheckout data: items
 

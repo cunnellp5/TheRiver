@@ -23,8 +23,8 @@
 					<GenericCard.Content class="noPadding">
 						<img
 							class="crop"
-							height="600px"
-							width="600px"
+							height="500px"
+							width="500px"
 							loading="lazy"
 							src={article.img}
 							alt={article.articleTitle} />
@@ -53,11 +53,15 @@
 			filter: grayscale(0);
 		}
 	}
+	.articleWrapper {
+		width: 60%;
+	}
 	@media (max-width: 768px) {
 		.articleWrapper {
 			display: flex;
 			flex-direction: column !important;
 			padding-block-end: var(--size-9);
+			width: 100%;
 		}
 	}
 </style>
