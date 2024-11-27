@@ -13,7 +13,7 @@
 <section class="app-layout">
 	<section class="breaker">
 		<h1>Un&#8203;sub&#8203;scribe</h1>
-		<p>Enter your email to unsubscribe from The River's newsletter</p>
+		<p>Enter email to unsubscribe from the newsletter</p>
 	</section>
 
 	<form
@@ -38,7 +38,7 @@
 			};
 		}}>
 		<div class="column">
-			<label for="email">Email</label>
+			<!-- <label for="email">Email</label> -->
 			<input
 				bind:value={emailInput}
 				type="email"

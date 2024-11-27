@@ -213,6 +213,7 @@ model Newsletter {
   user      User?    @relation(references: id, fields: userId, onDelete: Cascade)
   userId    Int      @unique
   createdAt DateTime @default(now())
+  token     String   @unique
 }
 
 model TrackPreview {
