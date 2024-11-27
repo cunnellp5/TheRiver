@@ -6,12 +6,14 @@
 	import HeaderWithNav from '$lib/emails/components/welcome/HeaderWithNav.svelte';
 	import BodyFeatured from '../components/welcome/BodyFeatured.svelte';
 	import Footer from '../components/welcome/Footer.svelte';
+
+	const { token } = $props();
 </script>
 
 <Head />
 
 <main>
-	<Preview preview="Welcome! - Explore Art, Music, and Fashion with The River" />
+	<Preview preview="Welcome - The River" />
 	<section
 		class="body pc-font-alt"
 		style="width: 100% !important; min-height: 100% !important; margin: 0 !important; padding: 0 !important; line-height: 1.5; color: #2D3A41; mso-line-height-rule: exactly; -webkit-font-smoothing: antialiased; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-variant-ligatures: normal; text-rendering: optimizeLegibility; -moz-osx-font-smoothing: grayscale; background-color: #a4b8c0;">
@@ -87,7 +89,7 @@
 												<tr>
 													<td valign="top">
 														<!-- BEGIN MODULE: Footer -->
-														<Footer />
+														<Footer {token} />
 														<!-- END MODULE: Footer -->
 													</td>
 												</tr>

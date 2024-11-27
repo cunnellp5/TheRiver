@@ -3,6 +3,9 @@
 	import ThumbnailLogoWhiteTransparentBG from '$lib/data/ThumbnailLogoWhiteTransparentBG';
 	import { WEBSITE_URL } from '$lib/data/WEBSITE_URL';
 	import socialLinks from '$lib/data/socialLinks';
+	const { token } = $props();
+
+	const unsubscribeRoute = `${WEBSITE_URL}/unsubscribe/${token}`;
 </script>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation">
@@ -566,7 +569,7 @@
 																			Want to stop receiving messages from The River?
 																		</span>
 																		<a
-																			href={WEBSITE_URL}
+																			href={unsubscribeRoute}
 																			target="_blank"
 																			style="text-decoration: none; color: #ffffff;">
 																			<span
