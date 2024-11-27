@@ -3,11 +3,15 @@
 	import Copywrite from './Copywrite.svelte';
 	import NewsLetterForm from './NewsLetterForm.svelte';
 	import { address, emailWithBreaks, phoneNumber } from '$lib/config';
+	import LogoR from '$lib/components/svgs/logos/LogoR2.svelte';
+	import TheRiver from '$lib/components/svgs/logos/TheRiver.svelte';
 </script>
 
 <footer class="app-layout">
 	<NewsLetterForm />
-
+	<div class="logo">
+		<TheRiver theme={true} />
+	</div>
 	<div class="linksWrapper">
 		<p class="listHeader">Socials</p>
 		<a href={socialLinks.facebook} target="_blank">
@@ -26,6 +30,7 @@
 			<li>Twitter</li>
 		</a>
 	</div>
+
 	<div class="linksWrapper">
 		<p class="listHeader">Music</p>
 		<a href={socialLinks.youtube} target="_blank">
@@ -42,12 +47,6 @@
 		</a>
 	</div>
 	<div class="linksWrapper">
-		<p class="listHeader">Merch</p>
-		<a href={socialLinks.etsy} target="_blank">
-			<li>Etsy</li>
-		</a>
-	</div>
-	<div class="linksWrapper">
 		<p class="listHeader">Links</p>
 		<a href={socialLinks.cashApp} target="_blank">
 			<li>Ca$h app</li>
@@ -56,6 +55,13 @@
 			<li>LinkTree</li>
 		</a>
 	</div>
+	<div class="linksWrapper">
+		<p class="listHeader">Merch</p>
+		<a href={socialLinks.etsy} target="_blank">
+			<li>Etsy</li>
+		</a>
+	</div>
+
 	<div class="linksWrapper address">
 		<p class="listHeader">Contact</p>
 		<div>
@@ -85,6 +91,7 @@
 		flex-direction: column;
 		justify-content: center;
 		gap: var(--size-8);
+		padding-block: var(--size-4);
 	}
 	a {
 		transition: color 0.1s ease;
@@ -97,8 +104,8 @@
 		text-decoration: none;
 	}
 	/* CLASSES */
-	.marginTop {
-		margin-block-start: var(--size-8);
+	.logo {
+		width: var(--size-14);
 	}
 	.listHeader {
 		color: var(--link2);
@@ -119,9 +126,6 @@
 			grid-template-rows: auto;
 			justify-content: space-between;
 			gap: var(--size-4);
-		}
-		.marginTop {
-			margin-block-start: var(--size-4);
 		}
 	}
 </style>

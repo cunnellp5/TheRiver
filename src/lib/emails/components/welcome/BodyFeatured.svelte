@@ -1014,7 +1014,7 @@
 																																	href="https://open.spotify.com/album/7ebwm8jySweIyTwBjvLjNY" 
 																																	target="_blank">
 																																	<span style="display: block;">
-																																		<span>SPOTIFY PLAYIST</span>
+																																		<span>SPOTIFY PLAYLIST</span>
 																																	</span>
 																																</a>
 																															</td>
@@ -1027,7 +1027,7 @@
 																													href={VAGUELY_RELATABLE_EP}
 																													target="_blank">
 																													<span style="display: block;">
-																														<span>SPOTIFY PLAYIST</span>
+																														<span>SPOTIFY PLAYLIST</span>
 																													</span>
 																												</a>
 																												<!--<![endif]-->

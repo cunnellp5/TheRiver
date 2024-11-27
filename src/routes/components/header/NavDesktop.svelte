@@ -39,10 +39,10 @@
 	let isContact = $derived($page.url.pathname === '/contact');
 	let isDashboard = $derived($page.url.pathname === '/dashboard');
 	// $: isHomePage = $page.url.pathname === '/';
-	let isLogin = $derived($page.url.pathname === '/login');
-	let isLogout = $derived($page.url.pathname === '/logout');
+	// let isLogin = $derived($page.url.pathname === '/login');
+	// let isLogout = $derived($page.url.pathname === '/logout');
 	let isShop = $derived($page.url.pathname === '/shop');
-	let isSignup = $derived($page.url.pathname === '/signup');
+	// let isSignup = $derived($page.url.pathname === '/signup');
 </script>
 
 <div class:showingSheet>

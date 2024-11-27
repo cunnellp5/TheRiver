@@ -70,7 +70,7 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		border-block: 1px solid var(--border);
+		border-block-end: 1px solid var(--border);
 		padding-block: var(--size-10);
 	}
 	p {

@@ -11,6 +11,7 @@ export const POST: RequestHandler = async ({ request }): Promise<Response> => {
 	const options = {
 		from: env.EMAIL_USER,
 		to: email,
+		subject,
 		html: render({ template: Welcome as unknown as typeof SvelteComponent })
 	};
 
