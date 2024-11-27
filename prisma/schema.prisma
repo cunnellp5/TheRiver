@@ -211,7 +211,7 @@ model Newsletter {
   id        Int      @id @default(autoincrement())
   email     String   @unique
   user      User?    @relation(references: id, fields: userId, onDelete: Cascade)
-  userId    Int      @unique
+  userId    Int?     @unique
   createdAt DateTime @default(now())
   token     String   @unique
 }
@@ -226,14 +226,9 @@ model TrackPreview {
 }
 
 // steps to migrate and dploy
-
 // 1 make a change here
-
 // 2 $: npx prisma migrate dev --name init
-
 // 3 $: npx prisma generate
-
 // 6 $: npx prisma migrate deploy
-
 // 4 run npx prisma db push
 // 5 run npx prisma studio
