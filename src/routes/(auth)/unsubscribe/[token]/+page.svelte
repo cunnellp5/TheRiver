@@ -2,10 +2,15 @@
 	import { addToast } from '$lib/stores/toast';
 	import { enhance } from '$app/forms';
 	import { LoaderCircle } from 'lucide-svelte';
+	import type { LayoutData } from './$types';
 
-	let emailInput = $state('');
+	// const { newsLetter } = $props();
+	let { data }: { data: LayoutData } = $props();
+
+	let emailInput = $state(data.newsLetter.email);
 	let loading = $state(false);
 	let errorMessage = $state('');
+	let tokenInput = $state(data.newsLetter.token);
 
 	let disabled = $derived(emailInput.length === 0);
 </script>
@@ -46,6 +51,7 @@
 				id="email"
 				placeholder="Enter email"
 				required />
+			<input bind:value={tokenInput} type="hidden" name="token" id="token" required />
 			{#if errorMessage}
 				<span class="errorMessage">errorMessage</span>
 			{/if}

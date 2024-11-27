@@ -1,8 +1,10 @@
 import db from '$lib/server/database';
+import { generateSessionToken } from '$lib/server/auth';
 import { EmailSchema } from '$lib/utils/Valibot/EmailSchema';
 import { error, fail, type ActionFailure } from '@sveltejs/kit';
 import { ValiError, parse } from 'valibot';
 import type { Actions } from './$types';
+import { validateInputs } from '$lib/utils/validateInputs';
 
 type NewsLetterAction = Promise<
 	| {
@@ -13,22 +15,42 @@ type NewsLetterAction = Promise<
 	| ActionFailure<{ message: string }>
 >;
 
+async function createNewsletterEntry(data: { email: string; userId?: number; token: string }) {
+	try {
+		await db.newsletter.create({
+			data: { ...data }
+		});
+		return { success: true, error: null };
+	} catch (err) {
+		console.error('Error creating newsletter entry:', err);
+		return { success: false, error: error(500, 'Internal Server Error') };
+	}
+}
+
+// TODO rethink logic, there's a way to refine this
 export const actions: Actions = {
+	/*
+		 STEPS TO SUBSCRIBE TO NEWSLETTER
+
+		 1. Validate the email
+		 2. Check if the user exists
+		 3. If the user exists, check if they are subscribed to the newsletter
+		 4. If the user exists and they are not subscribed, update the user and create a newsletter table atomically
+		 5. If the user does not exist, check if there is a newsletter subscription
+		 6. If there is no newsletter subscription, create one and send a welcome email
+		 7. If there is a newsletter subscription, return a success response
+	*/
 	subscribe: async ({ request, fetch }): NewsLetterAction => {
 		const formData = await request.formData();
 		const email = formData.get('email') as string;
 
 		// validate email
-		try {
-			await parse(EmailSchema, { email });
-		} catch (err) {
-			const errors = err as ValiError<typeof EmailSchema>;
-			return fail(400, {
-				message: errors.message
-			});
+		const validationResult = validateInputs(EmailSchema, { email });
+		if (validationResult) {
+			return validationResult; // Return the error response
 		}
 
-		// check users
+		// check users with newsletter subscription
 		let user;
 
 		try {
@@ -45,19 +67,18 @@ export const actions: Actions = {
 		if (user) {
 			if (!user.Newsletter) {
 				// Update user and create newsletter table atomically
-				try {
-					await db.newsletter.create({
-						data: { email, userId: user.id }
-					});
-				} catch (err) {
-					console.error('Error updating user and creating newsletter:', err);
-					return error(500, 'Internal Server Error');
+				const { error } = await createNewsletterEntry({
+					email,
+					userId: user.id,
+					token: generateSessionToken()
+				});
+				if (error) {
+					return error;
 				}
 			}
 			// We can return a success here because if the user exists,
 			// and they are NOT subscribed, we can assume the newsletter
 			// table should be updated
-
 			// save a cycle to the newsletter table by early returning here
 			return { type: 'success', status: 200 };
 		}
@@ -78,19 +99,15 @@ export const actions: Actions = {
 
 		// create subscription if one doesnt exist in the db
 		if (!newsletter) {
-			try {
-				await db.newsletter.create({
-					data: { email }
-				});
-			} catch (err) {
-				console.error('Error creating newsletter subscription:', err);
-				return error(500, 'Internal Server Error');
+			const { error } = await createNewsletterEntry({ email, token: generateSessionToken() });
+			if (error) {
+				return error;
 			}
 			// we know there was no user in the system,
 			// so send welcome email only when there was no newsletter record found,
 			// so this should be a first timer without an account
 			try {
-				await fetch('emails/welcome', {
+				fetch('emails/welcome', {
 					method: 'POST',
 					body: JSON.stringify({ subject: 'Newsletter Subscription - The River', email: email }),
 					headers: {
