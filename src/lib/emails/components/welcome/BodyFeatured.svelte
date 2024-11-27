@@ -28,7 +28,7 @@
 							<td
 								valign="top"
 								class="pc-w620-padding-20-24-32-24"
-								style="padding: 36px 32px 56px 32px; border-radius: 0px; background-color: #002333;">
+								style="padding: 36px 32px 56px 32px; border-radius: 0px; background-color: #292929;">
 								<table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
 									<tbody>
 										<tr>
@@ -261,45 +261,6 @@
 																								</table>
 																							</td>
 																						</tr>
-																						<tr>
-																							<td align="left" valign="top">
-																								<table
-																									width="100%"
-																									border="0"
-																									cellpadding="0"
-																									cellspacing="0"
-																									role="presentation">
-																									<tbody>
-																										<tr>
-																											<th
-																												align="left"
-																												style="vertical-align: top; text-align: left; font-weight: normal; line-height: 1;">
-																												<!--[if mso]>
-												<table border="0" cellpadding="0" cellspacing="0" role="presentation" align="left" style="border-collapse: separate; border-spacing: 0;">
-														<tr>
-																<td valign="middle" align="center" style="background-color: #00ff83; text-align:center; color: #ffffff; padding: 8px 24px 8px 24px; mso-padding-left-alt: 0; margin-left:24px;" bgcolor="#00ff83">
-																										<a class="pc-font-alt" style="display: inline-block; text-decoration: none; font-variant-ligatures: normal; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-weight: 600; font-size: 14px; line-height: 24px; letter-spacing: 0px; text-align: center; color: #002333;" href="https://open.spotify.com/track/5OyLCwJBSmzd9eQ4DXQloR?si=323a53b406b24af6" target="_blank"><span style="display: block;"><span>LISTEN NOW</span></span></a>
-																								</td>
-														</tr>
-												</table>
-												<![endif]-->
-
-																												<!--[if !mso]><!-- -->
-																												<a
-																													style="display: inline-block; box-sizing: border-box; background-color: #00ff83; padding: 8px 24px 8px 24px; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-weight: 600; font-size: 14px; line-height: 24px; letter-spacing: 0px; color: #002333; vertical-align: top; text-align: center; text-align-last: center; text-decoration: none; -webkit-text-size-adjust: none;"
-																													href={SPOTIFY_BODY_LANGUAGE_LINK}
-																													target="_blank">
-																													<span style="display: block;">
-																														<span> LISTEN NOW </span>
-																													</span>
-																												</a>
-																												<!--<![endif]-->
-																											</th>
-																										</tr>
-																									</tbody>
-																								</table>
-																							</td>
-																						</tr>
 																					</tbody>
 																				</table>
 																			</td>
@@ -489,56 +450,6 @@
 																													</tbody>
 																												</table>
 																											</td>
-																										</tr>
-																									</tbody>
-																								</table>
-																							</td>
-																						</tr>
-																						<tr>
-																							<td align="left" valign="top">
-																								<table
-																									width="100%"
-																									border="0"
-																									cellpadding="0"
-																									cellspacing="0"
-																									role="presentation">
-																									<tbody>
-																										<tr>
-																											<th
-																												align="left"
-																												style="vertical-align: top; text-align: left; font-weight: normal; line-height: 1;">
-																												<!--[if mso]>
-																												<table border="0" cellpadding="0" cellspacing="0" role="presentation" align="left" style="border-collapse: separate; border-spacing: 0;">
-																													<tr>
-																														<td 
-																															valign="middle" 
-																															align="center" 
-																															style="background-color: #00ff83; text-align:center; color: #ffffff; padding: 8px 24px 8px 24px; mso-padding-left-alt: 0; margin-left:24px;" bgcolor="#00ff83">
-																																<a
-																																	class="pc-font-alt"
-																																	style="display: inline-block; text-decoration: none; font-variant-ligatures: normal; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-weight: 600; font-size: 14px; line-height: 24px; letter-spacing: 0px; text-align: center; color: #002333;"
-																																	href="https://ratingsgamemusic.com/2022/01/08/the-river-delivers-angry-verses-on-hours/" 
-																																	target="_blank">
-																																		<span style="display: block;">
-																																			<span>READ MORE</span>
-																																		</span>
-																																</a>
-																														</td>
-																													</tr>
-																												</table>
-																												<![endif]-->
-
-																												<!--[if !mso]><!-- -->
-																												<a
-																													style="display: inline-block; box-sizing: border-box; background-color: #00ff83; padding: 8px 24px 8px 24px; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-weight: 600; font-size: 14px; line-height: 24px; letter-spacing: 0px; color: #002333; vertical-align: top; text-align: center; text-align-last: center; text-decoration: none; -webkit-text-size-adjust: none;"
-																													href={HOURS_ARTICLE}
-																													target="_blank">
-																													<span style="display: block;">
-																														<span>READ MORE</span>
-																													</span>
-																												</a>
-																												<!--<![endif]-->
-																											</th>
 																										</tr>
 																									</tbody>
 																								</table>
@@ -757,45 +668,6 @@
 																								</table>
 																							</td>
 																						</tr>
-																						<tr>
-																							<td align="left" valign="top">
-																								<table
-																									width="100%"
-																									border="0"
-																									cellpadding="0"
-																									cellspacing="0"
-																									role="presentation">
-																									<tbody>
-																										<tr>
-																											<th
-																												align="left"
-																												style="vertical-align: top; text-align: left; font-weight: normal; line-height: 1;">
-																												<!--[if mso]>
-												<table border="0" cellpadding="0" cellspacing="0" role="presentation" align="left" style="border-collapse: separate; border-spacing: 0;">
-														<tr>
-																<td valign="middle" align="center" style="background-color: #00ff83; text-align:center; color: #ffffff; padding: 8px 24px 8px 24px; mso-padding-left-alt: 0; margin-left:24px;" bgcolor="#00ff83">
-																										<a class="pc-font-alt" style="display: inline-block; text-decoration: none; font-variant-ligatures: normal; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-weight: 600; font-size: 14px; line-height: 24px; letter-spacing: 0px; text-align: center; color: #002333;" href="https://www.etsy.com/shop/MadeByTheRiverBed" target="_blank"><span style="display: block;"><span>SHOP NOW</span></span></a>
-																								</td>
-														</tr>
-												</table>
-												<![endif]-->
-
-																												<!--[if !mso]><!-- -->
-																												<a
-																													style="display: inline-block; box-sizing: border-box; background-color: #00ff83; padding: 8px 24px 8px 24px; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-weight: 600; font-size: 14px; line-height: 24px; letter-spacing: 0px; color: #002333; vertical-align: top; text-align: center; text-align-last: center; text-decoration: none; -webkit-text-size-adjust: none;"
-																													href={socialLinks.etsy}
-																													target="_blank">
-																													<span style="display: block;">
-																														<span>SHOP NOW</span>
-																													</span>
-																												</a>
-																												<!--<![endif]-->
-																											</th>
-																										</tr>
-																									</tbody>
-																								</table>
-																							</td>
-																						</tr>
 																					</tbody>
 																				</table>
 																			</td>
@@ -984,54 +856,6 @@
 																													</tbody>
 																												</table>
 																											</td>
-																										</tr>
-																									</tbody>
-																								</table>
-																							</td>
-																						</tr>
-																						<tr>
-																							<td align="left" valign="top">
-																								<table
-																									width="100%"
-																									border="0"
-																									cellpadding="0"
-																									cellspacing="0"
-																									role="presentation">
-																									<tbody>
-																										<tr>
-																											<th
-																												align="left"
-																												style="vertical-align: top; text-align: left; font-weight: normal; line-height: 1;">
-																												<!--[if mso]>
-																													<table border="0" cellpadding="0" cellspacing="0" role="presentation" align="left" style="border-collapse: separate; border-spacing: 0;">
-																														<tr>
-																															<td 
-																																valign="middle"
-																																align="center"
-																																style="background-color: #00ff83; text-align:center; color: #ffffff; padding: 8px 24px 8px 24px; mso-padding-left-alt: 0; margin-left:24px;" bgcolor="#00ff83">
-																																<a 
-																																	class="pc-font-alt" style="display: inline-block; text-decoration: none; font-variant-ligatures: normal; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-weight: 600; font-size: 14px; line-height: 24px; letter-spacing: 0px; text-align: center; color: #002333;" 
-																																	href="https://open.spotify.com/album/7ebwm8jySweIyTwBjvLjNY" 
-																																	target="_blank">
-																																	<span style="display: block;">
-																																		<span>SPOTIFY PLAYLIST</span>
-																																	</span>
-																																</a>
-																															</td>
-																														</tr>
-																													</table>
-																													<![endif]-->
-																												<!--[if !mso]><!-- -->
-																												<a
-																													style="display: inline-block; box-sizing: border-box; background-color: #00ff83; padding: 8px 24px 8px 24px; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-weight: 600; font-size: 14px; line-height: 24px; letter-spacing: 0px; color: #002333; vertical-align: top; text-align: center; text-align-last: center; text-decoration: none; -webkit-text-size-adjust: none;"
-																													href={VAGUELY_RELATABLE_EP}
-																													target="_blank">
-																													<span style="display: block;">
-																														<span>SPOTIFY PLAYLIST</span>
-																													</span>
-																												</a>
-																												<!--<![endif]-->
-																											</th>
 																										</tr>
 																									</tbody>
 																								</table>

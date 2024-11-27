@@ -15,7 +15,7 @@
 							<td
 								valign="top"
 								class="pc-w620-padding-32-24-32-24"
-								style="padding: 0px 32px 32px 32px; border-radius: 0px; background-color: #002333;">
+								style="padding: 0px 32px 32px 32px; border-radius: 0px; background-color: #292929;">
 								<table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
 									<tbody>
 										<tr>
@@ -563,9 +563,6 @@
 																	style="line-height: 140%; letter-spacing: 0px; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-size: 14px; font-weight: normal; font-variant-ligatures: normal; color: #ffffff; text-align: left; text-align-last: left;">
 																	<div>
 																		<span style="font-weight: 400;font-style: normal;">
-																			You are receiving this email because you signed up with The
-																			River 30 W. Bayaud Ave, Denver, CO 80223
-																			<br /><br />
 																			Want to stop receiving messages from The River?
 																		</span>
 																		<a

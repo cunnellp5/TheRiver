@@ -3,8 +3,11 @@
 	import ThumbnailLogoWhiteTransparentBG from '$lib/data/ThumbnailLogoWhiteTransparentBG';
 	import socialLinks from '$lib/data/socialLinks';
 	import { WEBSITE_URL } from '$lib/data/WEBSITE_URL';
+	// const layerdImg =
+	// 	'https://res.cloudinary.com/dswpu3qez/image/upload/emails/three_layers_stacked.webp';
+
 	const layerdImg =
-		'https://res.cloudinary.com/dswpu3qez/image/upload/emails/three_layers_stacked.webp';
+		'https://res.cloudinary.com/dswpu3qez/image/upload/v1732155330/backgrounds/feature-collage-2_laljnw.webp';
 </script>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation">
@@ -18,15 +21,15 @@
 							<td
 								valign="top"
 								class="pc-w620-padding-32-24-32-24"
-								style="background: url(https://api-postcards.designmodo.com/files/images/user-428/image-17229390149352.png); background-size: cover; background-position: center; background-repeat: no-repeat; padding: 40px 32px 0px 32px; border-radius: 0px; background-color: #ffffff;">
+								style="padding: 40px 32px 0px 32px; border-radius: 0px; background-color: #292929;">
 								<!--<![endif]-->
 								<!--[if gte mso 9]>
-											<td valign="top" align="center" style="background-size: cover; background-position: center; background-repeat: no-repeat; background-color: #ffffff; border-radius: 0px;" bgcolor="#ffffff" background="https://api-postcards.designmodo.com/files/images/user-428/image-17229390149352.png">
+											<td valign="top" align="center" style="background-color: #292929; border-radius: 0px;" bgcolor="#292929">
 									<![endif]-->
 
 								<!--[if gte mso 9]>
 											<v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width: 375px;">
-													<v:fill src="https://api-postcards.designmodo.com/files/images/user-428/image-17229390149352.png" color="#ffffff" type="frame" size="1,1" aspect="atleast" origin="0,0" position="0,0"/>
+													<v:fill color="#292929" type="frame" size="1,1" aspect="atleast" origin="0,0" position="0,0"/>
 													<v:textbox style="mso-fit-shape-to-text: true;" inset="0,0,0,0">
 															<div style="font-size: 0; line-height: 0;">
 																	<table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
@@ -645,8 +648,19 @@
 																																	style="line-height: 160%; letter-spacing: -0px; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-size: 16px; font-weight: normal; font-variant-ligatures: normal; color: #ffffff; text-align: center; text-align-last: center;">
 																																	<div>
 																																		<span>
-																																			You'll need these timeless
-																																			tracks in your collection.
+																																			The River is a rising
+																																			HipHop/R&B artist based in
+																																			Denver, Colorado. She is a
+																																			multi-faceted individual who
+																																			was a marching band nerd and
+																																			later explored dance,
+																																			multimedia arts, and
+																																			songwriting. She is also a
+																																			poet who later evolved her
+																																			poems into rap verses and
+																																			songs that highlight her
+																																			unique perspective and
+																																			passionate messaging.
 																																		</span>
 																																	</div>
 																																</div>
