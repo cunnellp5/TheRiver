@@ -2,6 +2,7 @@
 	import { addToast } from '$lib/stores/toast';
 	import { enhance } from '$app/forms';
 	import LoaderCircle from 'lucide-svelte/icons/loader-circle';
+	import { page } from '$app/stores';
 
 	let emailInput = $state('');
 	let showError = $state(false);
@@ -15,7 +16,7 @@
 			type: 'message',
 			iconType: 'check',
 			dismissible: true,
-			timeout: 5000
+			timeout: 20000
 		});
 	}
 
@@ -39,28 +40,30 @@
 			loading = false;
 		};
 	}}>
-	<p class="listHeader">Subscribe to newsletter</p>
-	<div class="newsletter-form breaker">
-		<div class="buttonWrapper">
-			<input type="email" name="email" placeholder="Enter email" bind:value={emailInput} />
-			{#if loading}
-				<button disabled>
-					<div class="spinner">
-						<LoaderCircle size={14} />
-					</div>
-					Loading
-				</button>
-			{:else}
-				<button class:disabled class="primary" type="submit" {disabled}> Sign up </button>
+	{#if !$page.url.pathname.includes('/unsubscribe/')}
+		<p class="listHeader">Subscribe to newsletter</p>
+		<div class="newsletter-form breaker">
+			<div class="buttonWrapper">
+				<input type="email" name="email" placeholder="Enter email" bind:value={emailInput} />
+				{#if loading}
+					<button disabled>
+						<div class="spinner">
+							<LoaderCircle size={14} />
+						</div>
+						Loading
+					</button>
+				{:else}
+					<button class:disabled class="primary" type="submit" {disabled}> Sign up </button>
+				{/if}
+			</div>
+			<label for="email" class="newsletter-form__email-label">
+				You can unsubscribe at any time
+			</label>
+			{#if showError}
+				<span class="errorMessage">{errorMessage}</span>
 			{/if}
 		</div>
-		<label for="email" class="newsletter-form__email-label">
-			You can unsubscribe at any time
-		</label>
-		{#if showError}
-			<span class="errorMessage">{errorMessage}</span>
-		{/if}
-	</div>
+	{/if}
 </form>
 
 <style>
