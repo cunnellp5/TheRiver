@@ -15,7 +15,8 @@
 	let search = $state('');
 	let filteredPosts = $state(data.posts);
 
-	run(() => {
+	// @deprecated — Use this only as a temporary solution to migrate your component code to Svelte 5.
+	$effect(() => {
 		filteredPosts = data.posts.filter(
 			(post) =>
 				post.title.toLowerCase().includes(search.toLowerCase()) ||

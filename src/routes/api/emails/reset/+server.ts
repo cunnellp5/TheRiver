@@ -3,7 +3,7 @@ import Reset from '$lib/emails/templates/Reset.svelte';
 import transporter from '$lib/utils/transporter';
 import { error, json, type RequestHandler } from '@sveltejs/kit';
 import { render } from '../render';
-import type { SvelteComponent } from 'svelte';
+import type { Component } from 'svelte';
 
 export const POST: RequestHandler = async ({ request }): Promise<Response> => {
 	let token;
@@ -21,15 +21,16 @@ export const POST: RequestHandler = async ({ request }): Promise<Response> => {
 		to: email,
 		subject: 'Password Reset Request - The River',
 		html: render({
-			template: Reset as unknown as typeof SvelteComponent,
+			template: Reset as Component,
 			props: {
 				token
 			}
 		})
 	};
 
+	// INTENTIONALLY dont 'await' sendMail
 	try {
-		await transporter.sendMail(options, (error, info) => {
+		transporter.sendMail(options, (error, info) => {
 			if (error) {
 				console.error('❌ Error:', error.message);
 			} else {

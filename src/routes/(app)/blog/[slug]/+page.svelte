@@ -24,7 +24,7 @@
 
 	let post: BlogPost | undefined = $state(findPost($page.params.slug)); // initial post
 
-	run(() => {
+	$effect(() => {
 		post = findPost($page.params.slug); // updates page with selected post data
 		index = data.posts.findIndex((p) => p.slug === $page.params.slug);
 		next = data.posts[index - 1];

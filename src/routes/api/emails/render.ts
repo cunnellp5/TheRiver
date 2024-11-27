@@ -1,14 +1,14 @@
-import type { ComponentProps, ComponentType, SvelteComponent } from 'svelte';
+import type { Component, ComponentProps } from 'svelte';
 import { render as svelteRender } from 'svelte/server';
 import doctype from './doctype';
 
-export const render = <Component extends SvelteComponent>({
+export const render = ({
 	template,
 	props,
 	options
 }: {
-	template: ComponentType;
-	props?: ComponentProps;
+	template: Component;
+	props?: any;
 	options?: {
 		plainText?: boolean;
 		pretty?: boolean;
@@ -16,12 +16,13 @@ export const render = <Component extends SvelteComponent>({
 }) => {
 	// @ts-ignore
 	// const { html } = template.render(props);
-	const { html } = svelteRender(template, { props });
+	const htmlObj = svelteRender(template, { props });
 	// if (options?.plainText) {
 	// 	return renderAsPlainText(html);
 	// }
-	const markup = html;
-	const document = `${doctype}${markup}`;
+	// console.log(Object.keys(htmlObj));
+	// const markup = htmlObj.body; // {head, html, body}
+	const document = `${doctype}${htmlObj.head}${htmlObj.body}`;
 	// if (options?.pretty) {
 	// 	return pretty(document);
 	// }

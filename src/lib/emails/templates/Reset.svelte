@@ -14,6 +14,7 @@
 	}
 
 	let { token = null }: Props = $props();
+
 	const previewText =
 		'Password reset link - Expires in 24 hours - click the button to reset your password';
 </script>
