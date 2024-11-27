@@ -5,6 +5,7 @@
 	import socialLinks from '$lib/data/socialLinks';
 	const { token } = $props();
 
+	// const unsubscribeRouteDev = `http://localhost:5173/unsubscribe/${token}`;
 	const unsubscribeRoute = `${WEBSITE_URL}/unsubscribe/${token}`;
 </script>
 
@@ -18,7 +19,7 @@
 							<td
 								valign="top"
 								class="pc-w620-padding-32-24-32-24"
-								style="padding: 0px 32px 32px 32px; border-radius: 0px; background-color: #292929;">
+								style="padding: 32px 32px 32px 32px; border-radius: 0px; background-color: #292929;">
 								<table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
 									<tbody>
 										<tr>
@@ -545,49 +546,55 @@
 										</tr>
 									</tbody>
 								</table>
-
-								<table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
-									<tbody>
-										<tr>
-											<td align="left" valign="top">
-												<table
-													border="0"
-													cellpadding="0"
-													cellspacing="0"
-													role="presentation"
-													width="100%"
-													align="left"
-													style="border-collapse: separate; border-spacing: 0; margin-right: auto; margin-left: auto;">
-													<tbody>
-														<tr>
-															<td valign="top" align="left">
-																<div
-																	class="pc-font-alt"
-																	style="line-height: 140%; letter-spacing: 0px; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-size: 14px; font-weight: normal; font-variant-ligatures: normal; color: #ffffff; text-align: left; text-align-last: left;">
-																	<div>
-																		<span style="font-weight: 400;font-style: normal;">
-																			Want to stop receiving messages from The River?
-																		</span>
-																		<a
-																			href={unsubscribeRoute}
-																			target="_blank"
-																			style="text-decoration: none; color: #ffffff;">
-																			<span
-																				style="text-decoration: underline; font-weight: 400; font-style: normal;">
-																				Unsubscribe
+								{#if token}
+									<table
+										width="100%"
+										border="0"
+										cellpadding="0"
+										cellspacing="0"
+										role="presentation">
+										<tbody>
+											<tr>
+												<td align="left" valign="top">
+													<table
+														border="0"
+														cellpadding="0"
+														cellspacing="0"
+														role="presentation"
+														width="100%"
+														align="left"
+														style="border-collapse: separate; border-spacing: 0; margin-right: auto; margin-left: auto;">
+														<tbody>
+															<tr>
+																<td valign="top" align="left">
+																	<div
+																		class="pc-font-alt"
+																		style="line-height: 140%; letter-spacing: 0px; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-size: 14px; font-weight: normal; font-variant-ligatures: normal; color: #ffffff; text-align: left; text-align-last: left;">
+																		<div>
+																			<span style="font-weight: 400;font-style: normal;">
+																				Want to stop receiving messages from The River?
 																			</span>
-																		</a>
-																		<span style="font-weight: 400;font-style: normal;"> </span>
+																			<a
+																				href={unsubscribeRoute}
+																				target="_blank"
+																				style="text-decoration: none; color: #ffffff;">
+																				<span
+																					style="text-decoration: underline; font-weight: 400; font-style: normal;">
+																					Unsubscribe
+																				</span>
+																			</a>
+																			<span style="font-weight: 400;font-style: normal;"> </span>
+																		</div>
 																	</div>
-																</div>
-															</td>
-														</tr>
-													</tbody>
-												</table>
-											</td>
-										</tr>
-									</tbody>
-								</table>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								{/if}
 							</td>
 						</tr>
 					</tbody>

@@ -26,7 +26,7 @@
 	class="fullRow"
 	method="POST"
 	action="api/newsLetter?/subscribe"
-	use:enhance={async ({ formElement, formData, action, cancel, submitter }) => {
+	use:enhance={() => {
 		loading = true;
 		return async ({ result, update }) => {
 			if (result.status === 200) {

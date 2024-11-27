@@ -4,6 +4,7 @@ import { EmailSchema } from '$lib/utils/Valibot/EmailSchema';
 import { error, fail, redirect, type Actions } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 import { validateInputs } from '$lib/utils/validateInputs';
+import { generateSessionToken } from '$lib/server/auth';
 
 export const load: PageServerLoad = async (event) => {
 	// IF NOT LOGGED IN, SHOW ERR PAGE LIKE ALL OTHER ROUTES THAT DONT EXIST
@@ -90,7 +91,7 @@ export const actions: Actions = {
 			if (value) {
 				try {
 					await db.newsletter.create({
-						data: { email: locals.user.email, userId: id }
+						data: { email: locals.user.email, userId: id, token: generateSessionToken() }
 					});
 				} catch (err) {
 					console.error('Error creating newsletter:', err);

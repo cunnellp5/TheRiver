@@ -4,6 +4,7 @@ import { error, fail, redirect } from '@sveltejs/kit';
 import { Argon2id } from 'oslo/password';
 import { ValiError, parse } from 'valibot';
 import type { SignUpValidator } from '$lib/utils/Valibot/SignUp';
+import { generateSessionToken } from '$lib/server/auth';
 
 import type { Actions } from './$types';
 import type { Newsletter } from '@prisma/client';
@@ -40,6 +41,7 @@ Default action:
 export const actions: Actions = {
 	default: async (event) => {
 		const formData = await event.request.formData();
+		const token = null;
 
 		// pulls out the data I need
 		const email = formData.get('email')?.toString() || '';
@@ -119,11 +121,11 @@ export const actions: Actions = {
 					} else {
 						// User is subscribed but does not have a subscription, create a new one
 						await db.newsletter.create({
-							data: { email, userId: newUser.id }
+							data: { email, userId: newUser.id, token: generateSessionToken() }
 						});
 					}
 				} else if (newsLetterSubscription) {
-					// User is not subscribed but has an existing subscription, delete it
+					// User is not subscribing but has an existing subscription, delete it
 					await db.newsletter.delete({
 						where: { email }
 					});

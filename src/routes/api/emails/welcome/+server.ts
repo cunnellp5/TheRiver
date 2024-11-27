@@ -1,22 +1,31 @@
 import { env } from '$env/dynamic/private';
-import type { SvelteComponent } from 'svelte';
+import type { Component } from 'svelte';
 import Welcome from '$lib/emails/templates/Welcome.svelte';
 import transporter from '$lib/utils/transporter';
 import { error, json, type RequestHandler } from '@sveltejs/kit';
 import { render } from '../render';
 
 export const POST: RequestHandler = async ({ request }): Promise<Response> => {
-	const { subject, email } = await request.json();
+	const { subject, email, token = null } = await request.json();
+
+	// this welcome email may be sent to users without a newsletter subscription,
+	// therefore lets query the newsletter table using the email to see if there's a token
 
 	const options = {
 		from: env.EMAIL_USER,
 		to: email,
 		subject,
-		html: render({ template: Welcome as unknown as typeof SvelteComponent })
+		html: render({
+			template: Welcome as Component,
+			props: {
+				token: token
+			}
+		})
 	};
 
+	// INTENTIONALLY dont 'await' sendMail
 	try {
-		await transporter.sendMail(options, (error, info) => {
+		transporter.sendMail(options, (error, info) => {
 			if (error) {
 				console.error('❌ Error:', error.message);
 			} else {

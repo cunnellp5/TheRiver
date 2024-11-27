@@ -99,7 +99,8 @@ export const actions: Actions = {
 
 		// create subscription if one doesnt exist in the db
 		if (!newsletter) {
-			const { error } = await createNewsletterEntry({ email, token: generateSessionToken() });
+			const token = generateSessionToken();
+			const { error } = await createNewsletterEntry({ email, token: token });
 			if (error) {
 				return error;
 			}
@@ -109,7 +110,11 @@ export const actions: Actions = {
 			try {
 				fetch('emails/welcome', {
 					method: 'POST',
-					body: JSON.stringify({ subject: 'Newsletter Subscription - The River', email: email }),
+					body: JSON.stringify({
+						subject: 'Newsletter Subscription - The River',
+						email: email,
+						token
+					}),
 					headers: {
 						'Content-Type': 'application/json'
 					}
