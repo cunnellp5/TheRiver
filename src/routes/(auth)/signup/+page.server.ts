@@ -53,6 +53,7 @@ export const actions: Actions = {
 		if (!email || !password || !firstName || !lastName || !confirm || confirm !== password)
 			return fail(400, { message: 'Please fill out all fields' });
 
+		// TODO use ValidateInputs helper fn
 		// validates with valibot
 		try {
 			parse(SignUpSchema, {

@@ -1,8 +1,8 @@
 import db from '$lib/server/database';
 import { EmailSchema } from '$lib/utils/Valibot/EmailSchema';
-import { error, fail, redirect } from '@sveltejs/kit';
-import { ValiError, parse } from 'valibot';
+import { error, redirect } from '@sveltejs/kit';
 import type { Actions } from './$types';
+import { validateInputs } from '$lib/utils/validateInputs';
 
 // TODO send an email to the user with a token to confirm their unsubscription choice,
 // for now just rm the record if it exists
@@ -11,13 +11,10 @@ export const actions: Actions = {
 		const formData = await request.formData();
 		const email = formData.get('email') as string;
 
-		try {
-			await parse(EmailSchema, { email });
-		} catch (err) {
-			const errors = err as ValiError<typeof EmailSchema>;
-			return fail(400, {
-				message: errors.message
-			});
+		// validate email
+		const validationResult = validateInputs(EmailSchema, { email });
+		if (validationResult) {
+			return validationResult; // Return the error response
 		}
 
 		try {

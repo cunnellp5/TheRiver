@@ -3,8 +3,8 @@ import { EmailSchema } from '$lib/utils/Valibot/EmailSchema';
 import { fail } from '@sveltejs/kit';
 import { alphabet, generateRandomString, sha256 } from 'oslo/crypto';
 import { encodeHex } from 'oslo/encoding';
-import { ValiError, parse } from 'valibot';
 import type { Actions } from './$types';
+import { validateInputs } from '$lib/utils/validateInputs';
 
 export const actions: Actions = {
 	default: async ({ request, fetch }) => {
@@ -18,13 +18,10 @@ export const actions: Actions = {
 			});
 		}
 
-		try {
-			await parse(EmailSchema, { email });
-		} catch (err) {
-			const errors = err as ValiError<typeof EmailSchema>;
-			return fail(400, {
-				message: errors.message
-			});
+		// validate email
+		const validationResult = validateInputs(EmailSchema, { email });
+		if (validationResult) {
+			return validationResult; // Return the error response
 		}
 
 		// 2. check if email exists, return success no matter what

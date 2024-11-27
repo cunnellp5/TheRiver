@@ -5,7 +5,7 @@ export const emailValidation = pipe(
 	nonEmpty('Please enter your email.'),
 	email('The email is badly formatted.'),
 	minLength(5, 'Your email is too short.'),
-	maxLength(60, 'Your email is too long.')
+	maxLength(254, 'Your email is too long.')
 );
 
 // want to put into the 'object' method to run validations

@@ -2,9 +2,8 @@ import { logout } from '$lib/server/controllers/logout';
 import db from '$lib/server/database';
 import { EmailSchema } from '$lib/utils/Valibot/EmailSchema';
 import { error, fail, redirect, type Actions } from '@sveltejs/kit';
-import { parse, ValiError } from 'valibot';
 import type { PageServerLoad } from './$types';
-import { invalidate } from '$app/navigation';
+import { validateInputs } from '$lib/utils/validateInputs';
 
 export const load: PageServerLoad = async (event) => {
 	// IF NOT LOGGED IN, SHOW ERR PAGE LIKE ALL OTHER ROUTES THAT DONT EXIST
@@ -61,13 +60,9 @@ export const actions: Actions = {
 		// CHECK DB IF EMAIL EXISTS
 		if (key === 'email') {
 			// validate email
-			try {
-				parse(EmailSchema, { email: value });
-			} catch (err) {
-				const errors = err as ValiError<typeof EmailSchema>;
-				return fail(400, {
-					message: errors.message
-				});
+			const validationResult = validateInputs(EmailSchema, { email: value });
+			if (validationResult) {
+				return validationResult; // Return the error response
 			}
 
 			let user;

@@ -70,6 +70,7 @@ export const actions: Actions = {
 			return fail(400, { message: 'Please fill out all fields' });
 		}
 
+		// TODO use ValidateInputs helper fn
 		try {
 			parse(PasswordSchema, {
 				password,
