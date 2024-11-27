@@ -2,15 +2,9 @@
 	import Sparkles from '$lib/components/atoms/Sparkles.svelte';
 </script>
 
-<a class="hairLink" href="https://lazwicky.glossgenius.com/services" target="_blank" rel="noopener">
-	<button class="hair">
-		Book Hair &bull;
-		<span>Alexis</span>
-	</button>
-</a>
 <a class="nailsLink" href="https://the-river-sings.square.site/" target="_blank" rel="noopener">
 	<Sparkles>
-		<button class="nails">Book Nails</button>
+		<button class="nails">Book Now</button>
 	</Sparkles>
 </a>
 
@@ -25,14 +19,14 @@
 		color: var(--gray-3);
 		font-weight: var(--font-weight-6);
 	}
-	button.hair {
+	/* button.hair {
 		background-color: var(--blue-1);
 		color: var(--gray-7);
-	}
+	} */
 	button.nails {
 		background-color: var(--cyan-10);
 	}
-	span {
+	/* span {
 		color: var(--cyan-12);
-	}
+	} */
 </style>

@@ -13,8 +13,9 @@
 </script>
 
 <section class="app-layout">
+	<h3>Featured</h3>
 	<div class="title">
-		<h2>Out The Mud Vol 2</h2>
+		<h4>Out The Mud Vol 2</h4>
 		<time datetime="2024-10-08">Oct 08 2024</time>
 	</div>
 	<div class="tracksGrid">

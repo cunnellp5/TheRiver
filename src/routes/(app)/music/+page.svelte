@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { run } from 'svelte/legacy';
 
-	import { onMount } from 'svelte';
 	import Seo from '$lib/components/SEO.svelte';
 
 	let { data } = $props();
@@ -21,6 +20,7 @@
 	description={"Dive into the soul of The River's music. Listen to her latest tracks, watch mesmerizing music videos, and experience the artistry that flows through every note."} />
 <!-- card stacking effect tut -->
 <!-- https://codyhouse.co/tutorials/how-stacking-cards -->
+<h3 id="tracks">Tracks</h3>
 <div class="grid-container">
 	<div id="tracks" class="tracks">
 		{#each pages[currentPage] as track}

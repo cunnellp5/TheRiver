@@ -6,17 +6,11 @@
 		borderStyle?: 'horizontal' | 'vertical'; // New prop
 	}
 
-	let {
-		active = false,
-		route = '',
-		display = '',
-		borderStyle = 'vertical'
-	}: Props = $props();
+	let { active = false, route = '', display = '', borderStyle = 'vertical' }: Props = $props();
 </script>
 
 <li class:current={active} aria-current={active}>
 	<a
-		data-sveltekit-noscroll
 		class:border-horizontal={borderStyle === 'horizontal'}
 		class:border-vertical={borderStyle === 'vertical'}
 		href={route}>

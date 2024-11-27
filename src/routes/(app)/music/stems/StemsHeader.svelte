@@ -2,7 +2,7 @@
 	import ChevronRight from 'lucide-svelte/icons/chevron-right';
 </script>
 
-<section>
+<section id="stems">
 	<h3>Download stems</h3>
 	<p>Send me your creations.</p>
 	<article>
