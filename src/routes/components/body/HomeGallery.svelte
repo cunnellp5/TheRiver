@@ -60,11 +60,11 @@
 		min-height: 100%;
 		object-fit: cover;
 	}
-	/* .gallery img:hover {
+	.gallery img:hover {
 		filter: grayscale(0);
-		width: calc(100vh * var(--f) / var(--n));
-		height: calc(100vw * var(--f) / var(--m));
-	} */
+		/* width: calc(100vh * var(--f) / var(--n)); */
+		/* height: calc(100vw * var(--f) / var(--m)); */
+	}
 	/* QUERIES */
 	@media (max-width: 768px) {
 		.gallery {

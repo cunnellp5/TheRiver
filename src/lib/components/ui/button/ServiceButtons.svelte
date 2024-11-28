@@ -16,7 +16,7 @@
 			0 0 0 var(--_highlight-size) var(--_highlight);
 		background-color: unset;
 		min-width: var(--size-content-1);
-		color: var(--gray-3);
+		color: var(--gray-9);
 		font-weight: var(--font-weight-6);
 	}
 	/* button.hair {
@@ -24,7 +24,7 @@
 		color: var(--gray-7);
 	} */
 	button.nails {
-		background-color: var(--cyan-10);
+		background-color: var(--yellow-6);
 	}
 	/* span {
 		color: var(--cyan-12);

@@ -33,7 +33,7 @@
 		user-select: none;
 	}
 	.marquee:hover {
-		-webkit-text-stroke: 1.5px var(--link);
+		-webkit-text-stroke: 1.5px var(--link2);
 		-webkit-text-fill-color: transparent;
 		color: transparent;
 		-webkit-font-smoothing: antialiased;
@@ -45,7 +45,7 @@
 		min-width: 100%;
 	}
 	.marquee_group span {
-		color: var(--link);
+		color: var(--link2);
 		font-weight: var(--font-weight-8);
 		font-size: var(--size-10);
 		font-family: 'Syne', sansserif;

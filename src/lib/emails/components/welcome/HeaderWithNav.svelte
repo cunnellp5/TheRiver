@@ -62,7 +62,7 @@
 														<tr class="pc-grid-tr-first pc-grid-tr-last">
 															<td
 																class="pc-grid-td-first pc-w620-itemsSpacings-16-30"
-																align="left"
+																align="center"
 																valign="middle"
 																style="padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px;">
 																<table
@@ -76,12 +76,12 @@
 																		<tr>
 																			<td
 																				class="pc-w620-halign-center pc-w620-valign-middle"
-																				align="left"
+																				align="center"
 																				valign="middle"
 																				style="padding: 0px 0px 0px 0px;">
 																				<table
 																					class="pc-w620-halign-center"
-																					align="left"
+																					align="center"
 																					width="100%"
 																					border="0"
 																					cellpadding="0"
@@ -92,7 +92,7 @@
 																						<tr>
 																							<td
 																								class="pc-w620-halign-center"
-																								align="left"
+																								align="center"
 																								valign="top">
 																								<table
 																									width="100%"
@@ -104,7 +104,7 @@
 																										<tr>
 																											<td
 																												class="pc-w620-halign-center"
-																												align="left"
+																												align="center"
 																												valign="top">
 																												<a
 																													class="pc-font-alt"
@@ -113,11 +113,9 @@
 																													style="text-decoration: none;">
 																													<img
 																														src={ThumbnailLogoWhiteTransparentBG}
-																														class="pc-w620-width-67 pc-w620-height-auto pc-w620-align-center"
-																														width="120"
-																														height="53"
+																														class="pc-w620-height-auto pc-w620-align-center"
 																														alt="Logo"
-																														style="display: block; outline: 0; line-height: 100%; -ms-interpolation-mode: bicubic; width:120px; height: auto; max-width: 100%; border: 0;" />
+																														style="display: block; outline: 0; line-height: 100%; -ms-interpolation-mode: bicubic; width:100%; height: auto; max-width: 100%; border: 0;" />
 																												</a>
 																											</td>
 																										</tr>
@@ -132,7 +130,7 @@
 																	</tbody>
 																</table>
 															</td>
-															<td
+															<!-- <td
 																class="pc-grid-td-last pc-w620-itemsSpacings-16-30"
 																align="left"
 																valign="middle"
@@ -239,8 +237,9 @@
 																																													href={socialLinks.etsy}
 																																													target="_blank"
 																																													style="text-decoration: none; line-height: 140%; letter-spacing: -0px; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 500; font-variant-ligatures: normal; color: #ffffff; text-align: right; text-align-last: right;">
-																																													<span
-																																														>STORE</span>
+																																													<span>
+																																														STORE
+																																													</span>
 																																												</a>
 																																											</td>
 																																										</tr>
@@ -477,6 +476,364 @@
 																		</tr>
 																	</tbody>
 																</table>
+															</td> -->
+														</tr>
+													</tbody>
+												</table>
+											</td>
+										</tr>
+									</tbody>
+									<tbody>
+										<tr>
+											<td
+												class="pc-w620-spacing-0-0-32-0 pc-w620-valign-middle pc-w620-halign-center"
+												style="padding: 0px 0px 56px 0px;">
+												<table
+													class="pc-width-fill pc-w620-gridCollapsed-1 pc-w620-width-hug pc-w620-halign-center pc-w620-dir-ltr"
+													width="100%"
+													border="0"
+													cellpadding="0"
+													cellspacing="0"
+													role="presentation">
+													<tbody>
+														<tr class="pc-grid-tr-first pc-grid-tr-last">
+															<td
+																class="pc-grid-td-last pc-w620-itemsSpacings-16-30"
+																align="center"
+																valign="middle"
+																style="padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; mso-padding-left-alt: 0; margin-left: 0px;">
+																<table
+																	width="100%"
+																	border="0"
+																	cellpadding="0"
+																	cellspacing="0"
+																	role="presentation"
+																	style="border-collapse: separate; border-spacing: 0; width: 100%;">
+																	<tbody>
+																		<!-- <tr>
+																			<td
+																				class="pc-w620-halign-center pc-w620-valign-middle"
+																				align="center"
+																				valign="middle"
+																				style="padding: 0px 0px 0px 0px;">
+																				<table
+																					class="pc-w620-halign-center"
+																					align="center"
+																					width="100%"
+																					border="0"
+																					cellpadding="0"
+																					cellspacing="0"
+																					role="presentation"
+																					style="width: 100%;">
+																					<tbody> -->
+																		<!-- <tr>
+																							<td
+																								class="pc-w620-halign-center"
+																								align="center"
+																								valign="top"> -->
+																		<!-- <table
+																									class="pc-w620-halign-center"
+																									align="center"
+																									border="0"
+																									cellpadding="0"
+																									cellspacing="0"
+																									role="presentation"> -->
+																		<!-- <tbody> -->
+																		<!-- <tr>
+																											<td
+																												class="pc-w620-valign-middle pc-w620-halign-center"
+																												align="center"> -->
+																		<!-- <table
+																													class="pc-width-hug pc-w620-gridCollapsed-0 pc-w620-halign-center"
+																													align="center"
+																													border="0"
+																													cellpadding="0"
+																													cellspacing="0"
+																													role="presentation"> -->
+																		<!-- <tbody> -->
+																		<tr class="pc-grid-tr-first pc-grid-tr-last">
+																			<td
+																				class="pc-grid-td-first pc-w620-itemsSpacings-20-0"
+																				valign="middle"
+																				style="padding-top: 0px; padding-right: 10px; padding-bottom: 0px; padding-left: 0px;">
+																				<table
+																					width="100%"
+																					border="0"
+																					cellpadding="0"
+																					cellspacing="0"
+																					role="presentation"
+																					style="border-collapse: separate; border-spacing: 0; width: 100%;">
+																					<tbody>
+																						<tr>
+																							<td
+																								class="pc-w620-halign-center pc-w620-valign-middle"
+																								align="center"
+																								valign="middle">
+																								<table
+																									class="pc-w620-halign-center"
+																									align="center"
+																									width="100%"
+																									border="0"
+																									cellpadding="0"
+																									cellspacing="0"
+																									role="presentation"
+																									style="width: 100%;">
+																									<tbody>
+																										<tr>
+																											<td
+																												class="pc-w620-halign-center"
+																												align="center"
+																												valign="top">
+																												<table
+																													border="0"
+																													cellpadding="0"
+																													cellspacing="0"
+																													role="presentation"
+																													class="pc-w620-halign-center"
+																													align="center"
+																													style="border-collapse: separate; border-spacing: 0;">
+																													<tbody>
+																														<tr>
+																															<td
+																																valign="top"
+																																class="pc-w620-textAlign-center"
+																																align="center">
+																																<a
+																																	class="pc-font-alt pc-w620-textAlign-center pc-w620-fontSize-12px"
+																																	href={socialLinks.etsy}
+																																	target="_blank"
+																																	style="text-decoration: none; line-height: 140%; letter-spacing: -0px; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 500; font-variant-ligatures: normal; color: #ffffff; text-align: right; text-align-last: right;">
+																																	<span> STORE </span>
+																																</a>
+																															</td>
+																														</tr>
+																													</tbody>
+																												</table>
+																											</td>
+																										</tr>
+																									</tbody>
+																								</table>
+																							</td>
+																						</tr>
+																					</tbody>
+																				</table>
+																			</td>
+																			<td
+																				class="pc-w620-itemsSpacings-20-0"
+																				valign="middle"
+																				style="padding-top: 0px; padding-right: 10px; padding-bottom: 0px; padding-left: 10px; mso-padding-left-alt: 0; margin-left: 10px;">
+																				<table
+																					width="100%"
+																					border="0"
+																					cellpadding="0"
+																					cellspacing="0"
+																					role="presentation"
+																					style="border-collapse: separate; border-spacing: 0; width: 100%;">
+																					<tbody>
+																						<tr>
+																							<td
+																								class="pc-w620-padding-0-0-0-0 pc-w620-halign-center pc-w620-valign-middle"
+																								align="center"
+																								valign="middle"
+																								style="padding: 0px 0px 0px 0px;">
+																								<table
+																									class="pc-w620-halign-center"
+																									align="center"
+																									width="100%"
+																									border="0"
+																									cellpadding="0"
+																									cellspacing="0"
+																									role="presentation"
+																									style="width: 100%;">
+																									<tbody>
+																										<tr>
+																											<td
+																												class="pc-w620-halign-center"
+																												align="center"
+																												valign="top">
+																												<table
+																													border="0"
+																													cellpadding="0"
+																													cellspacing="0"
+																													role="presentation"
+																													class="pc-w620-halign-center"
+																													align="center"
+																													style="border-collapse: separate; border-spacing: 0;">
+																													<tbody>
+																														<tr>
+																															<td
+																																valign="top"
+																																class="pc-w620-textAlign-center"
+																																align="center">
+																																<a
+																																	class="pc-font-alt pc-w620-textAlign-center pc-w620-fontSize-12px"
+																																	href={WEBSITE_URL + '/blog'}
+																																	target="_blank"
+																																	style="text-decoration: none; line-height: 140%; letter-spacing: -0px; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 500; font-variant-ligatures: normal; color: #ffffff; text-align: right; text-align-last: right;">
+																																	<span>BLOG</span>
+																																</a>
+																															</td>
+																														</tr>
+																													</tbody>
+																												</table>
+																											</td>
+																										</tr>
+																									</tbody>
+																								</table>
+																							</td>
+																						</tr>
+																					</tbody>
+																				</table>
+																			</td>
+																			<td
+																				class="pc-w620-itemsSpacings-20-0"
+																				valign="middle"
+																				style="padding-top: 0px; padding-right: 10px; padding-bottom: 0px; padding-left: 10px; mso-padding-left-alt: 0; margin-left: 10px;">
+																				<table
+																					width="100%"
+																					border="0"
+																					cellpadding="0"
+																					cellspacing="0"
+																					role="presentation"
+																					style="border-collapse: separate; border-spacing: 0; width: 100%;">
+																					<tbody>
+																						<tr>
+																							<td
+																								class="pc-w620-padding-0-0-0-0 pc-w620-halign-center pc-w620-valign-middle"
+																								align="center"
+																								valign="middle"
+																								style="padding: 0px 0px 0px 0px;">
+																								<table
+																									class="pc-w620-halign-center"
+																									align="center"
+																									width="100%"
+																									border="0"
+																									cellpadding="0"
+																									cellspacing="0"
+																									role="presentation"
+																									style="width: 100%;">
+																									<tbody>
+																										<tr>
+																											<td
+																												class="pc-w620-halign-center"
+																												align="center"
+																												valign="top">
+																												<table
+																													border="0"
+																													cellpadding="0"
+																													cellspacing="0"
+																													role="presentation"
+																													class="pc-w620-halign-center"
+																													align="center"
+																													style="border-collapse: separate; border-spacing: 0;">
+																													<tbody>
+																														<tr>
+																															<td
+																																valign="top"
+																																class="pc-w620-textAlign-center"
+																																align="center">
+																																<a
+																																	class="pc-font-alt pc-w620-textAlign-center pc-w620-fontSize-12px"
+																																	href={WEBSITE_URL + '/music'}
+																																	target="_blank"
+																																	style="text-decoration: none; line-height: 140%; letter-spacing: -0px; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 500; font-variant-ligatures: normal; color: #ffffff; text-align: right; text-align-last: right;">
+																																	<span>MUSIC</span>
+																																</a>
+																															</td>
+																														</tr>
+																													</tbody>
+																												</table>
+																											</td>
+																										</tr>
+																									</tbody>
+																								</table>
+																							</td>
+																						</tr>
+																					</tbody>
+																				</table>
+																			</td>
+																			<td
+																				class="pc-grid-td-last pc-w620-itemsSpacings-20-0"
+																				valign="middle"
+																				style="padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 10px; mso-padding-left-alt: 0; margin-left: 10px;">
+																				<table
+																					width="100%"
+																					border="0"
+																					cellpadding="0"
+																					cellspacing="0"
+																					role="presentation"
+																					style="border-collapse: separate; border-spacing: 0; width: 100%;">
+																					<tbody>
+																						<tr>
+																							<td
+																								class="pc-w620-halign-center pc-w620-valign-middle"
+																								align="center"
+																								valign="middle"
+																								style="padding: 0px 0px 0px 0px;">
+																								<table
+																									class="pc-w620-halign-center"
+																									align="center"
+																									width="100%"
+																									border="0"
+																									cellpadding="0"
+																									cellspacing="0"
+																									role="presentation"
+																									style="width: 100%;">
+																									<tbody>
+																										<tr>
+																											<td
+																												class="pc-w620-halign-center"
+																												align="center"
+																												valign="top">
+																												<table
+																													border="0"
+																													cellpadding="0"
+																													cellspacing="0"
+																													role="presentation"
+																													class="pc-w620-halign-center"
+																													align="center"
+																													style="border-collapse: separate; border-spacing: 0;">
+																													<tbody>
+																														<tr>
+																															<td
+																																valign="top"
+																																class="pc-w620-textAlign-center"
+																																align="center">
+																																<a
+																																	class="pc-font-alt pc-w620-textAlign-center pc-w620-fontSize-12px"
+																																	href={WEBSITE_URL + '/contact'}
+																																	target="_blank"
+																																	style="text-decoration: none; line-height: 140%; letter-spacing: -0px; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 500; font-variant-ligatures: normal; color: #ffffff; text-align: right; text-align-last: right;">
+																																	<span>CONTACT</span>
+																																</a>
+																															</td>
+																														</tr>
+																													</tbody>
+																												</table>
+																											</td>
+																										</tr>
+																									</tbody>
+																								</table>
+																							</td>
+																						</tr>
+																					</tbody>
+																				</table>
+																			</td>
+																		</tr>
+																		<!-- </tbody> -->
+																		<!-- </table> -->
+																		<!-- </td>
+																										</tr> -->
+																		<!-- </tbody> -->
+																		<!-- </table> -->
+																		<!-- </td>
+																						</tr> -->
+																		<!-- </tbody>
+																				</table>
+																			</td>
+																		</tr> -->
+																	</tbody>
+																</table>
 															</td>
 														</tr>
 													</tbody>
@@ -655,12 +1012,7 @@
 																																			was a marching band nerd and
 																																			later explored dance,
 																																			multimedia arts, and
-																																			songwriting. She is also a
-																																			poet who later evolved her
-																																			poems into rap verses and
-																																			songs that highlight her
-																																			unique perspective and
-																																			passionate messaging.
+																																			songwriting.
 																																		</span>
 																																	</div>
 																																</div>
