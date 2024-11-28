@@ -41,7 +41,7 @@
 		};
 	}}>
 	{#if !$page.url.pathname.includes('/unsubscribe/')}
-		<p class="listHeader">Subscribe to newsletter</p>
+		<p class="listHeader gradientHeaders">Subscribe to newsletter</p>
 		<div class="newsletter-form breaker">
 			<div class="buttonWrapper">
 				<input type="email" name="email" placeholder="Enter email" bind:value={emailInput} />
