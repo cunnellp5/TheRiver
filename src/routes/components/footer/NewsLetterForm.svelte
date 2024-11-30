@@ -112,6 +112,7 @@
 	}
 	.buttonWrapper {
 		display: flex;
+		flex-direction: column;
 		justify-content: center;
 		gap: var(--size-3);
 		margin-block: var(--size-4);
