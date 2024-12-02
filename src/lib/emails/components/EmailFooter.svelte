@@ -42,8 +42,7 @@
 	<Link href={socialLinks.linkTree} style={link}>LinkTree</Link>
 </Text>
 <Text style={address}>The River</Text>
-<Text style={address}>30 W Bayaud Ave</Text>
-<Text style={address}>Denver, CO 80223</Text>
+<Text style={address}>Denver, CO</Text>
 <Text>
 	<Link href={WEBSITE_URL + '/unsubscribe'} style={{ ...unsubscribe }}>Unsubscribe</Link>
 </Text>

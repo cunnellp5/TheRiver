@@ -2,7 +2,7 @@
 	import socialLinks from '$lib/data/socialLinks';
 	import Copywrite from './Copywrite.svelte';
 	import NewsLetterForm from './NewsLetterForm.svelte';
-	import { address, emailWithBreaks, phoneNumber } from '$lib/config';
+	import { address, emailWithBreaks } from '$lib/config';
 	import LogoR from '$lib/components/svgs/logos/LogoR2.svelte';
 	import TheRiver from '$lib/components/svgs/logos/TheRiver.svelte';
 </script>

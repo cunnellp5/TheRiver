@@ -2,7 +2,7 @@
 	import MapPin from 'lucide-svelte/icons/map-pin';
 	import AtSign from 'lucide-svelte/icons/at-sign';
 	import Phone from 'lucide-svelte/icons/phone';
-	import { emailWithBreaks, phoneNumber, address } from '$lib/config';
+	import { emailWithBreaks, address } from '$lib/config';
 	import ServiceButtons from '$lib/components/ui/button/ServiceButtons.svelte';
 
 	// const email = 'theriverrunsfast@gmail.com';
@@ -31,10 +31,6 @@
 	<figure class="section contact">
 		<div class="info-wrapper">
 			<h2>Contact</h2>
-			<div class="contact-item">
-				<Phone size="16" />
-				<p>{phoneNumber}</p>
-			</div>
 			<div class="contact-item">
 				<AtSign size="16" />
 				<p>{@html emailWithBreaks}</p>
