@@ -2,14 +2,7 @@
 	import SkeletonImg from '$lib/components/ui/skeletons/SkeletonImg.svelte';
 	import SkeletonText from '$lib/components/ui/skeletons/SkeletonText.svelte';
 
-	let {
-		articleImage,
-		articleTitle,
-		author,
-		link,
-		description,
-		buttons
-	} = $props();
+	let { articleImage, articleTitle, author, link, description, buttons } = $props();
 </script>
 
 <div class="card">
@@ -44,7 +37,7 @@
 			</div>
 		</div>
 		<div>
-			{@render buttons?.({ class: "buttons", })}
+			{@render buttons?.({ class: 'buttons' })}
 		</div>
 	</a>
 </div>
@@ -107,14 +100,16 @@
 			flex-grow 0.5s ease,
 			flex-shrink 0.5s ease;
 		box-shadow: var(--shadow-1);
-		background: var(--surface-3);
+		border-radius: var(--radius-2);
+		background: var(--surface-4);
 		padding: var(--size-5);
 	}
 	.card:hover {
 		-webkit-transition: 0.3s ease-in-out;
 		transition: 0.3s ease-in-out;
 		transition-delay: var(--transition-delay-1);
-		box-shadow: var(--shadow-2);
+		/* box-shadow: var(--shadow-2); */
+		box-shadow: 4px 4px 30px var(--yellow-10);
 		& .imgWrapper {
 			-webkit-transform: scale(1.05);
 			transform: scale(1.05);
@@ -137,4 +132,15 @@
 	.description {
 		line-height: var(--size-4);
 	}
+
+	/* @media (max-width: 768px) {
+		.card {
+			display: flex;
+			flex: unset;
+			flex-direction: column;
+			box-shadow: var(--shadow-1);
+			background: var(--surface-3);
+			padding: var(--size-5);
+		}
+	} */
 </style>

@@ -108,7 +108,7 @@
 		<label for="reset">create better reset email</label>
 	</li>
 	<li>
-		<input type="checkbox" id="unsubscribe" />
+		<input type="checkbox" id="unsubscribe" checked />
 		<label for="unsubscribe">figure out unsubscribe workflow</label>
 	</li>
 </ol>

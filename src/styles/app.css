@@ -278,12 +278,16 @@ tbody > tr:hover {
 	display: flex;
 	flex-flow: row wrap;
 	gap: var(--size-7);
+	margin-inline: var(--size-7);
 	margin-block: var(--size-7);
 	/* & > div {
 		flex: 1 0 auto;
 		max-width: calc(50% - var(--size-7));
 	} */
-	& > div:last-child {
+}
+
+@media (min-width: 768px) {
+	.article-wrapper > div:last-child {
 		margin: 0 auto;
 		max-width: calc(50% - var(--size-7)); /* Prevent the last item from taking full width */
 	}
@@ -397,13 +401,13 @@ and use the full width for artistic banners */
 }
 .descriptionHeader {
 	/* color: rgba(39, 39, 39, 1); */
-	font-style: normal;
-	font-variant: small-caps;
-	font-weight: var(--font-weight-4);
+	/* font-style: normal; */
+	/* font-variant: small-caps; */
+	/* font-weight: var(--font-weight-4); */
 	font-size: var(--size-10);
-	line-height: 1;
-	font-family: 'Atyp BL Display Medium';
-	letter-spacing: 0em;
-	text-align: center;
-	text-transform: none;
+	/* line-height: 1; */
+	/* font-family: 'Atyp BL Display Medium'; */
+	/* letter-spacing: 0em; */
+	/* text-align: center; */
+	/* text-transform: none; */
 }

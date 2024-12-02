@@ -29,6 +29,7 @@
 	.marquee {
 		display: flex;
 		background: var(--surface-1);
+		padding: var(--size-4);
 		overflow: hidden;
 		user-select: none;
 	}
@@ -47,7 +48,7 @@
 	.marquee_group span {
 		color: var(--link2);
 		font-weight: var(--font-weight-8);
-		font-size: var(--size-10);
+		font-size: var(--size-7);
 		font-family: 'Syne', sansserif;
 		white-space: nowrap;
 	}
@@ -70,7 +71,7 @@
 
 	@media (max-width: 768px) {
 		.marquee_group span {
-			font-size: var(--size-8);
+			font-size: var(--size-5);
 		}
 	}
 </style>
