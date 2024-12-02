@@ -1,4 +1,4 @@
-<section class="beauty app-layout">
+<section class="beauty">
 	<h2 class="descriptionHeader gradientHeaders">Merch</h2>
 	<p>Get some.</p>
 	<a
@@ -12,6 +12,16 @@
 
 <style>
 	/* ELEMENTS */
+	section {
+		/* filter: var(--noise-filter-1); */
+		background-image: radial-gradient(
+				circle at center center,
+				hsla(330, 80%, 35%, 0.109),
+				hsla(0, 0%, 0%, 0)
+			),
+			var(--noise-2);
+		background-size: cover;
+	}
 	/* CLASSES */
 	/* .about, */
 	.beauty {
@@ -33,6 +43,7 @@
 			min-width: var(--size-content-1);
 		}
 	}
+
 	@media (max-width: 768px) {
 		/* .about, */
 		.beauty {
