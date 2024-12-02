@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { draw, fade, fly } from 'svelte/transition';
-	import { backOut } from 'svelte/easing';
+	// import { draw, fade, fly } from 'svelte/transition';
+	// import { backOut } from 'svelte/easing';
 	// props
-	const { theme } = $props();
+	const { theme = '' } = $props();
 </script>
 
 <svg

@@ -19,7 +19,7 @@
 		flex-direction: column;
 		align-items: center;
 		gap: var(--size-5);
-		margin-block: var(--size-content-1);
+		padding-block: var(--size-content-1);
 		& p {
 			font-style: normal;
 			font-weight: 400;
@@ -36,7 +36,7 @@
 	@media (max-width: 768px) {
 		/* .about, */
 		.beauty {
-			margin-block: var(--size-9);
+			padding-block: var(--size-9);
 		}
 		.descriptionHeader {
 			font-size: var(--size-8);

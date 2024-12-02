@@ -2,7 +2,7 @@
 	import Socials from '$lib/components/ui/Socials.svelte';
 </script>
 
-<section class="about app-layout">
+<section class="about">
 	<h2 class="descriptionHeader gradientHeaders">Music Art Hair Nails</h2>
 	<p>Let's <span class="lobster">flow</span> together.</p>
 	<div class="socials">
@@ -23,7 +23,7 @@
 		flex-direction: column;
 		align-items: center;
 		gap: var(--size-5);
-		margin-block: var(--size-content-1);
+		padding-block: var(--size-content-1);
 		& p {
 			font-style: normal;
 			font-weight: 400;
@@ -38,14 +38,14 @@
 		} */
 	}
 	.socials {
-		margin-block-start: var(--size-4);
+		padding-block-start: var(--size-2);
 	}
 	/* IDS */
 
 	@media (max-width: 768px) {
 		/* .beauty, */
 		.about {
-			margin-block: var(--size-9);
+			padding-block: var(--size-9);
 		}
 		.descriptionHeader {
 			font-size: var(--size-8);
