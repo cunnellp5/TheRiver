@@ -2,7 +2,7 @@
 	// import { draw, fade, fly } from 'svelte/transition';
 	// import { backOut } from 'svelte/easing';
 	// props
-	const { theme = '' } = $props();
+	const { theme = false } = $props();
 </script>
 
 <svg
