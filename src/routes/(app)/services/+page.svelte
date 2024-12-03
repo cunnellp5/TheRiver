@@ -1,6 +1,8 @@
 <script lang="ts">
+	import InstaBeauty from '$lib/components/InstaBeauty.svelte';
 	import Seo from '$lib/components/SEO.svelte';
 	import ServiceButtons from '$lib/components/ui/button/ServiceButtons.svelte';
+	import { onMount } from 'svelte';
 	import CutoutImg from './components/CutoutImg.svelte';
 	import ScrollDots from './components/ScrollDots.svelte';
 	import ServiceTable from './components/ServiceTable.svelte';
@@ -8,6 +10,10 @@
 	let { data } = $props();
 	const { services, about } = data;
 	let scroll: number = $state(0);
+
+	onMount(() => {
+		(window as any)?.instgrm?.Embeds.process();
+	});
 </script>
 
 <Seo
@@ -29,6 +35,9 @@
 			</p>
 		{/if}
 	</section>
+	<div class="insta">
+		<InstaBeauty />
+	</div>
 </main>
 <main class="app-layout">
 	{#each Object.entries(services) as [category, data]}
@@ -64,6 +73,10 @@
 		letter-spacing: 0em;
 	}
 	/* CLASSES */
+	.insta {
+		display: flex;
+		justify-content: center;
+	}
 	.aside-right {
 		position: sticky;
 		bottom: 70%;
