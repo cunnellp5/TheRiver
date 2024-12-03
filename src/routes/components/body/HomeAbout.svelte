@@ -5,6 +5,7 @@
 <section class="about">
 	<h2 class="descriptionHeader gradientHeaders">Music Art Hair Nails</h2>
 
+	<br />
 	<p>
 		The River is a rising HipHop/R&B artist based in Denver, Colorado.
 		<br />
@@ -108,7 +109,7 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: var(--size-5);
+		gap: var(--size-2);
 		padding-block: var(--size-content-1);
 		& p {
 			/* font-style: normal; */
@@ -122,9 +123,6 @@
 		/* & button {
 			min-width: var(--size-content-1);
 		} */
-	}
-	.socials {
-		padding-block-start: var(--size-2);
 	}
 
 	.aboutGrid {

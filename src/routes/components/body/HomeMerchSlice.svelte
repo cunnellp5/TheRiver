@@ -1,17 +1,16 @@
 <section class="beauty">
 	<h2 class="descriptionHeader gradientHeaders">Merch</h2>
-	<p>Get some.</p>
 	<a
 		class="hairLink"
 		href="https://www.etsy.com/shop/TheRiverDesign"
 		target="_blank"
 		rel="noopener">
-		<button class="primary">Etsy</button>
+		<button class="primary">Get some. @Etsy</button>
 	</a>
 </section>
 
 <style>
-	/* TODO just make this a component if im going to use it one more time somewhere */
+	/* TODO just make this a component if im going to use it one more time */
 	/* ELEMENTS */
 	button {
 		animation: spin 2.5s infinite linear paused;
@@ -60,17 +59,8 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: var(--size-5);
+		gap: var(--size-3);
 		padding-block: var(--size-content-1);
-		& p {
-			font-style: normal;
-			font-weight: 400;
-			font-size: var(--font-size-3);
-			line-height: var(--font-lineheight-4);
-			font-family: 'Ambit Light';
-			text-align: center;
-			text-transform: none;
-		}
 		& button {
 			min-width: var(--size-content-1);
 		}
