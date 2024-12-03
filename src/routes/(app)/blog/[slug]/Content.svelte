@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { run } from 'svelte/legacy';
-
 	import { QuillConfigReadonly, quillContentInit } from '$lib/utils/QuillConfig';
 	import type Quill from 'quill';
 	import { onMount } from 'svelte';
@@ -12,29 +10,33 @@
 	}
 
 	let { post }: Props = $props();
-	let quill: Quill | null;
-	let reader: string | HTMLElement = $state();
-	let quillError = $state('');
+	let quill: Quill;
+	let reader: null | HTMLDivElement = $state(null);
+	let quillError: null | string = $state(null);
 
 	async function setQuillData() {
+		quillError = null; // Reset error message
+
 		if (!browser) return;
 
 		try {
 			const { default: Quill } = await import('quill');
-			quill = new Quill(reader, QuillConfigReadonly);
-			const quillData = await quillContentInit(post ? post.content : 'No content found');
-			quill.setContents(quillData);
-			quillError = ''; // Reset error message on success
+			// i dont know why this is running twice
+			// first time, the reader is null and throws a quill error
+			// but then renders because it hydrates immediately after
+			if (reader === null) {
+				console.log('reader is loading');
+			} else {
+				quill = await new Quill(reader, QuillConfigReadonly);
+				const quillData = quillContentInit(post ? post.content : 'No content found');
+				await quill.setContents(quillData);
+			}
 		} catch (err) {
 			// eslint-disable-next-line no-console
 			console.error('Failed to set Quill data:', err);
 			quillError = 'Failed to load the editor. Please try again later.';
 		}
 	}
-
-	run(() => {
-		setQuillData();
-	});
 
 	onMount(() => {
 		setQuillData();
