@@ -41,7 +41,7 @@
 		};
 	}}>
 	{#if !$page.url.pathname.includes('/unsubscribe/')}
-		<p class="listHeader gradientHeaders">Subscribe to newsletter</p>
+		<h2 class="listHeader gradientHeaders descriptionHeader">Subscribe</h2>
 		<div class="newsletter-form breaker">
 			<div class="buttonWrapper">
 				<input type="email" name="email" placeholder="Enter email" bind:value={emailInput} />
@@ -53,12 +53,10 @@
 						Loading
 					</button>
 				{:else}
-					<button class:disabled class="primary" type="submit" {disabled}> Sign up </button>
+					<button class:disabled class="secondary" type="submit" {disabled}> Subscribe </button>
 				{/if}
 			</div>
-			<label for="email" class="newsletter-form__email-label">
-				You can unsubscribe at any time
-			</label>
+			<label for="email" class="newsletter-form__email-label"> Unsubscribe at any time </label>
 			{#if showError}
 				<span class="errorMessage">{errorMessage}</span>
 			{/if}
@@ -76,49 +74,36 @@
 		border-block-end: 1px solid var(--border);
 		padding-block: var(--size-10);
 	}
-	p {
-		margin-inline-end: var(--size-2);
-		color: var(--gray-5);
-	}
 	input {
 		padding: var(--size-3);
 		width: var(--size-14);
 		color: var(--grey-6);
-		/* font-size: var(--font-size-5); */
-	}
-	input::placeholder {
-		font-size: var(--font-size-0);
 	}
 	label {
+		align-self: end;
 		color: var(--gray-8);
-		font-size: var(--font-size-0);
-	}
-	button {
-		min-width: var(--size-11);
 		font-size: var(--font-size-0);
 	}
 	/* CLASSES */
 	.listHeader {
 		color: var(--link2);
-		font-weight: var(--font-weight-8);
-		font-size: var(--font-size-4);
-		text-transform: uppercase;
+		text-transform: capitalize;
 	}
 	.newsletter-form {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: var(--size-1);
+		gap: var(--size-3);
+		margin-block: var(--size-4);
 	}
 	.buttonWrapper {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		gap: var(--size-3);
-		margin-block: var(--size-4);
 	}
 	.disabled {
-		opacity: 0.7;
+		opacity: 0.1;
 	}
 	.fullRow {
 		grid-column-start: 1;
