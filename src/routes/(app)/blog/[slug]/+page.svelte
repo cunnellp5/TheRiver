@@ -36,33 +36,44 @@
 	title={`${post ? post.title : 'Blog'} - By The River`}
 	description={`${post ? post.description : 'Explore The River’s blog for insights on music, beauty, and fashion. Discover expert tips, trends, and stories that inspire creativity and style."'}`} />
 
-<article class="app-layout">
-	{#if data.posts.length > 1}
-		<NextPrev pointLeft={true} {next} {previous} />
-	{/if}
+<section>
+	<article class="app-layout">
+		{#if data.posts.length > 1}
+			<NextPrev pointLeft={true} {next} {previous} />
+		{/if}
 
-	{#key post}
-		<div class="blog-content-wrapper" class:error-border={!post}>
-			{#if post}
-				<Header {post} />
-				<Content {post} />
-			{:else}
-				<p>Post not found</p>
-			{/if}
-		</div>
-	{/key}
+		{#key post}
+			<div class="blog-content-wrapper" class:error-border={!post}>
+				{#if post}
+					<Header {post} />
+					<Content {post} />
+				{:else}
+					<p>Post not found</p>
+				{/if}
+			</div>
+		{/key}
 
-	{#if data.posts.length > 1}
-		<NextPrev pointRight={true} {next} {previous} />
-	{/if}
-</article>
+		{#if data.posts.length > 1}
+			<NextPrev pointRight={true} {next} {previous} />
+		{/if}
+	</article>
+</section>
 
 <style>
 	/* ELEMENTS */
+	section {
+		background: radial-gradient(ellipse at center, hsla(7, 80%, 25%, 0.109), transparent 60%);
+		/* background-image: radial-gradient(
+				ellipse at 100%,
+				hsla(7, 80%, 25%, 0.109),
+				hsla(0, 0%, 0%, 0)
+			),
+			var(--noise-4); */
+	}
 	article {
 		display: grid;
 		grid-template-columns: 1fr var(--size-content-3) 1fr;
-		margin-top: var(--size-content-1);
+		padding-block: var(--size-content-1);
 	}
 
 	/* CLASSES */
