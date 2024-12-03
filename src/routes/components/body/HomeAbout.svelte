@@ -70,7 +70,7 @@
 		background-image: radial-gradient(
 				circle at center center,
 				hsla(98, 36%, 30%, 0.109),
-				var(--surface-2)
+				transparent 75%
 			),
 			var(--noise-2);
 		background-size: cover;

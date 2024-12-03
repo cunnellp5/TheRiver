@@ -25,8 +25,8 @@
 		transform: rotate(180deg);
 		/* margin: 0; */
 		font-size: var(--size-12);
-
 		writing-mode: vertical-lr;
+		text-align: end;
 	}
 	/* CLASSES */
 	/* .articleLink {
@@ -57,6 +57,7 @@
 		} */
 		h2 {
 			font-size: var(--size-9);
+			text-align: center;
 		}
 	}
 </style>

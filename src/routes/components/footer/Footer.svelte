@@ -3,7 +3,8 @@
 	import Copywrite from './Copywrite.svelte';
 	import NewsLetterForm from './NewsLetterForm.svelte';
 	import { address, emailWithBreaks } from '$lib/config';
-	import LogoR from '$lib/components/svgs/logos/LogoR2.svelte';
+	// import LogoR from '$lib/components/svgs/logos/LogoR2.svelte';
+	import Socials from '$lib/components/ui/Socials.svelte';
 	import TheRiver from '$lib/components/svgs/logos/TheRiver.svelte';
 </script>
 
@@ -11,6 +12,9 @@
 	<NewsLetterForm />
 	<div class="logo">
 		<TheRiver theme={true} />
+		<div class="socials">
+			<Socials></Socials>
+		</div>
 	</div>
 	<div class="linksWrapper">
 		<p class="listHeader">Socials</p>
@@ -106,6 +110,9 @@
 	/* CLASSES */
 	.logo {
 		width: var(--size-14);
+	}
+	.socials {
+		margin-block: var(--size-1);
 	}
 	.listHeader {
 		color: var(--link2);
