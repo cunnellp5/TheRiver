@@ -33,13 +33,13 @@
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
+		gap: var(--size-1);
 		padding-inline: 0;
 	}
 	a {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		margin-inline: var(--size-2);
 		border: 0px solid var(--gray-9);
 		aspect-ratio: 1 / 1;
 		min-width: var(--size-8);
@@ -59,10 +59,6 @@
 		border: 3px solid var(--link);
 	}
 	/* QUERIES */
-	@media (max-width: 768px) {
-		a {
-			flex-basis: calc(33% - var(--size-2) * 3);
-			min-width: var(--size-7);
-		}
-	}
+	/* @media (max-width: 768px) {
+	} */
 </style>
