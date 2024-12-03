@@ -4,7 +4,7 @@
 
 <a class="nailsLink" href="https://the-river-sings.square.site/" target="_blank" rel="noopener">
 	<Sparkles>
-		<button class="nails">Book Now</button>
+		<button>Book Now</button>
 	</Sparkles>
 </a>
 
@@ -29,10 +29,6 @@
 		}
 	}
 
-	button.nails {
-		background-color: var(--yellow-6);
-	}
-
 	@property --bg-angle {
 		inherits: false;
 		initial-value: 0deg;
@@ -44,7 +40,4 @@
 			--bg-angle: 360deg;
 		}
 	}
-	/* span {
-		color: var(--cyan-12);
-	} */
 </style>
