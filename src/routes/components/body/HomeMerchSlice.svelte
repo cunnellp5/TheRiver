@@ -44,13 +44,11 @@
 	}
 
 	section {
-		/* filter: var(--noise-filter-1); */
 		background-image: radial-gradient(
-				ellipse at center center,
-				hsla(330, 80%, 35%, 0.109),
-				transparent 75%
-			),
-			var(--noise-2);
+			ellipse at center center,
+			hsla(330, 80%, 35%, 0.109),
+			transparent 75%
+		);
 		background-size: cover;
 	}
 	/* CLASSES */

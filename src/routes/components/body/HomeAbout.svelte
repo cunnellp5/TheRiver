@@ -67,13 +67,11 @@
 <style>
 	/* ELEMENTS */
 	section {
-		/* filter: var(--noise-filter-1); */
 		background-image: radial-gradient(
-				circle at center center,
-				hsla(98, 36%, 30%, 0.109),
-				transparent 75%
-			),
-			var(--noise-2);
+			circle at center center,
+			hsla(98, 36%, 30%, 0.109),
+			transparent 75%
+		);
 		background-size: cover;
 	}
 	button {
