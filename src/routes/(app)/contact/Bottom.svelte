@@ -45,7 +45,7 @@
 		<div class="info-wrapper">
 			<h2>Book</h2>
 			<div class="row">
-				<p>Email to book for music/collab.</p>
+				<p>Email to for music / collab.</p>
 			</div>
 			<div class="serviceButtons">
 				<ServiceButtons />
