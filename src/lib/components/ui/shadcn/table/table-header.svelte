@@ -13,11 +13,14 @@
   }
 
   const { class: className = "", children, ...rest }: Props = $props();
-
 </script>
 
 <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
-<thead class={`${className}`} {...rest} onclick={bubble("click")} onkeydown={bubble("keydown")}>
+<thead
+  class={`${className}`}
+  {...rest}
+  onclick={bubble("click")}
+  onkeydown={bubble("keydown")}>
   {@render children?.()}
 </thead>
 

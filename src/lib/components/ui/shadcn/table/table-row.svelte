@@ -15,7 +15,6 @@
   }
 
   const { class: className = "", children, ...rest }: Props = $props();
-
 </script>
 
 <tr
@@ -28,22 +27,22 @@
 </tr>
 
 <style>
-	:where(:global(tbody tr)):hover {
-		cursor: pointer;
-	}
+  :where(:global(tbody tr)):hover {
+    cursor: pointer;
+  }
 
-	/* :where(:global(tbody tr)):hover {
-		background-color: hsl(var(--stone-2-hsl) / 0.2);
-	} */
+  /* :where(:global(tbody tr)):hover {
+    background-color: hsl(var(--stone-2-hsl) / 0.2);
+  } */
 
-	/* todo figure out selected states */
-	/* [data-\[state='selected\]'] {
-		background-color: var(--text-1);
-	} */
+  /* todo figure out selected states */
+  /* [data-\[state='selected\]'] {
+    background-color: var(--text-1);
+  } */
 
-	/* TODO add transitions */
-	/* .transition-colors {
-		transition-duration: var(--transition-duration-0);
-		transition-property: background-color;
-	} */
+  /* TODO add transitions */
+  /* .transition-colors {
+    transition-duration: var(--transition-duration-0);
+    transition-property: background-color;
+  } */
 </style>
