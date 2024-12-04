@@ -63,11 +63,11 @@ https://www.youtube.com/watch?v=8OmsVZuuQMc
 
 <!-- package todo -->
 
-    	"@event-calendar/core": "^3.0.1",
-    	"@event-calendar/day-grid": "^3.0.1",
-    	"@event-calendar/interaction": "^3.0.1",
-    	"@event-calendar/list": "^3.0.1",
-    	"@event-calendar/time-grid": "^3.0.1",
+"@event-calendar/core": "^3.0.1",
+"@event-calendar/day-grid": "^3.0.1",
+"@event-calendar/interaction": "^3.0.1",
+"@event-calendar/list": "^3.0.1",
+"@event-calendar/time-grid": "^3.0.1",
 
       (dev dep)
       "calendarize": "^1.1.1",

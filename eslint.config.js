@@ -32,5 +32,6 @@ export default antfu({
     "pnpm-lock.yaml",
     "package-lock.json",
     "yarn.lock",
+    "docs",
   ],
 });
