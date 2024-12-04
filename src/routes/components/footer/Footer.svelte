@@ -1,6 +1,5 @@
 <script lang="ts">
   import TheRiver from "$lib/components/svgs/logos/the-river.svelte";
-  // import LogoR from '$lib/components/svgs/logos/LogoR2.svelte';
   import Socials from "$lib/components/ui/socials.svelte";
   import { address, emailWithBreaks } from "$lib/config";
   import socialLinks from "$lib/data/social-links";
@@ -121,12 +120,6 @@
     justify-content: center;
     gap: var(--size-8);
     padding-block: var(--size-4);
-    @media (min-width: 768px) {
-      display: grid;
-      grid-template-rows: auto;
-      justify-content: space-between;
-      gap: var(--size-4);
-    }
   }
   a {
     transition: color 0.1s ease;
@@ -156,5 +149,13 @@
     display: flex;
     flex-direction: column;
     gap: var(--size-2);
+  }
+  @media (min-width: 768px) {
+    footer {
+      display: grid;
+      grid-template-rows: auto;
+      justify-content: space-between;
+      gap: var(--size-4);
+    }
   }
 </style>
