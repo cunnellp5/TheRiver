@@ -21,7 +21,13 @@ const config = {
 					'http://www.instagram.com'
 				], // Allow scripts from self and inline scripts with nonce
 				'style-src': ['self', 'https://fonts.googleapis.com', 'unsafe-inline'], // Allow styles from self and Google Fonts
-				'img-src': ['self', 'https://res.cloudinary.com', 'https://i.ytimg.com/', 'data:'], // Allow images from self and Cloudinary
+				'img-src': [
+					'self',
+					'https://res.cloudinary.com',
+					'https://i.ytimg.com/',
+					'data:',
+					'https://api-postcards.designmodo.com'
+				], // Allow images from self and Cloudinary
 				'font-src': ['self', 'https://fonts.gstatic.com'], // Allow fonts from self and Google Fonts
 				'connect-src': ['self'], // Allow connections to self
 				'frame-src': ['self', 'https://w.soundcloud.com', 'https://www.instagram.com/'], // Disallow iframes
