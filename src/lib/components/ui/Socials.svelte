@@ -18,8 +18,12 @@
 </script>
 
 <ul>
-  {#each components as { name, SVGComponent, link }}
-    <a class="socials" href={link} target="_blank" rel="noopener">
+  {#each components as { SVGComponent, link }}
+    <a
+      class="socials"
+      href={link}
+      target="_blank"
+      rel="noopener">
       <li>
         <SVGComponent />
       </li>
@@ -28,37 +32,34 @@
 </ul>
 
 <style>
-	/* ELEMENTS */
-	ul {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		gap: var(--size-1);
-		padding-inline: 0;
-	}
-	a {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		border: 0px solid var(--gray-9);
-		aspect-ratio: 1 / 1;
-		min-width: var(--size-8);
-	}
-	a:hover {
-		cursor: pointer;
-	}
-	/* CLASSES */
-	.socials {
-		fill: var(--socials-2);
-		transition:
-			fill 0.2s ease,
-			border 0.2s ease;
-	}
-	.socials:hover {
-		fill: var(--link);
-		border: 3px solid var(--link);
-	}
-	/* QUERIES */
-	/* @media (max-width: 768px) {
-	} */
+  /* ELEMENTS */
+  ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--size-1);
+    padding-inline: 0;
+  }
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0px solid var(--gray-9);
+    aspect-ratio: 1 / 1;
+    min-width: var(--size-8);
+  }
+  a:hover {
+    cursor: pointer;
+  }
+  /* CLASSES */
+  .socials {
+    fill: var(--socials-2);
+    transition:
+      fill 0.2s ease,
+      border 0.2s ease;
+  }
+  .socials:hover {
+    fill: var(--link);
+    border: 3px solid var(--link);
+  }
 </style>

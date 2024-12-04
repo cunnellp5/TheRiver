@@ -3,7 +3,7 @@
   import type { LayoutData } from "./$types";
 
   import { page } from "$app/stores";
-  import NavButton from "$lib/components/ui/button/NavButton.svelte";
+  import NavButton from "$lib/components/ui/button/nav-button.svelte";
   import { ShowHideScroll } from "$lib/utils/classes/ShowHideScroll";
   import { run } from "svelte/legacy";
   import Featured from "./Featured.svelte";
@@ -37,9 +37,18 @@
   <div
     class={`links ${CssScrollToggler.updateClass(scroll)}`}
     use:CssScrollToggler.setTransitionDuration>
-    <NavButton route="/music#tracks" display="tracks" active={includesTracks} />
-    <NavButton route="/music/video#videos" display="videos" active={includesStems} />
-    <NavButton route="/music/stems#stems" display="stems" active={includesVideos} />
+    <NavButton
+      route="/music#tracks"
+      display="tracks"
+      active={includesTracks} />
+    <NavButton
+      route="/music/video#videos"
+      display="videos"
+      active={includesStems} />
+    <NavButton
+      route="/music/stems#stems"
+      display="stems"
+      active={includesVideos} />
 
     <!-- <div class="social-links"> -->
 
@@ -81,43 +90,43 @@
 </main>
 
 <style>
-	/* ELEMENTS */
-	.links {
-		display: flex;
-		position: sticky;
-		justify-content: center;
-		align-self: start; /* Ensure it aligns to the start of the container */
-		gap: var(--size-4);
-		z-index: var(--layer-important);
-		backdrop-filter: blur(20px);
-		margin-bottom: var(--size-4);
-		/* border-bottom: 1px solid var(--stone-11); */
-		padding: var(--size-5);
-		width: 100%;
-		color: var(--stone-4);
-		list-style: none;
-	}
-	.music-content {
-		width: 100%;
-	}
-	.grid-container {
-		display: flex;
-		flex-direction: column;
-		width: 100%;
-	}
-	.show {
-		top: calc(var(--nav-height));
-	}
-	.hide {
-		top: 2px;
-	}
+  /* ELEMENTS */
+  .links {
+    display: flex;
+    position: sticky;
+    justify-content: center;
+    align-self: start; /* Ensure it aligns to the start of the container */
+    gap: var(--size-4);
+    z-index: var(--layer-important);
+    backdrop-filter: blur(20px);
+    margin-bottom: var(--size-4);
+    /* border-bottom: 1px solid var(--stone-11); */
+    padding: var(--size-5);
+    width: 100%;
+    color: var(--stone-4);
+    list-style: none;
+  }
+  .music-content {
+    width: 100%;
+  }
+  .grid-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .show {
+    top: calc(var(--nav-height));
+  }
+  .hide {
+    top: 2px;
+  }
 
-	@keyframes moveGradient {
-		0% {
-			background-position: 0%;
-		}
-		100% {
-			background-position: 200%;
-		}
-	}
+  @keyframes moveGradient {
+    0% {
+      background-position: 0%;
+    }
+    100% {
+      background-position: 200%;
+    }
+  }
 </style>

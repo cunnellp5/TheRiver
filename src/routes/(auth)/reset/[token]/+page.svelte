@@ -1,7 +1,7 @@
 <script lang="ts">
   import { enhance } from "$app/forms";
   import { goto } from "$app/navigation";
-  import Seo from "$lib/components/SEO.svelte";
+  import Seo from "$lib/components/seo.svelte";
   import { addToast } from "$lib/stores/toast";
   import { LoaderCircle } from "lucide-svelte";
   import Check from "lucide-svelte/icons/check";
@@ -17,12 +17,12 @@
   const isConfirmPasswordValid = $derived(password === confirmPassword);
   const isPasswordValid = $derived(password.length >= 6);
 
-// $: isFormValid =
-	// 	isEmailValid &&
-	// 	isPasswordValid &&
-	// 	isConfirmPasswordValid &&
-	// 	isFirstNameValid &&
-	// 	isLastNameValid;
+  // $: isFormValid =
+  // 	isEmailValid &&
+  // 	isPasswordValid &&
+  // 	isConfirmPasswordValid &&
+  // 	isFirstNameValid &&
+  // 	isLastNameValid;
 </script>
 
 <Seo
@@ -55,12 +55,14 @@
       <p>{email}</p>
       <div
         class="passwords"
-        class:invalidPasswords={(!isConfirmPasswordValid && confirmPassword.length > 0)
-        || (!isPasswordValid && password.length > 0 && confirmPassword.length > 0)}
-        class:validPasswords={isConfirmPasswordValid
-        && confirmPassword.length > 0
-          && isPasswordValid}>
-        <label id="pw-label" for="password">Password</label>
+        class:invalidPasswords={(!isConfirmPasswordValid && confirmPassword.length > 0) ||
+          (!isPasswordValid && password.length > 0 && confirmPassword.length > 0)}
+        class:validPasswords={isConfirmPasswordValid &&
+          confirmPassword.length > 0 &&
+          isPasswordValid}>
+        <label
+          id="pw-label"
+          for="password">Password</label>
         <input
           bind:value={password}
           type="password"
@@ -97,7 +99,11 @@
         </div>
       </div>
 
-      <input type="hidden" name="email" id="email" value={email} />
+      <input
+        type="hidden"
+        name="email"
+        id="email"
+        value={email} />
 
       {#if loading}
         <button disabled={loading}>
@@ -117,63 +123,63 @@
 </main>
 
 <style>
-	/* ELEMENTS */
-	main {
-		display: flex;
-		justify-content: center;
-		margin-block-start: var(--size-10);
-	}
-	form {
-		display: flex;
-		flex-direction: column;
-		gap: var(--size-7);
-		margin-block-start: var(--size-10);
-	}
-	input {
-		border: 1px solid var(--border);
-	}
-	label {
-		margin-block: var(--size-1);
-		color: var(--link);
-		font-size: var(--font-size-0);
-	}
-	/* CLASSES */
-	.passwords {
-		display: flex;
-		flex-direction: column;
-		transition: border-left-color 0.3s ease;
-		margin-block: var(--size-4);
-		border-left: 2px solid var(--link);
-		padding-left: var(--size-4);
-		& > label {
-			margin-block: var(--size-2);
-		}
-	}
-	.invalidPasswords {
-		border-left-color: var(--red-7);
-	}
-	.validPasswords {
-		border-left-color: var(--green-7);
-	}
-	.invalid {
-		border-color: var(--red-7);
-	}
-	.valid {
-		border-color: var(--green-7);
-	}
-	.help-text {
-		display: flex;
-		flex-direction: column;
-		margin-top: var(--size-2);
-		color: var(--gray-6);
-		font-size: var(--font-size-0);
-	}
-	.checker {
-		display: flex;
-		gap: var(--size-1);
-	}
-	/* IDs */
-	#pw-label {
-		margin-top: 0;
-	}
+  /* ELEMENTS */
+  main {
+    display: flex;
+    justify-content: center;
+    margin-block-start: var(--size-10);
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-7);
+    margin-block-start: var(--size-10);
+  }
+  input {
+    border: 1px solid var(--border);
+  }
+  label {
+    margin-block: var(--size-1);
+    color: var(--link);
+    font-size: var(--font-size-0);
+  }
+  /* CLASSES */
+  .passwords {
+    display: flex;
+    flex-direction: column;
+    transition: border-left-color 0.3s ease;
+    margin-block: var(--size-4);
+    border-left: 2px solid var(--link);
+    padding-left: var(--size-4);
+    & > label {
+      margin-block: var(--size-2);
+    }
+  }
+  .invalidPasswords {
+    border-left-color: var(--red-7);
+  }
+  .validPasswords {
+    border-left-color: var(--green-7);
+  }
+  .invalid {
+    border-color: var(--red-7);
+  }
+  .valid {
+    border-color: var(--green-7);
+  }
+  .help-text {
+    display: flex;
+    flex-direction: column;
+    margin-top: var(--size-2);
+    color: var(--gray-6);
+    font-size: var(--font-size-0);
+  }
+  .checker {
+    display: flex;
+    gap: var(--size-1);
+  }
+  /* IDs */
+  #pw-label {
+    margin-top: 0;
+  }
 </style>

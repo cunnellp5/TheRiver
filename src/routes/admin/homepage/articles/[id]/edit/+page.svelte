@@ -2,7 +2,7 @@
   import type { ActionData } from "./$types";
 
   import { enhance } from "$app/forms";
-  import Card from "$lib/components/ui/Card.svelte";
+  import Card from "$lib/components/ui/card.svelte";
   import { addToast } from "$lib/stores/toast";
   import { run } from "svelte/legacy";
 
@@ -34,6 +34,7 @@
   }
 
   let articlePreview;
+
   run(() => {
     articlePreview = {
       author: article.author,
@@ -76,16 +77,19 @@
     }
   }
 
-  const disabled
-    = $derived(article.articleTitle === articlePreview.title
-      && article.author === articlePreview.author
-      && article.description === articlePreview.description
-      && article.img === articlePreview.img
-      && article.link === articlePreview.link);
+  const disabled = $derived(
+    article.articleTitle === articlePreview.title &&
+      article.author === articlePreview.author &&
+      article.description === articlePreview.description &&
+      article.img === articlePreview.img &&
+      article.link === articlePreview.link
+  );
 </script>
 
 <div class="form-and-preview">
-  <form method="POST" use:enhance>
+  <form
+    method="POST"
+    use:enhance>
     <div class="input-group">
       <label for="articleTitle">Title</label>
       <input
@@ -162,8 +166,16 @@
     </div>
 
     <div class="button-group">
-      <button class="reset-article-button" type="button" onclick={resetForm}> Reset Form </button>
-      <button class:disabled {disabled} class="update-article-button">Update</button>
+      <button
+        class="reset-article-button"
+        type="button"
+        onclick={resetForm}>
+        Reset Form
+      </button>
+      <button
+        class:disabled
+        {disabled}
+        class="update-article-button">Update</button>
     </div>
   </form>
 
@@ -180,58 +192,58 @@
 </div>
 
 <style>
-	/* ELEMENTS */
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-	}
-	form {
-		display: flex;
-		flex-direction: column;
-		/* border: 1px solid white; */
-		padding-inline: var(--size-7);
-		min-width: 50%;
-	}
-	label {
-		color: var(--link);
-		font-weight: bold;
-	}
-	input {
-		border: 1px solid var(--color-gray-300);
-		border-radius: var(--size-1);
-		padding: var(--size-2);
-	}
-	/* CLASSES */
-	.button-group {
-		display: flex;
-		flex-direction: column;
-		gap: var(--size-2);
-		margin-block-start: var(--size-8);
-	}
-	.form-and-preview {
-		display: flex;
-		margin-block-start: var(--size-8);
-		width: 100%;
-	}
-	.input-group {
-		display: flex;
-		flex-direction: column;
-		gap: var(--size-2);
-		margin-block-end: var(--size-4);
-	}
-	.update-article-button {
-		background-color: var(--update);
-		color: var(--on-crud-text);
-		font-weight: var(--font-weight-7);
-	}
-	.error-text {
-		display: block;
-		min-height: var(--size-4);
-		color: var(--error-text);
-		font-size: var(--font-size-0);
-	}
-	.error {
-		border: 1px solid var(--error-text);
-	}
+  /* ELEMENTS */
+  section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid white; */
+    padding-inline: var(--size-7);
+    min-width: 50%;
+  }
+  label {
+    color: var(--link);
+    font-weight: bold;
+  }
+  input {
+    border: 1px solid var(--color-gray-300);
+    border-radius: var(--size-1);
+    padding: var(--size-2);
+  }
+  /* CLASSES */
+  .button-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-2);
+    margin-block-start: var(--size-8);
+  }
+  .form-and-preview {
+    display: flex;
+    margin-block-start: var(--size-8);
+    width: 100%;
+  }
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-2);
+    margin-block-end: var(--size-4);
+  }
+  .update-article-button {
+    background-color: var(--update);
+    color: var(--on-crud-text);
+    font-weight: var(--font-weight-7);
+  }
+  .error-text {
+    display: block;
+    min-height: var(--size-4);
+    color: var(--error-text);
+    font-size: var(--font-size-0);
+  }
+  .error {
+    border: 1px solid var(--error-text);
+  }
 </style>

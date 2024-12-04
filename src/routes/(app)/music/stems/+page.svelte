@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Seo from "$lib/components/SEO.svelte";
+  import Seo from "$lib/components/seo.svelte";
   import StemsHeader from "./StemsHeader.svelte";
   import StemsTable from "./StemsTable.svelte";
 </script>
@@ -14,10 +14,10 @@
 </section>
 
 <style>
-	section {
-		display: flex;
-		flex-direction: column;
-		gap: var(--size-7);
-		width: 100%;
-	}
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-7);
+    width: 100%;
+  }
 </style>

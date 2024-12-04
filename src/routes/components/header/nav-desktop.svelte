@@ -2,8 +2,8 @@
   import { browser } from "$app/environment";
   import { page } from "$app/stores";
   import LogoR from "$lib/components/svgs/logos/LogoR2.svelte";
-  import NavButton from "$lib/components/ui/button/NavButton.svelte";
-  import ToggleTheme from "$lib/components/ui/ToggleTheme.svelte";
+  import NavButton from "$lib/components/ui/button/nav-button.svelte";
+  import ToggleTheme from "$lib/components/ui/toggle-theme.svelte";
   import { onMount } from "svelte";
 
   interface Props {

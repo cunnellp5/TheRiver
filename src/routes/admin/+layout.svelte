@@ -1,7 +1,7 @@
 <script lang="ts">
   import { browser } from "$app/environment";
   import { page } from "$app/stores";
-  import BreadCrumb from "$lib/components/ui/BreadCrumb.svelte";
+  import BreadCrumb from "$lib/components/ui/bread-crumb.svelte";
   import { run } from "svelte/legacy";
   import adminLinks from "./adminLinks";
 
@@ -59,69 +59,69 @@
 </main>
 
 <style>
-	/* ELEMENTS */
-	main {
-		display: grid;
-		grid-template-columns: var(--size-12) 1fr;
-		padding-inline: var(--size-7);
-	}
-	header {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		margin-block: var(--size-8);
-		border: thick dashed var(--stone-11);
-		padding-block: var(--size-4);
-	}
-	article {
-		margin-inline-start: var(--size-2);
-	}
-	hr {
-		margin-block: var(--size-2);
-	}
-	a {
-		color: var(--gray-7);
-		font-weight: 200;
-		user-select: none;
-		text-decoration: none;
-	}
-	/* CLASSES */
-	.sidenav {
-		position: relative;
-		z-index: 1;
-		background-color: var(--surface);
-		width: var(--size-12);
-		overflow-x: hidden;
-		& a {
-			font-weight: var(--font-weight-5);
-		}
-		& div {
-			font-weight: var(--font-weight-7);
-		}
-	}
+  /* ELEMENTS */
+  main {
+    display: grid;
+    grid-template-columns: var(--size-12) 1fr;
+    padding-inline: var(--size-7);
+  }
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-block: var(--size-8);
+    border: thick dashed var(--stone-11);
+    padding-block: var(--size-4);
+  }
+  article {
+    margin-inline-start: var(--size-2);
+  }
+  hr {
+    margin-block: var(--size-2);
+  }
+  a {
+    color: var(--gray-7);
+    font-weight: 200;
+    user-select: none;
+    text-decoration: none;
+  }
+  /* CLASSES */
+  .sidenav {
+    position: relative;
+    z-index: 1;
+    background-color: var(--surface);
+    width: var(--size-12);
+    overflow-x: hidden;
+    & a {
+      font-weight: var(--font-weight-5);
+    }
+    & div {
+      font-weight: var(--font-weight-7);
+    }
+  }
 
-	.sidenav .indented {
-		display: block;
-		padding: var(--size-1);
-		font-size: var(--font-size-0);
-		text-decoration: none;
-	}
-	.sidenav .indented:hover {
-		cursor: pointer;
-		border-radius: var(--radius-2);
-		background-color: var(--hover-1);
-	}
-	.current {
-		border-radius: var(--radius-2);
-		background-color: var(--hover-1);
-		color: var(--link);
-	}
-	.dropLabel {
-		width: 100%;
-		color: var(--stone-5);
-		font-weight: 200;
-	}
-	.crumb {
-		min-height: var(--size-5);
-	}
+  .sidenav .indented {
+    display: block;
+    padding: var(--size-1);
+    font-size: var(--font-size-0);
+    text-decoration: none;
+  }
+  .sidenav .indented:hover {
+    cursor: pointer;
+    border-radius: var(--radius-2);
+    background-color: var(--hover-1);
+  }
+  .current {
+    border-radius: var(--radius-2);
+    background-color: var(--hover-1);
+    color: var(--link);
+  }
+  .dropLabel {
+    width: 100%;
+    color: var(--stone-5);
+    font-weight: 200;
+  }
+  .crumb {
+    min-height: var(--size-5);
+  }
 </style>

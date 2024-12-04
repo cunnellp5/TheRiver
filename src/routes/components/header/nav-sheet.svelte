@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Sheet from "$lib/components/ui/Sheet.svelte";
+  import Sheet from "$lib/components/ui/sheet.svelte";
   import { createEventDispatcher } from "svelte";
   import NavDesktop from "./nav-desktop.svelte";
 

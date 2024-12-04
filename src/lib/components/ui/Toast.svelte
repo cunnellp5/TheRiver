@@ -6,7 +6,7 @@
   import { createEventDispatcher } from "svelte";
   import { fade } from "svelte/transition";
   // import InfoIcon from './InfoIcon.svelte';
-	// import CloseIcon from './CloseIcon.svelte';
+  // import CloseIcon from './CloseIcon.svelte';
 
   const dispatch = createEventDispatcher();
 
@@ -17,15 +17,13 @@
     children?: import("svelte").Snippet;
   }
 
-  const {
-    iconType,
-    type = "message",
-    dismissible = true,
-    children,
-  }: Props = $props();
+  const { iconType, type = "message", dismissible = true, children }: Props = $props();
 </script>
 
-<article class={type} role="alert" transition:fade>
+<article
+  class={type}
+  role="alert"
+  transition:fade>
   <!-- {#if type === 'success'} -->
   <!-- <SuccessIcon width="1.1em" /> -->
   <!-- {:else if type === 'error'} -->
@@ -45,50 +43,52 @@
   </div>
 
   {#if dismissible}
-    <button class="close" onclick={() => dispatch("dismiss")}>
+    <button
+      class="close"
+      onclick={() => dispatch("dismiss")}>
       <X />
     </button>
   {/if}
 </article>
 
 <style lang="postcss">
-	article {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		margin: 0 auto 0.5rem auto;
-		border-radius: 0.2rem;
-		padding-inline: var(--size-2);
-		padding-block: var(--size-4);
-		min-width: var(--size-14);
-		/* color: var(--stone-1); */
-	}
-	.error {
-		background: IndianRed;
-	}
-	.success {
-		background: MediumSeaGreen;
-	}
-	.info {
-		background: var(--cyan-7);
-	}
-	.message {
-		background: var(--surface-4);
-	}
-	.text {
-		display: flex;
-		gap: var(--size-2);
-		margin-left: 1rem;
-		user-select: none;
-	}
-	button {
-		margin-inline: var(--size-3);
-		box-shadow: none;
-		border: 0 none;
-		background: transparent;
-		padding: 0;
-		/* color: var(--stone-1); */
-		font-size: 1rem;
-		line-height: 1;
-	}
+  article {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto 0.5rem auto;
+    border-radius: 0.2rem;
+    padding-inline: var(--size-2);
+    padding-block: var(--size-4);
+    min-width: var(--size-14);
+    /* color: var(--stone-1); */
+  }
+  .error {
+    background: IndianRed;
+  }
+  .success {
+    background: MediumSeaGreen;
+  }
+  .info {
+    background: var(--cyan-7);
+  }
+  .message {
+    background: var(--surface-4);
+  }
+  .text {
+    display: flex;
+    gap: var(--size-2);
+    margin-left: 1rem;
+    user-select: none;
+  }
+  button {
+    margin-inline: var(--size-3);
+    box-shadow: none;
+    border: 0 none;
+    background: transparent;
+    padding: 0;
+    /* color: var(--stone-1); */
+    font-size: 1rem;
+    line-height: 1;
+  }
 </style>

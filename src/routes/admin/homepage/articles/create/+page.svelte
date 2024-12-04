@@ -2,7 +2,7 @@
   import type { ActionData } from "./$types";
 
   import { enhance } from "$app/forms";
-  import Card from "$lib/components/ui/Card.svelte";
+  import Card from "$lib/components/ui/card.svelte";
   import { addToast } from "$lib/stores/toast";
   import { run } from "svelte/legacy";
 
@@ -70,7 +70,9 @@
 <h2>Add article:</h2>
 
 <section>
-  <form method="POST" use:enhance>
+  <form
+    method="POST"
+    use:enhance>
     <!-- TODO refactor this to have an img upload flow for cloudinary, for now lets assume we have a url -->
     <div class="input-group">
       <label for="articleTitle">Title:</label>
@@ -146,7 +148,9 @@
       </p>
     </div>
 
-    <button class="primary" type="submit">Submit Article</button>
+    <button
+      class="primary"
+      type="submit">Submit Article</button>
   </form>
 
   <div>
@@ -162,42 +166,42 @@
 </section>
 
 <style>
-	/* ELEMENTS */
-	h2 {
-		padding-block-end: var(--size-7);
-	}
-	form {
-		min-width: 50%;
-	}
-	label {
-		color: var(--link);
-		font-weight: bold;
-	}
-	input,
-	textarea {
-		border: 1px solid var(--border);
-		border-radius: var(--size-1);
-		padding: var(--size-2);
-	}
-	section {
-		display: flex;
-		justify-content: space-evenly;
-		width: 100%;
-	}
-	/* CLASSES */
-	.input-group {
-		display: flex;
-		flex-direction: column;
-		gap: var(--size-2);
-		margin-block-end: var(--size-2);
-	}
-	.error-text {
-		display: block;
-		min-height: var(--size-4);
-		color: var(--error-text);
-		font-size: var(--font-size-0);
-	}
-	.error {
-		border: 1px solid var(--error-text);
-	}
+  /* ELEMENTS */
+  h2 {
+    padding-block-end: var(--size-7);
+  }
+  form {
+    min-width: 50%;
+  }
+  label {
+    color: var(--link);
+    font-weight: bold;
+  }
+  input,
+  textarea {
+    border: 1px solid var(--border);
+    border-radius: var(--size-1);
+    padding: var(--size-2);
+  }
+  section {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+  }
+  /* CLASSES */
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-2);
+    margin-block-end: var(--size-2);
+  }
+  .error-text {
+    display: block;
+    min-height: var(--size-4);
+    color: var(--error-text);
+    font-size: var(--font-size-0);
+  }
+  .error {
+    border: 1px solid var(--error-text);
+  }
 </style>

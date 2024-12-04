@@ -1,7 +1,7 @@
 <script lang="ts">
   import { enhance } from "$app/forms";
-  import Seo from "$lib/components/SEO.svelte";
-  import Modal from "$lib/components/ui/Modal.svelte";
+  import Seo from "$lib/components/seo.svelte";
+  import Modal from "$lib/components/ui/modal.svelte";
   import * as Card from "$lib/components/ui/shadcn/card";
   import * as Table from "$lib/components/ui/shadcn/table";
   import market from "$lib/data/json/market.json";
@@ -27,7 +27,9 @@
   title="Dashboard - Manage Your Profile and Settings"
   description="Access your personal dashboard to manage your profile, settings, and preferences. Stay organized and control your account efficiently." />
 
-<Modal bind:showModal overrideButtons={true}>
+<Modal
+  bind:showModal
+  overrideButtons={true}>
   {#snippet header()}
     <h2>
       Delete this account
@@ -67,8 +69,14 @@
         name="typedEmail"
         bind:value={emailInput}
         placeholder="Type email to unlock" />
-      <input type="hidden" name="id" value={data.user.id} />
-      <input type="hidden" name="userEmail" value={data.user.email} />
+      <input
+        type="hidden"
+        name="id"
+        value={data.user.id} />
+      <input
+        type="hidden"
+        name="userEmail"
+        value={data.user.email} />
     </form>
   </section>
   {#snippet buttons()}
@@ -79,7 +87,9 @@
         class:delete-button={!disabledDelete}
         class:diabledDelete={disabledDelete}
         disabled={disabledDelete}>Permanently Delete</button>
-      <button type="button" onclick={() => (showModal = false)}>Close</button>
+      <button
+        type="button"
+        onclick={() => (showModal = false)}>Close</button>
     </div>
   {/snippet}
 </Modal>
@@ -104,14 +114,20 @@
               {#if form?.status !== 200 && form?.message}
                 <div class="buttonWrapper">
                   <p class="errorMessage">{form?.message}</p>
-                  <button class="rmButtonStyles" onclick={resetForm} aria-label="Reset Form">
+                  <button
+                    class="rmButtonStyles"
+                    onclick={resetForm}
+                    aria-label="Reset Form">
                     <X />
                   </button>
                 </div>
               {/if}
               {#each Object.entries(data.user) as [key, value]}
                 {#if key !== "id"}
-                  <DashboardUserRow {key} {value} id={data.user.id} />
+                  <DashboardUserRow
+                    {key}
+                    {value}
+                    id={data.user.id} />
                 {/if}
               {/each}
             </Table.Body>
@@ -141,7 +157,9 @@
               Services
             </li>
           </a>
-          <a href={market.url} target="_blank">
+          <a
+            href={market.url}
+            target="_blank">
             <li>
               <ArrowRight size={12} />
               Etsy
@@ -179,7 +197,9 @@
                     <p>Reset password</p>
                     <span class="text2"> Sends a reset password link to your email </span>
                   </div>
-                  <a href="/reset" class="center">
+                  <a
+                    href="/reset"
+                    class="center">
                     <button class="update-button"> Reset Password </button>
                   </a>
                 </div>
@@ -195,7 +215,9 @@
                     </span>
                   </div>
                   <div class="center">
-                    <button class="delete-button" onclick={() => (showModal = true)}>
+                    <button
+                      class="delete-button"
+                      onclick={() => (showModal = true)}>
                       Delete Account
                     </button>
                   </div>
@@ -212,127 +234,127 @@
 </section>
 
 <style>
-	/* ELEMENTS */
-	li {
-		display: flex;
-		gap: var(--size-2);
-		margin-block: var(--size-2);
-	}
-	a {
-		position: relative;
-		color: var(--text-2);
-		text-decoration: none;
-	}
+  /* ELEMENTS */
+  li {
+    display: flex;
+    gap: var(--size-2);
+    margin-block: var(--size-2);
+  }
+  a {
+    position: relative;
+    color: var(--text-2);
+    text-decoration: none;
+  }
 
-	ul a::after {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		transform: scaleX(0);
-		transform-origin: bottom right;
-		transition: transform 0.25s ease-out;
-		background-color: var(--link);
-		width: 100%;
-		height: 1px;
-		content: '';
-	}
-	ul a:hover {
-		color: var(--link);
-	}
+  ul a::after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+    background-color: var(--link);
+    width: 100%;
+    height: 1px;
+    content: "";
+  }
+  ul a:hover {
+    color: var(--link);
+  }
 
-	ul a:hover::after {
-		transform: scaleX(1);
-		transform-origin: bottom left;
-	}
-	form {
-		display: flex;
-		flex-direction: column;
-		gap: var(--size-2);
-		& label {
-			color: var(--text-2);
-			font-size: var(--font-size-0);
-		}
-	}
-	/* CLASSES */
-	.headWrapper {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-	}
-	.cardsWrapper {
-		display: flex;
-		flex-direction: column;
-		gap: var(--size-3);
-		margin: 0 auto;
-		width: 50%;
-	}
-	.top-user-card {
-		margin-block: var(--size-7);
-	}
-	.adminIntroCardWrapper {
-		display: flex;
-		justify-content: center;
-		margin: 0 auto;
-		width: 50%;
-	}
-	.buttonWrapper {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		gap: var(--size-2);
-	}
-	.center {
-		display: flex;
-		justify-content: center;
-	}
-	.text2 {
-		color: var(--text-2);
-	}
-	.modalBody {
-		display: flex;
-		flex-direction: column;
-		gap: var(--size-7);
-	}
-	.diabledDelete {
-		opacity: 0.5;
-	}
-	.subText {
-		margin-block-start: var(--size-2);
-		color: var(--text-2);
-		font-size: var(--font-size-0);
-	}
-	.dangerRow {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		align-items: center;
-		gap: var(--size-3);
-	}
+  ul a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-2);
+    & label {
+      color: var(--text-2);
+      font-size: var(--font-size-0);
+    }
+  }
+  /* CLASSES */
+  .headWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .cardsWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-3);
+    margin: 0 auto;
+    width: 50%;
+  }
+  .top-user-card {
+    margin-block: var(--size-7);
+  }
+  .adminIntroCardWrapper {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    width: 50%;
+  }
+  .buttonWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--size-2);
+  }
+  .center {
+    display: flex;
+    justify-content: center;
+  }
+  .text2 {
+    color: var(--text-2);
+  }
+  .modalBody {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-7);
+  }
+  .diabledDelete {
+    opacity: 0.5;
+  }
+  .subText {
+    margin-block-start: var(--size-2);
+    color: var(--text-2);
+    font-size: var(--font-size-0);
+  }
+  .dangerRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--size-3);
+  }
 
-	@media (max-width: 1440px) {
-		.adminIntroCardWrapper {
-			width: 70%;
-		}
-		.cardsWrapper {
-			width: 70%;
-		}
-	}
-	@media (max-width: 768px) {
-		.adminIntroCardWrapper {
-			width: 100%;
-		}
-		.cardsWrapper {
-			width: 100%;
-		}
-		.dangerRow {
-			display: flex;
-			flex-direction: column;
-			align-items: start;
-		}
-		.delete-button,
-		.update-button,
-		.center {
-			width: 100%;
-		}
-	}
+  @media (max-width: 1440px) {
+    .adminIntroCardWrapper {
+      width: 70%;
+    }
+    .cardsWrapper {
+      width: 70%;
+    }
+  }
+  @media (max-width: 768px) {
+    .adminIntroCardWrapper {
+      width: 100%;
+    }
+    .cardsWrapper {
+      width: 100%;
+    }
+    .dangerRow {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+    }
+    .delete-button,
+    .update-button,
+    .center {
+      width: 100%;
+    }
+  }
 </style>

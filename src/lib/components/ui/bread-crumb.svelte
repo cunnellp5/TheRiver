@@ -20,7 +20,7 @@
 {/each}
 
 <style>
-	span {
-		font-size: var(--font-size-0);
-	}
+  span {
+    font-size: var(--font-size-0);
+  }
 </style>

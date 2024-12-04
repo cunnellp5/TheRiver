@@ -1,15 +1,15 @@
 <script lang="ts">
   import TheRiver from "$lib/components/svgs/logos/TheRiver.svelte";
   // import LogoR from '$lib/components/svgs/logos/LogoR2.svelte';
-  import Socials from "$lib/components/ui/Socials.svelte";
+  import Socials from "$lib/components/ui/socials.svelte";
   import { address, emailWithBreaks } from "$lib/config";
   import socialLinks from "$lib/data/socialLinks";
-  import Copywrite from "./Copywrite.svelte";
-  import NewsLetterForm from "./NewsLetterForm.svelte";
+  import Copyright from "./copy-right.svelte";
+  import NewsletterForm from "./newsletter-form.svelte";
 </script>
 
 <footer class="app-layout">
-  <NewsLetterForm />
+  <NewsletterForm />
   <div class="logo">
     <TheRiver theme={true} />
     <div class="socials">
@@ -18,50 +18,74 @@
   </div>
   <div class="linksWrapper">
     <p class="listHeader">Socials</p>
-    <a href={socialLinks.facebook} target="_blank">
+    <a
+      href={socialLinks.facebook}
+      target="_blank">
       <li>Facebook</li>
     </a>
-    <a href={socialLinks.instagramSing} target="_blank">
+    <a
+      href={socialLinks.instagramSing}
+      target="_blank">
       <li>Insta [Sing]</li>
     </a>
-    <a href={socialLinks.instagramBeauty} target="_blank">
+    <a
+      href={socialLinks.instagramBeauty}
+      target="_blank">
       <li>Insta [Beauty]</li>
     </a>
-    <a href={socialLinks.tiktok} target="_blank">
+    <a
+      href={socialLinks.tiktok}
+      target="_blank">
       <li>TikTok</li>
     </a>
-    <a href={socialLinks.x} target="_blank">
+    <a
+      href={socialLinks.x}
+      target="_blank">
       <li>Twitter</li>
     </a>
   </div>
 
   <div class="linksWrapper">
     <p class="listHeader">Music</p>
-    <a href={socialLinks.youtube} target="_blank">
+    <a
+      href={socialLinks.youtube}
+      target="_blank">
       <li>Youtube</li>
     </a>
-    <a href={socialLinks.soundCloud} target="_blank">
+    <a
+      href={socialLinks.soundCloud}
+      target="_blank">
       <li>SoundCloud</li>
     </a>
-    <a href={socialLinks.spotify} target="_blank">
+    <a
+      href={socialLinks.spotify}
+      target="_blank">
       <li>Spotify</li>
     </a>
-    <a href="https://distrokid.com/hyperfollow/theriver2/out-the-mud-volume-2" target="_blank">
+    <a
+      href="https://distrokid.com/hyperfollow/theriver2/out-the-mud-volume-2"
+      target="_blank">
       <li>New release</li>
     </a>
   </div>
   <div class="linksWrapper">
     <p class="listHeader">Links</p>
-    <a href={socialLinks.cashApp} target="_blank">
+    <a
+      href={socialLinks.cashApp}
+      target="_blank">
       <li>Ca$h app</li>
     </a>
-    <a href={socialLinks.linkTree} target="_blank">
+    <a
+      href={socialLinks.linkTree}
+      target="_blank">
       <li>LinkTree</li>
     </a>
   </div>
   <div class="linksWrapper">
     <p class="listHeader">Merch</p>
-    <a href={socialLinks.etsy} target="_blank">
+    <a
+      href={socialLinks.etsy}
+      target="_blank">
       <li>Etsy</li>
     </a>
   </div>
@@ -69,6 +93,7 @@
   <div class="linksWrapper address">
     <p class="listHeader">Contact</p>
     <div>
+      <!-- eslint-disable-next-line svelte/no-at-html-tags -->
       <p>{@html emailWithBreaks}</p>
     </div>
     <!-- <div> -->
@@ -85,54 +110,51 @@
   </div>
 
   <!-- FULL ROW -->
-  <Copywrite />
+  <Copyright />
 </footer>
 
 <style>
-	/* ELEMENTS */
-	footer {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		gap: var(--size-8);
-		padding-block: var(--size-4);
-	}
-	a {
-		transition: color 0.1s ease;
-		color: var(--stone-7);
-		list-style: none;
-	}
-	a:hover {
-		cursor: pointer;
-		color: var(--link);
-		text-decoration: none;
-	}
-	/* CLASSES */
-	.logo {
-		width: var(--size-14);
-	}
-	.socials {
-		margin-block: var(--size-1);
-	}
-	.listHeader {
-		color: var(--link2);
-		/* color: hsl(var(--teal-2-hsl) / 100%); */
-		font-weight: var(--font-weight-8);
-		font-size: var(--font-size-3);
-		text-transform: uppercase;
-	}
-	.linksWrapper {
-		display: flex;
-		flex-direction: column;
-		gap: var(--size-2);
-	}
-	/* MEDIA */
-	@media (min-width: 768px) {
-		footer {
-			display: grid;
-			grid-template-rows: auto;
-			justify-content: space-between;
-			gap: var(--size-4);
-		}
-	}
+  /* ELEMENTS */
+  footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--size-8);
+    padding-block: var(--size-4);
+    @media (min-width: 768px) {
+      display: grid;
+      grid-template-rows: auto;
+      justify-content: space-between;
+      gap: var(--size-4);
+    }
+  }
+  a {
+    transition: color 0.1s ease;
+    color: var(--stone-7);
+    list-style: none;
+  }
+  a:hover {
+    cursor: pointer;
+    color: var(--link);
+    text-decoration: none;
+  }
+  /* CLASSES */
+  .logo {
+    width: var(--size-14);
+  }
+  .socials {
+    margin-block: var(--size-1);
+  }
+  .listHeader {
+    color: var(--link2);
+    /* color: hsl(var(--teal-2-hsl) / 100%); */
+    font-weight: var(--font-weight-8);
+    font-size: var(--font-size-3);
+    text-transform: uppercase;
+  }
+  .linksWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-2);
+  }
 </style>

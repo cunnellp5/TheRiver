@@ -1,6 +1,6 @@
 <script lang="ts">
   import { dismissToast, toasts } from "../../stores/toast";
-  import Toast from "./Toast.svelte";
+  import Toast from "./toast.svelte";
 </script>
 
 {#if $toasts}
@@ -16,15 +16,15 @@
 {/if}
 
 <style lang="postcss">
-	section {
-		display: flex;
-		position: fixed;
-		top: 0;
-		right: 0;
-		flex-direction: column;
-		justify-content: center;
-		z-index: var(--layer-important);
-		margin-top: var(--size-4);
-		margin-right: var(--size-4);
-	}
+  section {
+    display: flex;
+    position: fixed;
+    top: 0;
+    right: 0;
+    flex-direction: column;
+    justify-content: center;
+    z-index: var(--layer-important);
+    margin-top: var(--size-4);
+    margin-right: var(--size-4);
+  }
 </style>

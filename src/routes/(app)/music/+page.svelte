@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Seo from "$lib/components/SEO.svelte";
+  import Seo from "$lib/components/seo.svelte";
 
   import { run } from "svelte/legacy";
 
@@ -22,7 +22,9 @@
 <!-- https://codyhouse.co/tutorials/how-stacking-cards -->
 <h3 id="tracks">Tracks</h3>
 <div class="grid-container">
-  <div id="tracks" class="tracks">
+  <div
+    id="tracks"
+    class="tracks">
     {#each pages[currentPage] as track}
       <iframe
         title={track.title}
@@ -52,25 +54,25 @@
 </div>
 
 <style>
-	/* ELEMENTS */
-	iframe {
-		/* box-shadow: var(--shadow-1); */
-		width: 100%;
-		/* min-width: var(--size-content-1); */
-		height: var(--size-content-2);
-	}
+  /* ELEMENTS */
+  iframe {
+    /* box-shadow: var(--shadow-1); */
+    width: 100%;
+    /* min-width: var(--size-content-1); */
+    height: var(--size-content-2);
+  }
 
-	/* CLASSES */
-	.buttonWrapper {
-		display: flex;
-		justify-content: center;
-		gap: var(--size-7);
-		margin-block: var(--size-7);
-		& button {
-			min-width: var(--size-13);
-		}
-	}
-	/* .slider-dot {
+  /* CLASSES */
+  .buttonWrapper {
+    display: flex;
+    justify-content: center;
+    gap: var(--size-7);
+    margin-block: var(--size-7);
+    & button {
+      min-width: var(--size-13);
+    }
+  }
+  /* .slider-dot {
 		transition: width 0.5s;
 		cursor: pointer;
 		border: none;
@@ -79,31 +81,31 @@
 		width: 0.75rem;
 		height: 0.75rem;
 	} */
-	.grid-container {
-		display: grid;
-		/* margin-block: var(--size-7); */
-	}
-	.tracks {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr); /* 3 columns */
-		grid-auto-rows: minmax(100px, auto); /* Set a base row height */
-		gap: var(--size-7);
-	}
-	.disabled {
-		opacity: 0.5;
-		cursor: not-allowed;
-	}
+  .grid-container {
+    display: grid;
+    /* margin-block: var(--size-7); */
+  }
+  .tracks {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    grid-auto-rows: minmax(100px, auto); /* Set a base row height */
+    gap: var(--size-7);
+  }
+  .disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 
-	/* MEDIA QUERIES */
-	@media (max-width: 1440px) {
-		.tracks {
-			grid-template-columns: repeat(2, 1fr); /* 2 columns */
-		}
-	}
-	@media (max-width: 768px) {
-		.tracks {
-			grid-template-columns: repeat(1, 1fr); /* 1 column */
-			width: 50%;
-		}
-	}
+  /* MEDIA QUERIES */
+  @media (max-width: 1440px) {
+    .tracks {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    }
+  }
+  @media (max-width: 768px) {
+    .tracks {
+      grid-template-columns: repeat(1, 1fr); /* 1 column */
+      width: 50%;
+    }
+  }
 </style>

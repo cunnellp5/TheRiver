@@ -23,18 +23,18 @@
 
   const dispatch = createEventDispatcher();
 
-  let dialog: HTMLDialogElement = $state();
+  let dialog: HTMLDialogElement | null = $state(null);
 
   run(() => {
     if (dialog && showModal === true) {
       dialog.showModal();
-    }
-    else if (dialog && showModal === false) {
+    } else if (dialog && showModal === false) {
       dialog.close();
     }
   });
 </script>
 
+<!-- eslint-disable-next-line svelte/no-unused-svelte-ignore -->
 <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_noninteractive_element_interactions -->
 <dialog
   bind:this={dialog}
@@ -42,7 +42,7 @@
     showModal = false;
     dispatch("close");
   }}
-  onclick={self(() => dialog.close())}>
+  onclick={self(() => dialog?.close())}>
   <!-- svelte-ignore a11y_no_static_element_interactions -->
   <div onclick={stopPropagation(bubble("click"))}>
     {@render header?.()}
@@ -53,50 +53,50 @@
       {@render buttons?.()}
     {/if}
     {#if !overrideButtons}
-      <button onclick={() => dialog.close()}>Close</button>
+      <button onclick={() => dialog?.close()}>Close</button>
     {/if}
   </div>
 </dialog>
 
 <style>
-	hr {
-		margin-block: var(--size-8);
-	}
-	dialog {
-		border: none;
-		border-radius: 0.2em;
-		padding: 0;
-		max-width: 32em;
-	}
-	dialog::backdrop {
-		background: rgba(0, 0, 0, 0.3);
-	}
-	dialog > div {
-		padding: 1em;
-	}
-	dialog[open] {
-		animation: zoom 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-	}
-	@keyframes zoom {
-		from {
-			transform: scale(0.95);
-		}
-		to {
-			transform: scale(1);
-		}
-	}
-	dialog[open]::backdrop {
-		animation: fade 0.2s ease-out;
-	}
-	@keyframes fade {
-		from {
-			opacity: 0;
-		}
-		to {
-			opacity: 1;
-		}
-	}
-	button {
-		display: block;
-	}
+  hr {
+    margin-block: var(--size-8);
+  }
+  dialog {
+    border: none;
+    border-radius: 0.2em;
+    padding: 0;
+    max-width: 32em;
+  }
+  dialog::backdrop {
+    background: rgba(0, 0, 0, 0.3);
+  }
+  dialog > div {
+    padding: 1em;
+  }
+  dialog[open] {
+    animation: zoom 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  @keyframes zoom {
+    from {
+      transform: scale(0.95);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+  dialog[open]::backdrop {
+    animation: fade 0.2s ease-out;
+  }
+  @keyframes fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  button {
+    display: block;
+  }
 </style>

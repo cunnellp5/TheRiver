@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { BlogPost } from "$lib/types";
-  import Badge from "$lib/components/ui/Badge.svelte";
+  import Badge from "$lib/components/ui/badge.svelte";
   import formatDate from "$lib/utils/formatDate";
 
   interface Props {
@@ -31,43 +31,43 @@
 </section>
 
 <style>
-	/* ELEMENTS */
-	h1 {
-		margin: 0 auto;
-		color: var(--text-1);
-		font-weight: 400;
-		font-size: var(--size-fluid-4);
-		line-height: var(--font-lineheight-0);
-		font-family: 'atyp-bl-variable', sans-serif;
-	}
-	date {
-		color: var(--gray-7);
-		font-size: var(--font-size-0);
-	}
-	img {
-		border-radius: 50%;
-		height: var(--size-8);
-	}
-	/* CLASSES */
-	.hero {
-		display: flex;
-		flex-direction: column;
-		gap: var(--size-3);
-		margin-block-end: var(--size-fluid-5);
-		text-align: center;
-	}
-	.tags {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
-		gap: var(--size-2);
-	}
-	.meta {
-		display: flex;
-		flex-direction: row;
-		justify-content: center;
-		gap: var(--size-3);
-		margin-block: var(--size-3);
-		text-align: left;
-	}
+  /* ELEMENTS */
+  h1 {
+    margin: 0 auto;
+    color: var(--text-1);
+    font-weight: 400;
+    font-size: var(--size-fluid-4);
+    line-height: var(--font-lineheight-0);
+    font-family: "atyp-bl-variable", sans-serif;
+  }
+  date {
+    color: var(--gray-7);
+    font-size: var(--font-size-0);
+  }
+  img {
+    border-radius: 50%;
+    height: var(--size-8);
+  }
+  /* CLASSES */
+  .hero {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-3);
+    margin-block-end: var(--size-fluid-5);
+    text-align: center;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--size-2);
+  }
+  .meta {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: var(--size-3);
+    margin-block: var(--size-3);
+    text-align: left;
+  }
 </style>

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { enhance } from "$app/forms";
-  import Seo from "$lib/components/SEO.svelte";
+  import Seo from "$lib/components/seo.svelte";
   import { addToast } from "$lib/stores/toast";
   import Check from "lucide-svelte/icons/check";
   import CircleAlert from "lucide-svelte/icons/circle-alert";
@@ -22,17 +22,17 @@
   const isPasswordValid = $derived(password.length >= 6);
 
   const valid = $derived(
-    isEmailValid && isPasswordValid && isConfirmPasswordValid && isFirstNameValid && isLastNameValid,
+    isEmailValid && isPasswordValid && isConfirmPasswordValid && isFirstNameValid && isLastNameValid
   );
 
   // below are all derived
   const invalidPasswordsCheck = $derived(
-    (!isConfirmPasswordValid && confirmPassword.length > 0)
-    || (!isPasswordValid && password.length > 0 && confirmPassword.length > 0),
+    (!isConfirmPasswordValid && confirmPassword.length > 0) ||
+      (!isPasswordValid && password.length > 0 && confirmPassword.length > 0)
   );
 
   const validPasswordsCheck = $derived(
-    isConfirmPasswordValid && confirmPassword.length > 0 && isPasswordValid,
+    isConfirmPasswordValid && confirmPassword.length > 0 && isPasswordValid
   );
 
   const passwordValidCheck = $derived(isConfirmPasswordValid && confirmPassword.length > 0);
@@ -73,21 +73,36 @@
         };
       }}>
       <label for="firstName">First name</label>
-      <input bind:value={firstName} name="firstName" id="firstName" required />
+      <input
+        bind:value={firstName}
+        name="firstName"
+        id="firstName"
+        required />
 
       <label for="lastName">Last name</label>
-      <input bind:value={lastName} name="lastName" id="lastName" required />
+      <input
+        bind:value={lastName}
+        name="lastName"
+        id="lastName"
+        required />
 
       <hr class="middle-hr" />
 
       <label for="email">Email</label>
-      <input bind:value={email} type="email" name="email" id="email" required />
+      <input
+        bind:value={email}
+        type="email"
+        name="email"
+        id="email"
+        required />
 
       <div
         class="passwords"
         class:invalidPasswords={invalidPasswordsCheck}
         class:validPasswords={validPasswordsCheck}>
-        <label id="pw-label" for="password">Password</label>
+        <label
+          id="pw-label"
+          for="password">Password</label>
         <input
           bind:value={password}
           type="password"
@@ -126,11 +141,18 @@
 
       <div class="checkbox-wrapper">
         <label for="isSubscribed">Subscibe for newsletter</label>
-        <input type="checkbox" name="isSubscribed" id="isSubscribed" checked />
+        <input
+          type="checkbox"
+          name="isSubscribed"
+          id="isSubscribed"
+          checked />
       </div>
 
       <div class="button-list">
-        <button type="submit" class="primary" disabled={loading}>
+        <button
+          type="submit"
+          class="primary"
+          disabled={loading}>
           {#if loading}
             <div class="spinner">
               <LoaderCircle />
@@ -148,60 +170,60 @@
 </main>
 
 <style>
-	@import url('../auth.css');
-	/* ELEMENTS */
-	/* CLASSES */
-	.under-hero {
-		font-size: var(--font-size-1);
-	}
-	.middle-hr {
-		margin-block: var(--size-3);
-	}
-	.checkbox-wrapper {
-		display: flex;
-		flex-direction: row-reverse;
-		justify-content: start;
-		align-items: center;
-		& > label {
-			margin-inline: var(--size-3);
-		}
-	}
-	.passwords {
-		display: flex;
-		flex-direction: column;
-		transition: border-left-color 0.3s ease;
-		margin-block: var(--size-4);
-		border-left: 2px solid var(--link);
-		padding-left: var(--size-4);
-		& > label {
-			margin-block: var(--size-2);
-		}
-	}
-	.invalidPasswords {
-		border-left-color: var(--red-7);
-	}
-	.validPasswords {
-		border-left-color: var(--green-7);
-	}
-	.invalid {
-		border-color: var(--red-7);
-	}
-	.valid {
-		border-color: var(--green-7);
-	}
-	.help-text {
-		display: flex;
-		flex-direction: column;
-		margin-top: var(--size-2);
-		color: var(--gray-6);
-		font-size: var(--font-size-0);
-	}
-	.checker {
-		display: flex;
-		gap: var(--size-1);
-	}
-	/* ID */
-	#pw-label {
-		margin-top: 0;
-	}
+  @import url("../auth.css");
+  /* ELEMENTS */
+  /* CLASSES */
+  .under-hero {
+    font-size: var(--font-size-1);
+  }
+  .middle-hr {
+    margin-block: var(--size-3);
+  }
+  .checkbox-wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: start;
+    align-items: center;
+    & > label {
+      margin-inline: var(--size-3);
+    }
+  }
+  .passwords {
+    display: flex;
+    flex-direction: column;
+    transition: border-left-color 0.3s ease;
+    margin-block: var(--size-4);
+    border-left: 2px solid var(--link);
+    padding-left: var(--size-4);
+    & > label {
+      margin-block: var(--size-2);
+    }
+  }
+  .invalidPasswords {
+    border-left-color: var(--red-7);
+  }
+  .validPasswords {
+    border-left-color: var(--green-7);
+  }
+  .invalid {
+    border-color: var(--red-7);
+  }
+  .valid {
+    border-color: var(--green-7);
+  }
+  .help-text {
+    display: flex;
+    flex-direction: column;
+    margin-top: var(--size-2);
+    color: var(--gray-6);
+    font-size: var(--font-size-0);
+  }
+  .checker {
+    display: flex;
+    gap: var(--size-1);
+  }
+  /* ID */
+  #pw-label {
+    margin-top: 0;
+  }
 </style>

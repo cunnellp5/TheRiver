@@ -2,8 +2,8 @@
   import type Quill from "quill";
 
   import { enhance } from "$app/forms";
-  import Badge from "$lib/components/ui/Badge.svelte";
-  import SliderToggle from "$lib/components/ui/SliderToggle.svelte";
+  import Badge from "$lib/components/ui/badge.svelte";
+  import SliderToggle from "$lib/components/ui/slider-toggle.svelte";
   import { QuillConfig, quillContentInit } from "$lib/utils/QuillConfig";
   import { error } from "@sveltejs/kit";
   import { onMount } from "svelte";
@@ -58,8 +58,7 @@
         content = JSON.stringify(quill?.getContents());
         description = quill.getText(); // get the text from the editor
       });
-    }
-    catch (err) {
+    } catch (err) {
       error(500, "Error loading quill the text editor");
     }
   });
@@ -90,15 +89,24 @@
 
   function handleToggle(event: CustomEvent<boolean>) {
     published = event.detail;
-  // published = !event.detail;
+    // published = !event.detail;
   }
 </script>
 
-<form method="POST" use:enhance>
+<form
+  method="POST"
+  use:enhance>
   👋 Dont forget to publish
-  <div class="banner" class:published class:not-published={!published}>
+  <div
+    class="banner"
+    class:published
+    class:not-published={!published}>
     {published ? "PUBLISH" : "UNPUBLISH"}
-    <SliderToggle checked={published} on:change={handleToggle} id="published" name="published" />
+    <SliderToggle
+      checked={published}
+      on:change={handleToggle}
+      id="published"
+      name="published" />
   </div>
   <br />
   <br />
@@ -116,13 +124,23 @@
     <div class="tags">
       <label for="tags">🔖 Tags</label>
       <div class="inputWrapper">
-        <input type="hidden" id="tagInput" name="tagInput" bind:value={tagInput} />
-        <input class="marginalize" type="text" placeholder="Add tags" onkeydown={handleKeyDown} />
+        <input
+          type="hidden"
+          id="tagInput"
+          name="tagInput"
+          bind:value={tagInput} />
+        <input
+          class="marginalize"
+          type="text"
+          placeholder="Add tags"
+          onkeydown={handleKeyDown} />
       </div>
       <div class="badgesWrapper">
         {#each tagInput as tag}
           <Badge {tag}>
-            <button class="deleteBadge" onclick={preventDefault(() => handleRemoveTag(tag))}>
+            <button
+              class="deleteBadge"
+              onclick={preventDefault(() => handleRemoveTag(tag))}>
               X
             </button>
           </Badge>
@@ -134,9 +152,20 @@
   <div class="form-group">
     <label for="content">📝 Content</label>
     <div class="editor-wrapper marginalize">
-      <div id="editor" bind:this={editor}></div>
-      <input type="hidden" id="content" name="content" bind:value={content} />
-      <input type="hidden" id="description" name="description" bind:value={description} />
+      <div
+        id="editor"
+        bind:this={editor}>
+      </div>
+      <input
+        type="hidden"
+        id="content"
+        name="content"
+        bind:value={content} />
+      <input
+        type="hidden"
+        id="description"
+        name="description"
+        bind:value={description} />
     </div>
   </div>
   <div class="buttonWrapper">
@@ -146,8 +175,7 @@
       id="resetForm"
       onclick={preventDefault(() => {
         // eslint-disable-next-line no-alert
-        if (confirm("Are you sure you want to reset the form?"))
-          resetForm();
+        if (confirm("Are you sure you want to reset the form?")) resetForm();
       })}>
       Reset to Initial Data
     </button>
@@ -155,73 +183,73 @@
 </form>
 
 <style>
-	hgroup {
-		margin-block-end: var(--size-6);
-	}
-	textarea {
-		background: var(--gradient-1) fixed;
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		border: 1px solid var(--stone-9);
-		background-clip: text;
-		height: auto;
-	}
+  hgroup {
+    margin-block-end: var(--size-6);
+  }
+  textarea {
+    background: var(--gradient-1) fixed;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border: 1px solid var(--stone-9);
+    background-clip: text;
+    height: auto;
+  }
 
-	/* CLASSES */
-	.tags {
-		margin-block-start: var(--size-4);
-	}
-	.banner {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		margin-block: var(--size-4);
-		border-radius: var(--size-1);
-		padding: var(--size-3);
-		&.published {
-			background: hsl(var(--green-5-hsl) / 30%);
-		}
-		&.not-published {
-			background: hsl(var(--yellow-5-hsl) / 30%);
-		}
-	}
-	.editor-wrapper {
-		width: 100%;
-		& *,
-		& *::before,
-		& *::placeholder {
-			color: var(--text-1);
-		}
-		& button {
-			box-shadow: none;
-		}
-	}
-	.buttonWrapper {
-		margin-block-start: var(--size-4);
-		& button {
-			margin-inline-end: var(--size-2);
-		}
-	}
-	.deleteBadge,
-	.deleteBadge:hover {
-		margin: 0;
-		box-shadow: unset;
-		border: unset;
-		background: unset;
-		padding: unset;
-		color: var(--stone-1);
-	}
-	.inputWrapper {
-		margin-block: var(--size-1);
-	}
-	.badgesWrapper {
-		display: flex;
-		flex-flow: row wrap;
-	}
-	.marginalize {
-		margin-block: var(--size-3);
-	}
-	button {
-		text-shadow: none;
-	}
+  /* CLASSES */
+  .tags {
+    margin-block-start: var(--size-4);
+  }
+  .banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-block: var(--size-4);
+    border-radius: var(--size-1);
+    padding: var(--size-3);
+    &.published {
+      background: hsl(var(--green-5-hsl) / 30%);
+    }
+    &.not-published {
+      background: hsl(var(--yellow-5-hsl) / 30%);
+    }
+  }
+  .editor-wrapper {
+    width: 100%;
+    & *,
+    & *::before,
+    & *::placeholder {
+      color: var(--text-1);
+    }
+    & button {
+      box-shadow: none;
+    }
+  }
+  .buttonWrapper {
+    margin-block-start: var(--size-4);
+    & button {
+      margin-inline-end: var(--size-2);
+    }
+  }
+  .deleteBadge,
+  .deleteBadge:hover {
+    margin: 0;
+    box-shadow: unset;
+    border: unset;
+    background: unset;
+    padding: unset;
+    color: var(--stone-1);
+  }
+  .inputWrapper {
+    margin-block: var(--size-1);
+  }
+  .badgesWrapper {
+    display: flex;
+    flex-flow: row wrap;
+  }
+  .marginalize {
+    margin-block: var(--size-3);
+  }
+  button {
+    text-shadow: none;
+  }
 </style>

@@ -1,6 +1,6 @@
 <script lang="ts">
   import { enhance } from "$app/forms";
-  import Seo from "$lib/components/SEO.svelte";
+  import Seo from "$lib/components/seo.svelte";
   import { addToast } from "$lib/stores/toast";
   import { LoaderCircle } from "lucide-svelte";
   import Check from "lucide-svelte/icons/check";
@@ -62,7 +62,10 @@
             Loading
           </button>
         {:else}
-          <button type="submit" disabled={loading} class="update-button">Send Request</button>
+          <button
+            type="submit"
+            disabled={loading}
+            class="update-button">Send Request</button>
         {/if}
       </form>
     {/if}
@@ -70,36 +73,36 @@
 </main>
 
 <style>
-	h1 {
-		margin-block: var(--size-7);
-		text-align: center;
-	}
-	main {
-		display: flex;
-		/* flex-direction: column; */
-		justify-content: center;
-		/* align-items: center; */
-		/* height: 90vh; */
-		padding-block: var(--size-11);
-	}
-	form {
-		display: flex;
-		flex-direction: column;
-		gap: var(--size-4);
-		padding-block-start: var(--size-7);
-	}
-	input {
-		padding: var(--size-2);
-	}
-	p {
-		margin-block: var(--size-2);
-		color: var(--text-2);
-		font-size: var(--font-size-0);
-		text-align: center;
-	}
-	.submitted {
-		display: flex;
-		justify-content: center;
-		margin-block: var(--size-7);
-	}
+  h1 {
+    margin-block: var(--size-7);
+    text-align: center;
+  }
+  main {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    /* align-items: center; */
+    /* height: 90vh; */
+    padding-block: var(--size-11);
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-4);
+    padding-block-start: var(--size-7);
+  }
+  input {
+    padding: var(--size-2);
+  }
+  p {
+    margin-block: var(--size-2);
+    color: var(--text-2);
+    font-size: var(--font-size-0);
+    text-align: center;
+  }
+  .submitted {
+    display: flex;
+    justify-content: center;
+    margin-block: var(--size-7);
+  }
 </style>

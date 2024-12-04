@@ -1,8 +1,8 @@
 <script lang="ts">
   import type { PageData } from "./$types";
   import { onNavigate } from "$app/navigation";
-  import Toasts from "$lib/components/ui/Toasts.svelte";
-  import Footer from "./components/footer/Footer.svelte";
+  import Toasts from "$lib/components/ui/toasts.svelte";
+  import Footer from "./components/footer/footer.svelte";
   import Header from "./components/header/header.svelte";
   import VanishingHeader from "./components/header/vanishing-header.svelte";
   import "open-props/buttons";

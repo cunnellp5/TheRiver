@@ -1,5 +1,5 @@
 <script lang="ts">
-  import ServiceButtons from "$lib/components/ui/button/ServiceButtons.svelte";
+  import ServiceButtons from "$lib/components/ui/button/service-buttons.svelte";
 
   // const email = 'theriverrunsfast@gmail.com';
   // let copied = false;

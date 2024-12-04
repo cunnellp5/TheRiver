@@ -2,7 +2,16 @@
   class="instagram-media"
   data-instgrm-permalink="https://www.instagram.com/the.river.beauty/?utm_source=ig_embed&amp;utm_campaign=loading"
   data-instgrm-version="14"
-  style="background:#222; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+  style="background:#222;
+    border:0;
+    border-radius:3px;
+    box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);
+    margin: 1px;
+    max-width:540px;
+    min-width:326px;
+    padding:0;
+    width:calc(100% - 2px);
+  ">
   <div style="padding:16px;">
     <a
       href="https://www.instagram.com/the.river.beauty/?utm_source=ig_embed&amp;utm_campaign=loading"
@@ -12,8 +21,7 @@
         <div
           style="background-color: #222; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;">
         </div>
-        <div
-          style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;">
+        <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;">
           <div
             style=" background-color: #222; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;">
           </div>
@@ -55,8 +63,7 @@
         </div>
       </div>
       <div style="padding: 12.5% 0;"></div>
-      <div
-        style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;">
+      <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;">
         <div>
           <div
             style="background-color: #222; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);">
