@@ -22,17 +22,17 @@
   const isPasswordValid = $derived(password.length >= 6);
 
   const valid = $derived(
-    isEmailValid && isPasswordValid && isConfirmPasswordValid && isFirstNameValid && isLastNameValid
+    isEmailValid && isPasswordValid && isConfirmPasswordValid && isFirstNameValid && isLastNameValid,
   );
 
   // below are all derived
   const invalidPasswordsCheck = $derived(
-    (!isConfirmPasswordValid && confirmPassword.length > 0) ||
-      (!isPasswordValid && password.length > 0 && confirmPassword.length > 0)
+    (!isConfirmPasswordValid && confirmPassword.length > 0)
+    || (!isPasswordValid && password.length > 0 && confirmPassword.length > 0),
   );
 
   const validPasswordsCheck = $derived(
-    isConfirmPasswordValid && confirmPassword.length > 0 && isPasswordValid
+    isConfirmPasswordValid && confirmPassword.length > 0 && isPasswordValid,
   );
 
   const passwordValidCheck = $derived(isConfirmPasswordValid && confirmPassword.length > 0);

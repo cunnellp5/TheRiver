@@ -28,9 +28,9 @@
 
   run(() => {
     filteredPosts = data.posts.filter(
-      (post) =>
-        post.title.toLowerCase().includes(search.toLowerCase()) ||
-        post.description.toLowerCase().includes(search.toLowerCase())
+      post =>
+        post.title.toLowerCase().includes(search.toLowerCase())
+          || post.description.toLowerCase().includes(search.toLowerCase()),
     );
   });
 
@@ -41,7 +41,7 @@
 
   function showPublishedPosts(isPublished: boolean): MouseEventHandler<HTMLButtonElement> {
     return () => {
-      filteredPosts = data.posts.filter((post) => post.published === isPublished);
+      filteredPosts = data.posts.filter(post => post.published === isPublished);
       search = "";
     };
   }

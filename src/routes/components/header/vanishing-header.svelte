@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { ShowHideScroll } from "$lib/utils/classes/ShowHideScroll";
+  import { ShowHideScroll } from "$lib/utils/classes/show-hide-scroll";
   import RainbowBar from "./rainbow-bar.svelte";
 
   interface Props {

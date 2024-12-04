@@ -21,7 +21,9 @@
       </ul>
     </Card.Content>
     <Card.Footer>
-      <a href="/admin/services/create" data-sveltekit-noscroll>
+      <a
+        href="/admin/services/create"
+        data-sveltekit-noscroll>
         <button class="create-button"> Add new service</button>
       </a>
     </Card.Footer>
@@ -29,30 +31,30 @@
 </div>
 
 <!-- {#each Object.entries(services) as [category, listOfServices]}
-	<section class="service-table">
-		<table>
-			<thead class="surface-2">
-				<tr>
-					<th>
-						<h6>{category}</h6>
-					</th>
-				</tr>
-			</thead>
-			<tbody class="">
-				{#each listOfServices as service}
-					<tr>
-						<td>{service.name}</td>
-						<td>${service.price}</td>
-						<td>{service.duration} min</td>
-						<td class="actions">
-							<button class="update-button">Edit</button>
-							<button class="delete-button">delete</button>
-						</td>
-					</tr>
-				{/each}
-			</tbody>
-		</table>
-	</section>
+  <section class="service-table">
+    <table>
+      <thead class="surface-2">
+        <tr>
+          <th>
+            <h6>{category}</h6>
+          </th>
+        </tr>
+      </thead>
+      <tbody class="">
+        {#each listOfServices as service}
+          <tr>
+            <td>{service.name}</td>
+            <td>${service.price}</td>
+            <td>{service.duration} min</td>
+            <td class="actions">
+              <button class="update-button">Edit</button>
+              <button class="delete-button">delete</button>
+            </td>
+          </tr>
+        {/each}
+      </tbody>
+    </table>
+  </section>
 {/each} -->
 
 {#each Object.entries(services) as [category, data]}
@@ -91,27 +93,27 @@
 {/each}
 
 <style>
-	/* ELEMENTS */
-	section {
-		margin-block: var(--size-12);
-	}
-	/* CLASSES */
-	.price-duration {
-		display: flex;
-		flex-direction: column;
-		/* text-align: right; */
-	}
-	.time {
-		color: var(--text-2);
-		font-size: var(--font-size-00);
-	}
-	.price {
-		font-size: var(--font-size-0);
-	}
-	.table-row-header {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		gap: var(--size-3);
-	}
+  /* ELEMENTS */
+  section {
+    margin-block: var(--size-12);
+  }
+  /* CLASSES */
+  .price-duration {
+    display: flex;
+    flex-direction: column;
+    /* text-align: right; */
+  }
+  .time {
+    color: var(--text-2);
+    font-size: var(--font-size-00);
+  }
+  .price {
+    font-size: var(--font-size-0);
+  }
+  .table-row-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--size-3);
+  }
 </style>

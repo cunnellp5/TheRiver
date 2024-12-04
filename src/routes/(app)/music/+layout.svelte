@@ -4,10 +4,10 @@
 
   import { page } from "$app/stores";
   import NavButton from "$lib/components/ui/button/nav-button.svelte";
-  import { ShowHideScroll } from "$lib/utils/classes/ShowHideScroll";
+  import { ShowHideScroll } from "$lib/utils/classes/show-hide-scroll";
   import { run } from "svelte/legacy";
-  import Featured from "./Featured.svelte";
-  import Hero from "./Hero.svelte";
+  import Featured from "./featured.svelte";
+  import Hero from "./hero.svelte";
   // import Marquee from '$lib/components/ui/Marquee.svelte';
 
   interface Props {
@@ -54,35 +54,35 @@
 
     <!-- <span>Featured: </span> -->
     <!-- <NavButton
-			route="https://distrokid.com/hyperfollow/theriver2/out-the-mud-volume-2"
-			display="Distrokid" />
-		<NavButton route="https://open.spotify.com/album/46TmH8hxWDYdl28vTSXmEC" display="Spotify" />
-		<NavButton
-			route="https://www.youtube.com/watch?v=z-OJ9WmDnDE&list=OLAK5uy_kopLOOpL784D1d8KLy-G2gjm9Nkdc7bzY"
-			display="YouTube" /> -->
+      route="https://distrokid.com/hyperfollow/theriver2/out-the-mud-volume-2"
+      display="Distrokid" />
+    <NavButton route="https://open.spotify.com/album/46TmH8hxWDYdl28vTSXmEC" display="Spotify" />
+    <NavButton
+      route="https://www.youtube.com/watch?v=z-OJ9WmDnDE&list=OLAK5uy_kopLOOpL784D1d8KLy-G2gjm9Nkdc7bzY"
+      display="YouTube" /> -->
     <!-- <a href="" target="_blank" rel="noopener"> Distrokid </a> -->
     <!-- <a
-				href="https://open.spotify.com/album/46TmH8hxWDYdl28vTSXmEC"
-				target="_blank"
-				rel="noopener">
-				Spotify
-			</a>
-			<a
-				href="https://www.youtube.com/watch?v=z-OJ9WmDnDE&list=OLAK5uy_kopLOOpL784D1d8KLy-G2gjm9Nkdc7bzY"
-				target="_blank"
-				rel="noopener">
-				YouTube
-			</a> -->
+        href="https://open.spotify.com/album/46TmH8hxWDYdl28vTSXmEC"
+        target="_blank"
+        rel="noopener">
+        Spotify
+      </a>
+      <a
+        href="https://www.youtube.com/watch?v=z-OJ9WmDnDE&list=OLAK5uy_kopLOOpL784D1d8KLy-G2gjm9Nkdc7bzY"
+        target="_blank"
+        rel="noopener">
+        YouTube
+      </a> -->
     <!-- </div> -->
   </div>
   <Hero />
 
   <Featured />
   <!-- {#if about.isShowing}
-		<p>
-			{about.text}
-		</p>
-	{/if} -->
+    <p>
+      {about.text}
+    </p>
+  {/if} -->
 
   <section class="music-content app-layout">
     {@render children?.()}

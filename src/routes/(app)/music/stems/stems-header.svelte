@@ -29,23 +29,23 @@
 </section>
 
 <style>
-	small {
-		opacity: 0.3;
-	}
-	section {
-		display: flex;
-		flex-direction: column;
-		gap: var(--size-3);
-	}
-	p {
-		color: var(--text-2);
-	}
-	a {
-		display: flex;
-		transition: color 0.4s;
-		text-decoration: none;
-		&:hover {
-			color: var(--link);
-		}
-	}
+  small {
+    opacity: 0.3;
+  }
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-3);
+  }
+  p {
+    color: var(--text-2);
+  }
+  a {
+    display: flex;
+    transition: color 0.4s;
+    text-decoration: none;
+    &:hover {
+      color: var(--link);
+    }
+  }
 </style>

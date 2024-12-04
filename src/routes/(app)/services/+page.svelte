@@ -3,9 +3,9 @@
   import Seo from "$lib/components/seo.svelte";
   import ServiceButtons from "$lib/components/ui/button/service-buttons.svelte";
   import { onMount } from "svelte";
-  import CutoutImg from "./components/CutoutImg.svelte";
-  import ScrollDots from "./components/ScrollDots.svelte";
-  import ServiceTable from "./components/ServiceTable.svelte";
+  import CutoutImg from "./components/cutout-img.svelte";
+  import ScrollDots from "./components/scroll-dots.svelte";
+  import ServiceTable from "./components/service-table.svelte";
 
   const { data } = $props();
   const { services, about } = data;

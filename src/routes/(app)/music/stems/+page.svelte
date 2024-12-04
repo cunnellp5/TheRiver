@@ -1,7 +1,7 @@
 <script lang="ts">
   import Seo from "$lib/components/seo.svelte";
-  import StemsHeader from "./StemsHeader.svelte";
-  import StemsTable from "./StemsTable.svelte";
+  import StemsHeader from "./stems-header.svelte";
+  import StemsTable from "./stems-table.svelte";
 </script>
 
 <Seo

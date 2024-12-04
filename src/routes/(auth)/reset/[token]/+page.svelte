@@ -17,7 +17,7 @@
   const isConfirmPasswordValid = $derived(password === confirmPassword);
   const isPasswordValid = $derived(password.length >= 6);
 
-  // $: isFormValid =
+// $: isFormValid =
   // 	isEmailValid &&
   // 	isPasswordValid &&
   // 	isConfirmPasswordValid &&
@@ -55,11 +55,11 @@
       <p>{email}</p>
       <div
         class="passwords"
-        class:invalidPasswords={(!isConfirmPasswordValid && confirmPassword.length > 0) ||
-          (!isPasswordValid && password.length > 0 && confirmPassword.length > 0)}
-        class:validPasswords={isConfirmPasswordValid &&
-          confirmPassword.length > 0 &&
-          isPasswordValid}>
+        class:invalidPasswords={(!isConfirmPasswordValid && confirmPassword.length > 0)
+        || (!isPasswordValid && password.length > 0 && confirmPassword.length > 0)}
+        class:validPasswords={isConfirmPasswordValid
+        && confirmPassword.length > 0
+          && isPasswordValid}>
         <label
           id="pw-label"
           for="password">Password</label>

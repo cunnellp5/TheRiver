@@ -10,12 +10,7 @@
     pointLeft?: boolean;
   }
 
-  const {
-    next,
-    previous,
-    pointRight = false,
-    pointLeft = false,
-  }: Props = $props();
+  const { next, previous, pointRight = false, pointLeft = false }: Props = $props();
 </script>
 
 <aside class="prevNext-wrapper">
@@ -41,35 +36,35 @@
 </aside>
 
 <style>
-	.prevNext-wrapper {
-		display: grid;
-		align-items: center;
-	}
-	.nextArticle {
-		position: sticky;
-		top: calc(50% - var(--nav-height));
-		opacity: 0.7;
-		padding-block: var(--size-7);
-	}
+  .prevNext-wrapper {
+    display: grid;
+    align-items: center;
+  }
+  .nextArticle {
+    position: sticky;
+    top: calc(50% - var(--nav-height));
+    opacity: 0.7;
+    padding-block: var(--size-7);
+  }
 
-	.prev {
-		justify-self: start;
-	}
-	.next {
-		justify-self: end;
-	}
+  .prev {
+    justify-self: start;
+  }
+  .next {
+    justify-self: end;
+  }
 
-	.nextArticle:hover:not(.disabled) {
-		opacity: 1;
-		box-shadow: var(--shadow-4);
-	}
-	.disabled {
-		pointer-events: none;
-	}
+  .nextArticle:hover:not(.disabled) {
+    opacity: 1;
+    box-shadow: var(--shadow-4);
+  }
+  .disabled {
+    pointer-events: none;
+  }
 
-	@media (max-width: 768px) {
-		.nextArticle {
-			display: none;
-		}
-	}
+  @media (max-width: 768px) {
+    .nextArticle {
+      display: none;
+    }
+  }
 </style>

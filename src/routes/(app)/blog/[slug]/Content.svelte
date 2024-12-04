@@ -17,24 +17,21 @@
   async function setQuillData() {
     quillError = null; // Reset error message
 
-    if (!browser)
-      return;
+    if (!browser) return;
 
     try {
       const { default: Quill } = await import("quill");
       // i dont know why this is running twice
-			// first time, the reader is null and throws a quill error
-			// but then renders because it hydrates immediately after
+      // first time, the reader is null and throws a quill error
+      // but then renders because it hydrates immediately after
       if (reader === null) {
         console.log("reader is loading");
-      }
-      else {
+      } else {
         quill = await new Quill(reader, QuillConfigReadonly);
         const quillData = quillContentInit(post ? post.content : "No content found");
         await quill.setContents(quillData);
       }
-    }
-    catch (err) {
+    } catch (err) {
       console.error("Failed to set Quill data:", err);
       quillError = "Failed to load the editor. Please try again later.";
     }
@@ -49,38 +46,41 @@
   {#if quillError}
     <p>{quillError}</p>
   {:else}
-    <div class="quill-content" bind:this={reader}></div>
+    <div
+      class="quill-content"
+      bind:this={reader}>
+    </div>
   {/if}
 </section>
 
 <style>
-	.quill-content {
-		& *,
-		& *::before,
-		& *::placeholder {
-			color: var(--text-1);
-			line-height: var(--font-lineheight-4);
-		}
-		& p {
-			font-weight: var(--font-weight-2);
-			font-size: var(--font-size-2);
-		}
-		& blockquote {
-			padding-inline: var(--size-4);
-		}
-		& img {
-			width: 100%;
-			height: var(--size-fluid-10);
-			object-fit: none;
-			object-position: center;
-		}
-		& h1 {
-			margin-block: var(--size-2);
-			background: unset;
-			-webkit-background-clip: unset;
-			font-size: var(--size-fluid-3);
-			-webkit-text-fill-color: unset;
-			background-clip: unset;
-		}
-	}
+  .quill-content {
+    & *,
+    & *::before,
+    & *::placeholder {
+      color: var(--text-1);
+      line-height: var(--font-lineheight-4);
+    }
+    & p {
+      font-weight: var(--font-weight-2);
+      font-size: var(--font-size-2);
+    }
+    & blockquote {
+      padding-inline: var(--size-4);
+    }
+    & img {
+      width: 100%;
+      height: var(--size-fluid-10);
+      object-fit: none;
+      object-position: center;
+    }
+    & h1 {
+      margin-block: var(--size-2);
+      background: unset;
+      -webkit-background-clip: unset;
+      font-size: var(--size-fluid-3);
+      -webkit-text-fill-color: unset;
+      background-clip: unset;
+    }
+  }
 </style>

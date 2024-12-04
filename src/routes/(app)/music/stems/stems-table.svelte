@@ -44,30 +44,30 @@
 </div>
 
 <style>
-	a {
-		display: flex;
-		transition: color 0.4s;
-		text-decoration: none;
-		&:hover {
-			color: var(--link);
-		}
-	}
-	.table {
-		display: grid;
-		grid-template-rows: repeat(3, 1fr);
-		grid-template-columns: 2fr 3fr 1fr;
-		& .table-title {
-			opacity: 0.5;
-			color: var(--text-2);
-			font-size: var(--font-size-0);
-		}
-		& span {
-			border-bottom: 1px solid var(--border);
-			padding: var(--size-3);
-		}
-		& .table-actions {
-			display: flex;
-			gap: var(--size-3);
-		}
-	}
+  a {
+    display: flex;
+    transition: color 0.4s;
+    text-decoration: none;
+    &:hover {
+      color: var(--link);
+    }
+  }
+  .table {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: 2fr 3fr 1fr;
+    & .table-title {
+      opacity: 0.5;
+      color: var(--text-2);
+      font-size: var(--font-size-0);
+    }
+    & span {
+      border-bottom: 1px solid var(--border);
+      padding: var(--size-3);
+    }
+    & .table-actions {
+      display: flex;
+      gap: var(--size-3);
+    }
+  }
 </style>

@@ -32,7 +32,8 @@
     return async ({ result, update }) => {
       if (result.status === 200) {
         formSuccess();
-      } else {
+      }
+      else {
         showError = true;
         errorMessage = result?.data?.message || "An error occurred";
       }

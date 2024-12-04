@@ -43,7 +43,8 @@
               timeout: 5000,
               iconType: "check",
             });
-          } else {
+          }
+          else {
             addToast({
               message: "An error occurred",
               type: "message",

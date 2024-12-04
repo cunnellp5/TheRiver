@@ -1,7 +1,7 @@
 <script lang="ts">
   import Seo from "$lib/components/seo.svelte";
-  import Bottom from "./Bottom.svelte";
-  import Top from "./Top.svelte";
+  import Bottom from "./bottom.svelte";
+  import Top from "./top.svelte";
 </script>
 
 <Seo

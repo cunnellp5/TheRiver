@@ -5,12 +5,12 @@
   // let copied = false;
 
   // function copyEmail() {
-  // 	navigator.clipboard.writeText(email);
-  // 	copied = true;
-  // 	setTimeout(() => {
-  // 		copied = false;
-  // 		return copied;
-  // 	}, 800); // Reset after 2 seconds
+  //   navigator.clipboard.writeText(email);
+  //   copied = true;
+  //   setTimeout(() => {
+  //     copied = false;
+  //     return copied;
+  //   }, 800); // Reset after 2 seconds
   // }
   import { address, emailWithBreaks } from "$lib/config";
   import AtSign from "lucide-svelte/icons/at-sign";

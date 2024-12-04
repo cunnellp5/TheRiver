@@ -10,18 +10,35 @@
   const unsubscribeRoute = `${WEBSITE_URL}/unsubscribe/${token}`;
 </script>
 
-<table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation">
+<table
+  width="100%"
+  border="0"
+  cellspacing="0"
+  cellpadding="0"
+  role="presentation">
   <tbody>
     <tr>
-      <td class="pc-w620-spacing-0-0-0-0" style="padding: 0px 0px 0px 0px;">
-        <table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation">
+      <td
+        class="pc-w620-spacing-0-0-0-0"
+        style="padding: 0px 0px 0px 0px;">
+        <table
+          width="100%"
+          border="0"
+          cellspacing="0"
+          cellpadding="0"
+          role="presentation">
           <tbody>
             <tr>
               <td
                 valign="top"
                 class="pc-w620-padding-32-24-32-24"
                 style="padding: 32px 32px 32px 32px; border-radius: 0px; background-color: #292929;">
-                <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
+                <table
+                  width="100%"
+                  border="0"
+                  cellpadding="0"
+                  cellspacing="0"
+                  role="presentation">
                   <tbody>
                     <tr>
                       <td
@@ -422,7 +439,9 @@
                     role="presentation">
                     <tbody>
                       <tr>
-                        <td align="left" valign="top">
+                        <td
+                          align="left"
+                          valign="top">
                           <table
                             border="0"
                             cellpadding="0"
@@ -433,7 +452,9 @@
                             style="border-collapse: separate; border-spacing: 0; margin-right: auto; margin-left: auto;">
                             <tbody>
                               <tr>
-                                <td valign="top" align="left">
+                                <td
+                                  valign="top"
+                                  align="left">
                                   <div
                                     class="pc-font-alt"
                                     style="line-height: 140%; letter-spacing: 0px; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-size: 14px; font-weight: normal; font-variant-ligatures: normal; color: #ffffff; text-align: left; text-align-last: left;">

@@ -1,6 +1,6 @@
 import type { Component } from "svelte";
 import { env } from "$env/dynamic/private";
-import NewsLetterBasic from "$lib/emails/templates/NewsLetterBasic.svelte";
+import NewsLetterBasic from "$lib/emails/templates/newsletter-basic.svelte";
 import transporter from "$lib/utils/transporter";
 import { error, json, type RequestHandler } from "@sveltejs/kit";
 import { render } from "../render";
@@ -25,13 +25,11 @@ export const POST: RequestHandler = async ({ request }): Promise<Response> => {
     transporter.sendMail(options, (error, info) => {
       if (error) {
         console.error("❌ Error:", error.message);
-      }
-      else {
+      } else {
         console.log("✅ Email sent:", info.response);
       }
     });
-  }
-  catch (err: unknown | Error) {
+  } catch (err: unknown | Error) {
     error(500, (err as Error).message);
   }
 

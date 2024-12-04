@@ -2,10 +2,10 @@
 <!-- inspired by https://designmodo.com/email-templates/ -->
 <script lang="ts">
   import Preview from "$lib/emails/components/ui/Preview.svelte";
-  import Head from "$lib/emails/components/welcome/Head.svelte";
-  import HeaderWithNav from "$lib/emails/components/welcome/HeaderWithNav.svelte";
-  import BodyFeatured from "../components/welcome/BodyFeatured.svelte";
-  import Footer from "../components/welcome/Footer.svelte";
+  import Head from "$lib/emails/components/welcome/head.svelte";
+  import HeaderWithNav from "$lib/emails/components/welcome/header-with-nav.svelte";
+  import BodyFeatured from "../components/welcome/body-featured.svelte";
+  import Footer from "../components/welcome/footer.svelte";
 
   const { token } = $props();
 </script>
@@ -28,7 +28,9 @@
       role="presentation">
       <tbody>
         <tr>
-          <td align="center" valign="top">
+          <td
+            align="center"
+            valign="top">
             <table
               class="pc-project-container"
               align="center"
@@ -105,7 +107,9 @@
     </table>
 
     <!-- Fix for Gmail on iOS -->
-    <div class="pc-gmail-fix" style="white-space: nowrap; font: 15px courier; line-height: 0;">
+    <div
+      class="pc-gmail-fix"
+      style="white-space: nowrap; font: 15px courier; line-height: 0;">
       &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
       &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
       &nbsp; &nbsp; &nbsp; &nbsp;

@@ -57,8 +57,8 @@
     <li></li>
     {#if user && user.isAdmin}
       <!-- <li class:current={includesAdmin} aria-current={includesAdmin}>
-				<a href="/admin"> Admin </a>
-			</li> -->
+        <a href="/admin"> Admin </a>
+      </li> -->
       <NavButton
         route="/admin"
         display="Admin"
@@ -66,8 +66,8 @@
     {/if}
     {#if isSignedIn && user}
       <!-- <li class:current={isDashboard} aria-current={isDashboard}>
-				<a href="/dashboard"> Dashboard </a>
-			</li> -->
+        <a href="/dashboard"> Dashboard </a>
+      </li> -->
       <NavButton
         route="/dashboard"
         display="Dashboard"
@@ -82,16 +82,16 @@
     <li class:borderBottom={showingSheet}></li>
   {/if}
   <!-- <li class:current={includesMusic} aria-current={includesMusic}>
-		<a href="/music"> Music </a>
-	</li> -->
+    <a href="/music"> Music </a>
+  </li> -->
   <NavButton
     route="/music"
     display="Music"
     active={includesMusic} />
 
   <!-- <li class:current={includesService} aria-current={includesService}>
-		<a href="/services"> services </a>
-	</li> -->
+    <a href="/services"> services </a>
+  </li> -->
   <NavButton
     route="/services"
     display="services"
@@ -114,56 +114,56 @@
   </li>
 
   <!-- <li class:current={includesBlog} aria-current={includesBlog}>
-		<a href="/blog"> Blog </a>
-	</li> -->
+    <a href="/blog"> Blog </a>
+  </li> -->
   <NavButton
     route="/blog"
     display="Blog"
     active={includesBlog} />
   <!-- <li class:current={isContact} aria-current={isContact}>
-		<a href="/contact"> Contact </a>
-	</li> -->
+    <a href="/contact"> Contact </a>
+  </li> -->
   <NavButton
     route="/contact"
     display="Contact"
     active={isContact} />
 
   <!-- <li class:border-left={!showingSheet} class:borderBottom={showingSheet}></li>
-	{#if isSignedIn}
-		<form
-			class="logout-wrapper"
-			id="logoutForm"
-			method="POST"
-			action="/logout"
-			use:enhance={async ({ formElement, formData, action, cancel, submitter }) => {
-				return async ({ result, update }) => {
-					if (result.status === 302) {
-						update();
-						addToast({
-							message: `Logged out.`,
-							type: 'message',
-							iconType: 'check',
-							dismissible: true,
-							timeout: 5000
-						});
-					} else {
-						update();
-					}
-				};
-			}}>
-			<li class:current={isLogout}>
-				<button class="logout-button" type="submit">Logout</button>
-			</li>
-		</form>
-	{:else}
-		<li class:current={isSignup} class="signup">
-			<a href="/signup"> Sign up </a>
-		</li>
-		<li class:current={isLogin}>
-			<a href="/login"> Login </a>
-		</li>
-	{/if}
-	<li class:border-left={!showingSheet} class:borderBottom={showingSheet}></li> -->
+  {#if isSignedIn}
+    <form
+      class="logout-wrapper"
+      id="logoutForm"
+      method="POST"
+      action="/logout"
+      use:enhance={async ({ formElement, formData, action, cancel, submitter }) => {
+        return async ({ result, update }) => {
+          if (result.status === 302) {
+            update();
+            addToast({
+              message: `Logged out.`,
+              type: 'message',
+              iconType: 'check',
+              dismissible: true,
+              timeout: 5000
+            });
+          } else {
+            update();
+          }
+        };
+      }}>
+      <li class:current={isLogout}>
+        <button class="logout-button" type="submit">Logout</button>
+      </li>
+    </form>
+  {:else}
+    <li class:current={isSignup} class="signup">
+      <a href="/signup"> Sign up </a>
+    </li>
+    <li class:current={isLogin}>
+      <a href="/login"> Login </a>
+    </li>
+  {/if}
+  <li class:border-left={!showingSheet} class:borderBottom={showingSheet}></li> -->
   <ToggleTheme />
 </ul>
 

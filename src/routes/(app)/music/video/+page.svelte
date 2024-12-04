@@ -2,11 +2,12 @@
   import Seo from "$lib/components/seo.svelte";
   // control the iframe: https://developers.google.com/youtube/iframe_api_reference
   // carousel: https://www.shadcn-svelte.com/docs/components/carousel
-  import VideoCarousel from "./VideoCarousel.svelte";
+  import VideoCarousel from "./video-carousel.svelte";
 
   const { data } = $props();
   const { videos } = data;
-  // const YOUTUBE_BASE_EMBED_URL = 'https://www.youtube.com/embed/';
+
+  // const YOUTUBE_BASE_EMBED_URL = 'https://www.youtube.com/embed/'
 </script>
 
 <!-- TODO make video specific description -->

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { IFrameLoader } from "$lib/utils/classes/IFrameLoader";
+  import { IFrameLoader } from "$lib/utils/classes/iframe-loader";
   import { onMount } from "svelte";
   import TRACKS_FEATURED from "./TRACKS_FEATURED";
 
@@ -59,7 +59,10 @@
       rel="noopener">
       <button class="create-button"> Distrokid </button>
     </a>
-    <a href="https://open.spotify.com/album/46TmH8hxWDYdl28vTSXmEC" target="_blank" rel="noopener">
+    <a
+      href="https://open.spotify.com/album/46TmH8hxWDYdl28vTSXmEC"
+      target="_blank"
+      rel="noopener">
       <button class="create-button"> Spotify </button>
     </a>
     <a
@@ -72,36 +75,36 @@
 </section>
 
 <style>
-	section,
-	.title {
-		margin-block: var(--size-7);
-		width: 100%;
-	}
-	.social-links {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		gap: var(--size-3);
-		margin-block: var(--size-7);
-	}
-	.tracksGrid {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		gap: var(--size-7);
-	}
-	.tracksGrid div:first-child {
-		grid-row: span 3;
-	}
-	@media (max-width: 768px) {
-		.tracksGrid {
-			grid-template-columns: repeat(1, 1fr);
-		}
-		.social-links {
-			flex-direction: column;
-		}
-		.social-links a,
-		.social-links button {
-			width: 100%;
-		}
-	}
+  section,
+  .title {
+    margin-block: var(--size-7);
+    width: 100%;
+  }
+  .social-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--size-3);
+    margin-block: var(--size-7);
+  }
+  .tracksGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--size-7);
+  }
+  .tracksGrid div:first-child {
+    grid-row: span 3;
+  }
+  @media (max-width: 768px) {
+    .tracksGrid {
+      grid-template-columns: repeat(1, 1fr);
+    }
+    .social-links {
+      flex-direction: column;
+    }
+    .social-links a,
+    .social-links button {
+      width: 100%;
+    }
+  }
 </style>

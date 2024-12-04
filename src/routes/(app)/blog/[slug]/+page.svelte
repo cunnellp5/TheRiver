@@ -3,9 +3,9 @@
   import type { PageData } from "./$types";
   import { page } from "$app/stores";
   import Seo from "$lib/components/seo.svelte";
-  import Content from "./Content.svelte";
-  import Header from "./Header.svelte";
-  import NextPrev from "./NextPrev.svelte";
+  import Content from "./content.svelte";
+  import Header from "./header.svelte";
+  import NextPrev from "./next-prev.svelte";
 
   interface Props {
     data: PageData;

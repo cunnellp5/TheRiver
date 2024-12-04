@@ -1,216 +1,216 @@
 <!-- <script lang="ts">
-	import * as Card from '$lib/components/ui/shadcn/card';
-	import Modal from '$lib/components/ui/Modal.svelte';
-	import { theme } from '$lib/stores/theme';
-	import Calendar from '@event-calendar/core';
-	import '@event-calendar/core/index.css';
-	import DayGrid from '@event-calendar/day-grid';
-	import Interaction from '@event-calendar/interaction';
-	import List from '@event-calendar/list';
-	import TimeGrid from '@event-calendar/time-grid';
-	import type { Info, Event } from '$lib/types.js';
-	import { enhance } from '$app/forms';
-	import { configOptions, convertTimeSlots } from './calendarConfig';
+  import * as Card from '$lib/components/ui/shadcn/card';
+  import Modal from '$lib/components/ui/Modal.svelte';
+  import { theme } from '$lib/stores/theme';
+  import Calendar from '@event-calendar/core';
+  import '@event-calendar/core/index.css';
+  import DayGrid from '@event-calendar/day-grid';
+  import Interaction from '@event-calendar/interaction';
+  import List from '@event-calendar/list';
+  import TimeGrid from '@event-calendar/time-grid';
+  import type { Info, Event } from '$lib/types.js';
+  import { enhance } from '$app/forms';
+  import { configOptions, convertTimeSlots } from './calendarConfig';
 
-	let { data } = $props();
+  let { data } = $props();
 
-	const { timeSlots } = data;
+  const { timeSlots } = data;
 
-	let eventStart: string = $state('');
-	let eventEnd: string = $state('');
-	let eventTitle: string = $state('NEW');
-	let allEvents: Event[] = $state([]);
-	let eventInfo: { startStr: string; endStr: string };
-	let showModal = $state(false);
-	let showEvent = $state(false);
-	let eventDisplay: Event = $state();
-	let ec: Calendar = $state();
+  let eventStart: string = $state('');
+  let eventEnd: string = $state('');
+  let eventTitle: string = $state('NEW');
+  let allEvents: Event[] = $state([]);
+  let eventInfo: { startStr: string; endStr: string };
+  let showModal = $state(false);
+  let showEvent = $state(false);
+  let eventDisplay: Event = $state();
+  let ec: Calendar = $state();
 
-	const reset = () => {
-		eventStart = '';
-		eventEnd = '';
-		eventTitle = 'NEW';
-	};
+  const reset = () => {
+    eventStart = '';
+    eventEnd = '';
+    eventTitle = 'NEW';
+  };
 
-	const toggleModal = () => {
-		showModal = !showModal;
-	};
+  const toggleModal = () => {
+    showModal = !showModal;
+  };
 
-	function handleClose() {
-		showModal = false;
+  function handleClose() {
+    showModal = false;
 
-		eventStart = eventInfo.startStr; // save me in the DB
-		eventEnd = eventInfo.endStr; // save me in the DB
+    eventStart = eventInfo.startStr; // save me in the DB
+    eventEnd = eventInfo.endStr; // save me in the DB
 
-		// adds event to calendar, vars are being updated from modal inputs
-		ec.addEvent({
-			start: eventStart,
-			end: eventEnd,
-			display: 'auto',
-			resourceId: 1,
-			title: eventTitle,
-			editable: true,
-			durationEditable: true,
-			startEditable: true,
-			constraint: 'businessHours',
-			extendedProps: {
-				availability: true
-			}
-		});
+    // adds event to calendar, vars are being updated from modal inputs
+    ec.addEvent({
+      start: eventStart,
+      end: eventEnd,
+      display: 'auto',
+      resourceId: 1,
+      title: eventTitle,
+      editable: true,
+      durationEditable: true,
+      startEditable: true,
+      constraint: 'businessHours',
+      extendedProps: {
+        availability: true
+      }
+    });
 
-		allEvents = [...ec.getEvents()];
-		reset();
-	}
+    allEvents = [...ec.getEvents()];
+    reset();
+  }
 
-	const plugins = [DayGrid, List, TimeGrid, Interaction];
+  const plugins = [DayGrid, List, TimeGrid, Interaction];
 
-	const options = {
-		...configOptions,
-		events: convertTimeSlots(timeSlots) || [],
-		select(info: Info) {
-			eventStart = info.startStr;
-			eventEnd = info.endStr;
-			eventInfo = { ...info };
-			// render modal
-			toggleModal();
-			// modal creates title, description, and submit button
-		},
-		eventDragStart(info: Info) {
-			console.log(info, 'eventDragStart');
-		},
-		eventDragStop(info: Info) {
-			console.log(info, 'drageventDragStopStop');
-		},
-		eventDrop(info: Info) {
-			console.log(info, 'eventDrop');
-		},
-		dateClick(info: Info) {
-			console.log(info, 'dateClick');
-		},
-		eventClick(info: Info) {
-			console.log(info, 'eventClick');
-			// show a hidden element and populate it with this info
-			eventDisplay = { ...info.event };
-			// eventDisplay.style = {
-			// 	top: info.jsEvent.clientY,
-			// 	left: info.jsEvent.clientX
-			// };
+  const options = {
+    ...configOptions,
+    events: convertTimeSlots(timeSlots) || [],
+    select(info: Info) {
+      eventStart = info.startStr;
+      eventEnd = info.endStr;
+      eventInfo = { ...info };
+      // render modal
+      toggleModal();
+      // modal creates title, description, and submit button
+    },
+    eventDragStart(info: Info) {
+      console.log(info, 'eventDragStart');
+    },
+    eventDragStop(info: Info) {
+      console.log(info, 'drageventDragStopStop');
+    },
+    eventDrop(info: Info) {
+      console.log(info, 'eventDrop');
+    },
+    dateClick(info: Info) {
+      console.log(info, 'dateClick');
+    },
+    eventClick(info: Info) {
+      console.log(info, 'eventClick');
+      // show a hidden element and populate it with this info
+      eventDisplay = { ...info.event };
+      // eventDisplay.style = {
+      //   top: info.jsEvent.clientY,
+      //   left: info.jsEvent.clientX
+      // };
 
-			const popover = document.querySelector('.event-info') as HTMLElement;
+      const popover = document.querySelector('.event-info') as HTMLElement;
 
-			if (popover) {
-				const pageHeight = document.body.scrollHeight;
-				const calendarHeight = info.el.parentElement?.offsetParent?.clientHeight || 0;
-				const eventHeight = info.el.clientHeight;
-				const popoverHeight = popover.clientHeight;
+      if (popover) {
+        const pageHeight = document.body.scrollHeight;
+        const calendarHeight = info.el.parentElement?.offsetParent?.clientHeight || 0;
+        const eventHeight = info.el.clientHeight;
+        const popoverHeight = popover.clientHeight;
 
-				popover.style.left = `0px`;
-				popover.style.top = `${pageHeight - calendarHeight - eventHeight - popoverHeight * 3 + info.el.offsetTop}px`;
-				// popover.style.top = `${info.el.style.top - info.el.style.height}`;
-			}
+        popover.style.left = `0px`;
+        popover.style.top = `${pageHeight - calendarHeight - eventHeight - popoverHeight * 3 + info.el.offsetTop}px`;
+        // popover.style.top = `${info.el.style.top - info.el.style.height}`;
+      }
 
-			showEvent = true;
-			// here we should have an X that deletes the record
-		}
-		// eventContent(info) {
-		// return { html: '<p class="popover">some HTML</p>' };
-		// }
-	};
+      showEvent = true;
+      // here we should have an X that deletes the record
+    }
+    // eventContent(info) {
+    // return { html: '<p class="popover">some HTML</p>' };
+    // }
+  };
 </script>
 
 <Modal bind:showModal on:close={handleClose} buttonText="Save">
-	{#snippet header()}
-		<h2>Schedule</h2>
-	{/snippet}
+  {#snippet header()}
+    <h2>Schedule</h2>
+  {/snippet}
 
-	<div class="form-group">
-		<label for="eventTitle">Title</label>
-		<input
-			placeholder="Title of event"
-			name="eventTitle"
-			type="text"
-			id="eventTitle"
-			bind:value={eventTitle} />
+  <div class="form-group">
+    <label for="eventTitle">Title</label>
+    <input
+      placeholder="Title of event"
+      name="eventTitle"
+      type="text"
+      id="eventTitle"
+      bind:value={eventTitle} />
 
-		<div>
-			<label for="eventStart">Start</label>
-			<input type="text" id="eventStart" bind:value={eventStart} />
-		</div>
+    <div>
+      <label for="eventStart">Start</label>
+      <input type="text" id="eventStart" bind:value={eventStart} />
+    </div>
 
-		<div>
-			<label for="eventEnd">End</label>
-			<input type="text" id="eventEnd" bind:value={eventEnd} />
-		</div>
-	</div>
+    <div>
+      <label for="eventEnd">End</label>
+      <input type="text" id="eventEnd" bind:value={eventEnd} />
+    </div>
+  </div>
 </Modal>
 
 <div class="adminIntroCardWrapper">
-	<Card.Root>
-		<Card.Header>
-			<Card.Title>Time slot scheduler</Card.Title>
-			<Card.Description>Create, Edit, or delete your schedule</Card.Description>
-		</Card.Header>
-		<Card.Content>
-			<p>This will create 'availbility' for services</p>
+  <Card.Root>
+    <Card.Header>
+      <Card.Title>Time slot scheduler</Card.Title>
+      <Card.Description>Create, Edit, or delete your schedule</Card.Description>
+    </Card.Header>
+    <Card.Content>
+      <p>This will create 'availbility' for services</p>
 
-			<p>1 - create available chunks of time on the calendar</p>
-			<p>2 - after creating submit, this will generate 15 min slots of available times</p>
-			<p>3 - user can book these slots</p>
-		</Card.Content>
-		<Card.Footer>🚧 Under Construction</Card.Footer>
-	</Card.Root>
+      <p>1 - create available chunks of time on the calendar</p>
+      <p>2 - after creating submit, this will generate 15 min slots of available times</p>
+      <p>3 - user can book these slots</p>
+    </Card.Content>
+    <Card.Footer>🚧 Under Construction</Card.Footer>
+  </Card.Root>
 </div>
 <div class="container" class:ec-dark={$theme === 'dark'} class:ec-light={$theme === 'light'}>
-	<div class="calendar-wrapper">
-		<Calendar bind:this={ec} {plugins} {options} />
-		{#if showEvent}
-			<div class="event-info">
-				<p>{eventDisplay.title}</p>
-				<p>{eventDisplay.start}</p>
-				<p>{eventDisplay.end}</p>
-				<button
-					onclick={() => {
-						showEvent = false;
-					}}>close</button>
-				<button>delete</button>
-			</div>
-		{/if}
-	</div>
+  <div class="calendar-wrapper">
+    <Calendar bind:this={ec} {plugins} {options} />
+    {#if showEvent}
+      <div class="event-info">
+        <p>{eventDisplay.title}</p>
+        <p>{eventDisplay.start}</p>
+        <p>{eventDisplay.end}</p>
+        <button
+          onclick={() => {
+            showEvent = false;
+          }}>close</button>
+        <button>delete</button>
+      </div>
+    {/if}
+  </div>
 </div>
 
 <form action="?/add" method="POST" class="form" use:enhance>
-	<input type="hidden" name="events" value={JSON.stringify(allEvents)} />
-	<button type="submit">Save</button>
+  <input type="hidden" name="events" value={JSON.stringify(allEvents)} />
+  <button type="submit">Save</button>
 </form>
 
 <style>
-	.calendar-wrapper {
-		max-width: 70vw;
-		& h4 {
-			background: unset;
-			-webkit-background-clip: unset;
-			-webkit-text-fill-color: unset;
-			background-clip: unset;
-			color: var(--text-1);
-			font-size: var(--font-size-1);
-		}
-	}
+  .calendar-wrapper {
+    max-width: 70vw;
+    & h4 {
+      background: unset;
+      -webkit-background-clip: unset;
+      -webkit-text-fill-color: unset;
+      background-clip: unset;
+      color: var(--text-1);
+      font-size: var(--font-size-1);
+    }
+  }
 
-	.form-group {
-		display: flex;
-		flex-direction: column;
-		& label {
-			margin-bottom: var(--size-1);
-		}
-	}
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    & label {
+      margin-bottom: var(--size-1);
+    }
+  }
 
-	.event-info {
-		position: absolute;
-		z-index: var(--layer-2);
-		box-shadow: var(--shadow-3);
-		background-color: var(--stone-11);
-		padding: 24px;
-		height: 240px;
-		color: var(--stone-6);
-	}
+  .event-info {
+    position: absolute;
+    z-index: var(--layer-2);
+    box-shadow: var(--shadow-3);
+    background-color: var(--stone-11);
+    padding: 24px;
+    height: 240px;
+    color: var(--stone-6);
+  }
 </style> -->

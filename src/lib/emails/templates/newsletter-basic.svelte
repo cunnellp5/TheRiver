@@ -1,11 +1,11 @@
 <!-- @migration-task Error while migrating Svelte code: `<tr>` is invalid inside `<table>` -->
 <!-- inspired by https://designmodo.com/email-templates/ -->
 <script lang="ts">
+  import News from "$lib/emails/components/newsletter/News.svelte";
+  import NewsHeader from "$lib/emails/components/newsletter/NewsHeader.svelte";
   import Preview from "$lib/emails/components/ui/Preview.svelte";
-  import Head from "$lib/emails/components/welcome/Head.svelte";
-  import News from "../components/newsletter/News.svelte";
-  import NewsHeader from "../components/newsletter/NewsHeader.svelte";
-  import Footer from "../components/welcome/Footer.svelte";
+  import Footer from "$lib/emails/components/welcome/footer.svelte";
+  import Head from "$lib/emails/components/welcome/head.svelte";
 
   const { token } = $props();
 </script>
@@ -28,7 +28,9 @@
       role="presentation">
       <tbody>
         <tr>
-          <td align="center" valign="top">
+          <td
+            align="center"
+            valign="top">
             <table
               class="pc-project-container"
               align="center"
@@ -80,7 +82,9 @@
     </table>
 
     <!-- Fix for Gmail on iOS -->
-    <div class="pc-gmail-fix" style="white-space: nowrap; font: 15px courier; line-height: 0;">
+    <div
+      class="pc-gmail-fix"
+      style="white-space: nowrap; font: 15px courier; line-height: 0;">
       &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
       &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
       &nbsp; &nbsp; &nbsp; &nbsp;

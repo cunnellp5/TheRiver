@@ -16,9 +16,9 @@
   // @deprecated — Use this only as a temporary solution to migrate your component code to Svelte 5.
   $effect(() => {
     filteredPosts = data.posts.filter(
-      (post) =>
-        post.title.toLowerCase().includes(search.toLowerCase()) ||
-        post.description.toLowerCase().includes(search.toLowerCase())
+      post =>
+        post.title.toLowerCase().includes(search.toLowerCase())
+          || post.description.toLowerCase().includes(search.toLowerCase()),
     );
   });
 </script>

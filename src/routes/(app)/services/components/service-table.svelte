@@ -4,7 +4,9 @@
   const { category, data } = $props();
 </script>
 
-<span class="stupid" id={category}></span>
+<span
+  class="stupid"
+  id={category}></span>
 <section class="tables">
   <Table.Root>
     <Table.Caption>{data[0].category.description}</Table.Caption>
@@ -42,48 +44,48 @@
 </section>
 
 <style>
-	.serviceName {
-		font-size: var(--font-size-2);
-	}
-	.tables {
-		align-items: center;
-		align-self: center;
-		z-index: var(--layer-3);
-		width: var(--size-content-3);
-		& tr {
-			font-size: var(--font-size-1);
-		}
-	}
-	.price-duration {
-		display: flex;
-		flex-direction: column;
-	}
-	.time {
-		color: var(--text-2);
-		font-size: var(--font-size-0);
-	}
-	.price {
-		font-size: var(--font-size-1);
-	}
-	.table-row-header {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
-		gap: var(--size-3);
-	}
-	.stupid {
-		height: var(--size-10);
-	}
+  .serviceName {
+    font-size: var(--font-size-2);
+  }
+  .tables {
+    align-items: center;
+    align-self: center;
+    z-index: var(--layer-3);
+    width: var(--size-content-3);
+    & tr {
+      font-size: var(--font-size-1);
+    }
+  }
+  .price-duration {
+    display: flex;
+    flex-direction: column;
+  }
+  .time {
+    color: var(--text-2);
+    font-size: var(--font-size-0);
+  }
+  .price {
+    font-size: var(--font-size-1);
+  }
+  .table-row-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--size-3);
+  }
+  .stupid {
+    height: var(--size-10);
+  }
 
-	@media (max-width: 768px) {
-		.tables {
-			width: 100%;
-		}
-		.serviceName {
-			font-size: var(--font-size-0);
-			text-wrap: break-word;
-			word-break: break-word; /* Ensures words break at the edge of the container */
-			overflow-wrap: break-word; /* Allows breaking within words to prevent overflow */
-		}
-	}
+  @media (max-width: 768px) {
+    .tables {
+      width: 100%;
+    }
+    .serviceName {
+      font-size: var(--font-size-0);
+      text-wrap: break-word;
+      word-break: break-word; /* Ensures words break at the edge of the container */
+      overflow-wrap: break-word; /* Allows breaking within words to prevent overflow */
+    }
+  }
 </style>

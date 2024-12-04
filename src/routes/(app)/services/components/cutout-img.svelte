@@ -1,6 +1,10 @@
-<svg width="0" height="0">
+<svg
+  width="0"
+  height="0">
   <defs>
-    <clipPath id="waveClip" clipPathUnits="objectBoundingBox">
+    <clipPath
+      id="waveClip"
+      clipPathUnits="objectBoundingBox">
       <path d="M0,0 H1 V0.85 C0.75,1 0.25,0.85 0,1 Z" />
     </clipPath>
   </defs>

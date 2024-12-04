@@ -1,6 +1,6 @@
 <script lang="ts">
-  import EmailFooter from "../components/EmailFooter.svelte";
-  import EmailImg from "../components/EmailImg.svelte";
+  import EmailFooter from "../components/email-footer.svelte";
+  import EmailImg from "../components/email-img.svelte";
   import Button from "../components/ui/Button.svelte";
   import Container from "../components/ui/Container.svelte";
   import Heading from "../components/ui/Heading.svelte";
@@ -15,13 +15,17 @@
 
   const { token = null }: Props = $props();
 
-  const previewText
-    = "Password reset link - Expires in 24 hours - click the button to reset your password";
+  const previewText =
+    "Password reset link - Expires in 24 hours - click the button to reset your password";
 </script>
 
 <svelte:head>
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-  <meta name="description" content="Reset Email link for The River" />
+  <meta
+    http-equiv="content-type"
+    content="text/html; charset=UTF-8" />
+  <meta
+    name="description"
+    content="Reset Email link for The River" />
   <title>Reset Password</title>
 </svelte:head>
 
@@ -35,7 +39,10 @@
 
       <Text style={unsubscribe}>Expires in 24 hours</Text>
 
-      <Button pY={19} style={button} href="https://theriversings.com/reset/{token}">
+      <Button
+        pY={19}
+        style={button}
+        href="https://theriversings.com/reset/{token}">
         Reset Password
       </Button>
 

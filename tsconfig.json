@@ -8,8 +8,8 @@
     "strict": true,
     // Temp removal in favor of kit alias in svelte.config.js
     // "paths": {
-    // 	"$lib": ["./src/lib"],
-    // 	"$lib/*": ["./src/lib/*"]
+    //  "$lib": ["./src/lib"],
+    //  "$lib/*": ["./src/lib/*"]
     // },
     "outDir": ".svelte-kit/output",
     "sourceMap": true,

@@ -21,7 +21,8 @@
 
   // Use view transitions if available
   onNavigate((navigation) => {
-    if (!document.startViewTransition) return;
+    if (!document.startViewTransition)
+      return;
 
     return new Promise((resolve) => {
       document.startViewTransition(async () => {

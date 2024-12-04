@@ -1,6 +1,6 @@
 import type { Component } from "svelte";
 import type { PageServerLoad } from "./$types";
-import Welcome from "$lib/emails/templates/Welcome.svelte";
+import Welcome from "$lib/emails/templates/welcome.svelte";
 import db from "$lib/server/database";
 import { error } from "@sveltejs/kit";
 import { render } from "../../api/emails/render";

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import ProductCard from "./ProductCard.svelte";
+  import ProductCard from "./product-card.svelte";
 
   const products: App.Product[] = [
     {
@@ -36,11 +36,11 @@
 
 <style>
   /* section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-	} */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  } */
 
   .grid {
     display: grid;

@@ -28,7 +28,8 @@
   run(() => {
     if (dialog && showModal === true) {
       dialog.showModal();
-    } else if (dialog && showModal === false) {
+    }
+    else if (dialog && showModal === false) {
       dialog.close();
     }
   });

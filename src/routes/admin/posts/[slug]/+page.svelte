@@ -21,13 +21,14 @@
   let quillError = $state("");
 
   function findPost(slug: string) {
-    return data.posts.find((p) => p.slug === slug) || undefined;
+    return data.posts.find(p => p.slug === slug) || undefined;
   }
 
   let post = $state(findPost($page.params.slug)); // initial post
 
   async function setQuillData() {
-    if (!browser) return;
+    if (!browser)
+      return;
 
     try {
       const { default: Quill } = await import("quill");
@@ -36,7 +37,8 @@
       const quillData = await quillContentInit(post ? post.content : "No content found");
 
       quill.setContents(quillData);
-    } catch (err) {
+    }
+    catch (err) {
       console.error("Failed to set Quill data:", err);
       quillError = "Failed to load the editor. Please try again later.";
     }

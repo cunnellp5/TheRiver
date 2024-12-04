@@ -33,14 +33,25 @@
   </div>
 
   {#if isCreatingSocialLink}
-    <form class="table-form-items-wrapper" method="post" action="?/addLink">
+    <form
+      class="table-form-items-wrapper"
+      method="post"
+      action="?/addLink">
       <span>
         <label for="title">Title</label>
-        <input bind:value={title} name="title" id="title" required />
+        <input
+          bind:value={title}
+          name="title"
+          id="title"
+          required />
       </span>
       <span>
         <label for="url">url</label>
-        <input bind:value={url} name="url" id="url" required />
+        <input
+          bind:value={url}
+          name="url"
+          id="url"
+          required />
       </span>
       <span class="table-actions"> <button>create</button> </span>
     </form>
@@ -53,8 +64,15 @@
       <span>
         <div class="table-actions">
           <button> edit </button>
-          <form method="POST" action="?/deleteLink" use:enhance>
-            <input type="hidden" name="linkId" id="linkId" value={link.id} />
+          <form
+            method="POST"
+            action="?/deleteLink"
+            use:enhance>
+            <input
+              type="hidden"
+              name="linkId"
+              id="linkId"
+              value={link.id} />
             <button type="submit"> delete </button>
           </form>
         </div>
@@ -64,42 +82,42 @@
 </div>
 
 <style>
-	form {
-		& input {
-			margin-inline: var(--size-3);
-			border: 1px solid var(--border);
-			width: 100%;
-		}
-	}
+  form {
+    & input {
+      margin-inline: var(--size-3);
+      border: 1px solid var(--border);
+      width: 100%;
+    }
+  }
 
-	p {
-		font-size: var(--font-2);
-	}
+  p {
+    font-size: var(--font-2);
+  }
 
-	/* TABLE STYLES */
-	.table-form-items-wrapper,
-	.table-title-wrapper,
-	.table-items-wrapper {
-		display: grid;
-		grid-template-columns: 2fr 3fr 1fr;
-	}
+  /* TABLE STYLES */
+  .table-form-items-wrapper,
+  .table-title-wrapper,
+  .table-items-wrapper {
+    display: grid;
+    grid-template-columns: 2fr 3fr 1fr;
+  }
 
-	.table {
-		& .table-title {
-			color: var(--pink-7);
-		}
+  .table {
+    & .table-title {
+      color: var(--pink-7);
+    }
 
-		& span {
-			display: flex;
-			align-items: center;
-			border-bottom: 1px solid var(--border);
-			padding: var(--size-3);
-		}
+    & span {
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+      padding: var(--size-3);
+    }
 
-		& .table-actions {
-			display: flex;
-			align-items: center;
-			gap: var(--size-3);
-		}
-	}
+    & .table-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--size-3);
+    }
+  }
 </style>
