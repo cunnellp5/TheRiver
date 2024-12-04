@@ -1,5 +1,5 @@
 <script lang="ts">
-  import LogoR from "$lib/components/svgs/logos/LogoR2.svelte";
+  import TheRiver from "$lib/components/svgs/logos/the-river.svelte";
   import Waves from "lucide-svelte/icons/waves";
   import { createEventDispatcher } from "svelte";
 
@@ -13,7 +13,7 @@
 <a
   href="/"
   class="logo-link header__nav__a">
-  <LogoR />
+  <TheRiver />
 </a>
 <button onclick={handleClick}>
   <Waves />
@@ -34,7 +34,6 @@
 
   /* CLASSES */
   a.logo-link {
-    display: flex;
-    width: var(--size-8);
+    width: var(--size-11);
   }
 </style>
