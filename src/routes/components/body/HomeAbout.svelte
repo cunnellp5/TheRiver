@@ -22,7 +22,7 @@
 		<div></div>
 		<div class="textCenter placeCenter">
 			<a href="/music">
-				<button class="circle gradientButtonsLeft">
+				<button class="circle gradientButtonsTop">
 					<p class="rotateToNormal">Listen to my latest tracks</p>
 				</button>
 			</a>
@@ -149,11 +149,14 @@
 	.gradientButtonsBottom {
 		background: linear-gradient(to bottom, var(--surface-3), var(--surface-1)) padding-box;
 	}
+	.gradientButtonsTop {
+		background: linear-gradient(to top, var(--surface-3), var(--surface-1)) padding-box;
+	}
 
 	.gradient {
 		border: 1px solid transparent;
 		background:
-			linear-gradient(to top, var(--surface-3), var(--surface-1)) padding-box,
+			linear-gradient(to left, var(--surface-3), var(--surface-1)) padding-box,
 			conic-gradient(from var(--bg-angle) in oklch longer hue, oklch(0.85 0.37 0) 0 0) border-box;
 	}
 

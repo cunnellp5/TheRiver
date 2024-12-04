@@ -70,6 +70,26 @@
 			),
 			var(--noise-4); */
 	}
+
+	section::before {
+		--size: var(--size-8);
+		--line: color-mix(in lch, canvasText, transparent 70%);
+		position: fixed;
+		top: 0;
+		transform-style: flat;
+		z-index: -1;
+		-webkit-mask: linear-gradient(-20deg, transparent 50%, white);
+		mask: linear-gradient(-20deg, transparent 50%, white);
+		background:
+			linear-gradient(90deg, var(--line) 1px, transparent 1px var(--size)) 50% 50% / var(--size)
+				var(--size),
+			linear-gradient(var(--line) 1px, transparent 1px var(--size)) 50% 50% / var(--size)
+				var(--size);
+		width: 100vw;
+		height: 100vh;
+		pointer-events: none;
+		content: '';
+	}
 	article {
 		display: grid;
 		grid-template-columns: 1fr var(--size-content-3) 1fr;
