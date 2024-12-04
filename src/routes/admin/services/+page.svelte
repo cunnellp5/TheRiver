@@ -1,31 +1,31 @@
 <script lang="ts">
-	import * as Card from '$lib/components/ui/shadcn/card';
-	import * as Table from '$lib/components/ui/shadcn/table';
+  import * as Card from "$lib/components/ui/shadcn/card";
+  import * as Table from "$lib/components/ui/shadcn/table";
 
-	let { data } = $props();
+  const { data } = $props();
 
-	const { services } = data;
+  const { services } = data;
 </script>
 
 <div class="adminIntroCardWrapper">
-	<Card.Root>
-		<Card.Header>
-			<Card.Title>Services</Card.Title>
-			<Card.Description>Create, Edit, or delete your services</Card.Description>
-		</Card.Header>
-		<Card.Content>
-			<p>todo</p>
-			<ul>
-				<li>MVP is create a way to CRUD services</li>
-				<li>dont let users start scheduling, yet</li>
-			</ul>
-		</Card.Content>
-		<Card.Footer>
-			<a href="/admin/services/create" data-sveltekit-noscroll>
-				<button class="create-button"> Add new service</button>
-			</a>
-		</Card.Footer>
-	</Card.Root>
+  <Card.Root>
+    <Card.Header>
+      <Card.Title>Services</Card.Title>
+      <Card.Description>Create, Edit, or delete your services</Card.Description>
+    </Card.Header>
+    <Card.Content>
+      <p>todo</p>
+      <ul>
+        <li>MVP is create a way to CRUD services</li>
+        <li>dont let users start scheduling, yet</li>
+      </ul>
+    </Card.Content>
+    <Card.Footer>
+      <a href="/admin/services/create" data-sveltekit-noscroll>
+        <button class="create-button"> Add new service</button>
+      </a>
+    </Card.Footer>
+  </Card.Root>
 </div>
 
 <!-- {#each Object.entries(services) as [category, listOfServices]}
@@ -56,38 +56,38 @@
 {/each} -->
 
 {#each Object.entries(services) as [category, data]}
-	<section>
-		<Table.Root>
-			<Table.Caption>{data[0].category.description}</Table.Caption>
-			<Table.Header>
-				<Table.Row>
-					<div class="table-row-header">
-						<h5>
-							{category.toUpperCase()}
-						</h5>
-						<small>{data.length} ct</small>
-					</div>
-				</Table.Row>
-			</Table.Header>
-			<Table.Body>
-				{#each data as service}
-					<Table.Row>
-						<Table.Cell>{service.name}</Table.Cell>
-						<Table.Cell>
-							<div class="price-duration">
-								<span class="price">
-									${service.price}.00
-								</span>
-								<span class="time">
-									{service.duration} min
-								</span>
-							</div>
-						</Table.Cell>
-					</Table.Row>
-				{/each}
-			</Table.Body>
-		</Table.Root>
-	</section>
+  <section>
+    <Table.Root>
+      <Table.Caption>{data[0].category.description}</Table.Caption>
+      <Table.Header>
+        <Table.Row>
+          <div class="table-row-header">
+            <h5>
+              {category.toUpperCase()}
+            </h5>
+            <small>{data.length} ct</small>
+          </div>
+        </Table.Row>
+      </Table.Header>
+      <Table.Body>
+        {#each data as service}
+          <Table.Row>
+            <Table.Cell>{service.name}</Table.Cell>
+            <Table.Cell>
+              <div class="price-duration">
+                <span class="price">
+                  ${service.price}.00
+                </span>
+                <span class="time">
+                  {service.duration} min
+                </span>
+              </div>
+            </Table.Cell>
+          </Table.Row>
+        {/each}
+      </Table.Body>
+    </Table.Root>
+  </section>
 {/each}
 
 <style>

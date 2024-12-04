@@ -1,36 +1,36 @@
 <script lang="ts">
-	import Seo from '$lib/components/SEO.svelte';
-	import Marquee from '$lib/components/ui/Marquee.svelte';
-	import { onMount } from 'svelte';
-	import HomeGallery from './components/body/HomeGallery.svelte';
-	import HomeHero from './components/body/HomeHero.svelte';
-	import HomeAbout from './components/body/HomeAbout.svelte';
-	import HomeArticles from './components/body/HomeArticles.svelte';
-	import HomeMerchSlice from './components/body/HomeMerchSlice.svelte';
+  import Seo from "$lib/components/SEO.svelte";
+  import Marquee from "$lib/components/ui/Marquee.svelte";
+  import { onMount } from "svelte";
+  import HomeAbout from "./components/body/HomeAbout.svelte";
+  import HomeArticles from "./components/body/HomeArticles.svelte";
+  import HomeGallery from "./components/body/HomeGallery.svelte";
+  import HomeHero from "./components/body/HomeHero.svelte";
+  import HomeMerchSlice from "./components/body/HomeMerchSlice.svelte";
 
-	let { data } = $props();
-	const { videoURL, articles, about } = data;
-	let visible = $state(false);
+  const { data } = $props();
+  const { videoURL, articles, about } = data;
+  let visible = $state(false);
 
-	onMount(() => {
-		visible = true;
-	});
+  onMount(() => {
+    visible = true;
+  });
 </script>
 
 <Seo
-	title={'Music, Beauty Services, Blog & Fashion - The River | Alexis'}
-	description={'Discover The River: A multifaceted artist offering music, beauty services, fashion, and more. Explore her latest tracks, music videos, blog, and unique handmade jewelry and clothing.'}
+  title="Music, Beauty Services, Blog & Fashion - The River | Alexis"
+  description="Discover The River: A multifaceted artist offering music, beauty services, fashion, and more. Explore her latest tracks, music videos, blog, and unique handmade jewelry and clothing."
 ></Seo>
 
 <main>
-	<HomeHero {videoURL} />
-	<HomeAbout />
-	<a href="/music" class="marquee">
-		<Marquee display={'NEW RELEASE - Out The Mud -'} />
-	</a>
-	<HomeArticles {articles} />
-	<HomeMerchSlice />
-	<HomeGallery />
+  <HomeHero {videoURL} />
+  <HomeAbout />
+  <a href="/music" class="marquee">
+    <Marquee display="NEW RELEASE - Out The Mud -" />
+  </a>
+  <HomeArticles {articles} />
+  <HomeMerchSlice />
+  <HomeGallery />
 </main>
 
 <style>

@@ -1,20 +1,20 @@
 <script lang="ts">
-	import type { HTMLAttributes } from 'svelte/elements';
+  import type { HTMLAttributes } from "svelte/elements";
 
-	type $$Props = HTMLAttributes<HTMLDivElement>;
+  type $$Props = HTMLAttributes<HTMLDivElement>;
 
-	interface Props {
-		class?: $$Props['class'];
-		children?: import('svelte').Snippet;
-		[key: string]: any
-	}
+  interface Props {
+    class?: $$Props["class"];
+    children?: import("svelte").Snippet;
+    [key: string]: any;
+  }
 
-	let { class: className = '', children, ...rest }: Props = $props();
-	
+  const { class: className = "", children, ...rest }: Props = $props();
+
 </script>
 
 <div class={className} {...rest}>
-	{@render children?.()}
+  {@render children?.()}
 </div>
 
 <style>

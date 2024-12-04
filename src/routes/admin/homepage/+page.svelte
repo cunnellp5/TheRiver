@@ -1,24 +1,24 @@
 <script lang="ts">
-	import * as Card from '$lib/components/ui/shadcn/card';
+  import * as Card from "$lib/components/ui/shadcn/card";
 </script>
 
 <div class="adminIntroCardWrapper">
-	<Card.Root>
-		<Card.Header>
-			<Card.Title>Home Page</Card.Title>
-			<Card.Description>Edit contents of the home page</Card.Description>
-		</Card.Header>
-		<Card.Footer>
-			<ul>
-				<a href="/admin/homepage/hero">
-					<li>🦸 Hero</li>
-				</a>
-				<a href="/admin/homepage/articles">
-					<li>🗞️ Articles</li>
-				</a>
-			</ul>
-		</Card.Footer>
-	</Card.Root>
+  <Card.Root>
+    <Card.Header>
+      <Card.Title>Home Page</Card.Title>
+      <Card.Description>Edit contents of the home page</Card.Description>
+    </Card.Header>
+    <Card.Footer>
+      <ul>
+        <a href="/admin/homepage/hero">
+          <li>🦸 Hero</li>
+        </a>
+        <a href="/admin/homepage/articles">
+          <li>🗞️ Articles</li>
+        </a>
+      </ul>
+    </Card.Footer>
+  </Card.Root>
 </div>
 
 <style>

@@ -1,65 +1,66 @@
 <script lang="ts">
-	import { onMount, onDestroy } from 'svelte';
+  import { onMount } from "svelte";
 
-	let { videos } = $props();
+  const { videos } = $props();
 
-	let slider: HTMLElement = $state();
-	let isDown = false;
-	let startX: number;
-	let scrollLeft: number;
+  let slider: HTMLElement = $state();
+  let isDown = false;
+  let startX: number;
+  let scrollLeft: number;
 
-	function handlePointerDown(e: PointerEvent) {
-		isDown = true;
-		slider.classList.add('active');
-		startX = e.pageX - slider.offsetLeft;
-		scrollLeft = slider.scrollLeft;
-	}
+  function handlePointerDown(e: PointerEvent) {
+    isDown = true;
+    slider.classList.add("active");
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+  }
 
-	function handlePointerLeave() {
-		isDown = false;
-		slider.classList.remove('active');
-	}
+  function handlePointerLeave() {
+    isDown = false;
+    slider.classList.remove("active");
+  }
 
-	function handlePointerUp() {
-		isDown = false;
-		slider.classList.remove('active');
-	}
+  function handlePointerUp() {
+    isDown = false;
+    slider.classList.remove("active");
+  }
 
-	function handlePointerMove(e: PointerEvent) {
-		if (!isDown) return;
-		e.preventDefault();
-		const x = e.pageX - slider.offsetLeft;
-		const walk = (x - startX) * 3; //scroll-fast
-		slider.scrollLeft = scrollLeft - walk;
-	}
+  function handlePointerMove(e: PointerEvent) {
+    if (!isDown)
+      return;
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 3; // scroll-fast
+    slider.scrollLeft = scrollLeft - walk;
+  }
 
-	onMount(() => {
-		slider.addEventListener('pointerdown', handlePointerDown);
-		slider.addEventListener('pointerleave', handlePointerLeave);
-		slider.addEventListener('pointerup', handlePointerUp);
-		slider.addEventListener('pointermove', handlePointerMove);
+  onMount(() => {
+    slider.addEventListener("pointerdown", handlePointerDown);
+    slider.addEventListener("pointerleave", handlePointerLeave);
+    slider.addEventListener("pointerup", handlePointerUp);
+    slider.addEventListener("pointermove", handlePointerMove);
 
-		return () => {
-			slider.removeEventListener('pointerdown', handlePointerDown);
-			slider.removeEventListener('pointerleave', handlePointerLeave);
-			slider.removeEventListener('pointerup', handlePointerUp);
-			slider.removeEventListener('pointermove', handlePointerMove);
-		};
-	});
+    return () => {
+      slider.removeEventListener("pointerdown", handlePointerDown);
+      slider.removeEventListener("pointerleave", handlePointerLeave);
+      slider.removeEventListener("pointerup", handlePointerUp);
+      slider.removeEventListener("pointermove", handlePointerMove);
+    };
+  });
 </script>
 
 <ul class="cards" bind:this={slider}>
-	{#each videos as video, i (i)}
-		<a
-			class="is-snapped-anchor"
-			target="_blank"
-			rel="noopener"
-			href={'https://www.youtube.com/watch?v=' + video.videoId}>
-			<li>
-				<img src={video.thumbnail} alt={video.title} class="thumbnail" width="800" height="800" />
-			</li>
-		</a>
-	{/each}
+  {#each videos as video, i (i)}
+    <a
+      class="is-snapped-anchor"
+      target="_blank"
+      rel="noopener"
+      href={`https://www.youtube.com/watch?v=${video.videoId}`}>
+      <li>
+        <img src={video.thumbnail} alt={video.title} class="thumbnail" width="800" height="800" />
+      </li>
+    </a>
+  {/each}
 </ul>
 
 <style>

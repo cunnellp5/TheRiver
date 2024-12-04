@@ -1,54 +1,54 @@
 <script lang="ts">
-	import { run } from 'svelte/legacy';
+  import Seo from "$lib/components/SEO.svelte";
 
-	import Seo from '$lib/components/SEO.svelte';
+  import { run } from "svelte/legacy";
 
-	let { data } = $props();
-	const { pages } = data;
+  const { data } = $props();
+  const { pages } = data;
 
-	let disabledNext = $state(false);
-	let disabledPrevious = $state(true);
-	let currentPage = $state(0);
-	run(() => {
-		disabledNext = currentPage === pages.length - 1;
-		disabledPrevious = currentPage === 0;
-	});
+  let disabledNext = $state(false);
+  let disabledPrevious = $state(true);
+  let currentPage = $state(0);
+  run(() => {
+    disabledNext = currentPage === pages.length - 1;
+    disabledPrevious = currentPage === 0;
+  });
 </script>
 
 <Seo
-	title={'Listen to the Latest Tracks by The River | Alexis'}
-	description={"Dive into the soul of The River's music. Listen to her latest tracks, watch mesmerizing music videos, and experience the artistry that flows through every note."} />
+  title="Listen to the Latest Tracks by The River | Alexis"
+  description="Dive into the soul of The River's music. Listen to her latest tracks, watch mesmerizing music videos, and experience the artistry that flows through every note." />
 <!-- card stacking effect tut -->
 <!-- https://codyhouse.co/tutorials/how-stacking-cards -->
 <h3 id="tracks">Tracks</h3>
 <div class="grid-container">
-	<div id="tracks" class="tracks">
-		{#each pages[currentPage] as track}
-			<iframe
-				title={track.title}
-				src={track.url}
-				width="100%"
-				height="300"
-				scrolling="no"
-				frameborder="no">
-			</iframe>
-		{/each}
-	</div>
-	{currentPage + 1} / {pages.length}
-	<div class="buttonWrapper">
-		<button
-			onclick={() => (currentPage = currentPage - 1)}
-			disabled={disabledPrevious}
-			class:disabled={disabledPrevious}>
-			Previous
-		</button>
-		<button
-			onclick={() => (currentPage = currentPage + 1)}
-			class:disabled={disabledNext}
-			disabled={disabledNext}>
-			Next
-		</button>
-	</div>
+  <div id="tracks" class="tracks">
+    {#each pages[currentPage] as track}
+      <iframe
+        title={track.title}
+        src={track.url}
+        width="100%"
+        height="300"
+        scrolling="no"
+        frameborder="no">
+      </iframe>
+    {/each}
+  </div>
+  {currentPage + 1} / {pages.length}
+  <div class="buttonWrapper">
+    <button
+      onclick={() => (currentPage = currentPage - 1)}
+      disabled={disabledPrevious}
+      class:disabled={disabledPrevious}>
+      Previous
+    </button>
+    <button
+      onclick={() => (currentPage = currentPage + 1)}
+      class:disabled={disabledNext}
+      disabled={disabledNext}>
+      Next
+    </button>
+  </div>
 </div>
 
 <style>

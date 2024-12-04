@@ -1,22 +1,22 @@
 <svelte:head>
-	<meta charset="UTF-8" />
-	<meta http-equiv="content-type" content="text/html;" charset="utf-8" />
-	<!--[if !mso]><!-- -->
-	<meta http-equiv="x-ua-compatible" content="IE=edge" />
-	<!--<![endif]-->
-	<meta name="viewport content=width=device-width, initial-scale=1.0" />
-	<meta name="format-detection content=telephone=no" />
-	<meta name="format-detection content=date=no" />
-	<meta name="format-detection content=address=no" />
-	<meta name="format-detection content=email=no" />
-	<meta name="x-apple-disable-message-reformatting" />
-	<link
-		href="https://fonts.googleapis.com/css?family=Poppins:ital,wght@0,400;0,500;0,600;0,700"
-		rel="stylesheet" />
-	<link href="https://fonts.googleapis.com/css?family=Raleway:ital,wght@0,600" rel="stylesheet" />
-	<title>The River</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="content-type" content="text/html;" charset="utf-8" />
+  <!-- [if !mso]><!-- -->
+  <meta http-equiv="x-ua-compatible" content="IE=edge" />
+  <!-- <![endif] -->
+  <meta name="viewport content=width=device-width, initial-scale=1.0" />
+  <meta name="format-detection content=telephone=no" />
+  <meta name="format-detection content=date=no" />
+  <meta name="format-detection content=address=no" />
+  <meta name="format-detection content=email=no" />
+  <meta name="x-apple-disable-message-reformatting" />
+  <link
+    href="https://fonts.googleapis.com/css?family=Poppins:ital,wght@0,400;0,500;0,600;0,700"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Raleway:ital,wght@0,600" rel="stylesheet" />
+  <title>The River</title>
 
-	<style>
+  <style>
 		html,
 		body {
 			margin: 0 !important;
@@ -108,7 +108,7 @@
 		}
 	</style>
 
-	<style>
+  <style>
 		@media (max-width: 620px) {
 			.pc-project-body {
 				min-width: 0px !important;
@@ -487,8 +487,8 @@
 		}
 	</style>
 
-	<!--[if !mso]><!-- -->
-	<style>
+  <!-- [if !mso]><!-- -->
+  <style>
 		@media all {
 			@font-face {
 				font-style: normal;
@@ -532,21 +532,21 @@
 			}
 		}
 	</style>
-	<!--<![endif]-->
+  <!-- <![endif] -->
 
-	<!--[if mso]>
+  <!-- [if mso]>
   <style type="text/css">
       .pc-font-alt {
           font-family: Arial, Helvetica, sans-serif !important;
       }
   </style>
-  <![endif]-->
-	<!--[if gte mso 9]>
+  <![endif] -->
+  <!-- [if gte mso 9]>
   <xml>
       <o:OfficeDocumentSettings>
           <o:AllowPNG/>
           <o:PixelsPerInch>96</o:PixelsPerInch>
       </o:OfficeDocumentSettings>
   </xml>
-  <![endif]-->
+  <![endif] -->
 </svelte:head>

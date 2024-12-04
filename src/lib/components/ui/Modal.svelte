@@ -1,60 +1,61 @@
 <script lang="ts">
-	import { run, self, createBubbler, stopPropagation } from 'svelte/legacy';
+  import { createBubbler, run, self, stopPropagation } from "svelte/legacy";
 
-	const bubble = createBubbler();
-	import { createEventDispatcher } from 'svelte';
+  const bubble = createBubbler();
+  import { createEventDispatcher } from "svelte";
 
-	interface Props {
-		showModal: boolean;
-		overrideButtons?: boolean;
-		header?: import('svelte').Snippet;
-		children?: import('svelte').Snippet;
-		buttons?: import('svelte').Snippet;
-	}
+  interface Props {
+    showModal: boolean;
+    overrideButtons?: boolean;
+    header?: import("svelte").Snippet;
+    children?: import("svelte").Snippet;
+    buttons?: import("svelte").Snippet;
+  }
 
-	let {
-		showModal = $bindable(),
-		overrideButtons = false,
-		header,
-		children,
-		buttons
-	}: Props = $props();
-	// export let buttonText: string = 'Close';
+  let {
+    showModal = $bindable(),
+    overrideButtons = false,
+    header,
+    children,
+    buttons,
+  }: Props = $props();
+  // export let buttonText: string = 'Close';
 
-	const dispatch = createEventDispatcher();
+  const dispatch = createEventDispatcher();
 
-	let dialog: HTMLDialogElement = $state();
+  let dialog: HTMLDialogElement = $state();
 
-	run(() => {
-		if (dialog && showModal === true) {
-			dialog.showModal();
-		} else if (dialog && showModal === false) {
-			dialog.close();
-		}
-	});
+  run(() => {
+    if (dialog && showModal === true) {
+      dialog.showModal();
+    }
+    else if (dialog && showModal === false) {
+      dialog.close();
+    }
+  });
 </script>
 
 <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_noninteractive_element_interactions -->
 <dialog
-	bind:this={dialog}
-	onclose={() => {
-		showModal = false;
-		dispatch('close');
-	}}
-	onclick={self(() => dialog.close())}>
-	<!-- svelte-ignore a11y_no_static_element_interactions -->
-	<div onclick={stopPropagation(bubble('click'))}>
-		{@render header?.()}
-		<hr />
-		{@render children?.()}
-		<hr />
-		{#if overrideButtons}
-			{@render buttons?.()}
-		{/if}
-		{#if !overrideButtons}
-			<button onclick={() => dialog.close()}>Close</button>
-		{/if}
-	</div>
+  bind:this={dialog}
+  onclose={() => {
+    showModal = false;
+    dispatch("close");
+  }}
+  onclick={self(() => dialog.close())}>
+  <!-- svelte-ignore a11y_no_static_element_interactions -->
+  <div onclick={stopPropagation(bubble("click"))}>
+    {@render header?.()}
+    <hr />
+    {@render children?.()}
+    <hr />
+    {#if overrideButtons}
+      {@render buttons?.()}
+    {/if}
+    {#if !overrideButtons}
+      <button onclick={() => dialog.close()}>Close</button>
+    {/if}
+  </div>
 </dialog>
 
 <style>

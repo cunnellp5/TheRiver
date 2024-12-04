@@ -1,22 +1,22 @@
 <script lang="ts">
-	interface Props {
-		crumbs?: { name: string; link: string }[];
-	}
+  interface Props {
+    crumbs?: { name: string; link: string }[];
+  }
 
-	let { crumbs = [] }: Props = $props();
+  const { crumbs = [] }: Props = $props();
 </script>
 
 {#each crumbs as { name, link }, index (link)}
-	<span>
-		{#if index < crumbs.length - 1}
-			<a href={link}>{name}</a>
-		{:else}
-			{name}
-		{/if}
-		{#if index < crumbs.length - 1}
-			&rsaquo;
-		{/if}
-	</span>
+  <span>
+    {#if index < crumbs.length - 1}
+      <a href={link}>{name}</a>
+    {:else}
+      {name}
+    {/if}
+    {#if index < crumbs.length - 1}
+      &rsaquo;
+    {/if}
+  </span>
 {/each}
 
 <style>

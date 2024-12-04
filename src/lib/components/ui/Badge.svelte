@@ -1,20 +1,20 @@
 <script lang="ts">
-	interface Props {
-		tag: string;
-		prefix?: string | null;
-		children?: import('svelte').Snippet;
-	}
+  interface Props {
+    tag: string;
+    prefix?: string | null;
+    children?: import("svelte").Snippet;
+  }
 
-	let { tag, prefix = null, children }: Props = $props();
+  const { tag, prefix = null, children }: Props = $props();
 </script>
 
 {#if prefix}
-	<span class="badge">{tag}</span>
+  <span class="badge">{tag}</span>
 {:else}
-	<span class="badge">
-		{tag}
-		{@render children?.()}
-	</span>
+  <span class="badge">
+    {tag}
+    {@render children?.()}
+  </span>
 {/if}
 
 <style>

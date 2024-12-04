@@ -1,28 +1,27 @@
 <script lang="ts">
-	import type { HTMLTableAttributes } from 'svelte/elements';
+  import type { HTMLTableAttributes } from "svelte/elements";
 
+  type $$Props = HTMLTableAttributes;
 
-	type $$Props = HTMLTableAttributes;
+  interface Props {
+    captionLocation?: string;
+    class?: $$Props["class"];
+    children?: import("svelte").Snippet;
+    [key: string]: any;
+  }
 
-	interface Props {
-		captionLocation?: string;
-		class?: $$Props['class'];
-		children?: import('svelte').Snippet;
-		[key: string]: any
-	}
+  const { captionLocation = "bottom", class: className = "", children, ...rest }: Props = $props();
 
-	let { captionLocation = 'bottom', class: className = '', children, ...rest }: Props = $props();
-	
 </script>
 
 <div class="relative w-full overflow-auto">
-	<table
-		class:caption-bottom={captionLocation === 'bottom'}
-		class:caption-top={captionLocation === 'top'}
-		class={`w-full text-sm ${className}`}
-		{...rest}>
-		{@render children?.()}
-	</table>
+  <table
+    class:caption-bottom={captionLocation === "bottom"}
+    class:caption-top={captionLocation === "top"}
+    class={`w-full text-sm ${className}`}
+    {...rest}>
+    {@render children?.()}
+  </table>
 </div>
 
 <style>

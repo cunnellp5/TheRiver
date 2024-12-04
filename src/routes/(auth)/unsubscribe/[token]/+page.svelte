@@ -1,72 +1,73 @@
 <script lang="ts">
-	import { addToast } from '$lib/stores/toast';
-	import { enhance } from '$app/forms';
-	import { LoaderCircle } from 'lucide-svelte';
-	import type { LayoutData } from './$types';
+  import type { LayoutData } from "./$types";
+  import { enhance } from "$app/forms";
+  import { addToast } from "$lib/stores/toast";
+  import { LoaderCircle } from "lucide-svelte";
 
-	// const { newsLetter } = $props();
-	let { data }: { data: LayoutData } = $props();
+  // const { newsLetter } = $props();
+  const { data }: { data: LayoutData } = $props();
 
-	let emailInput = $state(data.newsLetter.email);
-	let loading = $state(false);
-	let errorMessage = $state('');
-	let tokenInput = $state(data.newsLetter.token);
+  let emailInput = $state(data.newsLetter.email);
+  let loading = $state(false);
+  let errorMessage = $state("");
+  let tokenInput = $state(data.newsLetter.token);
 
-	let disabled = $derived(emailInput.length === 0);
+  const disabled = $derived(emailInput.length === 0);
 </script>
 
 <section class="app-layout">
-	<section class="breaker">
-		<h1>Un&#8203;sub&#8203;scribe</h1>
-		<p>Enter email to unsubscribe from the newsletter</p>
-	</section>
+  <section class="breaker">
+    <h1>Un&#8203;sub&#8203;scribe</h1>
+    <p>Enter email to unsubscribe from the newsletter</p>
+  </section>
 
-	<form
-		method="POST"
-		class="column"
-		use:enhance={async ({}) => {
-			loading = true;
-			return async ({ result, update }) => {
-				if (result.status === 302) {
-					addToast({
-						message: 'Unsubscribed',
-						type: 'message',
-						iconType: 'warning',
-						dismissible: true,
-						timeout: 5000
-					});
-				} else {
-					errorMessage = result?.data?.message || 'An error occurred';
-				}
-				update();
-				loading = false;
-			};
-		}}>
-		<div class="column">
-			<!-- <label for="email">Email</label> -->
-			<input
-				bind:value={emailInput}
-				type="email"
-				name="email"
-				id="email"
-				placeholder="Enter email"
-				required />
-			<input bind:value={tokenInput} type="hidden" name="token" id="token" required />
-			{#if errorMessage}
-				<span class="errorMessage">errorMessage</span>
-			{/if}
-		</div>
-		{#if loading}
-			<button disabled={loading}>
-				<div class="spinner">
-					<LoaderCircle />
-				</div>
-				Loading
-			</button>
-		{:else}
-			<button class="delete-button" type="submit" {disabled}>Un&#8203;sub&#8203;scribe</button>
-		{/if}
-	</form>
+  <form
+    method="POST"
+    class="column"
+    use:enhance={async ({}) => {
+      loading = true;
+      return async ({ result, update }) => {
+        if (result.status === 302) {
+          addToast({
+            message: "Unsubscribed",
+            type: "message",
+            iconType: "warning",
+            dismissible: true,
+            timeout: 5000,
+          });
+        }
+        else {
+          errorMessage = result?.data?.message || "An error occurred";
+        }
+        update();
+        loading = false;
+      };
+    }}>
+    <div class="column">
+      <!-- <label for="email">Email</label> -->
+      <input
+        bind:value={emailInput}
+        type="email"
+        name="email"
+        id="email"
+        placeholder="Enter email"
+        required />
+      <input bind:value={tokenInput} type="hidden" name="token" id="token" required />
+      {#if errorMessage}
+        <span class="errorMessage">errorMessage</span>
+      {/if}
+    </div>
+    {#if loading}
+      <button disabled={loading}>
+        <div class="spinner">
+          <LoaderCircle />
+        </div>
+        Loading
+      </button>
+    {:else}
+      <button class="delete-button" type="submit" {disabled}>Un&#8203;sub&#8203;scribe</button>
+    {/if}
+  </form>
 </section>
 
 <style>

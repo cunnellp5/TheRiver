@@ -1,42 +1,42 @@
 <script lang="ts">
-	import * as Table from '$lib/components/ui/shadcn/table';
-	import * as Card from '$lib/components/ui/shadcn/card';
+  import * as Card from "$lib/components/ui/shadcn/card";
+  import * as Table from "$lib/components/ui/shadcn/table";
 
-	let { data } = $props();
-	const { tracks } = data;
+  const { data } = $props();
+  const { tracks } = data;
 </script>
 
 <div class="adminIntroCardWrapper">
-	<Card.Root>
-		<Card.Header>
-			<Card.Title>Tracks</Card.Title>
-			<Card.Description>
-				This page shows a list of current Tracks being rendered from Soundcloud
-			</Card.Description>
-		</Card.Header>
-	</Card.Root>
+  <Card.Root>
+    <Card.Header>
+      <Card.Title>Tracks</Card.Title>
+      <Card.Description>
+        This page shows a list of current Tracks being rendered from Soundcloud
+      </Card.Description>
+    </Card.Header>
+  </Card.Root>
 </div>
 
 {#if data}
-	<Table.Root>
-		<Table.Caption>A list of your SoundCloud tracks.</Table.Caption>
-		<Table.Header>
-			<Table.Row>
-				<Table.Head>Title</Table.Head>
-				<Table.Head>Order</Table.Head>
-			</Table.Row>
-		</Table.Header>
-		<Table.Body>
-			{#each tracks as track}
-				<Table.Row>
-					<Table.Cell>{track.title}</Table.Cell>
-					<Table.Cell>{track.order}</Table.Cell>
-				</Table.Row>
-			{/each}
-		</Table.Body>
-	</Table.Root>
+  <Table.Root>
+    <Table.Caption>A list of your SoundCloud tracks.</Table.Caption>
+    <Table.Header>
+      <Table.Row>
+        <Table.Head>Title</Table.Head>
+        <Table.Head>Order</Table.Head>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      {#each tracks as track}
+        <Table.Row>
+          <Table.Cell>{track.title}</Table.Cell>
+          <Table.Cell>{track.order}</Table.Cell>
+        </Table.Row>
+      {/each}
+    </Table.Body>
+  </Table.Root>
 {:else}
-	<p>no tracks</p>
+  <p>no tracks</p>
 {/if}
 
 <style>

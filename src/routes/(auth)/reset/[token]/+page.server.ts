@@ -1,51 +1,54 @@
-import db from '$lib/server/database';
-import { error, fail, redirect, type Actions } from '@sveltejs/kit';
-import { ValiError, parse } from 'valibot';
-import { PasswordSchema } from '$lib/utils/Valibot/PassSchema';
-import { Argon2id } from 'oslo/password';
-import { logout } from '$lib/server/controllers/logout';
-import type { PageServerLoad } from './$types';
-import { login } from '$lib/server/controllers/login';
+import type { ValiError } from "valibot";
+import type { PageServerLoad } from "./$types";
+import { login } from "$lib/server/controllers/login";
+import { logout } from "$lib/server/controllers/logout";
+import db from "$lib/server/database";
+import { PasswordSchema } from "$lib/utils/Valibot/PassSchema";
+import { type Actions, error, fail, redirect } from "@sveltejs/kit";
+import { Argon2id } from "oslo/password";
+import { parse } from "valibot";
 
 export const load: PageServerLoad = async (event) => {
-	const { token } = event.params;
+  const { token } = event.params;
 
-	let foundToken = null;
+  let foundToken = null;
 
-	try {
-		foundToken = await db.resetPasswordSession.findFirst({
-			where: { token }
-		});
-	} catch (err) {
-		// TODO if an actual error, should consider doing something more helpful here
-		redirect(302, '/reset');
-	}
-	// cannot redirect inside try catch!
-	// if one doesnt exist or its stale, redirect
-	if (!foundToken) {
-		redirect(302, '/reset');
-	}
+  try {
+    foundToken = await db.resetPasswordSession.findFirst({
+      where: { token },
+    });
+  }
+  catch (err) {
+    // TODO if an actual error, should consider doing something more helpful here
+    redirect(302, "/reset");
+  }
+  // cannot redirect inside try catch!
+  // if one doesnt exist or its stale, redirect
+  if (!foundToken) {
+    redirect(302, "/reset");
+  }
 
-	// find related user, and return the email at least
-	let user = null;
-	try {
-		user = await db.user.findFirst({
-			where: { id: foundToken.userId }
-		});
-	} catch (err) {
-		// TODO if an actual error, should consider doing something more helpful here
-		redirect(302, '/reset');
-	}
+  // find related user, and return the email at least
+  let user = null;
+  try {
+    user = await db.user.findFirst({
+      where: { id: foundToken.userId },
+    });
+  }
+  catch (err) {
+    // TODO if an actual error, should consider doing something more helpful here
+    redirect(302, "/reset");
+  }
 
-	// cannot redirect inside try catch!
-	if (!user) {
-		redirect(302, '/reset');
-	}
+  // cannot redirect inside try catch!
+  if (!user) {
+    redirect(302, "/reset");
+  }
 
-	return {
-		status: 200,
-		email: user.email
-	};
+  return {
+    status: 200,
+    email: user.email,
+  };
 };
 
 // Instructions
@@ -58,78 +61,83 @@ export const load: PageServerLoad = async (event) => {
 // redirect to login!
 
 export const actions: Actions = {
-	// eslint-disable-next-line consistent-return
-	default: async (event) => {
-		const formData = await event.request.formData();
 
-		const email = formData.get('email') as string;
-		const password = formData.get('password') as string;
-		const confirm = formData.get('confirm');
+  default: async (event) => {
+    const formData = await event.request.formData();
 
-		if (!email || !password || !confirm || confirm !== password) {
-			return fail(400, { message: 'Please fill out all fields' });
-		}
+    const email = formData.get("email") as string;
+    const password = formData.get("password") as string;
+    const confirm = formData.get("confirm");
 
-		// TODO use ValidateInputs helper fn
-		try {
-			parse(PasswordSchema, {
-				password,
-				confirm
-			});
-		} catch (err) {
-			const errors = err as ValiError<typeof PasswordSchema>;
-			return fail(400, {
-				message: errors.message
-			});
-		}
+    if (!email || !password || !confirm || confirm !== password) {
+      return fail(400, { message: "Please fill out all fields" });
+    }
 
-		let hashedPassword = null;
+    // TODO use ValidateInputs helper fn
+    try {
+      parse(PasswordSchema, {
+        password,
+        confirm,
+      });
+    }
+    catch (err) {
+      const errors = err as ValiError<typeof PasswordSchema>;
+      return fail(400, {
+        message: errors.message,
+      });
+    }
 
-		try {
-			hashedPassword = await new Argon2id().hash(password);
-		} catch (err) {
-			error(500, { message: 'Something unexpected occured' });
-		}
+    let hashedPassword = null;
 
-		let existingUser = null;
+    try {
+      hashedPassword = await new Argon2id().hash(password);
+    }
+    catch (err) {
+      error(500, { message: "Something unexpected occured" });
+    }
 
-		// Fetch user from the database, first grabbing user to atomically update DB
-		try {
-			existingUser = await db.user.findUnique({ where: { email } });
-		} catch (err) {
-			error(404, { message: 'User not found' });
-		}
+    let existingUser = null;
 
-		if (!existingUser) {
-			// return redirect(302, '/reset');
-		}
+    // Fetch user from the database, first grabbing user to atomically update DB
+    try {
+      existingUser = await db.user.findUnique({ where: { email } });
+    }
+    catch (err) {
+      error(404, { message: "User not found" });
+    }
 
-		// Invalidate/delete old session if user is logged in
-		if (event.locals.session) {
-			await logout(event);
-		}
+    if (!existingUser) {
+      // return redirect(302, '/reset');
+    }
 
-		// Atomically update user and delete reset password session
-		try {
-			await db.$transaction([
-				db.user.update({
-					where: { email },
-					data: { hashedPassword }
-				}),
-				db.resetPasswordSession.delete({
-					where: { userId: existingUser.id }
-				})
-			]);
-			// set session and log user in
-			try {
-				await login({ userId: existingUser.id, event });
-			} catch (err) {
-				error(500, { message: 'Failed to create session' });
-			}
-		} catch {
-			error(500, { message: 'Failed to update user' });
-		}
+    // Invalidate/delete old session if user is logged in
+    if (event.locals.session) {
+      await logout(event);
+    }
 
-		return { status: 200, redirect: '/dashboard', message: 'Password updated' };
-	}
+    // Atomically update user and delete reset password session
+    try {
+      await db.$transaction([
+        db.user.update({
+          where: { email },
+          data: { hashedPassword },
+        }),
+        db.resetPasswordSession.delete({
+          where: { userId: existingUser.id },
+        }),
+      ]);
+      // set session and log user in
+      try {
+        await login({ userId: existingUser.id, event });
+      }
+      catch (err) {
+        error(500, { message: "Failed to create session" });
+      }
+    }
+    catch {
+      error(500, { message: "Failed to update user" });
+    }
+
+    return { status: 200, redirect: "/dashboard", message: "Password updated" };
+  },
 };

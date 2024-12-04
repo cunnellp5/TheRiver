@@ -1,26 +1,26 @@
-import type { InferOutput } from 'valibot';
-import { object, string, url, nonEmpty, pipe } from 'valibot';
+import type { InferOutput } from "valibot";
+import { nonEmpty, object, pipe, string, url } from "valibot";
 
 export const ArticleSchema = object({
-	articleTitle: pipe(
-		string('Your article title must be a string.'),
-		nonEmpty('Please enter your article title.')
-	),
+  articleTitle: pipe(
+    string("Your article title must be a string."),
+    nonEmpty("Please enter your article title."),
+  ),
 
-	author: pipe(string('Your author must be a string.'), nonEmpty('Please enter your author.')),
+  author: pipe(string("Your author must be a string."), nonEmpty("Please enter your author.")),
 
-	description: pipe(
-		string('Your description must be a string.'),
-		nonEmpty('Please enter your description.')
-	),
+  description: pipe(
+    string("Your description must be a string."),
+    nonEmpty("Please enter your description."),
+  ),
 
-	img: pipe(string('Your img must be a string.'), nonEmpty('Please enter your img.')),
+  img: pipe(string("Your img must be a string."), nonEmpty("Please enter your img.")),
 
-	link: pipe(
-		string('Your link must be a string.'),
-		nonEmpty('Please enter your link.'),
-		url('Please enter a valid URL.')
-	)
+  link: pipe(
+    string("Your link must be a string."),
+    nonEmpty("Please enter your link."),
+    url("Please enter a valid URL."),
+  ),
 });
 
 export type ArticleValidator = InferOutput<typeof ArticleSchema>;

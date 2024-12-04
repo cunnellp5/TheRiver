@@ -1,56 +1,56 @@
-import { vi, type Mock } from 'vitest';
-import type CookiesMock from './CookiesMock';
-import type RequestMock from './RequestMock';
-import type { RouteParams } from '../../../routes/$types';
+import type { RouteParams } from "../../../routes/$types";
+import type CookiesMock from "./CookiesMock";
+import type RequestMock from "./RequestMock";
+import { type Mock, vi } from "vitest";
 
 export default class MockedEvent {
-	request: RequestMock;
+  request: RequestMock;
 
-	cookies: CookiesMock;
+  cookies: CookiesMock;
 
-	fetch: (input: RequestInfo | URL, init?: RequestInit) => Promise<Response>;
+  fetch: (input: RequestInfo | URL, init?: RequestInit) => Promise<Response>;
 
-	getClientAddress: () => string;
+  getClientAddress: () => string;
 
-	locals: { session: null; user: null };
+  locals: { session: null; user: null };
 
-	params: RouteParams;
+  params: RouteParams;
 
-	platform: string;
+  platform: string;
 
-	route: { id: '/(auth)/signup' }; // Change the type of the 'id' property to '"/(auth)/signup"'
+  route: { id: "/(auth)/signup" }; // Change the type of the 'id' property to '"/(auth)/signup"'
 
-	setHeaders: Mock;
+  setHeaders: Mock;
 
-	url: URL;
+  url: URL;
 
-	isDataRequest: boolean;
+  isDataRequest: boolean;
 
-	isSubRequest: boolean;
+  isSubRequest: boolean;
 
-	constructor(
-		request: RequestMock,
-		cookies: CookiesMock,
-		platform = 'testPlatform',
+  constructor(
+    request: RequestMock,
+    cookies: CookiesMock,
+		platform = "testPlatform",
 		isDataRequest = false,
-		isSubRequest = false
-	) {
-		this.request = request;
-		this.cookies = cookies;
-		this.fetch = vi.fn().mockResolvedValue(new Response());
-		this.getClientAddress = () => '127.0.0.1';
-		this.locals = {
-			session: null,
-			user: null
-		};
-		this.params = {};
-		this.platform = platform;
-		this.route = {
-			id: '/(auth)/signup' // Now you can assign a '"/(auth)/signup"' to 'id'
-		}; // Fix: Update the type of the 'id' property to be an empty string
-		this.setHeaders = vi.fn();
-		this.url = new URL('http://localhost/');
-		this.isDataRequest = isDataRequest;
-		this.isSubRequest = isSubRequest;
-	}
+		isSubRequest = false,
+  ) {
+    this.request = request;
+    this.cookies = cookies;
+    this.fetch = vi.fn().mockResolvedValue(new Response());
+    this.getClientAddress = () => "127.0.0.1";
+    this.locals = {
+      session: null,
+      user: null,
+    };
+    this.params = {};
+    this.platform = platform;
+    this.route = {
+      id: "/(auth)/signup", // Now you can assign a '"/(auth)/signup"' to 'id'
+    }; // Fix: Update the type of the 'id' property to be an empty string
+    this.setHeaders = vi.fn();
+    this.url = new URL("http://localhost/");
+    this.isDataRequest = isDataRequest;
+    this.isSubRequest = isSubRequest;
+  }
 }

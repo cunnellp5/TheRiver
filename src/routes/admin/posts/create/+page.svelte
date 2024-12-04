@@ -1,9 +1,9 @@
 <script lang="ts">
-	import PostsForm from '../components/PostsForm.svelte';
+  import PostsForm from "../components/PostsForm.svelte";
 </script>
 
 <section>
-	<PostsForm />
+  <PostsForm />
 </section>
 
 <style>

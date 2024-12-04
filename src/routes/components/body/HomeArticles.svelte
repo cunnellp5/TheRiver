@@ -1,21 +1,21 @@
 <script lang="ts">
-	import Card from '$lib/components/ui/Card.svelte';
-	import * as GenericCard from '$lib/components/ui/shadcn/card';
-	let { articles } = $props();
+  import Card from "$lib/components/ui/Card.svelte";
+
+  const { articles } = $props();
 </script>
 
 <section class="article-wrapper">
-	<h2>Articles</h2>
-	{#each articles as article}
-		<Card
-			author={article.author}
-			articleImage={article.img}
-			articleTitle={article.articleTitle}
-			description={article.description}
-			buttons={null}
-			link={article.link}>
-		</Card>
-	{/each}
+  <h2>Articles</h2>
+  {#each articles as article}
+    <Card
+      author={article.author}
+      articleImage={article.img}
+      articleTitle={article.articleTitle}
+      description={article.description}
+      buttons={null}
+      link={article.link}>
+    </Card>
+  {/each}
 </section>
 
 <style>

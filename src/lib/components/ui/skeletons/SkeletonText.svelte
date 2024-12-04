@@ -1,16 +1,16 @@
 <script lang="ts">
-	interface Props {
-		short?: boolean;
-		title?: boolean;
-	}
+  interface Props {
+    short?: boolean;
+    title?: boolean;
+  }
 
-	let { short = false, title = false }: Props = $props();
+  const { short = false, title = false }: Props = $props();
 </script>
 
 <div
-	class="skeleton skeleton-text"
-	class:skeleton-text-short={short}
-	class:skeleton-text-title={title}>
+  class="skeleton skeleton-text"
+  class:skeleton-text-short={short}
+  class:skeleton-text-title={title}>
 </div>
 
 <style>

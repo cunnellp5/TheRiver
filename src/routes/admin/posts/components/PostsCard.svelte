@@ -1,55 +1,55 @@
 <script lang="ts">
-	import Badge from '$lib/components/ui/Badge.svelte';
-	import formatDate from '$lib/utils/formatDate';
-	import SquareArrowOurUpRight from 'lucide-svelte/icons/square-arrow-out-up-right';
+  import Badge from "$lib/components/ui/Badge.svelte";
+  import formatDate from "$lib/utils/formatDate";
+  import SquareArrowOurUpRight from "lucide-svelte/icons/square-arrow-out-up-right";
 
-	interface Props {
-		title: string;
-		tags: string[];
-		createdAt: Date;
-		slug: string;
-		description: string;
-		allowSlot?: boolean;
-		link?: string;
-		children?: import('svelte').Snippet;
-	}
+  interface Props {
+    title: string;
+    tags: string[];
+    createdAt: Date;
+    slug: string;
+    description: string;
+    allowSlot?: boolean;
+    link?: string;
+    children?: import("svelte").Snippet;
+  }
 
-	let {
-		title,
-		tags,
-		createdAt,
-		slug,
-		description,
-		allowSlot = false,
-		link = `/posts/${slug}`,
-		children
-	}: Props = $props();
+  const {
+    title,
+    tags,
+    createdAt,
+    slug,
+    description,
+    allowSlot = false,
+    link = `/posts/${slug}`,
+    children,
+  }: Props = $props();
 </script>
 
 <div class="card surface-4">
-	<div>
-		<h5>
-			<a href={link} data-sveltekit-noscroll>
-				{title}
-			</a>
-		</h5>
-		<date>{formatDate(new Date(createdAt))}</date>
-	</div>
-	<p class="description">
-		{description}
-	</p>
-	<div class="tags">
-		{#each tags as tag}
-			<Badge {tag} />
-		{/each}
-	</div>
-	<a class="blogLink" href={link}>
-		<SquareArrowOurUpRight size="10" />
-		Read more
-	</a>
-	{#if allowSlot}
-		{@render children?.()}
-	{/if}
+  <div>
+    <h5>
+      <a href={link} data-sveltekit-noscroll>
+        {title}
+      </a>
+    </h5>
+    <date>{formatDate(new Date(createdAt))}</date>
+  </div>
+  <p class="description">
+    {description}
+  </p>
+  <div class="tags">
+    {#each tags as tag}
+      <Badge {tag} />
+    {/each}
+  </div>
+  <a class="blogLink" href={link}>
+    <SquareArrowOurUpRight size="10" />
+    Read more
+  </a>
+  {#if allowSlot}
+    {@render children?.()}
+  {/if}
 </div>
 
 <style>

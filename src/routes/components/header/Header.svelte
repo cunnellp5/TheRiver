@@ -1,16 +1,16 @@
 <script lang="ts">
-	import NavDesktop from './NavDesktop.svelte';
-	import NavMobile from './NavMobile.svelte';
-	import NavSheet from './NavSheet.svelte';
+  import NavDesktop from "./nav-desktop.svelte";
+  import NavMobile from "./nav-mobile.svelte";
+  import NavSheet from "./nav-sheet.svelte";
 
-	interface Props {
-		isSignedIn?: boolean;
-		user: any;
-	}
+  interface Props {
+    isSignedIn?: boolean;
+    user: any;
+  }
 
-	let { isSignedIn = false, user }: Props = $props();
+  const { isSignedIn = false, user }: Props = $props();
 
-	let showSheet = $state(false);
+  let showSheet = $state(false);
 </script>
 
 <!--
@@ -18,41 +18,47 @@
  NavMobile just shows the hamburger icon for mobile devices
 -->
 <section class="app-layout">
-	<NavSheet {user} {isSignedIn} show={showSheet} on:handleClose={() => (showSheet = false)} />
+  <NavSheet
+    {user}
+    {isSignedIn}
+    show={showSheet}
+    on:handleClose={() => (showSheet = false)} />
 
-	<nav class="nav-desktop">
-		<NavDesktop {user} {isSignedIn}></NavDesktop>
-	</nav>
+  <nav class="nav-desktop">
+    <NavDesktop
+      {user}
+      {isSignedIn}></NavDesktop>
+  </nav>
 
-	<nav class="nav-mobile">
-		<NavMobile on:openSheet={() => (showSheet = true)}></NavMobile>
-	</nav>
+  <nav class="nav-mobile">
+    <NavMobile on:openSheet={() => (showSheet = true)}></NavMobile>
+  </nav>
 </section>
 
 <style>
-	/* ELEMENTS */
-	nav {
-		align-items: center;
-		padding-block: var(--size-2);
-	}
-	/* CLASSES */
-	.nav-desktop {
-		display: none;
-	}
-	.nav-mobile {
-		display: flex;
-		justify-content: space-between;
-	}
-	/* QUERIES */
-	@media (min-width: 768px) {
-		nav {
-			justify-content: space-between;
-		}
-		.nav-desktop {
-			display: flex;
-		}
-		.nav-mobile {
-			display: none;
-		}
-	}
+  /* ELEMENTS */
+  nav {
+    align-items: center;
+    padding-block: var(--size-2);
+  }
+  /* CLASSES */
+  .nav-desktop {
+    display: none;
+  }
+  .nav-mobile {
+    display: flex;
+    justify-content: space-between;
+  }
+  /* QUERIES */
+  @media (min-width: 768px) {
+    nav {
+      justify-content: space-between;
+    }
+    .nav-desktop {
+      display: flex;
+    }
+    .nav-mobile {
+      display: none;
+    }
+  }
 </style>

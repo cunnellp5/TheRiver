@@ -1,41 +1,41 @@
 <script lang="ts">
-	import * as Card from '$lib/components/ui/shadcn/card';
+  import * as Card from "$lib/components/ui/shadcn/card";
 
-	let { data } = $props();
+  const { data } = $props();
 
-	const { users } = data;
+  const { users } = data;
 </script>
 
 <div class="adminIntroCardWrapper">
-	<Card.Root>
-		<Card.Header>
-			<Card.Title>Users</Card.Title>
-			<Card.Description>List of users</Card.Description>
-		</Card.Header>
-	</Card.Root>
+  <Card.Root>
+    <Card.Header>
+      <Card.Title>Users</Card.Title>
+      <Card.Description>List of users</Card.Description>
+    </Card.Header>
+  </Card.Root>
 </div>
 
 <table>
-	<thead>
-		<tr>
-			<th>count</th>
-			<th>Email</th>
-			<th>firstName</th>
-			<th>lastName</th>
-			<th>isAdmin</th>
-		</tr>
-	</thead>
-	<tbody>
-		{#each users as user, id}
-			<tr>
-				<td>{id + 1}</td>
-				<td>{user.email}</td>
-				<td>{user.firstName}</td>
-				<td>{user.lastName}</td>
-				<td class:admin={user.isAdmin} class:defaultUser={!user.isAdmin}>{user.isAdmin}</td>
-			</tr>
-		{/each}
-	</tbody>
+  <thead>
+    <tr>
+      <th>count</th>
+      <th>Email</th>
+      <th>firstName</th>
+      <th>lastName</th>
+      <th>isAdmin</th>
+    </tr>
+  </thead>
+  <tbody>
+    {#each users as user, id}
+      <tr>
+        <td>{id + 1}</td>
+        <td>{user.email}</td>
+        <td>{user.firstName}</td>
+        <td>{user.lastName}</td>
+        <td class:admin={user.isAdmin} class:defaultUser={!user.isAdmin}>{user.isAdmin}</td>
+      </tr>
+    {/each}
+  </tbody>
 </table>
 
 <style>

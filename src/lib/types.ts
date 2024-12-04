@@ -5,22 +5,22 @@ export type View = App.View;
 export type Resource = App.Resource;
 export type Event = App.Event;
 
-export type SparkleType = {
-	id: string;
-	createdAt: number;
-	color: string;
-	size: number;
-	style: any;
-};
+export interface SparkleType {
+  id: string;
+  createdAt: number;
+  color: string;
+  size: number;
+  style: any;
+}
 
-export type BlogPost = {
-	id: number;
-	createdAt: Date;
-	updatedAt: Date;
-	title: string;
-	content: string;
-	description: string;
-	slug: string;
-	published: boolean;
-	tags: string[];
-};
+export interface BlogPost {
+  id: number;
+  createdAt: Date;
+  updatedAt: Date;
+  title: string;
+  content: string;
+  description: string;
+  slug: string;
+  published: boolean;
+  tags: string[];
+}

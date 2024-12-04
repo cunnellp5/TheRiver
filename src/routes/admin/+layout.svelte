@@ -1,61 +1,61 @@
 <script lang="ts">
-	import { run } from 'svelte/legacy';
-	import BreadCrumb from '$lib/components/ui/BreadCrumb.svelte';
-	import { browser } from '$app/environment';
-	import { page } from '$app/stores';
-	import adminLinks from './adminLinks';
+  import { browser } from "$app/environment";
+  import { page } from "$app/stores";
+  import BreadCrumb from "$lib/components/ui/BreadCrumb.svelte";
+  import { run } from "svelte/legacy";
+  import adminLinks from "./adminLinks";
 
-	interface Props {
-		children?: import('svelte').Snippet;
-	}
+  interface Props {
+    children?: import("svelte").Snippet;
+  }
 
-	let { children }: Props = $props();
+  const { children }: Props = $props();
 
-	let crumbs: { name: string; link: string }[] = $state([]);
+  let crumbs: { name: string; link: string }[] = $state([]);
 
-	run(() => {
-		if (browser) {
-			const pathnames = $page.url.pathname.split('/').filter(Boolean);
-			crumbs = pathnames.map((name, index, arr) => ({
-				name: name.charAt(0).toUpperCase() + name.slice(1),
-				link: `/${arr.slice(0, index + 1).join('/')}`
-			}));
-		}
-	});
+  run(() => {
+    if (browser) {
+      const pathnames = $page.url.pathname.split("/").filter(Boolean);
+      crumbs = pathnames.map((name, index, arr) => ({
+        name: name.charAt(0).toUpperCase() + name.slice(1),
+        link: `/${arr.slice(0, index + 1).join("/")}`,
+      }));
+    }
+  });
 </script>
 
 <header>
-	<a href="/admin">
-		<h1>ADMIN PORTAL</h1>
-	</a>
+  <a href="/admin">
+    <h1>ADMIN PORTAL</h1>
+  </a>
 </header>
 
 <main>
-	<aside>
-		<nav class="sidenav">
-			{#each adminLinks as { category, links }}
-				<div class="dropLabel">{category}</div>
-				{#each links as { name, link, urlPath }}
-					<a
-						class="indented"
-						class:current={urlPath
-							? $page.url.pathname.includes(urlPath)
-							: $page.url.pathname === link}
-						href={link}
-						data-sveltekit-noscroll>
-						{name}
-					</a>
-				{/each}
-				<hr />
-			{/each}
-		</nav>
-	</aside>
-	<article>
-		<div class="crumb">
-			<BreadCrumb {crumbs}></BreadCrumb>
-		</div>
-		{@render children?.()}
-	</article>
+  <aside>
+    <nav class="sidenav">
+      {#each adminLinks as { category, links }}
+        <div class="dropLabel">{category}</div>
+        {#each links as { name, link, urlPath }}
+          <a
+            class="indented"
+            class:current={urlPath
+              ? $page.url.pathname.includes(urlPath)
+              : $page.url.pathname === link}
+            href={link}
+            data-sveltekit-noscroll>
+            {name}
+          </a>
+        {/each}
+        <hr />
+      {/each}
+    </nav>
+  </aside>
+  <article>
+    <div class="crumb">
+      <BreadCrumb {crumbs}></BreadCrumb>
+    </div>
+    {@render children?.()}
+  </article>
 </main>
 
 <style>

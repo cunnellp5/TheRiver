@@ -1,44 +1,44 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import TheRiver from '$lib/components/svgs/logos/TheRiver.svelte';
-	import LogoR from '$lib/components/svgs/logos/LogoR2.svelte';
-	import ServiceButtons from '$lib/components/ui/button/ServiceButtons.svelte';
+  import LogoR from "$lib/components/svgs/logos/LogoR2.svelte";
+  import TheRiver from "$lib/components/svgs/logos/TheRiver.svelte";
+  import ServiceButtons from "$lib/components/ui/button/ServiceButtons.svelte";
+  import { onMount } from "svelte";
 
-	let { videoURL } = $props();
-	let scroll: number = $state(0);
-	let visible = $state(false);
-	onMount(() => {
-		visible = true;
-	});
+  const { videoURL } = $props();
+  let scroll: number = $state(0);
+  let visible = $state(false);
+  onMount(() => {
+    visible = true;
+  });
 </script>
 
 <svelte:window bind:scrollY={scroll} />
 
 <section class="img-video-overlay-wrapper">
-	<div id="video-background">
-		<!-- {#if visible && videoURL} -->
-		<!-- in:fade={{ duration: 400 }} -->
-		<video autoplay loop muted style:object-position={`center ${40 + scroll / 25}%`}>
-			<source src={videoURL} type="video/mp4" />
-			<!-- <track kind="captions" srclang="en" label="English" /> -->
-		</video>
-		<!-- {/if} -->
-		<div id="video-tint"></div>
-	</div>
+  <div id="video-background">
+    <!-- {#if visible && videoURL} -->
+    <!-- in:fade={{ duration: 400 }} -->
+    <video autoplay loop muted style:object-position={`center ${40 + scroll / 25}%`}>
+      <source src={videoURL} type="video/mp4" />
+      <!-- <track kind="captions" srclang="en" label="English" /> -->
+    </video>
+    <!-- {/if} -->
+    <div id="video-tint"></div>
+  </div>
 
-	<div role="img" id="image-container">
-		{#if visible}
-			<div class="hideMainLogo">
-				<TheRiver />
-			</div>
-			<div class="miniLogo">
-				<LogoR />
-			</div>
-			<div class="beauty-cta">
-				<ServiceButtons />
-			</div>
-		{/if}
-	</div>
+  <div role="img" id="image-container">
+    {#if visible}
+      <div class="hideMainLogo">
+        <TheRiver />
+      </div>
+      <div class="miniLogo">
+        <LogoR />
+      </div>
+      <div class="beauty-cta">
+        <ServiceButtons />
+      </div>
+    {/if}
+  </div>
 </section>
 
 <style>

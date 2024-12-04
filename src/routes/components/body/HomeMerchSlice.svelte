@@ -1,12 +1,12 @@
 <section class="beauty">
-	<h2 class="descriptionHeader gradientHeaders">Merch</h2>
-	<a
-		class="hairLink"
-		href="https://www.etsy.com/shop/TheRiverDesign"
-		target="_blank"
-		rel="noopener">
-		<button class="primary">Get some. @Etsy</button>
-	</a>
+  <h2 class="descriptionHeader gradientHeaders">Merch</h2>
+  <a
+    class="hairLink"
+    href="https://www.etsy.com/shop/TheRiverDesign"
+    target="_blank"
+    rel="noopener">
+    <button class="primary">Get some. @Etsy</button>
+  </a>
 </section>
 
 <style>

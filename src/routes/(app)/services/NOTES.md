@@ -101,7 +101,6 @@
 		font-weight: var(--font-weight-8);
 	} */
 
-
 	/* CLASSES */
 	/* .page-indicator {
 		display: flex;

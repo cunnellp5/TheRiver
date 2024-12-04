@@ -1,65 +1,64 @@
 <script lang="ts">
-	import { run } from 'svelte/legacy';
 
-	import Seo from '$lib/components/SEO.svelte';
-	import BlogCard from '$lib/components/ui/BlogCard.svelte';
-	import type { PageData } from './$types';
-	import Hero from './Hero.svelte';
+  import type { PageData } from "./$types";
+  import Seo from "$lib/components/SEO.svelte";
+  import BlogCard from "$lib/components/ui/BlogCard.svelte";
+  import Hero from "./Hero.svelte";
 
-	interface Props {
-		data: PageData;
-	}
+  interface Props {
+    data: PageData;
+  }
 
-	let { data }: Props = $props();
+  const { data }: Props = $props();
 
-	let search = $state('');
-	let filteredPosts = $state(data.posts);
+  let search = $state("");
+  let filteredPosts = $state(data.posts);
 
-	// @deprecated — Use this only as a temporary solution to migrate your component code to Svelte 5.
-	$effect(() => {
-		filteredPosts = data.posts.filter(
-			(post) =>
-				post.title.toLowerCase().includes(search.toLowerCase()) ||
-				post.description.toLowerCase().includes(search.toLowerCase())
-		);
-	});
+  // @deprecated — Use this only as a temporary solution to migrate your component code to Svelte 5.
+  $effect(() => {
+    filteredPosts = data.posts.filter(
+      post =>
+        post.title.toLowerCase().includes(search.toLowerCase())
+        || post.description.toLowerCase().includes(search.toLowerCase()),
+    );
+  });
 </script>
 
 <Seo
-	title={'Insights & Updates from The River - Music, Beauty, & Fashion Blog'}
-	description={"Stay updated with The River's insights on music, beauty, and fashion. Explore her blog for the latest trends, tips, and stories that inspire creativity and self-expression."} />
+  title="Insights & Updates from The River - Music, Beauty, & Fashion Blog"
+  description="Stay updated with The River's insights on music, beauty, and fashion. Explore her blog for the latest trends, tips, and stories that inspire creativity and self-expression." />
 
 <Hero />
 
 <div class="posts-wrapper app-layout list-of-posts">
-	<nav class="posts-search">
-		<input type="search" bind:value={search} placeholder="Search posts..." />
-		<p class="posts-count">
-			{filteredPosts.length} post{filteredPosts.length > 1 ? 's' : ''}
-		</p>
-	</nav>
-	<section>
-		{#if filteredPosts.length > 0}
-			<ul class="grid-container">
-				{#each filteredPosts as { createdAt, description, slug, tags, title }}
-					<div class="cardWrapper grid-item">
-						<BlogCard {title} {tags} {createdAt} {slug} {description} />
-					</div>
-				{/each}
-			</ul>
-		{:else}
-			<ul>
-				<li>
-					<BlogCard
-						title={'No Posts'}
-						tags={[]}
-						createdAt={new Date()}
-						slug={'void'}
-						description={''} />
-				</li>
-			</ul>
-		{/if}
-	</section>
+  <nav class="posts-search">
+    <input type="search" bind:value={search} placeholder="Search posts..." />
+    <p class="posts-count">
+      {filteredPosts.length} post{filteredPosts.length > 1 ? "s" : ""}
+    </p>
+  </nav>
+  <section>
+    {#if filteredPosts.length > 0}
+      <ul class="grid-container">
+        {#each filteredPosts as { createdAt, description, slug, tags, title }}
+          <div class="cardWrapper grid-item">
+            <BlogCard {title} {tags} {createdAt} {slug} {description} />
+          </div>
+        {/each}
+      </ul>
+    {:else}
+      <ul>
+        <li>
+          <BlogCard
+            title="No Posts"
+            tags={[]}
+            createdAt={new Date()}
+            slug="void"
+            description="" />
+        </li>
+      </ul>
+    {/if}
+  </section>
 </div>
 
 <style>

@@ -1,28 +1,28 @@
 <script lang="ts">
-	interface Props {
-		display?: string;
-	}
+  interface Props {
+    display?: string;
+  }
 
-	let { display = 'THE RIVER' }: Props = $props();
+  const { display = "THE RIVER" }: Props = $props();
 </script>
 
 <div class="marquee marquee-hover-pause">
-	<div class="marquee_group">
-		<span class="font1">{display}</span>
-		<span>{display}</span>
-		<span class="font1">{display}</span>
-		<span>{display}</span>
-		<span class="font1">{display}</span>
-		<span>{display}</span>
-	</div>
-	<div class="marquee_group" aria-hidden="true">
-		<span class="font1">{display}</span>
-		<span>{display}</span>
-		<span class="font1">{display}</span>
-		<span>{display}</span>
-		<span class="font1">{display}</span>
-		<span>{display}</span>
-	</div>
+  <div class="marquee_group">
+    <span class="font1">{display}</span>
+    <span>{display}</span>
+    <span class="font1">{display}</span>
+    <span>{display}</span>
+    <span class="font1">{display}</span>
+    <span>{display}</span>
+  </div>
+  <div class="marquee_group" aria-hidden="true">
+    <span class="font1">{display}</span>
+    <span>{display}</span>
+    <span class="font1">{display}</span>
+    <span>{display}</span>
+    <span class="font1">{display}</span>
+    <span>{display}</span>
+  </div>
 </div>
 
 <style>

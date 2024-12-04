@@ -1,54 +1,56 @@
 <script lang="ts">
-	import { QuillConfigReadonly, quillContentInit } from '$lib/utils/QuillConfig';
-	import type Quill from 'quill';
-	import { onMount } from 'svelte';
-	import { browser } from '$app/environment';
-	import type { Post } from '@prisma/client';
+  import type { Post } from "@prisma/client";
+  import type Quill from "quill";
+  import { browser } from "$app/environment";
+  import { QuillConfigReadonly, quillContentInit } from "$lib/utils/QuillConfig";
+  import { onMount } from "svelte";
 
-	interface Props {
-		post: Post;
-	}
+  interface Props {
+    post: Post;
+  }
 
-	let { post }: Props = $props();
-	let quill: Quill;
-	let reader: null | HTMLDivElement = $state(null);
-	let quillError: null | string = $state(null);
+  const { post }: Props = $props();
+  let quill: Quill;
+  let reader: null | HTMLDivElement = $state(null);
+  let quillError: null | string = $state(null);
 
-	async function setQuillData() {
-		quillError = null; // Reset error message
+  async function setQuillData() {
+    quillError = null; // Reset error message
 
-		if (!browser) return;
+    if (!browser)
+      return;
 
-		try {
-			const { default: Quill } = await import('quill');
-			// i dont know why this is running twice
+    try {
+      const { default: Quill } = await import("quill");
+      // i dont know why this is running twice
 			// first time, the reader is null and throws a quill error
 			// but then renders because it hydrates immediately after
-			if (reader === null) {
-				console.log('reader is loading');
-			} else {
-				quill = await new Quill(reader, QuillConfigReadonly);
-				const quillData = quillContentInit(post ? post.content : 'No content found');
-				await quill.setContents(quillData);
-			}
-		} catch (err) {
-			// eslint-disable-next-line no-console
-			console.error('Failed to set Quill data:', err);
-			quillError = 'Failed to load the editor. Please try again later.';
-		}
-	}
+      if (reader === null) {
+        console.log("reader is loading");
+      }
+      else {
+        quill = await new Quill(reader, QuillConfigReadonly);
+        const quillData = quillContentInit(post ? post.content : "No content found");
+        await quill.setContents(quillData);
+      }
+    }
+    catch (err) {
+      console.error("Failed to set Quill data:", err);
+      quillError = "Failed to load the editor. Please try again later.";
+    }
+  }
 
-	onMount(() => {
-		setQuillData();
-	});
+  onMount(() => {
+    setQuillData();
+  });
 </script>
 
 <section>
-	{#if quillError}
-		<p>{quillError}</p>
-	{:else}
-		<div class="quill-content" bind:this={reader}></div>
-	{/if}
+  {#if quillError}
+    <p>{quillError}</p>
+  {:else}
+    <div class="quill-content" bind:this={reader}></div>
+  {/if}
 </section>
 
 <style>

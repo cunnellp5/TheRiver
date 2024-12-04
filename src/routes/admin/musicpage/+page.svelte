@@ -1,27 +1,27 @@
 <script lang="ts">
-	import * as Card from '$lib/components/ui/shadcn/card';
+  import * as Card from "$lib/components/ui/shadcn/card";
 </script>
 
 <div class="adminIntroCardWrapper">
-	<Card.Root>
-		<Card.Header>
-			<Card.Title>Music page</Card.Title>
-			<Card.Description>Navigate to edit the music page</Card.Description>
-		</Card.Header>
-		<Card.Footer>
-			<ul>
-				<a href="/admin/musicpage/tracks">
-					<li>🎧 Tracks</li>
-				</a>
-				<a href="/admin/musicpage/videos">
-					<li>🎥 Videos</li>
-				</a>
-				<a href="/admin/musicpage/stems">
-					<li>🎼 Stems</li>
-				</a>
-			</ul>
-		</Card.Footer>
-	</Card.Root>
+  <Card.Root>
+    <Card.Header>
+      <Card.Title>Music page</Card.Title>
+      <Card.Description>Navigate to edit the music page</Card.Description>
+    </Card.Header>
+    <Card.Footer>
+      <ul>
+        <a href="/admin/musicpage/tracks">
+          <li>🎧 Tracks</li>
+        </a>
+        <a href="/admin/musicpage/videos">
+          <li>🎥 Videos</li>
+        </a>
+        <a href="/admin/musicpage/stems">
+          <li>🎼 Stems</li>
+        </a>
+      </ul>
+    </Card.Footer>
+  </Card.Root>
 </div>
 
 <style>

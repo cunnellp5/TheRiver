@@ -1,23 +1,23 @@
 <script lang="ts">
-	import Check from 'lucide-svelte/icons/check';
-	import Seo from '$lib/components/SEO.svelte';
-	import { enhance } from '$app/forms';
-	import { addToast } from '$lib/stores/toast';
-	import { goto } from '$app/navigation';
-	import { LoaderCircle } from 'lucide-svelte';
+  import { enhance } from "$app/forms";
+  import { goto } from "$app/navigation";
+  import Seo from "$lib/components/SEO.svelte";
+  import { addToast } from "$lib/stores/toast";
+  import { LoaderCircle } from "lucide-svelte";
+  import Check from "lucide-svelte/icons/check";
 
-	let { data } = $props();
+  const { data } = $props();
 
-	const { email } = data;
+  const { email } = data;
 
-	let confirmPassword = $state('');
-	let password = $state('');
-	let loading = $state(false);
+  let confirmPassword = $state("");
+  let password = $state("");
+  let loading = $state(false);
 
-	let isConfirmPasswordValid = $derived(password === confirmPassword);
-	let isPasswordValid = $derived(password.length >= 6);
+  const isConfirmPasswordValid = $derived(password === confirmPassword);
+  const isPasswordValid = $derived(password.length >= 6);
 
-	// $: isFormValid =
+// $: isFormValid =
 	// 	isEmailValid &&
 	// 	isPasswordValid &&
 	// 	isConfirmPasswordValid &&
@@ -26,94 +26,94 @@
 </script>
 
 <Seo
-	title={'Reset Your Password - Secure Form Access'}
-	description={'Use this secure form to reset your password. Enter your new password to regain access to your account. This page is accessible with a temporary link for your security.'} />
+  title="Reset Your Password - Secure Form Access"
+  description="Use this secure form to reset your password. Enter your new password to regain access to your account. This page is accessible with a temporary link for your security." />
 
 <main>
-	<section>
-		<h1>RESET PASSWORD</h1>
+  <section>
+    <h1>RESET PASSWORD</h1>
 
-		<form
-			method="POST"
-			use:enhance={async ({ formElement, formData, action, cancel, submitter }) => {
-				loading = true;
-				return async ({ result, update }) => {
-					if (result.status === 200) {
-						addToast({
-							message: 'Password updated',
-							type: 'message',
-							iconType: 'check',
-							dismissible: true,
-							timeout: 5000
-						});
-						await goto('/dashboard');
-					}
-					loading = false;
-					update();
-				};
-			}}>
-			<p>{email}</p>
-			<div
-				class="passwords"
-				class:invalidPasswords={(!isConfirmPasswordValid && confirmPassword.length > 0) ||
-					(!isPasswordValid && password.length > 0 && confirmPassword.length > 0)}
-				class:validPasswords={isConfirmPasswordValid &&
-					confirmPassword.length > 0 &&
-					isPasswordValid}>
-				<label id="pw-label" for="password">Password</label>
-				<input
-					bind:value={password}
-					type="password"
-					name="password"
-					id="password"
-					min="6"
-					required />
+    <form
+      method="POST"
+      use:enhance={async ({ formElement, formData, action, cancel, submitter }) => {
+        loading = true;
+        return async ({ result, update }) => {
+          if (result.status === 200) {
+            addToast({
+              message: "Password updated",
+              type: "message",
+              iconType: "check",
+              dismissible: true,
+              timeout: 5000,
+            });
+            await goto("/dashboard");
+          }
+          loading = false;
+          update();
+        };
+      }}>
+      <p>{email}</p>
+      <div
+        class="passwords"
+        class:invalidPasswords={(!isConfirmPasswordValid && confirmPassword.length > 0)
+        || (!isPasswordValid && password.length > 0 && confirmPassword.length > 0)}
+        class:validPasswords={isConfirmPasswordValid
+        && confirmPassword.length > 0
+          && isPasswordValid}>
+        <label id="pw-label" for="password">Password</label>
+        <input
+          bind:value={password}
+          type="password"
+          name="password"
+          id="password"
+          min="6"
+          required />
 
-				<br />
+        <br />
 
-				<label for="confirm">Confirm Password</label>
-				<input
-					class:invalid={!isConfirmPasswordValid && confirmPassword.length > 0}
-					class:valid={isConfirmPasswordValid && confirmPassword.length > 0}
-					bind:value={confirmPassword}
-					type="password"
-					name="confirm"
-					id="confirm"
-					required />
+        <label for="confirm">Confirm Password</label>
+        <input
+          class:invalid={!isConfirmPasswordValid && confirmPassword.length > 0}
+          class:valid={isConfirmPasswordValid && confirmPassword.length > 0}
+          bind:value={confirmPassword}
+          type="password"
+          name="confirm"
+          id="confirm"
+          required />
 
-				<div class="help-text">
-					<div class="checker">
-						{#if isPasswordValid}
-							<Check size="16" />
-						{/if}
-						Passwords should be 6 characters long
-					</div>
-					<div class="checker">
-						{#if isConfirmPasswordValid && confirmPassword.length > 0}
-							<Check size="16" />
-						{/if}
-						Confirmed matching
-					</div>
-				</div>
-			</div>
+        <div class="help-text">
+          <div class="checker">
+            {#if isPasswordValid}
+              <Check size="16" />
+            {/if}
+            Passwords should be 6 characters long
+          </div>
+          <div class="checker">
+            {#if isConfirmPasswordValid && confirmPassword.length > 0}
+              <Check size="16" />
+            {/if}
+            Confirmed matching
+          </div>
+        </div>
+      </div>
 
-			<input type="hidden" name="email" id="email" value={email} />
+      <input type="hidden" name="email" id="email" value={email} />
 
-			{#if loading}
-				<button disabled={loading}>
-					<div class="spinner">
-						<LoaderCircle />
-					</div>
-					Loading
-				</button>
-			{:else}
-				<button
-					class="update-button"
-					disabled={!isConfirmPasswordValid || !isPasswordValid}
-					type="submit">Reset</button>
-			{/if}
-		</form>
-	</section>
+      {#if loading}
+        <button disabled={loading}>
+          <div class="spinner">
+            <LoaderCircle />
+          </div>
+          Loading
+        </button>
+      {:else}
+        <button
+          class="update-button"
+          disabled={!isConfirmPasswordValid || !isPasswordValid}
+          type="submit">Reset</button>
+      {/if}
+    </form>
+  </section>
 </main>
 
 <style>

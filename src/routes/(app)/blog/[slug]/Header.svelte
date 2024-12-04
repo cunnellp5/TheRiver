@@ -1,33 +1,33 @@
 <script lang="ts">
-	import Badge from '$lib/components/ui/Badge.svelte';
-	import formatDate from '$lib/utils/formatDate';
-	import type { BlogPost } from '$lib/types';
+  import type { BlogPost } from "$lib/types";
+  import Badge from "$lib/components/ui/Badge.svelte";
+  import formatDate from "$lib/utils/formatDate";
 
-	interface Props {
-		post: BlogPost;
-	}
+  interface Props {
+    post: BlogPost;
+  }
 
-	let { post }: Props = $props();
+  const { post }: Props = $props();
 </script>
 
 <section class="hero">
-	<h1 id={post.slug}>{post.title}</h1>
+  <h1 id={post.slug}>{post.title}</h1>
 
-	<div class="meta">
-		<img
-			src="https://res.cloudinary.com/dswpu3qez/image/upload/w_100,c_fill,ar_1:1,g_auto/v1724875596/TheRiver/alexisArticle3_tl91an.webp"
-			alt="alexis face" />
-		<div>
-			<p>Alexis Coose</p>
-			<date>Posted on {formatDate(new Date(post.createdAt))}</date>
-		</div>
-	</div>
+  <div class="meta">
+    <img
+      src="https://res.cloudinary.com/dswpu3qez/image/upload/w_100,c_fill,ar_1:1,g_auto/v1724875596/TheRiver/alexisArticle3_tl91an.webp"
+      alt="alexis face" />
+    <div>
+      <p>Alexis Coose</p>
+      <date>Posted on {formatDate(new Date(post.createdAt))}</date>
+    </div>
+  </div>
 
-	<div class="tags">
-		{#each post.tags as tag}
-			<Badge {tag} />
-		{/each}
-	</div>
+  <div class="tags">
+    {#each post.tags as tag}
+      <Badge {tag} />
+    {/each}
+  </div>
 </section>
 
 <style>

@@ -1,55 +1,54 @@
 <script lang="ts">
-	import Badge from '$lib/components/ui/Badge.svelte';
-	import formatDate from '$lib/utils/formatDate';
-	import { page } from '$app/stores';
+  import Badge from "$lib/components/ui/Badge.svelte";
+  import formatDate from "$lib/utils/formatDate";
 
-	interface Props {
-		title: string;
-		tags: string[];
-		createdAt: Date;
-		slug: string;
-		description: string;
-		link?: string;
-		published?: import('svelte').Snippet;
-		buttons?: import('svelte').Snippet<[any]>;
-	}
+  interface Props {
+    title: string;
+    tags: string[];
+    createdAt: Date;
+    slug: string;
+    description: string;
+    link?: string;
+    published?: import("svelte").Snippet;
+    buttons?: import("svelte").Snippet<[any]>;
+  }
 
-	let {
-		title,
-		tags,
-		createdAt,
-		slug,
-		description,
-		link = `/blog/${slug}`,
-		published,
-		buttons
-	}: Props = $props();
+  const {
+    title,
+    tags,
+    createdAt,
+    slug,
+    description,
+    link = `/blog/${slug}`,
+    published,
+    buttons,
+  }: Props = $props();
 </script>
 
-<a class="blogLink" href={slug === 'void' ? 'javascript:void(0)' : link} data-sveltekit-noscroll>
-	{@render published?.()}
+<a class="blogLink" href={slug === "void" ? "javascript:void(0)" : link} data-sveltekit-noscroll>
+  {@render published?.()}
 
-	<h5 class="title">
-		{title}
-	</h5>
+  <h5 class="title">
+    {title}
+  </h5>
 
-	<date>{formatDate(new Date(createdAt))}</date>
+  <date>{formatDate(new Date(createdAt))}</date>
 
-	<p class="description">
-		{description}
-	</p>
+  <p class="description">
+    {description}
+  </p>
 
-	<aside>
-		<div class="badges">
-			{#each tags as tag}
-				<Badge {tag} />
-			{/each}
-		</div>
-	</aside>
+  <aside>
+    <div class="badges">
+      {#each tags as tag}
+        <Badge {tag} />
+      {/each}
+    </div>
+  </aside>
 
-	<div>
-		{@render buttons?.({ class: 'buttons' })}
-	</div>
+  <div>
+    {@render buttons?.({ class: "buttons" })}
+  </div>
 </a>
 
 <style>

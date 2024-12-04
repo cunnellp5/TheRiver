@@ -1,182 +1,182 @@
 <script lang="ts">
-	import { run } from 'svelte/legacy';
+  import type { ActionData } from "./$types";
 
-	import Card from '$lib/components/ui/Card.svelte';
-	import { addToast } from '$lib/stores/toast';
-	import { enhance } from '$app/forms';
-	import type { ActionData } from './$types';
+  import { enhance } from "$app/forms";
+  import Card from "$lib/components/ui/Card.svelte";
+  import { addToast } from "$lib/stores/toast";
+  import { run } from "svelte/legacy";
 
-	type ArticleForm = {
-		dbError?: undefined;
-		success?: undefined;
-		fail: boolean;
-		message: string;
-		error: {
-			articleTitle: [string, ...string[]] | undefined;
-			author: [string, ...string[]] | undefined;
-			description: [string, ...string[]] | undefined;
-			img: [string, ...string[]] | undefined;
-			link: [string, ...string[]] | undefined;
-		};
-	};
+  type ArticleForm = {
+    dbError?: undefined;
+    success?: undefined;
+    fail: boolean;
+    message: string;
+    error: {
+      articleTitle: [string, ...string[]] | undefined;
+      author: [string, ...string[]] | undefined;
+      description: [string, ...string[]] | undefined;
+      img: [string, ...string[]] | undefined;
+      link: [string, ...string[]] | undefined;
+    };
+  };
 
-	interface Props {
-		data: any;
-		form: ActionData & ArticleForm; // This isn't ideal and i dont like how redundant this is, but TS isnt recognizing the inferred nested ActionData types below, and If i just go with the explicitly typed form object, it causes issues with the form object in the script tag
-	}
+  interface Props {
+    data: any;
+    form: ActionData & ArticleForm; // This isn't ideal and i dont like how redundant this is, but TS isnt recognizing the inferred nested ActionData types below, and If i just go with the explicitly typed form object, it causes issues with the form object in the script tag
+  }
 
-	let { data, form = $bindable() }: Props = $props();
+  let { data, form = $bindable() }: Props = $props();
 
-	const { article } = data; // by pulling a reference to the data obj, we can use that to init the form fields and then use the data obj to refresh with the latest data
+  const { article } = data; // by pulling a reference to the data obj, we can use that to init the form fields and then use the data obj to refresh with the latest data
 
-	function showToast(msg: string, type: string) {
-		addToast({ message: msg, type, dismissible: true, timeout: 5000 });
-	}
+  function showToast(msg: string, type: string) {
+    addToast({ message: msg, type, dismissible: true, timeout: 5000 });
+  }
 
-	let articlePreview;
-	run(() => {
-		articlePreview = {
-			author: article.author,
-			img: article.img,
-			title: article.articleTitle,
-			description: article.description,
-			link: article.link
-		};
-	});
+  let articlePreview;
+  run(() => {
+    articlePreview = {
+      author: article.author,
+      img: article.img,
+      title: article.articleTitle,
+      description: article.description,
+      link: article.link,
+    };
+  });
 
-	run(() => {
-		if (form?.success) {
-			// Reset article fields with latest data
-			articlePreview = {
-				author: data.article.author,
-				img: data.article.img,
-				title: data.article.articleTitle,
-				description: data.article.description,
-				link: data.article.link
-			};
+  run(() => {
+    if (form?.success) {
+      // Reset article fields with latest data
+      articlePreview = {
+        author: data.article.author,
+        img: data.article.img,
+        title: data.article.articleTitle,
+        description: data.article.description,
+        link: data.article.link,
+      };
 
-			// Show success toast
-			showToast(form.message, 'success');
+      // Show success toast
+      showToast(form.message, "success");
 
-			// Reset the form object (if i dont this was causing issues)
-			form = { ...form, success: undefined, message: '' };
-		}
-	});
+      // Reset the form object (if i dont this was causing issues)
+      form = { ...form, success: undefined, message: "" };
+    }
+  });
 
-	function resetForm() {
-		// eslint-disable-next-line no-alert, no-restricted-globals
-		if (confirm('Are you sure you want to reset the form?')) {
-			articlePreview = {
-				author: article.author,
-				img: article.img,
-				title: article.articleTitle,
-				description: article.description,
-				link: article.link
-			};
-		}
-	}
+  function resetForm() {
+    // eslint-disable-next-line no-alert
+    if (confirm("Are you sure you want to reset the form?")) {
+      articlePreview = {
+        author: article.author,
+        img: article.img,
+        title: article.articleTitle,
+        description: article.description,
+        link: article.link,
+      };
+    }
+  }
 
-	let disabled =
-		$derived(article.articleTitle === articlePreview.title &&
-		article.author === articlePreview.author &&
-		article.description === articlePreview.description &&
-		article.img === articlePreview.img &&
-		article.link === articlePreview.link);
+  const disabled
+    = $derived(article.articleTitle === articlePreview.title
+      && article.author === articlePreview.author
+      && article.description === articlePreview.description
+      && article.img === articlePreview.img
+      && article.link === articlePreview.link);
 </script>
 
 <div class="form-and-preview">
-	<form method="POST" use:enhance>
-		<div class="input-group">
-			<label for="articleTitle">Title</label>
-			<input
-				class:error={form?.fail && form?.error?.articleTitle}
-				type="text"
-				name="articleTitle"
-				id="articleTitle"
-				bind:value={articlePreview.title} />
-			<p class="error-text">
-				{#if form?.error?.articleTitle}
-					{form?.error?.articleTitle[0]}
-				{/if}
-			</p>
-		</div>
+  <form method="POST" use:enhance>
+    <div class="input-group">
+      <label for="articleTitle">Title</label>
+      <input
+        class:error={form?.fail && form?.error?.articleTitle}
+        type="text"
+        name="articleTitle"
+        id="articleTitle"
+        bind:value={articlePreview.title} />
+      <p class="error-text">
+        {#if form?.error?.articleTitle}
+          {form?.error?.articleTitle[0]}
+        {/if}
+      </p>
+    </div>
 
-		<div class="input-group">
-			<label for="img">Article img</label>
-			<input
-				class:error={form?.fail && form?.error?.img}
-				type="text"
-				name="img"
-				id="img"
-				bind:value={articlePreview.img} />
-			<p class="error-text">
-				{#if form?.error?.img}
-					{form?.error?.img[0]}
-				{/if}
-			</p>
-		</div>
+    <div class="input-group">
+      <label for="img">Article img</label>
+      <input
+        class:error={form?.fail && form?.error?.img}
+        type="text"
+        name="img"
+        id="img"
+        bind:value={articlePreview.img} />
+      <p class="error-text">
+        {#if form?.error?.img}
+          {form?.error?.img[0]}
+        {/if}
+      </p>
+    </div>
 
-		<div class="input-group">
-			<label for="description">Description</label>
-			<textarea
-				class:error={form?.fail && form?.error?.description}
-				name="description"
-				id="description"
-				bind:value={articlePreview.description}
-				rows="4"></textarea>
-			<p class="error-text">
-				{#if form?.error?.description}
-					{form?.error?.description[0]}
-				{/if}
-			</p>
-		</div>
+    <div class="input-group">
+      <label for="description">Description</label>
+      <textarea
+        class:error={form?.fail && form?.error?.description}
+        name="description"
+        id="description"
+        bind:value={articlePreview.description}
+        rows="4"></textarea>
+      <p class="error-text">
+        {#if form?.error?.description}
+          {form?.error?.description[0]}
+        {/if}
+      </p>
+    </div>
 
-		<div class="input-group">
-			<label for="author">Author</label>
-			<input
-				class:error={form?.fail && form?.error?.author}
-				type="text"
-				name="author"
-				id="author"
-				bind:value={articlePreview.author} />
-			<p class="error-text">
-				{#if form?.error?.author}
-					{form?.error?.author[0]}
-				{/if}
-			</p>
-		</div>
+    <div class="input-group">
+      <label for="author">Author</label>
+      <input
+        class:error={form?.fail && form?.error?.author}
+        type="text"
+        name="author"
+        id="author"
+        bind:value={articlePreview.author} />
+      <p class="error-text">
+        {#if form?.error?.author}
+          {form?.error?.author[0]}
+        {/if}
+      </p>
+    </div>
 
-		<div class="input-group">
-			<label for="link">Link URL</label>
-			<input
-				class:error={form?.fail && form?.error?.link}
-				type="text"
-				name="link"
-				id="link"
-				bind:value={articlePreview.link} />
-			<p class="error-text">
-				{#if form?.error?.link}
-					{form?.error?.link[0]}
-				{/if}
-			</p>
-		</div>
+    <div class="input-group">
+      <label for="link">Link URL</label>
+      <input
+        class:error={form?.fail && form?.error?.link}
+        type="text"
+        name="link"
+        id="link"
+        bind:value={articlePreview.link} />
+      <p class="error-text">
+        {#if form?.error?.link}
+          {form?.error?.link[0]}
+        {/if}
+      </p>
+    </div>
 
-		<div class="button-group">
-			<button class="reset-article-button" type="button" onclick={resetForm}> Reset Form </button>
-			<button class:disabled {disabled} class="update-article-button">Update</button>
-		</div>
-	</form>
+    <div class="button-group">
+      <button class="reset-article-button" type="button" onclick={resetForm}> Reset Form </button>
+      <button class:disabled {disabled} class="update-article-button">Update</button>
+    </div>
+  </form>
 
-	<section>
-		<h4>Live preview</h4>
-		<Card
-			author={articlePreview.author}
-			articleImage={articlePreview.img}
-			articleTitle={articlePreview.title}
-			description={articlePreview.description}
-			link={articlePreview.link}>
-		</Card>
-	</section>
+  <section>
+    <h4>Live preview</h4>
+    <Card
+      author={articlePreview.author}
+      articleImage={articlePreview.img}
+      articleTitle={articlePreview.title}
+      description={articlePreview.description}
+      link={articlePreview.link}>
+    </Card>
+  </section>
 </div>
 
 <style>

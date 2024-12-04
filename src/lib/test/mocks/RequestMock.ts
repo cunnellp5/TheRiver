@@ -1,50 +1,50 @@
-import { vi } from 'vitest';
-import type FormDataMock from './FormDataMock';
+import type FormDataMock from "./FormDataMock";
+import { vi } from "vitest";
 
 export default class RequestMock {
-	formData = vi.fn().mockResolvedValue(this);
+  formData = vi.fn().mockResolvedValue(this);
 
-	cache: RequestCache = 'default';
+  cache: RequestCache = "default";
 
-	credentials: RequestCredentials = 'same-origin';
+  credentials: RequestCredentials = "same-origin";
 
-	destination: RequestDestination = 'document';
+  destination: RequestDestination = "document";
 
-	headers = new Headers();
+  headers = new Headers();
 
-	integrity = '';
+  integrity = "";
 
-	keepalive = false;
+  keepalive = false;
 
-	method = '';
+  method = "";
 
-	mode: RequestMode = 'same-origin';
+  mode: RequestMode = "same-origin";
 
-	redirect: RequestRedirect = 'error';
+  redirect: RequestRedirect = "error";
 
-	referrer = '';
+  referrer = "";
 
-	referrerPolicy: ReferrerPolicy = '';
+  referrerPolicy: ReferrerPolicy = "";
 
-	signal = new AbortController().signal;
+  signal = new AbortController().signal;
 
-	url: string = '';
+  url: string = "";
 
-	clone = vi.fn();
+  clone = vi.fn();
 
-	body = null;
+  body = null;
 
-	bodyUsed = false;
+  bodyUsed = false;
 
-	arrayBuffer = vi.fn();
+  arrayBuffer = vi.fn();
 
-	blob = vi.fn();
+  blob = vi.fn();
 
-	json = vi.fn();
+  json = vi.fn();
 
-	text = vi.fn();
+  text = vi.fn();
 
-	constructor(public testFormData: FormDataMock) {
-		this.formData = vi.fn().mockResolvedValue(testFormData);
-	}
+  constructor(public testFormData: FormDataMock) {
+    this.formData = vi.fn().mockResolvedValue(testFormData);
+  }
 }

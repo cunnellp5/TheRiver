@@ -1,56 +1,56 @@
 <script lang="ts">
-	import InstaBeauty from '$lib/components/InstaBeauty.svelte';
-	import Seo from '$lib/components/SEO.svelte';
-	import ServiceButtons from '$lib/components/ui/button/ServiceButtons.svelte';
-	import { onMount } from 'svelte';
-	import CutoutImg from './components/CutoutImg.svelte';
-	import ScrollDots from './components/ScrollDots.svelte';
-	import ServiceTable from './components/ServiceTable.svelte';
+  import InstaBeauty from "$lib/components/InstaBeauty.svelte";
+  import Seo from "$lib/components/SEO.svelte";
+  import ServiceButtons from "$lib/components/ui/button/ServiceButtons.svelte";
+  import { onMount } from "svelte";
+  import CutoutImg from "./components/CutoutImg.svelte";
+  import ScrollDots from "./components/ScrollDots.svelte";
+  import ServiceTable from "./components/ServiceTable.svelte";
 
-	let { data } = $props();
-	const { services, about } = data;
-	let scroll: number = $state(0);
+  const { data } = $props();
+  const { services, about } = data;
+  let scroll: number = $state(0);
 
-	onMount(() => {
-		(window as any)?.instgrm?.Embeds.process();
-	});
+  onMount(() => {
+    (window as any)?.instgrm?.Embeds.process();
+  });
 </script>
 
 <Seo
-	title={'Beauty Services by The River - Expert Hair & Nails | Alexis'}
-	description={"Transform your look with The River's expert beauty services. From flawless makeup to rejuvenating skincare, embrace your beauty with a touch of artistry and care."} />
+  title="Beauty Services by The River - Expert Hair & Nails | Alexis"
+  description="Transform your look with The River's expert beauty services. From flawless makeup to rejuvenating skincare, embrace your beauty with a touch of artistry and care." />
 
 <svelte:window bind:scrollY={scroll} />
 
 <div class="cutoutImg" style:transform={`translate3d(0, ${scroll / 5}px, 0)`}>
-	<CutoutImg />
+  <CutoutImg />
 </div>
 
 <main>
-	<section class="top" style:background-position={`center ${scroll / 55}%`}>
-		<h1>The River Beauty</h1>
-		{#if about?.isShowing}
-			<p class="about">
-				{about?.text}
-			</p>
-		{/if}
-	</section>
-	<div class="insta">
-		<InstaBeauty />
-	</div>
+  <section class="top" style:background-position={`center ${scroll / 55}%`}>
+    <h1>The River Beauty</h1>
+    {#if about?.isShowing}
+      <p class="about">
+        {about?.text}
+      </p>
+    {/if}
+  </section>
+  <div class="insta">
+    <InstaBeauty />
+  </div>
 </main>
 <main class="app-layout">
-	{#each Object.entries(services) as [category, data]}
-		<ServiceTable {category} {data} />
-	{/each}
-	<aside class="aside-right">
-		<ScrollDots {services} />
-	</aside>
-	<div class="fakeform">
-		<div class="serviceButtons">
-			<ServiceButtons />
-		</div>
-	</div>
+  {#each Object.entries(services) as [category, data]}
+    <ServiceTable {category} {data} />
+  {/each}
+  <aside class="aside-right">
+    <ScrollDots {services} />
+  </aside>
+  <div class="fakeform">
+    <div class="serviceButtons">
+      <ServiceButtons />
+    </div>
+  </div>
 </main>
 
 <style>

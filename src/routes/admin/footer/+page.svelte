@@ -1,66 +1,66 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
-	import type { PageData } from './$types';
+  import type { PageData } from "./$types";
+  import { enhance } from "$app/forms";
 
-	interface Props {
-		data: PageData;
-	}
+  interface Props {
+    data: PageData;
+  }
 
-	let { data }: Props = $props();
+  const { data }: Props = $props();
 
-	let title = $state('');
-	let url = $state('');
+  let title = $state("");
+  let url = $state("");
 
-	let isCreatingSocialLink = $state(false);
+  let isCreatingSocialLink = $state(false);
 </script>
 
 <h2>Footer links</h2>
 <p>This shows all your links in the footer</p>
 
 <div class="table">
-	<div class="table-title-wrapper">
-		<span class="table-title">Title</span>
-		<span class="table-title">File</span>
-		<span>
-			<button
-				onclick={() => {
-					isCreatingSocialLink = !isCreatingSocialLink;
-					return isCreatingSocialLink;
-				}}>
-				+ Add
-			</button>
-		</span>
-	</div>
+  <div class="table-title-wrapper">
+    <span class="table-title">Title</span>
+    <span class="table-title">File</span>
+    <span>
+      <button
+        onclick={() => {
+          isCreatingSocialLink = !isCreatingSocialLink;
+          return isCreatingSocialLink;
+        }}>
+        + Add
+      </button>
+    </span>
+  </div>
 
-	{#if isCreatingSocialLink}
-		<form class="table-form-items-wrapper" method="post" action="?/addLink">
-			<span>
-				<label for="title">Title</label>
-				<input bind:value={title} name="title" id="title" required />
-			</span>
-			<span>
-				<label for="url">url</label>
-				<input bind:value={url} name="url" id="url" required />
-			</span>
-			<span class="table-actions"> <button>create</button> </span>
-		</form>
-	{/if}
+  {#if isCreatingSocialLink}
+    <form class="table-form-items-wrapper" method="post" action="?/addLink">
+      <span>
+        <label for="title">Title</label>
+        <input bind:value={title} name="title" id="title" required />
+      </span>
+      <span>
+        <label for="url">url</label>
+        <input bind:value={url} name="url" id="url" required />
+      </span>
+      <span class="table-actions"> <button>create</button> </span>
+    </form>
+  {/if}
 
-	<div class="table-items-wrapper">
-		{#each data.socialLinks as link}
-			<span>{link.title}</span>
-			<span>{link.url}</span>
-			<span>
-				<div class="table-actions">
-					<button> edit </button>
-					<form method="POST" action="?/deleteLink" use:enhance>
-						<input type="hidden" name="linkId" id="linkId" value={link.id} />
-						<button type="submit"> delete </button>
-					</form>
-				</div>
-			</span>
-		{/each}
-	</div>
+  <div class="table-items-wrapper">
+    {#each data.socialLinks as link}
+      <span>{link.title}</span>
+      <span>{link.url}</span>
+      <span>
+        <div class="table-actions">
+          <button> edit </button>
+          <form method="POST" action="?/deleteLink" use:enhance>
+            <input type="hidden" name="linkId" id="linkId" value={link.id} />
+            <button type="submit"> delete </button>
+          </form>
+        </div>
+      </span>
+    {/each}
+  </div>
 </div>
 
 <style>

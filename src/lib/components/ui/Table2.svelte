@@ -1,44 +1,44 @@
 <script lang="ts">
-	import Download from 'lucide-svelte/icons/download';
-	import Ear from 'lucide-svelte/icons/ear';
+  import Download from "lucide-svelte/icons/download";
+  import Ear from "lucide-svelte/icons/ear";
 
-	export const columns = ['Track', 'File', ''];
-	export const data = [
-		{
-			track: 'Tides',
-			file: 'tides reference track.m4a',
-			earLink:
-				'https://drive.google.com/file/d/1FQGrZFLHxpGzd6u2FkKC7j5kDdla7RNr/view?usp=drive_link',
-			downloadLink:
-				'https://drive.usercontent.google.com/u/0/uc?id=1FQGrZFLHxpGzd6u2FkKC7j5kDdla7RNr&export=download'
-		},
-		{
-			track: 'Security & Passion',
-			file: 'reference track - security and passion.m4a',
-			earLink:
-				'https://drive.google.com/file/d/1YHrpavNzO3ANkS1Wylkrgcr8oFZIL5OD/view?usp=drive_link',
-			downloadLink:
-				'https://drive.usercontent.google.com/u/0/uc?id=1YHrpavNzO3ANkS1Wylkrgcr8oFZIL5OD&export=download'
-		}
-	];
+  export const columns = ["Track", "File", ""];
+  export const data = [
+    {
+      track: "Tides",
+      file: "tides reference track.m4a",
+      earLink:
+        "https://drive.google.com/file/d/1FQGrZFLHxpGzd6u2FkKC7j5kDdla7RNr/view?usp=drive_link",
+      downloadLink:
+        "https://drive.usercontent.google.com/u/0/uc?id=1FQGrZFLHxpGzd6u2FkKC7j5kDdla7RNr&export=download",
+    },
+    {
+      track: "Security & Passion",
+      file: "reference track - security and passion.m4a",
+      earLink:
+        "https://drive.google.com/file/d/1YHrpavNzO3ANkS1Wylkrgcr8oFZIL5OD/view?usp=drive_link",
+      downloadLink:
+        "https://drive.usercontent.google.com/u/0/uc?id=1YHrpavNzO3ANkS1Wylkrgcr8oFZIL5OD&export=download",
+    },
+  ];
 </script>
 
 <main>
-	<div class="table">
-		{#each columns as column (column)}
-			<span class="table-title">{column}</span>
-		{/each}
-		{#each data as row (row.track)}
-			<span>{row.track}</span>
-			<span>{row.file}</span>
-			<span>
-				<div class="table-actions">
-					<a target="_blank" href={row.earLink} rel="noopener"><Ear /></a>
-					<a href={row.downloadLink}><Download /></a>
-				</div>
-			</span>
-		{/each}
-	</div>
+  <div class="table">
+    {#each columns as column (column)}
+      <span class="table-title">{column}</span>
+    {/each}
+    {#each data as row (row.track)}
+      <span>{row.track}</span>
+      <span>{row.file}</span>
+      <span>
+        <div class="table-actions">
+          <a target="_blank" href={row.earLink} rel="noopener"><Ear /></a>
+          <a href={row.downloadLink}><Download /></a>
+        </div>
+      </span>
+    {/each}
+  </div>
 </main>
 
 <style>

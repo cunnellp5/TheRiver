@@ -3,7 +3,7 @@ import { PrismaClient } from "@prisma/client";
 
 import aboutData from "./seedData/aboutData";
 import articlesData from "./seedData/articlesData";
-import contactData from "./seedData/contactData";
+import contactData from "./seedData/contact-data";
 import serviceCategories from "./seedData/serviceCategories";
 import serviceHairAddOnData from "./seedData/serviceHairAddOnData";
 import serviceHairColorData from "./seedData/serviceHairColorData";
@@ -59,7 +59,7 @@ async function main() {
       data: serviceCategories[2],
     });
     await db.service.createMany({
-      data: serviceHairCutData.map((service) => ({
+      data: serviceHairCutData.map(service => ({
         ...service,
         categoryId: hairCutCategory.id,
       })),
@@ -70,7 +70,7 @@ async function main() {
       data: serviceCategories[1],
     });
     await db.service.createMany({
-      data: serviceHairColorData.map((service) => ({
+      data: serviceHairColorData.map(service => ({
         ...service,
         categoryId: hairColorCategory.id,
       })),
@@ -81,7 +81,7 @@ async function main() {
       data: serviceCategories[0],
     });
     await db.service.createMany({
-      data: serviceHairAddOnData.map((service) => ({
+      data: serviceHairAddOnData.map(service => ({
         ...service,
         categoryId: hairAddOnCategory.id,
       })),
@@ -103,7 +103,7 @@ async function main() {
       data: serviceCategories[4],
     });
     await db.service.createMany({
-      data: serviceNailData.map((service) => ({
+      data: serviceNailData.map(service => ({
         ...service,
         categoryId: NailsCategory.id,
       })),

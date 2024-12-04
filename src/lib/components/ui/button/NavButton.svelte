@@ -1,21 +1,21 @@
 <script lang="ts">
-	interface Props {
-		active?: boolean;
-		route?: string;
-		display?: string;
-		borderStyle?: 'horizontal' | 'vertical'; // New prop
-	}
+  interface Props {
+    active?: boolean;
+    route?: string;
+    display?: string;
+    borderStyle?: "horizontal" | "vertical"; // New prop
+  }
 
-	let { active = false, route = '', display = '', borderStyle = 'vertical' }: Props = $props();
+  const { active = false, route = "", display = "", borderStyle = "vertical" }: Props = $props();
 </script>
 
 <li class:current={active} aria-current={active}>
-	<a
-		class:border-horizontal={borderStyle === 'horizontal'}
-		class:border-vertical={borderStyle === 'vertical'}
-		href={route}>
-		{display}
-	</a>
+  <a
+    class:border-horizontal={borderStyle === "horizontal"}
+    class:border-vertical={borderStyle === "vertical"}
+    href={route}>
+    {display}
+  </a>
 </li>
 
 <style>

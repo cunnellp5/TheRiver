@@ -1,20 +1,20 @@
 <script lang="ts">
-	import type { HTMLThAttributes } from 'svelte/elements';
+  import type { HTMLThAttributes } from "svelte/elements";
 
-	type $$Props = HTMLThAttributes;
+  type $$Props = HTMLThAttributes;
 
-	interface Props {
-		class?: $$Props['class'];
-		children?: import('svelte').Snippet;
-		[key: string]: any
-	}
+  interface Props {
+    class?: $$Props["class"];
+    children?: import("svelte").Snippet;
+    [key: string]: any;
+  }
 
-	let { class: className = '', children, ...rest }: Props = $props();
-	
+  const { class: className = "", children, ...rest }: Props = $props();
+
 </script>
 
 <th class={`${className}`} {...rest}>
-	{@render children?.()}
+  {@render children?.()}
 </th>
 
 <style>

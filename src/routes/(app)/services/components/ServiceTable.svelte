@@ -1,44 +1,44 @@
 <script lang="ts">
-	import * as Table from '$lib/components/ui/shadcn/table';
+  import * as Table from "$lib/components/ui/shadcn/table";
 
-	let { category, data } = $props();
+  const { category, data } = $props();
 </script>
 
 <span class="stupid" id={category}></span>
 <section class="tables">
-	<Table.Root>
-		<Table.Caption>{data[0].category.description}</Table.Caption>
-		<Table.Header>
-			<Table.Row>
-				<div class="table-row-header">
-					<h6>
-						{category.toUpperCase()}
-					</h6>
-				</div>
-			</Table.Row>
-		</Table.Header>
-		<Table.Body>
-			{#each data as service}
-				<Table.Row>
-					<Table.Cell>
-						<p class="serviceName">
-							{service.name}
-						</p>
-					</Table.Cell>
-					<Table.Cell>
-						<div class="price-duration">
-							<span class="price">
-								${service.price}.00
-							</span>
-							<span class="time">
-								{service.duration ? service.duration + 'min' : ''}
-							</span>
-						</div>
-					</Table.Cell>
-				</Table.Row>
-			{/each}
-		</Table.Body>
-	</Table.Root>
+  <Table.Root>
+    <Table.Caption>{data[0].category.description}</Table.Caption>
+    <Table.Header>
+      <Table.Row>
+        <div class="table-row-header">
+          <h6>
+            {category.toUpperCase()}
+          </h6>
+        </div>
+      </Table.Row>
+    </Table.Header>
+    <Table.Body>
+      {#each data as service}
+        <Table.Row>
+          <Table.Cell>
+            <p class="serviceName">
+              {service.name}
+            </p>
+          </Table.Cell>
+          <Table.Cell>
+            <div class="price-duration">
+              <span class="price">
+                ${service.price}.00
+              </span>
+              <span class="time">
+                {service.duration ? `${service.duration}min` : ""}
+              </span>
+            </div>
+          </Table.Cell>
+        </Table.Row>
+      {/each}
+    </Table.Body>
+  </Table.Root>
 </section>
 
 <style>

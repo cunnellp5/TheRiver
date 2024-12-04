@@ -1,17 +1,17 @@
 <script lang="ts">
-	import { quintOut } from 'svelte/easing';
-	import { page } from '$app/stores';
-	interface Props {
-		children?: import('svelte').Snippet;
-	}
+  import { page } from "$app/stores";
 
-	let { children }: Props = $props();
+  interface Props {
+    children?: import("svelte").Snippet;
+  }
+
+  const { children }: Props = $props();
 </script>
 
-{#key $page.url.pathname.split('/')[1]}
-	<div class="transition">
-		{@render children?.()}
-	</div>
+{#key $page.url.pathname.split("/")[1]}
+  <div class="transition">
+    {@render children?.()}
+  </div>
 {/key}
 
 <style>

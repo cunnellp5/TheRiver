@@ -1,16 +1,16 @@
 <script lang="ts">
-	let scroll: number = $state(0);
+  let scroll: number = $state(0);
 </script>
 
 <svelte:window bind:scrollY={scroll} />
 
 <section class="main-image">
-	<h1 class="overlay-text" style:top={`${50 + scroll / 35}%`}>H.M.U.</h1>
-	<img
-		src="https://res.cloudinary.com/dswpu3qez/image/upload/ar_16:9,c_fill,g_auto,w_1920/v1726747635/The_River_izwv3d.webp"
-		alt="Main"
-		class="main-image__img"
-		style:object-position={`center ${scroll / 45}%`} />
+  <h1 class="overlay-text" style:top={`${50 + scroll / 35}%`}>H.M.U.</h1>
+  <img
+    src="https://res.cloudinary.com/dswpu3qez/image/upload/ar_16:9,c_fill,g_auto,w_1920/v1726747635/The_River_izwv3d.webp"
+    alt="Main"
+    class="main-image__img"
+    style:object-position={`center ${scroll / 45}%`} />
 </section>
 
 <style>

@@ -1,27 +1,27 @@
 <script lang="ts">
-	import { createBubbler } from 'svelte/legacy';
+  import { createBubbler } from "svelte/legacy";
 
-	const bubble = createBubbler();
-	import type { HTMLTdAttributes } from 'svelte/elements';
+  const bubble = createBubbler();
+  import type { HTMLTdAttributes } from "svelte/elements";
 
-	type $$Props = HTMLTdAttributes;
+  type $$Props = HTMLTdAttributes;
 
-	interface Props {
-		class?: $$Props['class'];
-		children?: import('svelte').Snippet;
-		[key: string]: any;
-	}
+  interface Props {
+    class?: $$Props["class"];
+    children?: import("svelte").Snippet;
+    [key: string]: any;
+  }
 
-	let { class: className = '', children, ...rest }: Props = $props();
+  const { class: className = "", children, ...rest }: Props = $props();
 </script>
 
 <td
-	class={`${className}`}
-	{...rest}
-	ondblclick={bubble('dblclick')}
-	onclick={bubble('click')}
-	onkeydown={bubble('keydown')}>
-	{@render children?.()}
+  class={`${className}`}
+  {...rest}
+  ondblclick={bubble("dblclick")}
+  onclick={bubble("click")}
+  onkeydown={bubble("keydown")}>
+  {@render children?.()}
 </td>
 
 <style>

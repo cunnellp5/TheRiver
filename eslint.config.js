@@ -6,6 +6,11 @@ export default antfu({
   formatters: {
     css: true,
   },
+  stylistic: {
+    quotes: "double",
+    semi: true,
+    indent: 2,
+  },
   rules: {
     "unicorn/filename-case": [
       "error",
@@ -15,4 +20,17 @@ export default antfu({
       },
     ],
   },
+  ignores: [
+    ".DS_Store",
+    "node_modules",
+    "/build",
+    "/.svelte-kit",
+    "/package",
+    ".env",
+    ".env.*",
+    "!.env.example",
+    "pnpm-lock.yaml",
+    "package-lock.json",
+    "yarn.lock",
+  ],
 });

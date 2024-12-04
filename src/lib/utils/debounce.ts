@@ -1,38 +1,38 @@
 export function debounce(
-	func: Function,
-	timeout: number = 300,
-	useAbortController: boolean = false
+  func: Function,
+  timeout: number = 300,
+  useAbortController: boolean = false,
 ) {
-	let timerId: NodeJS.Timeout;
-	let abortController: AbortController | null = null;
+  let timerId: NodeJS.Timeout;
+  let abortController: AbortController | null = null;
 
-	return function (this: any, ...args: AbortSignal[]) {
-		// Clear the timeout when debounce is called again
-		clearTimeout(timerId);
+  return function (this: any, ...args: AbortSignal[]) {
+    // Clear the timeout when debounce is called again
+    clearTimeout(timerId);
 
-		// If using AbortController, abort the previous request
-		if (useAbortController && abortController) {
-			abortController.abort();
-		}
+    // If using AbortController, abort the previous request
+    if (useAbortController && abortController) {
+      abortController.abort();
+    }
 
-		// Create a new AbortController if needed
-		if (useAbortController) {
-			abortController = new AbortController();
-			// Add the AbortSignal to the arguments if the function expects it
-			args.push(abortController.signal);
-		}
+    // Create a new AbortController if needed
+    if (useAbortController) {
+      abortController = new AbortController();
+      // Add the AbortSignal to the arguments if the function expects it
+      args.push(abortController.signal);
+    }
 
-		// Set a new timeout
-		timerId = setTimeout(() => {
-			// Call the original function with the provided arguments
-			func.apply(this, args);
+    // Set a new timeout
+    timerId = setTimeout(() => {
+      // Call the original function with the provided arguments
+      func.apply(this, args);
 
-			// Reset the AbortController after the function call
-			if (useAbortController) {
-				abortController = null;
-			}
-		}, timeout);
-	};
+      // Reset the AbortController after the function call
+      if (useAbortController) {
+        abortController = null;
+      }
+    }, timeout);
+  };
 }
 
 // Usage example

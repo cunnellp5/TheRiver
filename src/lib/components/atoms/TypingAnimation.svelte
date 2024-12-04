@@ -1,47 +1,49 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+  import { onMount } from "svelte";
 
-	interface Props {
-		text?: string;
-		duration?: number;
-	}
+  interface Props {
+    text?: string;
+    duration?: number;
+  }
 
-	let { text = '', duration = 200 }: Props = $props();
+  const { text = "", duration = 200 }: Props = $props();
 
-	let displayText = $state('');
-	let i = 0;
-	let startTime: number;
-	let animationFrameId: number;
+  let displayText = $state("");
+  let i = 0;
+  let startTime: number;
+  let animationFrameId: number;
 
-	function typeCharacter(timestamp: number) {
-		if (!startTime) startTime = timestamp;
-		const elapsed = timestamp - startTime;
+  function typeCharacter(timestamp: number) {
+    if (!startTime)
+      startTime = timestamp;
+    const elapsed = timestamp - startTime;
 
-		if (elapsed >= duration) {
-			if (i < text.length) {
-				displayText = text.substring(0, i + 1);
-				i++;
-				startTime = timestamp; // Reset start time for the next character
-			} else {
-				cancelAnimationFrame(animationFrameId);
-				return;
-			}
-		}
+    if (elapsed >= duration) {
+      if (i < text.length) {
+        displayText = text.substring(0, i + 1);
+        i++;
+        startTime = timestamp; // Reset start time for the next character
+      }
+      else {
+        cancelAnimationFrame(animationFrameId);
+        return;
+      }
+    }
 
-		animationFrameId = requestAnimationFrame(typeCharacter);
-	}
+    animationFrameId = requestAnimationFrame(typeCharacter);
+  }
 
-	onMount(() => {
-		animationFrameId = requestAnimationFrame(typeCharacter);
+  onMount(() => {
+    animationFrameId = requestAnimationFrame(typeCharacter);
 
-		return () => {
-			cancelAnimationFrame(animationFrameId);
-		};
-	});
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+    };
+  });
 </script>
 
 <h1 class="jumbo">
-	{displayText}
+  {displayText}
 </h1>
 
 <style>

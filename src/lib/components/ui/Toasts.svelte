@@ -1,18 +1,18 @@
 <script lang="ts">
-	import Toast from './Toast.svelte';
-	import { dismissToast, toasts } from '../../stores/toast';
+  import { dismissToast, toasts } from "../../stores/toast";
+  import Toast from "./Toast.svelte";
 </script>
 
 {#if $toasts}
-	<section>
-		{#each $toasts as toast (toast.id)}
-			<Toast
-				type={toast.type}
-				dismissible={toast.dismissible}
-				iconType={toast.iconType || 'none'}
-				on:dismiss={() => dismissToast(toast?.id ?? 0)}>{toast.message}</Toast>
-		{/each}
-	</section>
+  <section>
+    {#each $toasts as toast (toast.id)}
+      <Toast
+        type={toast.type}
+        dismissible={toast.dismissible}
+        iconType={toast.iconType || "none"}
+        on:dismiss={() => dismissToast(toast?.id ?? 0)}>{toast.message}</Toast>
+    {/each}
+  </section>
 {/if}
 
 <style lang="postcss">

@@ -1,22 +1,22 @@
 <script lang="ts">
-	let { services } = $props();
+  const { services } = $props();
 
-	let activeIndex: number | null = $state(null);
+  let activeIndex: number | null = $state(null);
 </script>
 
 <ul class="dots">
-	{#each Object.entries(services) as [category], index}
-		<!-- svelte-ignore a11y_click_events_have_key_events -->
-		<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
-		<li
-			class:active={index === activeIndex}
-			onclick={() => (activeIndex = index)}
-			title={category}>
-			<a href={`#${category}`}>
-				{category}
-			</a>
-		</li>
-	{/each}
+  {#each Object.entries(services) as [category], index}
+    <!-- svelte-ignore a11y_click_events_have_key_events -->
+    <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
+    <li
+      class:active={index === activeIndex}
+      onclick={() => (activeIndex = index)}
+      title={category}>
+      <a href={`#${category}`}>
+        {category}
+      </a>
+    </li>
+  {/each}
 </ul>
 
 <style>

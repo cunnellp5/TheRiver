@@ -1,11 +1,11 @@
 <script lang="ts">
-	import Sparkles from '$lib/components/atoms/Sparkles.svelte';
+  import Sparkles from "$lib/components/atoms/Sparkles.svelte";
 </script>
 
 <a class="nailsLink" href="https://the-river-sings.square.site/" target="_blank" rel="noopener">
-	<Sparkles>
-		<button>Book Now</button>
-	</Sparkles>
+  <Sparkles>
+    <button>Book Now</button>
+  </Sparkles>
 </a>
 
 <style>

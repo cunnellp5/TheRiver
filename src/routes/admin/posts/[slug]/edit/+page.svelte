@@ -1,42 +1,42 @@
 <script lang="ts">
-	import PostsForm from '../../components/PostsForm.svelte';
-	import { page } from '$app/stores';
-	import 'quill/dist/quill.snow.css';
-	import type { ActionData, PageData } from './$types';
+  import type { ActionData, PageData } from "./$types";
+  import { page } from "$app/stores";
+  import PostsForm from "../../components/PostsForm.svelte";
+  import "quill/dist/quill.snow.css";
 
-	interface Props {
-		form: ActionData;
-		data: PageData;
-	}
+  interface Props {
+    form: ActionData;
+    data: PageData;
+  }
 
-	let { form, data }: Props = $props();
+  const { form, data }: Props = $props();
 
-	const post = data.posts.find((p) => p.slug === $page.params.slug);
+  const post = data.posts.find(p => p.slug === $page.params.slug);
 
-	const title: string = post?.title || '';
-	const content: string = post?.content || '';
-	const description: string = post?.description || '';
-	const tagInput: string[] = post?.tags || [];
-	const published: boolean = post?.published || false;
+  const title: string = post?.title || "";
+  const content: string = post?.content || "";
+  const description: string = post?.description || "";
+  const tagInput: string[] = post?.tags || [];
+  const published: boolean = post?.published || false;
 </script>
 
 <main>
-	<section>
-		<h2 class="firstHeader">Edit mode</h2>
+  <section>
+    <h2 class="firstHeader">Edit mode</h2>
 
-		<blockquote>
-			<ul>
-				<li>- Title becomes the 'slug' which is used in the url.</li>
-				<li>- Content images | videos must be URLs.</li>
-				<li>- You can save a post as unpublished and finish it later</li>
-				<li>- Tags must be unique within each post.</li>
-			</ul>
-		</blockquote>
+    <blockquote>
+      <ul>
+        <li>- Title becomes the 'slug' which is used in the url.</li>
+        <li>- Content images | videos must be URLs.</li>
+        <li>- You can save a post as unpublished and finish it later</li>
+        <li>- Tags must be unique within each post.</li>
+      </ul>
+    </blockquote>
 
-		{#if form?.error}<p class="formMessage">{form?.message}</p>{/if}
+    {#if form?.error}<p class="formMessage">{form?.message}</p>{/if}
 
-		<PostsForm {title} {content} {description} {tagInput} {published} />
-	</section>
+    <PostsForm {title} {content} {description} {tagInput} {published} />
+  </section>
 </main>
 
 <style>

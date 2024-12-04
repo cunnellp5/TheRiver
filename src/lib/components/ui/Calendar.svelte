@@ -246,7 +246,7 @@
 	.weekend {
 		background-color: inherit;
 	}
-	/* 
+	/*
 	.before-today::after {
 		position: absolute;
 		top: 50%;

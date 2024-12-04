@@ -141,7 +141,7 @@
       type="checkbox"
       id="newsLetter" />
     <label for="newsLetter"
-      >show users signed up for newsLetter to get their emails</label>
+    >show users signed up for newsLetter to get their emails</label>
   </li>
 </ol>
 <ol>
@@ -179,7 +179,7 @@
       id="trackPreviews"
       checked />
     <label for="trackPreviews"
-      >migrate trackPreviews to db for SoundCloud widget</label>
+    >migrate trackPreviews to db for SoundCloud widget</label>
   </li>
   <li>
     <input
@@ -300,7 +300,7 @@
       type="checkbox"
       id="rateLimiter" />
     <label for="rateLimiter"
-      >double check the ratelimiter when a user logs in</label>
+    >double check the ratelimiter when a user logs in</label>
   </li>
   <li>
     <input
@@ -313,7 +313,7 @@
       type="checkbox"
       id="configureSiteMap" />
     <label for="configureSiteMap"
-      >configure a dynamic site map generator for new blog posts</label>
+    >configure a dynamic site map generator for new blog posts</label>
   </li>
   <li>
     <input
@@ -335,7 +335,7 @@
       type="checkbox"
       id="documentation" />
     <label for="documentation"
-      >Build documentation for every part of this website</label>
+    >Build documentation for every part of this website</label>
   </li>
   <li>
     <input
@@ -354,21 +354,21 @@
       type="checkbox"
       id="posters" />
     <label for="posters"
-      >Posters for previous shows or show previous events</label>
+    >Posters for previous shows or show previous events</label>
   </li>
   <li>
     <input
       type="checkbox"
       id="ecommerce" />
     <label for="ecommerce"
-      >look into the godaddy pay portal to built e-commerce</label>
+    >look into the godaddy pay portal to built e-commerce</label>
   </li>
   <li>
     <input
       type="checkbox"
       id="booking" />
     <label for="booking"
-      >figure out a way to centralize booking services with alexis</label>
+    >figure out a way to centralize booking services with alexis</label>
   </li>
 </ol>
 <ol>
@@ -385,7 +385,7 @@
       type="checkbox"
       id="github" />
     <label for="github"
-      >consider creating a github profile with your business email</label>
+    >consider creating a github profile with your business email</label>
   </li>
   <li>
     <input

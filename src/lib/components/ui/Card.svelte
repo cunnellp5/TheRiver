@@ -1,45 +1,45 @@
 <script lang="ts">
-	import SkeletonImg from '$lib/components/ui/skeletons/SkeletonImg.svelte';
-	import SkeletonText from '$lib/components/ui/skeletons/SkeletonText.svelte';
+  import SkeletonImg from "$lib/components/ui/skeletons/SkeletonImg.svelte";
+  import SkeletonText from "$lib/components/ui/skeletons/SkeletonText.svelte";
 
-	let { articleImage, articleTitle, author, link, description, buttons } = $props();
+  const { articleImage, articleTitle, author, link, description, buttons } = $props();
 </script>
 
 <div class="card">
-	<a href={link} target="_blank" rel="noopener">
-		<figure>
-			<div class="imageContainer">
-				{#if articleImage}
-					<div class="imgWrapper">
-						<img height="600px" width="600px" src={articleImage} alt={articleTitle} />
-					</div>
-					<p class="overlayTitle">{articleTitle}</p>
-				{:else}
-					<SkeletonImg />
-				{/if}
-			</div>
-		</figure>
-		<div class="contentWrapper">
-			<div data-description class="description">
-				{#if description}
-					<p>{description}</p>
-				{:else}
-					<SkeletonText />
-					<SkeletonText />
-				{/if}
-			</div>
-			<div class="link-wrapper">
-				{#if link}
-					<p data-link class="credits">{author}</p>
-				{:else}
-					<SkeletonText short={true} />
-				{/if}
-			</div>
-		</div>
-		<div>
-			{@render buttons?.({ class: 'buttons' })}
-		</div>
-	</a>
+  <a href={link} target="_blank" rel="noopener">
+    <figure>
+      <div class="imageContainer">
+        {#if articleImage}
+          <div class="imgWrapper">
+            <img height="600px" width="600px" src={articleImage} alt={articleTitle} />
+          </div>
+          <p class="overlayTitle">{articleTitle}</p>
+        {:else}
+          <SkeletonImg />
+        {/if}
+      </div>
+    </figure>
+    <div class="contentWrapper">
+      <div data-description class="description">
+        {#if description}
+          <p>{description}</p>
+        {:else}
+          <SkeletonText />
+          <SkeletonText />
+        {/if}
+      </div>
+      <div class="link-wrapper">
+        {#if link}
+          <p data-link class="credits">{author}</p>
+        {:else}
+          <SkeletonText short={true} />
+        {/if}
+      </div>
+    </div>
+    <div>
+      {@render buttons?.({ class: "buttons" })}
+    </div>
+  </a>
 </div>
 
 <style>

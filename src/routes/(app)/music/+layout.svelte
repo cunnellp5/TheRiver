@@ -1,58 +1,58 @@
 <!-- leaving below just in case i dont want to scroll on nav -->
 <script lang="ts">
-	import { run } from 'svelte/legacy';
+  import type { LayoutData } from "./$types";
 
-	import { page } from '$app/stores';
-	import NavButton from '$lib/components/ui/button/NavButton.svelte';
-	import type { LayoutData } from './$types';
-	import Hero from './Hero.svelte';
-	import { ShowHideScroll } from '$lib/utils/classes/ShowHideScroll';
-	import Featured from './Featured.svelte';
-	// import Marquee from '$lib/components/ui/Marquee.svelte';
+  import { page } from "$app/stores";
+  import NavButton from "$lib/components/ui/button/NavButton.svelte";
+  import { ShowHideScroll } from "$lib/utils/classes/ShowHideScroll";
+  import { run } from "svelte/legacy";
+  import Featured from "./Featured.svelte";
+  import Hero from "./Hero.svelte";
+  // import Marquee from '$lib/components/ui/Marquee.svelte';
 
-	interface Props {
-		data: LayoutData;
-		children?: import('svelte').Snippet;
-	}
+  interface Props {
+    data: LayoutData;
+    children?: import("svelte").Snippet;
+  }
 
-	let { data, children }: Props = $props();
-	const { about } = data;
+  const { data, children }: Props = $props();
+  const { about } = data;
 
-	const CssScrollToggler = new ShowHideScroll();
-	let scroll: number = $state(0);
-	let includesTracks: boolean = $state(false);
-	let includesStems: boolean = $state(false);
-	let includesVideos: boolean = $state(false);
+  const CssScrollToggler = new ShowHideScroll();
+  let scroll: number = $state(0);
+  let includesTracks: boolean = $state(false);
+  let includesStems: boolean = $state(false);
+  let includesVideos: boolean = $state(false);
 
-	run(() => {
-		includesTracks = $page.url.pathname === '/music';
-		includesStems = $page.url.pathname === '/music/video';
-		includesVideos = $page.url.pathname === '/music/stems';
-	});
+  run(() => {
+    includesTracks = $page.url.pathname === "/music";
+    includesStems = $page.url.pathname === "/music/video";
+    includesVideos = $page.url.pathname === "/music/stems";
+  });
 </script>
 
 <svelte:window bind:scrollY={scroll} />
 
 <main class="grid-container">
-	<div
-		class={`links ${CssScrollToggler.updateClass(scroll)}`}
-		use:CssScrollToggler.setTransitionDuration>
-		<NavButton route="/music#tracks" display="tracks" active={includesTracks} />
-		<NavButton route="/music/video#videos" display="videos" active={includesStems} />
-		<NavButton route="/music/stems#stems" display="stems" active={includesVideos} />
+  <div
+    class={`links ${CssScrollToggler.updateClass(scroll)}`}
+    use:CssScrollToggler.setTransitionDuration>
+    <NavButton route="/music#tracks" display="tracks" active={includesTracks} />
+    <NavButton route="/music/video#videos" display="videos" active={includesStems} />
+    <NavButton route="/music/stems#stems" display="stems" active={includesVideos} />
 
-		<!-- <div class="social-links"> -->
+    <!-- <div class="social-links"> -->
 
-		<!-- <span>Featured: </span> -->
-		<!-- <NavButton
+    <!-- <span>Featured: </span> -->
+    <!-- <NavButton
 			route="https://distrokid.com/hyperfollow/theriver2/out-the-mud-volume-2"
 			display="Distrokid" />
 		<NavButton route="https://open.spotify.com/album/46TmH8hxWDYdl28vTSXmEC" display="Spotify" />
 		<NavButton
 			route="https://www.youtube.com/watch?v=z-OJ9WmDnDE&list=OLAK5uy_kopLOOpL784D1d8KLy-G2gjm9Nkdc7bzY"
 			display="YouTube" /> -->
-		<!-- <a href="" target="_blank" rel="noopener"> Distrokid </a> -->
-		<!-- <a
+    <!-- <a href="" target="_blank" rel="noopener"> Distrokid </a> -->
+    <!-- <a
 				href="https://open.spotify.com/album/46TmH8hxWDYdl28vTSXmEC"
 				target="_blank"
 				rel="noopener">
@@ -64,20 +64,20 @@
 				rel="noopener">
 				YouTube
 			</a> -->
-		<!-- </div> -->
-	</div>
-	<Hero />
+    <!-- </div> -->
+  </div>
+  <Hero />
 
-	<Featured />
-	<!-- {#if about.isShowing}
+  <Featured />
+  <!-- {#if about.isShowing}
 		<p>
 			{about.text}
 		</p>
 	{/if} -->
 
-	<section class="music-content app-layout">
-		{@render children?.()}
-	</section>
+  <section class="music-content app-layout">
+    {@render children?.()}
+  </section>
 </main>
 
 <style>

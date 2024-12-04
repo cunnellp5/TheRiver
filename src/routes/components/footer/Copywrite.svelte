@@ -1,15 +1,15 @@
 <div class="fullRow">
-	<div class="copywrite">
-		<span>&copy;</span>
-		<span>{new Date().getFullYear()}</span>
-		<span>TheRiver</span>
-	</div>
-	<div class="endPages">
-		<div class="divider"></div>
-		<a href="/privacy-policy">Privacy</a>
-		<div class="divider"></div>
-		<a href="/terms-of-use">Terms</a>
-	</div>
+  <div class="copywrite">
+    <span>&copy;</span>
+    <span>{new Date().getFullYear()}</span>
+    <span>TheRiver</span>
+  </div>
+  <div class="endPages">
+    <div class="divider"></div>
+    <a href="/privacy-policy">Privacy</a>
+    <div class="divider"></div>
+    <a href="/terms-of-use">Terms</a>
+  </div>
 </div>
 
 <style>

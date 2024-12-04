@@ -1,22 +1,22 @@
 <script lang="ts">
-	import Seo from '$lib/components/SEO.svelte';
+  import Seo from "$lib/components/SEO.svelte";
 </script>
 
 <Seo
-	title={'Error - Something Went Wrong'}
-	description={'Oops! Something went wrong. Please try again later or contact support if the issue persists.'} />
+  title="Error - Something Went Wrong"
+  description="Oops! Something went wrong. Please try again later or contact support if the issue persists." />
 
 <main class="app-layout hype">
-	<h1>The River</h1>
-	<section>
-		<blockquote>
-			<p>
-				Life is like the river, sometimes it sweeps you gently along and sometimes the rapids come
-				out of nowhere.
-			</p>
-		</blockquote>
-		<small>Something went wrong, this is an error page.</small>
-	</section>
+  <h1>The River</h1>
+  <section>
+    <blockquote>
+      <p>
+        Life is like the river, sometimes it sweeps you gently along and sometimes the rapids come
+        out of nowhere.
+      </p>
+    </blockquote>
+    <small>Something went wrong, this is an error page.</small>
+  </section>
 </main>
 
 <style>

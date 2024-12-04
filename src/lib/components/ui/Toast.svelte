@@ -1,54 +1,54 @@
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
-	import { fade } from 'svelte/transition';
-	import X from 'lucide-svelte/icons/x';
-	// import SuccessIcon from './SuccessIcon.svelte';
-	import CircleAlert from 'lucide-svelte/icons/circle-alert';
-	import CircleCheck from 'lucide-svelte/icons/circle-check';
-	// import InfoIcon from './InfoIcon.svelte';
+  // import SuccessIcon from './SuccessIcon.svelte';
+  import CircleAlert from "lucide-svelte/icons/circle-alert";
+  import CircleCheck from "lucide-svelte/icons/circle-check";
+  import X from "lucide-svelte/icons/x";
+  import { createEventDispatcher } from "svelte";
+  import { fade } from "svelte/transition";
+  // import InfoIcon from './InfoIcon.svelte';
 	// import CloseIcon from './CloseIcon.svelte';
 
-	const dispatch = createEventDispatcher();
+  const dispatch = createEventDispatcher();
 
-	interface Props {
-		iconType: string;
-		type?: string;
-		dismissible?: boolean;
-		children?: import('svelte').Snippet;
-	}
+  interface Props {
+    iconType: string;
+    type?: string;
+    dismissible?: boolean;
+    children?: import("svelte").Snippet;
+  }
 
-	let {
-		iconType,
-		type = 'message',
-		dismissible = true,
-		children
-	}: Props = $props();
+  const {
+    iconType,
+    type = "message",
+    dismissible = true,
+    children,
+  }: Props = $props();
 </script>
 
 <article class={type} role="alert" transition:fade>
-	<!-- {#if type === 'success'} -->
-	<!-- <SuccessIcon width="1.1em" /> -->
-	<!-- {:else if type === 'error'} -->
-	<!-- {:else} -->
-	<!-- <InfoIcon width="1.1em" /> -->
-	<!-- {/if} -->
-	<!-- {#if type === 'warning'} -->
-	<!-- {/if} -->
+  <!-- {#if type === 'success'} -->
+  <!-- <SuccessIcon width="1.1em" /> -->
+  <!-- {:else if type === 'error'} -->
+  <!-- {:else} -->
+  <!-- <InfoIcon width="1.1em" /> -->
+  <!-- {/if} -->
+  <!-- {#if type === 'warning'} -->
+  <!-- {/if} -->
 
-	<div class="text">
-		{#if iconType === 'warning'}
-			<CircleAlert color="#ff6c6c" />
-		{:else if iconType === 'check'}
-			<CircleCheck color="#6cffa6" />
-		{/if}
-		{@render children?.()}
-	</div>
+  <div class="text">
+    {#if iconType === "warning"}
+      <CircleAlert color="#ff6c6c" />
+    {:else if iconType === "check"}
+      <CircleCheck color="#6cffa6" />
+    {/if}
+    {@render children?.()}
+  </div>
 
-	{#if dismissible}
-		<button class="close" onclick={() => dispatch('dismiss')}>
-			<X />
-		</button>
-	{/if}
+  {#if dismissible}
+    <button class="close" onclick={() => dispatch("dismiss")}>
+      <X />
+    </button>
+  {/if}
 </article>
 
 <style lang="postcss">

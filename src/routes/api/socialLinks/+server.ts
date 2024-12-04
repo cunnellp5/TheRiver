@@ -1,18 +1,18 @@
-import { json } from '@sveltejs/kit';
-import type { RequestHandler } from '@sveltejs/kit';
+import type { RequestHandler } from "@sveltejs/kit";
+import db from "$lib/server/database";
 
-import db from '$lib/server/database';
+import { json } from "@sveltejs/kit";
 
 export const GET: RequestHandler = async (event) => {
-	event.setHeaders({
-		'Cache-Control': 'public, max-age=60, s-maxage=60'
-	});
+  event.setHeaders({
+    "Cache-Control": "public, max-age=60, s-maxage=60",
+  });
 
-	const socialLinks = await db.socialLinks.findMany();
+  const socialLinks = await db.socialLinks.findMany();
 
-	if (!socialLinks) {
-		return json({ error: 'No links found' }, { status: 404 });
-	}
+  if (!socialLinks) {
+    return json({ error: "No links found" }, { status: 404 });
+  }
 
-	return json(socialLinks);
+  return json(socialLinks);
 };

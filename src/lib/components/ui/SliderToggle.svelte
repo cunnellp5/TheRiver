@@ -1,5 +1,5 @@
 <script lang="ts">
-	/*
+  /*
 	 * SliderToggle.svelte
 	 *
 	 *  @desc: A simple switch toggle component
@@ -16,27 +16,27 @@
 	 * 			<SliderToggle checked={published} on:toggle={handleToggle} id="published" name="published" />
 	 */
 
-	import { createEventDispatcher } from 'svelte';
+  import { createEventDispatcher } from "svelte";
 
-	interface Props {
-		checked?: boolean;
-		id: string;
-		name: string;
-	}
+  interface Props {
+    checked?: boolean;
+    id: string;
+    name: string;
+  }
 
-	let { checked = $bindable(false), id, name }: Props = $props();
+  let { checked = $bindable(false), id, name }: Props = $props();
 
-	const dispatch = createEventDispatcher();
+  const dispatch = createEventDispatcher();
 
-	function toggle(event: Event) {
-		const target = event.target as HTMLInputElement;
-		dispatch('change', target.checked);
-	}
+  function toggle(event: Event) {
+    const target = event.target as HTMLInputElement;
+    dispatch("change", target.checked);
+  }
 </script>
 
 <label class="switch">
-	<input {id} {name} type="checkbox" bind:checked onchange={toggle} />
-	<span class="slider round"></span>
+  <input {id} {name} type="checkbox" bind:checked onchange={toggle} />
+  <span class="slider round"></span>
 </label>
 
 <style>

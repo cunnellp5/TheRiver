@@ -1,67 +1,67 @@
 <script lang="ts">
-	import Socials from '$lib/components/ui/Socials.svelte';
+  import Socials from "$lib/components/ui/Socials.svelte";
 </script>
 
 <section class="about">
-	<h2 class="descriptionHeader gradientHeaders">Music Art Hair Nails</h2>
+  <h2 class="descriptionHeader gradientHeaders">Music Art Hair Nails</h2>
 
-	<br />
-	<p>
-		The River is a rising HipHop/R&B artist based in Denver, Colorado.
-		<br />
-		<br />
-		She is a multi-faceted individual who was a marching band nerd and later explored dance, multimedia
-		arts, and songwriting.
-		<br />
-		<br />
-		Today you can find her producing music, making clothes, art, and providing beauty services for hair
-		and nails.
-	</p>
+  <br />
+  <p>
+    The River is a rising HipHop/R&B artist based in Denver, Colorado.
+    <br />
+    <br />
+    She is a multi-faceted individual who was a marching band nerd and later explored dance, multimedia
+    arts, and songwriting.
+    <br />
+    <br />
+    Today you can find her producing music, making clothes, art, and providing beauty services for hair
+    and nails.
+  </p>
 
-	<div class="aboutGrid">
-		<div></div>
-		<div class="textCenter placeCenter">
-			<a href="/music">
-				<button class="circle gradientButtonsTop">
-					<p class="rotateToNormal">Listen to my latest tracks</p>
-				</button>
-			</a>
-		</div>
-		<div></div>
-		<div class="textCenter placeCenter gradient">
-			<p class="rotateToNormal">I'm Alexis!</p>
-		</div>
-		<div class="placeCenter">
-			<img
-				class="rotateToNormal"
-				src="https://res.cloudinary.com/dswpu3qez/image/upload/w_200,c_fill,ar_1:1,g_auto/v1724875596/TheRiver/alexisArticle3_tl91an.webp"
-				alt="alexis face" />
-		</div>
-		<div class="textCenter placeCenter">
-			<a href="https://www.etsy.com/shop/TheRiverDesign" target="_blank" rel="noopener">
-				<button class="circle gradientButtonsRight">
-					<p class="rotateToNormal">Check out my art</p>
-				</button>
-			</a>
-		</div>
-		<div></div>
-		<div class="textCenter placeCenter">
-			<a
-				class="nailsLink"
-				href="https://the-river-sings.square.site/"
-				target="_blank"
-				rel="noopener">
-				<button class="circle gradientButtonsBottom">
-					<p class="rotateToNormal">Book your next hair / nail appt</p>
-				</button>
-			</a>
-		</div>
-		<div></div>
-	</div>
-	<p>Let's <span class="lobster">flow</span> together.</p>
-	<div class="socials">
-		<Socials />
-	</div>
+  <div class="aboutGrid">
+    <div></div>
+    <div class="textCenter placeCenter">
+      <a href="/music">
+        <button class="circle gradientButtonsTop">
+          <p class="rotateToNormal">Listen to my latest tracks</p>
+        </button>
+      </a>
+    </div>
+    <div></div>
+    <div class="textCenter placeCenter gradient">
+      <p class="rotateToNormal">I'm Alexis!</p>
+    </div>
+    <div class="placeCenter">
+      <img
+        class="rotateToNormal"
+        src="https://res.cloudinary.com/dswpu3qez/image/upload/w_200,c_fill,ar_1:1,g_auto/v1724875596/TheRiver/alexisArticle3_tl91an.webp"
+        alt="alexis face" />
+    </div>
+    <div class="textCenter placeCenter">
+      <a href="https://www.etsy.com/shop/TheRiverDesign" target="_blank" rel="noopener">
+        <button class="circle gradientButtonsRight">
+          <p class="rotateToNormal">Check out my art</p>
+        </button>
+      </a>
+    </div>
+    <div></div>
+    <div class="textCenter placeCenter">
+      <a
+        class="nailsLink"
+        href="https://the-river-sings.square.site/"
+        target="_blank"
+        rel="noopener">
+        <button class="circle gradientButtonsBottom">
+          <p class="rotateToNormal">Book your next hair / nail appt</p>
+        </button>
+      </a>
+    </div>
+    <div></div>
+  </div>
+  <p>Let's <span class="lobster">flow</span> together.</p>
+  <div class="socials">
+    <Socials />
+  </div>
 </section>
 
 <style>
