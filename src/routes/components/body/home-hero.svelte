@@ -1,6 +1,6 @@
 <script lang="ts">
-  import LogoR from "$lib/components/svgs/logos/LogoR2.svelte";
-  import TheRiver from "$lib/components/svgs/logos/TheRiver.svelte";
+  import LogoR from "$lib/components/svgs/logos/logo-r2.svelte";
+  import TheRiver from "$lib/components/svgs/logos/the-river.svelte";
   import ServiceButtons from "$lib/components/ui/button/service-buttons.svelte";
   import { onMount } from "svelte";
 

@@ -1,9 +1,9 @@
 <script lang="ts">
-  import TheRiver from "$lib/components/svgs/logos/TheRiver.svelte";
+  import TheRiver from "$lib/components/svgs/logos/the-river.svelte";
   // import LogoR from '$lib/components/svgs/logos/LogoR2.svelte';
   import Socials from "$lib/components/ui/socials.svelte";
   import { address, emailWithBreaks } from "$lib/config";
-  import socialLinks from "$lib/data/socialLinks";
+  import socialLinks from "$lib/data/social-links";
   import Copyright from "./copy-right.svelte";
   import NewsletterForm from "./newsletter-form.svelte";
 </script>
