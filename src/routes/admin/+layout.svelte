@@ -1,9 +1,10 @@
 <script lang="ts">
 	import { run } from 'svelte/legacy';
-
 	import BreadCrumb from '$lib/components/ui/BreadCrumb.svelte';
 	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
+	import adminLinks from './adminLinks';
+
 	interface Props {
 		children?: import('svelte').Snippet;
 	}
@@ -32,131 +33,21 @@
 <main>
 	<aside>
 		<nav class="sidenav">
-			<div class="dropLabel">Main</div>
-			<!-- <a class:current={$page.url.pathname === '/admin'} href="/admin/"> Home </a> -->
-			<a
-				class="indented"
-				class:current={$page.url.pathname === '/admin/users'}
-				href="/admin/users"
-				data-sveltekit-noscroll>
-				Users
-			</a>
-			<a
-				class="indented"
-				class:current={$page.url.pathname === '/admin/about'}
-				href="/admin/about"
-				data-sveltekit-noscroll>
-				About
-			</a>
-
-			<hr />
-
-			<div class="dropLabel">Home</div>
-			<a
-				class="indented"
-				class:current={$page.url.pathname === '/admin/homepage/hero'}
-				href="/admin/homepage/hero"
-				data-sveltekit-noscroll>
-				HeroVideo
-			</a>
-			<a
-				class="indented"
-				class:current={$page.url.pathname.includes('/admin/homepage/articles')}
-				href="/admin/homepage/articles"
-				data-sveltekit-noscroll>
-				Articles
-			</a>
-
-			<hr />
-
-			<div class="dropLabel">Music</div>
-			<a
-				class="indented"
-				class:current={$page.url.pathname === '/admin/musicpage/tracks'}
-				href="/admin/musicpage/tracks"
-				data-sveltekit-noscroll>
-				Tracks
-			</a>
-			<a
-				class="indented"
-				class:current={$page.url.pathname === '/admin/musicpage/videos'}
-				href="/admin/musicpage/videos"
-				data-sveltekit-noscroll>
-				Videos
-			</a>
-			<a
-				class="indented"
-				class:current={$page.url.pathname === '/admin/musicpage/stems'}
-				href="/admin/musicpage/stems"
-				data-sveltekit-noscroll>
-				Stems
-			</a>
-
-			<hr />
-
-			<div class="dropLabel">Services</div>
-			<a
-				class="indented"
-				class:current={$page.url.pathname === '/admin/services'}
-				href="/admin/services"
-				data-sveltekit-noscroll>
-				Jobs
-			</a>
-			<a
-				class="indented"
-				class:current={$page.url.pathname === '/admin/services/categories'}
-				href="/admin/services/categories"
-				data-sveltekit-noscroll>
-				Categories
-			</a>
-			<!-- TEMPORARILY HIDDEN -->
-			<!-- <a
-				class="indented"
-				class:current={$page.url.pathname.includes('/admin/services/booking')}
-				href="/admin/services/booking"
-				data-sveltekit-noscroll>
-				Bookings
-			</a>
-			<a
-				class="indented"
-				class:current={$page.url.pathname.includes('/admin/services/time-slots')}
-				href="/admin/services/time-slots"
-				data-sveltekit-noscroll>
-				Schedule
-			</a> -->
-
-			<hr />
-
-			<!-- <div class="dropLabel">Market</div>
-			<a
-				class:current={$page.url.pathname.includes('/admin/market')}
-				class="indented"
-				href="/admin/market"
-				data-sveltekit-noscroll>
-				Info
-			</a> -->
-
-			<hr />
-
-			<div class="dropLabel">Blog</div>
-			<a
-				class="indented"
-				class:current={$page.url.pathname.includes('/admin/posts')}
-				href="/admin/posts"
-				data-sveltekit-noscroll>
-				Posts
-			</a>
-
-			<hr />
-
-			<div class="dropLabel">Contact</div>
-			<a
-				class="indented"
-				class:current={$page.url.pathname.includes('/admin/contact')}
-				href="/admin/contact"
-				data-sveltekit-noscroll>
-				Info
-			</a>
+			{#each adminLinks as { category, links }}
+				<div class="dropLabel">{category}</div>
+				{#each links as { name, link, urlPath }}
+					<a
+						class="indented"
+						class:current={urlPath
+							? $page.url.pathname.includes(urlPath)
+							: $page.url.pathname === link}
+						href={link}
+						data-sveltekit-noscroll>
+						{name}
+					</a>
+				{/each}
+				<hr />
+			{/each}
 		</nav>
 	</aside>
 	<article>
