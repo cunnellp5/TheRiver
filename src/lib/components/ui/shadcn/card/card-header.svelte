@@ -10,28 +10,29 @@
   }
 
   const { class: className = "", children, ...rest }: Props = $props();
-
 </script>
 
-<div class={className} {...rest}>
+<div
+  class={className}
+  {...rest}>
   {@render children?.()}
 </div>
 
 <style>
-	div {
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-		padding: var(--size-6);
-	}
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: var(--size-6);
+  }
 
-	.noPadding {
-		padding: unset;
-	}
+  .noPadding {
+    padding: unset;
+  }
 
-	@media (max-width: 768px) {
-		.mobilePad {
-			padding-inline: unset;
-		}
-	}
+  @media (max-width: 768px) {
+    .mobilePad {
+      padding-inline: unset;
+    }
+  }
 </style>

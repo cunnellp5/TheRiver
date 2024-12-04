@@ -10,15 +10,16 @@
   }
 
   const { class: className = "", children, ...rest }: Props = $props();
-
 </script>
 
-<tbody class={`${className}`} {...rest}>
+<tbody
+  class={`${className}`}
+  {...rest}>
   {@render children?.()}
 </tbody>
 
 <style>
-	tbody {
-		font-weight: var(--font-weight-6);
-	}
+  tbody {
+    font-weight: var(--font-weight-6);
+  }
 </style>
