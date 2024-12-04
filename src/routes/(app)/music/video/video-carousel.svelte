@@ -15,12 +15,7 @@
     scrollLeft = slider.scrollLeft;
   }
 
-  function handlePointerLeave() {
-    isDown = false;
-    slider.classList.remove("active");
-  }
-
-  function handlePointerUp() {
+  function unActivate() {
     isDown = false;
     slider.classList.remove("active");
   }
@@ -35,14 +30,14 @@
 
   onMount(() => {
     slider.addEventListener("pointerdown", handlePointerDown);
-    slider.addEventListener("pointerleave", handlePointerLeave);
-    slider.addEventListener("pointerup", handlePointerUp);
+    slider.addEventListener("pointerleave", unActivate);
+    slider.addEventListener("pointerup", unActivate);
     slider.addEventListener("pointermove", handlePointerMove);
 
     return () => {
       slider.removeEventListener("pointerdown", handlePointerDown);
-      slider.removeEventListener("pointerleave", handlePointerLeave);
-      slider.removeEventListener("pointerup", handlePointerUp);
+      slider.removeEventListener("pointerleave", unActivate);
+      slider.removeEventListener("pointerup", unActivate);
       slider.removeEventListener("pointermove", handlePointerMove);
     };
   });

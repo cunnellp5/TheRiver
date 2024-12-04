@@ -1,4 +1,4 @@
-import type { SignUpValidator } from "$lib/utils/Valibot/sign-up";
+import type { SignUpValidator } from "$lib/utils/Valibot/signup";
 import type { Newsletter } from "@prisma/client";
 import type { ValiError } from "valibot";
 import type { Actions } from "./$types";
@@ -6,7 +6,7 @@ import { generateSessionToken } from "$lib/server/auth";
 import { login } from "$lib/server/controllers/login";
 import db from "$lib/server/database";
 
-import { SignUpSchema } from "$lib/utils/Valibot/sign-up";
+import { SignUpSchema } from "$lib/utils/Valibot/signup";
 import { error, fail, redirect } from "@sveltejs/kit";
 import { Argon2id } from "oslo/password";
 import { parse } from "valibot";
