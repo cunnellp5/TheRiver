@@ -8,7 +8,9 @@ const config = {
   preprocess: vitePreprocess(),
 
   kit: {
-    adapter: adapter(),
+    adapter: adapter({
+      runtime: "nodejs22.x",
+    }),
     csp: {
       mode: "nonce",
       directives: {
