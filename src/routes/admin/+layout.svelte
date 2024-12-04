@@ -3,7 +3,7 @@
   import { page } from "$app/stores";
   import BreadCrumb from "$lib/components/ui/bread-crumb.svelte";
   import { run } from "svelte/legacy";
-  import adminLinks from "./adminLinks";
+  import adminLinks from "./admin-links";
 
   interface Props {
     children?: import("svelte").Snippet;
