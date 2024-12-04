@@ -1,5 +1,8 @@
 <script lang="ts">
   import ServiceButtons from "$lib/components/ui/button/service-buttons.svelte";
+  import { address, emailWithBreaks } from "$lib/config";
+  import AtSign from "lucide-svelte/icons/at-sign";
+  import MapPin from "lucide-svelte/icons/map-pin";
 
   // const email = 'theriverrunsfast@gmail.com';
   // let copied = false;
@@ -12,16 +15,15 @@
   //     return copied;
   //   }, 800); // Reset after 2 seconds
   // }
-  import { address, emailWithBreaks } from "$lib/config";
-  import AtSign from "lucide-svelte/icons/at-sign";
-  import MapPin from "lucide-svelte/icons/map-pin";
+  const GOOGLE_MAP_URL =
+    "https://www.google.com/maps/place/30+W+Bayaud+Ave,+Denver,+CO+80223/@39.7145613,-104.9911972,17z/data=!3m1!4b1!4m6!3m5!1s0x876c7f1ef7cf41b7:0xbb0e344a69581183!8m2!3d39.7145613!4d-104.9886223!16s%2Fg%2F11c22m8nd0?entry=ttu&g_ep=EgoyMDI0MDkxNi4wIKXMDSoASAFQAw%3D%3D";
 </script>
 
 <section class="bottom-sections">
   <figure class="section map">
     <a
       class="contact-item"
-      href="https://www.google.com/maps/place/30+W+Bayaud+Ave,+Denver,+CO+80223/@39.7145613,-104.9911972,17z/data=!3m1!4b1!4m6!3m5!1s0x876c7f1ef7cf41b7:0xbb0e344a69581183!8m2!3d39.7145613!4d-104.9886223!16s%2Fg%2F11c22m8nd0?entry=ttu&g_ep=EgoyMDI0MDkxNi4wIKXMDSoASAFQAw%3D%3D"
+      href={GOOGLE_MAP_URL}
       target="_blank"
       rel="noopener noreferrer">
       <img
@@ -30,6 +32,7 @@
         class="map__img" />
     </a>
   </figure>
+
   <figure class="section contact">
     <div class="info-wrapper">
       <h2>Contact</h2>
@@ -43,6 +46,7 @@
       </div>
     </div>
   </figure>
+
   <figure class="section newsletter">
     <div class="info-wrapper">
       <h2>Book</h2>
@@ -116,11 +120,22 @@
     flex-direction: column;
     gap: var(--size-2);
   }
-
+  @media (max-width: 1024px) {
+    .bottom-sections {
+      grid-template-rows: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+    }
+    .bottom-sections figure:last-child {
+      grid-column: 1/3;
+    }
+  }
   @media (max-width: 768px) {
     .bottom-sections {
       grid-template-rows: 1fr 1fr 1fr;
       grid-template-columns: 1fr;
+    }
+    .bottom-sections figure:last-child {
+      grid-column: unset;
     }
   }
 </style>

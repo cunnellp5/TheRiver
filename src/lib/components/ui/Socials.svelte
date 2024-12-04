@@ -45,7 +45,7 @@
     justify-content: center;
     align-items: center;
     border: 0px solid var(--gray-9);
-    aspect-ratio: 1 / 1;
+    aspect-ratio: var(--ratio-square);
     min-width: var(--size-8);
   }
   a:hover {

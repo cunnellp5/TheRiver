@@ -26,8 +26,7 @@
   }
 
   function handlePointerMove(e: PointerEvent) {
-    if (!isDown)
-      return;
+    if (!isDown) return;
     e.preventDefault();
     const x = e.pageX - slider.offsetLeft;
     const walk = (x - startX) * 3; // scroll-fast
@@ -147,7 +146,7 @@
 
       /* overrides */
       border-radius: unset;
-      aspect-ratio: 1 / 1;
+      aspect-ratio: var(--ratio-square);
       width: 100%;
       height: 100%;
       object-fit: cover;
