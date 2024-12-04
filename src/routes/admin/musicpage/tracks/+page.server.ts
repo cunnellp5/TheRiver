@@ -1,5 +1,5 @@
 import type { PageServerLoad } from "./$types";
-import { TRACKS } from "$lib/data/soundcloud_tracks";
+import { TRACKS } from "$lib/data/soundcloud-tracks";
 import { error } from "@sveltejs/kit";
 
 export const load: PageServerLoad = async ({ locals }) => {

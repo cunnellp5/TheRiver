@@ -12,13 +12,7 @@
     id: any;
   }
 
-  const {
-    url,
-    title,
-    about,
-    isShowing,
-    id,
-  }: Props = $props();
+  const { url, title, about, isShowing, id }: Props = $props();
 
   let isEditing = $state(false);
 
@@ -43,37 +37,70 @@
 </Table.Cell>
 {#if isEditing}
   <Table.Cell class="full-width">
-    <form class="content" method="POST" data-sveltekit-noscroll use:enhance={() => toggleEditOff()}>
+    <form
+      class="content"
+      method="POST"
+      data-sveltekit-noscroll
+      use:enhance={() => toggleEditOff()}>
       <fieldset>
         <legend>Change visibility</legend>
 
         <div>
-          <input type="radio" id="true" name="isShowing" value="true" bind:group={showing} />
+          <input
+            type="radio"
+            id="true"
+            name="isShowing"
+            value="true"
+            bind:group={showing} />
           <label for="true">Visible</label>
         </div>
 
         <div>
-          <input type="radio" id="false" name="isShowing" value="false" bind:group={showing} />
+          <input
+            type="radio"
+            id="false"
+            name="isShowing"
+            value="false"
+            bind:group={showing} />
           <label for="false">Hidden</label>
         </div>
       </fieldset>
 
-      <textarea name="about" cols="80" rows="3" value={about}></textarea>
+      <textarea
+        name="about"
+        cols="80"
+        rows="3"
+        value={about}></textarea>
 
       <div class="buttons-wrapper">
-        <input type="hidden" name="title" value={title} />
-        <input type="hidden" name="url" value={url} />
-        <input type="hidden" name="id" value={id} />
+        <input
+          type="hidden"
+          name="title"
+          value={title} />
+        <input
+          type="hidden"
+          name="url"
+          value={url} />
+        <input
+          type="hidden"
+          name="id"
+          value={id} />
 
-        <button class="create-button" type="submit">Save</button>
-        <button class="delete-button" onclick={toggleEditOff}>Nvm</button>
+        <button
+          class="create-button"
+          type="submit">Save</button>
+        <button
+          class="delete-button"
+          onclick={toggleEditOff}>Nvm</button>
       </div>
     </form>
   </Table.Cell>
 {:else}
   <Table.Cell>
     <div class="content">
-      <span class:visible={isShowing} class:hidden={!isShowing}>
+      <span
+        class:visible={isShowing}
+        class:hidden={!isShowing}>
         {isShowing ? "Visible" : "Hidden"}
       </span>
       <span>
@@ -82,35 +109,37 @@
     </div>
   </Table.Cell>
   <Table.Cell class="end">
-    <button class="update-button" onclick={toggleEditOn}>edit</button>
+    <button
+      class="update-button"
+      onclick={toggleEditOn}>edit</button>
   </Table.Cell>
 {/if}
 
 <style>
-	button {
-		max-height: var(--size-7);
-	}
-	fieldset {
-		& div {
-			display: flex;
-			align-items: center;
-			gap: var(--size-1);
-		}
-	}
-	/* CLASSES */
-	.content {
-		display: flex;
-		align-items: center;
-		gap: var(--size-10);
-	}
-	.buttons-wrapper {
-		display: flex;
-		gap: var(--size-3);
-	}
-	.visible {
-		color: var(--green-5);
-	}
-	.hidden {
-		color: var(--red-5);
-	}
+  button {
+    max-height: var(--size-7);
+  }
+  fieldset {
+    & div {
+      display: flex;
+      align-items: center;
+      gap: var(--size-1);
+    }
+  }
+  /* CLASSES */
+  .content {
+    display: flex;
+    align-items: center;
+    gap: var(--size-10);
+  }
+  .buttons-wrapper {
+    display: flex;
+    gap: var(--size-3);
+  }
+  .visible {
+    color: var(--green-5);
+  }
+  .hidden {
+    color: var(--red-5);
+  }
 </style>

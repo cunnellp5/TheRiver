@@ -2,7 +2,7 @@ import type { Handle } from "@sveltejs/kit";
 
 // // Function to generate an ETag based on the content
 // function generateETag(content: string): string {
-// 	return createHash('sha1').update(content).digest('hex');
+// return createHash('sha1').update(content).digest('hex');
 // }
 
 function generateNonce() {
@@ -17,8 +17,8 @@ export const headers: Handle = async ({ event, resolve }) => {
 
   // Set global headers
   // response.headers.set(
-  // 	'Content-Security-Policy',
-  // 	`default-src 'self'; script-src 'self' 'nonce-${nonce}'; style-src 'self'; img-src 'self' https://res.cloudinary.com;`
+  // 'Content-Security-Policy',
+  // `default-src 'self'; script-src 'self' 'nonce-${nonce}'; style-src 'self'; img-src 'self' https://res.cloudinary.com;`
   // );
 
   // Security Headers
@@ -37,8 +37,8 @@ export const headers: Handle = async ({ event, resolve }) => {
 
   // Controls the sources from which content can be loaded, helping to prevent XSS attacks. (set in config)
   // response.headers.set(
-  // 	'Content-Security-Policy',
-  // 	"default-src 'self'; script-src 'self' 'unsafe-inline' https://apis.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https://res.cloudinary.com; connect-src 'self' https://your-internal-api.com"
+  // 'Content-Security-Policy',
+  // "default-src 'self'; script-src 'self' 'unsafe-inline' https://apis.google.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' https://res.cloudinary.com; connect-src 'self' https://your-internal-api.com"
   // );
 
   // Controls how much referrer information is included with requests.

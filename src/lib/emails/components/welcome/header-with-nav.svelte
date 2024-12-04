@@ -1,10 +1,10 @@
 <script lang="ts">
-  import { WEBSITE_URL } from "$lib/data/WEBSITE_URL";
-  import TableLogo from "../ui/TableLogo.svelte";
-  import TableTitleDescription from "../ui/TableTitleDescription.svelte";
+  import { WEBSITE_URL } from "$lib/data/website-url";
+  import TableLogo from "../ui/table-logo.svelte";
+  import TableTitleDescription from "../ui/table-title-description.svelte";
 
-  const layerdImg =
-    "https://res.cloudinary.com/dswpu3qez/image/upload/v1732155330/backgrounds/feature-collage-2_laljnw.webp";
+  const layerdImg
+    = "https://res.cloudinary.com/dswpu3qez/image/upload/v1732155330/backgrounds/feature-collage-2_laljnw.webp";
 </script>
 
 <table

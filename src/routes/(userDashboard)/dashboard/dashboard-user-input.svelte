@@ -30,7 +30,9 @@
 
 {#if key === "isSubscribed"}
   <div class="dropdownWrapper">
-    <select name="value" bind:value>
+    <select
+      name="value"
+      bind:value>
       <option value={true}>{optionText1}</option>
       <option value={false}>{optionText2}</option>
     </select>
@@ -54,15 +56,15 @@
 {/if}
 
 <style>
-	.dropdownWrapper {
-		display: flex;
-		align-items: center;
-		gap: var(--size-3);
-	}
-	input {
-		width: 100%;
-	}
-	select {
-		min-width: var(--size-13);
-	}
+  .dropdownWrapper {
+    display: flex;
+    align-items: center;
+    gap: var(--size-3);
+  }
+  input {
+    width: 100%;
+  }
+  select {
+    min-width: var(--size-13);
+  }
 </style>

@@ -68,39 +68,39 @@
 </article>
 
 <style>
-	/* ELEMENTS */
-	h1 {
-		margin-top: var(--size-10);
-		margin-bottom: var(--size-5);
-	}
-	h2 {
-		font-size: var(--size-5);
-	}
-	p {
-		margin-bottom: var(--size-4);
-		margin-left: var(--size-5);
-		line-height: 1.6;
-	}
-	ul {
-		margin-bottom: var(--size-3);
-		padding-left: var(--size-3);
-	}
-	ul li {
-		margin-bottom: var(--size-5);
-		margin-left: var(--size-7);
-	}
-	/* CLASSSES */
-	.policy {
-		padding: var(--size-4);
-		color: var(--text-1);
-		font-family: var(--font-family);
-	}
-	.policy:not(strong) {
-		font-weight: var(--font-weight-1);
-	}
-	.container {
-		margin: 0 auto;
-		padding: var(--size-6);
-		max-width: 800px;
-	}
+  /* ELEMENTS */
+  h1 {
+    margin-top: var(--size-10);
+    margin-bottom: var(--size-5);
+  }
+  h2 {
+    font-size: var(--size-5);
+  }
+  p {
+    margin-bottom: var(--size-4);
+    margin-left: var(--size-5);
+    line-height: 1.6;
+  }
+  ul {
+    margin-bottom: var(--size-3);
+    padding-left: var(--size-3);
+  }
+  ul li {
+    margin-bottom: var(--size-5);
+    margin-left: var(--size-7);
+  }
+  /* CLASSSES */
+  .policy {
+    padding: var(--size-4);
+    color: var(--text-1);
+    font-family: var(--font-family);
+  }
+  .policy:not(strong) {
+    font-weight: var(--font-weight-1);
+  }
+  .container {
+    margin: 0 auto;
+    padding: var(--size-6);
+    max-width: 800px;
+  }
 </style>

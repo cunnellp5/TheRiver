@@ -30,7 +30,7 @@ export class ShowHideScroll {
     duration: string = "300ms",
     offset: number = 50,
     tolerance: number = 5,
-    cssClassName: string = "show"
+    cssClassName: string = "show",
   ) {
     this.duration = duration;
     this.offset = offset;

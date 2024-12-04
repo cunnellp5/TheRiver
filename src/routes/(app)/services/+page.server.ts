@@ -1,6 +1,6 @@
 import type { PageServerLoad } from "./$types";
 import db from "$lib/server/database";
-import { servicesMapper } from "$lib/utils/servicesMapper";
+import { servicesMapper } from "$lib/utils/services-mapper";
 import { type Actions, error, redirect } from "@sveltejs/kit";
 
 export const load: PageServerLoad = async () => {

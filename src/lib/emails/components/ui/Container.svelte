@@ -1,5 +1,5 @@
 <script lang="ts">
-  import styleToString from "$lib/utils/styleToString";
+  import styleToString from "$lib/utils/style-to-string";
 
   const { style = {}, children, ...rest } = $props();
   const styles = { maxWidth: "37.5em", ...style };
@@ -11,7 +11,9 @@
             <table role="presentation" width="100%" align="center" style="${inlineStyle}"><tr><td></td><td style="width:37.5em;background:#ffffff">
           <![endif]-->`}
 </div>
-<div {...rest} style={inlineStyle}>
+<div
+  {...rest}
+  style={inlineStyle}>
   {@render children?.()}
 </div>
 <div>

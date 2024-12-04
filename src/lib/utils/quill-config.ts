@@ -25,7 +25,7 @@ export function quillContentInit(content: string) {
   try {
     data = JSON.parse(content);
   }
-  catch (error) {
+  catch {
     data = [{ insert: content }];
   }
 

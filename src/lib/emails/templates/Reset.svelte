@@ -1,13 +1,13 @@
 <script lang="ts">
-  import EmailFooter from "../components/email-footer.svelte";
-  import EmailImg from "../components/email-img.svelte";
-  import Button from "../components/ui/Button.svelte";
-  import Container from "../components/ui/Container.svelte";
-  import Heading from "../components/ui/Heading.svelte";
-  import Preview from "../components/ui/Preview.svelte";
-  import Section from "../components/ui/Section.svelte";
-  import Text from "../components/ui/Text.svelte";
-  import { button, container, heading, unsubscribe } from "../emailStyles";
+  import EmailFooter from "$lib/emails/components/email-footer.svelte";
+  import EmailImg from "$lib/emails/components/email-img.svelte";
+  import Button from "$lib/emails/components/ui/button.svelte";
+  import Container from "$lib/emails/components/ui/container.svelte";
+  import Heading from "$lib/emails/components/ui/heading.svelte";
+  import Preview from "$lib/emails/components/ui/preview.svelte";
+  import Section from "$lib/emails/components/ui/section.svelte";
+  import Text from "$lib/emails/components/ui/text.svelte";
+  import { button, container, heading, unsubscribe } from "../email-styles";
 
   interface Props {
     token?: any;

@@ -8,7 +8,9 @@
   const { color, size, style }: Props = $props();
 </script>
 
-<div class="wrapper" style="top: {style.top}; left: {style.left};">
+<div
+  class="wrapper"
+  style="top: {style.top}; left: {style.left};">
   <svg
     width={size}
     height={size}
@@ -22,36 +24,36 @@
 </div>
 
 <style>
-	.wrapper {
-		display: flex;
-		position: absolute;
-		z-index: 2;
-		animation: grow-and-shrink 900ms ease-in-out forwards;
-		pointer-events: none;
+  .wrapper {
+    display: flex;
+    position: absolute;
+    z-index: 2;
+    animation: grow-and-shrink 900ms ease-in-out forwards;
+    pointer-events: none;
 
-		& > svg {
-			animation: spin 900ms linear forwards;
-		}
-	}
+    & > svg {
+      animation: spin 900ms linear forwards;
+    }
+  }
 
-	@keyframes grow-and-shrink {
-		0% {
-			transform: scale(0);
-		}
-		50% {
-			transform: scale(1);
-		}
-		100% {
-			transform: scale(0);
-		}
-	}
+  @keyframes grow-and-shrink {
+    0% {
+      transform: scale(0);
+    }
+    50% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
 
-	@keyframes spin {
-		from {
-			transform: rotate(0deg);
-		}
-		to {
-			transform: rotate(180deg);
-		}
-	}
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(180deg);
+    }
+  }
 </style>

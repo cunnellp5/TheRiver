@@ -17,14 +17,14 @@
   let previous: BlogPost | undefined = $state(undefined);
 
   function findPost(slug: string): BlogPost | undefined {
-    return data.posts.find((p) => p.slug === slug) || undefined;
+    return data.posts.find(p => p.slug === slug) || undefined;
   }
 
   let post: BlogPost | undefined = $state(findPost($page.params.slug)); // initial post
 
   $effect(() => {
     post = findPost($page.params.slug); // updates page with selected post data
-    index = data.posts.findIndex((p) => p.slug === $page.params.slug);
+    index = data.posts.findIndex(p => p.slug === $page.params.slug);
     next = data.posts[index - 1];
     previous = data.posts[index + 1];
   });
@@ -70,11 +70,11 @@
   section {
     background: radial-gradient(ellipse at center, hsla(7, 80%, 25%, 0.109), transparent 60%);
     /* background-image: radial-gradient(
-				ellipse at 100%,
-				hsla(7, 80%, 25%, 0.109),
-				hsla(0, 0%, 0%, 0)
-			),
-			var(--noise-4); */
+        ellipse at 100%,
+        hsla(7, 80%, 25%, 0.109),
+        hsla(0, 0%, 0%, 0)
+      ),
+      var(--noise-4); */
   }
 
   section::before {

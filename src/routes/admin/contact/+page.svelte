@@ -1,7 +1,7 @@
 <script lang="ts">
   import * as Card from "$lib/components/ui/shadcn/card";
   import * as Table from "$lib/components/ui/shadcn/table";
-  import AdminBusinessInfoRow from "./AdminBusinessInfoRow.svelte";
+  import AdminBusinessInfoRow from "./admin-business-info-row.svelte";
 
   const { data } = $props();
   const { business } = $derived(data);

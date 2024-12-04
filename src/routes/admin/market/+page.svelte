@@ -18,29 +18,29 @@
     </Card.Header>
     <Card.Content>
       <!-- <span>Current Link</span>
-			<p>
-				<a href={business?.merchUrl}>
-					{business?.merchUrl}
-				</a>
-			</p>
-			<br />
-			<span>Display text</span>
-			<p>
-				{business?.merchText}
-			</p> -->
+      <p>
+        <a href={business?.merchUrl}>
+          {business?.merchUrl}
+        </a>
+      </p>
+      <br />
+      <span>Display text</span>
+      <p>
+        {business?.merchText}
+      </p> -->
     </Card.Content>
   </Card.Root>
 </div>
 
 <style>
-	div {
-		display: flex;
-		flex-direction: column;
-	}
-	/* p {
-		color: var(--link);
-	}
-	span {
-		color: var(--text-2);
-	} */
+  div {
+    display: flex;
+    flex-direction: column;
+  }
+  /* p {
+    color: var(--link);
+  }
+  span {
+    color: var(--text-2);
+  } */
 </style>

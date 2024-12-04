@@ -1,7 +1,7 @@
 <script lang="ts">
   // import { draw, fade, fly } from 'svelte/transition';
-	// import { backOut } from 'svelte/easing';
-	// props
+  // import { backOut } from 'svelte/easing';
+  // props
   const { theme = false } = $props();
 </script>
 
@@ -14,8 +14,12 @@
   xmlns="http://www.w3.org/2000/svg"
   class:theme
   class="shadow homePage">
-  <g id="layer1" transform="translate(38.893751,-126.47083)">
-    <g id="g6" transform="matrix(0.26458333,0,0,0.26458333,-150.01875,50.270833)">
+  <g
+    id="layer1"
+    transform="translate(38.893751,-126.47083)">
+    <g
+      id="g6"
+      transform="matrix(0.26458333,0,0,0.26458333,-150.01875,50.270833)">
       <!-- T -->
       <!-- in:fly={{ duration: 250, x: -400, easing: backOut }} -->
       <polygon
@@ -25,11 +29,11 @@
         id="T" />
       <!-- HE -->
       <!-- in:fly={{
-					duration: 250,
-					x: -400,
-					delay: 140,
-					easing: backOut
-				}} -->
+          duration: 250,
+          x: -400,
+          delay: 140,
+          easing: backOut
+        }} -->
       <polygon
         class:theme
         class="shadow homePage"
@@ -90,18 +94,18 @@
 </svg>
 
 <style>
-	.homePage {
-		/* fill: var(--stone-9); */
-		fill: var(--stone-3);
-		width: 100%;
-		/* backdrop-filter: blur(1px);  */
-		/* -webkit-backdrop-filter: blur(1px);  */
-	}
+  .homePage {
+    /* fill: var(--stone-9); */
+    fill: var(--stone-3);
+    width: 100%;
+    /* backdrop-filter: blur(1px);  */
+    /* -webkit-backdrop-filter: blur(1px);  */
+  }
 
-	.theme {
-		fill: var(--text-2);
-	}
-	/* .homePage {
-		fill: var(--sand-2);
-	} */
+  .theme {
+    fill: var(--text-2);
+  }
+  /* .homePage {
+    fill: var(--sand-2);
+  } */
 </style>

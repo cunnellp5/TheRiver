@@ -1,5 +1,5 @@
 <script lang="ts">
-  import styleToString from "$lib/utils/styleToString";
+  import styleToString from "$lib/utils/style-to-string";
 
   const { style = {}, ...rest } = $props();
   const styleDefault = {
@@ -10,4 +10,6 @@
   };
 </script>
 
-<hr style={styleToString(styleDefault)} {...rest} />
+<hr
+  style={styleToString(styleDefault)}
+  {...rest} />

@@ -73,14 +73,14 @@
     }
   }
   /* .slider-dot {
-		transition: width 0.5s;
-		cursor: pointer;
-		border: none;
-		border-radius: 1rem;
-		background-color: black;
-		width: 0.75rem;
-		height: 0.75rem;
-	} */
+    transition: width 0.5s;
+    cursor: pointer;
+    border: none;
+    border-radius: 1rem;
+    background-color: black;
+    width: 0.75rem;
+    height: 0.75rem;
+  } */
   .grid-container {
     display: grid;
     /* margin-block: var(--size-7); */

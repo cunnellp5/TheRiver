@@ -48,7 +48,7 @@ const config = {
     environment: "jsdom",
     include: ["src/**/*.{test,spec}.ts"],
     // Extend jest-dom matchers
-    setupFiles: ["./setupTest.ts"],
+    setupFiles: ["./setup-test.ts"],
   },
 };
 

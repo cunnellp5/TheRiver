@@ -1,10 +1,10 @@
 <script lang="ts">
-  import socialLinks from "$lib/data/socialLinks";
-  import { WEBSITE_URL } from "$lib/data/WEBSITE_URL";
-  import { fontFamily, hr, link, paragraph } from "../emailStyles";
-  import Hr from "./ui/Hr.svelte";
-  import Link from "./ui/Link.svelte";
-  import Text from "./ui/Text.svelte";
+  import socialLinks from "$lib/data/social-links";
+  import { WEBSITE_URL } from "$lib/data/website-url";
+  import { fontFamily, hr, link, paragraph } from "../email-styles";
+  import Hr from "./ui/hr.svelte";
+  import Link from "./ui/link.svelte";
+  import Text from "./ui/text.svelte";
 
   const unsubscribe = {
     fontFamily,

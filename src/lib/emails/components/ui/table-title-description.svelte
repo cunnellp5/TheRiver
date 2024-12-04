@@ -5,10 +5,17 @@
   } = $props();
 </script>
 
-<table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
+<table
+  width="100%"
+  border="0"
+  cellpadding="0"
+  cellspacing="0"
+  role="presentation">
   <tbody>
     <tr>
-      <td class="pc-w620-spacing-0-0-32-0" style="padding: 0px 0px 8px 0px;">
+      <td
+        class="pc-w620-spacing-0-0-32-0"
+        style="padding: 0px 0px 8px 0px;">
         <table
           class="pc-width-fill pc-w620-gridCollapsed-1"
           width="100%"
@@ -47,47 +54,49 @@
                           style="width: 100%;">
                           <tbody>
                             <!-- <tr>
-															<td align="center" valign="top">
-																<table
-																	align="center"
-																	border="0"
-																	cellpadding="0"
-																	cellspacing="0"
-																	role="presentation">
-																	<tbody>
-																		<tr>
-																			<td valign="top" style="padding: 0px 0px 8px 0px;">
-																				<table
-																					border="0"
-																					cellpadding="0"
-																					cellspacing="0"
-																					role="presentation"
-																					width="100%"
-																					style="border-collapse: separate; border-spacing: 0;">
-																					<tbody>
-																						<tr>
-																							<td valign="top" align="center">
-																								<div
-																									class="pc-font-alt"
-																									style="line-height: 160%; letter-spacing: 4px; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 600; font-variant-ligatures: normal; color: #333333; text-transform: uppercase; text-align: center; text-align-last: center;">
-																									<div>
-																										<span style="color: rgb(0, 255, 131);">
-																											Music Art Fashion
-																										</span>
-																									</div>
-																								</div>
-																							</td>
-																						</tr>
-																					</tbody>
-																				</table>
-																			</td>
-																		</tr>
-																	</tbody>
-																</table>
-															</td>
-														</tr> -->
-                            <tr>
                               <td align="center" valign="top">
+                                <table
+                                  align="center"
+                                  border="0"
+                                  cellpadding="0"
+                                  cellspacing="0"
+                                  role="presentation">
+                                  <tbody>
+                                    <tr>
+                                      <td valign="top" style="padding: 0px 0px 8px 0px;">
+                                        <table
+                                          border="0"
+                                          cellpadding="0"
+                                          cellspacing="0"
+                                          role="presentation"
+                                          width="100%"
+                                          style="border-collapse: separate; border-spacing: 0;">
+                                          <tbody>
+                                            <tr>
+                                              <td valign="top" align="center">
+                                                <div
+                                                  class="pc-font-alt"
+                                                  style="line-height: 160%; letter-spacing: 4px; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 600; font-variant-ligatures: normal; color: #333333; text-transform: uppercase; text-align: center; text-align-last: center;">
+                                                  <div>
+                                                    <span style="color: rgb(0, 255, 131);">
+                                                      Music Art Fashion
+                                                    </span>
+                                                  </div>
+                                                </div>
+                                              </td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr> -->
+                            <tr>
+                              <td
+                                align="center"
+                                valign="top">
                                 <table
                                   align="center"
                                   border="0"
@@ -133,7 +142,9 @@
                               </td>
                             </tr>
                             <tr>
-                              <td align="center" valign="top">
+                              <td
+                                align="center"
+                                valign="top">
                                 <table
                                   align="center"
                                   border="0"

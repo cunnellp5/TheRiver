@@ -1,19 +1,37 @@
-<!-- @migration-task Error while migrating Svelte code: `<tr>` is invalid inside `<table>` -->
-<table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation">
+<table
+  width="100%"
+  border="0"
+  cellspacing="0"
+  cellpadding="0"
+  role="presentation">
   <tbody>
     <tr>
-      <td class="pc-w620-spacing-0-0-0-0" style="padding: 0px 0px 0px 0px;">
-        <table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation">
+      <td
+        class="pc-w620-spacing-0-0-0-0"
+        style="padding: 0px 0px 0px 0px;">
+        <table
+          width="100%"
+          border="0"
+          cellspacing="0"
+          cellpadding="0"
+          role="presentation">
           <tbody>
             <tr>
               <td
                 valign="top"
                 class="pc-w620-padding-32-24-32-24"
                 style="padding: 0px 32px 56px 32px; border-radius: 0px; background-color: #002333;">
-                <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
+                <table
+                  width="100%"
+                  border="0"
+                  cellpadding="0"
+                  cellspacing="0"
+                  role="presentation">
                   <tbody>
                     <tr>
-                      <td class="pc-w620-spacing-0-0-32-0" style="padding: 0px 0px 40px 0px;">
+                      <td
+                        class="pc-w620-spacing-0-0-32-0"
+                        style="padding: 0px 0px 40px 0px;">
                         <table
                           class="pc-width-fill pc-w620-gridCollapsed-1"
                           width="100%"
@@ -38,7 +56,9 @@
                                   style="border-collapse: separate; border-spacing: 0; width: 100%; height: 100%;">
                                   <tbody>
                                     <tr>
-                                      <td align="left" valign="middle">
+                                      <td
+                                        align="left"
+                                        valign="middle">
                                         <table
                                           align="left"
                                           width="100%"
@@ -49,7 +69,9 @@
                                           style="width: 100%;">
                                           <tbody>
                                             <tr>
-                                              <td align="left" valign="top">
+                                              <td
+                                                align="left"
+                                                valign="top">
                                                 <table
                                                   width="100%"
                                                   border="0"
@@ -58,7 +80,9 @@
                                                   role="presentation">
                                                   <tbody>
                                                     <tr>
-                                                      <td align="left" valign="top">
+                                                      <td
+                                                        align="left"
+                                                        valign="top">
                                                         <a
                                                           class="pc-font-alt"
                                                           href="https://designmodo.com/postcards/"
@@ -99,7 +123,9 @@
                                   style="border-collapse: separate; border-spacing: 0; width: 100%;">
                                   <tbody>
                                     <tr>
-                                      <td align="left" valign="middle">
+                                      <td
+                                        align="left"
+                                        valign="middle">
                                         <table
                                           align="left"
                                           width="100%"
@@ -110,7 +136,9 @@
                                           style="width: 100%;">
                                           <tbody>
                                             <tr>
-                                              <td align="left" valign="top">
+                                              <td
+                                                align="left"
+                                                valign="top">
                                                 <table
                                                   align="left"
                                                   border="0"
@@ -131,7 +159,9 @@
                                                           style="border-collapse: separate; border-spacing: 0;">
                                                           <tbody>
                                                             <tr>
-                                                              <td valign="top" align="left">
+                                                              <td
+                                                                valign="top"
+                                                                align="left">
                                                                 <div
                                                                   class="pc-font-alt"
                                                                   style="line-height: 160%; letter-spacing: 4px; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 600; font-variant-ligatures: normal; color: #00ff83; text-align: left; text-align-last: left;">
@@ -153,7 +183,9 @@
                                               </td>
                                             </tr>
                                             <tr>
-                                              <td align="left" valign="top">
+                                              <td
+                                                align="left"
+                                                valign="top">
                                                 <table
                                                   align="left"
                                                   border="0"
@@ -174,13 +206,16 @@
                                                           style="border-collapse: separate; border-spacing: 0;">
                                                           <tbody>
                                                             <tr>
-                                                              <td valign="top" align="left">
+                                                              <td
+                                                                valign="top"
+                                                                align="left">
                                                                 <div
                                                                   class="pc-font-alt pc-w620-fontSize-24px pc-w620-lineHeight-140pc"
                                                                   style="line-height: 120%; letter-spacing: 0px; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-size: 32px; font-weight: 600; font-variant-ligatures: normal; color: #ffffff; text-align: left; text-align-last: left;">
                                                                   <div>
-                                                                    <span
-                                                                    >The New Voice of Modern Jazz</span>
+                                                                    <span>
+                                                                      The New Voice of Modern Jazz
+                                                                    </span>
                                                                   </div>
                                                                 </div>
                                                               </td>
@@ -194,7 +229,9 @@
                                               </td>
                                             </tr>
                                             <tr>
-                                              <td align="left" valign="top">
+                                              <td
+                                                align="left"
+                                                valign="top">
                                                 <table
                                                   align="left"
                                                   border="0"
@@ -215,7 +252,9 @@
                                                           style="border-collapse: separate; border-spacing: 0;">
                                                           <tbody>
                                                             <tr>
-                                                              <td valign="top" align="left">
+                                                              <td
+                                                                valign="top"
+                                                                align="left">
                                                                 <div
                                                                   class="pc-font-alt pc-w620-fontSize-16 pc-w620-lineHeight-26"
                                                                   style="line-height: 160%; letter-spacing: 0px; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-size: 14px; font-weight: normal; font-variant-ligatures: normal; color: #ffffff; text-align: left; text-align-last: left;">
@@ -259,7 +298,12 @@
                   </tbody>
                 </table>
 
-                <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
+                <table
+                  width="100%"
+                  border="0"
+                  cellpadding="0"
+                  cellspacing="0"
+                  role="presentation">
                   <tbody>
                     <tr>
                       <td>
@@ -361,7 +405,9 @@
                                   style="border-collapse: separate; border-spacing: 0; width: 100%;">
                                   <tbody>
                                     <tr>
-                                      <td align="left" valign="middle">
+                                      <td
+                                        align="left"
+                                        valign="middle">
                                         <table
                                           align="left"
                                           width="100%"
@@ -372,7 +418,9 @@
                                           style="width: 100%;">
                                           <tbody>
                                             <tr>
-                                              <td align="left" valign="top">
+                                              <td
+                                                align="left"
+                                                valign="top">
                                                 <table
                                                   align="left"
                                                   border="0"
@@ -393,7 +441,9 @@
                                                           style="border-collapse: separate; border-spacing: 0;">
                                                           <tbody>
                                                             <tr>
-                                                              <td valign="top" align="left">
+                                                              <td
+                                                                valign="top"
+                                                                align="left">
                                                                 <div
                                                                   class="pc-font-alt"
                                                                   style="line-height: 160%; letter-spacing: 4px; font-family: 'Raleway', Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 600; font-variant-ligatures: normal; color: #00ff83; text-align: left; text-align-last: left;">
@@ -412,7 +462,9 @@
                                               </td>
                                             </tr>
                                             <tr>
-                                              <td align="left" valign="top">
+                                              <td
+                                                align="left"
+                                                valign="top">
                                                 <table
                                                   align="left"
                                                   border="0"
@@ -433,7 +485,9 @@
                                                           style="border-collapse: separate; border-spacing: 0;">
                                                           <tbody>
                                                             <tr>
-                                                              <td valign="top" align="left">
+                                                              <td
+                                                                valign="top"
+                                                                align="left">
                                                                 <div
                                                                   class="pc-font-alt pc-w620-fontSize-24px pc-w620-lineHeight-140pc"
                                                                   style="line-height: 120%; letter-spacing: 0px; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-size: 32px; font-weight: 600; font-variant-ligatures: normal; color: #ffffff; text-align: left; text-align-last: left;">
@@ -454,7 +508,9 @@
                                               </td>
                                             </tr>
                                             <tr>
-                                              <td align="left" valign="top">
+                                              <td
+                                                align="left"
+                                                valign="top">
                                                 <table
                                                   align="left"
                                                   border="0"
@@ -475,7 +531,9 @@
                                                           style="border-collapse: separate; border-spacing: 0;">
                                                           <tbody>
                                                             <tr>
-                                                              <td valign="top" align="left">
+                                                              <td
+                                                                valign="top"
+                                                                align="left">
                                                                 <div
                                                                   class="pc-font-alt pc-w620-fontSize-16 pc-w620-lineHeight-26"
                                                                   style="line-height: 160%; letter-spacing: 0px; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-size: 14px; font-weight: normal; font-variant-ligatures: normal; color: #ffffff; text-align: left; text-align-last: left;">

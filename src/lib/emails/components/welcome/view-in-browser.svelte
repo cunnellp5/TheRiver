@@ -1,4 +1,3 @@
-<!-- @migration-task Error while migrating Svelte code: `<tr>` is invalid inside `<table>` -->
 <!-- TODO create a obscure route to a 'welcome' page with similar images and such -->
 <!-- examples: -->
 <!-- https://mailchi.mp/botanicgardens/s24dm1-1323718?e=1e598dfad7 -->

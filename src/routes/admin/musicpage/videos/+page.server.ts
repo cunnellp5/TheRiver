@@ -1,6 +1,6 @@
 import type { Actions } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
-import type { PlaylistItemResource } from "./youtubeTypes";
+import type { PlaylistItemResource } from "./youtube-types";
 import { env } from "$env/dynamic/private";
 import db from "$lib/server/database";
 import { error, fail } from "@sveltejs/kit";
@@ -56,7 +56,7 @@ export const actions: Actions = {
             description: item.snippet.description,
             position: item.snippet.position,
             thumbnail:
-							item.snippet?.thumbnails?.maxres?.url || item.snippet?.thumbnails?.standard?.url, // consider just using standard
+              item.snippet?.thumbnails?.maxres?.url || item.snippet?.thumbnails?.standard?.url, // consider just using standard
           }));
       })
       .catch(err => ({

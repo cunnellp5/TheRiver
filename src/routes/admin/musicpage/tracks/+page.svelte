@@ -40,7 +40,7 @@
 {/if}
 
 <style>
-	p {
-		font-size: var(--font-size-1);
-	}
+  p {
+    font-size: var(--font-size-1);
+  }
 </style>

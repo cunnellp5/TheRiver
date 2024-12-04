@@ -1,11 +1,11 @@
 <script lang="ts">
-  import Etsy from "$lib/components/svgs/socials/Etsy.svelte";
-  import Facebook from "$lib/components/svgs/socials/Facebook.svelte";
-  import Instagram from "$lib/components/svgs/socials/Instagram.svelte";
-  import LinkTree from "$lib/components/svgs/socials/LinkTree.svelte";
-  import Spotify from "$lib/components/svgs/socials/Spotify.svelte";
-  import Youtube from "$lib/components/svgs/socials/Youtube.svelte";
-  import socialLinks from "$lib/data/socialLinks";
+  import Etsy from "$lib/components/svgs/socials/etsy.svelte";
+  import Facebook from "$lib/components/svgs/socials/facebook.svelte";
+  import Instagram from "$lib/components/svgs/socials/instagram.svelte";
+  import LinkTree from "$lib/components/svgs/socials/link-tree.svelte";
+  import Spotify from "$lib/components/svgs/socials/spotify.svelte";
+  import Youtube from "$lib/components/svgs/socials/youtube.svelte";
+  import socialLinks from "$lib/data/social-links";
 
   const components = [
     { name: "Facebook", SVGComponent: Facebook, link: socialLinks.facebook },

@@ -1,16 +1,16 @@
 import slugify from "$lib/utils/slugify";
 import { PrismaClient } from "@prisma/client";
 
-import aboutData from "./seedData/aboutData";
-import articlesData from "./seedData/articlesData";
-import contactData from "./seedData/contact-data";
-import serviceCategories from "./seedData/serviceCategories";
-import serviceHairAddOnData from "./seedData/serviceHairAddOnData";
-import serviceHairColorData from "./seedData/serviceHairColorData";
-import serviceHairCutData from "./seedData/serviceHairCutData";
-import serviceNailData from "./seedData/serviceNailData";
-import serviceNewClientData from "./seedData/serviceNewClientData";
-import youtubeData from "./seedData/youtubeData";
+import aboutData from "./seed-data/about-data";
+import articlesData from "./seed-data/articles-data";
+import contactData from "./seed-data/contact-data";
+import serviceCategories from "./seed-data/service-categories";
+import serviceHairAddOnData from "./seed-data/service-hair-add-on-data";
+import serviceHairColorData from "./seed-data/service-hair-color-data";
+import serviceHairCutData from "./seed-data/service-hair-cut-data";
+import serviceNailData from "./seed-data/service-nail-data";
+import serviceNewClientData from "./seed-data/service-new-client-data";
+import youtubeData from "./seed-data/youtube-data";
 
 const db = new PrismaClient();
 
@@ -59,10 +59,12 @@ async function main() {
       data: serviceCategories[2],
     });
     await db.service.createMany({
-      data: serviceHairCutData.map(service => ({
-        ...service,
-        categoryId: hairCutCategory.id,
-      })),
+      data: serviceHairCutData.map((service) => {
+        return {
+          ...service,
+          categoryId: hairCutCategory.id,
+        };
+      }),
     });
 
     // 2. create Hair color category/services
@@ -112,7 +114,7 @@ async function main() {
 
     // 2. Relate services to categories then create from seedData
     // await db.service.createMany({
-    // 	data: servicesData
+    // data: servicesData
     // });
 
     // ARTICLES SEEDS

@@ -31,15 +31,31 @@
         method="POST"
         action="?/updateBusinessInfo"
         use:enhance={() => stopEditing()}>
-        <input type="hidden" name="id" value={id} />
-        <input type="hidden" name="key" value={key} />
-        <input type="text" name="value" bind:value class="fixed-width-input" />
+        <input
+          type="hidden"
+          name="id"
+          value={id} />
+        <input
+          type="hidden"
+          name="key"
+          value={key} />
+        <input
+          type="text"
+          name="value"
+          bind:value
+          class="fixed-width-input" />
       </form>
     </Table.Cell>
     <Table.Cell>
       <div class="button-wrapper">
-        <button form="updateForm" type="submit" class="update-button">Update</button>
-        <button type="button" class="delete-button" onclick={stopEditing}>X</button>
+        <button
+          form="updateForm"
+          type="submit"
+          class="update-button">Update</button>
+        <button
+          type="button"
+          class="delete-button"
+          onclick={stopEditing}>X</button>
       </div>
     </Table.Cell>
   </Table.Row>
@@ -47,7 +63,9 @@
   <Table.Row>
     {#if key !== "id" && key !== "createdAt" && key !== "updatedAt"}
       <Table.Cell class="fixed-width keyText">{key}</Table.Cell>
-      <Table.Cell class="fixed-width" on:dblclick={editing}>{value}</Table.Cell>
+      <Table.Cell
+        class="fixed-width"
+        on:dblclick={editing}>{value}</Table.Cell>
       <Table.Cell class="fixed-width">
         <div class="button-wrapper">
           <button onclick={editing}>
@@ -60,14 +78,14 @@
 {/if}
 
 <style>
-	.fixed-width-input {
-		box-sizing: border-box; /* Include padding and border in the element's total width and height */
-		width: 100%; /* Ensure the input field takes up the full width of the cell */
-	}
+  .fixed-width-input {
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    width: 100%; /* Ensure the input field takes up the full width of the cell */
+  }
 
-	.button-wrapper {
-		display: flex;
-		justify-content: end;
-		gap: var(--size-4);
-	}
+  .button-wrapper {
+    display: flex;
+    justify-content: end;
+    gap: var(--size-4);
+  }
 </style>

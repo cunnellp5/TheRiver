@@ -1,6 +1,6 @@
 import type { RouteParams } from "../../../routes/$types";
-import type CookiesMock from "./CookiesMock";
-import type RequestMock from "./RequestMock";
+import type CookiesMock from "./cookies-mock";
+import type RequestMock from "./request-mock";
 import { type Mock, vi } from "vitest";
 
 export default class MockedEvent {
@@ -31,9 +31,9 @@ export default class MockedEvent {
   constructor(
     request: RequestMock,
     cookies: CookiesMock,
-		platform = "testPlatform",
-		isDataRequest = false,
-		isSubRequest = false,
+    platform = "testPlatform",
+    isDataRequest = false,
+    isSubRequest = false,
   ) {
     this.request = request;
     this.cookies = cookies;

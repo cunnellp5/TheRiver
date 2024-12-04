@@ -2,7 +2,7 @@
   import { enhance } from "$app/forms";
   import * as Card from "$lib/components/ui/shadcn/card";
   import * as Table from "$lib/components/ui/shadcn/table";
-  import formatDate from "$lib/utils/formatDate";
+  import formatDate from "$lib/utils/format-date.js";
   import { LoaderCircle } from "lucide-svelte";
 
   const { data } = $props();
@@ -43,7 +43,9 @@
           loading = false;
           return cancel();
         }}>
-        <button class="secondary" type="submit">Get latest youtube videos</button>
+        <button
+          class="secondary"
+          type="submit">Get latest youtube videos</button>
       </form>
     </Card.Footer>
   </Card.Root>
@@ -90,23 +92,23 @@
 {/if}
 
 <style>
-	/* ELEMENTS */
-	li {
-		margin-inline-start: var(--size-6);
-		margin-block: var(--size-3);
-		font-size: var(--font-size-1);
-		list-style-type: number;
-	}
-	button {
-		font-weight: var(--font-weight-6);
-	}
-	p {
-		margin-block: var(--size-4);
-		font-size: var(--font-size-1);
-	}
-	/* CLASSES */
-	.video-data-wrapper {
-		display: flex;
-		flex-direction: column;
-	}
+  /* ELEMENTS */
+  li {
+    margin-inline-start: var(--size-6);
+    margin-block: var(--size-3);
+    font-size: var(--font-size-1);
+    list-style-type: number;
+  }
+  button {
+    font-weight: var(--font-weight-6);
+  }
+  p {
+    margin-block: var(--size-4);
+    font-size: var(--font-size-1);
+  }
+  /* CLASSES */
+  .video-data-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
 </style>

@@ -82,7 +82,7 @@
       article.author === articlePreview.author &&
       article.description === articlePreview.description &&
       article.img === articlePreview.img &&
-      article.link === articlePreview.link
+      article.link === articlePreview.link,
   );
 </script>
 

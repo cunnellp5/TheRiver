@@ -1,7 +1,6 @@
-<!-- @migration-task Error while migrating Svelte code: `<tr>` is invalid inside `<table>` -->
 <!-- inspired by https://designmodo.com/email-templates/ -->
 <script lang="ts">
-  import Preview from "$lib/emails/components/ui/Preview.svelte";
+  import Preview from "$lib/emails/components/ui/preview.svelte";
   import Head from "$lib/emails/components/welcome/head.svelte";
   import HeaderWithNav from "$lib/emails/components/welcome/header-with-nav.svelte";
   import BodyFeatured from "../components/welcome/body-featured.svelte";
@@ -55,10 +54,10 @@
                       width="100%"
                       style="width: 100%;">
                       <!-- <tr>
-												<td valign="top">
-													<ViewInBrowser />
-												</td>
-											</tr> -->
+                        <td valign="top">
+                          <ViewInBrowser />
+                        </td>
+                      </tr> -->
                       <tbody>
                         <tr>
                           <td valign="top">
@@ -77,16 +76,16 @@
                         </tr>
 
                         <!-- <tr>
-												<td valign="top">
-													<BodyNewArtist />
-													</td>
-													</tr>
+                        <td valign="top">
+                          <BodyNewArtist />
+                          </td>
+                          </tr>
 
-													<tr>
-														<td valign="top">
-															<BodyNews />
-															</td>
-															</tr> -->
+                          <tr>
+                            <td valign="top">
+                              <BodyNews />
+                              </td>
+                              </tr> -->
 
                         <tr>
                           <td valign="top">

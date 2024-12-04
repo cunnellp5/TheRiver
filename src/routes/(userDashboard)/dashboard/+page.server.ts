@@ -2,8 +2,8 @@ import type { PageServerLoad } from "./$types";
 import { generateSessionToken } from "$lib/server/auth";
 import { logout } from "$lib/server/controllers/logout";
 import db from "$lib/server/database";
-import { EmailSchema } from "$lib/utils/Valibot/EmailSchema";
-import { validateInputs } from "$lib/utils/validateInputs";
+import { EmailSchema } from "$lib/utils/Valibot/email-schema";
+import { validateInputs } from "$lib/utils/validate-inputs";
 import { type Actions, error, fail, redirect } from "@sveltejs/kit";
 
 export const load: PageServerLoad = async (event) => {

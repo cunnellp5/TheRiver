@@ -1,7 +1,7 @@
 import type { InferOutput } from "valibot";
 import { nonEmpty, object, pipe, string } from "valibot";
-import { emailValidation } from "./EmailSchema";
-import { confirmValidation, passwordValidation } from "./PassSchema";
+import { emailValidation } from "./email-schema";
+import { confirmValidation, passwordValidation } from "./pass-schema";
 
 export const SignUpSchema = object({
   email: emailValidation,

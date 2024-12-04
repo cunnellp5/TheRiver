@@ -1,4 +1,4 @@
-import type FormDataMock from "./FormDataMock";
+import type FormDataMock from "./form-data-mock";
 import { vi } from "vitest";
 
 export default class RequestMock {

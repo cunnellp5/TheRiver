@@ -1,4 +1,4 @@
-import type { SignUpValidator } from "$lib/utils/Valibot/SignUp";
+import type { SignUpValidator } from "$lib/utils/Valibot/sign-up";
 import type { Newsletter } from "@prisma/client";
 import type { ValiError } from "valibot";
 import type { Actions } from "./$types";
@@ -6,43 +6,42 @@ import { generateSessionToken } from "$lib/server/auth";
 import { login } from "$lib/server/controllers/login";
 import db from "$lib/server/database";
 
-import { SignUpSchema } from "$lib/utils/Valibot/SignUp";
+import { SignUpSchema } from "$lib/utils/Valibot/sign-up";
 import { error, fail, redirect } from "@sveltejs/kit";
 import { Argon2id } from "oslo/password";
 import { parse } from "valibot";
 
 /*
 Might be worth adding even more validations, but could be overkill:
-	https://www.prisma.io/docs/orm/prisma-client/queries/custom-validation
+  https://www.prisma.io/docs/orm/prisma-client/queries/custom-validation
 
 Default action:
-	-- set up / check client side info --
+  -- set up / check client side info --
 
-	1. extracts form data
-	2. basic validation
-	3. schema emailValidation
+  1. extracts form data
+  2. basic validation
+  3. schema emailValidation
 
-	-- check server side info --
+  -- check server side info --
 
-	4. check for existing user
-	5. check for existing newsletter subscription
+  4. check for existing user
+  5. check for existing newsletter subscription
 
-	-- write operations --
+  -- write operations --
 
-	6. hash password (step needed for create user, hash() returns a promise)
-	7. create user
-	8. create newsletter subscription
-	9. create session
+  6. hash password (step needed for create user, hash() returns a promise)
+  7. create user
+  8. create newsletter subscription
+  9. create session
 
-	-- email / redirection --
+  -- email / redirection --
 
-	10. send welcome email
-	11. redirect to dashboard
+  10. send welcome email
+  11. redirect to dashboard
 */
 export const actions: Actions = {
   default: async (event) => {
     const formData = await event.request.formData();
-    const token = null;
 
     // pulls out the data I need
     const email = formData.get("email")?.toString() || "";
@@ -83,7 +82,7 @@ export const actions: Actions = {
       if (user)
         return fail(400, { message: "Email is unavailable" });
     }
-    catch (err) {
+    catch {
       return error(500, { message: "Something unexpected occured" });
     }
 

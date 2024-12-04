@@ -1,5 +1,5 @@
 <script lang="ts">
-  import styleToString from "$lib/utils/styleToString";
+  import styleToString from "$lib/utils/style-to-string";
 
   interface Props {
     style?: any;
@@ -9,13 +9,7 @@
     [key: string]: any;
   }
 
-  const {
-    style = {},
-    target = "_blank",
-    href = "",
-    children,
-    ...rest
-  }: Props = $props();
+  const { style = {}, target = "_blank", href = "", children, ...rest }: Props = $props();
 
   const styleDefault = {
     color: "#067df7",
@@ -24,6 +18,10 @@
   };
 </script>
 
-<a {...rest} {href} {target} style={styleToString(styleDefault)}>
+<a
+  {...rest}
+  {href}
+  {target}
+  style={styleToString(styleDefault)}>
   {@render children?.()}
 </a>

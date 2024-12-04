@@ -16,7 +16,7 @@ export const load: PageServerLoad = async (event) => {
     });
     return { about };
   }
-  catch (err) {
+  catch {
     return error(500, "Internal Server Error");
   }
 };
@@ -47,7 +47,7 @@ export const actions: Actions = {
         message: "About updated",
       };
     }
-    catch (err) {
+    catch {
       // log the error with some logger (sentry.io?)
       return fail(500, {
         message: "An error occurred while updating an about section",

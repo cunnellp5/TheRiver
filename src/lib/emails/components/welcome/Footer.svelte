@@ -1,8 +1,7 @@
-<!-- @migration-task Error while migrating Svelte code: `<tr>` is invalid inside `<table>` -->
 <script lang="ts">
-  import socialLinks from "$lib/data/socialLinks";
-  import ThumbnailLogoWhiteTransparentBG from "$lib/data/ThumbnailLogoWhiteTransparentBG";
-  import { WEBSITE_URL } from "$lib/data/WEBSITE_URL";
+  import socialLinks from "$lib/data/social-links";
+  import ThumbnailLogoWhiteTransparentBG from "$lib/data/thumbnail-logo-white-transparent-bg";
+  import { WEBSITE_URL } from "$lib/data/website-url";
 
   const { token } = $props();
 

@@ -1,7 +1,7 @@
 import type { Actions, PageServerLoad } from "./$types";
 import db from "$lib/server/database";
-import { EmailSchema } from "$lib/utils/Valibot/EmailSchema";
-import { validateInputs } from "$lib/utils/validateInputs";
+import { EmailSchema } from "$lib/utils/Valibot/email-schema";
+import { validateInputs } from "$lib/utils/validate-inputs";
 import { error, redirect } from "@sveltejs/kit";
 
 export const load: PageServerLoad = async ({ url, params }) => {

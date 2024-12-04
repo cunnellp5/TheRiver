@@ -2,7 +2,7 @@
   import type { Post } from "@prisma/client";
   import type Quill from "quill";
   import { browser } from "$app/environment";
-  import { QuillConfigReadonly, quillContentInit } from "$lib/utils/QuillConfig";
+  import { QuillConfigReadonly, quillContentInit } from "$lib/utils/quill-config";
   import { onMount } from "svelte";
 
   interface Props {

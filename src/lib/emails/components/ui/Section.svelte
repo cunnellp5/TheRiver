@@ -1,5 +1,5 @@
 <script lang="ts">
-  import styleToString from "$lib/utils/styleToString";
+  import styleToString from "$lib/utils/style-to-string";
 
   const { style = {}, children, ...rest } = $props();
 

@@ -1,6 +1,6 @@
 <script lang="ts">
   import Badge from "$lib/components/ui/badge.svelte";
-  import formatDate from "$lib/utils/formatDate";
+  import formatDate from "$lib/utils/format-date";
 
   interface Props {
     title: string;

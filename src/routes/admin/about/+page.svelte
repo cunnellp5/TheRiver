@@ -1,7 +1,7 @@
 <script lang="ts">
   import * as Card from "$lib/components/ui/shadcn/card";
   import * as Table from "$lib/components/ui/shadcn/table";
-  import About from "./About.svelte";
+  import About from "./about.svelte";
 
   const { data } = $props();
 

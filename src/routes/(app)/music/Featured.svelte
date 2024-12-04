@@ -1,7 +1,7 @@
 <script lang="ts">
   import { IFrameLoader } from "$lib/utils/classes/iframe-loader";
   import { onMount } from "svelte";
-  import TRACKS_FEATURED from "./TRACKS_FEATURED";
+  import TRACKS_FEATURED from "./tracks-featured";
 
   const iframeLoader: IFrameLoader = new IFrameLoader();
   let iframes: NodeListOf<HTMLIFrameElement>;

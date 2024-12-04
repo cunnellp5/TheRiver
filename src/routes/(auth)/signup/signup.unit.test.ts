@@ -1,9 +1,9 @@
-import SignUpFormDataMissingField from "$lib/test/__fixtures__/SignUpFormDataMissingField";
-import SignUpFormDataStrings from "$lib/test/__fixtures__/SignUpFormDataStrings";
-import CookiesMock from "$lib/test/mocks/CookiesMock";
-import MockedEvent from "$lib/test/mocks/EventMock";
-import FormDataMock from "$lib/test/mocks/FormDataMock";
-import RequestMock from "$lib/test/mocks/RequestMock";
+import SignUpFormDataMissingField from "$lib/test/__fixtures__/sign-up-form-data-missing-field";
+import SignUpFormDataStrings from "$lib/test/__fixtures__/sign-up-form-data-strings";
+import CookiesMock from "$lib/test/mocks/cookies-mock";
+import MockedEvent from "$lib/test/mocks/event-mock";
+import FormDataMock from "$lib/test/mocks/form-data-mock";
+import RequestMock from "$lib/test/mocks/request-mock";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { actions } from "./+page.server";
 
@@ -43,18 +43,15 @@ describe("signup", () => {
     const expected = { message: "Please fill out all fields" };
 
     describe("auth pt1 missing FormData", () => {
-      it.each(SignUpFormDataMissingField)(
-        "is null -> ActionFailure",
-        async (data: MockObject) => {
-          const event = createEventForAction(data);
+      it.each(SignUpFormDataMissingField)("is null -> ActionFailure", async (data: MockObject) => {
+        const event = createEventForAction(data);
 
-          const response = (await actions.default(event)) as ActionFailure;
+        const response = (await actions.default(event)) as ActionFailure;
 
-          expect(response.status).toEqual(400);
+        expect(response.status).toEqual(400);
 
-          expect(response.data).toEqual(expected);
-        },
-      );
+        expect(response.data).toEqual(expected);
+      });
     });
 
     describe("auth pt2 valibot", () => {

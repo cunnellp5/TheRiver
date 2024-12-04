@@ -12,8 +12,12 @@
   const { slug, redirect = false }: Props = $props();
 </script>
 
-<a href="/admin/posts/{slug}/edit" data-sveltekit-noscroll>
-  <button class="update-button" type="button">
+<a
+  href="/admin/posts/{slug}/edit"
+  data-sveltekit-noscroll>
+  <button
+    class="update-button"
+    type="button">
     <Pencil /> Edit
   </button>
 </a>
@@ -30,15 +34,21 @@
     }
     return cancel();
   }}>
-  <input type="hidden" name="slug" id="slug" value={slug} />
-  <button class="delete-button" type="submit">
+  <input
+    type="hidden"
+    name="slug"
+    id="slug"
+    value={slug} />
+  <button
+    class="delete-button"
+    type="submit">
     <Trash /> Delete
   </button>
 </form>
 
 <style>
-	a,
-	form {
-		flex-shrink: 0;
-	}
+  a,
+  form {
+    flex-shrink: 0;
+  }
 </style>

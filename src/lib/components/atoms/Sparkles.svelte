@@ -1,10 +1,9 @@
 <script lang="ts">
   import type { SparkleType } from "$lib/types";
-  import Sparkle from "$lib/components/atoms/SingleSparkle.svelte";
+  import Sparkle from "$lib/components/atoms/single-sparkle.svelte";
   import { onDestroy, onMount } from "svelte";
 
-  const random = (min: number, max: number) =>
-    Math.floor(Math.random() * (max - min)) + min;
+  const random = (min: number, max: number) => Math.floor(Math.random() * (max - min)) + min;
 
   interface Props {
     color?: "default" | "primary" | "secondary";
@@ -13,16 +12,17 @@
 
   const { color = "default", children }: Props = $props();
 
+  const colorMapper = {
+    default: "var(--yellow-4)",
+    primary: "var(--cyan-3)",
+    secondary: "var(--indigo-7)",
+  };
+
   const generateSparkle = (): SparkleType => {
     return {
       id: String(random(10000, 99999)),
       createdAt: Date.now(),
-      color:
-        color === "primary"
-          ? "var(--cyan-3)"
-          : color === "secondary"
-          ? "var(--indigo-7)"
-          : "var(--yellow-4)",
+      color: colorMapper[color],
       size: random(10, 20),
       style: {
         // Pick a random spot in the available space

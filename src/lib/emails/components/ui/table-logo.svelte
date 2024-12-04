@@ -1,9 +1,14 @@
 <script lang="ts">
-  import ThumbnailLogoWhiteTransparentBG from "$lib/data/ThumbnailLogoWhiteTransparentBG";
-  import { WEBSITE_URL } from "$lib/data/WEBSITE_URL";
+  import ThumbnailLogoWhiteTransparentBG from "$lib/data/thumbnail-logo-white-transparent-bg";
+  import { WEBSITE_URL } from "$lib/data/website-url";
 </script>
 
-<table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
+<table
+  width="100%"
+  border="0"
+  cellpadding="0"
+  cellspacing="0"
+  role="presentation">
   <tbody>
     <tr>
       <td class="pc-w620-spacing-0-0-32-0 pc-w620-valign-middle pc-w620-halign-center">
@@ -46,7 +51,10 @@
                           style="width: 100%;">
                           <tbody>
                             <tr>
-                              <td class="pc-w620-halign-center" align="center" valign="top">
+                              <td
+                                class="pc-w620-halign-center"
+                                align="center"
+                                valign="top">
                                 <table
                                   width="100%"
                                   border="0"
@@ -55,7 +63,10 @@
                                   role="presentation">
                                   <tbody>
                                     <tr>
-                                      <td class="pc-w620-halign-center" align="center" valign="top">
+                                      <td
+                                        class="pc-w620-halign-center"
+                                        align="center"
+                                        valign="top">
                                         <a
                                           class="pc-font-alt"
                                           href={WEBSITE_URL}

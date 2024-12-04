@@ -4,7 +4,7 @@
   import { enhance } from "$app/forms";
   import Badge from "$lib/components/ui/badge.svelte";
   import SliderToggle from "$lib/components/ui/slider-toggle.svelte";
-  import { QuillConfig, quillContentInit } from "$lib/utils/QuillConfig";
+  import { QuillConfig, quillContentInit } from "$lib/utils/quill-config";
   import { error } from "@sveltejs/kit";
   import { onMount } from "svelte";
   import { preventDefault } from "svelte/legacy";
@@ -58,8 +58,7 @@
         content = JSON.stringify(quill?.getContents());
         description = quill.getText(); // get the text from the editor
       });
-    }
-    catch (err) {
+    } catch (err) {
       error(500, "Error loading quill the text editor");
     }
   });
@@ -89,8 +88,8 @@
   }
 
   function handleToggle(event: CustomEvent<boolean>) {
+    // published = !event.detail;
     published = event.detail;
-  // published = !event.detail;
   }
 </script>
 
@@ -176,8 +175,7 @@
       id="resetForm"
       onclick={preventDefault(() => {
         // eslint-disable-next-line no-alert
-        if (confirm("Are you sure you want to reset the form?"))
-          resetForm();
+        if (confirm("Are you sure you want to reset the form?")) resetForm();
       })}>
       Reset to Initial Data
     </button>

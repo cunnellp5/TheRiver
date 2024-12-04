@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Sparkles from "$lib/components/atoms/Sparkles.svelte";
+  import Sparkles from "$lib/components/atoms/sparkles.svelte";
 </script>
 
 <a

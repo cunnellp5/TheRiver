@@ -1,5 +1,5 @@
 <script lang="ts">
-  import styleToString from "$lib/utils/styleToString";
+  import styleToString from "$lib/utils/style-to-string";
 
   interface Props {
     href?: string;
@@ -21,7 +21,8 @@
     ...rest
   }: Props = $props();
 
-  const pxToPt = (px: string) => (isNaN(Number(px)) ? null : (Number.parseInt(px, 10) * 3) / 4);
+  const pxToPt = (px: string) =>
+    Number.isNaN(Number(px)) ? null : (Number.parseInt(px, 10) * 3) / 4;
 
   const y = pY * 2;
 
@@ -55,7 +56,11 @@
   };
 </script>
 
-<a {...rest} {href} {target} style={styleToString(buttonStyle({ ...style, pX, pY }))}>
+<a
+  {...rest}
+  {href}
+  {target}
+  style={styleToString(buttonStyle({ ...style, pX, pY }))}>
   <span>
     {@html `<!--[if mso]><i style="letter-spacing: ${pX}px;mso-font-width:-100%;mso-text-raise:${textRaise}" hidden>&nbsp;</i><![endif]-->`}
   </span>

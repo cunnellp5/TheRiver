@@ -9,10 +9,7 @@
       <Card.Title>Admin home</Card.Title>
       <Card.Description>
         <p>Update all content on your website, follow links in the side menu</p>
-        <p>
-          HMU for suggestions, thoughts, changes, else i'm going to follow the
-          roadmap below
-        </p>
+        <p>HMU for suggestions, thoughts, changes, else i'm going to follow the roadmap below</p>
       </Card.Description>
     </Card.Header>
     <Card.Content>
@@ -140,8 +137,7 @@
     <input
       type="checkbox"
       id="newsLetter" />
-    <label for="newsLetter"
-    >show users signed up for newsLetter to get their emails</label>
+    <label for="newsLetter">show users signed up for newsLetter to get their emails</label>
   </li>
 </ol>
 <ol>
@@ -178,8 +174,7 @@
       type="checkbox"
       id="trackPreviews"
       checked />
-    <label for="trackPreviews"
-    >migrate trackPreviews to db for SoundCloud widget</label>
+    <label for="trackPreviews">migrate trackPreviews to db for SoundCloud widget</label>
   </li>
   <li>
     <input
@@ -299,8 +294,7 @@
     <input
       type="checkbox"
       id="rateLimiter" />
-    <label for="rateLimiter"
-    >double check the ratelimiter when a user logs in</label>
+    <label for="rateLimiter">double check the ratelimiter when a user logs in</label>
   </li>
   <li>
     <input
@@ -312,8 +306,7 @@
     <input
       type="checkbox"
       id="configureSiteMap" />
-    <label for="configureSiteMap"
-    >configure a dynamic site map generator for new blog posts</label>
+    <label for="configureSiteMap">configure a dynamic site map generator for new blog posts</label>
   </li>
   <li>
     <input
@@ -334,8 +327,7 @@
     <input
       type="checkbox"
       id="documentation" />
-    <label for="documentation"
-    >Build documentation for every part of this website</label>
+    <label for="documentation">Build documentation for every part of this website</label>
   </li>
   <li>
     <input
@@ -353,39 +345,34 @@
     <input
       type="checkbox"
       id="posters" />
-    <label for="posters"
-    >Posters for previous shows or show previous events</label>
+    <label for="posters">Posters for previous shows or show previous events</label>
   </li>
   <li>
     <input
       type="checkbox"
       id="ecommerce" />
-    <label for="ecommerce"
-    >look into the godaddy pay portal to built e-commerce</label>
+    <label for="ecommerce">look into the godaddy pay portal to built e-commerce</label>
   </li>
   <li>
     <input
       type="checkbox"
       id="booking" />
-    <label for="booking"
-    >figure out a way to centralize booking services with alexis</label>
+    <label for="booking">figure out a way to centralize booking services with alexis</label>
   </li>
 </ol>
 <ol>
   <span> Projects Configurations and Ownerships </span>
   <p>
     <small>
-      The following isnt necessary right now, but might be a wise move if we
-      want to make this pro. If I die, you can take over the projects and pass
-      it on a lot easier.
+      The following isnt necessary right now, but might be a wise move if we want to make this pro.
+      If I die, you can take over the projects and pass it on a lot easier.
     </small>
   </p>
   <li>
     <input
       type="checkbox"
       id="github" />
-    <label for="github"
-    >consider creating a github profile with your business email</label>
+    <label for="github">consider creating a github profile with your business email</label>
   </li>
   <li>
     <input

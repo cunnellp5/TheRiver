@@ -1,7 +1,7 @@
 import type { Actions } from "./$types";
 import db from "$lib/server/database";
-import { EmailSchema } from "$lib/utils/Valibot/EmailSchema";
-import { validateInputs } from "$lib/utils/validateInputs";
+import { EmailSchema } from "$lib/utils/Valibot/email-schema";
+import { validateInputs } from "$lib/utils/validate-inputs";
 import { fail } from "@sveltejs/kit";
 import { alphabet, generateRandomString, sha256 } from "oslo/crypto";
 import { encodeHex } from "oslo/encoding";

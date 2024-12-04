@@ -16,8 +16,12 @@
   class="shadow"
   class:home-page={isHomePage}
   class:fill-color={!isHomePage}>
-  <g id="layer1" transform="translate(38.893751,-126.47083)">
-    <g id="g6" transform="matrix(0.26458333,0,0,0.26458333,-150.01875,50.270833)">
+  <g
+    id="layer1"
+    transform="translate(38.893751,-126.47083)">
+    <g
+      id="g6"
+      transform="matrix(0.26458333,0,0,0.26458333,-150.01875,50.270833)">
       <path
         class="shadow"
         class:home-page={isHomePage}
@@ -78,21 +82,20 @@
 </svg>
 
 <style>
-	.home-page {
-		fill: var(--stone-3);
-	}
+  .home-page {
+    fill: var(--stone-3);
+  }
 
-	.fill-color {
-		fill: var(--text-1);
-	}
+  .fill-color {
+    fill: var(--text-1);
+  }
 
-	.shadow {
-		filter: drop-shadow(12px 12px 12px rgba(0, 0, 0, 0.2));
-	}
+  .shadow {
+    filter: drop-shadow(12px 12px 12px rgba(0, 0, 0, 0.2));
+  }
 
-	/* path:hover,
-	polygon:hover, */
-	svg:hover {
-		fill: var(--socials-2);
-	}
+  /* path:hover, polygon:hover, */
+  svg:hover {
+    fill: var(--socials-2);
+  }
 </style>

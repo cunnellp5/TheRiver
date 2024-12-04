@@ -1,8 +1,8 @@
-import type { ArticleValidator } from "$lib/utils/Valibot/ArticleSchema";
+import type { ArticleValidator } from "$lib/utils/Valibot/article-schema";
 import type { ValiError } from "valibot";
 import type { Actions, PageServerLoad } from "./$types";
 import db from "$lib/server/database";
-import { ArticleSchema } from "$lib/utils/Valibot/ArticleSchema";
+import { ArticleSchema } from "$lib/utils/Valibot/article-schema";
 import { error, fail } from "@sveltejs/kit";
 import { flatten, parse } from "valibot";
 

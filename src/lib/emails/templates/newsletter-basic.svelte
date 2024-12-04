@@ -1,9 +1,8 @@
-<!-- @migration-task Error while migrating Svelte code: `<tr>` is invalid inside `<table>` -->
 <!-- inspired by https://designmodo.com/email-templates/ -->
 <script lang="ts">
-  import News from "$lib/emails/components/newsletter/News.svelte";
-  import NewsHeader from "$lib/emails/components/newsletter/NewsHeader.svelte";
-  import Preview from "$lib/emails/components/ui/Preview.svelte";
+  import NewsHeader from "$lib/emails/components/newsletter/news-header.svelte";
+  import News from "$lib/emails/components/newsletter/news.svelte";
+  import Preview from "$lib/emails/components/ui/preview.svelte";
   import Footer from "$lib/emails/components/welcome/footer.svelte";
   import Head from "$lib/emails/components/welcome/head.svelte";
 

@@ -1,8 +1,8 @@
 import type { Actions } from "./$types";
 import { generateSessionToken } from "$lib/server/auth";
 import db from "$lib/server/database";
-import { EmailSchema } from "$lib/utils/Valibot/EmailSchema";
-import { validateInputs } from "$lib/utils/validateInputs";
+import { EmailSchema } from "$lib/utils/Valibot/email-schema";
+import { validateInputs } from "$lib/utils/validate-inputs";
 import { type ActionFailure, error } from "@sveltejs/kit";
 
 type NewsLetterAction = Promise<
@@ -30,16 +30,16 @@ async function createNewsletterEntry(data: { email: string; userId?: number; tok
 // TODO rethink logic, there's a way to refine this
 export const actions: Actions = {
   /*
-		 STEPS TO SUBSCRIBE TO NEWSLETTER
+     STEPS TO SUBSCRIBE TO NEWSLETTER
 
-		 1. Validate the email
-		 2. Check if the user exists
-		 3. If the user exists, check if they are subscribed to the newsletter
-		 4. If the user exists and they are not subscribed, update the user and create a newsletter table atomically
-		 5. If the user does not exist, check if there is a newsletter subscription
-		 6. If there is no newsletter subscription, create one and send a welcome email
-		 7. If there is a newsletter subscription, return a success response
-	*/
+     1. Validate the email
+     2. Check if the user exists
+     3. If the user exists, check if they are subscribed to the newsletter
+     4. If the user exists and they are not subscribed, update the user and create a newsletter table atomically
+     5. If the user does not exist, check if there is a newsletter subscription
+     6. If there is no newsletter subscription, create one and send a welcome email
+     7. If there is a newsletter subscription, return a success response
+  */
   subscribe: async ({ request, fetch }): NewsLetterAction => {
     const formData = await request.formData();
     const email = formData.get("email") as string;

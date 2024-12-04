@@ -6,7 +6,7 @@
   import Save from "lucide-svelte/icons/save";
   import X from "lucide-svelte/icons/x";
   import { tick } from "svelte";
-  import DashboardUserInput from "./DashboardUserInput.svelte";
+  import DashboardUserInput from "./dashboard-user-input.svelte";
 
   type UserValue = string | boolean | number | Date | null;
 
@@ -81,16 +81,33 @@
             }
           };
         }}>
-        <input type="hidden" name="id" value={id} />
-        <input type="hidden" name="key" value={key} />
+        <input
+          type="hidden"
+          name="id"
+          value={id} />
+        <input
+          type="hidden"
+          name="key"
+          value={key} />
 
         <p>
-          <DashboardUserInput {key} {value} />
+          <DashboardUserInput
+            {key}
+            {value} />
         </p>
 
         <div class="buttonWrapper">
-          <button class="create-button" type="submit"> <Save /> </button>
-          <button class="delete-button" type="button" onclick={stopEditing}> <X /> </button>
+          <button
+            class="create-button"
+            type="submit">
+            <Save />
+          </button>
+          <button
+            class="delete-button"
+            type="button"
+            onclick={stopEditing}>
+            <X />
+          </button>
         </div>
       </form>
     </Table.Cell>
@@ -101,7 +118,9 @@
           {cellValue({ value, key })}
         </p>
         <div class="buttonWrapper">
-          <button class="update-button" onclick={editing}>
+          <button
+            class="update-button"
+            onclick={editing}>
             <Pencil />
           </button>
         </div>
@@ -111,44 +130,44 @@
 </Table.Row>
 
 <style>
-	form {
-		display: flex;
-		justify-content: space-between;
-		gap: var(--size-3);
-		box-sizing: border-box;
-		width: 100%;
-	}
+  form {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--size-3);
+    box-sizing: border-box;
+    width: 100%;
+  }
 
-	.buttonWrapper {
-		display: flex;
-		flex-shrink: 0;
-		gap: var(--size-3);
-	}
-	.dashInputWrapper {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		width: 100%;
-	}
-	.keyColor {
-		color: var(--link);
-	}
+  .buttonWrapper {
+    display: flex;
+    flex-shrink: 0;
+    gap: var(--size-3);
+  }
+  .dashInputWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .keyColor {
+    color: var(--link);
+  }
 
-	@media (max-width: 768px) {
-		.update-button {
-			width: 100%;
-		}
-		.dashInputWrapper {
-			flex-direction: column;
-			gap: var(--size-3);
-		}
-		form {
-			flex-direction: column;
-			gap: var(--size-3);
-		}
-		.create-button,
-		.delete-button {
-			width: 50%;
-		}
-	}
+  @media (max-width: 768px) {
+    .update-button {
+      width: 100%;
+    }
+    .dashInputWrapper {
+      flex-direction: column;
+      gap: var(--size-3);
+    }
+    form {
+      flex-direction: column;
+      gap: var(--size-3);
+    }
+    .create-button,
+    .delete-button {
+      width: 50%;
+    }
+  }
 </style>

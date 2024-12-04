@@ -23,24 +23,13 @@
         }),
         headers,
       });
-    }
-    catch (error) {
+    } catch (error) {
       console.log(error);
     }
   }
 
   async function sendReset() {
     console.log("sending reset email");
-  // const response = await fetch(WELCOME_URL, {
-		// 	method: 'POST',
-		// 	body: JSON.stringify({
-		// 		subject: 'TESTING WELCOME EMAIL',
-		// 		email: MY_EMAIL
-		// 	}),
-		// 	headers
-		// });
-
-		// console.log(response);
   }
 
   async function sendBasicTemplate() {
@@ -55,8 +44,7 @@
         }),
         headers,
       });
-    }
-    catch (error) {
+    } catch (error) {
       console.log(error);
     }
   }
@@ -111,15 +99,30 @@
       <h3>Create Newsletter</h3>
       <form>
         <label for="includeLogo">include logo</label>
-        <input type="checkbox" id="includeLogo" name="includeLogo" required />
+        <input
+          type="checkbox"
+          id="includeLogo"
+          name="includeLogo"
+          required />
 
         <label for="includeLogo">include logo</label>
-        <input type="checkbox" id="includeLogo" name="includeLogo" required />
+        <input
+          type="checkbox"
+          id="includeLogo"
+          name="includeLogo"
+          required />
 
         <label for="subject">Subject</label>
-        <input type="text" id="subject" name="subject" required />
+        <input
+          type="text"
+          id="subject"
+          name="subject"
+          required />
         <label for="message">Message</label>
-        <textarea id="message" name="message" required></textarea>
+        <textarea
+          id="message"
+          name="message"
+          required></textarea>
       </form>
       <!-- <button>Test Email</button> -->
       <!-- <button>Send for real</button> -->
@@ -136,20 +139,20 @@
 </section>
 
 <style>
-	article {
-		width: var(--size-md);
-	}
+  article {
+    width: var(--size-md);
+  }
 
-	form {
-		display: flex;
-		flex-direction: column;
-		/* gap: var(--size-7); */
-	}
-	.articles {
-		display: flex;
-	}
-	aside {
-		margin: 0 auto;
-		width: fit-content;
-	}
+  form {
+    display: flex;
+    flex-direction: column;
+    /* gap: var(--size-7); */
+  }
+  .articles {
+    display: flex;
+  }
+  aside {
+    margin: 0 auto;
+    width: fit-content;
+  }
 </style>

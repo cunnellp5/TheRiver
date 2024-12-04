@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { BlogPost } from "$lib/types";
   import Badge from "$lib/components/ui/badge.svelte";
-  import formatDate from "$lib/utils/formatDate";
+  import formatDate from "$lib/utils/format-date";
 
   interface Props {
     post: BlogPost;

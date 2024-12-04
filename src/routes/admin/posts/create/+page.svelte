@@ -1,5 +1,5 @@
 <script lang="ts">
-  import PostsForm from "../components/PostsForm.svelte";
+  import PostsForm from "../components/posts-form.svelte";
 </script>
 
 <section>
@@ -7,8 +7,8 @@
 </section>
 
 <style>
-	section {
-		display: flex;
-		justify-content: center;
-	}
+  section {
+    display: flex;
+    justify-content: center;
+  }
 </style>

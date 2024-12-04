@@ -73,58 +73,58 @@
 </main>
 
 <style>
-	main {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-	}
+  main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 
-	.hero {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		height: calc(100vh - var(--size-8));
-	}
+  .hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - var(--size-8));
+  }
 
-	h1,
-	ul {
-		padding-block: var(--size-5);
-	}
+  h1,
+  ul {
+    padding-block: var(--size-5);
+  }
 
-	p {
-		color: var(--text-2);
-	}
+  p {
+    color: var(--text-2);
+  }
 
-	a {
-		display: flex;
-		transition: color 0.4s;
-		text-decoration: none;
-		&:hover {
-			color: var(--link);
-		}
-	}
+  a {
+    display: flex;
+    transition: color 0.4s;
+    text-decoration: none;
+    &:hover {
+      color: var(--link);
+    }
+  }
 
-	.table {
-		display: grid;
-		/* grid-template-columns: repeat(3, 1fr); */
-		grid-template-rows: repeat(3, 1fr);
-		grid-template-columns: 2fr 3fr 1fr;
-		padding-bottom: var(--size-11);
+  .table {
+    display: grid;
+    /* grid-template-columns: repeat(3, 1fr); */
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: 2fr 3fr 1fr;
+    padding-bottom: var(--size-11);
 
-		& .table-title {
-			color: var(--text-2);
-		}
+    & .table-title {
+      color: var(--text-2);
+    }
 
-		& span {
-			border-bottom: 1px solid var(--border);
-			padding: var(--size-3);
-		}
+    & span {
+      border-bottom: 1px solid var(--border);
+      padding: var(--size-3);
+    }
 
-		& .table-actions {
-			display: flex;
-			gap: var(--size-3);
-		}
-	}
+    & .table-actions {
+      display: flex;
+      gap: var(--size-3);
+    }
+  }
 </style>

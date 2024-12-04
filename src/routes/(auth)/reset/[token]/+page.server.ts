@@ -3,7 +3,7 @@ import type { PageServerLoad } from "./$types";
 import { login } from "$lib/server/controllers/login";
 import { logout } from "$lib/server/controllers/logout";
 import db from "$lib/server/database";
-import { PasswordSchema } from "$lib/utils/Valibot/PassSchema";
+import { PasswordSchema } from "$lib/utils/Valibot/pass-schema";
 import { type Actions, error, fail, redirect } from "@sveltejs/kit";
 import { Argon2id } from "oslo/password";
 import { parse } from "valibot";
@@ -18,7 +18,7 @@ export const load: PageServerLoad = async (event) => {
       where: { token },
     });
   }
-  catch (err) {
+  catch {
     // TODO if an actual error, should consider doing something more helpful here
     redirect(302, "/reset");
   }
@@ -35,7 +35,7 @@ export const load: PageServerLoad = async (event) => {
       where: { id: foundToken.userId },
     });
   }
-  catch (err) {
+  catch {
     // TODO if an actual error, should consider doing something more helpful here
     redirect(302, "/reset");
   }
@@ -80,7 +80,7 @@ export const actions: Actions = {
         confirm,
       });
     }
-    catch (err) {
+    catch {
       const errors = err as ValiError<typeof PasswordSchema>;
       return fail(400, {
         message: errors.message,
@@ -92,7 +92,7 @@ export const actions: Actions = {
     try {
       hashedPassword = await new Argon2id().hash(password);
     }
-    catch (err) {
+    catch {
       error(500, { message: "Something unexpected occured" });
     }
 
@@ -102,7 +102,7 @@ export const actions: Actions = {
     try {
       existingUser = await db.user.findUnique({ where: { email } });
     }
-    catch (err) {
+    catch {
       error(404, { message: "User not found" });
     }
 
@@ -130,7 +130,7 @@ export const actions: Actions = {
       try {
         await login({ userId: existingUser.id, event });
       }
-      catch (err) {
+      catch {
         error(500, { message: "Failed to create session" });
       }
     }

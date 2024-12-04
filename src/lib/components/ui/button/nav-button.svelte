@@ -43,7 +43,7 @@
     content: "";
   }
   li a:hover,
-  .links .current a {
+  .current a {
     color: var(--link-1);
   }
 
@@ -57,7 +57,7 @@
     border-bottom: 1px solid var(--link);
   }
   li a.border-vertical:hover:before,
-  .links .current a.border-vertical:before {
+  .current a.border-vertical:before {
     top: 0;
     bottom: 0;
     opacity: 1;
@@ -65,7 +65,7 @@
 
   /* HORIZONTAL */
   li a.border-horizontal:hover:before,
-  .links .current a.border-horizontal:before {
+  .current a.border-horizontal:before {
     right: calc(-1 * var(--size-2));
     left: calc(-1 * var(--size-2));
     opacity: 1;

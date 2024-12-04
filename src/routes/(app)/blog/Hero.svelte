@@ -1,5 +1,5 @@
 <script lang="ts">
-  import TypingAnimation from "$lib/components/atoms/TypingAnimation.svelte";
+  import TypingAnimation from "$lib/components/atoms/typing-animation.svelte";
 
   let scroll: number = $state(0);
 </script>
@@ -22,34 +22,34 @@
 </div>
 
 <style>
-	/* ELEMENTS */
-	a {
-		text-decoration: none;
-	}
-	/* CLASSES */
-	.app-layout {
-		position: relative;
-	}
-	.titleWrapper {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		width: 100%;
-		height: var(--size-content-2);
-		user-select: none;
-	}
-	.image-container {
-		position: absolute;
-		z-index: -1;
-		width: 100%;
-		height: var(--size-content-2);
-		overflow: hidden;
-	}
-	.image-container img {
-		border-radius: unset;
-		padding-inline: var(--size-7);
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-	}
+  /* ELEMENTS */
+  a {
+    text-decoration: none;
+  }
+  /* CLASSES */
+  .app-layout {
+    position: relative;
+  }
+  .titleWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: var(--size-content-2);
+    user-select: none;
+  }
+  .image-container {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: var(--size-content-2);
+    overflow: hidden;
+  }
+  .image-container img {
+    border-radius: unset;
+    padding-inline: var(--size-7);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 </style>

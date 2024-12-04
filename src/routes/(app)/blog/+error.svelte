@@ -13,19 +13,19 @@
 </main>
 
 <style>
-	main {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		height: 60vh;
-	}
+  main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+  }
 
-	p {
-		color: var(--text-2);
-		font-weight: 800;
-		font-size: var(--size-3);
-		font-family: var(--font-mono);
-		text-transform: uppercase;
-	}
+  p {
+    color: var(--text-2);
+    font-weight: 800;
+    font-size: var(--size-3);
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+  }
 </style>

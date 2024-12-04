@@ -15,17 +15,17 @@
 
   TODO: consider deleting all the unused object keys
 
-	These should be the videoIds from the 'originals' playlist
-		const videoIdsList = [
-			'KzFmhEvBsKg',
-			'EHsp2l08DyY',
-			'H5lNpqJjvqM',
-			'zEa9hCH_acs',
-			'qa9NtCoOaCk',
-			'0zhzvcDHcDs',
-			'Gj1zGmGRfIQ',
-			'oWPTJSC0qJU'
-		];
+  These should be the videoIds from the 'originals' playlist
+    const videoIdsList = [
+      'KzFmhEvBsKg',
+      'EHsp2l08DyY',
+      'H5lNpqJjvqM',
+      'zEa9hCH_acs',
+      'qa9NtCoOaCk',
+      '0zhzvcDHcDs',
+      'Gj1zGmGRfIQ',
+      'oWPTJSC0qJU'
+    ];
 */
 
 export interface PlaylistItemResource {
@@ -67,15 +67,15 @@ export interface PlaylistItemResource {
 }
 
 // type PlaylistItem = {
-// 	kind: string; // playlistItemListResponse,
-// 	etag: string;
-// 	nextPageToken: string;
-// 	prevPageToken: string;
-// 	pageInfo: {
-// 		totalResults: number;
-// 		resultsPerPage: number;
-// 	};
-// 	items: [PlaylistItemResource];
+//   kind: string; // playlistItemListResponse,
+//   etag: string;
+//   nextPageToken: string;
+//   prevPageToken: string;
+//   pageInfo: {
+//     totalResults: number;
+//     resultsPerPage: number;
+//   };
+//   items: [PlaylistItemResource];
 // };
 
 export interface VideoResource {

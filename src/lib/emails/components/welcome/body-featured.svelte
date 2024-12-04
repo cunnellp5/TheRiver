@@ -1,7 +1,6 @@
-<!-- @migration-task Error while migrating Svelte code: `<tr>` is invalid inside `<table>` -->
 <script lang="ts">
-  import socialLinks from "$lib/data/socialLinks";
-  import TableBodyFeaturedChunk from "../ui/TableBodyFeaturedChunk.svelte";
+  import socialLinks from "$lib/data/social-links";
+  import TableBodyFeaturedChunk from "../ui/table-body-featured-chunk.svelte";
 
   const baseCloudinaryUrl = "https://res.cloudinary.com/dswpu3qez/image/upload";
   const imgConfig = "w_250,ar_1:1,c_fill,g_auto";
@@ -38,18 +37,35 @@
   ];
 </script>
 
-<table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation">
+<table
+  width="100%"
+  border="0"
+  cellspacing="0"
+  cellpadding="0"
+  role="presentation">
   <tbody>
     <tr>
-      <td class="pc-w620-spacing-0-0-0-0" style="padding: 0px 0px 0px 0px;">
-        <table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation">
+      <td
+        class="pc-w620-spacing-0-0-0-0"
+        style="padding: 0px 0px 0px 0px;">
+        <table
+          width="100%"
+          border="0"
+          cellspacing="0"
+          cellpadding="0"
+          role="presentation">
           <tbody>
             <tr>
               <td
                 valign="top"
                 class="pc-w620-padding-20-24-32-24"
                 style="padding: 36px 32px 56px 32px; border-radius: 0px; background-color: #292929;">
-                <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
+                <table
+                  width="100%"
+                  border="0"
+                  cellpadding="0"
+                  cellspacing="0"
+                  role="presentation">
                   <tbody>
                     <tr>
                       <td
@@ -66,7 +82,10 @@
                           style="border-collapse: separate; border-spacing: 0; margin-right: auto; margin-left: auto;">
                           <tbody>
                             <tr>
-                              <td valign="top" class="pc-w620-padding-0-0-0-0" align="center">
+                              <td
+                                valign="top"
+                                class="pc-w620-padding-0-0-0-0"
+                                align="center">
                                 <div
                                   class="pc-font-alt"
                                   style="line-height: 160%; letter-spacing: 4px; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 600; font-variant-ligatures: normal; color: #00ff83; text-align: center; text-align-last: center;">
@@ -80,10 +99,17 @@
                     </tr>
                   </tbody>
                 </table>
-                <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
+                <table
+                  width="100%"
+                  border="0"
+                  cellpadding="0"
+                  cellspacing="0"
+                  role="presentation">
                   <tbody>
                     <tr>
-                      <td class="pc-w620-spacing-0-0-32-0" style="padding: 0px 0px 40px 0px;">
+                      <td
+                        class="pc-w620-spacing-0-0-32-0"
+                        style="padding: 0px 0px 40px 0px;">
                         <table
                           class="pc-width-fill pc-w620-gridCollapsed-1"
                           width="100%"
@@ -112,7 +138,12 @@
                     </tr>
                   </tbody>
                 </table>
-                <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
+                <table
+                  width="100%"
+                  border="0"
+                  cellpadding="0"
+                  cellspacing="0"
+                  role="presentation">
                   <tbody>
                     <tr>
                       <td>

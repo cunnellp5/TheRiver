@@ -18,7 +18,7 @@ export const load: LayoutServerLoad = async () => {
 
     // TODO figure out how to cache data, this isnt working
     // setHeaders({
-    // 	'Cache-Control': 'public, max-age=60, s-maxage=60'
+    //  'Cache-Control': 'public, max-age=60, s-maxage=60'
     // });
 
     return { posts };

@@ -5,11 +5,11 @@
   import { browser } from "$app/environment";
   import { page } from "$app/stores";
   import Badge from "$lib/components/ui/badge.svelte";
-  import formatDate from "$lib/utils/formatDate";
-  import { QuillConfigReadonly, quillContentInit } from "$lib/utils/QuillConfig";
+  import formatDate from "$lib/utils/format-date";
+  import { QuillConfigReadonly, quillContentInit } from "$lib/utils/quill-config";
   import { onMount } from "svelte";
   import { run } from "svelte/legacy";
-  import EditDeleteActions from "../components/EditDeleteActions.svelte";
+  import EditDeleteActions from "../components/edit-delete-actions.svelte";
 
   interface Props {
     data: PageData;
@@ -27,8 +27,7 @@
   let post = $state(findPost($page.params.slug)); // initial post
 
   async function setQuillData() {
-    if (!browser)
-      return;
+    if (!browser) return;
 
     try {
       const { default: Quill } = await import("quill");
@@ -37,8 +36,7 @@
       const quillData = await quillContentInit(post ? post.content : "No content found");
 
       quill.setContents(quillData);
-    }
-    catch (err) {
+    } catch (err) {
       console.error("Failed to set Quill data:", err);
       quillError = "Failed to load the editor. Please try again later.";
     }

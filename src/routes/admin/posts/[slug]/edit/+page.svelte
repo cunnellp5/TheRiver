@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { ActionData, PageData } from "./$types";
   import { page } from "$app/stores";
-  import PostsForm from "../../components/PostsForm.svelte";
+  import PostsForm from "../../components/posts-form.svelte";
   import "quill/dist/quill.snow.css";
 
   interface Props {
@@ -35,29 +35,34 @@
 
     {#if form?.error}<p class="formMessage">{form?.message}</p>{/if}
 
-    <PostsForm {title} {content} {description} {tagInput} {published} />
+    <PostsForm
+      {title}
+      {content}
+      {description}
+      {tagInput}
+      {published} />
   </section>
 </main>
 
 <style>
-	main {
-		display: flex;
-		justify-content: center;
-		margin-inline-start: var(--size-7);
-	}
-	blockquote {
-		margin-block: var(--size-7);
-		color: var(--stone-7);
-		font-size: var(--size-8);
-	}
-	.firstHeader {
-		margin-block: var(--size-7);
-	}
-	.formMessage {
-		margin-block-end: var(--size-4);
-		border-radius: var(--size-1);
-		background: var(--pink-6);
-		padding: var(--size-3);
-		font-size: var(--font-size-5);
-	}
+  main {
+    display: flex;
+    justify-content: center;
+    margin-inline-start: var(--size-7);
+  }
+  blockquote {
+    margin-block: var(--size-7);
+    color: var(--stone-7);
+    font-size: var(--size-8);
+  }
+  .firstHeader {
+    margin-block: var(--size-7);
+  }
+  .formMessage {
+    margin-block-end: var(--size-4);
+    border-radius: var(--size-1);
+    background: var(--pink-6);
+    padding: var(--size-3);
+    font-size: var(--font-size-5);
+  }
 </style>

@@ -2,7 +2,7 @@
   import type { PageData } from "./$types";
   import Seo from "$lib/components/seo.svelte";
   import BlogCard from "$lib/components/ui/blog-card.svelte";
-  import Hero from "./Hero.svelte";
+  import Hero from "./hero.svelte";
 
   interface Props {
     data: PageData;
@@ -18,7 +18,7 @@
     filteredPosts = data.posts.filter(
       post =>
         post.title.toLowerCase().includes(search.toLowerCase())
-          || post.description.toLowerCase().includes(search.toLowerCase()),
+        || post.description.toLowerCase().includes(search.toLowerCase()),
     );
   });
 </script>

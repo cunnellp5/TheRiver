@@ -1,6 +1,6 @@
 // import type { PageServerLoad } from './$types';
 import type { PageServerLoad } from "./$types";
-import TRACKS from "./TRACKS";
+import TRACKS from "./tracks";
 
 export const load: PageServerLoad = async () => {
   const pages = [];

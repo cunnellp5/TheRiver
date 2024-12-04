@@ -20,11 +20,10 @@
   const { data, children }: Props = $props();
 
   // Use view transitions if available
-  onNavigate((navigation) => {
-    if (!document.startViewTransition)
-      return;
+  onNavigate(navigation => {
+    if (!document.startViewTransition) return;
 
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       document.startViewTransition(async () => {
         resolve();
         await navigation.complete;

@@ -1,4 +1,3 @@
-<!-- @migration-task Error while migrating Svelte code: `<tr>` is invalid inside `<table>` -->
 <script lang="ts">
   const { img, title, subTitle, hook, link } = $props();
 </script>
@@ -17,7 +16,9 @@
     style="border-collapse: separate; border-spacing: 0; width: 100%;">
     <tbody>
       <tr>
-        <td align="left" valign="middle">
+        <td
+          align="left"
+          valign="middle">
           <table
             align="left"
             width="100%"
@@ -28,7 +29,9 @@
             style="width: 100%;">
             <tbody>
               <tr>
-                <td align="left" valign="top">
+                <td
+                  align="left"
+                  valign="top">
                   <table
                     width="100%"
                     border="0"
@@ -37,7 +40,10 @@
                     role="presentation">
                     <tbody>
                       <tr>
-                        <td align="left" valign="top" style="padding: 0px 0px 20px 0px;">
+                        <td
+                          align="left"
+                          valign="top"
+                          style="padding: 0px 0px 20px 0px;">
                           <a
                             class="pc-font-alt"
                             href={link}
@@ -58,7 +64,9 @@
                 </td>
               </tr>
               <tr>
-                <td align="left" valign="top">
+                <td
+                  align="left"
+                  valign="top">
                   <table
                     align="left"
                     border="0"
@@ -67,7 +75,9 @@
                     role="presentation">
                     <tbody>
                       <tr>
-                        <td valign="top" style="padding: 0px 0px 8px 0px;">
+                        <td
+                          valign="top"
+                          style="padding: 0px 0px 8px 0px;">
                           <table
                             border="0"
                             cellpadding="0"
@@ -77,7 +87,9 @@
                             style="border-collapse: separate; border-spacing: 0;">
                             <tbody>
                               <tr>
-                                <td valign="top" align="left">
+                                <td
+                                  valign="top"
+                                  align="left">
                                   <div
                                     class="pc-font-alt"
                                     style="line-height: 160%; letter-spacing: 4px; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 600; font-variant-ligatures: normal; color: #00ff83; text-align: left; text-align-last: left;">
@@ -96,7 +108,9 @@
                 </td>
               </tr>
               <tr>
-                <td align="left" valign="top">
+                <td
+                  align="left"
+                  valign="top">
                   <table
                     align="left"
                     border="0"
@@ -105,7 +119,9 @@
                     role="presentation">
                     <tbody>
                       <tr>
-                        <td valign="top" style="padding: 0px 0px 8px 0px;">
+                        <td
+                          valign="top"
+                          style="padding: 0px 0px 8px 0px;">
                           <table
                             border="0"
                             cellpadding="0"
@@ -115,7 +131,9 @@
                             style="border-collapse: separate; border-spacing: 0;">
                             <tbody>
                               <tr>
-                                <td valign="top" align="left">
+                                <td
+                                  valign="top"
+                                  align="left">
                                   <div
                                     class="pc-font-alt"
                                     style="line-height: 120%; letter-spacing: 0px; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-size: 24px; font-weight: 600; font-variant-ligatures: normal; color: #ffffff; text-align: left; text-align-last: left;">
@@ -134,7 +152,9 @@
                 </td>
               </tr>
               <tr>
-                <td align="left" valign="top">
+                <td
+                  align="left"
+                  valign="top">
                   <table
                     align="left"
                     border="0"
@@ -156,7 +176,10 @@
                             style="border-collapse: separate; border-spacing: 0;">
                             <tbody>
                               <tr>
-                                <td valign="top" class="pc-w620-padding-0-0-0-0" align="left">
+                                <td
+                                  valign="top"
+                                  class="pc-w620-padding-0-0-0-0"
+                                  align="left">
                                   <div
                                     class="pc-font-alt"
                                     style="line-height: 156%; letter-spacing: 0px; font-family: 'Poppins', Arial, Helvetica, sans-serif; font-size: 14px; font-weight: normal; font-variant-ligatures: normal; color: #ffffff; text-align: left; text-align-last: left;">

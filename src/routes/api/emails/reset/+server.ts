@@ -11,7 +11,8 @@ export const POST: RequestHandler = async ({ request }): Promise<Response> => {
 
   try {
     ({ token, email } = await request.json());
-  } catch (err) {
+  }
+  catch (err) {
     console.error("Error parsing request body:", err);
     return error(500, err.message);
   }
@@ -33,11 +34,13 @@ export const POST: RequestHandler = async ({ request }): Promise<Response> => {
     transporter.sendMail(options, (error, info) => {
       if (error) {
         console.error("❌ Error:", error.message);
-      } else {
+      }
+      else {
         console.log("✅ Email sent:", info.response);
       }
     });
-  } catch (err: unknown | Error) {
+  }
+  catch (err: unknown | Error) {
     error(500, (err as Error).message);
   }
 

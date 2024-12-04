@@ -1,55 +1,9 @@
-// import { PrismaAdapter } from '@lucia-auth/adapter-prisma';
-// import { Lucia } from 'lucia';
-// // import { dev } from '$app/environment';
-
-// import db from './database';
-
-// const adapter = new PrismaAdapter(db.session, db.user);
-
-// interface DtatbaseUserAttributes {
-// 	isAdmin?: boolean;
-// 	firstName: string;
-// 	lastName: string;
-// 	email: string;
-// }
-
-// export const lucia = new Lucia(adapter, {
-// 	sessionCookie: {
-// 		attributes: {
-// 			secure: true
-// 		}
-// 	},
-// 	getUserAttributes: (user) => {
-// 		const userData = {
-// 			isAdmin: user.isAdmin,
-// 			firstName: user.firstName,
-// 			lastName: user.lastName,
-// 			email: user.email
-// 		};
-
-// 		if (!user.isAdmin) {
-// 			delete userData?.isAdmin;
-// 		}
-// 		return userData;
-// 	}
-// });
-
-// declare module 'lucia' {
-// 	interface Register {
-// 		Lucia: typeof lucia;
-// 		DatabaseUserAttributes: DtatbaseUserAttributes;
-// 	}
-// }
-
-import type { Session, User } from "@prisma/client";
 // DOCS: https://lucia-auth.com/sessions/basic-api/prisma
+import type { Session, User } from "@prisma/client";
 import type { RequestEvent } from "@sveltejs/kit";
 import { sha256 } from "@oslojs/crypto/sha2";
 import { encodeBase32LowerCaseNoPadding, encodeHexLowerCase } from "@oslojs/encoding";
 import db from "./database";
-
-// const sessionDuration = 1000 * 60 * 60 * 24 * 30; // 30 days in milliseconds
-// const sessionDurationEarlyExpirationCheck = 1000 * 60 * 60 * 24 * 15; // 15 days in milliseconds
 
 const sessionDuration = 1000 * 60 * 60 * 24; // 1 days in milliseconds
 const sessionDurationEarlyExpirationCheck = 1000 * 60 * 60 * 12; // .5 days in milliseconds

@@ -9,7 +9,7 @@
   import ArrowRight from "lucide-svelte/icons/arrow-right";
   import Users from "lucide-svelte/icons/users";
   import X from "lucide-svelte/icons/x";
-  import DashboardUserRow from "./DashboardUserRow.svelte";
+  import DashboardUserRow from "./dashboard-user-row.svelte";
 
   let { data, form = $bindable() } = $props();
   let showModal = $state(false);

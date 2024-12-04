@@ -32,30 +32,32 @@
         <td>{user.email}</td>
         <td>{user.firstName}</td>
         <td>{user.lastName}</td>
-        <td class:admin={user.isAdmin} class:defaultUser={!user.isAdmin}>{user.isAdmin}</td>
+        <td
+          class:admin={user.isAdmin}
+          class:defaultUser={!user.isAdmin}>{user.isAdmin}</td>
       </tr>
     {/each}
   </tbody>
 </table>
 
 <style>
-	table {
-		/* background-color: var(--table); */
-		width: 100%;
-	}
+  table {
+    /* background-color: var(--table); */
+    width: 100%;
+  }
 
-	td {
-		padding: 0.5rem;
-	}
+  td {
+    padding: 0.5rem;
+  }
 
-	tr:nth-child(even) {
-		background-color: #f9f9f9;
-	}
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
 
-	.defaultUser {
-		color: var(--create);
-	}
-	.admin {
-		color: var(--delete);
-	}
+  .defaultUser {
+    color: var(--create);
+  }
+  .admin {
+    color: var(--delete);
+  }
 </style>

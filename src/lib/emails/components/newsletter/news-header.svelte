@@ -1,16 +1,25 @@
 <script lang="ts">
-  import TableLogo from "../ui/TableLogo.svelte";
-  import TableTitleDescription from "../ui/TableTitleDescription.svelte";
-
-  const layerdImg
-    = "https://res.cloudinary.com/dswpu3qez/image/upload/v1732155330/backgrounds/feature-collage-2_laljnw.webp";
+  import TableLogo from "../ui/table-logo.svelte";
+  import TableTitleDescription from "../ui/table-title-description.svelte";
 </script>
 
-<table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation">
+<table
+  width="100%"
+  border="0"
+  cellspacing="0"
+  cellpadding="0"
+  role="presentation">
   <tbody>
     <tr>
-      <td class="pc-w620-spacing-0-0-0-0" style="padding: 0px 0px 0px 0px;">
-        <table width="100%" border="0" cellspacing="0" cellpadding="0" role="presentation">
+      <td
+        class="pc-w620-spacing-0-0-0-0"
+        style="padding: 0px 0px 0px 0px;">
+        <table
+          width="100%"
+          border="0"
+          cellspacing="0"
+          cellpadding="0"
+          role="presentation">
           <tbody>
             <tr>
               <!-- [if !gte mso 9]><!-- -->

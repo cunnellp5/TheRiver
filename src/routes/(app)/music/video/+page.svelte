@@ -7,7 +7,7 @@
   const { data } = $props();
   const { videos } = data;
 
-  // const YOUTUBE_BASE_EMBED_URL = 'https://www.youtube.com/embed/'
+// const YOUTUBE_BASE_EMBED_URL = 'https://www.youtube.com/embed/'
 </script>
 
 <!-- TODO make video specific description -->
