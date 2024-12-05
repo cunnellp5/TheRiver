@@ -33,7 +33,7 @@ const config = {
         ], // Allow images from self and Cloudinary
         "font-src": ["self", "https://fonts.gstatic.com"], // Allow fonts from self and Google Fonts
         "connect-src": ["self"], // Allow connections to self
-        "frame-src": ["self", "https://w.soundcloud.com", "https://www.instagram.com/"], // Disallow iframes
+        "frame-src": ["self", "https://w.soundcloud.com", "https://www.instagram.com/", "https://vercel.live/"], // Disallow iframes
         "media-src": ["self", "https://res.cloudinary.com"], // Allow media from self and Cloudinary
         "object-src": ["none"], // Disallow plugins
         "base-uri": ["self"], // Restrict base URI to self
