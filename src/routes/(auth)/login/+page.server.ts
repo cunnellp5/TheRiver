@@ -1,4 +1,5 @@
 import type { Actions, RequestEvent } from "./$types";
+import { invalidateSession } from "$lib/server/auth";
 import { login } from "$lib/server/controllers/login";
 import db from "$lib/server/database";
 import { fail, redirect } from "@sveltejs/kit";
@@ -31,6 +32,7 @@ export const actions: Actions = {
     // check for user
     const existingUser = await db.user.findFirst({
       where: { email: email.toString() },
+      include: { sessions: true },
     });
 
     if (!existingUser) {
@@ -47,6 +49,14 @@ export const actions: Actions = {
       return fail(400, {
         message: ERROR_MESSAGE,
       });
+    }
+
+    // check if session is expired, delete it if it is
+    if (existingUser.sessions.length > 0) {
+      const session = existingUser.sessions[0];
+      if (session.expiresAt < new Date()) {
+        await invalidateSession(session.id);
+      }
     }
 
     await login({ event, userId: existingUser.id });
