@@ -1,6 +1,10 @@
 import { error, type Handle, redirect } from "@sveltejs/kit";
 
 export const authGuard: Handle = async ({ event, resolve }) => {
+  if (event.route.id === null) {
+    error(401, "Not Found");
+  }
+
   if (
     (event.locals.session === null && event.route.id?.includes("/admin"))
     || (event.locals.session

@@ -13,6 +13,7 @@ const CACHE = `cache-${version}`;
 const ASSETS = [
   ...build, // the app itself
   ...files, // everything in `static`
+  "https://fonts.googleapis.com/css2?family=Lobster&display=swap&subset=latin",
 ];
 
 sw.addEventListener("install", (event) => {

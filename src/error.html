@@ -27,19 +27,32 @@
         align-items: center;
         height: 100vh;
       }
+      h1 {
+        font-size: 8rem;
+        color: rgb(53, 73, 78);
+        padding: unset;
+        margin: unset;
+      }
       a {
         color: #f4f4f4;
         font-weight: 100;
-        font-size: 12px;
+        font-size: 1rem;
         list-style: none;
         text-decoration: none;
-        text-transform: uppercase;
+        background-color: #333;
+
+        border: 1px solid black;
+        padding: 1rem;
+        border-radius: 5px;
       }
       a:hover {
         color: #4bc1c3;
       }
       p {
         color: #97a7aa;
+        font-size: 8rem;
+        padding: unset;
+        margin: unset;
       }
       .headerWrapper,
       section {
@@ -47,22 +60,85 @@
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        gap: 2rem;
+        gap: 1rem;
+        flex-flow: wrap;
       }
       span {
-        color: #4b4949;
-        font-size: 24px;
+        color: pink;
+        /* font-size: 24px; */
+      }
+      .fullHeightAndWidth{
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+      }
+      .beach {
+        background-image: url("/images/1.png");
+        background-size: cover;
+        background-position: 0% 100%;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: -5;
+        top: 0;
+        left: 0;
+      }
+      .clouds2 {
+        top: -180px;
+        left: 0;
+        z-index: -4;
+        background-image: url("/images/2.png");
+        background-size: cover; /* Adjust as needed */
+        background-repeat: repeat-x; /* Ensure the background repeats horizontally */
+        animation: loopingR 200s infinite linear;
+      }
+      .clouds3 {
+        top: -160px;
+        left: 0;
+        z-index: -3;
+        background-image: url("/images/3.png");
+        background-size: cover; /* Adjust as needed */
+        background-repeat: repeat-x; /* Ensure the background repeats horizontally */
+        animation: looping 90s infinite linear;
+      }
+      .clouds4 {
+        top: -140px;
+        left: 0;
+        z-index: -2;
+        background-image: url("/images/4.png");
+        background-size: cover; /* Adjust as needed */
+        background-repeat: repeat-x; /* Ensure the background repeats horizontally */
+        animation: looping 55s infinite linear;
+      }
+
+      @keyframes looping {
+        from {
+          background-position: 0 0;
+        }
+        to {
+          background-position: 100vw 0;
+        }
+      }
+      @keyframes loopingR {
+        from {
+          background-position: 100vw 0;
+        }
+        to {
+          background-position: 0 0;
+        }
       }
     </style>
   </head>
-  <body>
+  <div>
     <div class="headerWrapper">
       <h1>The River</h1>
-      <span>|</span>
-      <p>Not Found</p>
+      <p>%sveltekit.error.message%</p>
     </div>
-    <!-- <p>Status: %sveltekit.status%</p> -->
-    <!-- <p>Message: %sveltekit.error.message%</p> -->
+
+    <aside class="beach" alt="beach"></aside>
+    <aside class="clouds2 fullHeightAndWidth" alt="Background Image"></aside>
+    <aside class="clouds3 fullHeightAndWidth" alt="Background Image"></aside>
+    <aside class="clouds4 fullHeightAndWidth" alt="Background Image"></aside>
 
     <section>
       <a href="/">
