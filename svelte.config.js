@@ -19,9 +19,9 @@ const config = {
           "self",
           "https://va.vercel-scripts.com/v1/script.debug.js",
           "https://va.vercel-scripts.com/v1/speed-insights/script.debug.js",
-          "https://vercel.live/_next-live/feedback/feedback.js",
-          "https://vercel.live/_next-live/feedback/instrument.3a3a8ab1a69d0e9303de.js",
+          "https://vercel.live/_next-live/",
           "http://www.instagram.com",
+          "https://www.instagram.com/the.river.beauty/embed/",
         ], // Allow scripts from self and inline scripts with nonce
         "style-src": ["self", "https://fonts.googleapis.com", "unsafe-inline"], // Allow styles from self and Google Fonts
         "img-src": [
