@@ -25,7 +25,7 @@
       style:object-position={`center ${40 + scroll / 25}%`}>
       <source
         src={videoURL}
-        type="video/mp4" />
+        type="video/webm" />
       <!-- <track kind="captions" srclang="en" label="English" /> -->
     </video>
     <!-- {/if} -->
