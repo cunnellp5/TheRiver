@@ -25,7 +25,7 @@ export function addToast(toast: Toast) {
     id,
     type: "message",
     dismissible: true,
-    timeout: 3000,
+    timeout: 5000,
   };
 
   // Push the toast to the top of the list of toasts

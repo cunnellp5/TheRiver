@@ -1,66 +1,22 @@
 import type { Actions, RequestEvent } from "./$types";
-import { invalidateSession } from "$lib/server/auth";
 import { login } from "$lib/server/controllers/login";
-import db from "$lib/server/database";
-import { fail, redirect } from "@sveltejs/kit";
-import { Argon2id } from "oslo/password";
-
-const ERROR_MESSAGE = "Invalid credentials";
+import { fail } from "@sveltejs/kit";
+import { getFormData } from "./utils/get-form-data";
+import { validateInputs } from "./utils/validate-inputs";
 
 export const actions: Actions = {
-  default: async (event: RequestEvent) => {
-    const formData = await event.request.formData();
-    const email = formData.get("email") as string;
-    const password = formData.get("password") as string;
+  loginUser: async (event: RequestEvent) => {
+    const { email, password } = await getFormData(event.request);
 
-    // TODO use zod validation
-    if (typeof email !== "string" || email.length < 3) {
-      console.error("Invalid email");
-      return fail(400, {
-        message: ERROR_MESSAGE,
-      });
+    // TODO consider setting a success flag
+    const { userId } = await validateInputs({ email, password });
+
+    if (!userId) {
+      return fail(400, { success: false });
     }
 
-    // validate password
-    if (typeof password !== "string" || password.length < 6 || password.length > 255) {
-      console.error("Invalid password");
-      return fail(400, {
-        message: ERROR_MESSAGE,
-      });
-    }
+    await login({ event, userId });
 
-    // check for user
-    const existingUser = await db.user.findFirst({
-      where: { email: email.toString() },
-      include: { sessions: true },
-    });
-
-    if (!existingUser) {
-      console.error("User not found");
-      return fail(400, {
-        message: ERROR_MESSAGE,
-      });
-    }
-
-    const validPassword = await new Argon2id().verify(existingUser.hashedPassword, password);
-
-    if (!validPassword) {
-      console.error("Invalid password");
-      return fail(400, {
-        message: ERROR_MESSAGE,
-      });
-    }
-
-    // check if session is expired, delete it if it is
-    if (existingUser.sessions.length > 0) {
-      const session = existingUser.sessions[0];
-      if (session.expiresAt < new Date()) {
-        await invalidateSession(session.id);
-      }
-    }
-
-    await login({ event, userId: existingUser.id });
-
-    return redirect(302, "/dashboard");
+    return { success: true };
   },
 };
