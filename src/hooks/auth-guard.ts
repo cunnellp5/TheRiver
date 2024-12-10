@@ -14,6 +14,10 @@ export const authGuard: Handle = async ({ event, resolve }) => {
     error(401, "Not Found");
   }
 
+  if (!event.locals.session && event.route.id?.includes("/dashboard")) {
+    error(401, "Not Found");
+  }
+
   // generic user logged in and navigates to login page
   if (event.locals.session && event.route.id?.includes("/login")) {
     redirect(302, "/");

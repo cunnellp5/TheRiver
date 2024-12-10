@@ -4,9 +4,9 @@ import {
   setSessionTokenCookie,
   validateSessionToken,
 } from "$lib/server/auth";
-import { memoize } from "$lib/utils/memoize";
+// import { memoize } from "$lib/utils/memoize";
 
-const memoizedValidateSessionToken = memoize(validateSessionToken);
+// const memoizedValidateSessionToken = memoize(validateSessionToken);
 
 export const auth: Handle = async ({ event, resolve }) => {
   const token = event.cookies.get("session") ?? null;
@@ -17,7 +17,8 @@ export const auth: Handle = async ({ event, resolve }) => {
     return resolve(event);
   }
 
-  const { session, user } = await memoizedValidateSessionToken(token, 3600);
+  const { session, user } = await validateSessionToken(token);
+  // const { session, user } = await memoizedValidateSessionToken(token, 3600);
 
   if (session !== null) {
     setSessionTokenCookie(event, token, session.expiresAt);
