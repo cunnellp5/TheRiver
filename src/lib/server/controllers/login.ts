@@ -12,5 +12,5 @@ export async function login({
 
   const session = await createSession(token, userId);
 
-  setSessionTokenCookie(event, token, session.expiresAt);
+  await setSessionTokenCookie(event, token, session.expiresAt);
 }

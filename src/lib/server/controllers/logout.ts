@@ -7,6 +7,5 @@ export async function logout(event: RequestEvent): Promise<void> {
   }
 
   await invalidateSession(event.locals.session.id);
-
-  deleteSessionTokenCookie(event);
+  await deleteSessionTokenCookie(event);
 }

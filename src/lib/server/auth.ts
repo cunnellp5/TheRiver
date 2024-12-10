@@ -71,16 +71,19 @@ export async function invalidateSession(sessionId: string): Promise<void> {
 export function setSessionTokenCookie(event: RequestEvent, token: string, expiresAt: Date): void {
   event.cookies.set("session", token, {
     httpOnly: true,
-    sameSite: "lax",
+    secure: true,
+    sameSite: "strict",
     expires: expiresAt,
     path: "/",
   });
 }
 
+// INTENTIONALLY NOT DELETING SO WE CAN COERCE THE SESSION === NULL
 export function deleteSessionTokenCookie(event: RequestEvent): void {
   event.cookies.set("session", "", {
     httpOnly: true,
-    sameSite: "lax",
+    secure: true,
+    sameSite: "strict",
     maxAge: 0,
     path: "/",
   });
