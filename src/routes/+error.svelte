@@ -9,13 +9,7 @@
 <main class="app-layout hype">
   <h1>The River</h1>
   <section>
-    <blockquote>
-      <p>
-        Life is like the river, sometimes it sweeps you gently along and sometimes the rapids come
-        out of nowhere.
-      </p>
-    </blockquote>
-    <small>Something went wrong, this is an error page.</small>
+    <p>Something went wrong.</p>
   </section>
 </main>
 
