@@ -13,7 +13,7 @@
     <Table.Header>
       <Table.Row>
         <div class="table-row-header">
-          <h6>
+          <h6 class="gradientHeaders">
             {category.toUpperCase()}
           </h6>
         </div>
@@ -48,6 +48,8 @@
     font-size: var(--font-size-2);
   }
   .tables {
+    box-shadow: var(--shadow-4);
+    padding: var(--size-4);
     align-items: center;
     align-self: center;
     z-index: var(--layer-3);
