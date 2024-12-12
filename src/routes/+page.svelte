@@ -2,7 +2,7 @@
   import Seo from "$lib/components/seo.svelte";
   import Marquee from "$lib/components/ui/marquee.svelte";
   import { onMount } from "svelte";
-  import HomeAbout from "./components/body/home-about.svelte";
+  import HomeAbout from "./components/body/about/home-about.svelte";
   import HomeArticles from "./components/body/home-articles.svelte";
   import HomeGallery from "./components/body/home-gallery.svelte";
   import HomeHero from "./components/body/home-hero.svelte";
