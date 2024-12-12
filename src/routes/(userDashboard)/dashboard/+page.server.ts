@@ -119,7 +119,7 @@ export const actions: Actions = {
 
     try {
       await db.user.update({
-        where: { id },
+        where: { id: Number(id) },
         data: { [key]: value },
       });
 
