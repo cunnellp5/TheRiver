@@ -53,4 +53,7 @@
   .keyText {
     color: var(--text-2);
   }
+  .blue {
+    color: var(--link);
+  }
 </style>

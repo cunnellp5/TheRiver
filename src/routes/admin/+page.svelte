@@ -56,55 +56,58 @@
   </ol>
 </blockquote>
 
-<h4>Todos</h4>
-{#each checklistTodos as item}
+<details>
+  <summary> Todos </summary>
+  {#each checklistTodos as item}
+    <ol>
+      <span>{item.category}</span>
+      {#each item.todos as todo}
+        <li>
+          <input
+            type="checkbox"
+            id={todo.id}
+            checked={todo.checked} />
+          <label for={todo.id}>{todo.text}</label>
+        </li>
+      {/each}
+    </ol>
+  {/each}
+</details>
+
+<details>
+  <summary> Tools </summary>
   <ol>
-    <span>{item.category}</span>
-    {#each item.todos as todo}
-      <li>
-        <input
-          type="checkbox"
-          id={todo.id}
-          checked={todo.checked} />
-        <label for={todo.id}>{todo.text}</label>
-      </li>
-    {/each}
+    <span>Tech</span>
+    <li>Sveltekit - Meta framework [Typescript]</li>
+    <li>Prisma - ORM wrapper for db queries</li>
+    <li>PostgreSQL - The database language</li>
   </ol>
-{/each}
-
-<h4>Tools</h4>
-
-<ol>
-  <span>Tech</span>
-  <li>Sveltekit - Meta framework [Typescript]</li>
-  <li>Prisma - ORM wrapper for db queries</li>
-  <li>PostgreSQL - The database language</li>
-</ol>
-<ol>
-  <span>Other tools</span>
-  <li>oslo - auth utilities like encryption</li>
-  <li>quill - renders blog</li>
-  <li>valibot - validates user input</li>
-  <li>eslint - code rules</li>
-  <li>lucide - icons</li>
-</ol>
-<ol>
-  <span>Misc</span>
-  <li>
-    <a
-      href="/sitemap.xml"
-      target="_blank"
-      rel="noopener noreferrer">/sitemap.xml</a> - for seo
-  </li>
-  <li>
-    <a
-      href="/humans.txt"
-      target="_blank"
-      rel="noopener noreferrer">
-      /humans.txt
-    </a> - dev credit
-  </li>
-</ol>
+  <ol>
+    <span>Other tools</span>
+    <li>oslo - auth utilities like encryption</li>
+    <li>quill - renders blog</li>
+    <li>valibot - validates user input</li>
+    <li>eslint - code rules</li>
+    <li>lucide - icons</li>
+  </ol>
+  <ol>
+    <span>Misc</span>
+    <li>
+      <a
+        href="/sitemap.xml"
+        target="_blank"
+        rel="noopener noreferrer">/sitemap.xml</a> - for seo
+    </li>
+    <li>
+      <a
+        href="/humans.txt"
+        target="_blank"
+        rel="noopener noreferrer">
+        /humans.txt
+      </a> - dev credit
+    </li>
+  </ol>
+</details>
 
 <style>
   blockquote > ol {
