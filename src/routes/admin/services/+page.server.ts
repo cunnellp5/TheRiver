@@ -9,19 +9,15 @@ export const load: PageServerLoad = async (event) => {
   }
 
   try {
-    // GET ALL SERVICES WITH THEY CATEGORIES
     const services = await db.service.findMany({
       include: {
         category: true,
       },
     });
-
-    // FORMAT SUCH THAT IT CAN BE USED IN THE TABLE
     const remappedServices = servicesMapper(services);
-
     return { services: remappedServices };
   }
-  catch (err) {
+  catch {
     return error(500, "Internal Server Error");
   }
 };
