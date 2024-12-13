@@ -13,7 +13,7 @@
     [key: string]: any;
   }
 
-  const { class: className = "", tag = "h3", children, ...rest }: Props = $props();
+  const { class: className = "gradientHeaders", tag = "h3", children, ...rest }: Props = $props();
 </script>
 
 <svelte:element
@@ -24,32 +24,6 @@
 </svelte:element>
 
 <style>
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin-block: var(--size-6);
-    /* max-width: var(--size-content-1); */
-    background: var(--gradient-1) fixed;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-family:
-      "Roboto",
-      system-ui,
-      -apple-system,
-      BlinkMacSystemFont,
-      "Segoe UI",
-      Oxygen,
-      Ubuntu,
-      Cantarell,
-      "Open Sans",
-      "Helvetica Neue",
-      sans-serif;
-  }
-
   .noPad {
     margin: unset;
     padding: unset;
