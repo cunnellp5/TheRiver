@@ -85,7 +85,7 @@
         form="deleteForm"
         type="submit"
         class:delete-button={!disabledDelete}
-        class:diabledDelete={disabledDelete}
+        class:diabledDelete={disabledDelete || loading}
         disabled={disabledDelete}>Permanently Delete</button>
       <button
         type="button"

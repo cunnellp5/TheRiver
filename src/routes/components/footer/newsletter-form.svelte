@@ -32,8 +32,7 @@
     return async ({ result, update }) => {
       if (result.status === 200) {
         formSuccess();
-      }
-      else {
+      } else {
         showError = true;
         errorMessage = result?.data?.message || "An error occurred";
       }
@@ -47,6 +46,7 @@
       <div class="buttonWrapper">
         <input
           type="email"
+          id="email"
           name="email"
           placeholder="Enter email"
           bind:value={emailInput} />
@@ -88,6 +88,11 @@
     align-items: center;
     border-block-end: 1px solid var(--border);
     padding-block: var(--size-10);
+    /* background-image: radial-gradient(
+      ellipse at center center,
+      hsla(330, 80%, 35%, 0.109),
+      transparent 75%
+    ); */
   }
   input {
     padding: var(--size-3);

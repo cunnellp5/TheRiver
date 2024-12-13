@@ -168,3 +168,108 @@ export const actions: Actions = {
     return redirect(302, "/dashboard");
   },
 };
+
+// // // // // // // // // // // //
+// import type { SignUpValidator } from "$lib/utils/Valibot/signup";
+// import type { Newsletter } from "@prisma/client";
+// import type { ValiError } from "valibot";
+// import type { Actions } from "./$types";
+// import { generateSessionToken } from "$lib/server/auth";
+// import { login } from "$lib/server/controllers/login";
+// import db from "$lib/server/database";
+// import { SignUpSchema } from "$lib/utils/Valibot/signup";
+// import { error, fail, redirect } from "@sveltejs/kit";
+// import { Argon2id } from "oslo/password";
+// import { parse } from "valibot";
+
+// async function validateFormData(formData) {
+//   const email = formData.get("email")?.toString() || "";
+//   const password = formData.get("password")?.toString() || "";
+//   const firstName = formData.get("firstName")?.toString() || "";
+//   const lastName = formData.get("lastName")?.toString() || "";
+//   const isSubscribed = formData.get("isSubscribed")?.toString() === "on";
+//   const confirm = formData.get("confirm")?.toString() || "";
+
+//   if (!email || !password || !firstName || !lastName || confirm !== password) {
+//     return fail(400, { message: "Please fill out all fields and confirm your password correctly" });
+//   }
+
+//   try {
+//     parse(SignUpSchema, { email, password, firstName, lastName, isSubscribed, confirm }) as SignUpValidator;
+//   } catch (err) {
+//     const errors = err as ValiError<typeof SignUpSchema>;
+//     return fail(400, { message: errors.message });
+//   }
+
+//   return { email, password, firstName, lastName, isSubscribed };
+// }
+
+// async function checkExistingUser(email) {
+//   const user = await db.user.findUnique({ where: { email } });
+//   if (user) {
+//     throw fail(400, { message: "Email is unavailable" });
+//   }
+// }
+
+// async function handleNewsletterSubscription(email, isSubscribed, userId) {
+//   const existingSubscription = await db.newsletter.findUnique({ where: { email } });
+
+//   if (isSubscribed) {
+//     if (existingSubscription) {
+//       await db.newsletter.update({ where: { email }, data: { userId } });
+//     } else {
+//       await db.newsletter.create({ data: { email, userId, token: generateSessionToken() } });
+//     }
+//   } else if (existingSubscription) {
+//     await db.newsletter.delete({ where: { email } });
+//   }
+
+//   return existingSubscription;
+// }
+
+// async function sendWelcomeEmail(email, shouldSend) {
+//   if (!shouldSend) return;
+
+//   try {
+//     await fetch("api/emails/welcome", {
+//       method: "POST",
+//       body: JSON.stringify({ subject: "Thanks for Signing up - The River", email }),
+//       headers: { "Content-Type": "application/json" },
+//     });
+//   } catch (err) {
+//     console.error("Error sending email:", err);
+//   }
+// }
+
+// export const actions: Actions = {
+//   default: async (event) => {
+//     const formData = await event.request.formData();
+//     const validatedData = await validateFormData(formData);
+//     if (!validatedData) return;
+
+//     const { email, password, firstName, lastName, isSubscribed } = validatedData;
+
+//     try {
+//       await checkExistingUser(email);
+
+//       const hashedPassword = await new Argon2id().hash(password);
+//       let newUser = null;
+//       let existingSubscription = null;
+
+//       await db.$transaction(async () => {
+//         newUser = await db.user.create({
+//           data: { email, firstName, lastName, hashedPassword },
+//         });
+
+//         existingSubscription = await handleNewsletterSubscription(email, isSubscribed, newUser.id);
+//         await login({ userId: newUser.id, event });
+//       });
+
+//       await sendWelcomeEmail(email, !existingSubscription);
+//       return redirect(302, "/dashboard");
+//     } catch (err) {
+//       console.error("Error during signup process:", err);
+//       return error(500, { message: "Internal Server Error" });
+//     }
+//   },
+// };

@@ -24,7 +24,6 @@
     font-style: normal;
     font-weight: var(--font-weight-4);
     font-size: var(--font-size-3);
-    font-family: "Ambit Regular";
     letter-spacing: 0em;
   }
 </style>

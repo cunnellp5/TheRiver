@@ -98,10 +98,13 @@
     /* fill: var(--stone-9); */
     fill: var(--stone-3);
     width: 100%;
-    /* backdrop-filter: blur(1px);  */
-    /* -webkit-backdrop-filter: blur(1px);  */
-  }
 
+    /* backdrop-filter: opacity(0%); */
+    /* -webkit-backdrop-filter: blur(4px); */
+    /* background-color: rgba(0, 0, 0, 0.75); */
+    /* padding: var(--size-5); */
+    /* border-radius: 5px; */
+  }
   .theme {
     fill: var(--text-2);
   }

@@ -103,7 +103,7 @@
     font-family: "Atyp BL Display Medium";
   }
   .description--header__music {
-    font-family: "Raleway", sans-serif;
+    font-family: "Wix Madefor Display", sans-serif;
   }
   /* CLASSES */
   .lobster {
@@ -120,7 +120,6 @@
     & p {
       font-weight: 400;
       font-size: var(--font-size-3);
-      font-family: "Ambit Light";
       text-transform: none;
     }
   }

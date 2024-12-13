@@ -91,7 +91,8 @@
   }
   .about {
     color: var(--gray-7);
-    font-family: "Ambit Light";
+    font-size: var(--font-size-4);
+    /* font-family: "Ambit Light"; */
     text-align: center;
   }
   .serviceButtons {
