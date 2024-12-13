@@ -4,17 +4,17 @@ export default [
     links: [
       { name: "Home", link: "/admin" },
       { name: "Users", link: "/admin/users" },
-      { name: "About", link: "/admin/about" },
+      // { name: "About", link: "/admin/about" },
       { name: "NewsLetter", link: "/admin/newsletter" },
     ],
   },
   {
     category: "Home",
     links: [
-      {
-        name: "HeroVideo",
-        link: "/admin/homepage/hero",
-      },
+      // {
+      //   name: "HeroVideo",
+      //   link: "/admin/homepage/hero",
+      // },
       {
         name: "Articles",
         link: "/admin/homepage/articles",
@@ -22,23 +22,23 @@ export default [
       },
     ],
   },
-  {
-    category: "Music",
-    links: [
-      {
-        name: "Tracks",
-        link: "/admin/musicpage/tracks",
-      },
-      {
-        name: "Videos",
-        link: "/admin/musicpage/videos",
-      },
-      {
-        name: "Stems",
-        link: "/admin/musicpage/stems",
-      },
-    ],
-  },
+  // {
+  //   category: "Music",
+  //   links: [
+  //     {
+  //       name: "Tracks",
+  //       link: "/admin/musicpage/tracks",
+  //     },
+  //     {
+  //       name: "Videos",
+  //       link: "/admin/musicpage/videos",
+  //     },
+  //     {
+  //       name: "Stems",
+  //       link: "/admin/musicpage/stems",
+  //     },
+  //   ],
+  // },
   {
     category: "Services",
     links: [
@@ -64,14 +64,14 @@ export default [
       },
     ],
   },
-  {
-    category: "Contact",
-    links: [
-      {
-        name: "Info",
-        link: "/admin/contact",
-        urlPath: "/admin/contact",
-      },
-    ],
-  },
+  // {
+  //   category: "Contact",
+  //   links: [
+  //     {
+  //       name: "Info",
+  //       link: "/admin/contact",
+  //       urlPath: "/admin/contact",
+  //     },
+  //   ],
+  // },
 ];
