@@ -18,22 +18,24 @@
 
 <section>
   <Table.Root>
-    <Table.Caption>All users with an account</Table.Caption>
+    <!-- <Table.Caption>All users with an account</Table.Caption> -->
     <Table.Header>
       <Table.Row>
-        <div class="table-row-header">
-          <h5>Users</h5>
-        </div>
-      </Table.Row>
-      <Table.Row>
-        <Table.Cell class="blue">count</Table.Cell>
-        <Table.Cell class="blue">email</Table.Cell>
-        <Table.Cell class="blue">first</Table.Cell>
-        <Table.Cell class="blue">last</Table.Cell>
-        <Table.Cell class="blue">admin</Table.Cell>
+        <Table.Head class="gradientHeaders">
+          <div class="table-row-header">
+            <h5>Users ({users.length})</h5>
+          </div>
+        </Table.Head>
       </Table.Row>
     </Table.Header>
     <Table.Body>
+      <Table.Row>
+        <Table.Cell class="stone">count</Table.Cell>
+        <Table.Cell class="stone">email</Table.Cell>
+        <Table.Cell class="stone">first</Table.Cell>
+        <Table.Cell class="stone">last</Table.Cell>
+        <Table.Cell class="stone">admin</Table.Cell>
+      </Table.Row>
       {#each users as user, id}
         <Table.Row>
           <Table.Cell>{id + 1}</Table.Cell>
