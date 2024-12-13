@@ -7,7 +7,7 @@ type TableServiceInfo = Record<string, Service[]>;
 // combine service and cateogry in one type
 type ServiceWithCategory = Service & { category: ServiceCategory };
 
-export function servicesMapper(services: ServiceWithCategory[]) {
+export function servicesMapper(services: ServiceWithCategory[]): TableServiceInfo {
   return services.reduce(
     (acc: TableServiceInfo, service) => {
       if (!acc[service.category.name]) {
@@ -24,6 +24,6 @@ export function servicesMapper(services: ServiceWithCategory[]) {
       "Hair Color": [],
       "Hair Add-on": [],
       "Nails": [],
-    } as TableServiceInfo,
+    },
   );
 }

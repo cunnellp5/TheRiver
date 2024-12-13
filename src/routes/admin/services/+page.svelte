@@ -3,8 +3,36 @@
   import * as Table from "$lib/components/ui/shadcn/table";
 
   const { data } = $props();
-
   const { services } = data;
+  const csvUrl = "/api/csv";
+
+  async function downloadCSV() {
+    try {
+      const response = await fetch(csvUrl, {
+        method: "POST",
+        body: JSON.stringify({ services }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (!response.ok) {
+        throw new Error("Failed to fetch CSV file");
+      }
+
+      const blob = await response.blob();
+      const url = URL.createObjectURL(blob);
+
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "services.csv";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error("Error downloading CSV:", error);
+    }
+  }
 </script>
 
 <div class="adminIntroCardWrapper">
@@ -21,11 +49,17 @@
       </ul>
     </Card.Content>
     <Card.Footer>
-      <a
-        href="/admin/services/create"
-        data-sveltekit-noscroll>
-        <button class="create-button"> Add new service</button>
-      </a>
+      <aside>
+        <a
+          href="/admin/services/create"
+          data-sveltekit-noscroll>
+          <button class="create-button"> Add new service</button>
+        </a>
+        <button
+          onclick={downloadCSV}
+          class="update-button">
+          Download CSV</button>
+      </aside>
     </Card.Footer>
   </Card.Root>
 </div>
@@ -60,15 +94,12 @@
 {#each Object.entries(services) as [category, data]}
   <section>
     <Table.Root>
-      <Table.Caption>{data[0].category.description}</Table.Caption>
+      <!-- <Table.Caption>{data[0].category.description}</Table.Caption> -->
       <Table.Header>
         <Table.Row>
-          <div class="table-row-header">
-            <h5>
-              {category.toUpperCase()}
-            </h5>
-            <small>{data.length} ct</small>
-          </div>
+          <Table.Head class="gradientHeaders">
+            {category.toUpperCase()}
+          </Table.Head>
         </Table.Row>
       </Table.Header>
       <Table.Body>
@@ -78,11 +109,13 @@
             <Table.Cell>
               <div class="price-duration">
                 <span class="price">
-                  ${service.price}.00
+                  ${service?.price}.00
                 </span>
-                <span class="time">
-                  {service.duration} min
-                </span>
+                {#if service.duration}
+                  <span class="time">
+                    {service.duration} min
+                  </span>
+                {/if}
               </div>
             </Table.Cell>
           </Table.Row>
@@ -95,7 +128,15 @@
 <style>
   /* ELEMENTS */
   section {
-    margin-block: var(--size-12);
+    /* margin-block: var(--size-12); */
+    box-shadow: var(--shadow-3);
+    padding: var(--size-4);
+    width: 25vw;
+    margin: var(--size-6) auto;
+  }
+  aside {
+    display: flex;
+    gap: var(--size-4);
   }
   /* CLASSES */
   .price-duration {
