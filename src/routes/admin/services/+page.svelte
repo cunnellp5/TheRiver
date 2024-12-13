@@ -131,7 +131,7 @@
     /* margin-block: var(--size-12); */
     box-shadow: var(--shadow-3);
     padding: var(--size-4);
-    width: 25vw;
+    max-inline-size: var(--size-content-3);
     margin: var(--size-6) auto;
   }
   aside {
