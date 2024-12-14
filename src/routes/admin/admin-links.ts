@@ -5,7 +5,7 @@ export default [
       { name: "Home", link: "/admin" },
       { name: "Users", link: "/admin/users" },
       // { name: "About", link: "/admin/about" },
-      { name: "NewsLetter", link: "/admin/newsletter" },
+      // { name: "NewsLetter", link: "/admin/newsletter" },
     ],
   },
   {
