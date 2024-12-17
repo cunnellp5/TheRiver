@@ -4,8 +4,8 @@
   const {
     buttonText,
     link,
-    target = "_self",
-    rel = "me",
+    target = "",
+    rel = "",
     rainbow = false,
     sparkles = false,
     class: className = "",
