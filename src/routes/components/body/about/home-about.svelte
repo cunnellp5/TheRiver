@@ -1,5 +1,4 @@
 <script lang="ts">
-  import Socials from "$lib/components/ui/socials.svelte";
   import ButtonCard from "./button-card.svelte";
 </script>
 
@@ -12,10 +11,6 @@
   </div>
 
   <aside class="description">
-    <img
-      src="https://res.cloudinary.com/dswpu3qez/image/upload/c_fill,g_auto/v1732155330/backgrounds/feature-collage-2_laljnw.webp"
-      class="main-image__img"
-      alt="The River tracks collage" />
     <div class="description__text">
       <h3 class="gradientHeaders">About</h3>
       <p>The River is a rising HipHop/R&B artist based in Denver, Colorado.</p>
@@ -30,13 +25,6 @@
   </aside>
 
   <ButtonCard />
-
-  <div class="footer">
-    <p>Let's <span class="lobster">flow</span> together.</p>
-    <div class="socials">
-      <Socials />
-    </div>
-  </div>
 </section>
 
 <style>
@@ -50,39 +38,25 @@
     background-size: cover;
     position: relative;
   }
-  .main-image__img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    /* object-fit: contain; */
-    /* object-position: center; */
-    @media screen and (max-width: 768px) {
-      width: 100%;
-      height: 35%;
-      object-position: center 30%;
-    }
-  }
   .description {
-    background: var(--surface-4);
-    padding: var(--size-4);
-    border-radius: var(--radius-3);
-
+    background-image: url("https://res.cloudinary.com/dswpu3qez/image/upload/c_fill,g_auto/v1732155330/backgrounds/feature-collage-2_laljnw.webp");
     display: flex;
-    /* position: relative;/ */
-    /* flex-direction: column; */
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: var(--size-4);
-    margin-block: var(--nav-height);
-    height: var(--size-content-3);
-    @media screen and (max-width: 768px) {
-      flex-direction: column;
-    }
+    width: 100vw;
+    padding-block: var(--size-11);
+    background-position: 60% 85%;
   }
   .description__text {
     display: flex;
     flex-direction: column;
-    gap: var(--size-8);
+    gap: var(--size-3);
+    backdrop-filter: blur(40px);
+    padding: var(--size-8);
+    border-radius: var(--radius-3);
+    color: var(--stone-2);
   }
   .descriptionHeader {
     font-size: var(--size-12);
@@ -92,6 +66,7 @@
   }
   .description--header__wrapper {
     display: flex;
+    flex-flow: wrap;
     justify-content: space-evenly;
     gap: var(--size-4);
     padding-block: var(--size-4);
@@ -106,11 +81,6 @@
     font-family: "Wix Madefor Display", sans-serif;
   }
   /* CLASSES */
-  .lobster {
-    color: var(--link);
-    font-family: "Lobster", cursive;
-  }
-  /* .beauty, */
   .about {
     display: flex;
     flex-direction: column;
@@ -135,24 +105,13 @@
     /* filter: var(--noise-filter-6); */
   }
 
-  .footer {
-    display: flex;
-    flex-basis: var(--size-content-1);
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: var(--size-2);
-    background: var(--surface-3);
-    border: 1px solid var(--surface-1);
-    padding: var(--size-4);
-    border-radius: var(--radius-3);
-    box-shadow: var(--shadow-2);
-  }
-
   @media (max-width: 768px) {
     /* .beauty, */
     .about {
       padding-block: var(--size-9);
+    }
+    .about::before {
+      display: none;
     }
     .descriptionHeader {
       font-size: var(--size-8);

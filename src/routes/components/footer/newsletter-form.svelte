@@ -82,6 +82,11 @@
 <style>
   /* ELEMENTS */
   form {
+    background-image: radial-gradient(
+      ellipse at center center,
+      hsla(330, 80%, 35%, 0.109),
+      transparent 75%
+    );
     display: flex;
     flex-direction: column;
     justify-content: center;
