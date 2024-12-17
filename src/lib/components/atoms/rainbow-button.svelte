@@ -30,7 +30,7 @@
     background-color: unset;
     background:
       linear-gradient(to bottom, #222, #111) padding-box,
-      conic-gradient(from var(--bg-angle) in oklch longer hue, oklch(0.85 0.37 0) 0 0) border-box; /* extends to outer border edges */
+      conic-gradient(from var(--bg-angle) in oklch longer hue, oklch(0.65 0.17 0) 0 0) border-box;
     min-width: var(--size-content-1);
     color: var(--stone-1);
     font-weight: var(--font-weight-6);

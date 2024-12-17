@@ -95,20 +95,10 @@
 
 <style>
   .homePage {
-    /* fill: var(--stone-9); */
-    fill: var(--stone-3);
+    fill: var(--text-1);
     width: 100%;
-
-    /* backdrop-filter: opacity(0%); */
-    /* -webkit-backdrop-filter: blur(4px); */
-    /* background-color: rgba(0, 0, 0, 0.75); */
-    /* padding: var(--size-5); */
-    /* border-radius: 5px; */
   }
   .theme {
     fill: var(--text-2);
   }
-  /* .homePage {
-    fill: var(--sand-2);
-  } */
 </style>

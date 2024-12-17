@@ -1,20 +1,14 @@
 <script lang="ts">
   import Seo from "$lib/components/seo.svelte";
   import Marquee from "$lib/components/ui/marquee.svelte";
-  import { onMount } from "svelte";
   import HomeAbout from "./components/body/about/home-about.svelte";
   import HomeArticles from "./components/body/home-articles.svelte";
-  import HomeGallery from "./components/body/home-gallery.svelte";
+
   import HomeHero from "./components/body/home-hero.svelte";
-  import HomeMerchSlice from "./components/body/home-merch-slice.svelte";
+  // import HomeMerchSlice from "./components/body/home-merch-slice.svelte";
 
   const { data } = $props();
-  const { videoURL, articles, about } = data;
-  let visible = $state(false);
-
-  onMount(() => {
-    visible = true;
-  });
+  const { articles } = data;
 </script>
 
 <Seo
@@ -23,7 +17,7 @@
 ></Seo>
 
 <main>
-  <HomeHero {videoURL} />
+  <HomeHero />
   <HomeAbout />
   <a
     href="/music"
@@ -31,13 +25,9 @@
     <Marquee display="NEW RELEASE - Out The Mud -" />
   </a>
   <HomeArticles {articles} />
-  <HomeMerchSlice />
-  <HomeGallery />
 </main>
 
 <style>
-  /* ELEMENTS */
-  /* CLASSES */
   .marquee:hover {
     text-decoration: none;
   }

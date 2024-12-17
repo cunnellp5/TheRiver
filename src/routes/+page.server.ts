@@ -5,13 +5,8 @@ import { error } from "@sveltejs/kit";
 
 export const load: PageServerLoad = async () => {
   // TODO store urls in db - cdn can be public, but make sure the modifiers are on the urls
-  const videoURL = env.VIDEO_URL;
   let articles = null;
-  let about;
-
-  if (!videoURL) {
-    error(404, "Video not found");
-  }
+  // let about;
 
   try {
     articles = await db.article.findMany();
@@ -20,14 +15,14 @@ export const load: PageServerLoad = async () => {
     return error(500, "Internal Server Error");
   }
 
-  try {
-    about = await db.about.findFirst({
-      where: { name: "home" },
-    });
-  }
-  catch (err) {
-    return error(500, "Internal Server Error");
-  }
+  // try {
+  //   about = await db.about.findFirst({
+  //     where: { name: "home" },
+  //   });
+  // }
+  // catch (err) {
+  //   return error(500, "Internal Server Error");
+  // }
 
-  return { videoURL, articles, about };
+  return { articles };
 };
