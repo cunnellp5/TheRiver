@@ -10,16 +10,24 @@
       src: "https://res.cloudinary.com/dswpu3qez/image/upload/f_auto/q_auto:eco/TheRiver/alexismodel1_va2axz.webp",
       alt: "fifth element model",
       buttonText: "Merch",
+      link: "https://www.etsy.com/shop/MadeByTheRiverBed",
+      rel: "noopener",
+      target: "_blank",
     },
     {
       src: "https://res.cloudinary.com/dswpu3qez/image/upload/f_auto/q_auto:eco/TheRiver/alexis_blue_h6x97p.webp",
       alt: "holding comb model",
       buttonText: "Book Services",
+      link: "https://the-river-sings.square.site/",
+      rel: "noopener",
+      target: "_blank",
+      sparkles: true,
     },
     {
       src: "https://res.cloudinary.com/dswpu3qez/image/upload/f_auto/q_auto:eco/TheRiver/alexisSing_mmyxg6.webp",
       alt: "singing blue background",
       buttonText: "Music",
+      link: "/music",
     },
     // {
     //   src: "https://res.cloudinary.com/dswpu3qez/image/upload/f_auto/q_auto:eco/TheRiver/alexisArticle2_iqx8vk.webp",
@@ -30,7 +38,7 @@
 
 <section>
   <article class="gallery">
-    {#each images as { src, alt, buttonText }, i}
+    {#each images as { src, alt, buttonText, link, rel, target, sparkles }, i}
       <div class="image-container">
         <img
           loading="lazy"
@@ -42,7 +50,10 @@
         {#if buttonText}
           <SparkleRainbowButton
             {buttonText}
-            link="#"
+            {link}
+            {rel}
+            {target}
+            {sparkles}
             rainbow={true}
             class="overlay-button" />
         {/if}
