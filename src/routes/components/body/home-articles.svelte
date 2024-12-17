@@ -29,6 +29,8 @@
     @media (max-width: 768px) {
       font-size: var(--size-9);
       text-align: center;
+      transform: unset;
+      writing-mode: unset;
     }
   }
 </style>
