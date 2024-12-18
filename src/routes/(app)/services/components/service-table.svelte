@@ -1,5 +1,6 @@
 <script lang="ts">
-  import * as Table from "$lib/components/ui/shadcn/table";
+  import { goto } from "$app/navigation";
+  import * as Table from "$lib/components/ui/table";
 
   const { category, data } = $props();
 </script>
@@ -21,7 +22,7 @@
     </Table.Header>
     <Table.Body>
       {#each data as service}
-        <Table.Row>
+        <Table.Row handleClick={() => goto(`/services/${service.id}`)}>
           <Table.Cell>
             <p class="serviceName">
               {service.name}
@@ -54,6 +55,7 @@
     align-self: center;
     z-index: var(--layer-3);
     width: var(--size-content-3);
+    background-color: var(--surface-4);
     & tr {
       font-size: var(--font-size-1);
     }
