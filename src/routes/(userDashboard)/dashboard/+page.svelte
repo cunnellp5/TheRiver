@@ -1,9 +1,9 @@
 <script lang="ts">
   import { enhance } from "$app/forms";
   import Seo from "$lib/components/seo.svelte";
+  import * as Card from "$lib/components/ui/card/index.js";
   import Modal from "$lib/components/ui/modal.svelte";
-  import * as Card from "$lib/components/ui/shadcn/card";
-  import * as Table from "$lib/components/ui/shadcn/table";
+  import * as Table from "$lib/components/ui/table/index.js";
   import market from "$lib/data/json/market.json";
   import { addToast } from "$lib/stores/toast";
   import ArrowRight from "lucide-svelte/icons/arrow-right";

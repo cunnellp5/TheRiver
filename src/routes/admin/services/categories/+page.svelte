@@ -1,6 +1,6 @@
 <script lang="ts">
-  import * as Card from "$lib/components/ui/shadcn/card";
-  import * as Table from "$lib/components/ui/shadcn/table";
+  import * as Card from "$lib/components/ui/card/index.js";
+  import * as Table from "$lib/components/ui/table/index.js";
 
   const { data } = $props();
   const { categories } = data;
@@ -20,7 +20,9 @@
       </ul>
     </Card.Content>
     <Card.Footer>
-      <a href="/admin/services/create" data-sveltekit-noscroll>
+      <a
+        href="/admin/services/create"
+        data-sveltekit-noscroll>
         <button class="create-button">Add new category</button>
       </a>
     </Card.Footer>

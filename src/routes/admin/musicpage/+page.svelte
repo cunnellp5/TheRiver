@@ -1,5 +1,5 @@
 <script lang="ts">
-  import * as Card from "$lib/components/ui/shadcn/card";
+  import * as Card from "$lib/components/ui/card";
 </script>
 
 <div class="adminIntroCardWrapper">

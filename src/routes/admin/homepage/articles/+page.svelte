@@ -2,7 +2,7 @@
   import { enhance } from "$app/forms";
 
   import Card from "$lib/components/ui/card.svelte";
-  import * as GenericCard from "$lib/components/ui/shadcn/card";
+  import * as GenericCard from "$lib/components/ui/card/index.js";
   import { addToast } from "$lib/stores/toast";
   import Pencil from "lucide-svelte/icons/pencil";
   import Trash from "lucide-svelte/icons/trash";
@@ -35,7 +35,7 @@
     <GenericCard.Header>
       <GenericCard.Title>Articles</GenericCard.Title>
       <GenericCard.Description
-      >Create, Edit, or Delete articles found on the home page</GenericCard.Description>
+        >Create, Edit, or Delete articles found on the home page</GenericCard.Description>
     </GenericCard.Header>
     <GenericCard.Footer>
       <a href="/admin/homepage/articles/create">

@@ -4,7 +4,7 @@
   import type { PageData } from "./$types";
   import { page } from "$app/stores";
   import BlogCard from "$lib/components/ui/blog-card.svelte";
-  import * as Card from "$lib/components/ui/shadcn/card";
+  import * as Card from "$lib/components/ui/card";
   import Pencil from "lucide-svelte/icons/pencil";
   import { onMount } from "svelte";
   import { run } from "svelte/legacy";
@@ -29,8 +29,8 @@
   run(() => {
     filteredPosts = data.posts.filter(
       post =>
-        post.title.toLowerCase().includes(search.toLowerCase())
-          || post.description.toLowerCase().includes(search.toLowerCase()),
+        post.title.toLowerCase().includes(search.toLowerCase()) ||
+        post.description.toLowerCase().includes(search.toLowerCase()),
     );
   });
 

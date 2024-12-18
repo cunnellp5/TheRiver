@@ -1,11 +1,11 @@
 <script lang="ts">
-  const { services } = $props();
+  const { remappedServices } = $props();
 
   let activeIndex: number | null = $state(null);
 </script>
 
 <ul class="dots">
-  {#each Object.entries(services) as [category], index}
+  {#each Object.entries(remappedServices) as [category], index}
     <!-- svelte-ignore a11y_click_events_have_key_events -->
     <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
     <li

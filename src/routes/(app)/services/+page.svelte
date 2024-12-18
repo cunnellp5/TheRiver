@@ -8,7 +8,7 @@
   import ServiceTable from "./components/service-table.svelte";
 
   const { data } = $props();
-  const { services, about } = data;
+  const { remappedServices, about } = data;
   let scroll: number = $state(0);
 
   onMount(() => {
@@ -43,14 +43,15 @@
     <InstaBeauty />
   </div>
 </main>
+
 <main class="app-layout">
-  {#each Object.entries(services) as [category, data]}
+  {#each Object.entries(remappedServices) as [category, data]}
     <ServiceTable
       {category}
       {data} />
   {/each}
   <aside class="aside-right">
-    <ScrollDots {services} />
+    <ScrollDots {remappedServices} />
   </aside>
   <div class="fakeform">
     <div class="serviceButtons">
@@ -82,6 +83,7 @@
   .insta {
     display: flex;
     justify-content: center;
+    z-index: var(--layer-3);
   }
   .aside-right {
     position: sticky;

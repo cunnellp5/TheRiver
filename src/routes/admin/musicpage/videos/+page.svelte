@@ -1,7 +1,7 @@
 <script lang="ts">
   import { enhance } from "$app/forms";
-  import * as Card from "$lib/components/ui/shadcn/card";
-  import * as Table from "$lib/components/ui/shadcn/table";
+  import * as Card from "$lib/components/ui/card/index.js";
+  import * as Table from "$lib/components/ui/table/index.js";
   import formatDate from "$lib/utils/format-date.js";
   import { LoaderCircle } from "lucide-svelte";
 

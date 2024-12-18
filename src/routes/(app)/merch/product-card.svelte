@@ -1,5 +1,5 @@
 <script lang="ts">
-  import * as GenericCard from "$lib/components/ui/shadcn/card";
+  import * as GenericCard from "$lib/components/ui/card/index.ts";
   import { getCart } from "./cart.svelte.ts";
 
   const { product }: { product: App.Product } = $props();

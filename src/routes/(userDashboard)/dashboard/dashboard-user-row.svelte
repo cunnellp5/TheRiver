@@ -1,6 +1,6 @@
 <script lang="ts">
   import { applyAction, enhance } from "$app/forms";
-  import * as Table from "$lib/components/ui/shadcn/table";
+  import * as Table from "$lib/components/ui/table";
   import { addToast } from "$lib/stores/toast";
   import Pencil from "lucide-svelte/icons/pencil";
   import Save from "lucide-svelte/icons/save";
@@ -75,8 +75,7 @@
                 dismissible: true,
                 timeout: 5000,
               });
-            }
-            else {
+            } else {
               update();
             }
           };

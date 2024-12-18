@@ -1,6 +1,6 @@
 <script lang="ts">
   import { enhance } from "$app/forms";
-  import * as Table from "$lib/components/ui/shadcn/table";
+  import * as Table from "$lib/components/ui/table";
   import Pencil from "lucide-svelte/icons/pencil";
 
   interface Props {

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import * as Card from "$lib/components/ui/shadcn/card";
+  import * as Card from "$lib/components/ui/card/index.js";
 
   const { data } = $props();
   const { business } = data;
