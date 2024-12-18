@@ -1,7 +1,4 @@
 <script lang="ts">
-  import { createBubbler } from "svelte/legacy";
-
-  const bubble = createBubbler();
   import type { HTMLAttributes } from "svelte/elements";
 
   type $$Props = HTMLAttributes<HTMLTableRowElement> & {
@@ -14,21 +11,23 @@
     [key: string]: any;
   }
 
-  const { class: className = "", children, ...rest }: Props = $props();
+  const { class: className = "", children, handleClick, ...rest }: Props = $props();
 </script>
 
 <tr
   class={`data-[state=selected]:bg-muted border-b transition-colors ${className}`}
   {...rest}
-  onclick={bubble("click")}
-  ondblclick={bubble("dblclick")}
-  onkeydown={bubble("keydown")}>
+  onclick={handleClick}>
   {@render children?.()}
 </tr>
+<br />
 
 <style>
   :where(:global(tbody tr)):hover {
     cursor: pointer;
+  }
+  :where(:global(tbody tr)) {
+    background-color: var(--surface-3);
   }
 
   /* :where(:global(tbody tr)):hover {
