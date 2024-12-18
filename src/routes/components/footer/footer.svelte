@@ -4,11 +4,10 @@
   import { address, emailWithBreaks } from "$lib/config";
   import socialLinks from "$lib/data/social-links";
   import Copyright from "./copy-right.svelte";
-  import NewsletterForm from "./newsletter-form.svelte";
 </script>
 
+<hr />
 <footer class="app-layout">
-  <NewsletterForm />
   <div class="logo">
     <TheRiver theme={true} />
     <div class="socials">
@@ -114,6 +113,10 @@
 
 <style>
   /* ELEMENTS */
+  hr {
+    max-inline-size: 1440px;
+    margin-inline: auto;
+  }
   footer {
     display: flex;
     flex-direction: column;
