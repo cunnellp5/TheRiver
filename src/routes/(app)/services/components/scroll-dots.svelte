@@ -1,7 +1,7 @@
 <script lang="ts">
   const { remappedServices } = $props();
 
-  let activeIndex: number | null = $state(null);
+  let activeIndex: number | null = $state(0);
 </script>
 
 <ul class="dots">
@@ -33,6 +33,9 @@
         &:after {
           height: 100%;
         }
+      }
+      &[title]:after {
+        opacity: 1;
       }
     }
 
