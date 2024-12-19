@@ -23,58 +23,62 @@
 </script>
 
 <section>
-  <div use:melt={$calendar}>
-    <header>
-      <button
-        class="hover:bg-orange-2"
-        use:melt={$prevButton}>
-        <ChevronLeft />
-      </button>
-      <div
-        use:melt={$heading}
-        class="calendar--header-text">
-        {$headingValue}
-      </div>
-      <button
-        class="hover:bg-orange-2"
-        use:melt={$nextButton}>
-        <ChevronRight /></button>
-    </header>
-    {#each $months as month}
-      <table use:melt={$grid}>
-        <thead aria-hidden="true">
-          <tr>
-            {#each $weekdays as day}
-              <th>{day}</th>
-            {/each}
-          </tr>
-        </thead>
-        <tbody>
-          {#each month.weeks as weekDates}
+  <article class="calendar-wrapper">
+    <div use:melt={$calendar}>
+      <header>
+        <button
+          class="hover:bg-orange-2"
+          use:melt={$prevButton}>
+          <ChevronLeft />
+        </button>
+        <div
+          use:melt={$heading}
+          class="calendar--header-text">
+          {$headingValue}
+        </div>
+        <button
+          class="hover:bg-orange-2"
+          use:melt={$nextButton}>
+          <ChevronRight /></button>
+      </header>
+      {#each $months as month}
+        <table use:melt={$grid}>
+          <thead aria-hidden="true">
             <tr>
-              {#each weekDates as date}
-                <td
-                  role="gridcell"
-                  aria-disabled={$isDateDisabled(date) || $isDateUnavailable(date)}>
-                  <div
-                    use:melt={$cell(date, month.value)}
-                    class="hover:bg-orange-2">
-                    {date.day}
-                  </div>
-                </td>
+              {#each $weekdays as day}
+                <th>{day}</th>
               {/each}
             </tr>
-          {/each}
-        </tbody>
-      </table>
-    {/each}
-  </div>
+          </thead>
+          <tbody>
+            {#each month.weeks as weekDates}
+              <tr>
+                {#each weekDates as date}
+                  <td
+                    role="gridcell"
+                    aria-disabled={$isDateDisabled(date) || $isDateUnavailable(date)}>
+                    <div
+                      use:melt={$cell(date, month.value)}
+                      class="hover:bg-orange-2">
+                      {date.day}
+                    </div>
+                  </td>
+                {/each}
+              </tr>
+            {/each}
+          </tbody>
+        </table>
+      {/each}
+    </div>
+  </article>
+  <article>
+    <span>Selected: {$value?.toString()}</span>
+  </article>
 </section>
-<span>Selected: {$value?.toString()}</span>
 
 <style>
   :root {
-    --calendar-radius: var(--radius-2);
+    --calendar-radius: var(--radius-1);
     --calendar-selected-color: hsl(var(--orange-4-hsl) / 90%);
   }
 
@@ -86,15 +90,16 @@
     box-shadow: none;
   }
   section {
-    background-color: var(--surface-4);
-    margin: 0 auto;
+    max-inline-size: var(--size-md);
+  }
+  .calendar-wrapper {
     border-radius: var(--calendar-radius);
+    background-color: var(--surface-4);
   }
   .calendar--header-text {
     font-size: var(--font-size-3);
     font-weight: var(--font-weight-8);
   }
-
   [data-disabled] {
     pointer-events: none;
     cursor: default;
@@ -106,14 +111,18 @@
     border: none;
     background-color: unset;
   }
+  [data-melt-calendar] :where(tr):hover {
+    background-color: hsl(var(--orange-4-hsl) / 6%);
+  }
   [data-melt-calendar] :where(table) {
     --nice-inner-radius: unset;
     border: unset;
     border-radius: 0 0 var(--calendar-radius) var(--calendar-radius);
   }
-
-  [data-melt-calendar] {
+  [data-melt-calendar] :where(table) {
     width: 100%;
+  }
+  [data-melt-calendar] {
     color: var(--text-1);
   }
   [data-melt-calendar] > header {
@@ -124,8 +133,6 @@
   }
   [data-melt-calendar-cell] {
     display: flex;
-    height: var(--size-7);
-    width: var(--size-7);
     cursor: pointer;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -133,7 +140,7 @@
     align-items: center;
     justify-content: center;
     border-radius: var(--calendar-radius);
-    padding: var(--size-fluid-3);
+    padding: var(--size-fluid-2);
   }
   [data-melt-calendar-cell][data-outside-month] {
     pointer-events: none;
@@ -149,12 +156,10 @@
     text-decoration-line: line-through;
     pointer-events: unset;
   }
-
   [data-melt-calendar-cell]:focus {
     box-shadow: 0 0 0px var(--size-1) var(--calendar-selected-color);
   }
-
   .hover\:bg-orange-2:hover:not([data-selected]) {
-    background-color: hsl(var(--orange-4-hsl) / 20%);
+    background-color: hsl(var(--orange-4-hsl) / 40%);
   }
 </style>
