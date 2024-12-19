@@ -1,6 +1,6 @@
 <script lang="ts">
   import * as GenericCard from "$lib/components/ui/card/index.ts";
-  import { getCart } from "./cart.svelte.ts";
+  import { getCart } from "$lib/stores/merch/cart.svelte.ts";
 
   const { product }: { product: App.Product } = $props();
 

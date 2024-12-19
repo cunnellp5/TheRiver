@@ -1,6 +1,4 @@
 <script lang="ts">
-  // import { getCart } from './cart.svelte.ts';
-  // const counter = getCart();
   const { children } = $props();
 </script>
 
