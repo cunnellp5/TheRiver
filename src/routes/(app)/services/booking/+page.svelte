@@ -2,16 +2,19 @@
   import { goto } from "$app/navigation";
   import { page } from "$app/stores";
   import BaseCalendar from "$lib/components/ui/calendar/base-calendar.svelte";
+  import ServiceDialog from "$lib/components/ui/dialogs/service-list-dialog.svelte";
   import Popover from "$lib/components/ui/popovers/service-list-pop.svelte";
   import ScrollArea from "$lib/components/ui/scroll-area.svelte";
   import { serviceCart } from "$lib/stores/services/booking-cart.svelte.ts";
   import { parseDuration } from "@internationalized/date";
   import { Dot } from "lucide-svelte";
+  import X from "lucide-svelte/icons/x";
   import { onMount } from "svelte";
 
   const selectedServices = serviceCart();
   const { data } = $props();
-  const { services } = data;
+  const { services, remappedServices } = data;
+  console.log(data, "hloo");
   const pageId = Number($page.params.id);
   const service = services.find(service => service.id === pageId);
 
@@ -25,20 +28,33 @@
       goto("/services");
     }
   });
+
+  function addToCart(service) {
+    selectedServices.addToCart(service);
+  }
 </script>
 
 <main>
-  <h1 class="gradientHeaders">Select date and time</h1>
+  <h1 class="">Select date and time</h1>
   <section>
     <BaseCalendar />
     <aside>
       <h4>Appointment summary</h4>
+      <!-- <Popover data={services} /> -->
+      <ServiceDialog
+        {remappedServices}
+        {addToCart} />
       <div class="service-summary">
         <p>{selectedServices.cartTotals.quantity} Services</p>
-        <p>
-          ${selectedServices.cartTotals.price}+ {serviceTime.hours ? `${serviceTime.hours}hr` : ""}
-          {serviceTime.minutes}min
-        </p>
+        <div class="service-summary__totals">
+          <span>
+            ${selectedServices.cartTotals.price}
+          </span>
+          <span class="service-summary__totals--duration">
+            {serviceTime.hours ? `${serviceTime.hours}hr` : ""}
+            {serviceTime.minutes}min
+          </span>
+        </div>
       </div>
       {#each selectedServices.cartItems as item}
         <div class="service-details row">
@@ -52,14 +68,19 @@
               <p>${item?.price}</p>
               <p class="service-details__duration">{item?.duration} min</p>
             </div>
-            <button onclick={() => selectedServices.removeFromCart(item.id)}>X</button>
+            {#if selectedServices.cartTotals.quantity > 1}
+              <button
+                class="delete-button"
+                onclick={() => selectedServices.removeFromCart(item.id)}>
+                <X></X>
+              </button>
+            {/if}
           </div>
         </div>
       {/each}
       <!-- <button
         class="rounded"
         title="Add another service">+</button> -->
-      <Popover data={services} />
     </aside>
     <!-- <aside class="service-list">
       <ScrollArea
@@ -67,13 +88,14 @@
         title="Add A Service" />
     </aside> -->
   </section>
+  <button>NEXT</button>
 </main>
 
 <style>
   main {
-    /* background-color: hsl(var(--stone-5-hsl) / 10%); */
+    background-color: hsl(var(--choco-2-hsl) / 10%);
     display: grid;
-    justify-content: center;
+    /* justify-content: center; */
     /* align-items: center; */
     height: 100vh;
   }
@@ -98,7 +120,8 @@
     position: relative;
     display: grid;
     z-index: var(--layer-1);
-    grid-template-columns: 1fr 1fr;
+    /* grid-template-columns: 1fr 1fr; */
+    grid-template-columns: repeat(auto-fill, minmax(var(--size-content-3), 1fr));
     align-items: start;
     padding: var(--size-10);
   }
@@ -144,13 +167,22 @@
     align-items: end;
   } */
   .service-details__name {
-    font-size: var(--font-size-2);
+    font-size: var(--font-size-1);
   }
   .service-details__duration {
     font-size: var(--font-size-0);
   }
+  .service-summary__totals--duration:before {
+    content: "•";
+    margin-inline: var(--size-2);
+  }
   .service-details__end button {
-    margin-inline-start: var(--size-4);
+    /* margin-inline-start: var(--size-4); */
+  }
+  .delete-button {
+    padding: var(--size-2);
+    height: 100%;
+    align-self: center;
   }
   /* .service-buttons {
     display: grid;

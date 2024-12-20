@@ -77,5 +77,22 @@ declare global {
       id: string;
       quantity: number;
     }
+    interface ServiceItem {
+      id: string;
+      createdAt: string;
+      updatedAt: string;
+      name: string;
+      description: string;
+      duration: number;
+      availability: string;
+      price: number;
+      bookingTalley: number;
+      categoryId: number;
+      category: {
+        id: number;
+        name: string;
+        description: string;
+      };
+    }
   }
 }

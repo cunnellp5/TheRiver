@@ -1,5 +1,5 @@
 <script lang="ts">
-  import InstaBeauty from "$lib/components/insta-beauty.svelte";
+  // import InstaBeauty from "$lib/components/insta-beauty.svelte";
   import Seo from "$lib/components/seo.svelte";
   import ServiceButtons from "$lib/components/ui/button/service-buttons.svelte";
   import { onMount } from "svelte";
@@ -39,9 +39,9 @@
       </p>
     {/if}
   </section>
-  <div class="insta">
+  <!-- <div class="insta">
     <InstaBeauty />
-  </div>
+  </div> -->
 </main>
 
 <main class="app-layout">

@@ -1,8 +1,16 @@
 <script lang="ts">
-  import { goto } from "$app/navigation";
+  // import { goto } from "$app/navigation";
   import * as Table from "$lib/components/ui/table";
+  // import { serviceCart } from "$lib/stores/services/booking-cart.svelte.ts";
 
+  // const cart = serviceCart();
   const { category, data } = $props();
+
+  // function handleRowClick(service) {
+  //   cart.addToCart(service);
+  //   goto(`/services/booking?service=${service.id}`);
+  // }
+  // handleClick={() => handleRowClick(service)}
 </script>
 
 <span
@@ -22,11 +30,10 @@
     </Table.Header>
     <Table.Body>
       {#each data as service}
-        <Table.Row handleClick={() => goto(`/services/${service.id}`)}>
+        <Table.Row>
+          <!-- <Table.Row handleClick={() => goto(`/services/${service.id}`)}> -->
           <Table.Cell>
-            <p class="serviceName">
-              {service.name}
-            </p>
+            {service.name}
           </Table.Cell>
           <Table.Cell>
             <div class="price-duration">
@@ -45,20 +52,20 @@
 </section>
 
 <style>
-  .serviceName {
-    font-size: var(--font-size-2);
-  }
+  /* .serviceName { */
+  /* font-size: var(--font-size-2); */
+  /* } */
   .tables {
     box-shadow: var(--shadow-4);
     padding: var(--size-4);
     align-items: center;
     align-self: center;
     z-index: var(--layer-3);
-    width: var(--size-content-3);
+    width: var(--size-md);
     background-color: var(--surface-4);
-    & tr {
-      font-size: var(--font-size-1);
-    }
+    /* & tr { */
+    /* font-size: var(--font-size-1); */
+    /* } */
   }
   .price-duration {
     display: flex;
@@ -66,11 +73,11 @@
   }
   .time {
     color: var(--text-2);
-    font-size: var(--font-size-0);
+    /* font-size: var(--font-size-0); */
   }
-  .price {
-    font-size: var(--font-size-1);
-  }
+  /* .price { */
+  /* font-size: var(--font-size-1); */
+  /* } */
   .table-row-header {
     display: flex;
     flex-direction: row;
@@ -84,12 +91,6 @@
   @media (max-width: 768px) {
     .tables {
       width: 100%;
-    }
-    .serviceName {
-      font-size: var(--font-size-0);
-      text-wrap: break-word;
-      word-break: break-word; /* Ensures words break at the edge of the container */
-      overflow-wrap: break-word; /* Allows breaking within words to prevent overflow */
     }
   }
 </style>
