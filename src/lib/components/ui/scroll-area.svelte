@@ -78,12 +78,13 @@
     flex-direction: column;
   }
   .small {
-    color: var(--text-2);
+    color: var(--stone-8);
     font-size: var(--font-size-0);
     margin-block-start: var(--size-1);
+    max-inline-size: var(--size-content-2);
   }
   .scroll-area-main {
-    width: var(--size-md);
+    width: 100%;
     /* border: 1px solid red; */
   }
   .scroll-area-content {

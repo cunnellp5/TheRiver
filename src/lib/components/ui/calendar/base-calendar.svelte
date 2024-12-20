@@ -71,7 +71,7 @@
       {/each}
     </div>
   </article>
-  <article>
+  <article class="selected-date">
     <span>Selected: {$value?.toString()}</span>
   </article>
 </section>
@@ -107,7 +107,7 @@
   }
   /* resets the open props normalized version of the table */
   [data-melt-calendar] :where(td, th) {
-    padding: unset;
+    /* padding: unset; */
     border: none;
     background-color: unset;
   }
@@ -140,7 +140,7 @@
     align-items: center;
     justify-content: center;
     border-radius: var(--calendar-radius);
-    padding: var(--size-fluid-2);
+    padding: var(--size-fluid-1);
   }
   [data-melt-calendar-cell][data-outside-month] {
     pointer-events: none;
@@ -161,5 +161,10 @@
   }
   .hover\:bg-orange-2:hover:not([data-selected]) {
     background-color: hsl(var(--orange-4-hsl) / 40%);
+  }
+  .selected-date {
+    padding: var(--size-2);
+    background-color: var(--surface-4);
+    border-radius: 0 0 var(--radius-1) var(--radius-1);
   }
 </style>
