@@ -1,7 +1,5 @@
 <script lang="ts">
-  const { remappedServices } = $props();
-
-  let activeIndex: number | null = $state(0);
+  let { remappedServices, activeDotIndex } = $props();
 </script>
 
 <ul class="dots">
@@ -9,8 +7,8 @@
     <!-- svelte-ignore a11y_click_events_have_key_events -->
     <!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
     <li
-      class:active={index === activeIndex}
-      onclick={() => (activeIndex = index)}
+      class:active={index === activeDotIndex}
+      onclick={() => (activeDotIndex = index)}
       title={category}>
       <a href={`#${category}`}>
         {category}
@@ -89,7 +87,7 @@
     position: absolute;
     right: 150%;
     bottom: 0%;
-    opacity: 0;
+    opacity: 1;
     -webkit-transition: opacity 0.1s ease-in-out;
     transition: opacity 0.1s ease-in-out;
     border-radius: var(--radius-round);
@@ -101,9 +99,9 @@
     font-size: var(--font-size-0);
     text-transform: uppercase;
   }
-  [title]:hover:after {
+  /* [title]:hover:after {
     opacity: 1;
-  }
+  } */
 
   @media (max-width: 768px) {
     .dots {

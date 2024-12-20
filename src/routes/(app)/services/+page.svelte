@@ -9,10 +9,29 @@
 
   const { data } = $props();
   const { remappedServices, about } = data;
+
   let scroll: number = $state(0);
+  let activeDotIndex = $state(0);
 
   onMount(() => {
-    (window as any)?.instgrm?.Embeds.process();
+    const headers = Array.from(document.querySelectorAll("h6")) as HTMLHeadingElement[];
+    const options = {
+      root: null,
+      rootMargin: "-5% 0px -65% 0px",
+      threshold: 0.5,
+    };
+    const intersectionObserverCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          activeDotIndex = headers.indexOf(entry.target as HTMLHeadingElement);
+        }
+      });
+    };
+    const observer = new IntersectionObserver(intersectionObserverCallback, options);
+    headers.forEach(header => observer.observe(header));
+    return () => {
+      observer.disconnect();
+    };
   });
 </script>
 
@@ -51,7 +70,9 @@
       {data} />
   {/each}
   <aside class="aside-right">
-    <ScrollDots {remappedServices} />
+    <ScrollDots
+      {remappedServices}
+      {activeDotIndex} />
   </aside>
   <div class="fakeform">
     <div class="serviceButtons">
