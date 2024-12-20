@@ -1,6 +1,8 @@
 <script lang="ts">
   // import { goto } from "$app/navigation";
+  import DropdownServiceRow from "$lib/components/ui/services/dropdown-service-row.svelte";
   import * as Table from "$lib/components/ui/table";
+  // import Tooltip from "$lib/components/ui/tooltip/tooltip.svelte";
   // import { serviceCart } from "$lib/stores/services/booking-cart.svelte.ts";
 
   // const cart = serviceCart();
@@ -10,7 +12,6 @@
   //   cart.addToCart(service);
   //   goto(`/services/booking?service=${service.id}`);
   // }
-  // handleClick={() => handleRowClick(service)}
 </script>
 
 <span
@@ -30,54 +31,25 @@
     </Table.Header>
     <Table.Body>
       {#each data as service}
-        <Table.Row>
-          <!-- <Table.Row handleClick={() => goto(`/services/${service.id}`)}> -->
-          <Table.Cell>
-            {service.name}
-          </Table.Cell>
-          <Table.Cell>
-            <div class="price-duration">
-              <span class="price">
-                ${service.price}.00
-              </span>
-              <span class="time">
-                {service.duration ? `${service.duration}min` : ""}
-              </span>
-            </div>
-          </Table.Cell>
-        </Table.Row>
+        <DropdownServiceRow
+          {service}
+          buttons={null}>
+        </DropdownServiceRow>
       {/each}
     </Table.Body>
   </Table.Root>
 </section>
 
 <style>
-  /* .serviceName { */
-  /* font-size: var(--font-size-2); */
-  /* } */
   .tables {
-    box-shadow: var(--shadow-4);
+    box-shadow: var(--shadow-6);
     padding: var(--size-4);
     align-items: center;
     align-self: center;
     z-index: var(--layer-3);
     width: var(--size-md);
-    background-color: var(--surface-4);
-    /* & tr { */
-    /* font-size: var(--font-size-1); */
-    /* } */
+    background-color: var(--surface-1);
   }
-  .price-duration {
-    display: flex;
-    flex-direction: column;
-  }
-  .time {
-    color: var(--text-2);
-    /* font-size: var(--font-size-0); */
-  }
-  /* .price { */
-  /* font-size: var(--font-size-1); */
-  /* } */
   .table-row-header {
     display: flex;
     flex-direction: row;
