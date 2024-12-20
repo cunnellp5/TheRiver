@@ -94,7 +94,7 @@
     height: auto;
   }
   .credits {
-    color: var(--link);
+    color: var(--brand);
     font-size: var(--font-size-0);
   }
   .link-wrapper {

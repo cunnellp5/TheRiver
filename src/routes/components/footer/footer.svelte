@@ -142,7 +142,7 @@
     margin-block: var(--size-1);
   }
   .listHeader {
-    color: var(--link2);
+    color: var(--brand);
     /* color: hsl(var(--teal-2-hsl) / 100%); */
     font-weight: var(--font-weight-8);
     font-size: var(--font-size-3);

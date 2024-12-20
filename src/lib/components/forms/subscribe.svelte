@@ -110,7 +110,7 @@
   }
   /* CLASSES */
   .listHeader {
-    color: var(--link2);
+    color: var(--brand);
     text-transform: capitalize;
   }
   .newsletter-form {

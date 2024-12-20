@@ -1,18 +1,21 @@
 import { browser } from "$app/environment";
 import { writable } from "svelte/store";
 
-type Theme = "light" | "dark";
+const THEME_LIGHT = "light";
+const THEME_DARK = "dark";
+
+type Theme = typeof THEME_LIGHT | typeof THEME_DARK;
 
 const userTheme = browser && localStorage.getItem("color-scheme");
 
 // this was only used because of TS
-const checkUserTheme = userTheme === "light" || userTheme === "dark" ? userTheme : "dark";
+const checkUserTheme = userTheme === THEME_LIGHT || userTheme === THEME_DARK ? userTheme : THEME_DARK;
 
 export const theme = writable<Theme>(checkUserTheme);
 
 export function toggleTheme() {
   theme.update((currentTheme) => {
-    const newTheme = currentTheme === "light" ? "dark" : "light";
+    const newTheme = currentTheme === THEME_LIGHT ? THEME_DARK : THEME_LIGHT;
 
     document.documentElement.setAttribute("color-scheme", newTheme);
 

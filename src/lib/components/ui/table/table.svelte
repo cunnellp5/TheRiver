@@ -17,7 +17,7 @@
   <table
     class:caption-bottom={captionLocation === "bottom"}
     class:caption-top={captionLocation === "top"}
-    class={`w-full text-sm ${className}`}
+    class={`w-full text ${className}`}
     {...rest}>
     {@render children?.()}
   </table>
@@ -29,6 +29,8 @@
     border-radius: unset;
     border-collapse: collapse;
     background-color: unset;
+    font-family: var(--font-rounded-sans);
+    /* font-weight: var(--font-weight-0); */
     & :where(:global(table:not(:has(tfoot)) tr:last-child td:first-child)),
     :where(:global(table:not(:has(tfoot)) tr:last-child td:last-child)),
     :where(:global(table thead tr:first-child th:first-child)),
@@ -44,6 +46,11 @@
     }
   }
 
+  /* colors each row */
+  :where(:global(tbody tr)) {
+    background-color: var(--surface-3);
+  }
+
   .relative {
     position: relative;
   }
@@ -56,7 +63,7 @@
   .caption-bottom {
     caption-side: bottom;
   }
-  .text-sm {
+  .text {
     font-size: var(--font-size-0);
   }
 </style>

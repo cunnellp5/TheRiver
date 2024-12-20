@@ -58,7 +58,7 @@
         transition: all 0.3s ease;
         cursor: pointer;
         outline: none;
-        box-shadow: inset 0 0 0 2px var(--link);
+        box-shadow: inset 0 0 0 2px var(--brand);
         border-radius: 50%;
         background-color: transparent;
         width: 100%;
@@ -72,8 +72,8 @@
           left: 0;
           -webkit-transition: height 0.3s ease;
           transition: height 0.3s ease;
-          box-shadow: 0 0 1px var(--link);
-          background-color: var(--link);
+          box-shadow: 0 0 1px var(--brand);
+          background-color: var(--brand);
           width: 100%;
           height: 0;
           content: "";

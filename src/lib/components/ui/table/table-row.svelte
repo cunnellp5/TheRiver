@@ -26,9 +26,6 @@
   :where(:global(tbody tr)):hover {
     cursor: pointer;
   }
-  :where(:global(tbody tr)) {
-    background-color: var(--surface-3);
-  }
 
   /* :where(:global(tbody tr)):hover {
     background-color: hsl(var(--stone-2-hsl) / 0.2);
