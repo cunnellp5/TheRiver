@@ -1,5 +1,6 @@
 <script lang="ts">
   import * as Card from "$lib/components/ui/card/index.js";
+  import DropdownServiceRow from "$lib/components/ui/services/dropdown-service-row.svelte";
   import * as Table from "$lib/components/ui/table/index.js";
 
   const { data } = $props();
@@ -104,39 +105,17 @@
         </Table.Header>
         <Table.Body>
           {#each data as service}
-            <Table.Row>
-              <details name="service-details">
-                <summary>
-                  {service.name}
-                  <Table.Cell>
-                    <div class="price-duration">
-                      <span class="price">
-                        ${service?.price}.00
-                      </span>
-                      {#if service.duration}
-                        <span class="time">
-                          {service.duration} min
-                        </span>
-                      {/if}
-                    </div>
-                  </Table.Cell>
-                  <Table.Cell>
-                    <div class="table-row-header">
-                      <a href="/admin/services/edit/{service.id}">
-                        <button class="update-button">Edit</button>
-                      </a>
-                      <!-- <a href="/admin/services/delete"> -->
-                      <!-- <button class="delete-button">X</button> -->
-                      <!-- </a> -->
-                    </div>
-                  </Table.Cell>
-                </summary>
-                <p>
-                  {service.description}
-                </p>
-                <!-- <Table.Cell>{service.name}</Table.Cell> -->
-              </details>
-            </Table.Row>
+            <DropdownServiceRow {service}>
+              {#snippet buttons()}
+                <Table.Cell>
+                  <div class="table-row-header">
+                    <a href="/admin/services/edit/{service.id}">
+                      <button class="update-button">Edit</button>
+                    </a>
+                  </div>
+                </Table.Cell>
+              {/snippet}
+            </DropdownServiceRow>
           {/each}
         </Table.Body>
       </Table.Root>
@@ -154,7 +133,8 @@
     /* max-inline-size: calc(var(--size-content-2) * 4); */
   }
   section {
-    box-shadow: 5px var(--size-2) var(--size-5) var(--stone-10);
+    background-color: var(--surface-1);
+    box-shadow: var(--shadow-6);
     /* margin-block: var(--size-12); */
     /* box-shadow: var(--shadow-3); */
     padding: var(--size-4);
@@ -164,43 +144,6 @@
   aside {
     display: flex;
     gap: var(--size-4);
-  }
-  summary {
-    display: grid;
-    grid-template-columns: 1fr 1fr auto;
-    align-items: center;
-    /* display: list-item; */
-  }
-  details {
-    background-color: var(--surface-2);
-    & p {
-      padding-inline: var(--size-4);
-      font-size: var(--font-size-0);
-      color: var(--text-2);
-    }
-  }
-  details[open] {
-    & summary {
-      background-color: var(--surface-1);
-    }
-  }
-  details:hover {
-    & summary {
-      background-color: var(--surface-4);
-    }
-  }
-  /* CLASSES */
-  .price-duration {
-    display: flex;
-    flex-direction: column;
-    /* text-align: right; */
-  }
-  .time {
-    color: var(--text-2);
-    font-size: var(--font-size-00);
-  }
-  .price {
-    font-size: var(--font-size-0);
   }
   .table-row-header {
     display: flex;
