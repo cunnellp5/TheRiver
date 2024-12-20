@@ -2,10 +2,10 @@
   import SparkleRainbowButton from "$lib/components/ui/button/sparkle-rainbow-button.svelte";
 
   const images = [
-    // {
-    //   src: "https://res.cloudinary.com/dswpu3qez/image/upload/f_auto/q_auto:eco/TheRiver/AlexisWater1_ji0grg.webp",
-    //   alt: "Water model",
-    // },
+    {
+      src: "https://res.cloudinary.com/dswpu3qez/image/upload/f_auto/q_auto:eco/TheRiver/AlexisWater1_ji0grg.webp",
+      alt: "Water model",
+    },
     {
       src: "https://res.cloudinary.com/dswpu3qez/image/upload/f_auto/q_auto:eco/TheRiver/alexismodel1_va2axz.webp",
       alt: "fifth element model",
@@ -29,10 +29,10 @@
       buttonText: "Music",
       link: "/music",
     },
-    // {
-    //   src: "https://res.cloudinary.com/dswpu3qez/image/upload/f_auto/q_auto:eco/TheRiver/alexisArticle2_iqx8vk.webp",
-    //   alt: "sitting on yellow floor",
-    // },
+    {
+      src: "https://res.cloudinary.com/dswpu3qez/image/upload/f_auto/q_auto:eco/TheRiver/alexisArticle2_iqx8vk.webp",
+      alt: "sitting on yellow floor",
+    },
   ];
 </script>
 
@@ -42,9 +42,8 @@
       <div class="image-container">
         <img
           loading="lazy"
-          height="604.7px"
-          width="254.6px"
-          style="--i: {i}"
+          height="605px"
+          width="255px"
           {src}
           {alt} />
         {#if buttonText}
@@ -81,32 +80,33 @@
     gap: var(--g);
     width: 100%;
     flex-basis: var(--size-content-2);
-    height: 40vh;
+    height: 100%;
+    position: absolute;
   }
   .gallery img {
-    filter: grayscale(80%);
+    /* filter: grayscale(80%); */
     transition: 0.7s linear;
     transition-delay: var(--transition-delay-2);
     transition-timing-function: cubic-bezier(0.14, 0.8, 0.3, 1);
-    cursor: pointer;
+    /* cursor: pointer; */
     min-height: 100%;
     min-width: 100%;
     height: 0;
     width: 0;
     object-fit: cover;
-    object-position: center 15%;
+    object-position: 44% 50%;
   }
-  .gallery img:hover {
-    filter: grayscale(0);
-    /* width: calc(100vh * var(--f) / var(--n)); */
-    /* height: calc(100vw * var(--f) / var(--m)); */
-  }
+  /* .gallery img:hover { */
+  /* filter: grayscale(0); */
+  /* width: calc(100vh * var(--f) / var(--n)); */
+  /* height: calc(100vw * var(--f) / var(--m)); */
+  /* } */
   /* QUERIES */
   @media (max-width: 768px) {
     .gallery {
       flex-direction: column;
       grid-template-columns: auto;
-      height: 50vh;
+      height: 80vh;
     }
     .gallery img {
       grid-column: auto / span 4;

@@ -26,7 +26,9 @@
       <div class="miniLogo">
         <LogoR />
       </div>
-      <p class="cta-text">
+      <p
+        class="cta-text"
+        style={`opacity: ${1 - Math.min(1, scroll / 300)}`}>
         Welcome to The River Sings, a showcase of musical talent, fashion, and beauty services.
       </p>
     {/if}
@@ -44,15 +46,14 @@
     margin-block: var(--size-7);
   }
   .cta-text {
-    position: absolute;
+    position: fixed;
     font-size: var(--font-size-3);
     font-weight: var(--font-weight-1);
     color: var(--text-2);
     bottom: 0%;
     z-index: 1;
     max-inline-size: unset;
-    /* text-shadow: 4px 4px 10px black; */
-    padding-inline: var(--size-2);
+    padding: var(--size-7);
     border-radius: var(--radius-1);
     background-color: var(--surface-4);
   }

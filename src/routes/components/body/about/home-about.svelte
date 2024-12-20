@@ -12,7 +12,7 @@
 
   <aside class="description">
     <div class="description__text">
-      <h3 class="gradientHeaders">About</h3>
+      <h3>About</h3>
       <p>The River is a rising HipHop/R&B artist based in Denver, Colorado.</p>
       <p>
         She is a multi-faceted individual who was a marching band nerd and later explored dance,
@@ -30,33 +30,46 @@
 <style>
   /* ELEMENTS */
   section {
-    background-image: radial-gradient(
-      circle at top right,
-      hsla(98, 36%, 30%, 0.109),
-      transparent 75%
-    );
     background-size: cover;
     position: relative;
   }
+  h3 {
+    color: var(--brand);
+  }
   .description {
-    background-image: url("https://res.cloudinary.com/dswpu3qez/image/upload/c_fill,g_auto/v1732155330/backgrounds/feature-collage-2_laljnw.webp");
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: var(--size-4);
-    width: 100vw;
-    padding-block: var(--size-11);
+    /* width: 100vw; */
+    padding-block: var(--size-7);
     background-position: 60% 85%;
+  }
+  .description::before {
+    position: absolute;
+    content: "";
+    background-image: radial-gradient(
+      circle at 1px 1px,
+      hsl(var(--yellow-5-hsl) / 50%) 1px,
+      transparent 0
+    );
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-size: 1rem 1rem;
+    background-repeat: repeat;
+    background-position: 0.5rem center;
+    z-index: -1;
   }
   .description__text {
     display: flex;
     flex-direction: column;
     gap: var(--size-3);
-    backdrop-filter: blur(40px);
+    backdrop-filter: blur(55px);
     padding: var(--size-8);
     border-radius: var(--radius-3);
-    color: var(--stone-2);
   }
   .descriptionHeader {
     font-size: var(--size-12);
@@ -69,16 +82,21 @@
     flex-flow: wrap;
     justify-content: space-evenly;
     gap: var(--size-4);
-    padding-block: var(--size-4);
+    padding: var(--size-4);
+    /* backdrop-filter: grayscale(40%); */
+    border-radius: var(--radius-2);
   }
   .description--header__art {
-    font-family: "Lobster", cursive;
+    font-family: var(--font-handwritten);
   }
   .description--header__nails {
-    font-family: "Atyp BL Display Medium";
+    font-family: var(--font-didone);
   }
   .description--header__music {
-    font-family: "Wix Madefor Display", sans-serif;
+    font-family: "Lobster";
+  }
+  .description--header__hair {
+    font-family: var(--font-geometric-humanist);
   }
   /* CLASSES */
   .about {
@@ -87,11 +105,6 @@
     align-items: center;
     gap: var(--size-2);
     padding-block: var(--size-content-1);
-    & p {
-      font-weight: 400;
-      font-size: var(--font-size-3);
-      text-transform: none;
-    }
   }
   .about::before {
     content: "";
@@ -103,6 +116,15 @@
     background-image: var(--gradient-4), var(--noise-5);
     opacity: 0.8;
     /* filter: var(--noise-filter-6); */
+  }
+  p {
+    /* text-shadow: 0px 0px var(--stone-15); */
+    /* color: var(--stone-2); */
+    /* line-height: var(--font-lineheight-1); */
+    color: var(--gray-8);
+    font-size: var(--font-size-3);
+    font-weight: var(--font-weight-9);
+    font-family: var(--font-system-ui);
   }
 
   @media (max-width: 768px) {
