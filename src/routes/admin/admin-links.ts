@@ -50,8 +50,9 @@ export default [
         name: "Categories",
         link: "/admin/services/categories",
       },
-      // { name: 'Bookings', link: '/admin/services/booking', urlPath: '/admin/services/booking') },
-      // { name: 'Schedule', link: '/admin/services/time-slots', urlPath: '/admin/services/time-slots') }
+      // { name: 'Bookings', link: '/admin/services/booking', urlPath: '/admin/services/booking' },
+      // { name: 'Schedule', link: '/admin/services/time-slots', urlPath: '/admin/services/time-slots' }
+      { name: "Availability", link: "/admin/services/availability", urlPath: "/admin/services/availability" },
     ],
   },
   {
