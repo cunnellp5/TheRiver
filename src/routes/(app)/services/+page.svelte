@@ -44,7 +44,7 @@
   </div> -->
 </main>
 
-<main class="app-layout">
+<main class="app-layout container">
   {#each Object.entries(remappedServices) as [category, data]}
     <ServiceTable
       {category}
@@ -70,6 +70,29 @@
     line-height: var(--font-lineheight-4);
     letter-spacing: var(--font-letterspacing-3);
   }
+  .container {
+    height: 100%;
+  }
+  .container:before {
+    content: "";
+    position: fixed;
+    pointer-events: none;
+    background-image: radial-gradient(
+      circle at 10px 1px,
+      hsl(var(--purple-5-hsl) / 50%) 4px,
+      transparent 0
+    );
+    -webkit-mask: linear-gradient(-20deg, transparent 50%, white);
+    mask: linear-gradient(-20deg, transparent 50%, white);
+    background-size: 1rem 1rem;
+    background-repeat: repeat;
+    background-position: 0.5rem center;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+  }
   h1 {
     color: var(--gray-7);
     font-style: normal;
@@ -80,11 +103,6 @@
     letter-spacing: 0em;
   }
   /* CLASSES */
-  .insta {
-    display: flex;
-    justify-content: center;
-    z-index: var(--layer-3);
-  }
   .aside-right {
     position: sticky;
     bottom: 70%;

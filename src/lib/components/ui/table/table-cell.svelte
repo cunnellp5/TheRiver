@@ -42,6 +42,12 @@
     display: flex;
     justify-content: center;
   }
+  .text-center {
+    text-align: center;
+  }
+  .text-end {
+    text-align: end;
+  }
   .end {
     display: flex;
     justify-content: end;

@@ -49,6 +49,8 @@
   .description::before {
     position: absolute;
     content: "";
+    -webkit-mask: linear-gradient(120deg, transparent 25%, white);
+    mask: linear-gradient(120deg, transparent 25%, white);
     background-image: radial-gradient(
       circle at 1px 1px,
       hsl(var(--yellow-5-hsl) / 50%) 1px,
