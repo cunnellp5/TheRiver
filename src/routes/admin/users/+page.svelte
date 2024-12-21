@@ -20,22 +20,18 @@
   <Table.Root>
     <!-- <Table.Caption>All users with an account</Table.Caption> -->
     <Table.Header>
+      <div class="table-row-header gradientHeaders">
+        <h5>Users ({users.length})</h5>
+      </div>
       <Table.Row>
-        <Table.Head class="gradientHeaders">
-          <div class="table-row-header">
-            <h5>Users ({users.length})</h5>
-          </div>
-        </Table.Head>
+        <Table.Head class="stone">count</Table.Head>
+        <Table.Head class="stone">email</Table.Head>
+        <Table.Head class="stone">first</Table.Head>
+        <Table.Head class="stone">last</Table.Head>
+        <Table.Head class="stone">admin</Table.Head>
       </Table.Row>
     </Table.Header>
     <Table.Body>
-      <Table.Row>
-        <Table.Cell class="stone">count</Table.Cell>
-        <Table.Cell class="stone">email</Table.Cell>
-        <Table.Cell class="stone">first</Table.Cell>
-        <Table.Cell class="stone">last</Table.Cell>
-        <Table.Cell class="stone">admin</Table.Cell>
-      </Table.Row>
       {#each users as user, id}
         <Table.Row>
           <Table.Cell>{id + 1}</Table.Cell>

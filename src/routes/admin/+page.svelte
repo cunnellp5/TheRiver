@@ -1,7 +1,7 @@
 <script lang="ts">
   import * as Card from "$lib/components/ui/card";
   import Info from "lucide-svelte/icons/info";
-  import { checklistTodos, explainers } from "./info";
+  import { explainers } from "./info";
 </script>
 
 <div class="adminIntroCardWrapper">
@@ -12,7 +12,7 @@
       <!-- </Card.Description> -->
     </Card.Header>
     <Card.Content>
-      <details>
+      <details open>
         <summary> Website architecture </summary>
         <ul>
           {#each explainers as explainer}
@@ -36,24 +36,6 @@
     </Card.Content>
   </Card.Root>
 </div>
-
-<details>
-  <summary> Todos </summary>
-  {#each checklistTodos as item}
-    <ol>
-      <span>{item.category}</span>
-      {#each item.todos as todo}
-        <li>
-          <input
-            type="checkbox"
-            id={todo.id}
-            checked={todo.checked} />
-          <label for={todo.id}>{todo.text}</label>
-        </li>
-      {/each}
-    </ol>
-  {/each}
-</details>
 
 <details>
   <summary> Tools </summary>
