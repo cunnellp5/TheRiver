@@ -1,5 +1,4 @@
 <script lang="ts">
-  // import InstaBeauty from "$lib/components/insta-beauty.svelte";
   import Seo from "$lib/components/seo.svelte";
   import ServiceButtons from "$lib/components/ui/button/service-buttons.svelte";
   import { onMount } from "svelte";
@@ -58,9 +57,6 @@
       </p>
     {/if}
   </section>
-  <!-- <div class="insta">
-    <InstaBeauty />
-  </div> -->
 </main>
 
 <main class="app-layout container">
@@ -82,7 +78,6 @@
 </main>
 
 <style>
-  /* ELEMENTS */
   main {
     display: flex;
     grid-column: 2;
@@ -123,7 +118,6 @@
     font-family: "Atyp BL Display Medium";
     letter-spacing: 0em;
   }
-  /* CLASSES */
   .aside-right {
     position: sticky;
     bottom: 70%;
@@ -167,11 +161,6 @@
     background-size: cover;
     height: var(--size-content-2);
   }
-  ::selection {
-    background-color: var(--highlight-background-color, #b3d4fc); /* Default highlight color */
-    color: var(--highlight-text-color, #000); /* Default text color */
-  }
-  /* MEDIA */
   @media (max-width: 768px) {
     .top {
       background-size: unset;
