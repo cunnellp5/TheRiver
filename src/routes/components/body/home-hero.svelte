@@ -47,15 +47,16 @@
   }
   .cta-text {
     position: fixed;
-    font-size: var(--font-size-3);
-    font-weight: var(--font-weight-1);
+    font-size: var(--font-size-2);
+    font-weight: var(--font-weight-3);
     color: var(--text-2);
     bottom: 0%;
     z-index: 1;
     max-inline-size: unset;
-    padding: var(--size-7);
-    border-radius: var(--radius-1);
-    background-color: var(--surface-4);
+    padding: var(--size-3);
+    border-radius: var(--radius-2);
+    background-color: var(--surface-1);
+    border-inline-start: 2px solid var(--brand);
   }
 
   @media (min-width: 768px) {

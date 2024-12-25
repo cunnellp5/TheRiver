@@ -5,7 +5,7 @@
   const { articleImage, articleTitle, author, link, description, buttons } = $props();
 </script>
 
-<div class="card">
+<div class="card pattern3 linear-mask">
   <a
     href={link}
     target="_blank"
@@ -112,8 +112,17 @@
       flex-shrink 0.5s ease;
     box-shadow: var(--shadow-1);
     border-radius: var(--radius-2);
-    background: var(--surface-4);
     padding: var(--size-5);
+  }
+  .card:before {
+    position: absolute;
+    content: "";
+    background-size: var(--s) var(--s);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
   }
   .card:hover {
     -webkit-transition: 0.3s ease-in-out;
@@ -125,6 +134,10 @@
       -webkit-transform: scale(1.05);
       transform: scale(1.05);
     }
+  }
+  .card:hover img {
+    -webkit-mask: unset;
+    mask: unset;
   }
   .buttons {
     display: flex;
@@ -142,5 +155,65 @@
   }
   .description {
     line-height: var(--size-4);
+  }
+
+  .linear-mask::before {
+    -webkit-mask: linear-gradient(-15deg, transparent 25%, white);
+    mask: linear-gradient(-15deg, transparent 25%, white);
+  }
+  .pattern1::before {
+    --s: 30px; /* control the size*/
+    --c1: #8c2318;
+    --c2: #f2c45a;
+
+    background:
+      conic-gradient(at 60% 60%, var(--c1) 75%, #0000 0) 0 0 / calc(5 * var(--s) / 2)
+        calc(5 * var(--s) / 2),
+      repeating-conic-gradient(var(--c1) 0 25%, #0000 0 50%) 0 0 / calc(5 * var(--s))
+        calc(5 * var(--s)),
+      repeating-conic-gradient(var(--c2) 0 25%, var(--c1) 0 50%) 0 0 / var(--s) var(--s);
+  }
+  .pattern2::before {
+    --s: 60px; /* control the size*/
+    --c1: #ffdc56;
+    --c2: #fe6601;
+    --c3: #803201;
+
+    --_s: calc(2 * var(--s)) calc(2 * var(--s));
+    --_g1: var(--_s) conic-gradient(at calc(500% / 6) 50%, var(--c3) 25%, #0000 0);
+    --_g2: var(--_s) conic-gradient(at calc(200% / 3) 50%, var(--c2) 25%, #0000 0);
+    background:
+      var(--s) var(--s) / var(--_g1),
+      0 0 / var(--_g1),
+      var(--s) var(--s) / var(--_g2),
+      0 0 / var(--_g2),
+      repeating-conic-gradient(var(--c1) 0 25%, #0000 0 50%) 0 0 / var(--_s),
+      linear-gradient(var(--c1) calc(100% / 3), var(--c2) 0 calc(200% / 3), var(--c3) 0) 0 0 /
+        var(--s) var(--s);
+  }
+  .pattern3::before {
+    --s: 30px; /* control the size*/
+    --c1: #e5fcc2;
+    --c2: #45ada8;
+
+    --_s: 37.5% 12.5% at 62.5%;
+    --_g: 34% 99%, #0000 101%;
+    --g1: radial-gradient(var(--_s) 100%, #0000 32%, var(--c1) var(--_g));
+    --g2: radial-gradient(var(--_s) 0, #0000 32%, var(--c1) var(--_g));
+    --g3: radial-gradient(var(--_s) 100%, #0000 32%, var(--c2) var(--_g));
+    --g4: radial-gradient(var(--_s) 0, #0000 32%, var(--c2) var(--_g));
+    background:
+      var(--g1),
+      var(--g2) 0 calc(3 * var(--s)),
+      var(--g3) var(--s) calc(3 * var(--s)),
+      var(--g4) var(--s) calc(6 * var(--s)),
+      var(--g1) calc(2 * var(--s)) calc(6 * var(--s)),
+      var(--g2) calc(2 * var(--s)) calc(9 * var(--s)),
+      var(--g3) calc(3 * var(--s)) calc(9 * var(--s)),
+      var(--g4) calc(3 * var(--s)) 0,
+      repeating-linear-gradient(var(--c1) 0 25%, var(--c2) 0 50%);
+    background-size: calc(4 * var(--s)) calc(12 * var(--s));
+
+    border-radius: var(--radius-2);
   }
 </style>

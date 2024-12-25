@@ -9,7 +9,7 @@
       alt="music card" />
     <div>
       <h5 class="gradientHeaders">Music</h5>
-      <p>Checkout my latest tracks and music videos. Download stems and send me creations.</p>
+      <p>Checkout my latest tracks, music videos, or download stems.</p>
     </div>
     <div class="button-wrapper">
       <RainbowButton
@@ -24,7 +24,7 @@
       alt="nails card" />
     <div>
       <h5 class="gradientHeaders">Services</h5>
-      <p>I do hair and nails.</p>
+      <p>Hair and nails.</p>
     </div>
     <div class="button-wrapper">
       <RainbowButton
@@ -40,7 +40,7 @@
       alt="jacket" />
     <div>
       <h5 class="gradientHeaders">Art</h5>
-      <p>I make clothes and other goods, for sale.</p>
+      <p>Clothes and other goods, for sale.</p>
     </div>
     <div class="button-wrapper">
       <RainbowButton
@@ -62,7 +62,9 @@
 
   p {
     margin-block: var(--size-2);
-    max-inline-size: var(--size-content-1);
+    max-inline-size: calc(var(--size-content-1) * 2);
+    color: var(--gray-8);
+    font-weight: var(--font-weight-6);
   }
 
   .card {
@@ -71,7 +73,7 @@
     grid-template-columns: auto 2fr 1fr;
     /* flex-direction: row; */
     gap: var(--size-4);
-    background: var(--surface-3);
+    background: var(--gradient-9);
     border: 1px solid var(--surface-1);
     padding: var(--size-6);
     border-radius: var(--radius-3);
