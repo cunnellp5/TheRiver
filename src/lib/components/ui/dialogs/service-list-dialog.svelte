@@ -1,6 +1,5 @@
 <script lang="ts">
   import ServiceDetailRow from "$lib/components/ui/services/detail-row.svelte";
-  // import { flyAndScale } from "$lib/utils/transition";
   import { createDialog, melt } from "@melt-ui/svelte";
   import X from "lucide-svelte/icons/x";
   import { fade, fly } from "svelte/transition";
@@ -14,11 +13,8 @@
     forceVisible: true,
   });
 
-  function handleAddService(service) {
-    // close the dialog
+  function handleAddService(service: App.ServiceItem) {
     open.set(false);
-
-    // bubble up the click to let the parent handle state
     addToCart(service);
   }
 </script>
@@ -61,18 +57,6 @@
       </p>
       <section>
         <div class="invitation">
-          <!-- <h3>New invitation</h3>
-          <p>
-            You have been invited to join the <strong>Designers</strong> team.
-          </p>
-          <div class="actions">
-            <button class="secondary"> Reject </button>
-            <button
-              class="primary"
-              onclick={() => open.set(false)}>
-              Accept
-            </button>
-          </div> -->
           {#each Object.entries(remappedServices) as [category, data]}
             <section class="tables">
               <h6 class="gradientHeaders">
