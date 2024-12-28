@@ -3,6 +3,8 @@
   import { createCalendar, melt } from "@melt-ui/svelte";
   import { ChevronLeft, ChevronRight } from "lucide-svelte";
 
+  const { handleDayClicked } = $props();
+
   const localDate = today(getLocalTimeZone());
   const maxDate = localDate.add({ months: 2 });
 
@@ -11,7 +13,7 @@
     states: { months, headingValue, weekdays, value },
     helpers: { isDateDisabled, isDateUnavailable },
   } = createCalendar({
-    defaultValue: new CalendarDate(localDate.year, localDate.month, localDate.day),
+    // defaultValue: new CalendarDate(localDate.year, localDate.month, localDate.day),
     fixedWeeks: true,
     preventDeselect: true,
     minValue: new CalendarDate(localDate.year, localDate.month, localDate.day),
@@ -59,7 +61,13 @@
                     aria-disabled={$isDateDisabled(date) || $isDateUnavailable(date)}>
                     <div
                       use:melt={$cell(date, month.value)}
-                      class="hover:bg-orange-2">
+                      onclick={() => {
+                        if ($isDateDisabled(date) || $isDateUnavailable(date)) return;
+                        handleDayClicked($value);
+                      }}
+                      class="hover:bg-orange-2"
+                      tabindex="0"
+                      role="button">
                       {date.day}
                     </div>
                   </td>
@@ -81,7 +89,6 @@
     --calendar-radius: var(--radius-1);
     --calendar-selected-color: hsl(var(--orange-4-hsl) / 90%);
   }
-
   button {
     background: none;
     border: none;
@@ -90,7 +97,9 @@
     box-shadow: none;
   }
   section {
+    min-inline-size: var(--size-xs);
     max-inline-size: var(--size-md);
+    width: 100%;
   }
   .calendar-wrapper {
     border-radius: var(--calendar-radius);
@@ -107,7 +116,7 @@
   }
   /* resets the open props normalized version of the table */
   [data-melt-calendar] :where(td, th) {
-    /* padding: unset; */
+    padding: unset;
     border: none;
     background-color: unset;
   }
@@ -140,7 +149,7 @@
     align-items: center;
     justify-content: center;
     border-radius: var(--calendar-radius);
-    padding: var(--size-fluid-1);
+    aspect-ratio: 1.5 / 1;
   }
   [data-melt-calendar-cell][data-outside-month] {
     pointer-events: none;
@@ -157,7 +166,8 @@
     pointer-events: unset;
   }
   [data-melt-calendar-cell]:focus {
-    box-shadow: 0 0 0px var(--size-1) var(--calendar-selected-color);
+    box-shadow: 0 0 0px var(--size-1) hsl(var(--orange-5-hsl) / 60%);
+    position: relative;
   }
   .hover\:bg-orange-2:hover:not([data-selected]) {
     background-color: hsl(var(--orange-4-hsl) / 40%);
@@ -166,5 +176,6 @@
     padding: var(--size-2);
     background-color: var(--surface-4);
     border-radius: 0 0 var(--radius-1) var(--radius-1);
+    color: var(--brand);
   }
 </style>
