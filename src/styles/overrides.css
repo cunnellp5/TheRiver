@@ -1,0 +1,16 @@
+/* OVERRIDES THE INITIAL HOVER/ACTIVE size */
+/* button:hover {
+  box-shadow: 0px 0px 0px var(--size-1) hsl(var(--gray-1-hsl) / 30%);
+}
+button:active {
+  box-shadow: 0px 0px 0px 0px hsl(var(--gray-1-hsl) / 10%);
+} */
+
+/* REMOVES WHITE HIGHLIGHT AROUND BUTTONS FOUND IN QUILL EDITOR (specifically in dark mode) */
+:where(.btn, button, input:is([type="button"], [type="submit"], [type="reset"]))> :where(svg) {
+  filter: none;
+}
+
+tbody>tr:hover {
+  background-color: var(--surface-2);
+}

@@ -1,0 +1,67 @@
+button {
+  background-color: var(--button);
+  color: var(--text-1);
+  text-shadow: none;
+  box-shadow:
+    var(--shadow-2),
+    0 0px var(--surface-3),
+    0 0 0 var(--_highlight-size) var(--_highlight);
+}
+
+/* CRUD BUTTONS CLASSES */
+.create-button {
+  background-color: var(--surface-4);
+  color: var(--link);
+  /* font-weight: var(--font-weight-7); */
+}
+
+.create-button:hover {
+  background-color: var(--create);
+  color: var(--on-crud-text);
+}
+
+.update-button {
+  background-color: var(--surface-4);
+  color: var(--update);
+  /* font-weight: var(--font-weight-7); */
+}
+
+.update-button:hover {
+  background-color: var(--update);
+  color: var(--on-crud-text);
+}
+
+.update-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+  background-color: var(--surface-4);
+  color: var(--update);
+}
+
+.delete-button {
+  background-color: var(--surface-4);
+  color: var(--delete);
+  /* font-weight: var(--font-weight-7); */
+}
+
+.delete-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+  background-color: var(--surface-4);
+  color: var(--delete);
+}
+
+.delete-button:hover {
+  background-color: var(--delete);
+  color: var(--on-crud-text);
+}
+
+.rmButtonStyles {
+  margin: unset;
+  box-shadow: unset;
+  border: unset;
+  background-color: unset;
+  padding: unset;
+}

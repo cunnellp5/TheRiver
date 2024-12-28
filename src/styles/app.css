@@ -1,280 +1,7 @@
 @import "./main-elements.css";
-
-html {
-  --nav-height: 63.63px;
-  --height-with-nav: calc(100% - var(--nav-height));
-  /* RAINBOW */
-  --life: #fc7f7e;
-  --healing: #ffc680;
-  --sunlight: #fff780;
-  --nature: #74e896;
-  --serenity: #809dff;
-  --spirit: #dd77ed;
-
-  /* font */
-  /* --font-sans: 'Roboto', sans-serif;
-  --font-mono: 'Roboto', monospace; */
-  --font-sans: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
-  --font-serif: ui-serif, serif;
-  --font-mono: Dank Mono, Operator Mono, Inconsolata, Fira Mono, ui-monospace, SF Mono, Monaco, Droid Sans Mono,
-    Source Code Pro, monospace;
-
-  /* dim */
-  /* --brand-dim: var(--orange-4);
-  --text-1-dim: var(--gray-3);
-  --text-2-dim: var(--gray-4);
-  --surface-1-dim: var(--gray-8);
-  --surface-2-dim: var(--gray-7);
-  --surface-3-dim: var(--gray-6);
-  --surface-4-dim: var(--gray-5);
-  --surface-shadow-dim: var(--gray-9-hsl);
-  --shadow-strength-dim: 20%; */
-  /* grape */
-  /* --brand-grape: var(--purple-5);
-  --text-1-grape: var(--purple-9);
-  --text-2-grape: var(--purple-7);
-  --surface-1-grape: var(--purple-0);
-  --surface-2-grape: var(--purple-1);
-  --surface-3-grape: var(--purple-2);
-  --surface-4-grape: var(--purple-3);
-  --surface-shadow-grape: var(--purple-12-hsl);
-  --shadow-strength-grape: 2%; */
-  /* choco */
-  /* --brand-choco: var(--choco-5);
-  --text-1-choco: var(--choco-1);
-  --text-2-choco: var(--choco-2);
-  --surface-1-choco: var(--choco-12);
-  --surface-2-choco: var(--choco-11);
-  --surface-3-choco: var(--choco-10);
-  --surface-4-choco: var(--choco-9);
-  --surface-shadow-choco: 25deg 65% 11%;
-  --shadow-strength-choco: 50%; */
-
-  /* dark */
-  --background-dark: var(--gradient-8);
-  --border-dark: var(--gray-9);
-  --brand-dark: var(--cyan-3);
-  --button-dark: var(--gray-7);
-  --button-2-dark: var(--gray-8);
-  --button-active-dark: var(--gray-10);
-  --error-text-dark: var(--red-6);
-  --hover-1-dark: var(--gray-9);
-  --socials-1-dark: var(--gray-7);
-  --socials-2-dark: var(--gray-5);
-  --surface-1-dark: var(--gray-10);
-  --surface-2-dark: var(--gray-9);
-  --surface-3-dark: var(--gray-8);
-  --surface-4-dark: var(--gray-7);
-  --table-dark: var(--gray-8);
-  --text-1-dark: var(--gray-3);
-  --text-2-dark: var(--gray-5);
-  --link-dark: var(--teal-2);
-  --link2-dark: var(--teal-1);
-  /* crud styles */
-  --create-dark: var(--green-8);
-  --delete-dark: var(--red-6);
-  --on-crud-text-dark: var(--gray-1);
-  --update-dark: var(--blue-6);
-
-  /* light */
-  --background-light: var(--sand-0);
-  --border-light: var(--gray-4);
-  --brand-light: var(--cyan-10);
-  --button-light: var(--gray-3);
-  --button-2-light: var(--gray-5);
-  --button-active-light: var(--gray-2);
-  --error-text-light: var(--red-6);
-  --hover-1-light: var(--gray-2);
-  --socials-1-light: var(--gray-5);
-  --socials-2-light: var(--gray-7);
-  --surface-1-light: var(--gray-0);
-  --surface-2-light: var(--gray-1);
-  --surface-3-light: var(--gray-2);
-  --surface-4-light: var(--gray-3);
-  --table-light: var(--gray-0);
-  --text-1-light: var(--gray-8);
-  --text-2-light: var(--gray-7);
-  --link-light: var(--teal-5);
-  --link2-light: var(--teal-4);
-  /* crud styles */
-  --create-light: var(--green-3);
-  --delete-light: var(--red-4);
-  --on-crud-text-light: var(--gray-9);
-  --update-light: var(--blue-4);
-
-  transition:
-    background-color 1.5s ease,
-    color 1.5s ease;
-
-  --transition-delay-1: 0.1s;
-  --transition-delay-2: 0.3s;
-}
-
-:root {
-  color-scheme: dark;
-
-  --background: var(--background-dark);
-  --border: var(--border-dark);
-  --brand: var(--brand-dark);
-  --button: var(--button-dark);
-  --button-2: var(--button-2-dark);
-  --button-active: var(--button-active-dark);
-  --hover-1: var(--hover-1-dark);
-  --error-text: var(--error-text-dark);
-  --socials-1: var(--socials-1-dark);
-  --socials-2: var(--socials-2-dark);
-  --surface-1: var(--surface-1-dark);
-  --surface-2: var(--surface-2-dark);
-  --surface-3: var(--surface-3-dark);
-  --surface-4: var(--surface-4-dark);
-  --table: var(--table-dark);
-  --text-1: var(--text-1-dark);
-  --text-2: var(--text-2-dark);
-  --link: var(--link-dark);
-  --link2: var(--link2-dark);
-  /* crud styles */
-  --create: var(--create-dark);
-  --delete: var(--delete-dark);
-  --on-crud-text: var(--on-crud-text-dark);
-  --update: var(--update-dark);
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color-scheme: light;
-
-    --background: var(--background-light);
-    --border: var(--border-light);
-    --brand: var(--brand-light);
-    --button: var(--button-light);
-    --button-2: var(--button-2-light);
-    --button-active: var(--button-active-light);
-    --hover-1: var(--hover-1-light);
-    --error-text: var(--error-text-light);
-    --socials-1: var(--socials-1-light);
-    --socials-2: var(--socials-2-light);
-    --surface-1: var(--surface-1-light);
-    --surface-2: var(--surface-2-light);
-    --surface-3: var(--surface-3-light);
-    --surface-4: var(--surface-4-light);
-    --table: var(--table-light);
-    --text-1: var(--text-1-light);
-    --text-2: var(--text-2-light);
-    --link: var(--link-light);
-    --link2: var(--link2-light);
-    /* crud styles */
-    --create: var(--create-light);
-    --delete: var(--delete-light);
-    --on-crud-text: var(--on-crud-text-light);
-    --update: var(--update-light);
-  }
-}
-
-[color-scheme="dark"] {
-  color-scheme: dark;
-
-  --background: var(--background-dark);
-  --border: var(--border-dark);
-  --brand: var(--brand-dark);
-  --button: var(--button-dark);
-  --button-2: var(--button-2-dark);
-  --button-active: var(--button-active-dark);
-  --error-text: var(--error-text-dark);
-  --hover-1: var(--hover-1-dark);
-  --socials-1: var(--socials-1-dark);
-  --socials-2: var(--socials-2-dark);
-  --surface-1: var(--surface-1-dark);
-  --surface-2: var(--surface-2-dark);
-  --surface-3: var(--surface-3-dark);
-  --surface-4: var(--surface-4-dark);
-  --table: var(--table-dark);
-  --text-1: var(--text-1-dark);
-  --text-2: var(--text-2-dark);
-  --link: var(--link-dark);
-  --link2: var(--link2-dark);
-  /* crud styles */
-  --create: var(--create-dark);
-  --delete: var(--delete-dark);
-  --on-crud-text: var(--on-crud-text-dark);
-  --update: var(--update-dark);
-}
-
-[color-scheme="light"] {
-  color-scheme: light;
-
-  --background: var(--background-light);
-  --border: var(--border-light);
-  --brand: var(--brand-light);
-  --button: var(--button-light);
-  --button-2: var(--button-2-light);
-  --button-active: var(--button-active-light);
-  --error-text: var(--error-text-light);
-  --hover-1: var(--hover-1-light);
-  --socials-1: var(--socials-1-light);
-  --socials-2: var(--socials-2-light);
-  --surface-1: var(--surface-1-light);
-  --surface-2: var(--surface-2-light);
-  --surface-3: var(--surface-3-light);
-  --surface-4: var(--surface-4-light);
-  --table: var(--table-light);
-  --text-1: var(--text-1-light);
-  --text-2: var(--text-2-light);
-  --link: var(--link-light);
-  --link2: var(--link2-light);
-  /* crud styles */
-  --create: var(--create-light);
-  --delete: var(--delete-light);
-  --on-crud-text: var(--on-crud-text-light);
-  --update: var(--update-light);
-
-  input,
-  textarea,
-  select {
-    background-color: var(--gray-3);
-  }
-}
-
-/* [color-scheme="dim"] {
-  color-scheme: dark;
-
-  --brand: var(--brand-dim);
-  --text-1: var(--text-1-dim);
-  --text-2: var(--text-2-dim);
-  --surface-1: var(--surface-1-dim);
-  --surface-2: var(--surface-2-dim);
-  --surface-3: var(--surface-3-dim);
-  --surface-4: var(--surface-4-dim);
-  --surface-shadow: var(--surface-shadow-dim);
-  --shadow-strength: var(--shadow-strength-dim);
-}
-
-[color-scheme="grape"] {
-  color-scheme: light;
-
-  --brand: var(--brand-grape);
-  --text-1: var(--text-1-grape);
-  --text-2: var(--text-2-grape);
-  --surface-1: var(--surface-1-grape);
-  --surface-2: var(--surface-2-grape);
-  --surface-3: var(--surface-3-grape);
-  --surface-4: var(--surface-4-grape);
-  --surface-shadow: var(--surface-shadow-grape);
-  --shadow-strength: var(--shadow-strength-grape);
-}
-
-[color-scheme="choco"] {
-  color-scheme: light;
-
-  --brand: var(--brand-choco);
-  --text-1: var(--text-1-choco);
-  --text-2: var(--text-2-choco);
-  --surface-1: var(--surface-1-choco);
-  --surface-2: var(--surface-2-choco);
-  --surface-3: var(--surface-3-choco);
-  --surface-4: var(--surface-4-choco);
-  --surface-shadow: var(--surface-shadow-choco);
-  --shadow-strength: var(--shadow-strength-choco);
-} */
+@import "./vars-theme.css";
+@import "./buttons.css";
+@import "./overrides.css";
 
 html,
 body {
@@ -291,10 +18,6 @@ html {
   background-attachment: fixed;
   color: var(--text-1);
   accent-color: var(--link);
-}
-
-tbody > tr:hover {
-  background-color: var(--surface-2);
 }
 
 /* UTILITIES */
@@ -324,12 +47,14 @@ tbody > tr:hover {
   background-color: hsl(var(--lime-2-hsl) / 100%);
   color: var(--gray-9);
 }
+
 .primary-rev {
   /* background: var(--teal-3); */
   /* background-color: hsl(var(--teal-4-hsl) / 50%); */
   background-color: var(--gray-9);
   color: hsl(var(--lime-2-hsl) / 95%);
 }
+
 .primary-rev:hover {
   background-color: hsl(var(--gray-9-hsl) / 60%);
   /* color: var(--gray-9); */
@@ -364,36 +89,11 @@ tbody > tr:hover {
 }
 
 @media (min-width: 768px) {
-  .article-wrapper > div:last-child {
+  .article-wrapper>div:last-child {
     margin: 0 auto;
-    max-width: calc(50% - var(--size-7)); /* Prevent the last item from taking full width */
+    max-width: calc(50% - var(--size-7));
+    /* Prevent the last item from taking full width */
   }
-}
-
-/* TYPOGRAPHIES */
-
-/* COMPONENTS */
-button {
-  background-color: var(--button);
-  color: var(--text-1);
-  text-shadow: none;
-  box-shadow:
-    var(--shadow-2),
-    0 0px var(--surface-3),
-    0 0 0 var(--_highlight-size) var(--_highlight);
-}
-
-/* OVERRIDES THE INITIAL HOVER/ACTIVE size */
-/* button:hover {
-  box-shadow: 0px 0px 0px var(--size-1) hsl(var(--gray-1-hsl) / 30%);
-}
-button:active {
-  box-shadow: 0px 0px 0px 0px hsl(var(--gray-1-hsl) / 10%);
-} */
-
-/* REMOVES WHITE HIGHLIGHT AROUND BUTTONS FOUND IN QUILL EDITOR (specifically in dark mode) */
-:where(.btn, button, input:is([type="button"], [type="submit"], [type="reset"])) > :where(svg) {
-  filter: none;
 }
 
 /* ADMIN INFO CARD CLASS */
@@ -412,57 +112,6 @@ and use the full width for artistic banners */
   padding-inline: var(--size-7);
   height: 100%;
   max-inline-size: 1440px;
-}
-
-/* CRUD BUTTONS CLASSES */
-.create-button {
-  background-color: var(--surface-4);
-  color: var(--link);
-  /* font-weight: var(--font-weight-7); */
-}
-.create-button:hover {
-  background-color: var(--create);
-  color: var(--on-crud-text);
-}
-.update-button {
-  background-color: var(--surface-4);
-  color: var(--update);
-  /* font-weight: var(--font-weight-7); */
-}
-.update-button:hover {
-  background-color: var(--update);
-  color: var(--on-crud-text);
-}
-.update-button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  box-shadow: none;
-  background-color: var(--surface-4);
-  color: var(--update);
-}
-.delete-button {
-  background-color: var(--surface-4);
-  color: var(--delete);
-  /* font-weight: var(--font-weight-7); */
-}
-.delete-button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  box-shadow: none;
-  background-color: var(--surface-4);
-  color: var(--delete);
-}
-.delete-button:hover {
-  background-color: var(--delete);
-  color: var(--on-crud-text);
-}
-
-.rmButtonStyles {
-  margin: unset;
-  box-shadow: unset;
-  border: unset;
-  background-color: unset;
-  padding: unset;
 }
 
 .errorMessage {
