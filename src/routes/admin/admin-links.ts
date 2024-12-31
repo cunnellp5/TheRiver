@@ -53,6 +53,8 @@ export default [
       // { name: 'Bookings', link: '/admin/services/booking', urlPath: '/admin/services/booking' },
       // { name: 'Schedule', link: '/admin/services/time-slots', urlPath: '/admin/services/time-slots' }
       { name: "Availability", link: "/admin/services/availability", urlPath: "/admin/services/availability" },
+      { name: "Appointments", link: "/admin/services/appointments", urlPath: "/admin/services/appointments" },
+      { name: "Payments", link: "/admin/services/payments", urlPath: "/admin/services/payments" },
     ],
   },
   {
