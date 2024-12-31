@@ -2,7 +2,6 @@
   interface Props {
     crumbs?: { name: string; link: string }[];
   }
-
   const { crumbs = [] }: Props = $props();
 </script>
 
@@ -14,7 +13,7 @@
       {name}
     {/if}
     {#if index < crumbs.length - 1}
-      &rsaquo;
+      &rsaquo;&nbsp;
     {/if}
   </span>
 {/each}
