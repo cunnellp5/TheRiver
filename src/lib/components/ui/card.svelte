@@ -127,13 +127,16 @@
   .card:hover {
     -webkit-transition: 0.3s ease-in-out;
     transition: 0.3s ease-in-out;
-    transition-delay: var(--transition-delay-1);
+    /* transition-delay: var(--transition-delay-1); */
     /* box-shadow: var(--shadow-2); */
     box-shadow: 4px 4px 30px var(--yellow-10);
     & .imgWrapper {
       -webkit-transform: scale(1.05);
       transform: scale(1.05);
     }
+  }
+  .card:active {
+    box-shadow: 4px 4px 30px var(--yellow-3);
   }
   .card:hover img {
     -webkit-mask: unset;
