@@ -34,8 +34,6 @@
   <GenericCard.Root>
     <GenericCard.Header>
       <GenericCard.Title>Articles</GenericCard.Title>
-      <GenericCard.Description
-        >Create, Edit, or Delete articles found on the home page</GenericCard.Description>
     </GenericCard.Header>
     <GenericCard.Footer>
       <a href="/admin/homepage/articles/create">

@@ -11,7 +11,6 @@
   <Card.Root>
     <Card.Header>
       <Card.Title>Users</Card.Title>
-      <Card.Description>List of users</Card.Description>
     </Card.Header>
   </Card.Root>
 </div>

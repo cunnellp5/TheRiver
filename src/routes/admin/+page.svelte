@@ -8,35 +8,32 @@
   <Card.Root>
     <Card.Header>
       <Card.Title>Admin home</Card.Title>
-      <!-- <Card.Description> -->
-      <!-- </Card.Description> -->
     </Card.Header>
-    <Card.Content>
-      <details open>
-        <summary> Website architecture </summary>
-        <ul>
-          {#each explainers as explainer}
-            <li class="information">
-              <a
-                href={explainer.href}
-                target="_blank"
-                rel="noopener noreferrer">
-                {explainer.text}
-              </a>
-              <p>- {explainer.shortDescription}</p>
-              <div
-                class="infoWrapper"
-                title={explainer.longDescription}>
-                <Info size={16} />
-              </div>
-            </li>
-          {/each}
-        </ul>
-      </details>
-    </Card.Content>
   </Card.Root>
 </div>
 
+<details open>
+  <summary> Website architecture </summary>
+  <ul>
+    {#each explainers as explainer}
+      <li class="information">
+        <a
+          href={explainer.href}
+          target="_blank"
+          rel="noopener noreferrer">
+          {explainer.text}
+        </a>
+        <p>- {explainer.shortDescription}</p>
+        <div
+          class="infoWrapper"
+          title={explainer.longDescription}>
+          <Info size={16} />
+        </div>
+      </li>
+    {/each}
+  </ul>
+</details>
+<br />
 <details>
   <summary> Tools </summary>
   <ol>

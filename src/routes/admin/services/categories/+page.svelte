@@ -10,15 +10,7 @@
   <Card.Root>
     <Card.Header>
       <Card.Title>Categories</Card.Title>
-      <Card.Description>Create, Edit, or delete your services</Card.Description>
     </Card.Header>
-    <Card.Content>
-      <p>todo</p>
-      <ul>
-        <li>render categories</li>
-        <li>crud categories</li>
-      </ul>
-    </Card.Content>
     <Card.Footer>
       <a
         href="/admin/services/create"
