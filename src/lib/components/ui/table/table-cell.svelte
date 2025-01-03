@@ -30,9 +30,9 @@
     background-color: var(--background-1);
     padding: var(--size-3);
     text-align: left;
-    &:has(:global([role="checkbox"])) {
+    /* &:has(:global([role="checkbox"])) {
       padding-right: 0;
-    }
+    } */
   }
   /* CLASSES */
   .full-width {
