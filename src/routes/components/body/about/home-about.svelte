@@ -95,7 +95,7 @@
     font-family: var(--font-didone);
   }
   .description--header__music {
-    font-family: "Lobster";
+    font-family: var(--font-old-style);
   }
   .description--header__hair {
     font-family: var(--font-geometric-humanist);

@@ -51,7 +51,7 @@
     color: var(--link2);
     font-weight: var(--font-weight-8);
     font-size: var(--size-7);
-    font-family: "Syne", sansserif;
+    font-family: var(--font-handwritten);
     white-space: nowrap;
   }
   .marquee-hover-pause:hover .marquee_group {
@@ -59,7 +59,7 @@
   }
   .marquee_group span.font1 {
     margin-inline: var(--size-4);
-    font-family: "Lobster", sansserif;
+    font-family: var(--font-antique);
   }
 
   @keyframes scroll {

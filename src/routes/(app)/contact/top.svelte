@@ -25,7 +25,7 @@
   h1 {
     font-style: normal;
     font-weight: var(--font-weight-4);
-    font-family: "Lobster", sansserif;
+    font-family: var(--font-handwritten);
     letter-spacing: 0em;
     text-transform: uppercase;
   }
