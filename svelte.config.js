@@ -17,27 +17,30 @@ const config = {
     csp: {
       mode: "nonce",
       directives: {
-        "default-src": ["self"], // Fallback for other directives
+        "default-src": ["self"],
         "script-src": [
           "self",
-          "http://www.instagram.com",
-          "https://www.instagram.com/the.river.beauty/embed/",
-        ], // Allow scripts from self and inline scripts with nonce
-        "style-src": ["self", "https://fonts.googleapis.com", "unsafe-inline"], // Allow styles from self and Google Fonts
+          "strict-dynamic",
+          "nonce-",
+        ],
+        "style-src": ["self", "https://fonts.googleapis.com", "unsafe-inline"],
         "img-src": [
           "self",
           "https://res.cloudinary.com",
           "https://i.ytimg.com/",
           "data:",
           "https://api-postcards.designmodo.com",
-        ], // Allow images from self and Cloudinary
-        "font-src": ["self", "https://fonts.gstatic.com"], // Allow fonts from self and Google Fonts
-        "connect-src": ["self"], // Allow connections to self
-        "frame-src": ["self", "https://w.soundcloud.com", "https://www.instagram.com/"], // Disallow iframes
-        "media-src": ["self", "https://res.cloudinary.com"], // Allow media from self and Cloudinary
-        "object-src": ["none"], // Disallow plugins
-        "base-uri": ["self"], // Restrict base URI to self
-        "form-action": ["self"], // Restrict form actions to self
+        ],
+        "font-src": ["self", "https://fonts.gstatic.com"],
+        "connect-src": ["self"],
+        "frame-src": ["self", "https://w.soundcloud.com"],
+        "media-src": ["self", "https://res.cloudinary.com"],
+        "object-src": ["none"],
+        "base-uri": ["self"],
+        "form-action": ["self"],
+        "worker-src": ["self"],
+        "manifest-src": ["self"],
+        "prefetch-src": ["self"],
       },
     },
     alias: {
