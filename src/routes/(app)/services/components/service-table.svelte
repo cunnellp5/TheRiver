@@ -1,22 +1,27 @@
 <script lang="ts">
-  // import { goto } from "$app/navigation";
+  import { goto } from "$app/navigation";
+  import { page } from "$app/state";
   import DropdownServiceRow from "$lib/components/ui/services/dropdown-service-row.svelte";
   import * as Table from "$lib/components/ui/table";
-  // import Tooltip from "$lib/components/ui/tooltip/tooltip.svelte";
-  // import { serviceCart } from "$lib/stores/services/booking-cart.svelte.ts";
+  import Tooltip from "$lib/components/ui/tooltip/tooltip.svelte";
+  import { serviceCart } from "$lib/stores/services/booking-cart.svelte.ts";
 
-  // const cart = serviceCart();
+  const cart = serviceCart();
   const { category, data } = $props();
 
-  // function handleRowClick(service) {
-  //   cart.addToCart(service);
-  //   goto(`/services/booking?service=${service.id}`);
-  // }
+  function handleRowClick(service: App.ServiceItem) {
+    cart.addToCart(service);
+    goto(`/services/booking?service=${service.id}`);
+  }
+
+  // TODO DELETE WHEN DONE
+  const dev = page.url.hostname === "localhost";
 </script>
 
 <span
   class="stupid"
-  id={category}></span>
+  id={category}>
+</span>
 <section class="tables">
   <Table.Root>
     <Table.Caption>{data[0].category.description}</Table.Caption>
@@ -31,10 +36,22 @@
     </Table.Header>
     <Table.Body>
       {#each data as service}
-        <DropdownServiceRow
-          {service}
-          buttons={null}>
-        </DropdownServiceRow>
+        {#if dev}
+          <DropdownServiceRow {service}>
+            {#snippet buttons()}
+              <Tooltip
+                class="update-button"
+                text="Book now"
+                position="right"
+                handleClick={() => handleRowClick(service)}></Tooltip>
+            {/snippet}
+          </DropdownServiceRow>
+        {:else}
+          <DropdownServiceRow
+            {service}
+            buttons={null}>
+          </DropdownServiceRow>
+        {/if}
       {/each}
     </Table.Body>
   </Table.Root>
@@ -59,7 +76,6 @@
   .stupid {
     height: var(--size-10);
   }
-
   @media (max-width: 768px) {
     .tables {
       width: 100%;
