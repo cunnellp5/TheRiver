@@ -23,7 +23,7 @@
           <p>${item?.price}</p>
           <p class="service-details__duration">{item?.duration} min</p>
         </div>
-        {#if ServiceStore.totals.quantity > 1}
+        {#if ServiceStore.total.quantity > 1}
           <button
             class="delete-button"
             onclick={() => ServiceStore.removeItem(item.id)}>
@@ -41,9 +41,6 @@
 
 <style>
   aside {
-    /* border-inline-start: 2px solid var(--brand); */
-    /* padding: 0 0 0 var(--size-2); */
-    /* border-radius: var(--radius-2); */
     max-inline-size: var(--size-md);
     width: 100%;
     display: flex;
@@ -61,8 +58,6 @@
     justify-content: space-between;
     align-items: center;
     background-color: var(--surface-3);
-    /* color: var(--gray-1); */
-    /* border: 1px solid var(--gray-9); */
     background: linear-gradient(to right, var(--surface-4), var(--surface-3)) padding-box;
   }
   .service-details__name {
