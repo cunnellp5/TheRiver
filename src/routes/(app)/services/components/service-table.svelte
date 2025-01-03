@@ -1,7 +1,7 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
   import { page } from "$app/state";
-  import DropdownServiceRow from "$lib/components/ui/services/dropdown-service-row.svelte";
+  import DropdownServiceRow from "$lib/components/pages/services/dropdown-service-row.svelte";
   import * as Table from "$lib/components/ui/table";
   import Tooltip from "$lib/components/ui/tooltip/tooltip.svelte";
   import { ServiceStore } from "$lib/stores/booking/service.svelte";

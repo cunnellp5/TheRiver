@@ -1,6 +1,6 @@
 <script lang="ts">
+  import DropdownServiceRow from "$lib/components/pages/services/dropdown-service-row.svelte";
   import * as Card from "$lib/components/ui/card/index.js";
-  import DropdownServiceRow from "$lib/components/ui/services/dropdown-service-row.svelte";
   import * as Table from "$lib/components/ui/table/index.js";
 
   const { data } = $props();

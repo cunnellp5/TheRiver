@@ -1,11 +1,11 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
+  import AppointmentSummary from "$lib/components/pages/services/appointment-summary.svelte";
+  import AppointmentTotals from "$lib/components/pages/services/appointment-totals.svelte";
+  import CustomerInfo from "$lib/components/pages/services/customer-info-form.svelte";
   import BaseCalendar from "$lib/components/ui/calendar/base-calendar.svelte";
   import TimeSlots from "$lib/components/ui/calendar/time-slots.svelte";
   import Separator from "$lib/components/ui/separators/separator.svelte";
-  import AppointmentSummary from "$lib/components/ui/services/appointment-summary.svelte";
-  import AppointmentTotals from "$lib/components/ui/services/appointment-totals.svelte";
-  import CustomerInfo from "$lib/components/ui/services/customer-info-form.svelte";
   import { ServiceStore } from "$lib/stores/booking/service.svelte.ts";
   import { serviceCart } from "$lib/stores/services/booking-cart.svelte.ts";
   import { CalendarDate, getLocalTimeZone } from "@internationalized/date";
