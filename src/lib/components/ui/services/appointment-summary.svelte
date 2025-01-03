@@ -6,19 +6,6 @@
   const selectedServices = serviceCart();
   const { data } = $props();
   const { remappedServices } = data;
-  const options = {
-    weekday: "short",
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-  };
-
-  const serviceTime = $derived({
-    hours: Math.floor(selectedServices.cartTotals.duration / 60),
-    minutes: selectedServices.cartTotals.duration % 60,
-  });
 
   function addToCart(service: App.ServiceItem) {
     selectedServices.addToCart(service);
@@ -27,26 +14,6 @@
 
 <aside>
   <h2>Appointment summary</h2>
-  <ServiceDialog
-    {remappedServices}
-    {addToCart} />
-  <div class="service-summary__wrapper">
-    <div class="service-summary">
-      <p>{selectedServices.cartTotals.quantity} Services</p>
-      <div class="service-summary__totals">
-        <span>
-          ${selectedServices.cartTotals.price}
-        </span>
-        <span class="service-summary__totals--duration">
-          {serviceTime.hours ? `${serviceTime.hours}hr` : ""}
-          {serviceTime.minutes}min
-        </span>
-      </div>
-    </div>
-    <div>
-      {selectedServices.cartAppointmentDate.date?.toLocaleDateString("en-US", options)}
-    </div>
-  </div>
   {#each selectedServices.cartItems as item}
     <div class="service-details row">
       <div class="row">
@@ -67,6 +34,10 @@
       </div>
     </div>
   {/each}
+
+  <ServiceDialog
+    {remappedServices}
+    {addToCart} />
 </aside>
 
 <style>
@@ -79,19 +50,6 @@
     display: flex;
     gap: var(--size-4);
     flex-direction: column;
-  }
-  .service-summary__wrapper {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    border-bottom: 1px solid hsl(var(--teal-2-hsl) / 20%);
-    align-items: center;
-  }
-  .service-summary {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: var(--size-4);
   }
   .row {
     display: flex;
@@ -113,10 +71,6 @@
   }
   .service-details__duration {
     font-size: var(--font-size-0);
-  }
-  .service-summary__totals--duration:before {
-    content: "•";
-    margin-inline: var(--size-2);
   }
   .delete-button {
     padding: var(--size-2);
