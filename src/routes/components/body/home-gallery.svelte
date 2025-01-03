@@ -104,7 +104,7 @@
   /* height: calc(100vw * var(--f) / var(--m)); */
   /* } */
   /* QUERIES */
-  @media (max-width: var(--size-md)) {
+  @media (max-width: 768px) {
     .gallery {
       flex-direction: column;
       grid-template-columns: auto;

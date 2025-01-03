@@ -13,7 +13,7 @@
     font-size: var(--font-size-1);
   }
 
-  @media (max-width: var(--size-md)) {
+  @media (max-width: 768px) {
     main {
       display: flex;
       flex-direction: column;

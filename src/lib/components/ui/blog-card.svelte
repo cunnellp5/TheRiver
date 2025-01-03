@@ -93,7 +93,7 @@
   .blogLink {
     display: block;
   }
-  @media (max-width: var(--size-md)) {
+  @media (max-width: 768px) {
     .description {
       font-size: var(--font-size-0);
     }
