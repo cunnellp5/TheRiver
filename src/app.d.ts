@@ -86,7 +86,7 @@ declare global {
       duration: number;
       availability: string;
       price: number;
-      bookingTalley: number;
+      appointmentTalley: number;
       categoryId: number;
       category: {
         id: number;
