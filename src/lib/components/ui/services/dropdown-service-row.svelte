@@ -1,6 +1,5 @@
 <script lang="ts">
   import * as Table from "$lib/components/ui/table/index.js";
-  import Info from "lucide-svelte/icons/info";
 
   const { service, buttons } = $props();
 </script>
@@ -26,7 +25,7 @@
       {/if}
     </summary>
     <p>
-      <Info size={12} />{service.description}
+      {service.description}
     </p>
     <!-- <Table.Cell>{service.name}</Table.Cell> -->
   </details>
@@ -43,11 +42,11 @@
     align-items: center;
   }
   p {
-    padding-inline: var(--size-4);
+    padding-inline: var(--size-1);
     font-size: var(--font-size-0);
     color: var(--text-2);
     display: flex;
-    gap: var(--size-2);
+    max-inline-size: var(--size-13);
   }
   details[open] {
     border-inline-start: 2px solid var(--brand);
@@ -72,11 +71,5 @@
   }
   .price {
     font-size: var(--font-size-0);
-  }
-  .table-row-header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: var(--size-3);
   }
 </style>

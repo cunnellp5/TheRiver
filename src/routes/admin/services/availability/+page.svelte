@@ -1,4 +1,5 @@
 <script>
+  import * as Card from "$lib/components/ui/card/index";
   import { onMount } from "svelte";
   import { daysOfWeek, DEFAULT_DAYS, DEFAULT_END_TIMES, DEFAULT_START_TIMES } from "./utils";
 
@@ -46,6 +47,14 @@
     }
   }
 </script>
+
+<div class="adminIntroCardWrapper">
+  <Card.Root>
+    <Card.Header>
+      <Card.Title>Availability</Card.Title>
+    </Card.Header>
+  </Card.Root>
+</div>
 
 <form on:submit={saveAvailability}>
   <div class="week-grid">

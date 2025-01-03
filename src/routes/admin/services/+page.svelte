@@ -137,8 +137,9 @@
     /* margin-block: var(--size-12); */
     /* box-shadow: var(--shadow-3); */
     padding: var(--size-4);
-    max-inline-size: var(--size-content-3);
-    margin: var(--size-6) auto;
+    max-inline-size: var(--size-content-2);
+    min-width: var(--size-content-2);
+    margin: var(--size-6) var(--size-2);
   }
   aside {
     display: flex;

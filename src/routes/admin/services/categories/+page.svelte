@@ -1,6 +1,6 @@
 <script lang="ts">
-  import * as Card from "$lib/components/ui/card/index.js";
-  import * as Table from "$lib/components/ui/table/index.js";
+  import * as Card from "$lib/components/ui/card/index";
+  import * as Table from "$lib/components/ui/table/index";
 
   const { data } = $props();
   const { categories } = data;

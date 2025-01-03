@@ -54,15 +54,12 @@
   </div>
 </a>
 
-<style>
+<style lang="postcss">
   /* ELEMENTS */
   h5 {
     color: var(--text-1);
     font-size: var(--font-size-5);
     font-family: "Perfectly Nineties Semibold";
-    & a {
-      color: var(--text-2);
-    }
   }
   date {
     color: var(--stone-9);
@@ -96,7 +93,7 @@
   .blogLink {
     display: block;
   }
-  @media (max-width: 768px) {
+  @media (max-width: var(--size-md)) {
     .description {
       font-size: var(--font-size-0);
     }

@@ -113,7 +113,6 @@
   }
   .current {
     border-radius: var(--radius-2);
-    background-color: var(--hover-1);
     color: var(--link);
   }
   .dropLabel {

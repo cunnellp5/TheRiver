@@ -30,7 +30,7 @@
     filteredPosts = data.posts.filter(
       post =>
         post.title.toLowerCase().includes(search.toLowerCase()) ||
-        post.description.toLowerCase().includes(search.toLowerCase()),
+          post.description.toLowerCase().includes(search.toLowerCase())
     );
   });
 
@@ -56,7 +56,6 @@
           href="/admin/posts"
           data-sveltekit-noscroll>Blog posts</a>
       </Card.Title>
-      <Card.Description>Create, Edit, or delete your blog posts</Card.Description>
     </Card.Header>
     <Card.Footer>
       <a
