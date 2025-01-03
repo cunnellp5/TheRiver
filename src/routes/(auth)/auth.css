@@ -1,4 +1,4 @@
-main {
+:global(main) {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,10 +26,11 @@ hr {
 }
 
 /* MAIN CLASSES */
-.hero {
+:global(.hero) {
   display: grid;
   gap: var(--size-1);
   padding: var(--size-10);
+  width: var(--size-md);
 }
 
 .hero-message {
@@ -47,6 +48,7 @@ hr {
   flex-direction: column;
   gap: var(--size-7);
   margin-top: var(--size-7);
+
   & a {
     font-size: var(--font-size-0);
   }

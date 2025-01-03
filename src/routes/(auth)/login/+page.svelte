@@ -28,13 +28,17 @@
   </section>
 </main>
 
-<style>
-  @import "../auth.css";
+<style lang="postcss">
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
 
-  @media (max-width: 768px) {
-    main {
-      display: flex;
-      flex-direction: column;
-    }
+  .hero {
+    display: grid;
+    gap: var(--size-1);
+    padding-block: var(--size-content-1);
   }
 </style>

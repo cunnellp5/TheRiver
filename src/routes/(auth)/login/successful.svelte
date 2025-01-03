@@ -6,14 +6,14 @@
 </h1>
 <p class="under-hero">Successfully logged in</p>
 
-<style>
+<style lang="postcss">
   @import "../auth.css";
 
   .under-hero {
     font-size: var(--font-size-1);
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: var(--size-md)) {
     main {
       display: flex;
       flex-direction: column;
