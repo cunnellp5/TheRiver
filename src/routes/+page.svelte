@@ -22,7 +22,7 @@
   <a
     href="/music"
     class="marquee">
-    <Marquee display="NEW RELEASE - Out The Mud -" />
+    <Marquee display="Latest Release - Out The Mud -" />
   </a>
   <HomeArticles {articles} />
   <Subscribe />

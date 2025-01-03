@@ -6,7 +6,7 @@ import { error, json, type RequestHandler } from "@sveltejs/kit";
 export const POST: RequestHandler = async ({ request }): Promise<Response> => {
   const { availability } = await request.json();
 
-  const upserts = availability.map(({ dayOfTheWeek, startTime, endTime }) =>
+  const upserts = availability.map(({ dayOfTheWeek, startTime, endTime }: { dayOfTheWeek: number; startTime: string; endTime: string }) =>
     db.serviceProviderAvailability.upsert({
       where: { dayOfTheWeek },
       update: {
@@ -18,8 +18,6 @@ export const POST: RequestHandler = async ({ request }): Promise<Response> => {
   );
 
   await Promise.all(upserts);
-
-  // console.log(availability, "fuuug");
 
   return json({ status: 200, message: "yay." });
 };

@@ -42,7 +42,6 @@
     justify-content: center;
     align-items: center;
     gap: var(--size-4);
-    /* width: 100vw; */
     padding-block: var(--size-7);
     background-position: 60% 85%;
   }
@@ -74,7 +73,8 @@
     border-radius: var(--radius-3);
   }
   .descriptionHeader {
-    font-size: var(--size-12);
+    /* font-size: var(--size-12); */
+    font-size: clamp(var(--size-10), 9vw, var(--size-12));
     line-height: 1;
     font-variant: small-caps;
     text-align: center;
@@ -85,9 +85,12 @@
     justify-content: space-evenly;
     gap: var(--size-4);
     padding: var(--size-4);
-    /* backdrop-filter: grayscale(40%); */
     border-radius: var(--radius-2);
+    max-width: var(--size-xlg);
   }
+  /* h2 { */
+  /* text-shadow: 0px 1px var(--size-2) black; */
+  /* } */
   .description--header__art {
     font-family: var(--font-handwritten);
   }
@@ -136,9 +139,6 @@
     }
     .about::before {
       display: none;
-    }
-    .descriptionHeader {
-      font-size: var(--size-8);
     }
   }
 </style>

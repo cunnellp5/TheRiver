@@ -21,7 +21,6 @@ const config = {
         "script-src": [
           "self",
           "strict-dynamic",
-          "nonce-",
         ],
         "style-src": ["self", "https://fonts.googleapis.com", "unsafe-inline"],
         "img-src": [
@@ -38,9 +37,6 @@ const config = {
         "object-src": ["none"],
         "base-uri": ["self"],
         "form-action": ["self"],
-        "worker-src": ["self"],
-        "manifest-src": ["self"],
-        "prefetch-src": ["self"],
       },
     },
     alias: {

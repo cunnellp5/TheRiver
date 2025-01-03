@@ -8,7 +8,5 @@ export const GET: RequestHandler = async ({ params }): Promise<Response> => {
     where: { dayOfTheWeek: Number(weekday) },
   });
 
-  console.log(availability, "fuuug yas");
-
   return json({ status: 200, availability });
 };

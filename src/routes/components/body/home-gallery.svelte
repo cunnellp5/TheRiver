@@ -61,7 +61,7 @@
   </article>
 </section>
 
-<style>
+<style lang="postcss">
   img {
     border-radius: 0;
   }
@@ -95,6 +95,8 @@
     width: 0;
     object-fit: cover;
     object-position: 44% 50%;
+    /* -webkit-mask: linear-gradient(0deg, transparent 5%, white, white, white); */
+    /* mask: linear-gradient(0deg, transparent 5%, white, white, white); */
   }
   /* .gallery img:hover { */
   /* filter: grayscale(0); */
@@ -102,7 +104,7 @@
   /* height: calc(100vw * var(--f) / var(--m)); */
   /* } */
   /* QUERIES */
-  @media (max-width: 768px) {
+  @media (max-width: var(--size-md)) {
     .gallery {
       flex-direction: column;
       grid-template-columns: auto;
@@ -112,6 +114,11 @@
       grid-column: auto / span 4;
       object-position: center 25%; /* Move the center of the image down */
     }
+
+    .image-container:last-of-type {
+      opacity: 0;
+    }
+
     /* .gallery img:hover {
       height: calc(100vw * var(--f) * 4 / var(--m));
     } */

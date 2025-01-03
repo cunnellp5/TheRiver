@@ -14,7 +14,7 @@ function generateCSV(services: any[]): string {
       service.description,
       service.price,
       service.duration,
-      service.bookingTalley,
+      service.appointmentTalley,
       service.category.name,
     ]);
     const sectionContent = [group, headers, ...rows].map(e => e.join(",")).join("\n");
