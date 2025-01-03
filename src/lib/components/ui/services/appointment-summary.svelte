@@ -1,20 +1,19 @@
 <script lang="ts">
   import ServiceDialog from "$lib/components/ui/dialogs/service-list-dialog.svelte";
-  import { serviceCart } from "$lib/stores/services/booking-cart.svelte.ts";
+  import { ServiceStore } from "$lib/stores/booking/service.svelte";
   import X from "lucide-svelte/icons/x";
 
-  const selectedServices = serviceCart();
   const { data } = $props();
   const { remappedServices } = data;
 
   function addToCart(service: App.ServiceItem) {
-    selectedServices.addToCart(service);
+    ServiceStore.addItem(service);
   }
 </script>
 
 <aside>
   <h2>Appointment summary</h2>
-  {#each selectedServices.cartItems as item}
+  {#each ServiceStore.items as item}
     <div class="service-details row">
       <div class="row">
         <p class="service-details__name">{item?.name}</p>
@@ -24,10 +23,10 @@
           <p>${item?.price}</p>
           <p class="service-details__duration">{item?.duration} min</p>
         </div>
-        {#if selectedServices.cartTotals.quantity > 1}
+        {#if ServiceStore.totals.quantity > 1}
           <button
             class="delete-button"
-            onclick={() => selectedServices.removeFromCart(item.id)}>
+            onclick={() => ServiceStore.removeItem(item.id)}>
             <X></X>
           </button>
         {/if}

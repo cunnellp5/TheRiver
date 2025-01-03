@@ -5,7 +5,8 @@
   import Separator from "$lib/components/ui/separators/separator.svelte";
   import AppointmentSummary from "$lib/components/ui/services/appointment-summary.svelte";
   import AppointmentTotals from "$lib/components/ui/services/appointment-totals.svelte";
-  import CustomerInfo from "$lib/components/ui/services/customer-info.svelte";
+  import CustomerInfo from "$lib/components/ui/services/customer-info-form.svelte";
+  import { ServiceStore } from "$lib/stores/booking/service.svelte.ts";
   import { serviceCart } from "$lib/stores/services/booking-cart.svelte.ts";
   import { CalendarDate, getLocalTimeZone } from "@internationalized/date";
   import { createTabs, melt } from "@melt-ui/svelte";
@@ -21,9 +22,6 @@
     defaultValue: "tab-1",
   });
 
-  let className = "";
-  export { className as class };
-
   const triggers = [
     { id: "tab-1", title: "1. Time and Date" },
     { id: "tab-2", title: "2. Info" },
@@ -34,7 +32,6 @@
     duration: 250,
     easing: cubicInOut,
   });
-  //
 
   const selectedServices = serviceCart();
   const { data } = $props();
@@ -55,7 +52,7 @@
   }
 
   onMount(() => {
-    if (!selectedServices.cartItems.length) {
+    if (!ServiceStore.items.length) {
       goto("/services");
     }
   });

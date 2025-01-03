@@ -4,17 +4,15 @@
   import DropdownServiceRow from "$lib/components/ui/services/dropdown-service-row.svelte";
   import * as Table from "$lib/components/ui/table";
   import Tooltip from "$lib/components/ui/tooltip/tooltip.svelte";
-  import { serviceCart } from "$lib/stores/services/booking-cart.svelte.ts";
+  import { ServiceStore } from "$lib/stores/booking/service.svelte";
 
-  const cart = serviceCart();
   const { category, data } = $props();
 
   function handleRowClick(service: App.ServiceItem) {
-    cart.addToCart(service);
+    ServiceStore.addItem(service);
     goto(`/services/booking?service=${service.id}`);
   }
 
-  // TODO DELETE WHEN DONE
   const dev = page.url.hostname === "localhost";
 </script>
 

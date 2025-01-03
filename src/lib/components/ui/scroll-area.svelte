@@ -1,9 +1,8 @@
 <script lang="ts">
-  import { serviceCart } from "$lib/stores/services/booking-cart.svelte.ts";
+  import { ServiceStore } from "$lib/stores/booking/service.svelte";
   import { createScrollArea, melt } from "@melt-ui/svelte";
 
   const { items, title } = $props();
-  const cart = serviceCart();
 
   const {
     elements: { root, content, viewport, corner, scrollbarY, thumbY },
@@ -27,8 +26,8 @@
             class="item"
             role="button"
             tabindex="0"
-            onclick={() => cart.addToCart(item)}
-            onkeydown={e => (e.key === "Enter" || e.key === " ") && cart.addToCart(item)}>
+            onclick={() => ServiceStore.addItem(item)}
+            onkeydown={e => (e.key === "Enter" || e.key === " ") && ServiceStore.addItem(item)}>
             <div>
               <div>
                 {item.name}
