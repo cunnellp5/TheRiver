@@ -1,15 +1,10 @@
-<script>
+<script lang="ts">
   import * as Card from "$lib/components/ui/card/index";
-  import { onMount } from "svelte";
   import { daysOfWeek, DEFAULT_DAYS, DEFAULT_END_TIMES, DEFAULT_START_TIMES } from "./utils";
 
   let enabledDays = [...DEFAULT_DAYS];
-  const startTimes = { ...DEFAULT_START_TIMES };
-  const endTimes = { ...DEFAULT_END_TIMES };
-
-  onMount(() => {
-    // Populate the fields if existing availability exists
-  });
+  const startTimes: { [key: number]: string } = { ...DEFAULT_START_TIMES };
+  const endTimes: { [key: number]: string } = { ...DEFAULT_END_TIMES };
 
   async function saveAvailability() {
     const availability = enabledDays.map(day => ({
@@ -18,7 +13,7 @@
       endTime: endTimes[day] || null,
     }));
 
-    if (availability.some(a => a.startTime >= a.endTime)) {
+    if (availability.some(a => a.startTime && a.endTime && a.startTime >= a.endTime)) {
       // eslint-disable-next-line no-alert
       alert("Start time must be earlier than end time!");
       return;
@@ -62,6 +57,7 @@
     {#each daysOfWeek as { day, value }}
       <div class="day-row">
         <!-- Day label -->
+        <!-- svelte-ignore a11y_label_has_associated_control -->
         <label>{day}</label>
 
         <!-- Availability toggle -->
