@@ -12,7 +12,7 @@
     {#each timeSlots as { period, formattedTime, date }}
       <button
         class="time-slot {period === 'AM' ? 'am' : 'pm'}"
-        class:selected={selectedServices.cartAppointmentDate.date === date}
+        class:selected={selectedServices.cartAppointmentDate === date}
         onclick={() => selectedServices.setAppointmentTime(date)}>
         {formattedTime}
         {period}
