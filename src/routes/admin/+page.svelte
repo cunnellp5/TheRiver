@@ -12,7 +12,7 @@
   </Card.Root>
 </div>
 
-<details open>
+<details>
   <summary> Website architecture </summary>
   <ul>
     {#each explainers as explainer}
