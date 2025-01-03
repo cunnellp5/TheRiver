@@ -20,7 +20,7 @@
     <!-- <Table.Caption>All users with an account</Table.Caption> -->
     <Table.Header>
       <div class="table-row-header gradientHeaders">
-        <h5>Users ({users.length})</h5>
+        <h5>Users table ({users.length})</h5>
       </div>
       <Table.Row>
         <Table.Head class="stone">count</Table.Head>
@@ -52,8 +52,7 @@
   section {
     box-shadow: var(--shadow-3);
     padding: var(--size-4);
-    width: 50vw;
-    margin: 0 auto;
+    width: var(--size-lg);
   }
   .defaultUser {
     color: var(--create);
