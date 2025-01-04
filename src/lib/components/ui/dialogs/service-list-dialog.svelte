@@ -1,5 +1,5 @@
 <script lang="ts">
-  import ServiceDetailRow from "$lib/components/pages/services/detail-row.svelte";
+  import ServiceDetailRow from "$lib/components/pages/adm/services/detail-row.svelte";
   import { createDialog, melt } from "@melt-ui/svelte";
   import X from "lucide-svelte/icons/x";
   import { fade, fly } from "svelte/transition";

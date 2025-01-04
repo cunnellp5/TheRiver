@@ -1,5 +1,5 @@
 <script lang="ts">
-  import DropdownServiceRow from "$lib/components/pages/services/dropdown-service-row.svelte";
+  import DropdownServiceRow from "$lib/components/pages/adm/services/dropdown-service-row.svelte";
   import * as Card from "$lib/components/ui/card/index.js";
   import * as Table from "$lib/components/ui/table/index.js";
 
