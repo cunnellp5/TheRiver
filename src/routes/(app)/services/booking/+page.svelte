@@ -1,19 +1,22 @@
 <script lang="ts">
   import { goto } from "$app/navigation";
-  import AppointmentSummary from "$lib/components/pages/services/appointment-summary.svelte";
-  import AppointmentTotals from "$lib/components/pages/services/appointment-totals.svelte";
-  import CustomerInfo from "$lib/components/pages/services/customer-info-form.svelte";
+  import AppointmentSummary from "$lib/components/pages/adm/services/appointment-summary.svelte";
+  import AppointmentTotals from "$lib/components/pages/adm/services/appointment-totals.svelte";
+  import CustomerInfo from "$lib/components/pages/adm/services/customer-info-form.svelte";
   import BaseCalendar from "$lib/components/ui/calendar/base-calendar.svelte";
   import TimeSlots from "$lib/components/ui/calendar/time-slots.svelte";
   import Separator from "$lib/components/ui/separators/separator.svelte";
+  import { generateTimeSlots } from "$lib/stores/booking/_generate-time-slots.js";
+  import { AppointmentStore } from "$lib/stores/booking/appointment.svelte.ts";
   import { ServiceStore } from "$lib/stores/booking/service.svelte.ts";
-  import { serviceCart } from "$lib/stores/services/booking-cart.svelte.ts";
-  import { CalendarDate, getLocalTimeZone } from "@internationalized/date";
+  import { CalendarDate, Time } from "@internationalized/date";
   import { createTabs, melt } from "@melt-ui/svelte";
   import { onMount } from "svelte";
   import { cubicInOut } from "svelte/easing";
   import { crossfade } from "svelte/transition";
-  import { getAvailableTimeSlots } from "./generate-time-slots.ts";
+
+  const { data } = $props();
+  let timeSlots = $state<{ time: Time; formatted: string; period: string }[]>([]);
 
   const {
     elements: { root, list, content, trigger },
@@ -33,22 +36,14 @@
     easing: cubicInOut,
   });
 
-  const selectedServices = serviceCart();
-  const { data } = $props();
-  let timeSlots = $state<{ formattedTime: string; period: string; date: Date }[] | undefined>([]);
-
   async function handleDayClicked(date: CalendarDate) {
-    // this is breaking stuff
-    selectedServices.setAppointmentMonth(date.month);
-    selectedServices.setAppointmentDay(date.day);
-    selectedServices.setAppointmentYear(date.year);
-    selectedServices.resetAppointmentTime();
     if (!date) return;
-
-    timeSlots = await getAvailableTimeSlots(
-      date.toDate(getLocalTimeZone()),
-      selectedServices.cartTotals.duration
-    );
+    AppointmentStore.setAppointmentDate(date);
+    if (date && ServiceStore.total.duration) {
+      timeSlots = await generateTimeSlots(date, ServiceStore.total.duration);
+    } else {
+      timeSlots = [];
+    }
   }
 
   onMount(() => {
@@ -91,18 +86,6 @@
       <p class="mb-5 leading-normal text-neutral-900 m0-auto center">
         Select a date and time for the service selected
       </p>
-      <!-- <fieldset class="mb-4 flex w-full flex-col justify-start">
-        <label
-          class="mb-2.5 block text-sm leading-none text-neutral-900"
-          for="name">
-          Name
-        </label>
-        <input
-          id="name"
-          value="Thomas G. Lopes" />
-      </fieldset> -->
-
-      <!-- <h1 class="gradientHeaders">Select date and time</h1> -->
       <section>
         <AppointmentSummary {data} />
         <Separator orientation="horizontal"></Separator>
@@ -127,16 +110,6 @@
       use:melt={$content("tab-2")}
       class="grow bg-white p-5">
       <p class="mb-5 leading-normal text-neutral-900 m0-auto center">Add contact information</p>
-      <!-- <fieldset class="mb-4 flex w-full flex-col justify-start">
-        <label
-          class="mb-2.5 block text-sm leading-none text-neutral-900"
-          for="newPassword">
-          New password
-        </label>
-        <input
-          id="newPassword"
-          type="password" />
-      </fieldset> -->
       <CustomerInfo />
       <div class="mt-5 flex justify-center">
         <button class="save">Next</button>
@@ -165,21 +138,6 @@
     </div>
   </div>
 </main>
-
-<!-- <main>
-  <h1 class="gradientHeaders">Select date and time</h1>
-  <section>
-    <BaseCalendar {handleDayClicked} />
-    <AppointmentSummary {data} />
-    <div class="available-time-slots">
-      <h4>Available Time Slots</h4>
-      <TimeSlots {timeSlots} />
-    </div>
-  </section>
-  <a href="booking/info">
-    <button>NEXT</button>
-  </a>
-</main> -->
 
 <style>
   :root {
