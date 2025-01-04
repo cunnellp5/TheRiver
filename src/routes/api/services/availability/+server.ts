@@ -1,6 +1,5 @@
 import db from "$lib/server/database";
-import { parseTime } from "@internationalized/date";
-import { error, json, type RequestHandler } from "@sveltejs/kit";
+import { json, type RequestHandler } from "@sveltejs/kit";
 
 export const GET: RequestHandler = async (): Promise<Response> => {
   const availability = await db.serviceProviderAvailability.findMany({
@@ -29,8 +28,8 @@ export const POST: RequestHandler = async ({ request }): Promise<Response> => {
     endTime: string;
     enabled: boolean;
   }) => {
-    const start = startTime ? parseTime(startTime).toString() : "";
-    const end = endTime ? parseTime(endTime).toString() : "";
+    const start = startTime || "";
+    const end = endTime || "";
 
     return db.serviceProviderAvailability.upsert({
       where: { dayOfTheWeek },
