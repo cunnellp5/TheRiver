@@ -1,5 +1,5 @@
 <script lang="ts">
-  import ServiceDuration from "$lib/components/pages/services/duration.svelte";
+  import ServiceDuration from "$lib/components/pages/adm/services/duration.svelte";
   import ChevronRight from "lucide-svelte/icons/chevron-right";
 
   const { service, handleAddService } = $props();

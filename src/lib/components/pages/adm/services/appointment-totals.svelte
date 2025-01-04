@@ -1,43 +1,42 @@
 <script lang="ts">
-  import { serviceCart } from "$lib/stores/services/booking-cart.svelte.ts";
-  import Separator from "../separators/separator.svelte";
+  import Separator from "$lib/components/ui/separators/separator.svelte";
+  // import { serviceCart } from "$lib/stores/services/booking-cart.svelte.ts";
+  import { ServiceStore } from "$lib/stores/booking/service.svelte.ts";
 
-  const selectedServices = serviceCart();
+  // const selectedServices = serviceCart();
 
-  const serviceTime = $derived({
-    hours: Math.floor(selectedServices.cartTotals.duration / 60),
-    minutes: selectedServices.cartTotals.duration % 60,
-  });
+  // const serviceTime = $derived({
+  //   hours: Math.floor(selectedServices.cartTotals.duration / 60),
+  //   minutes: selectedServices.cartTotals.duration % 60,
+  // });
 
-  const [weekDay, month, year, time] = $derived(selectedServices.cartAppointmentDate.formattedDate);
-  const numberedDay = $derived(selectedServices.cartAppointmentDate.day);
-  const numberedMonth = $derived(selectedServices.cartAppointmentDate.month);
-  const numberedYear = $derived(selectedServices.cartAppointmentDate.year);
-  const endTime = $derived(selectedServices.endTime);
+  // const [weekDay, month, year, time] = $derived(selectedServices.cartAppointmentDate.formattedDate);
+  // const numberedDay = $derived(selectedServices.cartAppointmentDate.day);
+  // const numberedMonth = $derived(selectedServices.cartAppointmentDate.month);
+  // const numberedYear = $derived(selectedServices.cartAppointmentDate.year);
+  // const endTime = $derived(selectedServices.endTime);
 </script>
 
-<div
-  class="appointment-totals"
-  class:incomplete={!selectedServices.cartAppointmentDate.date}>
+<!-- class:incomplete={!selectedServices.cartAppointmentDate.date} -->
+<div class="appointment-totals">
   <p class="appointment__header">
-    Totals: {selectedServices.cartTotals.quantity}
-    {selectedServices.cartTotals.quantity > 1 ? "Services" : "Service"}
+    Totals: {ServiceStore.total.quantity}
+    {ServiceStore.total.quantity > 1 ? "Services" : "Service"}
   </p>
   <Separator orientation="horizontal" />
   <div class="service-summary__wrapper">
     <div class="service-summary">
-      <!-- <p>{selectedServices.cartTotals.quantity} Services</p> -->
       <div class="service-summary__totals">
         <span>
-          ${selectedServices.cartTotals.price}
+          ${ServiceStore.total.price}
         </span>
         <span class="service-summary__totals--duration">
-          {serviceTime.hours ? `${serviceTime.hours}hr` : ""}
-          {serviceTime.minutes}min
+          {ServiceStore.duration.hours ? `${ServiceStore.duration.hours}hr` : ""}
+          {ServiceStore.duration.minutes ? `${ServiceStore.duration.minutes}min` : ""}
         </span>
       </div>
     </div>
-    {#if selectedServices.cartAppointmentDate.date}
+    <!-- {#if selectedServices.cartAppointmentDate.date}
       {#if weekDay && numberedMonth && numberedDay && numberedYear}
         <div>{weekDay}, {numberedMonth}-{numberedDay}-{numberedYear}</div>
       {/if}
@@ -48,7 +47,7 @@
       {/if}
     {:else}
       <p class="errorMessage">Please select a date and time</p>
-    {/if}
+    {/if} -->
   </div>
 </div>
 
