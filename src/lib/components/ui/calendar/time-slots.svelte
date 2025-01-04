@@ -1,27 +1,52 @@
 <script lang="ts">
-  const { timeSlots } = $props();
-  import { serviceCart } from "$lib/stores/services/booking-cart.svelte.ts";
+  import { AppointmentStore } from "$lib/stores/booking/appointment.svelte.ts";
 
-  const selectedServices = serviceCart();
+  const { timeSlots } = $props();
+
+  const sections = $derived([
+    { title: "Morning", slots: timeSlots.filter(s => s.period === "morning") },
+    { title: "Afternoon", slots: timeSlots.filter(s => s.period === "afternoon") },
+    { title: "Evening", slots: timeSlots.filter(s => s.period === "evening") },
+  ]);
 </script>
 
 <div class="time-slots">
   {#if timeSlots.length === 0}
     <p>No available time slots</p>
   {:else}
-    {#each timeSlots as { period, formattedTime, date }}
-      <button
-        class="time-slot {period === 'AM' ? 'am' : 'pm'}"
-        class:selected={selectedServices.cartAppointmentDate === date}
-        onclick={() => selectedServices.setAppointmentTime(date)}>
-        {formattedTime}
-        {period}
-      </button>
-    {/each}
+    <div class="time-slots-container">
+      {#each sections as { title, slots }}
+        {#if slots.length > 0}
+          <section>
+            <h5>{title}</h5>
+            <div class="slot-grid">
+              {#each slots as { time, formatted }}
+                <button
+                  class="time-slot"
+                  onclick={() => AppointmentStore.setAppointmentTime(time)}>
+                  {formatted}
+                </button>
+              {/each}
+            </div>
+          </section>
+        {/if}
+      {/each}
+    </div>
   {/if}
 </div>
 
 <style>
+  h5 {
+    font-weight: var(--font-weight-0);
+    font-size: var(--font-size-2);
+    margin-block-start: var(--size-3);
+  }
+  .time-slots-container,
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-3);
+  }
   .time-slots {
     width: 100%;
     display: flex;
@@ -42,7 +67,13 @@
   .time-slot:hover {
     background-color: var(--surface-2);
   }
-  .time-slot.am {
+  .slot-grid {
+    display: flex;
+    flex-direction: rows;
+    gap: var(--size-3);
+    flex-wrap: wrap;
+  }
+  /* .time-slot.am {
     border-block-end: 1px solid hsl(var(--cyan-10-hsl) / 100%);
   }
   .time-slot.pm {
@@ -51,5 +82,5 @@
   .time-slot.selected {
     background-color: var(--surface-2);
     color: var(--text-1);
-  }
+  } */
 </style>
