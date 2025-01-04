@@ -1,46 +1,10 @@
 <script lang="ts">
+  import { applyAction, enhance } from "$app/forms";
   import * as Card from "$lib/components/ui/card/index";
-  import { daysOfWeek, DEFAULT_DAYS, DEFAULT_END_TIMES, DEFAULT_START_TIMES } from "./utils";
+  import Info from "lucide-svelte/icons/info";
 
-  let enabledDays = [...DEFAULT_DAYS];
-  const startTimes: { [key: number]: string } = { ...DEFAULT_START_TIMES };
-  const endTimes: { [key: number]: string } = { ...DEFAULT_END_TIMES };
-
-  async function saveAvailability() {
-    const availability = enabledDays.map(day => ({
-      dayOfTheWeek: day,
-      startTime: startTimes[day] || null,
-      endTime: endTimes[day] || null,
-    }));
-
-    if (availability.some(a => a.startTime && a.endTime && a.startTime >= a.endTime)) {
-      // eslint-disable-next-line no-alert
-      alert("Start time must be earlier than end time!");
-      return;
-    }
-
-    if (availability.length === 0) {
-      // eslint-disable-next-line no-alert
-      alert("Please select at least one day with availability.");
-      return;
-    }
-
-    const response = await fetch("/api/services/availability", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ availability }),
-    });
-
-    if (response.ok) {
-      // eslint-disable-next-line no-alert
-      alert("Availability saved!");
-    } else {
-      // eslint-disable-next-line no-alert
-      alert("Failed to save availability.");
-    }
-  }
+  const { data, form } = $props();
+  const availability = $state([...data.availability]);
 </script>
 
 <div class="adminIntroCardWrapper">
@@ -51,39 +15,48 @@
   </Card.Root>
 </div>
 
-<form on:submit={saveAvailability}>
-  <div class="week-grid">
-    <!-- Loop through days of the week -->
-    {#each daysOfWeek as { day, value }}
-      <div class="day-row">
-        <!-- Day label -->
-        <!-- svelte-ignore a11y_label_has_associated_control -->
-        <label>{day}</label>
+{#if form && form?.message}
+  <div class="form-message">
+    <p class="flex items-center gap-2">
+      <Info size={18} />
+      {form.message}
+    </p>
+  </div>
+{/if}
 
-        <!-- Availability toggle -->
+<form
+  method="POST"
+  action="?/saveAvailability"
+  use:enhance={({ formData }) => {
+    formData.set("availability", JSON.stringify(availability));
+    return async ({ result }) => {
+      await applyAction(result);
+    };
+  }}>
+  <div class="week-grid">
+    {#each availability as day}
+      <div class="day-row">
+        <label for={`day-${day.dayOfTheWeek}`}>
+          {day.dayName}
+        </label>
+
         <input
           type="checkbox"
-          bind:group={enabledDays}
-          {value} />
+          id={`day-${day.dayOfTheWeek}`}
+          bind:checked={day.enabled} />
 
-        <!-- Start Time -->
         <input
           type="time"
-          step="900"
-          bind:value={startTimes[value]}
-          disabled={!enabledDays.includes(value)} />
+          bind:value={day.startTime}
+          disabled={!day.enabled} />
 
-        <!-- End Time -->
         <input
           type="time"
-          step="900"
-          bind:value={endTimes[value]}
-          disabled={!enabledDays.includes(value)} />
+          bind:value={day.endTime}
+          disabled={!day.enabled} />
       </div>
     {/each}
   </div>
-
-  <!-- Save button -->
   <button type="submit">Save Availability</button>
 </form>
 
@@ -91,27 +64,14 @@
   form {
     max-inline-size: var(--size-content-3);
   }
-  .week-grid {
-    display: grid;
-    grid-template-columns: auto auto 1fr 1fr;
-    gap: 8px;
-    align-items: center;
-  }
-
-  .day-row {
-    display: contents;
-  }
-
   label {
     margin-right: 8px;
     font-weight: bold;
   }
-
   input[type="time"]:disabled {
     opacity: 0.5;
     pointer-events: none;
   }
-
   button {
     margin-top: 16px;
     padding: 8px 16px;
@@ -121,8 +81,27 @@
     border-radius: 4px;
     cursor: pointer;
   }
-
   button:hover {
     background: #0056b3;
+  }
+  .week-grid {
+    display: grid;
+    grid-template-columns: auto auto 1fr 1fr;
+    gap: 8px;
+    align-items: center;
+  }
+  .day-row {
+    display: contents;
+  }
+  .flex {
+    display: flex;
+    align-items: center;
+  }
+  .gap-2 {
+    gap: var(--size-2);
+  }
+  .form-message {
+    margin-block: var(--size-5);
+    color: var(--brand);
   }
 </style>
