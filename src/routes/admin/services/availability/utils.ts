@@ -1,29 +1,22 @@
-export const DEFAULT_DAYS = [1, 2, 3, 4, 5];
-export const DEFAULT_START_TIMES = {
-  0: "",
-  1: "09:00",
-  2: "09:00",
-  3: "09:00",
-  4: "09:00",
-  5: "09:00",
-  6: "",
-};
-export const DEFAULT_END_TIMES = {
-  0: "",
-  1: "17:00",
-  2: "17:00",
-  3: "17:00",
-  4: "17:00",
-  5: "17:00",
-  6: "",
+export interface DayAvailability {
+  dayOfTheWeek: number;
+  dayName: string;
+  startTime: string;
+  endTime: string;
+  enabled: boolean;
+}
+
+export const DEFAULT_TIMES = {
+  start: "09:00",
+  end: "17:00",
 };
 
-export const daysOfWeek = [
-  { day: "Sunday", value: 0 },
-  { day: "Monday", value: 1 },
-  { day: "Tuesday", value: 2 },
-  { day: "Wednesday", value: 3 },
-  { day: "Thursday", value: 4 },
-  { day: "Friday", value: 5 },
-  { day: "Saturday", value: 6 },
+export const DAYS_OF_WEEK = [
+  { value: 0, name: "Sunday" },
+  { value: 1, name: "Monday" },
+  { value: 2, name: "Tuesday" },
+  { value: 3, name: "Wednesday" },
+  { value: 4, name: "Thursday" },
+  { value: 5, name: "Friday" },
+  { value: 6, name: "Saturday" },
 ];
