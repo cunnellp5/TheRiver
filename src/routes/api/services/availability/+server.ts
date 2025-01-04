@@ -1,23 +1,54 @@
 import db from "$lib/server/database";
-import formatToISO from "$lib/utils/format-iso";
-import getTimeFromDateTime from "$lib/utils/get-time-from-datetime";
+import { parseTime } from "@internationalized/date";
 import { error, json, type RequestHandler } from "@sveltejs/kit";
 
-export const POST: RequestHandler = async ({ request }): Promise<Response> => {
-  const { availability } = await request.json();
+export const GET: RequestHandler = async (): Promise<Response> => {
+  const availability = await db.serviceProviderAvailability.findMany({
+    select: {
+      dayOfTheWeek: true,
+      startTime: true,
+      endTime: true,
+      enabled: true,
+    },
+  });
+  return json({ status: 200, availability });
+};
 
-  const upserts = availability.map(({ dayOfTheWeek, startTime, endTime }: { dayOfTheWeek: number; startTime: string; endTime: string }) =>
-    db.serviceProviderAvailability.upsert({
+export const POST: RequestHandler = async ({ request }): Promise<Response> => {
+  const data = await request.json();
+  const availability = data.availability;
+
+  const upserts = availability.map(({
+    dayOfTheWeek,
+    startTime,
+    endTime,
+    enabled,
+  }: {
+    dayOfTheWeek: number;
+    startTime: string;
+    endTime: string;
+    enabled: boolean;
+  }) => {
+    const start = startTime ? parseTime(startTime).toString() : "";
+    const end = endTime ? parseTime(endTime).toString() : "";
+
+    return db.serviceProviderAvailability.upsert({
       where: { dayOfTheWeek },
       update: {
-        startTime: formatToISO("1969-4-20", startTime),
-        endTime: formatToISO("1969-4-20", endTime),
+        startTime: start,
+        endTime: end,
+        enabled,
       },
-      create: { dayOfTheWeek, startTime, endTime },
-    }),
-  );
+      create: {
+        dayOfTheWeek,
+        startTime: start,
+        endTime: end,
+        enabled,
+      },
+    });
+  });
 
   await Promise.all(upserts);
 
-  return json({ status: 200, message: "yay." });
+  return json({ status: 200, message: "Availability updated" });
 };
