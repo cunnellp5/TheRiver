@@ -1,18 +1,8 @@
-import { ServiceStore } from "$lib/stores/booking/service.svelte";
 import { type CalendarDate, getLocalTimeZone } from "@internationalized/date";
-
-const FULL_DATE_OPTIONS: Intl.DateTimeFormatOptions = {
-  weekday: "short",
-  year: "numeric",
-  month: "short",
-  day: "numeric",
-  hour: "2-digit",
-  minute: "2-digit",
-};
 
 function store() {
   let selectedDate = $state<CalendarDate | undefined>(undefined);
-  const appointmentTime = $state<number | undefined>(undefined);
+  let appointmentTime = $state<string | undefined>(undefined);
   const formattedDate = $derived(
     selectedDate
       ? new Intl.DateTimeFormat("en-US", {
@@ -28,14 +18,16 @@ function store() {
     selectedDate = date;
   }
 
+  function setAppointmentTime(time: string) {
+    appointmentTime = time;
+  }
+
   return {
-    get date() {
-      return formattedDate;
-    },
-    get time() {
-      return appointmentTime;
-    },
+    get selectedDate() { return selectedDate; },
+    get date() { return formattedDate; },
+    get time() { return appointmentTime; },
     setAppointmentDate,
+    setAppointmentTime,
   };
 };
 
