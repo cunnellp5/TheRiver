@@ -1,6 +1,6 @@
 import { appointmentStore } from "./appointment.svelte";
 import { customerStore } from "./customer.svelte";
-import { serviceStore } from "./services.svelte";
+import { serviceStore } from "./service.svelte";
 
 type BookingState = "services" | "datetime" | "userinfo" | "payment" | "confirmation";
 
@@ -32,9 +32,9 @@ interface BookingStore {
   };
 }
 
-export function createBookingManager() {
-  let state = $state<BookingState>("services");
+let state = $state<BookingState>("services");
 
+export function createBookingManager() {
   return {
     get currentStep() { return state; },
 
