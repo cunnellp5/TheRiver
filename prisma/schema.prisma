@@ -139,12 +139,11 @@ model ServiceCategory {
 }
 
 model ServiceProviderAvailability {
-  id           Int      @id @default(autoincrement())
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
-  dayOfTheWeek Int      @unique // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+  id           Int     @id @default(autoincrement())
+  dayOfTheWeek Int     @unique // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
   startTime    String
   endTime      String
+  enabled      Boolean @default(false)
 }
 
 model BlockedDates {
