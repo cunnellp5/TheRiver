@@ -2,7 +2,7 @@
   <h2 class="descriptionHeader gradientHeaders">Merch</h2>
   <a
     class="hairLink"
-    href="https://www.etsy.com/shop/TheRiverDesign"
+    href="https://shop.theriversings.com/"
     target="_blank"
     rel="noopener">
     <button class="primary">Get some. @Etsy</button>

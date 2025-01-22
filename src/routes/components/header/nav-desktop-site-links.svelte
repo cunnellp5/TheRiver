@@ -26,7 +26,7 @@
   class:current={isShop}
   aria-current={isShop}>
   <a
-    href="https://www.etsy.com/shop/TheRiverDesign"
+    href="https://shop.theriversings.com/"
     target="_blank"
     rel="noopener">
     Merch

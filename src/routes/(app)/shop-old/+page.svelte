@@ -8,13 +8,13 @@
 
 <main class="app-layout">
   <section>
-    <a target="_blank" href="https://www.etsy.com/shop/TheRiverDesign" rel="noopener">
+    <a target="_blank" href="https://shop.theriversings.com/" rel="noopener">
       <h1>THE RIVER MARKET</h1>
     </a>
     <a
       class="animation"
       target="_blank"
-      href="https://www.etsy.com/shop/TheRiverDesign"
+      href="https://shop.theriversings.com/"
       rel="noopener">
       @TheRiverDesigns
     </a>

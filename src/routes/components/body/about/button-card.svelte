@@ -44,7 +44,7 @@
     </div>
     <div class="button-wrapper">
       <RainbowButton
-        href="https://www.etsy.com/shop/TheRiverDesign"
+        href="https://shop.theriversings.com/"
         target="_blank"
         text="Merch" />
     </div>
